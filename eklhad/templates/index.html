@@ -40,11 +40,31 @@
 <div class="links">
     <h5>Press</h5>
     {{range .PressLinks }}
-    <a href="{{ .Url }}">[{{ .Date }}] {{ .Name }} {{ .LinkType }}</a>
+     <div class="link" >
+            <span class="date">[{{ .Date }}]</span>
+            <span class="url"><a href={{ .Url }}>{{ .Name }}</a></span>
+    </div>
+    {{end}}
+    <h5>Talks</h5>
+    {{range .TalkLinks }}
+     <div class="link" >
+            <span class="date">[{{ .Date }}]</span>
+            <span class="url"><a href={{ .Url }}>{{ .Name }}</a></span>
+    </div>
+    {{end}}
+    <h5>Blogs</h5>
+    {{range .BlogLinks }}
+     <div class="link" >
+            <span class="date">[{{ .Date }}]</span>
+            <span class="url"><a href={{ .Url }}>{{ .Name }}</a></span>
+    </div>
     {{end}}
     <h5>Demos</h5>
     {{range .DemoLinks }}
-    <a href="{{ .Url }}">[{{ .Date }}] {{ .Name }} {{ .LinkType }}</a>
+     <div class="link" >
+            <span class="date">[{{ .Date }}]</span>
+            <span class="url"><a href={{ .Url }}>{{ .Name }}</a></span>
+    </div>
     {{end}}
 </div>
 {{ end }}

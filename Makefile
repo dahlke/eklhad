@@ -61,4 +61,4 @@ todo:
 
 .PHONY: styles
 styles:
-	./eklhad/node_modules/less/bin/lessc static/styles/index.less static/styles/index.css
+	./eklhad/node_modules/less/bin/lessc eklhad/static/styles/less/index.less eklhad/static/styles/index.css
