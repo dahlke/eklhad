@@ -1,0 +1,11 @@
+DROP DATABASE IF EXISTS eklhad;
+CREATE DATABASE eklhad;
+USE eklhad;
+
+CREATE TABLE links (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(128) NOT NULL,
+    date DATE,
+    type VARCHAR(128) NOT NULL,
+    url VARCHAR(2048) NOT NULL
+);

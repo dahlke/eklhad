@@ -1,0 +1,12 @@
+{
+  "name": "eklhad",
+  "author": "Neil Dahlke",
+  "version": "0.0.2",
+  "description": "My personal website.",
+  "repository": "github.com/dahlke/eklhad",
+  "devDependencies": {
+    "less": "3.0.1"
+  },
+  "dependencies": {
+  }
+}
