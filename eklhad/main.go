@@ -28,7 +28,7 @@ func getLinks() EklhadLinks {
 		panic(err)
 	}
 
-	linksRows, err := db.Query("SELECT * FROM links")
+	linksRows, err := db.Query("SELECT * FROM links ORDER BY date DESC")
 	if err != nil {
 		panic(err)
 	}
