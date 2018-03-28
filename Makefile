@@ -10,7 +10,7 @@ build:
 	docker build -t ${CONTAINER} .
 
 .PHONY: container
-container: styles build
+container: build
 	docker run \
 		-d \
 		-p 8080:8080 \
