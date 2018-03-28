@@ -15,10 +15,53 @@
                 ga('create', 'UA-28453323-2', 'auto');
                 ga('send', 'pageview');
             </script>
+            <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+            <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
         </head>
         <body>
             {{ template "body" . }}
         </body>
+        <script>
+            MAPBOX_PUB_KEY = "pk.eyJ1IjoibnRkIiwiYSI6ImhsTjRCZHcifQ.n0hx7Pe1GmCkQYYxBs0yjA";
+            MAPBOX_MAP_ID = "ntd.26f2lhl5"
+
+            L.mapbox.accessToken = MAPBOX_PUB_KEY
+
+            var map = L.mapbox.map("map", MAPBOX_MAP_ID, {
+                center: [37.7749, -122.4194],
+                // dragging: false,
+                attributionControl: false,
+                zoomControl: false,
+                zoom: 2,
+                // TODO: set bounds!
+                minZoom: 2,
+                maxZoom: 8,
+                worldCopyJump: true
+            });
+
+            EKLHAD_LOCATIONS = {{ .Locations }};
+            for (var i = 0; i < EKLHAD_LOCATIONS.length; i++) {
+                var loc = EKLHAD_LOCATIONS[i];
+                var name = loc.Name;
+                var lng = loc.Lng;
+                var lat = loc.Lat;
+
+                var map_latlng = L.latLng(lat, lng);
+                var marker = L.marker(map_latlng, {
+                    properties: {
+                        type: 'location_marker',
+                        id: loc.id
+                    }
+                });
+
+                const popup = "<h3><b>" + name + "</b></h3><p>" + lat + " " + lng + "</p>";
+                marker.bindPopup(popup, {
+                    minWidth: 150
+                });
+
+                marker.addTo(map);
+            }
+        </script>
     </html>
 {{end}}
 
@@ -30,7 +73,7 @@
         <h6>
             <a target="_blank" href="https://www.instagram.com/eklhad">Instagram</a> / <a target="_blank" href="https://www.github.com/dahlke">GitHub</a> / <a target="_blank" href="https://www.linkedin.com/in/neildahlke">LinkedIn</a>
         </h6>
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1OIDe-_zo1wJY7YzgVIKK7ueseHQ" width="640" height="480"></iframe>
+        <div id="map"></div>
         {{ template "links" . }}
     </div>
 {{ end }}
@@ -39,28 +82,28 @@
 {{ define "links" }}
 <div class="links">
     <h5>Press</h5>
-    {{range .PressLinks }}
+    {{range .Links.PressLinks }}
      <div class="link" >
             <span class="date">[{{ .Date }}]</span>
             <span class="url"><a href={{ .Url }}>{{ .Name }}</a></span>
     </div>
     {{end}}
     <h5>Talks</h5>
-    {{range .TalkLinks }}
+    {{range .Links.TalkLinks }}
      <div class="link" >
             <span class="date">[{{ .Date }}]</span>
             <span class="url"><a href={{ .Url }}>{{ .Name }}</a></span>
     </div>
     {{end}}
     <h5>Blogs</h5>
-    {{range .BlogLinks }}
+    {{range .Links.BlogLinks }}
      <div class="link" >
             <span class="date">[{{ .Date }}]</span>
             <span class="url"><a href={{ .Url }}>{{ .Name }}</a></span>
     </div>
     {{end}}
     <h5>Demos</h5>
-    {{range .DemoLinks }}
+    {{range .Links.DemoLinks }}
      <div class="link" >
             <span class="date">[{{ .Date }}]</span>
             <span class="url"><a href={{ .Url }}>{{ .Name }}</a></span>

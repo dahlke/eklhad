@@ -42,10 +42,6 @@ console:
 ##########################
 # DEV HELPERS
 ##########################
-.PHONY: server
-server:
-	go run eklhad/main.go
-
 .PHONY: dev
 dev:
 	docker run \

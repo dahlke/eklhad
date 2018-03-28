@@ -9,3 +9,10 @@ CREATE TABLE links (
     type VARCHAR(128) NOT NULL,
     url VARCHAR(2048) NOT NULL
 );
+
+CREATE TABLE locations (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(128) NOT NULL,
+    latlng VARCHAR(128) NOT NULL
+);
+

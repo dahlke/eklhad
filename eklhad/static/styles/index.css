@@ -19,12 +19,18 @@ html a:visited {
 html a:hover {
   color: #979797;
 }
+html #map {
+  width: 100%;
+  max-width: 600px;
+  height: 300px;
+}
 html .links {
   max-width: 600px;
   width: 100%;
 }
 html .links .link {
   margin-bottom: 10px;
+  display: block;
 }
 html .links .link .date,
 html .links .link .url {
