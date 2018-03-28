@@ -10,7 +10,7 @@ build:
 	docker build -t ${CONTAINER} .
 
 .PHONY: container
-container: build
+container: styles build
 	docker run \
 		-d \
 		-p 8080:8080 \
@@ -42,19 +42,15 @@ console:
 ##########################
 # DEV HELPERS
 ##########################
-.PHONY: dev
-dev:
-	docker run \
-		-d \
-		-p 8080:8080 \
-		--name ${CONTAINER} \
-		-v ${PWD}:/eklhad \
-		${CONTAINER}
-
 .PHONY: todo
 todo:
 	@ag "TODO" --ignore Makefile
 
+.PHONY: npm
+npm:
+	cd eklhad && npm install
+
 .PHONY: styles
-styles:
-	./eklhad/node_modules/less/bin/lessc eklhad/static/styles/less/index.less eklhad/static/styles/index.css
+styles: npm
+	./eklhad/node_modules/less/bin/lessc eklhad/static/styles/less/index.less eklhad/static/styles/index.css && rm -rf eklhad/node_modules
+
