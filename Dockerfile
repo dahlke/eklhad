@@ -4,8 +4,7 @@ MAINTAINER Neil Dahlke <neil@dahlke.io>
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update;
-RUN apt-get install -y build-essential;
+RUN apt-get update --fix-missing;
 RUN apt-get install -y mysql-client mysql-server;
 RUN apt-get install -y libmysqlclient-dev;
 RUN apt-get install -y vim make curl git wget;
