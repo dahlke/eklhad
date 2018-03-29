@@ -35,7 +35,7 @@ type TemplatePayload struct {
 }
 
 func getLocations() []EklhadLocation {
-	db, err := sql.Open("mysql", "root:@tcp(localhost:3306)/eklhad")
+	db, err := sql.Open("mysql", "root:@tcp(127.0.0.01:3306)/eklhad")
 	if err != nil {
 		panic(err)
 	}
@@ -75,7 +75,7 @@ func getLocations() []EklhadLocation {
 }
 
 func getLinks() EklhadLinks {
-	db, err := sql.Open("mysql", "root:@tcp(localhost:3306)/eklhad")
+	db, err := sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/eklhad")
 	if err != nil {
 		panic(err)
 	}
