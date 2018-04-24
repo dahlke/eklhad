@@ -1,5 +1,6 @@
 CONTAINER = eklhad
 SHELL := /bin/bash
+CWD := $(shell pwd)
 
 ##########################
 # DOCKER HELPERS
@@ -10,7 +11,7 @@ build:
 	docker build -t ${CONTAINER} .
 
 .PHONY: container
-container: build
+container: clean resume build
 	docker run \
 		-d \
 		-p 8080:8080 \
@@ -31,7 +32,7 @@ stop:
 
 .PHONY: clean
 clean:
-	docker stop -t 1 ${CONTAINER} && \
+	- docker stop -t 1 ${CONTAINER} && \
 		docker rm ${CONTAINER}
 
 .PHONY: console
@@ -54,3 +55,9 @@ npm:
 styles: npm
 	./eklhad/node_modules/less/bin/lessc eklhad/static/styles/less/index.less eklhad/static/styles/index.css && rm -rf eklhad/node_modules
 
+# Hacky hack since I don't want to patch resume-cli at the sed part.
+.PHONY: resume
+resume: npm
+	cd eklhad/conf/ && \
+	node ${CWD}/eklhad/node_modules/resume-cli/index.js export resume.html --format html --theme onepage
+	sed 's/1991-03-19/today/g' ${CWD}/eklhad/conf/resume.html > ${CWD}/eklhad/static/resume.html
