@@ -49,7 +49,8 @@ todo:
 
 .PHONY: npm
 npm:
-	cd eklhad && npm install
+	cd eklhad && npm config set strict-ssl false && npm install
+
 
 .PHONY: styles
 styles: npm
