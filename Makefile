@@ -11,7 +11,7 @@ build:
 	docker build -t ${CONTAINER} .
 
 .PHONY: container
-container: clean resume build
+container: clean build
 	docker run \
 		-d \
 		-p 8080:8080 \
@@ -50,7 +50,6 @@ todo:
 .PHONY: npm
 npm:
 	cd eklhad && npm config set strict-ssl false && npm install
-
 
 .PHONY: styles
 styles: npm
