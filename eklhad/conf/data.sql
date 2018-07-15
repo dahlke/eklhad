@@ -37,7 +37,8 @@ INSERT INTO `links` VALUES (21,'[SCPR] Comedy Hack Day brings comedians and prog
 	(35,'Real-Time Streaming, Analytics, and Visualization with MemSQL and Zoomdata','2017-08-10','talk','https://www.meetup.com/MemSQL/events/241801222/'),
 	(36,'Gartner Catalyst Conference: Image Recognition on Streaming Data','2017-08-20','talk','https://www.slideshare.net/MemSQL/image-recognition-on-streaming-data'),
 	(37,'AWS Re:Invent - Machine Learning and Streaming Data','2017-11-29','talk','https://reinvent.awsevents.com/'),
-	(38,'Real-Time Streaming, Analytics, and Visualization With MemSQL and Zoomdata','2017-11-24','press','https://dzone.com/articles/real-time-streaming-analytics-and-visualization-wi');
+	(38,'Real-Time Streaming, Analytics, and Visualization With MemSQL and Zoomdata','2017-11-24','press','https://dzone.com/articles/real-time-streaming-analytics-and-visualization-wi'),
+	(39,'Introduction to MemSQL for Developers','2018-06-19','talk','http://go.memsql.com/an-introduction-to-memsql-for-developers');
 
 INSERT INTO `locations` VALUES
 	(43,'South Bend','POINT(-86.25198975 41.67635452)'),
