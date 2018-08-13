@@ -248,4 +248,4 @@ INSERT INTO `locations` VALUES
 	(206,'Auckland','POINT(174.7633 -36.8485)'),
 	(207,'Taipei','POINT(121.5654 25.0330)'),
 	(209,'Queenstown','POINT(168.6626 -45.0312)'),
-	(208,'New Orleans','POINT(90.0715 29.9511)');
+	(208,'New Orleans','POINT(-90.0715 29.9511)');
