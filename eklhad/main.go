@@ -16,10 +16,11 @@ type EklhadLink struct {
 }
 
 type EklhadLinks struct {
-	PressLinks []EklhadLink
-	DemoLinks  []EklhadLink
-	BlogLinks  []EklhadLink
-	TalkLinks  []EklhadLink
+	PressLinks   []EklhadLink
+	DemoLinks    []EklhadLink
+	BlogLinks    []EklhadLink
+	TalkLinks    []EklhadLink
+	WebinarLinks []EklhadLink
 }
 
 type EklhadLocation struct {
@@ -108,6 +109,8 @@ func getLinks() EklhadLinks {
 			eklhadLinks.PressLinks = append(eklhadLinks.PressLinks, eklhadLink)
 		} else if eklhadLink.LinkType == "talk" {
 			eklhadLinks.TalkLinks = append(eklhadLinks.TalkLinks, eklhadLink)
+		} else if eklhadLink.LinkType == "webinar" {
+			eklhadLinks.WebinarLinks = append(eklhadLinks.WebinarLinks, eklhadLink)
 		} else {
 			eklhadLinks.BlogLinks = append(eklhadLinks.BlogLinks, eklhadLink)
 		}

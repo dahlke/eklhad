@@ -95,6 +95,13 @@
             <span class="url"><a href={{ .Url }}>{{ .Name }}</a></span>
     </div>
     {{end}}
+    <h5>Webinars</h5>
+    {{range .Links.WebinarLinks }}
+     <div class="link" >
+            <span class="date">[{{ .Date }}]</span>
+            <span class="url"><a href={{ .Url }}>{{ .Name }}</a></span>
+    </div>
+    {{end}}
     <h5>Blogs</h5>
     {{range .Links.BlogLinks }}
      <div class="link" >
