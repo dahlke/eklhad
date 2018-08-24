@@ -71,6 +71,7 @@ func getLocations() []EklhadLocation {
 		eklhadLocations = append(eklhadLocations, eklhadLocation)
 	}
 
+	db.Close()
 	return eklhadLocations
 }
 
@@ -113,6 +114,7 @@ func getLinks() EklhadLinks {
 
 	}
 
+	db.Close()
 	return eklhadLinks
 }
 

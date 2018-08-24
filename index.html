@@ -1,0 +1,292 @@
+
+    <!doctype html>
+    <html lang="en">
+        <head>
+            <meta charset="utf-8">
+            <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+            <title>Eklhad</title>
+            <link rel="shortcut icon" type="image/x-icon" href="/static/assets/favicon.ico">
+            <link rel="stylesheet" href="/static/styles/index.css">
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+                ga('create', 'UA-28453323-2', 'auto');
+                ga('send', 'pageview');
+            </script>
+            <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+            <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+        </head>
+        <body>
+            
+    <div className="container">
+        <h1>Neil Dahlke</h1>
+        <h3>Engineer, <a target="_blank" href="http://www.memsql.com/">MemSQL</a>, (<a href="static/resume.html">Resume</a>)</h3>
+        <h6>San Francisco, California, USA</h6>
+        <h6>
+            <a target="_blank" href="https://www.instagram.com/eklhad">Instagram</a> / <a target="_blank" href="https://www.github.com/dahlke">GitHub</a> / <a target="_blank" href="https://www.linkedin.com/in/neildahlke">LinkedIn</a>
+        </h6>
+        <div id="map"></div>
+        
+<div class="links">
+    <h5>Press</h5>
+    
+     <div class="link" >
+            <span class="date">[2017-11-24]</span>
+            <span class="url"><a href=https://dzone.com/articles/real-time-streaming-analytics-and-visualization-wi>Real-Time Streaming, Analytics, and Visualization With MemSQL and Zoomdata</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2016-11-07]</span>
+            <span class="url"><a href=https://www.datanami.com/2016/11/07/8-visualizations-election-day/>[Datanami] 8 Interactive Visualizations for Election Day</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2016-10-21]</span>
+            <span class="url"><a href=http://siliconangle.com/blog/2016/10/21/real-time-twitter-analysis-shows-election-is-too-close-to-call/>[Silicon Angle] Real-time Twitter analysis shows U.S. election is â€¦ too close to call?</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2016-10-10]</span>
+            <span class="url"><a href=https://www.engadget.com/2014/10/10/comedy-hack-day/>[Engadget] Dev comedy jam: Cultivated Wit&#39;s Hack Day chases laughs, not dollars</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2015-04-22]</span>
+            <span class="url"><a href=http://www.odbms.org/blog/2015/04/powering-big-data-at-pinterest-interview-with-krishna-gade/>[ODBMS] Powering Big Data at Pinterest. Interview with Krishna Gade.</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2015-03-29]</span>
+            <span class="url"><a href=https://www.infoq.com/news/2015/03/pinterest-memsql-spark-streaming>[InfoQ] Real-time Data Analytics at Pinterest using MemSQL and Spark Streaming</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2015-02-18]</span>
+            <span class="url"><a href=https://engineering.pinterest.com/blog/real-time-analytics-pinterest>[Pinterest Engineering Blog] Real-time analytics at Pinterest</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2015-02-18]</span>
+            <span class="url"><a href=https://gigaom.com/2015/02/18/pinterest-is-experimenting-with-memsql-for-real-time-data-analytics/>[GigaOm] Pinterest is experimenting with MemSQL for real-time data analytics</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2014-12-06]</span>
+            <span class="url"><a href=http://www.scpr.org/blogs/newmedia/2014/12/06/17651/comedy-hack-day-brings-comedians-and-programmers-t/>[SCPR] Comedy Hack Day brings comedians and programmers together in Los Angeles</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2014-10-11]</span>
+            <span class="url"><a href=http://www.recode.net/2014/10/11/11631780/wearable-furbys-and-on-demand-high-fives-highlight-comedy-hack-day>[ReCode] Wearable Furbys and On-Demand High Fives Highlight Comedy Hack Day</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2014-10-09]</span>
+            <span class="url"><a href=https://backchannel.com/furby-does-python-1b68297d1d26#.c2u8zkwbm>[Medium] Furby does Python - The soul of a furry machine: Scenes from a comedy hackathon</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2012-03-09]</span>
+            <span class="url"><a href=http://www.depaul.edu/academics/undergraduate/majors/Pages/comp-sci.aspx>[DePaul University] Computer Science Program Discussion</a></span>
+    </div>
+    
+    <h5>Talks</h5>
+    
+     <div class="link" >
+            <span class="date">[2018-08-20]</span>
+            <span class="url"><a href=https://www.gartner.com/en/conferences/na/catalyst-us/agenda>Gartner Catalyst 2018: How Kafka and Modern Databases Benefit Apps and Analytics</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2017-11-29]</span>
+            <span class="url"><a href=https://reinvent.awsevents.com/>AWS Re:Invent - Machine Learning and Streaming Data</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2017-08-20]</span>
+            <span class="url"><a href=https://www.slideshare.net/MemSQL/image-recognition-on-streaming-data>Gartner Catalyst Conference: Image Recognition on Streaming Data</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2017-08-10]</span>
+            <span class="url"><a href=https://www.meetup.com/MemSQL/events/241801222/>Real-Time Streaming, Analytics, and Visualization with MemSQL and Zoomdata</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2017-07-07]</span>
+            <span class="url"><a href=http://www.missionbit.com/>MissionBit Student Panel</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2017-06-15]</span>
+            <span class="url"><a href=http://www1.memsql.com/sf-roadshow-2017.html>MemSQL San Francisco Roadshow: Streaming in the Enterprise with MemSQL</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2017-06-14]</span>
+            <span class="url"><a href=http://radiantadvisors.com/>Radiant Advisors Presents: MemSQL, Real Time Data Warehousing in the Hybrid Cloud</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2017-05-08]</span>
+            <span class="url"><a href=https://kafka-summit.org/events/kafka-summit-ny/>Kafka Summit in New York, Using MemSQL and Kafka</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2017-03-17]</span>
+            <span class="url"><a href=http://www1.memsql.com/ocroadshow.html>MemSQL Roadshow Orange County: Real-Time Analytics with MemSQL and Spark</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2016-11-04]</span>
+            <span class="url"><a href=http://www1.memsql.com/phoenix-roadshow.html>MemSQL Roadshow Phoenix: Real-Time Analytics with MemSQL and Spark</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2016-06-29]</span>
+            <span class="url"><a href=http://blog.memsql.com/geospatial-data-meetup-with-mapbox/>Geospatial Data Meetup with Mapbox</a></span>
+    </div>
+    
+    <h5>Blogs</h5>
+    
+     <div class="link" >
+            <span class="date">[2018-08-20]</span>
+            <span class="url"><a href=http://go.memsql.com/kafka-and-modern-databases>How Kafka and Modern Databases Benefit Apps and Analytics</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2018-06-19]</span>
+            <span class="url"><a href=http://go.memsql.com/an-introduction-to-memsql-for-developers>Introduction to MemSQL for Developers</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2016-11-10]</span>
+            <span class="url"><a href=http://blog.memsql.com/memsql-tableau-and-the-democratization-of-data/>MemSQL, Tableau, and the Democratization of Data</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2016-10-18]</span>
+            <span class="url"><a href=http://blog.memsql.com/election-2016-real-time-twitter-sentiment/>Election 2016: Analyzing Real-Time Twitter Sentiment with MemSQL Pipelines</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2015-02-18]</span>
+            <span class="url"><a href=http://blog.memsql.com/pinterest-apache-spark-use-case/>How Pinterest Measures Real-Time User Engagement with Spark</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2014-10-01]</span>
+            <span class="url"><a href=http://blog.memsql.com/the-internet-of-furbies/>The Internet of Furbies</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2013-11-23]</span>
+            <span class="url"><a href=https://gist.github.com/dahlke/7330342>Setting up Sublime Text 3 from the Command Line</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2013-11-14]</span>
+            <span class="url"><a href=https://gist.github.com/dahlke/7452852>Workshop: Wireframing Tools and Techniques w/ Carolyn Chandler</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2013-11-05]</span>
+            <span class="url"><a href=https://gist.github.com/dahlke/7330365>Setting up a Raspberry Pi web server using Node &amp; Express</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2013-09-10]</span>
+            <span class="url"><a href=https://gist.github.com/dahlke/6509891>jQuery Conference Austin</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2013-08-09]</span>
+            <span class="url"><a href=https://gist.github.com/dahlke/7ce2ea3e476c04aa7ef7>WhoJS Tutorial</a></span>
+    </div>
+    
+    <h5>Demos</h5>
+    
+     <div class="link" >
+            <span class="date">[2016-10-18]</span>
+            <span class="url"><a href=http://election.memsql.com>Election 2016: Real-Time Twitter Analytics</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2016-02-22]</span>
+            <span class="url"><a href=https://www.youtube.com/watch?v&#61;26lfq_qgcRI>TaxiStats Showcase Application</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2015-06-17]</span>
+            <span class="url"><a href=https://www.youtube.com/watch?v&#61;KXelkQFVz4E>Pinterest Demo of Spark Connector</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2015-05-08]</span>
+            <span class="url"><a href=https://www.youtube.com/watch?v&#61;5_0rG5GhHNE>Bringing OLAP Fully Online: Analyze Changing Datasets in MemSQL and Spark with Pinterest Demo w/ Eric Frenkiel</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2015-05-07]</span>
+            <span class="url"><a href=https://www.youtube.com/watch?v&#61;bgXbHL3D3vs>Exploring Wikipedia Using MemSQL</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2015-04-13]</span>
+            <span class="url"><a href=https://www.youtube.com/watch?v&#61;2txICCLUV-Y>MemSQL Supercar Real-Time Geospatial Demo</a></span>
+    </div>
+    
+     <div class="link" >
+            <span class="date">[2014-10-06]</span>
+            <span class="url"><a href=http://www.comedyhackday.org/demosmade/2014/10/6/wearable-furby>Comedy Hack Day - AwwCog</a></span>
+    </div>
+    
+</div>
+
+    </div>
+
+        </body>
+        <script>
+            MAPBOX_PUB_KEY = "pk.eyJ1IjoibnRkIiwiYSI6ImhsTjRCZHcifQ.n0hx7Pe1GmCkQYYxBs0yjA";
+            MAPBOX_MAP_ID = "ntd.26f2lhl5"
+
+            L.mapbox.accessToken = MAPBOX_PUB_KEY
+
+            var map = L.mapbox.map("map", MAPBOX_MAP_ID, {
+                center: [37.7749, -122.4194],
+                
+                attributionControl: false,
+                zoomControl: false,
+                zoom: 2,
+                
+                minZoom: 2,
+                maxZoom: 8,
+                worldCopyJump: true
+            });
+
+            EKLHAD_LOCATIONS = [{"Id":1,"Name":"Chicago","Lng":"-87.62979822","Lat":"41.87811363"},{"Id":2,"Name":"Charleston","Lng":"-88.17615208","Lat":"39.49614579"},{"Id":3,"Name":"Evergreen Park","Lng":"-87.70171752","Lat":"41.72058890"},{"Id":4,"Name":"Oak Lawn","Lng":"-87.74795281","Lat":"41.71997802"},{"Id":5,"Name":"Urbana","Lng":"-88.20726967","Lat":"40.11058754"},{"Id":6,"Name":"Mattoon","Lng":"-88.37282550","Lat":"39.48308973"},{"Id":7,"Name":"Decatur","Lng":"-88.95480008","Lat":"39.84031474"},{"Id":8,"Name":"Barcelona","Lng":"2.17340351","Lat":"41.38506392"},{"Id":9,"Name":"Amsterdam","Lng":"4.89516785","Lat":"52.37021570"},{"Id":10,"Name":"Haarlem","Lng":"4.64621945","Lat":"52.38738780"},{"Id":11,"Name":"London","Lng":"-0.12775828","Lat":"51.50735089"},{"Id":12,"Name":"Dublin","Lng":"-6.26030965","Lat":"53.34980529"},{"Id":13,"Name":"Howth","Lng":"-6.06468426","Lat":"53.38584692"},{"Id":14,"Name":"Swords","Lng":"-6.21974055","Lat":"53.45574671"},{"Id":15,"Name":"Sutton","Lng":"-6.11030635","Lat":"53.38951660"},{"Id":16,"Name":"Baldoyle","Lng":"-6.12725158","Lat":"53.39867122"},{"Id":17,"Name":"Dundalk","Lng":"-6.40595697","Lat":"53.99794512"},{"Id":18,"Name":"Okinawa","Lng":"127.80558317","Lat":"26.33442658"},{"Id":19,"Name":"Osaka","Lng":"135.50216506","Lat":"34.69373780"},{"Id":20,"Name":"Saint Petersburg","Lng":"30.33509862","Lat":"59.93428024"},{"Id":21,"Name":"Helsinki","Lng":"24.94102486","Lat":"60.17332439"},{"Id":22,"Name":"Berlin","Lng":"13.40495405","Lat":"52.52000660"},{"Id":23,"Name":"Hamburg","Lng":"9.99368175","Lat":"53.55108461"},{"Id":24,"Name":"Paris","Lng":"2.35222186","Lat":"48.85661400"},{"Id":25,"Name":"Brussels","Lng":"4.35171032","Lat":"50.85033963"},{"Id":26,"Name":"Rome","Lng":"12.49636552","Lat":"41.90278348"},{"Id":27,"Name":"London","Lng":"-0.12775828","Lat":"51.50735089"},{"Id":28,"Name":"Valletta","Lng":"14.51455280","Lat":"35.89890849"},{"Id":29,"Name":"Gozo Marina","Lng":"14.30046999","Lat":"36.02618298"},{"Id":30,"Name":"Mdina","Lng":"14.40683573","Lat":"35.88809295"},{"Id":31,"Name":"Havana","Lng":"-82.34518898","Lat":"23.05406976"},{"Id":32,"Name":"Saint Thomas","Lng":"-64.89409456","Lat":"18.33809649"},{"Id":33,"Name":"San Francisco","Lng":"-122.41941548","Lat":"37.77492951"},{"Id":34,"Name":"Reno","Lng":"-119.81380269","Lat":"39.52963288"},{"Id":35,"Name":"Las Vegas","Lng":"-115.13982958","Lat":"36.16994124"},{"Id":36,"Name":"Cheyenne","Lng":"-104.82024618","Lat":"41.13998139"},{"Id":37,"Name":"Omaha","Lng":"-95.99798827","Lat":"41.25236337"},{"Id":38,"Name":"Austin","Lng":"-97.74306082","Lat":"30.26715296"},{"Id":39,"Name":"Des Moines","Lng":"-93.60910642","Lat":"41.60054480"},{"Id":40,"Name":"Saint Louis","Lng":"-90.19940423","Lat":"38.62700251"},{"Id":41,"Name":"Milwaukee","Lng":"-87.90647358","Lat":"43.03890250"},{"Id":42,"Name":"Indianapolis","Lng":"-86.15806800","Lat":"39.76840297"},{"Id":43,"Name":"South Bend","Lng":"-86.25198975","Lat":"41.67635452"},{"Id":44,"Name":"Mackinac Island","Lng":"-84.62756582","Lat":"45.86831290"},{"Id":45,"Name":"Kalamazoo","Lng":"-85.58722858","Lat":"42.29170686"},{"Id":46,"Name":"Portage","Lng":"-85.58000220","Lat":"42.20115379"},{"Id":47,"Name":"Seattle","Lng":"-122.33207078","Lat":"47.60620949"},{"Id":48,"Name":"Redmond","Lng":"-122.12151201","Lat":"47.67398810"},{"Id":49,"Name":"Bellevue","Lng":"-122.20067861","Lat":"47.61037699"},{"Id":50,"Name":"Daly City","Lng":"-122.47020792","Lat":"37.68792407"},{"Id":51,"Name":"South San Francisco","Lng":"-122.40774978","Lat":"37.65465599"},{"Id":52,"Name":"Napa","Lng":"-122.28686496","Lat":"38.29753814"},{"Id":53,"Name":"Saint Helena","Lng":"-122.47038680","Lat":"38.50524288"},{"Id":54,"Name":"Yountville","Lng":"-122.36081053","Lat":"38.40157809"},{"Id":55,"Name":"Petaluma","Lng":"-122.63665237","Lat":"38.23241700"},{"Id":56,"Name":"San Rafael","Lng":"-122.53108738","Lat":"37.97353462"},{"Id":57,"Name":"Sausalito","Lng":"-122.48525069","Lat":"37.85909371"},{"Id":58,"Name":"Oakland","Lng":"-122.27111367","Lat":"37.80436374"},{"Id":59,"Name":"Berkeley","Lng":"-122.27274696","Lat":"37.87159258"},{"Id":60,"Name":"Santa Cruz","Lng":"-122.03079628","Lat":"36.97411711"},{"Id":61,"Name":"Scotts Valley","Lng":"-122.01468413","Lat":"37.05105952"},{"Id":62,"Name":"Tahoe City","Lng":"-120.17624939","Lat":"39.14468032"},{"Id":63,"Name":"South Lake Tahoe","Lng":"-119.97718680","Lat":"38.93992602"},{"Id":64,"Name":"Sacramento","Lng":"-121.49439960","Lat":"38.58157191"},{"Id":65,"Name":"Salt Lake City","Lng":"-111.89104742","Lat":"40.76077929"},{"Id":66,"Name":"Lincoln","Lng":"-96.68519820","Lat":"40.82576251"},{"Id":67,"Name":"Kansas City","Lng":"-94.57856669","Lat":"39.09972653"},{"Id":68,"Name":"Denver","Lng":"-104.99025100","Lat":"39.73923582"},{"Id":69,"Name":"Boulder","Lng":"-105.27054561","Lat":"40.01498558"},{"Id":70,"Name":"Arvada","Lng":"-105.08748423","Lat":"39.80276439"},{"Id":71,"Name":"Miami","Lng":"-80.19179023","Lat":"25.76167983"},{"Id":72,"Name":"Atlanta","Lng":"-84.38798237","Lat":"33.74899538"},{"Id":73,"Name":"Nashville","Lng":"-86.78160155","Lat":"36.16266378"},{"Id":74,"Name":"Cocoa Beach","Lng":"-80.60755128","Lat":"28.32000668"},{"Id":75,"Name":"Cape Canaveral","Lng":"-80.60771316","Lat":"28.39221816"},{"Id":76,"Name":"Mammoth Cave National Park","Lng":"-86.10052796","Lat":"37.18699800"},{"Id":77,"Name":"Louisville","Lng":"-85.75845568","Lat":"38.25266467"},{"Id":78,"Name":"Cincinnati","Lng":"-84.51201959","Lat":"39.10311818"},{"Id":79,"Name":"Fort Wayne","Lng":"-85.13935127","Lat":"41.07927296"},{"Id":80,"Name":"Columbus","Lng":"-82.99879419","Lat":"39.96117554"},{"Id":81,"Name":"Cleveland","Lng":"-81.69436049","Lat":"41.49932003"},{"Id":82,"Name":"Detroit","Lng":"-83.04575381","Lat":"42.33142699"},{"Id":83,"Name":"Buffalo","Lng":"-78.87836893","Lat":"42.88644679"},{"Id":84,"Name":"Toronto","Lng":"-79.38318428","Lat":"43.65322601"},{"Id":85,"Name":"New York","Lng":"-74.00594133","Lat":"40.71278370"},{"Id":86,"Name":"Jersey City","Lng":"-74.07764172","Lat":"40.72815749"},{"Id":87,"Name":"Hartford","Lng":"-72.68509323","Lat":"41.76371107"},{"Id":88,"Name":"Boston","Lng":"-71.05888010","Lat":"42.36008253"},{"Id":89,"Name":"Cambridge","Lng":"-71.10973352","Lat":"42.37361581"},{"Id":90,"Name":"Philadelphia","Lng":"-75.16522152","Lat":"39.95258392"},{"Id":91,"Name":"Baltimore","Lng":"-76.61218928","Lat":"39.29038478"},{"Id":92,"Name":"Washington","Lng":"-77.03687073","Lat":"38.90719228"},{"Id":93,"Name":"Palm Springs","Lng":"-116.54529212","Lat":"33.83029610"},{"Id":94,"Name":"Indio","Lng":"-116.21556187","Lat":"33.72057713"},{"Id":95,"Name":"Palm Desert","Lng":"-116.37445558","Lat":"33.72224454"},{"Id":96,"Name":"Twentynine Palms","Lng":"-116.05416888","Lat":"34.13555822"},{"Id":97,"Name":"Joshua Tree","Lng":"-116.31306607","Lat":"34.13472799"},{"Id":98,"Name":"Yosemite National Park","Lng":"-119.53832897","Lat":"37.86510100"},{"Id":99,"Name":"Yosemite Valley","Lng":"-119.59360376","Lat":"37.74557010"},{"Id":100,"Name":"Yosemite Village","Lng":"-119.59822102","Lat":"37.74520322"},{"Id":101,"Name":"Los Angeles","Lng":"-118.24368492","Lat":"34.05223422"},{"Id":102,"Name":"Anaheim","Lng":"-117.91450359","Lat":"33.83529320"},{"Id":103,"Name":"Long Beach","Lng":"-118.19373947","Lat":"33.77005040"},{"Id":104,"Name":"Huntington Beach","Lng":"-117.99922652","Lat":"33.66029695"},{"Id":105,"Name":"Newport Beach","Lng":"-117.92894690","Lat":"33.61891007"},{"Id":106,"Name":"San Clemente","Lng":"-117.61199251","Lat":"33.42697282"},{"Id":107,"Name":"San Diego","Lng":"-117.16108380","Lat":"32.71573799"},{"Id":108,"Name":"Fresno","Lng":"-119.77258683","Lat":"36.74684219"},{"Id":109,"Name":"Merced","Lng":"-120.48296772","Lat":"37.30216317"},{"Id":110,"Name":"Pittsburgh","Lng":"-79.99588639","Lat":"40.44062476"},{"Id":111,"Name":"Arlington","Lng":"-77.10676977","Lat":"38.87996969"},{"Id":112,"Name":"Alexandria","Lng":"-77.04692136","Lat":"38.80483552"},{"Id":113,"Name":"Chattanooga","Lng":"-85.30968012","Lat":"35.04562968"},{"Id":114,"Name":"Iowa City","Lng":"-91.53016833","Lat":"41.66112768"},{"Id":115,"Name":"Springfield","Lng":"-89.65014812","Lat":"39.78172130"},{"Id":116,"Name":"Peoria","Lng":"-89.58898639","Lat":"40.69364879"},{"Id":117,"Name":"Macomb","Lng":"-90.67179711","Lat":"40.45920764"},{"Id":118,"Name":"Chiang Mai","Lng":"98.98171628","Lat":"18.70606409"},{"Id":119,"Name":"Bangkok","Lng":"100.50176509","Lat":"13.75633089"},{"Id":120,"Name":"Krabi","Lng":"98.90628350","Lat":"8.08629968"},{"Id":121,"Name":"Ao Nang","Lng":"98.83281406","Lat":"8.03628342"},{"Id":122,"Name":"Cork","Lng":"-8.48631569","Lat":"51.89689173"},{"Id":123,"Name":"Galway","Lng":"-9.05679051","Lat":"53.27066797"},{"Id":124,"Name":"Tullamore","Lng":"-7.49338523","Lat":"53.27552551"},{"Id":125,"Name":"Meath","Lng":"-6.65641694","Lat":"53.60554801"},{"Id":126,"Name":"Westmeath","Lng":"-7.46532168","Lat":"53.53453083"},{"Id":127,"Name":"Limerick","Lng":"-8.63049756","Lat":"52.66802042"},{"Id":128,"Name":"Waterford","Lng":"-7.11007025","Lat":"52.25931968"},{"Id":129,"Name":"Atlanta","Lng":"-84.38798237","Lat":"33.74899538"},{"Id":130,"Name":"Alpharetta","Lng":"-84.29408991","Lat":"34.07537618"},{"Id":131,"Name":"Detroit","Lng":"-83.04575381","Lat":"42.33142699"},{"Id":132,"Name":"Battle Creek","Lng":"-85.17971418","Lat":"42.32115222"},{"Id":133,"Name":"Kalamazoo","Lng":"-85.58722858","Lat":"42.29170686"},{"Id":134,"Name":"Seattle","Lng":"-122.33207078","Lat":"47.60620949"},{"Id":135,"Name":"Phoenix","Lng":"-112.07403733","Lat":"33.44837712"},{"Id":136,"Name":"Dallas","Lng":"-96.79698789","Lat":"32.77666417"},{"Id":137,"Name":"Houston","Lng":"-95.36980278","Lat":"29.76042672"},{"Id":138,"Name":"Huntsville","Lng":"-86.58610370","Lat":"34.73036879"},{"Id":139,"Name":"Columbia","Lng":"-92.33407237","Lat":"38.95170527"},{"Id":140,"Name":"Dayton","Lng":"-84.19160691","Lat":"39.75894777"},{"Id":141,"Name":"Akron","Lng":"-81.51900534","Lat":"41.08144467"},{"Id":142,"Name":"Jacksonville","Lng":"-81.65565098","Lat":"30.33218379"},{"Id":143,"Name":"San Jose","Lng":"-121.88632856","Lat":"37.33820822"},{"Id":144,"Name":"Palo Alto","Lng":"-122.14301951","Lat":"37.44188338"},{"Id":145,"Name":"Mountain View","Lng":"-122.08385108","Lat":"37.38605169"},{"Id":146,"Name":"Millbrae","Lng":"-122.38719418","Lat":"37.59854683"},{"Id":147,"Name":"Emeryville","Lng":"-122.28524730","Lat":"37.83131596"},{"Id":148,"Name":"Boulder Creek","Lng":"-122.12218685","Lat":"37.12605782"},{"Id":149,"Name":"Burbank","Lng":"-118.30896611","Lat":"34.18083924"},{"Id":150,"Name":"Glendale","Lng":"-118.25507504","Lat":"34.14250778"},{"Id":151,"Name":"Pasadena","Lng":"-118.14451551","Lat":"34.14778488"},{"Id":152,"Name":"Beverly Hills","Lng":"-118.40035630","Lat":"34.07362041"},{"Id":153,"Name":"Chinatown","Lng":"-118.23833094","Lat":"34.06233390"},{"Id":154,"Name":"San Bernardino","Lng":"-117.28976518","Lat":"34.10834492"},{"Id":155,"Name":"Riverside","Lng":"-117.39615638","Lat":"33.95334869"},{"Id":156,"Name":"Beijing","Lng":"116.40739498","Lat":"39.90421097"},{"Id":157,"Name":"Shanghai","Lng":"121.47370099","Lat":"31.23041601"},{"Id":158,"Name":"Providenciales","Lng":"-72.27190798","Lat":"21.77376538"},{"Id":159,"Name":"Burbank","Lng":"-87.76073800","Lat":"41.74676189"},{"Id":160,"Name":"Rio de Janeiro","Lng":"-43.17289647","Lat":"-22.90684668"},{"Id":161,"Name":"Belo Horizonte","Lng":"-43.93449308","Lat":"-19.91668127"},{"Id":162,"Name":"County Kildare","Lng":"-6.80521793","Lat":"53.17653577"},{"Id":163,"Name":"Wicklow","Lng":"-6.04458900","Lat":"52.98082069"},{"Id":164,"Name":"Kilkenny","Lng":"-7.24478792","Lat":"52.65414542"},{"Id":165,"Name":"Tempe","Lng":"-111.94000544","Lat":"33.42551041"},{"Id":166,"Name":"Mesa","Lng":"-111.83147237","Lat":"33.41518431"},{"Id":167,"Name":"Chandler","Lng":"-111.84125023","Lat":"33.30616046"},{"Id":168,"Name":"Scottsdale","Lng":"-111.92605187","Lat":"33.49417041"},{"Id":169,"Name":"Bakersfield","Lng":"-119.01871246","Lat":"35.37329212"},{"Id":170,"Name":"San Luis Obispo","Lng":"-120.65961559","Lat":"35.28275242"},{"Id":171,"Name":"Modesto","Lng":"-120.99687822","Lat":"37.63909715"},{"Id":172,"Name":"Stockton","Lng":"-121.29077958","Lat":"37.95770158"},{"Id":173,"Name":"Bloomington","Lng":"-88.99368730","Lat":"40.48420267"},{"Id":174,"Name":"Frankfort","Lng":"-87.84866132","Lat":"41.49586651"},{"Id":175,"Name":"Orland Park","Lng":"-87.85394247","Lat":"41.63031031"},{"Id":176,"Name":"Palos Hills","Lng":"-87.81699836","Lat":"41.69669922"},{"Id":177,"Name":"Palos Hills","Lng":"-87.81699836","Lat":"41.69669922"},{"Id":178,"Name":"Palos Heights","Lng":"-87.79644161","Lat":"41.66808850"},{"Id":179,"Name":"Glen Ellyn","Lng":"-88.06701178","Lat":"41.87752930"},{"Id":180,"Name":"Evanston","Lng":"-87.68769690","Lat":"42.04507223"},{"Id":181,"Name":"Skokie","Lng":"-87.74162459","Lat":"42.03240252"},{"Id":182,"Name":"Gary","Lng":"-87.34642709","Lat":"41.59336961"},{"Id":183,"Name":"Michigan City","Lng":"-86.89502971","Lat":"41.70753937"},{"Id":184,"Name":"Long Beach","Lng":"-86.85697357","Lat":"41.73892865"},{"Id":185,"Name":"Kelly Park","Lng":"-81.50288974","Lat":"28.75748477"},{"Id":186,"Name":"Park City","Lng":"-111.49797287","Lat":"40.64606222"},{"Id":187,"Name":"Rock Springs","Lng":"-109.20290426","Lat":"41.58746438"},{"Id":188,"Name":"Minneapolis","Lng":"-93.26501077","Lat":"44.97775298"},{"Id":189,"Name":"Oshkosh","Lng":"-88.54261362","Lat":"44.02470619"},{"Id":190,"Name":"Mackinaw City","Lng":"-84.72714650","Lat":"45.77749871"},{"Id":191,"Name":"London","Lng":"-81.24317698","Lat":"42.98695016"},{"Id":192,"Name":"Delhi","Lng":"77.1025","Lat":"28.7041"},{"Id":193,"Name":"Mumbai","Lng":"72.8777","Lat":"19.0760"},{"Id":194,"Name":"Agra","Lng":"78.0081","Lat":"27.1767"},{"Id":195,"Name":"Fort Kochi","Lng":"76.2421","Lat":"9.9658"},{"Id":196,"Name":"New Delhi","Lng":"77.2090","Lat":"28.6139"},{"Id":197,"Name":"Kannamally","Lng":"76.2638","Lat":"9.8757"},{"Id":198,"Name":"Mattancherry","Lng":"76.2566","Lat":"9.9586"},{"Id":199,"Name":"Qingdao","Lng":"120.3826","Lat":"36.0671"},{"Id":200,"Name":"San Juan","Lng":"66.10573","Lat":"18.46553"},{"Id":202,"Name":"Rincon de la Vieja","Lng":"-85.3364","Lat":"10.8315"},{"Id":203,"Name":"Playa Del Coco","Lng":"-85.7001","Lat":"10.5510"},{"Id":204,"Name":"Liberia","Lng":"-85.4407","Lat":"10.6346"},{"Id":205,"Name":"Sydney","Lng":"151.2093","Lat":"-33.8688"},{"Id":206,"Name":"Auckland","Lng":"174.7633","Lat":"-36.8485"},{"Id":207,"Name":"Taipei","Lng":"121.5654","Lat":"25.0330"},{"Id":208,"Name":"New Orleans","Lng":"-90.0715","Lat":"29.9511"},{"Id":209,"Name":"Queenstown","Lng":"168.6626","Lat":"-45.0312"}];
+            for (var i = 0; i < EKLHAD_LOCATIONS.length; i++) {
+                var loc = EKLHAD_LOCATIONS[i];
+                var name = loc.Name;
+                var lng = loc.Lng;
+                var lat = loc.Lat;
+
+                var map_latlng = L.latLng(lat, lng);
+                var marker = L.marker(map_latlng, {
+                    properties: {
+                        type: 'location_marker',
+                        id: loc.id
+                    }
+                });
+
+                const popup = "<h3><b>" + name + "</b></h3><p>" + lat + " " + lng + "</p>";
+                marker.bindPopup(popup, {
+                    minWidth: 150
+                });
+
+                marker.addTo(map);
+            }
+        </script>
+    </html>
