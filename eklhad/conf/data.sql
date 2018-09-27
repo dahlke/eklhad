@@ -221,8 +221,7 @@ INSERT INTO `locations` VALUES
 	(107,'San Diego','POINT(-117.16108380 32.71573799)'),
 	(130,'Alpharetta','POINT(-84.29408991 34.07537618)'),
 	(176,'Palos Hills','POINT(-87.81699836 41.69669922)'),
-	(152,'Beverly Hills','POINT(-118.40035630 34.07362041)'),
-	(32,'Saint Thomas','POINT(-64.89409456 18.33809649)'),
+	(152,'Beverly Hills','POINT(-118.40035630 34.07362041)'), (32,'Saint Thomas','POINT(-64.89409456 18.33809649)'),
 	(124,'Tullamore','POINT(-7.49338523 53.27552551)'),
 	(17,'Dundalk','POINT(-6.40595697 53.99794512)'),
 	(41,'Milwaukee','POINT(-87.90647358 43.03890250)'),
@@ -243,6 +242,7 @@ INSERT INTO `locations` VALUES
 	(197,'Kannamally','POINT(76.2638 9.8757)'),
 	(198,'Mattancherry','POINT(76.2566 9.9586)'),
 	(199,'Qingdao','POINT(120.3826 36.0671)'),
+    -- TODO
 	(200,'San Juan','POINT(66.10573 18.46553)'),
 	(202,'Rincon de la Vieja','POINT(-85.3364 10.8315)'),
 	(203,'Playa Del Coco','POINT(-85.7001 10.5510)'),
@@ -251,4 +251,8 @@ INSERT INTO `locations` VALUES
 	(206,'Auckland','POINT(174.7633 -36.8485)'),
 	(207,'Taipei','POINT(121.5654 25.0330)'),
 	(209,'Queenstown','POINT(168.6626 -45.0312)'),
-	(208,'New Orleans','POINT(-90.0715 29.9511)');
+	(208,'New Orleans','POINT(-90.0715 29.9511)'),
+	(210,'San Salvador','POINT(-88.8965 13.7942)'),
+	(211,'Cusco','POINT(-71.9675 -13.5320)'),
+	(212,'Aguas Calientes','POINT(-72.5254 -13.1547)'),
+	(213,'Lima','POINT(-77.0428 -12.0464)');
