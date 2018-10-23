@@ -1,7 +1,7 @@
 {
 	"basics": {
 		"name": "Neil Dahlke",
-		"label": "Sales Engineer",
+		"label": "Solutions Engineer",
 		"picture": "https://en.gravatar.com/userimage/25206271/c07bb7c64399588ea12e52065f2b6dda.jpg",
 		"email": "neil@dahlke.io",
 		"phone": "cell not available here",
@@ -35,7 +35,7 @@
 	"work": [
 		{
 			"company": "MemSQL",
-			"position": "Senior Sales Engineer (Team Lead, Western USA)",
+			"position": "Senior Solutions Engineer (Team Lead, Western USA)",
 			"website": "http://memsql.com",
 			"startDate": "2017-03-01",
 			"endDate": "1991-03-19",
@@ -49,7 +49,7 @@
 		},
 		{
 			"company": "MemSQL",
-			"position": "Sales Engineer",
+			"position": "Solutions Engineer",
 			"website": "http://memsql.com",
 			"startDate": "2015-11-01",
 			"endDate": "2017-03-01",

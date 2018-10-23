@@ -198,7 +198,7 @@ a {
             <span class='url'>
               <a href='linkedin.com/in/neildahlke'>linkedin.com/in/neildahlke</a>
             </span>
-            
+
       </div>
   </div>
   <div class='sectionLine'></div>
@@ -212,7 +212,7 @@ a {
 			<div class="jobBlock">
 	      <div class='blockHeader'>
 	        <span class='title'>
-	          MemSQL, Senior Sales Engineer (Western US Team Lead)
+	          MemSQL, Senior Solutions Engineer (Western US Team Lead)
 	        </span>
 	        <span class='date'>
 	          2017-03-01 &mdash; 2019-03-01
@@ -231,7 +231,7 @@ a {
 			<div class="jobBlock">
 	      <div class='blockHeader'>
 	        <span class='title'>
-	          MemSQL, Sales Engineer
+	          MemSQL, Solutions Engineer
 	        </span>
 	        <span class='date'>
 	          2015-11-01 &mdash; 2017-03-01
@@ -277,7 +277,7 @@ a {
 	        <li>Defined and documented requirements, architecture and design of applications.</li>
 	        <li>Developed, tested, deployed and maintained software, with a focus on front-end.</li>
 	      </ul>
-	      
+
 			</div>
     </div>
   </div>
@@ -311,7 +311,7 @@ a {
       <div class='website'>
         <a href='http://blog.memsql.com/pinterest-apache-spark-use-case/'>http://blog.memsql.com/pinterest-apache-spark-use-case/</a>
       </div>
-      
+
     </div>
 	</div>
   <div class='sectionLine'></div>
@@ -338,7 +338,7 @@ a {
           <span class='date'>2018-03-21</span>
         </span>
       </div>
-      
+
     </div>
 	</div>
   <div class='sectionLine'></div>
@@ -360,7 +360,7 @@ a {
           Bachelor  - Computer Science, GPA: Dean&#x27;s List 2009-2013, Radio DePaul Host 2010-2013
         </div>
       </div>
-      
+
     </div>
 	</div>
   <div class='sectionLine'></div>
@@ -372,32 +372,32 @@ a {
     <div class='sectionContent'>
       <div class='skillBlock'>
         <span class='title'>Full Stack:</span>
-          <span>JavaScript</span>, 
-          <span>HTML</span>, 
-          <span>CSS</span>, 
-          <span>React</span>, 
-          <span>Babel</span>, 
-          <span>Python</span>, 
-          <span>Go</span>, 
-          <span>Scala</span>, 
+          <span>JavaScript</span>,
+          <span>HTML</span>,
+          <span>CSS</span>,
+          <span>React</span>,
+          <span>Babel</span>,
+          <span>Python</span>,
+          <span>Go</span>,
+          <span>Scala</span>,
           <span>Java</span>
       </div>
       <div class='skillBlock'>
         <span class='title'>Dev Ops:</span>
-          <span>Linux</span>, 
-          <span>Containers</span>, 
-          <span>Automation</span>, 
-          <span>Tools</span>, 
-          <span>Continuous Integration</span>, 
-          <span>Config Management</span>, 
+          <span>Linux</span>,
+          <span>Containers</span>,
+          <span>Automation</span>,
+          <span>Tools</span>,
+          <span>Continuous Integration</span>,
+          <span>Config Management</span>,
           <span>Git</span>
       </div>
       <div class='skillBlock'>
         <span class='title'>Data Infrastructure:</span>
-          <span>Databases</span>, 
-          <span>Distributed Systems</span>, 
-          <span>Message Queues</span>, 
-          <span>Analytics</span>, 
+          <span>Databases</span>,
+          <span>Distributed Systems</span>,
+          <span>Message Queues</span>,
+          <span>Analytics</span>,
           <span>Architecture</span>
       </div>
     </div>
@@ -413,13 +413,13 @@ a {
       <span class='name'>Being outside.</span><!--
       --><span class='keywords'> <em>[
         surfing<!--
-        -->, 
+        -->,
         running<!--
-        -->, 
+        -->,
         skiing<!--
-        -->, 
+        -->,
         hiking<!--
-        -->, 
+        -->,
         travel (basic)<!--
         -->
       ]</em></span><!--
