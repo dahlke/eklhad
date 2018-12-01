@@ -2,13 +2,8 @@ FROM ubuntu:16.04
 
 MAINTAINER Neil Dahlke <neil@dahlke.io>
 
-ENV DEBIAN_FRONTEND=noninteractive
-
 RUN apt-get update --fix-missing;
 RUN apt-get install -y vim make curl git wget;
-
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash
-RUN apt-get install -y nodejs build-essential;
 
 # Install Go 1.10
 RUN wget -q https://dl.google.com/go/go1.10.linux-amd64.tar.gz
@@ -22,9 +17,6 @@ ENV PATH $GOPATH/bin:$PATH
 
 ADD eklhad /eklhad/
 WORKDIR /eklhad/eklhad/
-RUN npm install
-
-WORKDIR /eklhad/
 
 COPY eklhad/eklhad_entry.sh /
 ENTRYPOINT ["/eklhad_entry.sh"]
