@@ -94,8 +94,6 @@ func getLocations() []EklhadLocation {
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	eklhadLinks := getLinks()
-	fmt.Println("neil", eklhadLinks)
-
 	eklhadLocations := getLocations()
 	
 	payload := TemplatePayload{&eklhadLinks, &eklhadLocations}

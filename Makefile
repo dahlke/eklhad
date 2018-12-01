@@ -11,7 +11,7 @@ build:
 	docker build -t ${CONTAINER} .
 
 .PHONY: container
-container: clean build
+container: resume styles build clean
 	docker run \
 		-d \
 		-p 8080:8080 \
@@ -42,8 +42,7 @@ console:
 
 .PHONY: styles
 styles: npm
-	./eklhad/node_modules/less/bin/lessc eklhad/static/styles/less/index.less eklhad/static/styles/index.css && \
-	rm -rf eklhad/node_modules
+	./eklhad/node_modules/less/bin/lessc eklhad/static/styles/less/index.less eklhad/static/styles/index.css
 
 # Hacky hack since I don't want to patch resume-cli at the sed part.
 .PHONY: resume
