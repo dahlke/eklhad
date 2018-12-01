@@ -8,8 +8,8 @@
 		"website": "http://dahlke.io",
 		"summary": "",
 		"location": {
-			"address": "947 Bush St",
-			"postalCode": "CA 91409",
+			"address": "",
+			"postalCode": "CA 91402",
 			"city": "San Francisco",
 			"countryCode": "US",
 			"region": "California"
@@ -34,6 +34,15 @@
 	},
 	"work": [
 		{
+			"company": "HashiCorp",
+			"position": "Senior Solutions Engineer (Western NA)",
+			"website": "http://memsql.com",
+			"startDate": "2018-11-19",
+			"endDate": "1991-03-19",
+			"highlights": [
+			]
+		},
+		{
 			"company": "MemSQL",
 			"position": "Senior Solutions Engineer (Team Lead, Western USA)",
 			"website": "http://memsql.com",
@@ -54,11 +63,9 @@
 			"startDate": "2015-11-01",
 			"endDate": "2017-03-01",
 			"highlights": [
-				"Run PoCs and build systems for customers: Goldman Sachs, AmEx, Pinterest, Uber, Cisco, etc.",
-				"Define requirements and success criteria with customers.",
-				"Optimize schemas and queries, find bottlenecks, optimize hardware utilization and performance.",
-				"Design and deploy environments from PoC to production; automate operations.",
-				"Support the sales team on the technical side of the sale, build reusable sales optimization tools."
+				"PoC to production for Tier 0 customers (Ex: Goldman, AmEx, Uber, Cisco, Hulu, etc.",
+				"Optimize schemas and queries, find bottlenecks, optimize hardware.",
+				"Support the technical side of the sale, build sales optimization tools, automate operations."
 			]
 		},
 		{
@@ -69,7 +76,7 @@
 			"endDate": "2015-11-01",
 			"highlights": [
 				"Translated design mockups and prototypes into large-scale web applications.",
-				"Owned internal projects, including: sales tools, demos, documentation, company website, testing infrastructure and cloud infrastructure."
+				"Owned internal projects: sales tools, demos, docs, corp site, test infra and cloud infra."
 			]
 		},
 		{
