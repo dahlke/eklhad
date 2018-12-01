@@ -2,17 +2,6 @@
 set -e
 
 if [[ "$1" = "eklhad" ]]; then
-    # Start MySQL
-    service mysql start
-
-    echo "Loading schema from /eklhad/conf/ddl.sql ..."
-    mysql < /eklhad/conf/ddl.sql
-    echo "Schema loaded"
-
-    echo "Loading data from /eklhad/conf/data.sql ..."
-    mysql < /eklhad/conf/data.sql
-    echo "Data loaded"
-
     echo "Preprocessing CSS..."
     /eklhad/node_modules/less/bin/lessc /eklhad/static/styles/less/index.less /eklhad/static/styles/index.css &&
 	node /eklhad/node_modules/resume-cli/index.js export resume.html --format html --theme onepage

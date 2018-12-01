@@ -1,21 +1,27 @@
 package main
 
 import (
-	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
 	"html/template"
 	"net/http"
+	"os"
+	"fmt"
+	"io/ioutil"
+	"encoding/json"
 )
 
 type EklhadLink struct {
-	Id       int64
-	Name     string
-	Date     string
-	LinkType string
-	Url      string
+	Id   int64 `json:"id"`
+	Name string  `json:"name"`
+	Date string `json:"date"`
+	Type string `json:"type"`
+	Url  string `json:"url"`
 }
 
-type EklhadLinks struct {
+type EklhadLinksAll struct {
+	Links []EklhadLink `json:"links"`
+}
+
+type EklhadLinksTyped struct {
 	PressLinks   []EklhadLink
 	DemoLinks    []EklhadLink
 	BlogLinks    []EklhadLink
@@ -24,106 +30,74 @@ type EklhadLinks struct {
 }
 
 type EklhadLocation struct {
-	Id   int64
-	Name string
-	Lng  string
-	Lat  string
+	Id   int64 `json:"id"`
+	Name string  `json:"name"`
+	Lat  string `json:"lat"`
+	Lng  string `json:"lng"`
+}
+
+type EklhadLocations struct {
+	Locations []EklhadLocation `json:"locations"`
 }
 
 type TemplatePayload struct {
-	Links     *EklhadLinks
+	Links     *EklhadLinksTyped
 	Locations *[]EklhadLocation
 }
 
-func getLocations() []EklhadLocation {
-	db, err := sql.Open("mysql", "root:@tcp(127.0.0.01:3306)/eklhad")
+func getLinks() EklhadLinksTyped {
+	var allLinks EklhadLinksAll
+	var links EklhadLinksTyped
+
+	linksJsonFile, err := os.Open("data/links.json")
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
 	}
+	defer linksJsonFile.Close()
 
-	linksRows, err := db.Query(`
-		SELECT
-			id,
-			name,
-			SUBSTRING_INDEX(REPLACE(REPLACE(latlng, "POINT(", ""), ")", ""), " ", 1) AS lng,
-			SUBSTRING_INDEX(REPLACE(REPLACE(latlng, "POINT(", ""), ")", ""), " ", -1) AS lat
-		FROM locations;
-	`)
+	linksByteValue, _ := ioutil.ReadAll(linksJsonFile)
 
-	if err != nil {
-		panic(err)
-	}
+	json.Unmarshal(linksByteValue, &allLinks)
 
-	eklhadLocations := []EklhadLocation{}
-	eklhadLocation := EklhadLocation{}
-
-	for linksRows.Next() {
-		// Scan the value to []byte
-		err = linksRows.Scan(
-			&eklhadLocation.Id,
-			&eklhadLocation.Name,
-			&eklhadLocation.Lng,
-			&eklhadLocation.Lat,
-		)
-
-		if err != nil {
-			panic(err.Error()) // Just for example purpose. You should use proper error handling instead of panic
+	for i := 0; i < len(allLinks.Links); i++ {
+		tmpLink := allLinks.Links[i]
+		if tmpLink.Type == "demo" {
+			links.DemoLinks = append(links.DemoLinks, tmpLink)
+		} else if tmpLink.Type == "press" {
+			links.PressLinks = append(links.PressLinks, tmpLink)
+		} else if tmpLink.Type == "talk" {
+			links.TalkLinks = append(links.TalkLinks, tmpLink)
+		} else if tmpLink.Type == "webinar" {
+			links.WebinarLinks = append(links.WebinarLinks, tmpLink)
+		} else {
+			links.BlogLinks = append(links.BlogLinks, tmpLink)
 		}
-		eklhadLocations = append(eklhadLocations, eklhadLocation)
 	}
 
-	db.Close()
-	return eklhadLocations
+	return links
 }
 
-func getLinks() EklhadLinks {
-	db, err := sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/eklhad")
+func getLocations() []EklhadLocation {
+	locationsJsonFile, err := os.Open("data/locations.json")
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
 	}
+	defer locationsJsonFile.Close()
 
-	linksRows, err := db.Query("SELECT * FROM links ORDER BY date DESC")
-	if err != nil {
-		panic(err)
-	}
+	locationsByteValue, _ := ioutil.ReadAll(locationsJsonFile)
 
-	eklhadLinks := EklhadLinks{}
-	eklhadLink := EklhadLink{}
-	for linksRows.Next() {
-		// Scan the value to []byte
-		err = linksRows.Scan(
-			&eklhadLink.Id,
-			&eklhadLink.Name,
-			&eklhadLink.Date,
-			&eklhadLink.LinkType,
-			&eklhadLink.Url,
-		)
+	var allLocations EklhadLocations
+	json.Unmarshal(locationsByteValue, &allLocations)
 
-		if err != nil {
-			panic(err.Error()) // Just for example purpose. You should use proper error handling instead of panic
-		}
-
-		if eklhadLink.LinkType == "demo" {
-			eklhadLinks.DemoLinks = append(eklhadLinks.DemoLinks, eklhadLink)
-		} else if eklhadLink.LinkType == "press" {
-			eklhadLinks.PressLinks = append(eklhadLinks.PressLinks, eklhadLink)
-		} else if eklhadLink.LinkType == "talk" {
-			eklhadLinks.TalkLinks = append(eklhadLinks.TalkLinks, eklhadLink)
-		} else if eklhadLink.LinkType == "webinar" {
-			eklhadLinks.WebinarLinks = append(eklhadLinks.WebinarLinks, eklhadLink)
-		} else {
-			eklhadLinks.BlogLinks = append(eklhadLinks.BlogLinks, eklhadLink)
-		}
-
-	}
-
-	db.Close()
-	return eklhadLinks
+	return allLocations.Locations
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	eklhadLocations := getLocations()
 	eklhadLinks := getLinks()
+	fmt.Println("neil", eklhadLinks)
+
+	eklhadLocations := getLocations()
+	
 	payload := TemplatePayload{&eklhadLinks, &eklhadLocations}
 	t, _ := template.ParseFiles("templates/index.html")
 	t.ExecuteTemplate(w, "index", &payload)

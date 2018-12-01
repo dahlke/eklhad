@@ -5,8 +5,6 @@ MAINTAINER Neil Dahlke <neil@dahlke.io>
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update --fix-missing;
-RUN apt-get install -y mysql-client mysql-server;
-RUN apt-get install -y libmysqlclient-dev;
 RUN apt-get install -y vim make curl git wget;
 
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash
@@ -21,7 +19,6 @@ ENV PATH=$PATH:/usr/local/go/bin
 RUN mkdir /go
 ENV GOPATH /go
 ENV PATH $GOPATH/bin:$PATH
-RUN go get github.com/go-sql-driver/mysql
 
 ADD eklhad /eklhad/
 WORKDIR /eklhad/eklhad/
