@@ -5,13 +5,12 @@ CWD := $(shell pwd)
 ##########################
 # DOCKER HELPERS
 ##########################
-
-.PHONY: build
-build:
+.PHONY: docker_build
+docker_build:
 	docker build -t ${CONTAINER} .
 
 .PHONY: container
-container: resume styles build clean
+container: resume styles go_build_linux docker_build clean
 	docker run \
 		-d \
 		-p 8080:8080 \
@@ -40,6 +39,9 @@ console:
 	docker exec -it\
 		${CONTAINER} /bin/bash
 
+##########################
+# NODE HELPERS
+##########################
 .PHONY: styles
 styles: npm
 	./eklhad/node_modules/less/bin/lessc eklhad/static/styles/less/index.less eklhad/static/styles/index.css
@@ -51,6 +53,19 @@ resume: npm
 	node ${CWD}/eklhad/node_modules/resume-cli/index.js export resume.html --format html --theme onepage
 	sed 's/1991-03-19/today/g' ${CWD}/eklhad/conf/resume.html > ${CWD}/eklhad/static/resume.html && \
 	rm ${CWD}/eklhad/conf/resume.html
+
+##########################
+# GO HELPERS
+##########################
+.PHONY: go_build_linux
+go_build_linux:
+	cd eklhad && \
+	GOOS=linux GOARCH=amd64 go build main.go
+
+.PHONY: go_build_mac
+go_build_mac:
+	cd eklhad && \
+	go build main.go
 
 ##########################
 # DEV HELPERS
