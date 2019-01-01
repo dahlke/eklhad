@@ -1,4 +1,13 @@
+# Vim Files
 *.swp
+
+# Built / Compiled Files
+*.tar.gz
 *.css
-.DS_Store
+
+# Dev Files
 eklhad/node_modules/
+.DS_Store
+
+# Secrets
+secrets/
