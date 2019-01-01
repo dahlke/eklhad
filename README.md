@@ -2,7 +2,19 @@
 ### My Personal Website
 
 #### Deployment Requirements
+- `packer` 
+    - Packer is required to build an AMI for deployment via Terraform
 - `terraform` 
-- `npm` 
+    - Terraform is the tool we'll use to deploy our app. 
+- `npm`
+    - NPM is used to build static assets for the app.
 - `go` 
-- `docker` ([installation isntructions](https://docs.docker.com/install://docs.docker.com/install/))
+    - Go is the server language of the app. Required for development and building for deployment.
+
+## Building AMI with Packer
+
+```
+source ~/Desktop/aws_iam_neil.sh
+
+make pack_ami
+```

@@ -1,58 +1,34 @@
-CONTAINER = eklhad
 SHELL := /bin/bash
+APP_NAME = eklhad
 CWD := $(shell pwd)
 
-##########################
-# DOCKER HELPERS
-##########################
-.PHONY: docker_build
-docker_build:
-	docker build -t ${CONTAINER} .
-
-.PHONY: container
-container: resume styles go_build_linux docker_build clean
-	docker run \
-		-d \
-		-p 8080:8080 \
-		--name ${CONTAINER} \
-		${CONTAINER}
-
-.PHONY: logs
-logs:
-	docker logs -f ${CONTAINER}
-
-.PHONY: start
-start:
-	docker start ${CONTAINER}
-
-.PHONY: stop
-stop:
-	docker stop ${CONTAINER}
-
-.PHONY: clean
-clean:
-	- docker stop -t 1 ${CONTAINER} && \
-		docker rm ${CONTAINER}
-
-.PHONY: console
-console:
-	docker exec -it\
-		${CONTAINER} /bin/bash
+AWS_CREDENTIALS_PATH=secrets/aws_iam_neil.json
+PACKER_AMI_DEF_PATH=packer-ami.json
 
 ##########################
-# NODE HELPERS
+# DEV HELPERS
 ##########################
-.PHONY: styles
-styles: npm
-	./eklhad/node_modules/less/bin/lessc eklhad/static/styles/less/index.less eklhad/static/styles/index.css
+.PHONY: todo
+todo:
+	@ag "TODO" --ignore Makefile
 
-# Hacky hack since I don't want to patch resume-cli at the sed part.
-.PHONY: resume
-resume: npm
-	cd eklhad/conf/ && \
-	node ${CWD}/eklhad/node_modules/resume-cli/index.js export resume.html --format html --theme onepage
-	sed 's/1991-03-19/today/g' ${CWD}/eklhad/conf/resume.html > ${CWD}/eklhad/static/resume.html && \
-	rm ${CWD}/eklhad/conf/resume.html
+.PHONY: clean_repo
+clean_repo:
+	rm -rf eklhad/node_modules
+
+##########################
+# AWS HELPERS
+##########################
+.PHONY: tar_app
+tar_app: resume styles go_build_linux clean_repo
+	tar cf ${APP_NAME}.tar.gz eklhad/
+
+.PHONY: pack_ami
+pack_ami: 
+	packer build -var-file=${AWS_CREDENTIALS_PATH} ${PACKER_AMI_DEF_PATH}
+
+.PHONY: pack_ami_full
+pack_ami_full: tar_app pack_ami;
 
 ##########################
 # GO HELPERS
@@ -68,12 +44,19 @@ go_build_mac:
 	go build main.go
 
 ##########################
-# DEV HELPERS
+# NODE HELPERS
 ##########################
-.PHONY: todo
-todo:
-	@ag "TODO" --ignore Makefile
-
 .PHONY: npm
 npm:
 	cd eklhad && npm config set strict-ssl false && npm install
+.PHONY: styles
+styles: npm
+	./eklhad/node_modules/less/bin/lessc eklhad/static/styles/less/index.less eklhad/static/styles/index.css
+
+# Hacky hack since I don't want to patch resume-cli at the sed part.
+.PHONY: resume
+resume: npm
+	cd eklhad/conf/ && \
+	node ${CWD}/eklhad/node_modules/resume-cli/index.js export resume.html --format html --theme onepage
+	sed 's/1991-03-19/today/g' ${CWD}/eklhad/conf/resume.html > ${CWD}/eklhad/static/resume.html && \
+	rm ${CWD}/eklhad/conf/resume.html
