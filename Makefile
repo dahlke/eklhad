@@ -3,7 +3,8 @@ APP_NAME = eklhad
 CWD := $(shell pwd)
 
 AWS_CREDENTIALS_PATH=secrets/aws_iam_neil.json
-PACKER_AMI_DEF_PATH=packer-ami.json
+PACKER_AMI_DEF_PATH=packer/aws/image.json
+PACKER_GCI_DEF_PATH=packer/gcp/image.json
 
 ##########################
 # DEV HELPERS
@@ -29,6 +30,11 @@ pack_ami:
 
 .PHONY: pack_ami_full
 pack_ami_full: tar_app pack_ami;
+
+.PHONY: pack_gci
+pack_gci: 
+	packer build ${PACKER_GCI_DEF_PATH}
+
 
 ##########################
 # GO HELPERS
