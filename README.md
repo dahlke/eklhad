@@ -11,10 +11,8 @@
 - `go` 
     - Go is the server language of the app. Required for development and building for deployment.
 
-## Building AMI with Packer
+# Deploying
 
-```
-source ~/Desktop/aws_iam_neil.sh
+## GCP
 
-make pack_ami
-```
+## AWS

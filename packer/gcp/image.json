@@ -1,0 +1,27 @@
+{
+    "builders": [
+      {
+        "type": "googlecompute",
+        "account_file": "secrets/gcp-eklhad-service-account.json",
+        "project_id": "eklhad",
+        "source_image": "ubuntu-1604-xenial-v20181204",
+        "image_name": "eklhad-web-{{timestamp}}",
+        "machine_type": "n1-standard-1",
+        "ssh_username": "ubuntu",
+        "zone": "us-west1-a"
+      }
+    ],
+    "provisioners": [
+        {
+            "type": "file",
+            "source": "./eklhad.tar.gz",
+            "destination": "/home/ubuntu/eklhad.tar.gz"
+        },
+        {
+            "type": "shell",
+            "inline": [
+                "tar xf /home/ubuntu/eklhad.tar.gz"
+            ]
+        }
+    ]
+  }
