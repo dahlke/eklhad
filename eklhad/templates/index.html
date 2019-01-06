@@ -42,9 +42,9 @@
             EKLHAD_LOCATIONS = {{ .Locations }};
             for (var i = 0; i < EKLHAD_LOCATIONS.length; i++) {
                 var loc = EKLHAD_LOCATIONS[i];
-                var name = loc.Name;
-                var lng = loc.Lng;
-                var lat = loc.Lat;
+                var name = loc.name;
+                var lng = loc.lng;
+                var lat = loc.lat;
 
                 var map_latlng = L.latLng(lat, lng);
                 var marker = L.marker(map_latlng, {
