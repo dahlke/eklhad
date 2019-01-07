@@ -5,6 +5,7 @@
 - Full clean of the project
 - Rename the sub eklhad dir to "web"
 - Fix Map
+- TF through Makefile and outputs to file.
 
 ## P1
 - NPM dependency

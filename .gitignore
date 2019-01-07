@@ -13,11 +13,10 @@
 eklhad/node_modules/
 .terraform/
 .vagrant/
-
-# Secrets
 secrets/
+outputs/
 
-# SSH Keys
+#SSH Keys
 *.pem
 
 # Backup files

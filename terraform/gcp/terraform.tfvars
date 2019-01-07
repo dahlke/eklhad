@@ -8,7 +8,7 @@ zone = "us-west1-a"
 
 machine_type = "f1-micro"
 
-image_id = "eklhad-web-1546840552"
+image_id = "eklhad-web-1546841874"
 
 ssh_user = "ubuntu"
 

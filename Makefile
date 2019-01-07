@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-APP_NAME = eklhad
+APP_NAME = eklhad-web
 CWD := $(shell pwd)
 
 AWS_CREDENTIALS_PATH=secrets/aws_iam_neil.json
@@ -33,7 +33,7 @@ pack_ami_full: tar_app pack_ami;
 
 .PHONY: pack_gci
 pack_gci: 
-	packer build ${PACKER_GCI_DEF_PATH}
+	packer build ${PACKER_GCI_DEF_PATH} > outputs/gcp/image.txt
 
 ##########################
 # CLOUD DEPLOY HELPERS
@@ -57,7 +57,7 @@ go_build_mac:
 	go build main.go
 
 ##########################
-# NODE HELPERS
+# WEB HELPERS
 ##########################
 .PHONY: npm
 npm:
