@@ -1,6 +1,6 @@
 gcp_creds_path = "~/src/eklhad/secrets/gcp-eklhad-service-account.json"
 
-project = "eklhad"
+project = "eklhad-web"
 
 region = "us-west1"
 
@@ -8,7 +8,7 @@ zone = "us-west1-a"
 
 machine_type = "f1-micro"
 
-image_id = "eklhad-web-1546662260"
+image_id = "eklhad-web-1546840552"
 
 ssh_user = "ubuntu"
 
