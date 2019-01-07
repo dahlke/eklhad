@@ -18,7 +18,7 @@ clean_repo:
 	rm -rf eklhad/node_modules
 
 ##########################
-# AWS HELPERS
+# CLOUD IMAGE HELPERS
 ##########################
 .PHONY: tar_app
 tar_app: resume styles go_build_linux clean_repo
@@ -35,6 +35,13 @@ pack_ami_full: tar_app pack_ami;
 pack_gci: 
 	packer build ${PACKER_GCI_DEF_PATH}
 
+##########################
+# CLOUD DEPLOY HELPERS
+##########################
+
+.PHONY: deploy_gcp
+deploy_gcp: 
+	cd terraform/gcp && terraform apply
 
 ##########################
 # GO HELPERS

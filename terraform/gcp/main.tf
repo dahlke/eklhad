@@ -4,8 +4,6 @@ provider "google" {
   region      = "${var.region}"
 }
 
-// resource "google_project" "eklhad_web" {}
-
 resource "google_compute_address" "web" {
   name = "ipv4-address"
 }
