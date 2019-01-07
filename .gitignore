@@ -1,13 +1,27 @@
-# Vim Files
+# Dev Files
 *.swp
+.DS_Store
 
 # Built / Compiled Files
 *.tar.gz
 *.css
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
 
-# Dev Files
+# Directories
 eklhad/node_modules/
-.DS_Store
+.terraform/
+.vagrant/
 
 # Secrets
 secrets/
+
+# SSH Keys
+*.pem
+
+# Backup files
+*.bak
+
+# Ignored Terraform files
+*gitignore*.tf
