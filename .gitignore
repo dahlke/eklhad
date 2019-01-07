@@ -5,7 +5,7 @@
 # Built / Compiled Files
 *.tar.gz
 *.css
-# *.tfstate
+*.tfstate
 *.tfstate.backup
 *.tfstate.lock.info
 
