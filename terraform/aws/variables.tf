@@ -1,8 +1,4 @@
-variable "gcp_creds_path" {
-  type = "string"
-}
-
-variable "project" {
+variable "name" {
   type = "string"
 }
 
@@ -10,20 +6,23 @@ variable "region" {
   type = "string"
 }
 
-variable "zone" {
+variable "availability_zone" {
   type = "string"
 }
 
-variable "machine_type" {
+variable "instance_type" {
   type = "string"
 }
 
-variable "tags" {
-  type    = "list"
-  default = ["web"]
+variable "ami_id" {
+  type = "string"
 }
 
-variable "image_id" {
+variable "vpc_cidr_block" {
+  type = "string"
+}
+
+variable "subnet_cidr_block" {
   type = "string"
 }
 
@@ -31,7 +30,7 @@ variable "ssh_user" {
   type = "string"
 }
 
-variable "ssh_pub_key_path" {
+variable "ssh_key_name" {
   type = "string"
 }
 
