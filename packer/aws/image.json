@@ -22,7 +22,7 @@
             },
             "instance_type": "t2.micro",
             "ssh_username": "ubuntu",
-            "ami_name": "eklhad-packer-ubuntu-{{timestamp}}"
+            "ami_name": "eklhad-web-packer-ubuntu-{{timestamp}}"
         }
     ],
     "provisioners": [

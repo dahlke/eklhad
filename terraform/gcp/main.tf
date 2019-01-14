@@ -63,7 +63,7 @@ resource "google_compute_instance" "web" {
     inline = [
       "cd eklhad/",
       "nohup ./main &",
-      "sleep 1"
+      "sleep 1",
     ]
   }
 }

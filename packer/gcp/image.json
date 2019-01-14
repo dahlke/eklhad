@@ -5,7 +5,7 @@
         "account_file": "secrets/gcp-eklhad-service-account.json",
         "project_id": "eklhad-web",
         "source_image": "ubuntu-1604-xenial-v20181204",
-        "image_name": "eklhad-web-{{timestamp}}",
+        "image_name": "eklhad-web-packer-{{timestamp}}",
         "machine_type": "n1-standard-1",
         "ssh_username": "ubuntu",
         "zone": "us-west1-a"

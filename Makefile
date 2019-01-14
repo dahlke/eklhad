@@ -2,9 +2,10 @@ SHELL := /bin/bash
 APP_NAME = eklhad-web
 CWD := $(shell pwd)
 
-AWS_CREDENTIALS_PATH=secrets/aws_iam_neil.json
-PACKER_AMI_DEF_PATH=packer/aws/image.json
-PACKER_GCI_DEF_PATH=packer/gcp/image.json
+AWS_CREDENTIALS_PATH=${CWD}/secrets/aws-iam-neil.json
+
+PACKER_AMI_DEF_PATH=${CWD}/packer/aws/image.json
+PACKER_GCI_DEF_PATH=${CWD}/packer/gcp/image.json
 
 ##########################
 # DEV HELPERS
@@ -17,6 +18,10 @@ todo:
 clean_repo:
 	rm -rf eklhad/node_modules
 
+.PHONY: fmt_tf
+fmt_tf:
+	git ls-files '*.tf' | xargs -n 1 terraform fmt
+
 ##########################
 # CLOUD IMAGE HELPERS
 ##########################
@@ -26,7 +31,7 @@ tar_app: resume styles go_build_linux clean_repo
 
 .PHONY: pack_ami
 pack_ami: 
-	packer build -var-file=${AWS_CREDENTIALS_PATH} ${PACKER_AMI_DEF_PATH}
+	packer build -var-file=${AWS_CREDENTIALS_PATH} ${PACKER_AMI_DEF_PATH} > outputs/aws/image.txt
 
 .PHONY: pack_ami_full
 pack_ami_full: tar_app pack_ami;
@@ -38,10 +43,37 @@ pack_gci:
 ##########################
 # CLOUD DEPLOY HELPERS
 ##########################
+.PHONY: plan_gcp
+plan_gcp: 
+	cd terraform/gcp && terraform plan
 
-.PHONY: deploy_gcp
-deploy_gcp: 
+.PHONY: apply_gcp
+apply_gcp: 
 	cd terraform/gcp && terraform apply
+
+.PHONY: output_gcp
+output_gcp: 
+	cd terraform/gcp && terraform output
+
+.PHONY: destroy_gcp
+destroy_gcp: 
+	cd terraform/gcp && terraform destroy
+
+.PHONY: plan_aws
+plan_aws: 
+	cd terraform/aws && terraform plan -var-file="${AWS_CREDENTIALS_PATH}"
+
+.PHONY: apply_aws
+apply_aws: 
+	cd terraform/aws && terraform apply -var-file="${AWS_CREDENTIALS_PATH}"
+
+.PHONY: output_aws
+output_aws: 
+	cd terraform/aws && terraform output
+
+.PHONY: destroy_aws
+destroy_aws: 
+	cd terraform/aws && terraform destroy -var-file="${AWS_CREDENTIALS_PATH}"
 
 ##########################
 # GO HELPERS
