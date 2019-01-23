@@ -1,4 +1,4 @@
-gcp_creds_path = "~/src/eklhad/secrets/gcp-eklhad-service-account.json"
+gcp_creds_path = "~/src/eklhad/secret/gcp-eklhad-service-account.json"
 
 project = "eklhad-web"
 
@@ -16,4 +16,4 @@ ssh_pub_key_path = "~/.ssh/gcp/eklhad-web.pub"
 
 ssh_private_key_path = "~/.ssh/gcp/eklhad-web"
 
-web_binary_path = "./eklhad/main"
+web_binary_path = "./web/main"

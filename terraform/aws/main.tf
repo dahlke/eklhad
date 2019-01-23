@@ -100,7 +100,7 @@ resource "aws_instance" "eklhad_web" {
     }
 
     inline = [
-      "cd eklhad/",
+      "cd web/",
       "nohup ./main &",
       "sleep 1",
     ]

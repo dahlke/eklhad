@@ -1,5 +1,5 @@
 provider "google" {
-  credentials = "${file("../../secrets/gcp-eklhad-service-account.json")}"
+  credentials = "${file("../../secret/gcp-eklhad-service-account.json")}"
   project     = "${var.project}"
   region      = "${var.region}"
 }
@@ -61,7 +61,7 @@ resource "google_compute_instance" "web" {
     }
 
     inline = [
-      "cd eklhad/",
+      "cd web/",
       "nohup ./main &",
       "sleep 1",
     ]

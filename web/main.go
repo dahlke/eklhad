@@ -1,17 +1,17 @@
 package main
 
 import (
+	"encoding/json"
+	"fmt"
 	"html/template"
+	"io/ioutil"
 	"net/http"
 	"os"
-	"fmt"
-	"io/ioutil"
-	"encoding/json"
 )
 
 type EklhadLink struct {
-	Id   int64 `json:"id"`
-	Name string  `json:"name"`
+	Id   int64  `json:"id"`
+	Name string `json:"name"`
 	Date string `json:"date"`
 	Type string `json:"type"`
 	Url  string `json:"url"`
@@ -30,8 +30,8 @@ type EklhadLinksTyped struct {
 }
 
 type EklhadLocation struct {
-	Id   int64 `json:"id"`
-	Name string  `json:"name"`
+	Id   int64  `json:"id"`
+	Name string `json:"name"`
 	Lat  string `json:"lat"`
 	Lng  string `json:"lng"`
 }
@@ -95,7 +95,7 @@ func getLocations() []EklhadLocation {
 func handler(w http.ResponseWriter, r *http.Request) {
 	eklhadLinks := getLinks()
 	eklhadLocations := getLocations()
-	
+
 	payload := TemplatePayload{&eklhadLinks, &eklhadLocations}
 	t, _ := template.ParseFiles("templates/index.html")
 	t.ExecuteTemplate(w, "index", &payload)

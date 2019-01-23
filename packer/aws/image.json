@@ -28,13 +28,13 @@
     "provisioners": [
         {
             "type": "file",
-            "source": "./eklhad.tar.gz",
-            "destination": "/home/ubuntu/eklhad.tar.gz"
+            "source": "./eklhad-web.tar.gz",
+            "destination": "/home/ubuntu/eklhad-web.tar.gz"
         },
         {
             "type": "shell",
             "inline": [
-                "tar xf /home/ubuntu/eklhad.tar.gz"
+            "tar xf /home/ubuntu/eklhad-web.tar.gz"
             ]
         }
     ]
