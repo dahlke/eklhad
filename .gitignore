@@ -10,11 +10,12 @@
 *.tfstate.lock.info
 
 # Directories
-eklhad/node_modules/
+web/node_modules/
 .terraform/
 .vagrant/
-secrets/
-outputs/
+secret/
+output/
+artifact/
 
 #SSH Keys
 *.pem

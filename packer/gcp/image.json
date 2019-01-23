@@ -2,7 +2,7 @@
     "builders": [
       {
         "type": "googlecompute",
-        "account_file": "secrets/gcp-eklhad-service-account.json",
+        "account_file": "secret/gcp-eklhad-service-account.json",
         "project_id": "eklhad-web",
         "source_image": "ubuntu-1604-xenial-v20181204",
         "image_name": "eklhad-web-packer-{{timestamp}}",
@@ -14,13 +14,13 @@
     "provisioners": [
         {
             "type": "file",
-            "source": "./eklhad.tar.gz",
-            "destination": "/home/ubuntu/eklhad.tar.gz"
+            "source": "./eklhad-web.tar.gz",
+            "destination": "/home/ubuntu/eklhad-web.tar.gz"
         },
         {
             "type": "shell",
             "inline": [
-                "tar xf /home/ubuntu/eklhad.tar.gz"
+                "tar xf /home/ubuntu/eklhad-web.tar.gz"
             ]
         }
     ]

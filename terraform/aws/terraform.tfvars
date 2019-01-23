@@ -18,4 +18,4 @@ ssh_key_name = "eklhad-web-aws"
 
 ssh_private_key_path = "~/.ssh/aws/eklhad-web-aws.pem"
 
-web_binary_path = "./eklhad/main"
+web_binary_path = "./web/main"
