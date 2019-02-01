@@ -61,7 +61,7 @@ image_gcp:
 ##########################
 .PHONY: tf_plan_gcp
 tf_plan_gcp: 
-	cd terraform/gcp && terraform plan
+	cd terraform/gcp && terraform init && terraform plan
 
 .PHONY: tf_apply_gcp
 tf_apply_gcp: 
@@ -77,7 +77,7 @@ tf_destroy_gcp:
 
 .PHONY: tf_plan_aws
 tf_plan_aws: 
-	cd terraform/aws && terraform plan -var-file="${AWS_CREDENTIALS_PATH}"
+	cd terraform/aws && terraform init && terraform plan -var-file="${AWS_CREDENTIALS_PATH}"
 
 .PHONY: tf_apply_aws
 tf_apply_aws: 

@@ -6,7 +6,7 @@ availability_zone = "us-west-2b"
 
 instance_type = "t2.micro"
 
-ami_id = "ami-0499f4a98d4535fd6"
+ami_id = "ami-09bd4d00489cbed41"
 
 vpc_cidr_block = "10.0.0.0/16"
 
@@ -19,3 +19,9 @@ ssh_key_name = "eklhad-web-aws"
 ssh_private_key_path = "~/.ssh/aws/eklhad-web-aws.pem"
 
 web_binary_path = "./web/main"
+
+cloudflare_email = "neil.dahlke@gmail.com"
+
+cloudflare_token_path = "~/src/dahlke/eklhad/secret/cloudflare.txt"
+
+cloudflare_domain = "dahlke.io"
