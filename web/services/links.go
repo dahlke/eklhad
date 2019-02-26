@@ -20,17 +20,9 @@ type EklhadLinksAll struct {
 	Links []EklhadLink `json:"links"`
 }
 
-type EklhadLinksTyped struct {
-	PressLinks   []EklhadLink
-	DemoLinks    []EklhadLink
-	BlogLinks    []EklhadLink
-	TalkLinks    []EklhadLink
-	WebinarLinks []EklhadLink
-}
-
-func GetLinks() EklhadLinksTyped {
-	var allLinks EklhadLinksAll
-	var links EklhadLinksTyped
+func GetLinks() []EklhadLink {
+	var rawLinks EklhadLinksAll
+	var links []EklhadLink
 
 	absLinksJsonPath, err := filepath.Abs("./services/data/links.json")
 	if err != nil {
@@ -45,21 +37,11 @@ func GetLinks() EklhadLinksTyped {
 
 	linksByteValue, _ := ioutil.ReadAll(linksJsonFile)
 
-	json.Unmarshal(linksByteValue, &allLinks)
+	json.Unmarshal(linksByteValue, &rawLinks)
 
-	for i := 0; i < len(allLinks.Links); i++ {
-		tmpLink := allLinks.Links[i]
-		if tmpLink.Type == "demo" {
-			links.DemoLinks = append(links.DemoLinks, tmpLink)
-		} else if tmpLink.Type == "press" {
-			links.PressLinks = append(links.PressLinks, tmpLink)
-		} else if tmpLink.Type == "talk" {
-			links.TalkLinks = append(links.TalkLinks, tmpLink)
-		} else if tmpLink.Type == "webinar" {
-			links.WebinarLinks = append(links.WebinarLinks, tmpLink)
-		} else {
-			links.BlogLinks = append(links.BlogLinks, tmpLink)
-		}
+	for i := 0; i < len(rawLinks.Links); i++ {
+		tmpLink := rawLinks.Links[i]
+		links = append(links, tmpLink)
 	}
 
 	return links
