@@ -32,7 +32,7 @@ func GetLinks() EklhadLinksTyped {
 	var allLinks EklhadLinksAll
 	var links EklhadLinksTyped
 
-	absLinksJsonPath, err := filepath.Abs("./data/links.json")
+	absLinksJsonPath, err := filepath.Abs("./services/data/links.json")
 	if err != nil {
 		fmt.Println(err)
 	}
