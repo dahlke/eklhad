@@ -1,0 +1,14 @@
+@import "../variables.scss";
+
+#map {
+    position: relative;
+    width: 100%;
+
+    .mapboxgl-marker {
+        background: $chicago-flag-blue;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,28 @@
+.links-list {
+    width: 100%;
+    float: left;
+
+    .link {
+        display: block;
+        padding: 10px 0;
+
+        .link-metadata,
+        .link-url {
+            display: inline-block;
+        }
+        .link-url {
+            width: 100%;
+        }
+
+
+        .link-metadata {
+            padding: 5px 0;
+
+            .link-type {
+
+            }
+        }
+
+    }
+
+}
