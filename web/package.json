@@ -5,9 +5,9 @@
   "description": "My personal website.",
   "repository": "github.com/dahlke/eklhad",
   "devDependencies": {
-    "less": "3.0.1",
-    "resume-cli": "0.4.19",
-    "jsonresume-theme-onepage": "0.0.3"
+    "jsonresume-theme-onepage": "0.0.3",
+    "less": "^3.9.0",
+    "resume-cli": "0.4.19"
   },
   "dependencies": {
     "npm": "^6.5.0"
