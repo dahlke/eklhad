@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 @font-face {
     font-family:"VCR OSD Mono";
     src:url("fonts/VCR_OSD_MONO.eot?") format("eot"),
@@ -15,58 +17,70 @@ html {
   color: #333;
 
     #root {
-        .App {
+        .app {
+            position: relative;
             background: #fcfbf9;
             font-family: 'VCR OSD Mono', 'Courier New', monospace;
             text-transform: uppercase;
-            color: #333;
+            color: $chicago-flag-blue;
             height: 100%;
-            width: 100%;
-            padding: 0 20px;
+            width: 720px;
+            margin: auto;
 
-            a {
-                color: #AAA;
+            h1, h2, h3, h4, h5, h6 {
+                text-align: center;
             }
 
-            a:visited {
-                color: #AAA;
+            .select-year {
+                width: 80px;
+                margin: 25px auto 10px;
+                font-size: 10px;
+
             }
 
-            a:hover {
-                color: #fcf9f9
-            }
+            .react-calendar-heatmap {
 
-            #map {
-                position: relative;
-
-                .mapboxgl-marker {
-                    background: #333;
-                    width: 10px;
-                    height: 10px;
-                    border-radius: 50%;
-                    cursor: pointer;
-                }
-            }
-
-            .links {
-                max-width: 600px;
-                width: 100%;
-
-                .link {
-                    margin-bottom: 10px;
-                    display: block;
-
-                    .date,
-                    .url {
-                        display: inline-block;
-                    }
-
-                    .url {
-                        width: 100%;
-                        margin-left: 2px;
-                    }
+                text {
+                    font-size: 10px;
+                    fill: #aaa;
                 }
 
+                .react-calendar-heatmap-small-text {
+                    font-size: 5px;
+                }
+
+                rect:hover {
+                    stroke: #555;
+                    stroke-width: 1px;
+                }
+
+                .color-empty {
+                    fill: #eeeeee;
+                }
+
+                .color-filled {
+                    fill: $chicago-flag-blue;
+                }
+
+                .color-github-0 {
+                    fill: $chicago-flag-blue;
+                }
+
+                .color-github-1 {
+                    fill: $chicago-flag-blue;
+                }
+
+                .color-github-2 {
+                    fill: $chicago-flag-blue;
+                }
+
+                .color-github-3 {
+                    fill: $chicago-flag-blue;
+                }
+
+                .color-github-4 {
+                    fill: $chicago-flag-blue;
+                }
             }
         }
     }
