@@ -1,6 +1,6 @@
 provider "cloudflare" {
-  email  = "${var.cloudflare_email}"
-  token  = "${var.cloudflare_token}"
+  email = "${var.cloudflare_email}"
+  token = "${var.cloudflare_token}"
 }
 
 resource "cloudflare_record" "www" {
@@ -11,8 +11,8 @@ resource "cloudflare_record" "www" {
 }
 
 resource "cloudflare_record" "dahlkeio" {
-    domain = "${var.cloudflare_domain}"
-    name   = "dahlke.io"
-    value  = "${var.a_record_ip}"
-    type   = "A"
+  domain = "${var.cloudflare_domain}"
+  name   = "dahlke.io"
+  value  = "${var.a_record_ip}"
+  type   = "A"
 }

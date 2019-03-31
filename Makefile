@@ -9,7 +9,6 @@ AWS_CREDENTIALS_PATH=${SECRETS_DIR}/aws-iam-neil.json
 
 PACKER_DIR=${CWD}/packer
 PACKER_AMI_DEF_PATH=${PACKER_DIR}/aws/image.json
-PACKER_GCI_DEF_PATH=${PACKER_DIR}/gcp/image.json
 
 ARTIFACT_DIR=${CWD}/artifact
 ARTIFACT_DIR_LINUX=${ARTIFACT_DIR}/tar/linux
@@ -17,8 +16,6 @@ ARTIFACT_DIR_MAC=${ARTIFACT_DIR}/tar/mac
 
 OUTPUT_DIR=${CWD}/output
 OUTPUT_DIR_AWS=${OUTPUT_DIR}/aws
-OUTPUT_DIR_GCP=${OUTPUT_DIR}/gcp
-
 
 WEB_APP_SRC_DIR=web/
 
@@ -28,10 +25,6 @@ WEB_APP_SRC_DIR=web/
 .PHONY: todo
 todo:
 	@ag "TODO" --ignore Makefile
-
-.PHONY: clean_repo
-clean_repo:
-	rm -rf web/node_modules
 
 .PHONY: fmt_tf
 fmt_tf:
@@ -46,35 +39,55 @@ artifact_mac_web:
 	tar cf ${ARTIFACT_DIR_MAC}/${WEB_APP_TAR_NAME} ${WEB_APP_SRC_DIR}
 
 ##########################
+# WEB HELPERS
+##########################
+.PHONY: npm
+npm:
+	cd web/frontend && npm config set strict-ssl false && npm install
+
+# Hacky hack since I don't want to patch resume-cli at the sed part.
+.PHONY: resume
+resume: npm
+	cd web/frontend/conf/ && \
+	node ${CWD}/web/frontend/node_modules/resume-cli/index.js export resume.html --format html --theme onepage
+	sed 's/1991-03-19/today/g' ${CWD}/web/frontend/conf/resume.html > ${CWD}/web/frontend/public/resume.html && \
+	rm ${CWD}/web/frontend/conf/resume.html
+
+.PHONY: frontend_test
+frontend_test: npm resume
+	cd web/frontend/ && npm run-script test
+
+.PHONY: frontend_start
+frontend_start: npm resume
+	cd web/frontend/ && npm run-script start
+
+.PHONY: frontend_build
+frontend_build: npm resume
+	cd web/frontend/ && npm run-script build
+
+##########################
+# GO HELPERS
+##########################
+.PHONY: go_build_linux
+go_build_linux: frontend_build
+	cd web && \
+	GOOS=linux GOARCH=amd64 go build main.go
+
+.PHONY: go_build_mac
+go_build_mac: frontend_build
+	cd web && \
+	go build main.go
+
+##########################
 # IMAGE BUILD HELPERS
 ##########################
 .PHONY: image_aws
 image_aws: 
 	packer build -var-file=${AWS_CREDENTIALS_PATH} ${PACKER_AMI_DEF_PATH} > ${OUTPUT_DIR_AWS}/image.txt
 
-.PHONY: image_gcp
-image_gcp: 
-	packer build ${PACKER_GCI_DEF_PATH} > ${OUTPUT_DIR_GCP}/image.txt
-
 ##########################
 # CLOUD DEPLOY HELPERS
 ##########################
-.PHONY: tf_plan_gcp
-tf_plan_gcp: 
-	cd terraform/gcp && terraform init && terraform plan
-
-.PHONY: tf_apply_gcp
-tf_apply_gcp: 
-	cd terraform/gcp && terraform apply
-
-.PHONY: tf_out_gcp
-tf_out_gcp: 
-	cd terraform/gcp && terraform output
-
-.PHONY: tf_destroy_gcp
-tf_destroy_gcp: 
-	cd terraform/gcp && terraform destroy
-
 .PHONY: tf_plan_aws
 tf_plan_aws: 
 	cd terraform/aws && terraform init && terraform plan -var-file="${AWS_CREDENTIALS_PATH}"
@@ -90,38 +103,3 @@ tf_out_aws:
 .PHONY: tf_destroy_aws
 tf_destroy_aws: 
 	cd terraform/aws && terraform destroy -var-file="${AWS_CREDENTIALS_PATH}"
-
-##########################
-# GO HELPERS
-##########################
-.PHONY: go_build_linux
-go_build_linux:
-	cd web && \
-	GOOS=linux GOARCH=amd64 go build main.go
-
-.PHONY: go_build_mac
-go_build_mac:
-	cd web && \
-	go build main.go
-
-##########################
-# WEB HELPERS
-##########################
-.PHONY: npm
-npm:
-	cd web && npm config set strict-ssl false && npm install
-
-.PHONY: styles
-styles: npm
-	./web/node_modules/less/bin/lessc web/static/styles/less/index.less web/static/styles/index.css
-
-# Hacky hack since I don't want to patch resume-cli at the sed part.
-.PHONY: resume
-resume: npm
-	cd web/conf/ && \
-	node ${CWD}/web/node_modules/resume-cli/index.js export resume.html --format html --theme onepage
-	sed 's/1991-03-19/today/g' ${CWD}/web/conf/resume.html > ${CWD}/web/static/resume.html && \
-	rm ${CWD}/web/conf/resume.html
-
-.PHONY: frontend
-frontend: npm resume styles

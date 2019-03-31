@@ -69,9 +69,9 @@ resource "google_compute_instance" "web" {
 }
 
 module "eklhad_cloudflare_records" {
-  source = "../modules/cloudflare-records/"
-  cloudflare_email = "${var.cloudflare_email}"
-  cloudflare_token = "${file(var.cloudflare_token_path)}"
+  source            = "../modules/cloudflare-records/"
+  cloudflare_email  = "${var.cloudflare_email}"
+  cloudflare_token  = "${file(var.cloudflare_token_path)}"
   cloudflare_domain = "${var.cloudflare_domain}"
   a_record_ip       = "${google_compute_instance.web.network_interface.0.access_config.0.nat_ip}"
 }

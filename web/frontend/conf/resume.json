@@ -1,0 +1,170 @@
+{
+	"basics": {
+		"name": "Neil Dahlke",
+		"label": "Solutions Engineer",
+		"picture": "https://en.gravatar.com/userimage/25206271/c07bb7c64399588ea12e52065f2b6dda.jpg",
+		"email": "neil@dahlke.io",
+		"phone": "cell not available here",
+		"website": "http://dahlke.io",
+		"summary": "",
+		"location": {
+			"address": "",
+			"postalCode": "CA 91402",
+			"city": "San Francisco",
+			"countryCode": "US",
+			"region": "California"
+		},
+		"profiles": [
+			{
+				"network": "GitHub",
+				"username": "dahlke",
+				"url": "http://github.com/dahlke"
+			},
+			{
+				"network": "Instagram",
+				"username": "eklhad",
+				"url": "http://instagram.com/eklhad"
+			},
+			{
+				"network": "LinkedIn",
+				"username": "neildahlke",
+				"url": "http://linkedin.com/in/neildahlke"
+			}
+		]
+	},
+	"work": [
+		{
+			"company": "HashiCorp",
+			"position": "Senior Solutions Engineer (Western NA)",
+			"website": "http://hashicorp.com",
+			"startDate": "2018-11-19",
+			"endDate": "1991-03-19",
+			"highlights": [
+			]
+		},
+		{
+			"company": "MemSQL",
+			"position": "Senior Solutions Engineer (Team Lead, Western USA)",
+			"website": "http://memsql.com",
+			"startDate": "2017-03-01",
+			"endDate": "1991-03-19",
+			"highlights": [
+				"Orchestrate pre-sales activities for the development and implementation of complex solutions.",
+				"Evangelize the product: speaking at conferences, writing blogs and technical talks.",
+				"Participate in team coordination, development activities, project planning and recruitment.",
+				"Lead, mentor, and develop the team’s sales, technical, and business skills.",
+				"Develop and execute technical and business programs to maintain high levels of proficiency."
+			]
+		},
+		{
+			"company": "MemSQL",
+			"position": "Solutions Engineer",
+			"website": "http://memsql.com",
+			"startDate": "2015-11-01",
+			"endDate": "2017-03-01",
+			"highlights": [
+				"PoC to production for Tier 0 customers (Ex: Goldman, AmEx, Uber, Cisco, Hulu, etc.",
+				"Optimize schemas and queries, find bottlenecks, optimize hardware.",
+				"Support the technical side of the sale, build sales optimization tools, automate operations."
+			]
+		},
+		{
+			"company": "MemSQL",
+			"position": "Software Engineer",
+			"website": "http://memsql.com",
+			"startDate": "2013-12-01",
+			"endDate": "2015-11-01",
+			"highlights": [
+				"Translated design mockups and prototypes into large-scale web applications.",
+				"Owned internal projects: sales tools, demos, docs, corp site, test infra and cloud infra."
+			]
+		},
+		{
+			"company": "Computation Institute at University of Chicago",
+			"position": "Software Engineer",
+			"website": "http://globus.org",
+			"startDate": "2013-05-01",
+			"endDate": "2013-12-01",
+			"summary": "",
+			"highlights": [
+				"Defined and documented requirements, architecture and design of applications.",
+				"Developed, tested, deployed and maintained software, with a focus on front-end."
+			]
+		}
+	],
+	"volunteer": [
+	],
+	"education": [
+		{
+			"institution": "DePaul University",
+			"area": "Computer Science",
+			"studyType": "Bachelor",
+			"startDate": "2009-07-01",
+			"endDate": "2013-05-01",
+			"gpa": "3.925, Dean's List 2009-2013, Radio DePaul Host 2010-2013",
+			"courses": [
+			]
+		}
+	],
+	"awards": [
+		{
+			"title": "SE of the Year (179%)",
+			"date": "2018-03-21",
+			"awarder": "MemSQL",
+			"summary": ""
+		},
+		{
+			"title": "President's Club 2016, 2017, 2018",
+			"date": "2018-03-21",
+			"awarder": "MemSQL",
+			"summary": ""
+		}
+	],
+	"publications": [
+		{
+			"name": "Election 2016: Analyzing Real-Time Twitter Sentiment with MemSQL Pipelines",
+			"publisher": "",
+			"releaseDate": "2016-10-18",
+			"website": "http://blog.memsql.com/election-2016-real-time-twitter-sentiment/",
+			"summary": ""
+		},
+		{
+			"name": "How Pinterest Measures Real-Time User Engagement with Spark",
+			"publisher": "",
+			"releaseDate": "2015-02-18",
+			"website": "http://blog.memsql.com/pinterest-apache-spark-use-case/",
+			"summary": ""
+		}
+	],
+	"skills": [
+		{
+            "name": "Full Stack",
+            "level": "",
+            "keywords": [
+                "Python", "Go", "Java", "JavaScript", "React", "Babel", "HTML", "CSS", "Vim", "Tabs"
+            ]
+        },
+        {
+            "name": "Dev Ops",
+            "level": "",
+            "keywords": [
+                "Linux", "Containers", "Automation", "Tools", "Continuous Integration", "Config Management", "Git"
+            ]
+        },
+        {
+            "name": "Data Infrastructure",
+            "level": "",
+            "keywords": [
+                "Databases", "Distributed Systems", "Message Queues", "Analytics", "Architecture"
+            ]
+        }
+	],
+	"interests": [
+		{
+			"name": "Being outside.",
+			"keywords": [ "surfing", "running", "skiing", "hiking", "travel", "photography", "stories", "people", "team sports"]
+		}
+	],
+	"references": [
+	]
+}

@@ -23,12 +23,13 @@ func apiLinksHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func htmlHandler(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "frontend/public/index.html")
+	http.ServeFile(w, r, "frontend/build/index.html")
 }
 
 func main() {
-	fs := http.FileServer(http.Dir("static"))
-	http.Handle("/static/", http.StripPrefix("/static/", fs))
+	// TODO: use public if dev and build if prod
+	fs := http.FileServer(http.Dir("frontend/build/"))
+	http.Handle("/static/", fs)
 
 	http.HandleFunc("/", htmlHandler)
 	http.HandleFunc("/api/locations", apiLocationsHandler)
