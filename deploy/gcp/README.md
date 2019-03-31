@@ -15,9 +15,18 @@ My personal, digital assets.
 
 ### Cloud Prereqs
 
+#### GCP
+- Create Project
+- Enable Google Compute API
+- Build Packer Image
+    - Update packer/gcp/image.json with project ID.
+    - Take the Packer Image ID from the output and add it to terraform.tfvars as the image_id
+- Deploy to GCP.
+
 ### Build Web
 
 1) Build frontend assets.
+
 ```
 make resume
 make styles

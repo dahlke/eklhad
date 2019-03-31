@@ -42,7 +42,6 @@ variable "web_binary_path" {
   type = "string"
 }
 
-
 variable "cloudflare_email" {
   type = "string"
 }

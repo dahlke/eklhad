@@ -2,6 +2,11 @@
   "name": "eklhad-frontend",
   "version": "0.1.0",
   "private": true,
+  "devDependencies": {
+    "jsonresume-theme-onepage": "0.0.3",
+    "less": "^3.9.0",
+    "resume-cli": "^1.1.2"
+  },
   "dependencies": {
     "moment": "^2.24.0",
     "node-sass": "^4.11.0",
@@ -10,7 +15,8 @@
     "react-dom": "^16.8.3",
     "react-map-gl": "^4.0.13",
     "react-scripts": "2.1.5",
-    "react-select": "^2.4.1"
+    "react-select": "^2.4.1",
+    "npm": "^6.5.0"
   },
   "scripts": {
     "start": "react-scripts start",

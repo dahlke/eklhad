@@ -108,9 +108,9 @@ resource "aws_instance" "eklhad_web" {
 }
 
 module "eklhad_cloudflare_records" {
-  source = "../modules/cloudflare-records/"
-  cloudflare_email = "${var.cloudflare_email}"
-  cloudflare_token = "${file(var.cloudflare_token_path)}"
+  source            = "../modules/cloudflare-records/"
+  cloudflare_email  = "${var.cloudflare_email}"
+  cloudflare_token  = "${file(var.cloudflare_token_path)}"
   cloudflare_domain = "${var.cloudflare_domain}"
   a_record_ip       = "${aws_instance.eklhad_web.public_ip}"
 }

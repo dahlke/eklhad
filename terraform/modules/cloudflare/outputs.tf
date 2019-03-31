@@ -5,4 +5,3 @@ output "www_hostname" {
 output "dahlkeio_hostname" {
   value = "${cloudflare_record.dahlkeio.hostname}"
 }
-

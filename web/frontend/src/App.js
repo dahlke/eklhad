@@ -102,8 +102,6 @@ class App extends Component {
       };
     });
 
-    console.log(this.state.selectedYear, yearOptions);
-
     return (
       <div className="app">
         <div className="container">
