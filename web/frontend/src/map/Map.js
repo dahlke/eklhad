@@ -23,15 +23,13 @@ class Map extends Component {
         
         if (this.props.locations && this.props.locations.features) {
             markers = this.props.locations.features.map((feature) => {
-            return (
-                <Marker 
-                    key={feature.properties.id} 
-                    latitude={feature.geometry.coordinates[1]} 
-                    longitude={feature.geometry.coordinates[0]} 
-                    offsetLeft={-20} 
-                    offsetTop={-10} 
-                />
-                );
+                return (
+                    <Marker 
+                        key={feature.properties.id} 
+                        latitude={feature.geometry.coordinates[1]} 
+                        longitude={feature.geometry.coordinates[0]} 
+                    />
+                    );
             });
         }
         
