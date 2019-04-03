@@ -1,7 +1,7 @@
 {
     "variables": {
-        "aws_access_key": "",
-        "aws_secret_key": ""
+        "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+        "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}"
     },
     "builders": [
         {
@@ -28,7 +28,7 @@
     "provisioners": [
         {
             "type": "file",
-            "source": "./eklhad-web.tar.gz",
+            "source": "./artifact/tar/linux/eklhad-web.tar.gz",
             "destination": "/home/ubuntu/eklhad-web.tar.gz"
         },
         {

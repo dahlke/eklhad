@@ -5,10 +5,8 @@ WEB_APP_TAR_NAME = eklhad-web.tar.gz
 CWD := $(shell pwd)
 
 SECRETS_DIR=${CWD}/secret
-AWS_CREDENTIALS_PATH=${SECRETS_DIR}/aws-iam-neil.json
 
 PACKER_DIR=${CWD}/packer
-PACKER_AMI_DEF_PATH=${PACKER_DIR}/aws/image.json
 PACKER_GCI_DEF_PATH=${PACKER_DIR}/gcp/image.json
 
 ARTIFACT_DIR=${CWD}/artifact
@@ -16,9 +14,7 @@ ARTIFACT_DIR_LINUX=${ARTIFACT_DIR}/tar/linux
 ARTIFACT_DIR_MAC=${ARTIFACT_DIR}/tar/mac
 
 OUTPUT_DIR=${CWD}/output
-OUTPUT_DIR_AWS=${OUTPUT_DIR}/aws
 OUTPUT_DIR_GCP=${OUTPUT_DIR}/gcp
-
 
 WEB_APP_SRC_DIR=web/
 
@@ -48,10 +44,6 @@ artifact_mac_web:
 ##########################
 # IMAGE BUILD HELPERS
 ##########################
-.PHONY: image_aws
-image_aws: 
-	packer build -var-file=${AWS_CREDENTIALS_PATH} ${PACKER_AMI_DEF_PATH} > ${OUTPUT_DIR_AWS}/image.txt
-
 .PHONY: image_gcp
 image_gcp: 
 	packer build ${PACKER_GCI_DEF_PATH} > ${OUTPUT_DIR_GCP}/image.txt
@@ -74,22 +66,6 @@ tf_out_gcp:
 .PHONY: tf_destroy_gcp
 tf_destroy_gcp: 
 	cd terraform/gcp && terraform destroy
-
-.PHONY: tf_plan_aws
-tf_plan_aws: 
-	cd terraform/aws && terraform init && terraform plan -var-file="${AWS_CREDENTIALS_PATH}"
-
-.PHONY: tf_apply_aws
-tf_apply_aws: 
-	cd terraform/aws && terraform apply -var-file="${AWS_CREDENTIALS_PATH}"
-
-.PHONY: tf_out_aws
-tf_out_aws: 
-	cd terraform/aws && terraform output
-
-.PHONY: tf_destroy_aws
-tf_destroy_aws: 
-	cd terraform/aws && terraform destroy -var-file="${AWS_CREDENTIALS_PATH}"
 
 ##########################
 # GO HELPERS

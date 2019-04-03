@@ -15,7 +15,8 @@ web/node_modules/
 .vagrant/
 secret/
 output/
-artifact/
+artifact/tar/mac/*
+artifact/tar/linux/*
 
 #SSH Keys
 *.pem

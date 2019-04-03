@@ -1,10 +1,5 @@
-variable "aws_access_key" {}
-variable "aws_secret_key" {}
-
 provider "aws" {
   region     = "${var.region}"
-  access_key = "${var.aws_access_key}"
-  secret_key = "${var.aws_secret_key}"
 }
 
 resource "aws_vpc" "eklhad_web" {
@@ -109,8 +104,6 @@ resource "aws_instance" "eklhad_web" {
 
 module "eklhad_cloudflare_records" {
   source            = "../modules/cloudflare-records/"
-  cloudflare_email  = "${var.cloudflare_email}"
-  cloudflare_token  = "${file(var.cloudflare_token_path)}"
   cloudflare_domain = "${var.cloudflare_domain}"
   a_record_ip       = "${aws_instance.eklhad_web.public_ip}"
 }
