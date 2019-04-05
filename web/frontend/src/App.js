@@ -8,7 +8,7 @@ import moment from 'moment';
 import './App.scss';
 
 const HOST = window.APP ? window.APP.apiHost : window.location.hostname;
-const DEFAULT_PORT = 8080;
+const DEFAULT_PORT = 80;
 const PORT = window.APP ? window.APP.apiPort : DEFAULT_PORT;
 const API_BASE_URL = `http://${HOST}:${PORT}/api`;
 
