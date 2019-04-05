@@ -2,10 +2,20 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
+	"html/template"
 	"net/http"
+	"os"
 
 	"github.com/dahlke/eklhad/web/services"
 )
+
+type templatePayload struct {
+	APIHost string
+	APIPort int
+}
+
+const APP_PORT = 8080
 
 func apiLocationsHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
@@ -23,11 +33,13 @@ func apiLinksHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func htmlHandler(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "frontend/build/index.html")
+	t, _ := template.ParseFiles("frontend/build/index.html")
+	hostName, _ := os.Hostname()
+	payload := templatePayload{hostName, 8000}
+	t.Execute(w, &payload)
 }
 
 func main() {
-	// TODO: use public if dev and build if prod
 	fs := http.FileServer(http.Dir("frontend/build/"))
 	http.Handle("/static/", fs)
 
@@ -35,5 +47,5 @@ func main() {
 	http.HandleFunc("/api/locations", apiLocationsHandler)
 	http.HandleFunc("/api/links", apiLinksHandler)
 
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(fmt.Sprintf(":%d", APP_PORT), nil)
 }

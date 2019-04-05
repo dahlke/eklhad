@@ -16,6 +16,10 @@ html {
   text-transform: uppercase;
   color: #333;
 
+  .hide-template {
+      visibility: hidden;
+  }
+
     #root {
         .app {
             position: relative;
