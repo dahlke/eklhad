@@ -13,59 +13,19 @@ My personal, digital assets.
 - `go` is the server language of the app. Required for development and building for deployment.
 
 
-### Cloud Prereqs
+### AWS Quick Deploy
 
-### Build Web
-
-1) Build frontend assets.
-```
-make resume
-make styles
-```
-
-2) Compile web server for target environment.
+Build the React Frontend, the Go web server, a tarball app artifact, then the AMI.
 
 ```
-make go_build_linux
-# or 
-make go_build_mac
+make frontend_build go_build_linux artifact_linux_web image_aws
 ```
 
-2a) [Optional] Clean compilation files from repo
-
 ```
-make clean_repo
-```
+source ~/.cloudflare/eklhad/eklhad-creds.sh
+source ~/.aws/eklhad/eklhad-creds.sh
 
-4) Bundle go server in tar file for deployment.
-
-```
-$ make artifact_linux_web
-# or
-$ make artifact_mac_web
-```
-
-5) Build cloud images with Packer from tar files.
-
-```
-$ make aws_image
-# or
-$ make gcp_image
-```
-
-6) Plan the changes on the chosen cloud provider.
-
-```
-$ make aws_plan
-# or
-$ make gcp_plan
-```
-
-7) Deploy to the chosen cloud provider.
-
-```
-$ make aws_apply
-# or
-$ make gcp_apply
+make tf_plan_aws
+make tf_apply_aws
 ```
 

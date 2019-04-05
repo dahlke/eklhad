@@ -3,7 +3,7 @@ output "ssh" {
 }
 
 output "ui" {
-  value = "http://${aws_eip.eklhad_web.public_ip}:8080"
+  value = "http://${aws_eip.eklhad_web.public_ip}"
 }
 
 output "public_ip" {

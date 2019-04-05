@@ -13,6 +13,8 @@ ARTIFACT_DIR=${CWD}/artifact
 ARTIFACT_DIR_LINUX=${ARTIFACT_DIR}/tar/linux
 ARTIFACT_DIR_MAC=${ARTIFACT_DIR}/tar/mac
 
+TF_AWS_APP_DIR=${CWD}/terraform/app/aws
+
 OUTPUT_DIR=${CWD}/output
 OUTPUT_DIR_AWS=${OUTPUT_DIR}/aws
 
@@ -68,7 +70,7 @@ frontend_build: npm resume
 # GO HELPERS
 ##########################
 .PHONY: go_build_linux
-go_build_linux: frontend_build
+go_build_linux: 
 	cd web && GOOS=linux GOARCH=amd64 go build main.go
 
 .PHONY: go_build_mac
@@ -79,29 +81,29 @@ go_build_mac: frontend_build
 ##########################
 # IMAGE BUILD HELPERS
 ##########################
-.PHONY: full_image_aws
-full_image_aws: go_build_linux artifact_linux_web
-	packer build -machine-readable ${PACKER_AMI_DEF_PATH} > ${OUTPUT_DIR_AWS}/image.txt
-
 .PHONY: image_aws
 image_aws: 
-	packer build -machine-readable ${PACKER_AMI_DEF_PATH} > ${OUTPUT_DIR_AWS}/image.txt
+	packer build -machine-readable ${PACKER_AMI_DEF_PATH} > ${OUTPUT_DIR_AWS}/packer_build.txt
 
 ##########################
 # CLOUD DEPLOY HELPERS
 ##########################
+.PHONY: tf_init_aws
+tf_init_aws: 
+	cd ${TF_AWS_APP_DIR} && terraform init
+
 .PHONY: tf_plan_aws
-tf_plan_aws: 
-	cd terraform/aws && terraform init && terraform plan > ${OUTPUT_DIR_AWS}/tf_plan.txt
+tf_plan_aws: tf_init_aws
+	cd ${TF_AWS_APP_DIR} && terraform plan
 
 .PHONY: tf_apply_aws
 tf_apply_aws: 
-	cd terraform/aws && terraform apply -auto-approve > ${OUTPUT_DIR_AWS}/tf_apply.txt
+	cd ${TF_AWS_APP_DIR} && terraform apply
 
 .PHONY: tf_out_aws
 tf_out_aws: 
-	cd terraform/aws && terraform output
+	cd ${TF_AWS_APP_DIR} && terraform output
 
 .PHONY: tf_destroy_aws
 tf_destroy_aws: 
-	cd terraform/aws && terraform destroy -auto-approve > ${OUTPUT_DIR_AWS}/tf_destroy.txt
+	cd ${TF_AWS_APP_DIR} && terraform destroy

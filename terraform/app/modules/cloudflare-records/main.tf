@@ -1,4 +1,3 @@
-/*
 resource "cloudflare_record" "www" {
   domain = "${var.cloudflare_domain}"
   name   = "www"
@@ -13,11 +12,12 @@ resource "cloudflare_record" "dahlkeio" {
   type   = "A"
 }
 
-*/
 
+/*
 resource "cloudflare_record" "test" {
   domain = "${var.cloudflare_domain}"
   name   = "test"
   value  = "${var.a_record_ip}"
   type   = "A"
 }
+*/
