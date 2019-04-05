@@ -12,7 +12,6 @@ resource "cloudflare_record" "dahlkeio" {
   type   = "A"
 }
 
-
 /*
 resource "cloudflare_record" "test" {
   domain = "${var.cloudflare_domain}"
@@ -21,3 +20,4 @@ resource "cloudflare_record" "test" {
   type   = "A"
 }
 */
+

@@ -18,7 +18,10 @@ My personal, digital assets.
 Build the React Frontend, the Go web server, a tarball app artifact, then the AMI.
 
 ```
-make frontend_build go_build_linux artifact_linux_web image_aws
+make frontend_build 
+make go_build_linux 
+artifact_linux_web 
+image_aws
 ```
 
 ```

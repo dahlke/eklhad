@@ -6,8 +6,7 @@ availability_zone = "us-west-2b"
 
 instance_type = "t2.micro"
 
-ami_id = "ami-033cb9a527b24af03"
-# tail -n 1 output/aws/packer_build.txt | awk '{print $6}' |  sed 's/\\n//g'
+ami_id = "ami-0ccb7acfbbf79afe8"
 
 vpc_cidr_block = "10.0.0.0/16"
 
