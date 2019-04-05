@@ -34,7 +34,7 @@
         {
             "type": "shell",
             "inline": [
-            "tar xf /home/ubuntu/eklhad-web.tar.gz"
+                "tar xf /home/ubuntu/eklhad-web.tar.gz"
             ]
         }
     ]

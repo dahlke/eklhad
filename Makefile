@@ -27,10 +27,6 @@ WEB_APP_SRC_DIR=web/
 todo:
 	@ag "TODO" --ignore Makefile
 
-.PHONY: fmt_tf
-fmt_tf:
-	git ls-files '*.tf' | xargs -n 1 terraform fmt
-
 .PHONY: artifact_linux_web
 artifact_linux_web: 
 	tar cf ${ARTIFACT_DIR_LINUX}/${WEB_APP_TAR_NAME} ${WEB_APP_SRC_DIR}
@@ -74,7 +70,7 @@ go_build_linux:
 	cd web && GOOS=linux GOARCH=amd64 go build main.go
 
 .PHONY: go_build_mac
-go_build_mac: frontend_build
+go_build_mac: 
 	cd web && \
 	go build main.go
 
@@ -83,7 +79,7 @@ go_build_mac: frontend_build
 ##########################
 .PHONY: image_aws
 image_aws: 
-	packer build -machine-readable ${PACKER_AMI_DEF_PATH} > ${OUTPUT_DIR_AWS}/packer_build.txt
+	packer build ${PACKER_AMI_DEF_PATH} > ${OUTPUT_DIR_AWS}/packer_build.txt
 
 ##########################
 # CLOUD DEPLOY HELPERS

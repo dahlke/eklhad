@@ -16,7 +16,7 @@ type templatePayload struct {
 }
 
 // TODO: Take as a CLI arg
-const APP_PORT = 80
+const APP_PORT = 8080
 
 func apiLocationsHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
