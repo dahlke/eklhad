@@ -15,9 +15,6 @@ ARTIFACT_DIR_MAC=${ARTIFACT_DIR}/tar/mac
 
 TF_AWS_APP_DIR=${CWD}/terraform/app/aws
 
-OUTPUT_DIR=${CWD}/output
-OUTPUT_DIR_AWS=${OUTPUT_DIR}/aws
-
 WEB_APP_SRC_DIR=web/
 
 ##########################
@@ -79,7 +76,7 @@ go_build_mac:
 ##########################
 .PHONY: image_aws
 image_aws: 
-	packer build ${PACKER_AMI_DEF_PATH} > ${OUTPUT_DIR_AWS}/packer_build.txt
+	packer build ${PACKER_AMI_DEF_PATH} 
 
 ##########################
 # CLOUD DEPLOY HELPERS

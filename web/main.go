@@ -36,7 +36,7 @@ func apiLinksHandler(w http.ResponseWriter, r *http.Request) {
 func htmlHandler(w http.ResponseWriter, r *http.Request) {
 	t, _ := template.ParseFiles("frontend/build/index.html")
 	hostName, _ := os.Hostname()
-	payload := templatePayload{hostName, 8000}
+	payload := templatePayload{hostName, 8080}
 	t.Execute(w, &payload)
 }
 

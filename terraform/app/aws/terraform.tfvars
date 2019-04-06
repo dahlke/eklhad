@@ -6,7 +6,7 @@ availability_zone = "us-west-2b"
 
 instance_type = "t2.micro"
 
-ami_id = "ami-0ccb7acfbbf79afe8"
+ami_id = "ami-02c85c5e5acc7a4c7"
 
 vpc_cidr_block = "10.0.0.0/16"
 
