@@ -12,23 +12,21 @@ My personal, digital assets.
 - `npm` is used to build static assets for the app.
 - `go` is the server language of the app. Required for development and building for deployment.
 
+### Development
+`go get`
 
-### AWS Quick Deploy
+
+### Deployment
+
+#### AWS Quick Deploy
 
 Build the React Frontend, the Go web server, a tarball app artifact, then the AMI.
 
 ```
 make frontend_build 
 make go_build_linux 
-artifact_linux_web 
-image_aws
-```
-
-```
-source ~/.cloudflare/eklhad/eklhad-creds.sh
-source ~/.aws/eklhad/eklhad-creds.sh
-
+make artifact_linux_web 
+make image_aws
 make tf_plan_aws
 make tf_apply_aws
 ```
-
