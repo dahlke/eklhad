@@ -11,7 +11,6 @@ PACKER_AMI_DEF_PATH=${PACKER_DIR}/aws/image.json
 
 ARTIFACT_DIR=${CWD}/artifact
 ARTIFACT_DIR_LINUX=${ARTIFACT_DIR}/tar/linux
-ARTIFACT_DIR_MAC=${ARTIFACT_DIR}/tar/mac
 
 TF_AWS_APP_DIR=${CWD}/terraform/app/aws
 
@@ -24,13 +23,10 @@ WEB_APP_SRC_DIR=web/
 todo:
 	@ag "TODO" --ignore Makefile
 
+# TODO: only include necessary files for minimum size
 .PHONY: artifact_linux_web
-artifact_linux_web: 
+artifact_linux_web: go_build_linux
 	tar cf ${ARTIFACT_DIR_LINUX}/${WEB_APP_TAR_NAME} ${WEB_APP_SRC_DIR}
-
-.PHONY: artifact_mac_web
-artifact_mac_web: 
-	tar cf ${ARTIFACT_DIR_MAC}/${WEB_APP_TAR_NAME} ${WEB_APP_SRC_DIR}
 
 ##########################
 # WEB HELPERS
@@ -66,11 +62,6 @@ frontend_build: npm resume
 go_build_linux: 
 	cd web && GOOS=linux GOARCH=amd64 go build main.go
 
-.PHONY: go_build_mac
-go_build_mac: 
-	cd web && \
-	go build main.go
-
 ##########################
 # IMAGE BUILD HELPERS
 ##########################
@@ -95,7 +86,7 @@ tf_apply_aws:
 
 .PHONY: tf_out_aws
 tf_out_aws: 
-	cd ${TF_AWS_APP_DIR} && terraform output
+	cd ${TF_AWS_APP_DIR} && terraform output -json
 
 .PHONY: tf_destroy_aws
 tf_destroy_aws: 

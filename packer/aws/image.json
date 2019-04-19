@@ -27,16 +27,20 @@
     ],
     "provisioners": [
         {
+            "type": "shell",
+            "inline": [
+                "mkdir -p src/github.com/dahlke/eklhad/"
+            ]
+        },
+        {
             "type": "file",
             "source": "./artifact/tar/linux/eklhad-web.tar.gz",
-            "destination": "/home/ubuntu/eklhad-web.tar.gz"
+            "destination": "/home/ubuntu/src/github.com/dahlke/eklhad/eklhad-web.tar.gz"
         },
         {
             "type": "shell",
             "inline": [
-                "tar xf /home/ubuntu/eklhad-web.tar.gz",
-                "sudo iptables -t nat -I OUTPUT -p tcp -d 127.0.0.1 --dport 80 -j REDIRECT --to-ports 8080",
-                "sudo iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080"
+                "tar -C /home/ubuntu/src/github.com/dahlke/eklhad/ -xf /home/ubuntu/src/github.com/dahlke/eklhad/eklhad-web.tar.gz"
             ]
         }
     ]

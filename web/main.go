@@ -2,12 +2,15 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"html/template"
+	"log"
 	"net/http"
 	"os"
 
 	"github.com/dahlke/eklhad/web/services"
+	"golang.org/x/crypto/acme/autocert"
 )
 
 type templatePayload struct {
@@ -15,8 +18,8 @@ type templatePayload struct {
 	APIPort int
 }
 
-// TODO: Take as a CLI arg
-const APP_PORT = 8080
+var appHostName, _ = os.Hostname()
+var appPort = 80
 
 func apiLocationsHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
@@ -35,18 +38,46 @@ func apiLinksHandler(w http.ResponseWriter, r *http.Request) {
 
 func htmlHandler(w http.ResponseWriter, r *http.Request) {
 	t, _ := template.ParseFiles("frontend/build/index.html")
-	hostName, _ := os.Hostname()
-	payload := templatePayload{hostName, 8080}
+	payload := templatePayload{appHostName, appPort}
 	t.Execute(w, &payload)
 }
 
 func main() {
+	portPtr := flag.Int("port", 80, "The port to run the HTTP app on.")
+	productionPtr := flag.Bool("production", false, "If true, run the app over HTTPS.")
+	// TODO: currentLocation - env var or flag?
+	flag.Parse()
+
+	appPort = *portPtr
+	isProduction := *productionPtr
+
+	fmt.Println("Starting file server...")
 	fs := http.FileServer(http.Dir("frontend/build/"))
 	http.Handle("/static/", fs)
+	fmt.Println("File server started.")
 
 	http.HandleFunc("/", htmlHandler)
 	http.HandleFunc("/api/locations", apiLocationsHandler)
 	http.HandleFunc("/api/links", apiLinksHandler)
 
-	http.ListenAndServe(fmt.Sprintf(":%d", APP_PORT), nil)
+	if isProduction {
+		certManager := &autocert.Manager{
+			Cache:      autocert.DirCache("lets_encrypt_certs"),
+			Prompt:     autocert.AcceptTOS,
+			HostPolicy: autocert.HostWhitelist("dahlke.io", "www.dahlke.io"),
+		}
+
+		s := &http.Server{
+			Addr:      ":https",
+			TLSConfig: certManager.TLSConfig(),
+		}
+
+		fmt.Println("Starting HTTPS server...")
+		err := s.ListenAndServeTLS("", "")
+		log.Fatal(err)
+	} else {
+		fmt.Println("Starting HTTP server...")
+		err := http.ListenAndServe(fmt.Sprintf(":%d", appPort), nil)
+		log.Fatal(err)
+	}
 }

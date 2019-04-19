@@ -8,6 +8,7 @@
 *.tfstate
 *.tfstate.backup
 *.tfstate.lock.info
+web/main
 
 # Directories
 web/node_modules/
