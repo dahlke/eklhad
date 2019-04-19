@@ -3,7 +3,7 @@ resource "cloudflare_record" "www" {
   name   = "www"
   value  = "${var.a_record_ip}"
   type   = "A"
-  proxied = "true"
+  // proxied = "true"
 }
 
 resource "cloudflare_record" "dahlkeio" {
@@ -11,5 +11,5 @@ resource "cloudflare_record" "dahlkeio" {
   name   = "dahlke.io"
   value  = "${var.a_record_ip}"
   type   = "A"
-  proxied = "true"
+  // proxied = "true"
 }

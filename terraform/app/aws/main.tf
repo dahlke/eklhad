@@ -35,13 +35,6 @@ resource "aws_security_group" "eklhad_web" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  ingress {
-    from_port   = 8080
-    to_port     = 8080
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
   egress {
     from_port       = 0
     to_port         = 0
@@ -102,8 +95,9 @@ resource "aws_instance" "eklhad_web" {
     }
 
     inline = [
-      "cd web/",
-      "nohup ./main &",
+      "cd github.com/dahlke/eklhad/web",
+      // "sudo nohup ./main -production &",
+      "sudo nohup ./main &",
       "sleep 1",
     ]
   }

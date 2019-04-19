@@ -4,14 +4,16 @@ import Select from 'react-select'
 import Map from './map/Map.js';
 import LinksList from './linksList/LinksList.js';
 import moment from 'moment';
-
 import './App.scss';
 
-const HOST = window.APP ? window.APP.apiHost : window.location.hostname;
-const DEFAULT_PORT = 8080;
-const PORT = window.APP ? window.APP.apiPort : DEFAULT_PORT;
-const API_BASE_URL = `http://${HOST}:${PORT}/api`;
 
+// To make it easier for local development with React, include the default port the API server will run on.
+const DEFAULT_PORT = 80;
+
+const HOST = window.APP ? window.APP.apiHost : window.location.hostname;
+const PORT = window.APP ? window.APP.apiPort : DEFAULT_PORT;
+const PROTOCOL = window.location.protocol;
+const API_BASE_URL = `${PROTOCOL}//${HOST}:${PORT}/api`;
 
 class App extends Component {
 
@@ -41,8 +43,10 @@ class App extends Component {
 
     fetch(api_url)
       .then((response) => { return response.json() })
-      .catch((err) => { console.log("Error retrieving links."); })
+      .catch((err) => { console.log("Error retrieving links.", err); })
       .then((data) => {
+        data = !!data ? data : [];
+
         this.setState({
           locations: data
         });
@@ -54,9 +58,10 @@ class App extends Component {
 
     fetch(api_url)
       .then((response) => { return response.json() })
-      .catch((err) => { console.log("Error retrieving links."); })
+      .catch((err) => { console.log("Error retrieving links.", err); })
       .then((data) => {
         var linksDateMap = {};
+        data = !!data ? data : [];
 
         data.sort((a, b) => {
           return new Date(b.date) - new Date(a.date);
