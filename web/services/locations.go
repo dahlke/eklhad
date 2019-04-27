@@ -2,12 +2,12 @@ package services
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 
 	geojson "github.com/paulmach/go.geojson"
+	log "github.com/sirupsen/logrus"
 )
 
 type EklhadLocation struct {
@@ -22,21 +22,22 @@ type EklhadLocations struct {
 }
 
 func loadLocationsFromLocalJSON() []EklhadLocation {
-	absLocationsJsonPath, err := filepath.Abs("./services/data/locations.json")
+	absLocationsJSONPath, err := filepath.Abs("./services/data/locations.json")
 	if err != nil {
-		fmt.Println(err)
+		log.Error(err)
 	}
 
-	locationsJsonFile, err := os.Open(absLocationsJsonPath)
+	locationsJSONFile, err := os.Open(absLocationsJSONPath)
 	if err != nil {
-		fmt.Println(err)
+		log.Error(err)
 	}
-	defer locationsJsonFile.Close()
+	defer locationsJSONFile.Close()
 
-	locationsByteValue, _ := ioutil.ReadAll(locationsJsonFile)
+	locationsByteValue, _ := ioutil.ReadAll(locationsJSONFile)
 
 	var allLocations EklhadLocations
 	json.Unmarshal(locationsByteValue, &allLocations)
+	log.Info("test")
 
 	return allLocations.Locations
 }

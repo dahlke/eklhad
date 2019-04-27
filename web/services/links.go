@@ -2,10 +2,11 @@ package services
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
+
+	log "github.com/sirupsen/logrus"
 )
 
 type EklhadLink struct {
@@ -26,12 +27,12 @@ func GetLinks() []EklhadLink {
 
 	absLinksJsonPath, err := filepath.Abs("./services/data/links.json")
 	if err != nil {
-		fmt.Println(err)
+		log.Error(err)
 	}
 
 	linksJsonFile, err := os.Open(absLinksJsonPath)
 	if err != nil {
-		fmt.Println(err)
+		log.Error(err)
 	}
 	defer linksJsonFile.Close()
 

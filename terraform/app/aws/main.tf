@@ -102,9 +102,3 @@ resource "aws_instance" "eklhad_web" {
     ]
   }
 }
-
-module "eklhad_cloudflare_records" {
-  source            = "../modules/cloudflare-records/"
-  cloudflare_domain = "${var.cloudflare_domain}"
-  a_record_ip       = "${aws_instance.eklhad_web.public_ip}"
-}
