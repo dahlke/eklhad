@@ -5,11 +5,11 @@ import (
 	"flag"
 	"fmt"
 	"html/template"
-	"log"
 	"net/http"
 	"os"
 
 	"github.com/dahlke/eklhad/web/services"
+	log "github.com/sirupsen/logrus"
 	"golang.org/x/crypto/acme/autocert"
 )
 
@@ -42,19 +42,27 @@ func htmlHandler(w http.ResponseWriter, r *http.Request) {
 	t.Execute(w, &payload)
 }
 
+func configLogger() {
+	log.SetFormatter(&log.JSONFormatter{})
+	log.SetOutput(os.Stdout)
+	log.SetLevel(log.InfoLevel)
+}
+
 func main() {
 	portPtr := flag.Int("port", 80, "The port to run the HTTP app on.")
 	productionPtr := flag.Bool("production", false, "If true, run the app over HTTPS.")
 	// TODO: currentLocation - env var or flag?
 	flag.Parse()
 
+	configLogger()
+
 	appPort = *portPtr
 	isProduction := *productionPtr
 
-	fmt.Println("Starting file server...")
+	log.Println("Starting file server...")
 	fs := http.FileServer(http.Dir("frontend/build/"))
 	http.Handle("/static/", fs)
-	fmt.Println("File server started.")
+	log.Println("File server started.")
 
 	http.HandleFunc("/", htmlHandler)
 	http.HandleFunc("/api/locations", apiLocationsHandler)
@@ -72,11 +80,11 @@ func main() {
 			TLSConfig: certManager.TLSConfig(),
 		}
 
-		fmt.Println("Starting HTTPS server...")
+		log.Println("Starting HTTPS server...")
 		err := s.ListenAndServeTLS("", "")
 		log.Fatal(err)
 	} else {
-		fmt.Println("Starting HTTP server...")
+		log.Info("Starting HTTP server...")
 		err := http.ListenAndServe(fmt.Sprintf(":%d", appPort), nil)
 		log.Fatal(err)
 	}
