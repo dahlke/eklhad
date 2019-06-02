@@ -2,6 +2,17 @@ provider "aws" {
   region = "${var.region}"
 }
 
+terraform {
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "eklhad"
+
+    workspaces {
+      name = "aws-eklhad-web"
+    }
+  }
+}
+
 resource "aws_vpc" "eklhad_web" {
   cidr_block           = "${var.vpc_cidr_block}"
   enable_dns_hostnames = true
@@ -12,7 +23,7 @@ resource "aws_subnet" "eklhad_web" {
   cidr_block        = "${var.subnet_cidr_block}"
   availability_zone = "${var.availability_zone}"
 
-  tags {
+  tags = {
     name = "${var.name}"
   }
 }
@@ -35,6 +46,13 @@ resource "aws_security_group" "eklhad_web" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   egress {
     from_port       = 0
     to_port         = 0
@@ -43,7 +61,7 @@ resource "aws_security_group" "eklhad_web" {
     prefix_list_ids = []
   }
 
-  tags {
+  tags = {
     Name = "${var.name}"
   }
 }
@@ -65,7 +83,7 @@ resource "aws_route_table" "eklhad_web" {
     gateway_id = "${aws_internet_gateway.eklhad_web.id}"
   }
 
-  tags {
+  tags = {
     Name = "${var.name}"
   }
 }
@@ -83,7 +101,7 @@ resource "aws_instance" "eklhad_web" {
   subnet_id                   = "${aws_subnet.eklhad_web.id}"
   vpc_security_group_ids      = ["${aws_security_group.eklhad_web.id}"]
 
-  tags {
+  tags = {
     Name = "${var.name}"
   }
 
@@ -96,9 +114,17 @@ resource "aws_instance" "eklhad_web" {
 
     inline = [
       "cd github.com/dahlke/eklhad/web",
+
       // "sudo nohup ./main -production &",
       "sudo nohup ./main &",
+
       "sleep 1",
     ]
   }
+}
+
+module "eklhad_cloudflare_records" {
+  source            = "../modules/cloudflare-records/"
+  cloudflare_domain = "${var.cloudflare_domain}"
+  a_record_ip       = "${aws_instance.eklhad_web.public_ip}"
 }
