@@ -14,7 +14,6 @@ My personal, digital assets.
 
 ### Development
 
-
 Clone the repo
 
 ```
@@ -30,6 +29,8 @@ $ go get
 sudo iptables -t nat -I OUTPUT -p tcp -d 127.0.0.1 --dport 80 -j REDIRECT --to-ports 8080
 sudo iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080
    
+sudo iptables -t nat -I OUTPUT -p tcp -d 127.0.0.1 --dport 443 -j REDIRECT --to-ports 8081
+sudo iptables -t nat -I PREROUTING -p tcp --dport 443 -j REDIRECT --to-ports 8081
 
 Install the Javascript development dependencies.
 ```
@@ -50,18 +51,23 @@ make image_aws
 ```
 
 Before proceeding, make sure you set the desired AMI in the tfvars file.
+
 ```
 make tf_plan_aws
 make tf_apply_aws
 ```
 
-
 # Install Golang
+
+_https://github.com/golang/go/wiki/Ubuntu_
+
 ```
 wget https://dl.google.com/go/go1.12.4.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.12.4.linux-amd64.tar.gz
 echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.profile
 echo "export GOPATH=/home/ubuntu/" >> ~/.profile
 source ~/.profile
-
 ```
+
+
+terraform import tfe_workspace.aws-eklhad-web eklhad/aws-eklhad-web
