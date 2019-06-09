@@ -37,7 +37,6 @@ func loadLocationsFromLocalJSON() []EklhadLocation {
 
 	var allLocations EklhadLocations
 	json.Unmarshal(locationsByteValue, &allLocations)
-	log.Info("test")
 
 	return allLocations.Locations
 }
