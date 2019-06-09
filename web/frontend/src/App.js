@@ -8,11 +8,10 @@ import './App.scss';
 
 
 // To make it easier for local development with React, include the default port the API server will run on.
-const DEFAULT_PORT = 80;
-
-const HOST = window.APP ? window.APP.apiHost : window.location.hostname;
-const PORT = window.APP ? window.APP.apiPort : DEFAULT_PORT;
 const PROTOCOL = window.location.protocol;
+const DEFAULT_PORT = 80;
+const PORT = PROTOCOL === "https:" ? 443 : (window.APP ? window.APP.apiPort : DEFAULT_PORT);
+const HOST = window.APP ? window.APP.apiHost : window.location.hostname;
 const API_BASE_URL = `${PROTOCOL}//${HOST}:${PORT}/api`;
 
 class App extends Component {

@@ -5,7 +5,13 @@ provider "google" {
   region      = "${var.region}"
 }
 
+provider "acme" {
+  server_url = "https://acme-staging-v02.api.letsencrypt.org/directory"
+}
+
 terraform {
+  required_version = "0.11.14"
+
   backend "remote" {
     hostname = "app.terraform.io"
     organization = "eklhad"
@@ -13,6 +19,26 @@ terraform {
     workspaces {
       name = "gcp-eklhad-web"
     }
+  }
+}
+
+resource "tls_private_key" "private_key" {
+  algorithm = "RSA"
+}
+
+resource "acme_registration" "reg" {
+  account_key_pem = "${tls_private_key.private_key.private_key_pem}"
+  # TODO
+  email_address   = "neil@dahlke.io"
+}
+
+resource "acme_certificate" "certificate" {
+  account_key_pem           = "${acme_registration.reg.account_key_pem}"
+  common_name               = "dahlke.io"
+  subject_alternative_names = ["www.dahlke.io", "gcp.dahlke.io", "aws.dahlke.io"]
+
+  dns_challenge {
+    provider = "cloudflare"
   }
 }
 
@@ -73,20 +99,23 @@ resource "google_compute_instance" "web" {
     }
 
     inline = [
-      "cd src/github.com/dahlke/eklhad/web",
-      // "sudo nohup ./main -production &",
-      "sudo nohup ./main &",
+      "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_cert.pem",
+      "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_issuer.pem'",
+      "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_private_key.pem'",
+      "echo \"${acme_certificate.certificate.certificate_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_cert.pem",
+      "echo \"${acme_certificate.certificate.certificate_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_issuer.pem",
+      "echo \"${acme_certificate.certificate.private_key_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_private_key.pem",
+      "cd ./go/src/github.com/dahlke/eklhad/web/",
+      // "nohup ./main &",
+      "nohup ./main -production &",
      "sleep 1",
     ]
   }
 }
 
-/*
-module "eklhad_cloudflare_records" {
-  source            = "../modules/cloudflare-records/"
-  cloudflare_email  = "${var.cloudflare_email}"
-  cloudflare_token  = "${file(var.cloudflare_token_path)}"
-  cloudflare_domain = "${var.cloudflare_domain}"
-  a_record_ip       = "${google_compute_address.web.address}"
+resource "cloudflare_record" "gcp" {
+  domain = "${var.cloudflare_domain}"
+  name   = "gcp"
+  value  = "${google_compute_address.web.address}"
+  type   = "A"
 }
-*/

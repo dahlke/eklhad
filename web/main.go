@@ -10,7 +10,6 @@ import (
 
 	"github.com/dahlke/eklhad/web/services"
 	log "github.com/sirupsen/logrus"
-	"golang.org/x/crypto/acme/autocert"
 )
 
 type templatePayload struct {
@@ -69,19 +68,8 @@ func main() {
 	http.HandleFunc("/api/links", apiLinksHandler)
 
 	if isProduction {
-		certManager := &autocert.Manager{
-			Cache:      autocert.DirCache("lets_encrypt_certs"),
-			Prompt:     autocert.AcceptTOS,
-			HostPolicy: autocert.HostWhitelist("dahlke.io", "www.dahlke.io"),
-		}
-
-		s := &http.Server{
-			Addr:      ":https",
-			TLSConfig: certManager.TLSConfig(),
-		}
-
 		log.Println("Starting HTTPS server...")
-		err := s.ListenAndServeTLS("", "")
+		err := http.ListenAndServeTLS(":443", "acme_cert.pem", "acme_private_key.pem", nil)
 		log.Fatal(err)
 	} else {
 		log.Info("Starting HTTP server...")
