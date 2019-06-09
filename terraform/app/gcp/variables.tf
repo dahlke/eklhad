@@ -39,10 +39,6 @@ variable "ssh_private_key_path" {
   type = "string"
 }
 
-variable "web_binary_path" {
-  type = "string"
-}
-
 variable "cloudflare_email" {
   type = "string"
 }

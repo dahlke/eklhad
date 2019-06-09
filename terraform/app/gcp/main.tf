@@ -1,7 +1,19 @@
 provider "google" {
-  credentials = "${file("../../secret/gcp-eklhad-service-account.json")}"
+  # TODO
+  credentials = "${file("/Users/neil/.gcp/eklhad/eklhad-web-e91c00f7deef.json")}"
   project     = "${var.project}"
   region      = "${var.region}"
+}
+
+terraform {
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "eklhad"
+
+    workspaces {
+      name = "gcp-eklhad-web"
+    }
+  }
 }
 
 resource "google_compute_address" "web" {
@@ -61,17 +73,20 @@ resource "google_compute_instance" "web" {
     }
 
     inline = [
-      "cd web/",
-      "nohup ./main &",
-      "sleep 1",
+      "cd src/github.com/dahlke/eklhad/web",
+      // "sudo nohup ./main -production &",
+      "sudo nohup ./main &",
+     "sleep 1",
     ]
   }
 }
 
+/*
 module "eklhad_cloudflare_records" {
   source            = "../modules/cloudflare-records/"
   cloudflare_email  = "${var.cloudflare_email}"
   cloudflare_token  = "${file(var.cloudflare_token_path)}"
   cloudflare_domain = "${var.cloudflare_domain}"
-  a_record_ip       = "${google_compute_instance.web.network_interface.0.access_config.0.nat_ip}"
+  a_record_ip       = "${google_compute_address.web.address}"
 }
+*/

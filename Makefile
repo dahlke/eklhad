@@ -8,11 +8,13 @@ SECRETS_DIR=${CWD}/secret
 
 PACKER_DIR=${CWD}/packer
 PACKER_AMI_DEF_PATH=${PACKER_DIR}/aws/image.json
+PACKER_GCP_DEF_PATH=${PACKER_DIR}/gcp/image.json
 
 ARTIFACT_DIR=${CWD}/artifact
 ARTIFACT_DIR_LINUX=${ARTIFACT_DIR}/tar/linux
 
 TF_AWS_APP_DIR=${CWD}/terraform/app/aws
+TF_GCP_APP_DIR=${CWD}/terraform/app/gcp
 
 WEB_APP_SRC_DIR=web/
 
@@ -69,6 +71,10 @@ go_build_linux:
 image_aws: 
 	packer build ${PACKER_AMI_DEF_PATH} 
 
+.PHONY: image_gcp
+image_gcp: 
+	packer build ${PACKER_GCP_DEF_PATH} 
+
 ##########################
 # CLOUD DEPLOY HELPERS
 ##########################
@@ -91,3 +97,23 @@ tf_out_aws:
 .PHONY: tf_destroy_aws
 tf_destroy_aws: 
 	cd ${TF_AWS_APP_DIR} && terraform destroy
+
+.PHONY: tf_init_gcp
+tf_init_gcp: 
+	cd ${TF_GCP_APP_DIR} && terraform init
+
+.PHONY: tf_plan_gcp
+tf_plan_gcp: tf_init_gcp
+	cd ${TF_GCP_APP_DIR} && terraform plan
+
+.PHONY: tf_apply_gcp
+tf_apply_gcp: 
+	cd ${TF_GCP_APP_DIR} && terraform apply
+	
+.PHONY: tf_out_gcp
+tf_out_gcp: 
+	cd ${TF_GCP_APP_DIR} && terraform output -json
+
+.PHONY: tf_destroy_gcp
+tf_destroy_gcp: 
+	cd ${TF_GCP_APP_DIR} && terraform destroy
