@@ -1,8 +1,6 @@
-provider "aws" {
-  region = "${var.region}"
-}
-
 terraform {
+  required_version = "0.11.14"
+
   backend "remote" {
     hostname = "app.terraform.io"
     organization = "eklhad"
@@ -11,6 +9,10 @@ terraform {
       name = "aws-eklhad-web"
     }
   }
+}
+
+provider "aws" {
+  region = "${var.region}"
 }
 
 resource "aws_vpc" "eklhad_web" {
@@ -123,8 +125,16 @@ resource "aws_instance" "eklhad_web" {
   }
 }
 
-module "eklhad_cloudflare_records" {
-  source            = "../modules/cloudflare-records/"
-  cloudflare_domain = "${var.cloudflare_domain}"
-  a_record_ip       = "${aws_instance.eklhad_web.public_ip}"
+resource "cloudflare_record" "www" {
+  domain = "${var.cloudflare_domain}"
+  name   = "www"
+  value = "${aws_instance.eklhad_web.public_ip}"
+  type   = "A"
+}
+
+resource "cloudflare_record" "dahlkeio" {
+  domain = "${var.cloudflare_domain}"
+  name   = "dahlke.io"
+  value = "${aws_instance.eklhad_web.public_ip}"
+  type   = "A"
 }

@@ -18,8 +18,6 @@ ssh_key_name = "eklhad-web-aws"
 
 ssh_private_key_path = "~/.ssh/aws/eklhad-web-aws.pem"
 
-cloudflare_email = "neil.dahlke@gmail.com"
-
-cloudflare_token_path = "~/src/dahlke/eklhad/secret/cloudflare.txt"
-
 cloudflare_domain = "dahlke.io"
+
+email = "neil@dahlke.io"

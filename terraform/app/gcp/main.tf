@@ -1,14 +1,3 @@
-provider "google" {
-  # TODO
-  credentials = "${file("/Users/neil/.gcp/eklhad/eklhad-web-e91c00f7deef.json")}"
-  project     = "${var.project}"
-  region      = "${var.region}"
-}
-
-provider "acme" {
-  server_url = "https://acme-staging-v02.api.letsencrypt.org/directory"
-}
-
 terraform {
   required_version = "0.11.14"
 
@@ -22,6 +11,18 @@ terraform {
   }
 }
 
+provider "google" {
+  # TODO
+  credentials = "${file("/Users/neil/.gcp/eklhad/eklhad-web-e91c00f7deef.json")}"
+  project     = "${var.project}"
+  region      = "${var.region}"
+}
+
+provider "acme" {
+  server_url = "https://acme-staging-v02.api.letsencrypt.org/directory"
+}
+
+
 resource "tls_private_key" "private_key" {
   algorithm = "RSA"
 }
@@ -29,7 +30,7 @@ resource "tls_private_key" "private_key" {
 resource "acme_registration" "reg" {
   account_key_pem = "${tls_private_key.private_key.private_key_pem}"
   # TODO
-  email_address   = "neil@dahlke.io"
+  email_address   = "${var.email}"
 }
 
 resource "acme_certificate" "certificate" {
@@ -106,7 +107,6 @@ resource "google_compute_instance" "web" {
       "echo \"${acme_certificate.certificate.certificate_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_issuer.pem",
       "echo \"${acme_certificate.certificate.private_key_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_private_key.pem",
       "cd ./go/src/github.com/dahlke/eklhad/web/",
-      // "nohup ./main &",
       "nohup ./main -production &",
      "sleep 1",
     ]

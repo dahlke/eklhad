@@ -39,14 +39,10 @@ variable "ssh_private_key_path" {
   type = "string"
 }
 
-variable "cloudflare_email" {
-  type = "string"
-}
-
-variable "cloudflare_token_path" {
-  type = "string"
-}
-
 variable "cloudflare_domain" {
+  type = "string"
+}
+
+variable "email" {
   type = "string"
 }

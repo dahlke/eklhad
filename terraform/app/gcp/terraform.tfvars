@@ -16,8 +16,6 @@ ssh_pub_key_path = "~/.ssh/gcp/eklhad-web-gcp.pub"
 
 ssh_private_key_path = "~/.ssh/gcp/eklhad-web-gcp"
 
-cloudflare_email = "neil.dahlke@gmail.com"
-
-cloudflare_token_path = "~/src/dahlke/eklhad/secret/cloudflare.txt"
-
 cloudflare_domain = "dahlke.io"
+
+email = "neil@dahlke.io"
