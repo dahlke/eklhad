@@ -41,6 +41,15 @@ func htmlHandler(w http.ResponseWriter, r *http.Request) {
 	t.Execute(w, &payload)
 }
 
+func redirectToHTTPS(w http.ResponseWriter, r *http.Request) {
+	target := "https://" + r.Host + r.URL.Path
+	if len(r.URL.RawQuery) > 0 {
+		target += "?" + r.URL.RawQuery
+	}
+	log.Printf("redirect to: %s", target)
+	http.Redirect(w, r, target, http.StatusTemporaryRedirect)
+}
+
 func configLogger() {
 	log.SetFormatter(&log.JSONFormatter{})
 	log.SetOutput(os.Stdout)
@@ -69,6 +78,7 @@ func main() {
 
 	if isProduction {
 		log.Println("Starting HTTPS server...")
+		go http.ListenAndServe(fmt.Sprintf(":%d", appPort), http.HandlerFunc(redirectToHTTPS))
 		err := http.ListenAndServeTLS(":443", "acme_cert.pem", "acme_private_key.pem", nil)
 		log.Fatal(err)
 	} else {
