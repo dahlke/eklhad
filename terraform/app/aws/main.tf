@@ -2,7 +2,7 @@ terraform {
   required_version = "0.11.14"
 
   backend "remote" {
-    hostname = "app.terraform.io"
+    hostname     = "app.terraform.io"
     organization = "eklhad"
 
     workspaces {
@@ -125,6 +125,7 @@ resource "aws_instance" "eklhad_web" {
   }
 }
 
+/*
 resource "cloudflare_record" "www" {
   domain = "${var.cloudflare_domain}"
   name   = "www"
@@ -136,5 +137,13 @@ resource "cloudflare_record" "dahlkeio" {
   domain = "${var.cloudflare_domain}"
   name   = "dahlke.io"
   value = "${aws_instance.eklhad_web.public_ip}"
+  type   = "A"
+}
+*/
+
+resource "cloudflare_record" "aws" {
+  domain = "${var.cloudflare_domain}"
+  name   = "aws"
+  value  = "${aws_instance.eklhad_web.public_ip}"
   type   = "A"
 }
