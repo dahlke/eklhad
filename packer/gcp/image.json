@@ -20,7 +20,7 @@
                 "touch ~/.bashrc",
                 "echo \"PATH=$PATH:/usr/local/go/bin\" >> ~/.bashrc",
                 "echo \"GOPATH=/home/ubuntu/go/src/\" >> ~/.bashrc"
-            ]   
+            ]
         },
         {
             "type": "shell",
