@@ -9,6 +9,14 @@ My personal web assets.
 - `terraform`
 
 
+Set up pre-commit hooks:
+
+```
+cd .git/hooks
+ln -s -f ../../hooks/pre-commit ./pre-commit
+chmod +x ../../hooks/pre-commit ./pre-commit
+```
+
 ### GCP Quick Deploy
 
 ```
