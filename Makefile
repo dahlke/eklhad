@@ -61,25 +61,25 @@ frontend_build: npm resume
 # GO HELPERS
 ##########################
 .PHONY: go_build_linux
-go_build_linux: 
+go_build_linux:
 	cd web && GOOS=linux GOARCH=amd64 go build main.go
 
 ##########################
 # IMAGE BUILD HELPERS
 ##########################
 .PHONY: image_aws
-image_aws: 
-	packer build ${PACKER_AMI_DEF_PATH} 
+image_aws:
+	packer build ${PACKER_AMI_DEF_PATH}
 
 .PHONY: image_gcp
-image_gcp: 
-	packer build ${PACKER_GCP_DEF_PATH} 
+image_gcp:
+	packer build ${PACKER_GCP_DEF_PATH}
 
 ##########################
 # CLOUD DEPLOY HELPERS
 ##########################
 .PHONY: tf_init_aws
-tf_init_aws: 
+tf_init_aws:
 	cd ${TF_AWS_APP_DIR} && terraform init
 
 .PHONY: tf_plan_aws
@@ -87,19 +87,19 @@ tf_plan_aws: tf_init_aws
 	cd ${TF_AWS_APP_DIR} && terraform plan
 
 .PHONY: tf_apply_aws
-tf_apply_aws: 
+tf_apply_aws:
 	cd ${TF_AWS_APP_DIR} && terraform apply
 
 .PHONY: tf_out_aws
-tf_out_aws: 
+tf_out_aws:
 	cd ${TF_AWS_APP_DIR} && terraform output -json
 
 .PHONY: tf_destroy_aws
-tf_destroy_aws: 
+tf_destroy_aws:
 	cd ${TF_AWS_APP_DIR} && terraform destroy
 
 .PHONY: tf_init_gcp
-tf_init_gcp: 
+tf_init_gcp:
 	cd ${TF_GCP_APP_DIR} && terraform init
 
 .PHONY: tf_plan_gcp
@@ -107,13 +107,13 @@ tf_plan_gcp: tf_init_gcp
 	cd ${TF_GCP_APP_DIR} && terraform plan
 
 .PHONY: tf_apply_gcp
-tf_apply_gcp: 
+tf_apply_gcp:
 	cd ${TF_GCP_APP_DIR} && terraform apply
-	
+
 .PHONY: tf_out_gcp
-tf_out_gcp: 
+tf_out_gcp:
 	cd ${TF_GCP_APP_DIR} && terraform output -json
 
 .PHONY: tf_destroy_gcp
-tf_destroy_gcp: 
+tf_destroy_gcp:
 	cd ${TF_GCP_APP_DIR} && terraform destroy
