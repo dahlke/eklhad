@@ -14,7 +14,6 @@ web/main
 web/node_modules/
 .terraform/
 .vagrant/
-secret/
 output/
 artifact/tar/mac/*
 artifact/tar/linux/*

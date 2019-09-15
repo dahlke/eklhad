@@ -4,18 +4,11 @@ WEB_APP_NAME = eklhad-web
 WEB_APP_TAR_NAME = eklhad-web.tar.gz
 CWD := $(shell pwd)
 
-SECRETS_DIR=${CWD}/secret
-
 PACKER_DIR=${CWD}/packer
-PACKER_AMI_DEF_PATH=${PACKER_DIR}/aws/image.json
 PACKER_GCP_DEF_PATH=${PACKER_DIR}/gcp/image.json
-
 ARTIFACT_DIR=${CWD}/artifact
 ARTIFACT_DIR_LINUX=${ARTIFACT_DIR}/tar/linux
-
-TF_AWS_APP_DIR=${CWD}/terraform/app/aws
 TF_GCP_APP_DIR=${CWD}/terraform/app/gcp
-
 WEB_APP_SRC_DIR=web/
 
 ##########################
@@ -23,12 +16,7 @@ WEB_APP_SRC_DIR=web/
 ##########################
 .PHONY: todo
 todo:
-	@ag "TODO" --ignore Makefile
-
-# TODO: only include necessary files for minimum size
-.PHONY: artifact_linux_web
-artifact_linux_web: go_build_linux
-	tar cf ${ARTIFACT_DIR_LINUX}/${WEB_APP_TAR_NAME} ${WEB_APP_SRC_DIR}
+	@ag "TODO" --ignore Makefile,web/frontend/node_modules
 
 ##########################
 # WEB HELPERS
@@ -60,6 +48,14 @@ frontend_build: npm resume
 ##########################
 # GO HELPERS
 ##########################
+.PHONY: go_get
+go_get:
+	cd web && go get
+
+.PHONY: go_server_start
+go_server_start:
+	cd web && go run main.go
+
 .PHONY: go_build_linux
 go_build_linux:
 	cd web && GOOS=linux GOARCH=amd64 go build main.go
@@ -67,9 +63,10 @@ go_build_linux:
 ##########################
 # IMAGE BUILD HELPERS
 ##########################
-.PHONY: image_aws
-image_aws:
-	packer build ${PACKER_AMI_DEF_PATH}
+# TODO: only include necessary files for minimum size
+.PHONY: artifact_linux_web
+artifact_linux_web: go_build_linux
+	tar cf ${ARTIFACT_DIR_LINUX}/${WEB_APP_TAR_NAME} ${WEB_APP_SRC_DIR}
 
 .PHONY: image_gcp
 image_gcp:
@@ -78,26 +75,6 @@ image_gcp:
 ##########################
 # CLOUD DEPLOY HELPERS
 ##########################
-.PHONY: tf_init_aws
-tf_init_aws:
-	cd ${TF_AWS_APP_DIR} && terraform init
-
-.PHONY: tf_plan_aws
-tf_plan_aws: tf_init_aws
-	cd ${TF_AWS_APP_DIR} && terraform plan
-
-.PHONY: tf_apply_aws
-tf_apply_aws:
-	cd ${TF_AWS_APP_DIR} && terraform apply
-
-.PHONY: tf_out_aws
-tf_out_aws:
-	cd ${TF_AWS_APP_DIR} && terraform output -json
-
-.PHONY: tf_destroy_aws
-tf_destroy_aws:
-	cd ${TF_AWS_APP_DIR} && terraform destroy
-
 .PHONY: tf_init_gcp
 tf_init_gcp:
 	cd ${TF_GCP_APP_DIR} && terraform init

@@ -3,7 +3,7 @@
 		"name": "Neil Dahlke",
 		"label": "Solutions Engineer",
 		"picture": "https://en.gravatar.com/userimage/25206271/c07bb7c64399588ea12e52065f2b6dda.jpg",
-		"email": "neil@dahlke.io",
+		"email": "neil+eklhad-web@dahlke.io",
 		"phone": "cell not available here",
 		"website": "http://dahlke.io",
 		"summary": "",
@@ -63,8 +63,7 @@
 			"startDate": "2015-11-01",
 			"endDate": "2017-03-01",
 			"highlights": [
-				"PoC to production for Tier 0 customers (Ex: Goldman, AmEx, Uber, Cisco, Hulu, etc.",
-				"Optimize schemas and queries, find bottlenecks, optimize hardware.",
+				"PoC to production for Tier 0 customers (Ex: Goldman, AmEx, Uber, Cisco, Hulu, etc.)",
 				"Support the technical side of the sale, build sales optimization tools, automate operations."
 			]
 		},
@@ -108,13 +107,19 @@
 	],
 	"awards": [
 		{
+			"title": "SE of the Quarter (FY2020Q1, FY2020Q2)",
+			"date": "2018-03-21",
+			"awarder": "HashiCorp",
+			"summary": ""
+		},
+		{
 			"title": "SE of the Year (179%)",
 			"date": "2018-03-21",
 			"awarder": "MemSQL",
 			"summary": ""
 		},
 		{
-			"title": "President's Club 2016, 2017, 2018",
+			"title": "President's Club (2016, 2017, 2018)",
 			"date": "2018-03-21",
 			"awarder": "MemSQL",
 			"summary": ""

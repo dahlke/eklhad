@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   _fetchLocationData() {
-    const api_url = `${API_BASE_URL}/locations`; 
+    const api_url = `${API_BASE_URL}/locations`;
 
     fetch(api_url)
       .then((response) => { return response.json() })
@@ -53,7 +53,7 @@ class App extends Component {
   }
 
   _fetchLinkData() {
-    const api_url = `${API_BASE_URL}/links`; 
+    const api_url = `${API_BASE_URL}/links`;
 
     fetch(api_url)
       .then((response) => { return response.json() })
@@ -64,7 +64,7 @@ class App extends Component {
 
         data.sort((a, b) => {
           return new Date(b.date) - new Date(a.date);
-        }); 
+        });
 
         data.forEach((link) => {
           if (!linksDateMap[link.date]) {
@@ -95,7 +95,7 @@ class App extends Component {
   render() {
     const links = this.state.selectedDate ? this.state.linksDateMap[this.state.selectedDate] : [];
 
-    const years = links ? Array.from(new Set(Object.keys(this.state.linksDateMap).map((date) => { 
+    const years = links ? Array.from(new Set(Object.keys(this.state.linksDateMap).map((date) => {
       return parseInt(moment(date).format("YYYY"));
     }))) : [];
 
@@ -120,8 +120,8 @@ class App extends Component {
             <Map locations={this.state.locations} />
 
             <div className="select-year">
-              <Select 
-                options={yearOptions} 
+              <Select
+                options={yearOptions}
                 value={{value: this.state.selectedYear, label: this.state.selectedYear}}
                 onChange={this._selectYear.bind(this)}
                 isSearchable={false}
