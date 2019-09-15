@@ -1,5 +1,7 @@
 # Eklhad
 
+[![CircleCI](https://circleci.com/gh/dahlke/eklhad/tree/master.svg?style=svg&circle-token=e37d2b20028dc6e1a4c66a18688d04d29d1c7fef)](https://circleci.com/gh/dahlke/eklhad/tree/master)
+
 My personal web assets.
 
 ## Requirements
