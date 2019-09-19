@@ -6,7 +6,7 @@ const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoibnRkIiwiYSI6ImNqdTM3eXplODBrYTQ0ZHBnNnB6
 const MAPBOX_STYLE = "mapbox://styles/ntd/cjsl0z4lm3d971fllo51zcza8"
 
 class Map extends Component {
-    
+
     state = {
         viewport: {
             width: "100%",
@@ -33,31 +33,31 @@ class Map extends Component {
                 longitude={popupInfo.geometry.coordinates[0]}
                 latitude={popupInfo.geometry.coordinates[1]}
                 onClose={() => this.setState({popupInfo: null})} >
-                {popupInfo.properties.name}
+                {popupInfo.properties.city}, {popupInfo.properties.state}, {popupInfo.properties.country}
             </Popup>
         );
     }
-    
+
     _renderMarkers() {
         var markers = [];
-        
+
         if (this.props.locations && this.props.locations.features) {
             markers = this.props.locations.features.map((feature) => {
                 return (
-                    <Marker 
-                        key={feature.properties.id} 
-                        latitude={feature.geometry.coordinates[1]} 
-                        longitude={feature.geometry.coordinates[0]} 
+                    <Marker
+                        key={feature.properties.id}
+                        latitude={feature.geometry.coordinates[1]}
+                        longitude={feature.geometry.coordinates[0]}
                     >
                         <div className="map-custom-marker" onClick={() => this.setState({popupInfo: feature})} />
                     </Marker>
                     );
             });
         }
-        
+
         return markers;
     }
-        
+
     render() {
         return (
             <div id="map">
@@ -77,6 +77,5 @@ class Map extends Component {
             );
         }
 }
-        
+
 export default Map;
-        
