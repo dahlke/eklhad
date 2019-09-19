@@ -25,6 +25,8 @@ make image_gcp
 Before proceeding, make sure you set the desired image in the `.tfvars` file.
 
 ```
+tail -n 1 packer/gcp/output/gcp_packer_build_output.txt | awk '{print $8}'
+
 make tf_plan_gcp
 make tf_apply_gcp
 ```
