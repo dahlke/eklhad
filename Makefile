@@ -6,6 +6,7 @@ CWD := $(shell pwd)
 
 PACKER_DIR=${CWD}/packer
 PACKER_GCP_DEF_PATH=${PACKER_DIR}/gcp/image.json
+PACKER_IMAGE_CMD=`tail -n 1 ${PACKER_DIR}/gcp/output/gcp_packer_build_output.txt | awk '{print $$8}'`
 ARTIFACT_DIR=${CWD}/artifact
 ARTIFACT_DIR_LINUX=${ARTIFACT_DIR}/tar/linux
 TF_GCP_APP_DIR=${CWD}/terraform/app/gcp
@@ -70,7 +71,7 @@ artifact_linux_web: go_build_linux
 
 .PHONY: image_gcp
 image_gcp:
-	packer -machine-reeadable build ${PACKER_GCP_DEF_PATH} >> gcp_packer_build_output.txt
+	packer -machine-readable build ${PACKER_GCP_DEF_PATH} >> packer/gcp/output/gcp_packer_build_output.txt
 
 ##########################
 # CLOUD DEPLOY HELPERS
@@ -81,11 +82,11 @@ tf_init_gcp:
 
 .PHONY: tf_plan_gcp
 tf_plan_gcp: tf_init_gcp
-	cd ${TF_GCP_APP_DIR} && terraform plan
+	cd ${TF_GCP_APP_DIR} && terraform plan -var "image_id=$(PACKER_IMAGE_CMD)"
 
 .PHONY: tf_apply_gcp
 tf_apply_gcp:
-	cd ${TF_GCP_APP_DIR} && terraform apply
+	cd ${TF_GCP_APP_DIR} && terraform apply -var "image_id=${PACKER_IMAGE_CMD}"
 
 .PHONY: tf_out_gcp
 tf_out_gcp:
