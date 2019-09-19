@@ -1067,7 +1067,7 @@
 			"name": "Beverly Hills",
 			"lng": -118.40035630,
 			"lat": 34.07362041
-		}, 
+		},
 		{
 			"id": 32,
 			"name": "Saint Thomas",
@@ -1244,33 +1244,57 @@
 		},
 		{
 			"id": 208,
-			"name": "New Orleans",
+			"name": "New Orleans, Louisiana",
 			"lng": -90.0715,
 			"lat": 29.9511
 		},
 		{
 			"id": 210,
-			"name": "San Salvador",
+			"name": "San Salvador, El Salvador",
 			"lng": -88.8965,
 			"lat": 13.7942
 		},
 		{
 			"id": 211,
-			"name": "Cusco",
+			"name": "Cusco, Peru",
 			"lng": -71.9675,
 			"lat": -13.5320
 		},
 		{
 			"id": 212,
-			"name": "Aguas Calientes",
+			"name": "Aguas Calientes, Peru",
 			"lng": -72.5254,
 			"lat": -13.1547
 		},
 		{
 			"id": 213,
-			"name": "Lima",
+			"name": "Lima, Peru",
 			"lng": -77.0428,
 			"lat": -12.0464
+		},
+		{
+			"id": 214,
+			"name": "Santiago, Chile",
+			"lng": -70.6693,
+			"lat": -33.4489
+		},
+		{
+			"id": 215,
+			"name": "Valle Nevado, Chile",
+			"lng": -70.2489,
+			"lat": -33.3538
+		},
+		{
+			"id": 216,
+			"name": "Buenos Aires, Argentina",
+			"lng": -58.3816,
+			"lat": -34.6037
+		},
+		{
+			"id": 217,
+			"name": "Tigre, Argentina",
+			"lng": -58.5797,
+			"lat": -34.4251
 		}
 	]
 }

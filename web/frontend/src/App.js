@@ -110,11 +110,9 @@ class App extends Component {
       <div className="app">
         <div className="container">
             <h1>Neil Dahlke</h1>
-            <h3>Engineer, <a target="_blank" rel="noopener noreferrer" href="http://www.hashicorp.com/">HashiCorp</a></h3>
-            <h5>(Formerly <a href="https://memsql.com">MemSQL</a>)</h5>
             <h6>San Francisco, California, USA</h6>
             <h6>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/eklhad">Instagram</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.github.com/dahlke">GitHub</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.linkedin.com/in/neildahlke">LinkedIn</a> / <a href="static/resume.html">Resume</a>
+              <a href="http://twitter.com/neildahlke">Twitter</a> / <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/eklhad">Instagram</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.github.com/dahlke">GitHub</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.linkedin.com/in/neildahlke">LinkedIn</a> / <a href="static/resume.html">Resume</a>
             </h6>
 
             <Map locations={this.state.locations} />
