@@ -59,6 +59,8 @@ func configLogger() {
 func main() {
 	portPtr := flag.Int("port", 80, "The port to run the HTTP app on.")
 	productionPtr := flag.Bool("production", false, "If true, run the app over HTTPS.")
+	geocodePtr := flag.Bool("geocode", false, "If true, the geojson file will be updated based on the cities-array.json file.")
+
 	// TODO: currentLocation - env var or flag?
 	flag.Parse()
 
@@ -66,6 +68,7 @@ func main() {
 
 	appPort = *portPtr
 	isProduction := *productionPtr
+	isGeocodePass := *geocodePtr
 
 	log.Println("Starting file server...")
 	fs := http.FileServer(http.Dir("frontend/build/"))
@@ -76,7 +79,11 @@ func main() {
 	http.HandleFunc("/api/locations", apiLocationsHandler)
 	http.HandleFunc("/api/links", apiLinksHandler)
 
-	if isProduction {
+	// TODO: add an option to update all the locations GeoJSON
+
+	if isGeocodePass {
+		services.ConvertJSONArrayToGeoJSON()
+	} else if isProduction {
 		log.Println("Starting HTTPS server...")
 		go http.ListenAndServe(fmt.Sprintf(":%d", appPort), http.HandlerFunc(redirectToHTTPS))
 		err := http.ListenAndServeTLS(":443", "acme_cert.pem", "acme_private_key.pem", nil)

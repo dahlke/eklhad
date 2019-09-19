@@ -70,7 +70,7 @@ artifact_linux_web: go_build_linux
 
 .PHONY: image_gcp
 image_gcp:
-	packer build ${PACKER_GCP_DEF_PATH}
+	packer -machine-reeadable build ${PACKER_GCP_DEF_PATH} >> gcp_packer_build_output.txt
 
 ##########################
 # CLOUD DEPLOY HELPERS

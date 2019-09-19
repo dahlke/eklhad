@@ -91,7 +91,7 @@
 				]
 			},
 			"properties": {
-				"city": "Ao Nang",
+				"city": "Ao Nang, Thailand",
 				"country": "ประเทศไทย",
 				"id": 5,
 				"state": "จังหวัดกระบี่"
@@ -619,7 +619,7 @@
 				]
 			},
 			"properties": {
-				"city": "Bangkok",
+				"city": "Bangkok, Thailand",
 				"country": "ประเทศไทย",
 				"id": 38,
 				"state": "กรุงเทพมหานคร"
@@ -1179,7 +1179,7 @@
 				]
 			},
 			"properties": {
-				"city": "Okinawa",
+				"city": "Okinawa, Japan",
 				"country": "日本",
 				"id": 73,
 				"state": "九州地方"
@@ -1254,12 +1254,12 @@
 			"geometry": {
 				"type": "Point",
 				"coordinates": [
-					116.3912757,
-					39.906217
+					116.412144,
+					40.190632
 				]
 			},
 			"properties": {
-				"city": "Beijing",
+				"city": "Beijing, China",
 				"country": "中国",
 				"id": 78,
 				"state": "北京市"
@@ -1270,12 +1270,12 @@
 			"geometry": {
 				"type": "Point",
 				"coordinates": [
-					121.4890497,
-					31.2252985
+					121.4691749,
+					31.2322735
 				]
 			},
 			"properties": {
-				"city": "Shanghai",
+				"city": "Shanghai, China",
 				"country": "中国",
 				"id": 79,
 				"state": "上海市"
@@ -2683,7 +2683,7 @@
 				]
 			},
 			"properties": {
-				"city": "Osaka",
+				"city": "Osaka, Japan",
 				"country": "日本",
 				"id": 167,
 				"state": "近畿地方"
@@ -3430,15 +3430,15 @@
 			"geometry": {
 				"type": "Point",
 				"coordinates": [
-					43.6638148,
-					34.7324921
+					-58.5808967,
+					-34.4226513
 				]
 			},
 			"properties": {
-				"city": "Tigre",
-				"country": "العراق",
+				"city": "Tigre, Argentina",
+				"country": "Argentina",
 				"id": 215,
-				"state": "صلاح الدين"
+				"state": "Bs. As."
 			}
 		}
 	]
