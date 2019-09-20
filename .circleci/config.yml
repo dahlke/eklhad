@@ -2,15 +2,11 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/golang:1.9
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
+      - image: circleci/golang:1.9-node
     working_directory: /go/src/github.com/dahlke/eklhad/
     steps:
       - checkout
       - run: go get -v -t -d ./...
       - run: go test -v ./...
+      - run: npm --prefix web/frontend/ install
+      - run: npm --prefix web/frontend/ run-script test

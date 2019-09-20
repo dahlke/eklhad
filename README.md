@@ -4,16 +4,16 @@
 
 My personal web assets.
 
-## Requirements
+### Requirements
 
-- `npm`
 - `make`
+- `go`
+- `npm`
 - `packer`
 - `terraform`
 
 
-
-### Development
+## Development
 
 Install the Go development dependencies and start the web/API server. The web/API server will run on port 80.
 
@@ -30,20 +30,22 @@ make frontend_start
 
 To update the resume file, make all changes to `./web/frontend/conf/resume.json` and then run `make resume`.
 
+## Geocoding City Data
+
+The map requires each city visited to be geocoded. To geocode a city, add it to the array in [`cities.json`](./web/services/data/cities-array.json)
+```
+go run main.go -geocode
+```
+
+## Helpful Git Hooks
+
 There are some pre-commit hooks that are useful since the same tests will be run in CircleCI. They are located in the `./hooks/pre-commit/` folder here. Symlink them to the git repo using:
+
 ```
 cd .git/hooks
 ln -s -f ../../hooks/pre-commit ./pre-commit
 chmod +x ../../hooks/pre-commit ./pre-commit
 ```
-
-### Geocoding Cities
-
-The map requires each city visited to be geocoded. To geocode a city, add it to the array in [`cities.json`](./web/services/data/cities-array.json)
-`` `
-go run main.go -geocode
-`` `
-
 
 ### GCP Quick Deploy
 
