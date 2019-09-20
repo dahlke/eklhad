@@ -1,0 +1,3333 @@
+{
+	"type": "FeatureCollection",
+	"features": [
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-86.2500066,
+					41.6833813
+				]
+			},
+			"properties": {
+				"city": "South Bend, Indiana",
+				"country": "United States of America",
+				"id": 0,
+				"state": "Indiana"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-120.1434787,
+					39.1689372
+				]
+			},
+			"properties": {
+				"city": "Tahoe City, California",
+				"country": "United States of America",
+				"id": 1,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-80.62054663871,
+					28.3298487
+				]
+			},
+			"properties": {
+				"city": "Cocoa Beach, Florida",
+				"country": "USA",
+				"id": 2,
+				"state": "Florida"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-119.708861260756,
+					36.7295295
+				]
+			},
+			"properties": {
+				"city": "Fresno, California",
+				"country": "USA",
+				"id": 3,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-77.0902476527272,
+					38.8147596
+				]
+			},
+			"properties": {
+				"city": "Alexandria, Virginia",
+				"country": "USA",
+				"id": 4,
+				"state": "Virginia"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					98.835556784847,
+					8.03840755
+				]
+			},
+			"properties": {
+				"city": "Ao Nang, Thailand",
+				"country": "ประเทศไทย",
+				"id": 5,
+				"state": "จังหวัดกระบี่"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-117.2897652,
+					34.1083449
+				]
+			},
+			"properties": {
+				"city": "San Bernardino, California",
+				"country": "USA",
+				"id": 6,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					24.9425683,
+					60.1674086
+				]
+			},
+			"properties": {
+				"city": "Helsinki, Finland",
+				"country": "Suomi",
+				"id": 7,
+				"state": "Etelä-Suomi"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					4.351697,
+					50.8465573
+				]
+			},
+			"properties": {
+				"city": "Brussels, Belgium",
+				"country": "België - Belgique - Belgien",
+				"id": 8,
+				"state": "Région de Bruxelles-Capitale - Brussels Hoofdstedelijk Gewest"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-82.3589631,
+					23.135305
+				]
+			},
+			"properties": {
+				"city": "Havana, Cuba",
+				"country": "Cuba",
+				"id": 9,
+				"state": "La Habana"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-93.6037149,
+					41.5910641
+				]
+			},
+			"properties": {
+				"city": "Des Moines, Iowa",
+				"country": "USA",
+				"id": 10,
+				"state": "Iowa"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-81.6934446,
+					41.5051613
+				]
+			},
+			"properties": {
+				"city": "Cleveland, Ohio",
+				"country": "USA",
+				"id": 11,
+				"state": "Ohio"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-71.0582912,
+					42.3602534
+				]
+			},
+			"properties": {
+				"city": "Boston, Massachusetts",
+				"country": "USA",
+				"id": 12,
+				"state": "Massachusetts"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-71.1056157,
+					42.3750997
+				]
+			},
+			"properties": {
+				"city": "Cambridge, Massachusetts",
+				"country": "USA",
+				"id": 13,
+				"state": "Massachusetts"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-84.3901849,
+					33.7490987
+				]
+			},
+			"properties": {
+				"city": "Atlanta, Georgia",
+				"country": "USA",
+				"id": 14,
+				"state": "Georgia"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-88.9524151,
+					39.8454163
+				]
+			},
+			"properties": {
+				"city": "Decatur, Illinois",
+				"country": "USA",
+				"id": 15,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					14.2935136,
+					36.0287835
+				]
+			},
+			"properties": {
+				"city": "Gozo Marina, Malta",
+				"country": "Malta",
+				"id": 16,
+				"state": "Għawdex"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.3300624,
+					47.6038321
+				]
+			},
+			"properties": {
+				"city": "Seattle, Washington",
+				"country": "USA",
+				"id": 17,
+				"state": "Washington"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-118.7646194,
+					49.1168072
+				]
+			},
+			"properties": {
+				"city": "Washington, District of Colombia",
+				"country": "Canada",
+				"id": 18,
+				"state": "British Columbia"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-96.7968559,
+					32.7762719
+				]
+			},
+			"properties": {
+				"city": "Dallas, Texas",
+				"country": "USA",
+				"id": 19,
+				"state": "Texas"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-95.3676974,
+					29.7589382
+				]
+			},
+			"properties": {
+				"city": "Houston, Texas",
+				"country": "USA",
+				"id": 20,
+				"state": "Texas"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-87.7686078,
+					41.741406
+				]
+			},
+			"properties": {
+				"city": "Burbank, Illinois",
+				"country": "USA",
+				"id": 21,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-118.3258554,
+					34.1816482
+				]
+			},
+			"properties": {
+				"city": "Burbank, California",
+				"country": "USA",
+				"id": 22,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-6.81841756609764,
+					53.15436455
+				]
+			},
+			"properties": {
+				"city": "County Kildare, Ireland",
+				"country": "Ireland",
+				"id": 23,
+				"state": ""
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-111.4979741,
+					40.6460635
+				]
+			},
+			"properties": {
+				"city": "Park City, Utah",
+				"country": "USA",
+				"id": 24,
+				"state": "Utah"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-6.1098089,
+					53.3893873
+				]
+			},
+			"properties": {
+				"city": "Sutton, Ireland",
+				"country": "Ireland",
+				"id": 25,
+				"state": ""
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.4081251,
+					37.6549493
+				]
+			},
+			"properties": {
+				"city": "South San Francisco, California",
+				"country": "USA",
+				"id": 26,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-94.5781416,
+					39.100105
+				]
+			},
+			"properties": {
+				"city": "Kansas City, Missouri",
+				"country": "United States of America",
+				"id": 27,
+				"state": "Missouri"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-118.0000166,
+					33.6783336
+				]
+			},
+			"properties": {
+				"city": "Huntington Beach, California",
+				"country": "USA",
+				"id": 28,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-81.518485,
+					41.083064
+				]
+			},
+			"properties": {
+				"city": "Akron, Ohio",
+				"country": "USA",
+				"id": 29,
+				"state": "Ohio"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-118.1444779,
+					34.1476452
+				]
+			},
+			"properties": {
+				"city": "Pasadena, California",
+				"country": "USA",
+				"id": 30,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.3300624,
+					47.6038321
+				]
+			},
+			"properties": {
+				"city": "Seattle, Washington",
+				"country": "USA",
+				"id": 31,
+				"state": "Washington"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-111.8992365,
+					33.5091215
+				]
+			},
+			"properties": {
+				"city": "Scottsdale, Arizona",
+				"country": "USA",
+				"id": 32,
+				"state": "Arizona"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					2.3514992,
+					48.8566101
+				]
+			},
+			"properties": {
+				"city": "Paris, France",
+				"country": "France",
+				"id": 33,
+				"state": "Île-de-France"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-111.8904308,
+					40.7670126
+				]
+			},
+			"properties": {
+				"city": "Salt Lake City, Utah",
+				"country": "United States of America",
+				"id": 35,
+				"state": "Utah"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-86.7743531,
+					36.1622296
+				]
+			},
+			"properties": {
+				"city": "Nashville, Tennessee",
+				"country": "USA",
+				"id": 36,
+				"state": "Tennessee"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-116.540303,
+					33.8246269
+				]
+			},
+			"properties": {
+				"city": "Palm Springs, California",
+				"country": "USA",
+				"id": 37,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					100.8160803,
+					13.7538929
+				]
+			},
+			"properties": {
+				"city": "Bangkok, Thailand",
+				"country": "ประเทศไทย",
+				"id": 38,
+				"state": "กรุงเทพมหานคร"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-43.2093727,
+					-22.9110137
+				]
+			},
+			"properties": {
+				"city": "Rio de Janeiro, Brazil",
+				"country": "Brasil",
+				"id": 39,
+				"state": "RJ"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					2.1774322,
+					41.3828939
+				]
+			},
+			"properties": {
+				"city": "Barcelona, Spain",
+				"country": "España",
+				"id": 40,
+				"state": "CAT"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.0146841,
+					37.0510595
+				]
+			},
+			"properties": {
+				"city": "Scotts Valley, California",
+				"country": "USA",
+				"id": 41,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-86.1229910291288,
+					37.1841693
+				]
+			},
+			"properties": {
+				"city": "Mammoth Cave National Park, Kentucky",
+				"country": "USA",
+				"id": 42,
+				"state": "Kentucky"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-85.759407,
+					38.2542376
+				]
+			},
+			"properties": {
+				"city": "Louisville, Kentucky",
+				"country": "USA",
+				"id": 43,
+				"state": "Kentucky"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-119.5868869,
+					37.7481814
+				]
+			},
+			"properties": {
+				"city": "Yosemite Village, California",
+				"country": "USA",
+				"id": 44,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-85.1824269,
+					42.3192548
+				]
+			},
+			"properties": {
+				"city": "Battle Creek, Michigan",
+				"country": "USA",
+				"id": 45,
+				"state": "Michigan"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-93.268217735811,
+					44.9706705
+				]
+			},
+			"properties": {
+				"city": "Minneapolis, Minnesota",
+				"country": "USA",
+				"id": 46,
+				"state": "Minnesota"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-87.7581081,
+					41.7108662
+				]
+			},
+			"properties": {
+				"city": "Oak Lawn, Illinois",
+				"country": "USA",
+				"id": 47,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					4.64355969655963,
+					52.38370575
+				]
+			},
+			"properties": {
+				"city": "Haarlem, Netherlands",
+				"country": "Nederland",
+				"id": 48,
+				"state": "Noord-Holland"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-85.5872286,
+					42.291707
+				]
+			},
+			"properties": {
+				"city": "Kalamazoo, Michigan",
+				"country": "USA",
+				"id": 49,
+				"state": "Michigan"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.360172550506,
+					38.395445
+				]
+			},
+			"properties": {
+				"city": "Yountville, California",
+				"country": "USA",
+				"id": 50,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-87.8486613,
+					41.4958665
+				]
+			},
+			"properties": {
+				"city": "Frankfort, Illinois",
+				"country": "USA",
+				"id": 51,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-119.9843482,
+					38.9332411
+				]
+			},
+			"properties": {
+				"city": "South Lake Tahoe, California",
+				"country": "USA",
+				"id": 52,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-116.0543506,
+					34.1356915
+				]
+			},
+			"properties": {
+				"city": "Twentynine Palms, California",
+				"country": "USA",
+				"id": 53,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-119.6064674,
+					37.734435
+				]
+			},
+			"properties": {
+				"city": "Yosemite Valley, California",
+				"country": "USA",
+				"id": 54,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-43.9450948,
+					-19.9227318
+				]
+			},
+			"properties": {
+				"city": "Belo Horizonte, Brazil",
+				"country": "Brasil",
+				"id": 55,
+				"state": "MG"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-111.8413317,
+					33.3062223
+				]
+			},
+			"properties": {
+				"city": "Chandler, Arizona",
+				"country": "USA",
+				"id": 56,
+				"state": "Arizona"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-87.7013258,
+					41.720136
+				]
+			},
+			"properties": {
+				"city": "Evergreen Park, Illinois",
+				"country": "USA",
+				"id": 57,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					12.4853384,
+					41.894802
+				]
+			},
+			"properties": {
+				"city": "Rome, Italy",
+				"country": "Italia",
+				"id": 58,
+				"state": "LAZ"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.4192363,
+					37.7792808
+				]
+			},
+			"properties": {
+				"city": "San Francisco, California",
+				"country": "United States of America",
+				"id": 59,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-84.3901849,
+					33.7490987
+				]
+			},
+			"properties": {
+				"city": "Atlanta, Georgia",
+				"country": "USA",
+				"id": 60,
+				"state": "Georgia"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-72.6908547,
+					41.764582
+				]
+			},
+			"properties": {
+				"city": "Hartford, Connecticut",
+				"country": "USA",
+				"id": 61,
+				"state": "Connecticut"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-89.5891008,
+					40.6938609
+				]
+			},
+			"properties": {
+				"city": "Peoria, Illinois",
+				"country": "USA",
+				"id": 62,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					4.89797550561798,
+					52.3745403
+				]
+			},
+			"properties": {
+				"city": "Amsterdam, Netherlands",
+				"country": "Nederland",
+				"id": 63,
+				"state": "Noord-Holland"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-117.6124179,
+					33.4270275
+				]
+			},
+			"properties": {
+				"city": "San Clemente, California",
+				"country": "USA",
+				"id": 64,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-111.8314773,
+					33.4151117
+				]
+			},
+			"properties": {
+				"city": "Mesa, Arizona",
+				"country": "USA",
+				"id": 65,
+				"state": "Arizona"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-105.2705456,
+					40.0149856
+				]
+			},
+			"properties": {
+				"city": "Boulder, Colorado",
+				"country": "USA",
+				"id": 66,
+				"state": "Colorado"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-85.1386015,
+					41.0799898
+				]
+			},
+			"properties": {
+				"city": "Fort Wayne, Indiana",
+				"country": "USA",
+				"id": 67,
+				"state": "Indiana"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-91.5299106,
+					41.6612561
+				]
+			},
+			"properties": {
+				"city": "Iowa City, Iowa",
+				"country": "United States of America",
+				"id": 68,
+				"state": "Iowa"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-8.6301239,
+					52.661252
+				]
+			},
+			"properties": {
+				"city": "Limerick, Ireland",
+				"country": "Ireland",
+				"id": 69,
+				"state": ""
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-84.727828,
+					45.783901
+				]
+			},
+			"properties": {
+				"city": "Mackinaw City, Michigan",
+				"country": "USA",
+				"id": 70,
+				"state": "Michigan"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-87.6244212,
+					41.8755616
+				]
+			},
+			"properties": {
+				"city": "Chicago, Illinois",
+				"country": "United States of America",
+				"id": 71,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					128.0255901,
+					26.5707754
+				]
+			},
+			"properties": {
+				"city": "Okinawa, Japan",
+				"country": "日本",
+				"id": 72,
+				"state": "九州地方"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.2728639,
+					37.8708393
+				]
+			},
+			"properties": {
+				"city": "Berkeley, California",
+				"country": "USA",
+				"id": 73,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-83.0466403,
+					42.3315509
+				]
+			},
+			"properties": {
+				"city": "Detroit, Michigan",
+				"country": "USA",
+				"id": 74,
+				"state": "Michigan"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-85.3096801,
+					35.0456297
+				]
+			},
+			"properties": {
+				"city": "Chattanooga, Tennessee",
+				"country": "USA",
+				"id": 75,
+				"state": "Tennessee"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-121.8905833,
+					37.3361905
+				]
+			},
+			"properties": {
+				"city": "San Jose, California",
+				"country": "United States of America",
+				"id": 76,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					116.412144,
+					40.190632
+				]
+			},
+			"properties": {
+				"city": "Beijing, China",
+				"country": "中国",
+				"id": 77,
+				"state": "北京市"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					121.4691749,
+					31.2322735
+				]
+			},
+			"properties": {
+				"city": "Shanghai, China",
+				"country": "中国",
+				"id": 78,
+				"state": "上海市"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-121.2907796,
+					37.9577016
+				]
+			},
+			"properties": {
+				"city": "Stockton, California",
+				"country": "USA",
+				"id": 79,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-88.9941403,
+					40.4731073
+				]
+			},
+			"properties": {
+				"city": "Bloomington, Illinois",
+				"country": "United States of America",
+				"id": 80,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-88.5408574,
+					44.0206919
+				]
+			},
+			"properties": {
+				"city": "Oshkosh, Wisconsin",
+				"country": "USA",
+				"id": 81,
+				"state": "Wisconsin"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-104.820246,
+					41.139981
+				]
+			},
+			"properties": {
+				"city": "Cheyenne, Wyoming",
+				"country": "USA",
+				"id": 82,
+				"state": "Wyoming"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-97.7436995,
+					30.2711286
+				]
+			},
+			"properties": {
+				"city": "Austin, Texas",
+				"country": "USA",
+				"id": 83,
+				"state": "Texas"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-90.1994097,
+					38.6268039
+				]
+			},
+			"properties": {
+				"city": "Saint Louis, Missouri",
+				"country": "United States of America",
+				"id": 84,
+				"state": "Missouri"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.1598465,
+					37.4443293
+				]
+			},
+			"properties": {
+				"city": "Palo Alto, California",
+				"country": "United States of America",
+				"id": 85,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-116.6881244,
+					32.9726949
+				]
+			},
+			"properties": {
+				"city": "Boulder Creek, California",
+				"country": "USA",
+				"id": 86,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-87.7962812,
+					41.6681632
+				]
+			},
+			"properties": {
+				"city": "Palos Heights",
+				"country": "USA",
+				"id": 87,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-87.6930459,
+					42.0447388
+				]
+			},
+			"properties": {
+				"city": "Evanston, Illinois",
+				"country": "United States of America",
+				"id": 88,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-87.3371372,
+					41.6021292
+				]
+			},
+			"properties": {
+				"city": "Gary, Indiana",
+				"country": "USA",
+				"id": 89,
+				"state": "Indiana"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-6.2184562,
+					53.4598264
+				]
+			},
+			"properties": {
+				"city": "Swords, Ireland",
+				"country": "Ireland",
+				"id": 90,
+				"state": ""
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					14.5136759,
+					35.8989818
+				]
+			},
+			"properties": {
+				"city": "Valletta, Malta",
+				"country": "Malta",
+				"id": 91,
+				"state": "Malta"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-96.667821,
+					40.8
+				]
+			},
+			"properties": {
+				"city": "Lincoln, Nebraska",
+				"country": "USA",
+				"id": 92,
+				"state": "Nebraska"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-83.0007065,
+					39.9622601
+				]
+			},
+			"properties": {
+				"city": "Columbus, Ohio",
+				"country": "United States of America",
+				"id": 93,
+				"state": "Ohio"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-74.0776417,
+					40.7281575
+				]
+			},
+			"properties": {
+				"city": "Jersey City, New Jersey",
+				"country": "USA",
+				"id": 94,
+				"state": "New Jersey"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-76.610759,
+					39.2908816
+				]
+			},
+			"properties": {
+				"city": "Baltimore, Maryland",
+				"country": "USA",
+				"id": 95,
+				"state": "Maryland"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-9.0490632,
+					53.2744122
+				]
+			},
+			"properties": {
+				"city": "Galway, Ireland",
+				"country": "Ireland",
+				"id": 96,
+				"state": ""
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-112.1859941,
+					33.5386858
+				]
+			},
+			"properties": {
+				"city": "Glendale, Arizona",
+				"country": "United States of America",
+				"id": 97,
+				"state": "Arizona"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-6.0651186,
+					53.3858337
+				]
+			},
+			"properties": {
+				"city": "Howth, Ireland",
+				"country": "Ireland",
+				"id": 98,
+				"state": ""
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					10.000654,
+					53.550341
+				]
+			},
+			"properties": {
+				"city": "Hamburg, Germany",
+				"country": "Deutschland",
+				"id": 99,
+				"state": "Hamburg"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.2855293,
+					38.2971367
+				]
+			},
+			"properties": {
+				"city": "Napa, California",
+				"country": "USA",
+				"id": 100,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.5310874,
+					37.9735346
+				]
+			},
+			"properties": {
+				"city": "San Rafael, California",
+				"country": "USA",
+				"id": 101,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-104.9848623,
+					39.7392364
+				]
+			},
+			"properties": {
+				"city": "Denver, Colorado",
+				"country": "USA",
+				"id": 102,
+				"state": "Colorado"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-80.52662,
+					28.45077
+				]
+			},
+			"properties": {
+				"city": "Cape Canaveral, Florida",
+				"country": "United States of America",
+				"id": 103,
+				"state": "Florida"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-116.320934912149,
+					34.1265262
+				]
+			},
+			"properties": {
+				"city": "Joshua Tree, California",
+				"country": "USA",
+				"id": 104,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-117.911732,
+					33.8347516
+				]
+			},
+			"properties": {
+				"city": "Anaheim, California",
+				"country": "USA",
+				"id": 105,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-8.4705806,
+					51.8979282
+				]
+			},
+			"properties": {
+				"city": "Cork, Ireland",
+				"country": "Ireland",
+				"id": 106,
+				"state": ""
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-81.655651,
+					30.3321838
+				]
+			},
+			"properties": {
+				"city": "Jacksonville, Florida",
+				"country": "USA",
+				"id": 107,
+				"state": "Florida"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-111.9400125,
+					33.4255056
+				]
+			},
+			"properties": {
+				"city": "Tempe, Arizona",
+				"country": "United States of America",
+				"id": 108,
+				"state": "Arizona"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-86.1583502,
+					39.7683331
+				]
+			},
+			"properties": {
+				"city": "Indianapolis, Indiana",
+				"country": "USA",
+				"id": 109,
+				"state": "Indiana"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.1238767,
+					47.6694141
+				]
+			},
+			"properties": {
+				"city": "Redmond, Washington",
+				"country": "USA",
+				"id": 110,
+				"state": "Washington"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.606122413043,
+					38.270022
+				]
+			},
+			"properties": {
+				"city": "Petaluma, California",
+				"country": "USA",
+				"id": 111,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.0285259,
+					36.9749416
+				]
+			},
+			"properties": {
+				"city": "Santa Cruz, California",
+				"country": "USA",
+				"id": 112,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-78.8783922,
+					42.8867166
+				]
+			},
+			"properties": {
+				"city": "Buffalo, New York",
+				"country": "USA",
+				"id": 113,
+				"state": "New York"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-6.58852949200994,
+					53.64978435
+				]
+			},
+			"properties": {
+				"city": "Meath, Ireland",
+				"country": "Ireland",
+				"id": 114,
+				"state": ""
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-7.2484948,
+					52.6510216
+				]
+			},
+			"properties": {
+				"city": "Kilkenny, Ireland",
+				"country": "Ireland",
+				"id": 115,
+				"state": ""
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.4619205,
+					37.7057671
+				]
+			},
+			"properties": {
+				"city": "Daly City, California",
+				"country": "USA",
+				"id": 116,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-121.4943996,
+					38.5815719
+				]
+			},
+			"properties": {
+				"city": "Sacramento, California",
+				"country": "USA",
+				"id": 117,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-120.4843269,
+					37.3029568
+				]
+			},
+			"properties": {
+				"city": "Merced, California",
+				"country": "USA",
+				"id": 118,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-77.0841585,
+					38.8903961
+				]
+			},
+			"properties": {
+				"city": "Arlington, Virginia",
+				"country": "United States of America",
+				"id": 119,
+				"state": "Virginia"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					98.988048,
+					18.790876
+				]
+			},
+			"properties": {
+				"city": "Chiang Mai, Thailand",
+				"country": "ประเทศไทย",
+				"id": 120,
+				"state": "จังหวัดเชียงใหม่"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-72.196643,
+					21.7878705
+				]
+			},
+			"properties": {
+				"city": "Providenciales, Turks and Caicos",
+				"country": "Turks and Caicos Islands",
+				"id": 121,
+				"state": ""
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					30.316229,
+					59.938732
+				]
+			},
+			"properties": {
+				"city": "Saint Petersburg, Russia",
+				"country": "РФ",
+				"id": 122,
+				"state": "Санкт-Петербург"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-84.5124602,
+					39.1014537
+				]
+			},
+			"properties": {
+				"city": "Cincinnati, Ohio",
+				"country": "United States of America",
+				"id": 123,
+				"state": "Ohio"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-86.4418197139765,
+					34.6686435
+				]
+			},
+			"properties": {
+				"city": "Huntsville, Alabama",
+				"country": "USA",
+				"id": 124,
+				"state": "Alabama"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.0832101,
+					37.3893889
+				]
+			},
+			"properties": {
+				"city": "Mountain View, California",
+				"country": "USA",
+				"id": 125,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-87.8557225152143,
+					41.6026865
+				]
+			},
+			"properties": {
+				"city": "Orland Park",
+				"country": "United States of America",
+				"id": 126,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-87.8169984,
+					41.6966992
+				]
+			},
+			"properties": {
+				"city": "Palos Hills",
+				"country": "USA",
+				"id": 127,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-0.1276474,
+					51.5073219
+				]
+			},
+			"properties": {
+				"city": "London, England",
+				"country": "UK",
+				"id": 128,
+				"state": "England"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-88.207301,
+					40.1117174
+				]
+			},
+			"properties": {
+				"city": "Urbana, Illinois",
+				"country": "United States of America",
+				"id": 129,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-105.220742990446,
+					39.8211225
+				]
+			},
+			"properties": {
+				"city": "Arvada, Colorado",
+				"country": "United States of America",
+				"id": 130,
+				"state": "Colorado"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-75.1635262,
+					39.9527237
+				]
+			},
+			"properties": {
+				"city": "Philadelphia, Pennsylvania",
+				"country": "United States of America",
+				"id": 131,
+				"state": "Pennsylvania"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-79.9900861,
+					40.4416941
+				]
+			},
+			"properties": {
+				"city": "Pittsburgh, Pennsylvania",
+				"country": "USA",
+				"id": 132,
+				"state": "Pennsylvania"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-118.1916048,
+					33.7690164
+				]
+			},
+			"properties": {
+				"city": "Long Beach, California",
+				"country": "United States of America",
+				"id": 133,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-79.387207,
+					43.653963
+				]
+			},
+			"properties": {
+				"city": "Toronto, Canada",
+				"country": "Canada",
+				"id": 134,
+				"state": "Ontario"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-117.9294401,
+					33.6170092
+				]
+			},
+			"properties": {
+				"city": "Newport Beach, California",
+				"country": "USA",
+				"id": 135,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-7.10178789304073,
+					52.2449628
+				]
+			},
+			"properties": {
+				"city": "Waterford, Ireland",
+				"country": "Ireland",
+				"id": 136,
+				"state": ""
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-83.0466403,
+					42.3315509
+				]
+			},
+			"properties": {
+				"city": "Detroit, Michigan",
+				"country": "USA",
+				"id": 137,
+				"state": "Michigan"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-117.3961623,
+					33.9533546
+				]
+			},
+			"properties": {
+				"city": "Riverside, California",
+				"country": "USA",
+				"id": 138,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-120.9968782,
+					37.6390972
+				]
+			},
+			"properties": {
+				"city": "Modesto, California",
+				"country": "USA",
+				"id": 139,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-88.1761521,
+					39.4961458
+				]
+			},
+			"properties": {
+				"city": "Charleston, Illinois",
+				"country": "USA",
+				"id": 140,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					14.4027386158198,
+					35.8858588
+				]
+			},
+			"properties": {
+				"city": "Mdina, Malta",
+				"country": "Malta",
+				"id": 141,
+				"state": "Malta"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.4854694,
+					37.8590272
+				]
+			},
+			"properties": {
+				"city": "Sausalito, California",
+				"country": "USA",
+				"id": 142,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.2713563,
+					37.8044557
+				]
+			},
+			"properties": {
+				"city": "Oakland, California",
+				"country": "USA",
+				"id": 143,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-74.0060152,
+					40.7127281
+				]
+			},
+			"properties": {
+				"city": "New York, New York",
+				"country": "USA",
+				"id": 144,
+				"state": "New York"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-84.1916069,
+					39.7589478
+				]
+			},
+			"properties": {
+				"city": "Dayton, Ohio",
+				"country": "United States of America",
+				"id": 145,
+				"state": "Ohio"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-6.38197070867766,
+					52.95814675
+				]
+			},
+			"properties": {
+				"city": "Wicklow, Ireland",
+				"country": "Ireland",
+				"id": 146,
+				"state": ""
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-120.6596156,
+					35.2827525
+				]
+			},
+			"properties": {
+				"city": "San Luis Obispo, California",
+				"country": "USA",
+				"id": 147,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-6.2602732,
+					53.3497645
+				]
+			},
+			"properties": {
+				"city": "Dublin, Ireland",
+				"country": "Ireland",
+				"id": 148,
+				"state": ""
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-116.3825711,
+					33.7288179
+				]
+			},
+			"properties": {
+				"city": "Palm Desert, California",
+				"country": "USA",
+				"id": 149,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					99.1097298,
+					8.1111653
+				]
+			},
+			"properties": {
+				"city": "Krabi, Thailand",
+				"country": "ประเทศไทย",
+				"id": 150,
+				"state": "จังหวัดกระบี่"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					13.3888599,
+					52.5170365
+				]
+			},
+			"properties": {
+				"city": "Berlin, Germany",
+				"country": "Deutschland",
+				"id": 151,
+				"state": "Berlin"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-85.5800022,
+					42.2011538
+				]
+			},
+			"properties": {
+				"city": "Portage, Michigan",
+				"country": "United States of America",
+				"id": 152,
+				"state": "Michigan"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.3871942,
+					37.5985468
+				]
+			},
+			"properties": {
+				"city": "Millbrae, California",
+				"country": "United States of America",
+				"id": 153,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-85.5872286,
+					42.291707
+				]
+			},
+			"properties": {
+				"city": "Kalamazoo, Michigan",
+				"country": "USA",
+				"id": 154,
+				"state": "Michigan"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-112.0773456,
+					33.4485866
+				]
+			},
+			"properties": {
+				"city": "Phoenix, Arizona",
+				"country": "USA",
+				"id": 155,
+				"state": "Arizona"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-92.3337366,
+					38.951883
+				]
+			},
+			"properties": {
+				"city": "Columbia, Missouri",
+				"country": "USA",
+				"id": 156,
+				"state": "Missouri"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.2865266,
+					37.8314089
+				]
+			},
+			"properties": {
+				"city": "Emeryville, California",
+				"country": "USA",
+				"id": 157,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-88.0670118,
+					41.8775293
+				]
+			},
+			"properties": {
+				"city": "Glen Ellyn, Illinois",
+				"country": "United States of America",
+				"id": 158,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-88.3773279,
+					39.4842821
+				]
+			},
+			"properties": {
+				"city": "Mattoon, Illinois",
+				"country": "USA",
+				"id": 159,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-6.1285497,
+					53.3958303
+				]
+			},
+			"properties": {
+				"city": "Baldoyle, Ireland",
+				"country": "Ireland",
+				"id": 160,
+				"state": ""
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					135.5014539,
+					34.6937569
+				]
+			},
+			"properties": {
+				"city": "Osaka, Japan",
+				"country": "日本",
+				"id": 161,
+				"state": "近畿地方"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-118.2427666,
+					34.0536909
+				]
+			},
+			"properties": {
+				"city": "Los Angeles, California",
+				"country": "United States of America",
+				"id": 162,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-89.6439575,
+					39.7990175
+				]
+			},
+			"properties": {
+				"city": "Springfield, Illinois",
+				"country": "USA",
+				"id": 163,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-90.6713939,
+					40.4588934
+				]
+			},
+			"properties": {
+				"city": "Macomb, Illinois",
+				"country": "USA",
+				"id": 164,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-87.7333972,
+					42.0333694
+				]
+			},
+			"properties": {
+				"city": "Skokie, Illinois",
+				"country": "United States of America",
+				"id": 165,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-115.149225,
+					36.1662859
+				]
+			},
+			"properties": {
+				"city": "Las Vegas, Nevada",
+				"country": "USA",
+				"id": 166,
+				"state": "Nevada"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-117.1627714,
+					32.7174209
+				]
+			},
+			"properties": {
+				"city": "San Diego, California",
+				"country": "USA",
+				"id": 167,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-84.2747329,
+					34.0709576
+				]
+			},
+			"properties": {
+				"city": "Alpharetta, Georgia",
+				"country": "USA",
+				"id": 168,
+				"state": "Georgia"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-87.8169984,
+					41.6966992
+				]
+			},
+			"properties": {
+				"city": "Palos Hills, Illinois",
+				"country": "USA",
+				"id": 169,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-87.6717674,
+					41.7181532
+				]
+			},
+			"properties": {
+				"city": "Beverly, Illinois",
+				"country": "USA",
+				"id": 170,
+				"state": "Illinois"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-118.3963062,
+					34.0696501
+				]
+			},
+			"properties": {
+				"city": "Beverly Hills, California",
+				"country": "USA",
+				"id": 171,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-64.9188997006027,
+					18.34290815
+				]
+			},
+			"properties": {
+				"city": "Saint Thomas, US Virgin Islands",
+				"country": "USA",
+				"id": 172,
+				"state": "United States Virgin Islands"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-7.4928384,
+					53.2743191
+				]
+			},
+			"properties": {
+				"city": "Tullamore, Ireland",
+				"country": "Ireland",
+				"id": 173,
+				"state": ""
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-6.4008879,
+					54.0046033
+				]
+			},
+			"properties": {
+				"city": "Dundalk, Ireland",
+				"country": "Ireland",
+				"id": 174,
+				"state": ""
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-87.922497,
+					43.0349931
+				]
+			},
+			"properties": {
+				"city": "Milwaukee, Wisconsin",
+				"country": "United States of America",
+				"id": 175,
+				"state": "Wisconsin"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.1923372,
+					47.6144219
+				]
+			},
+			"properties": {
+				"city": "Bellevue, Washington",
+				"country": "USA",
+				"id": 176,
+				"state": "Washington"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-119.516587798025,
+					37.84054795
+				]
+			},
+			"properties": {
+				"city": "Yosemite National Park, California",
+				"country": "USA",
+				"id": 177,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-119.0194639,
+					35.3738712
+				]
+			},
+			"properties": {
+				"city": "Bakersfield, California",
+				"country": "USA",
+				"id": 178,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-119.8136744,
+					39.52927
+				]
+			},
+			"properties": {
+				"city": "Reno, Nevada",
+				"country": "USA",
+				"id": 179,
+				"state": "Nevada"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-122.4700424,
+					38.5052288
+				]
+			},
+			"properties": {
+				"city": "Saint Helena, California",
+				"country": "USA",
+				"id": 180,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-80.1936589,
+					25.7742658
+				]
+			},
+			"properties": {
+				"city": "Miami, Florida",
+				"country": "USA",
+				"id": 181,
+				"state": "Florida"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-116.2188054,
+					33.7192808
+				]
+			},
+			"properties": {
+				"city": "Indio, California",
+				"country": "USA",
+				"id": 182,
+				"state": "California"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-7.34785582600976,
+					53.5577902
+				]
+			},
+			"properties": {
+				"city": "Westmeath, Ireland",
+				"country": "Ireland",
+				"id": 183,
+				"state": ""
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-86.8950297,
+					41.7075394
+				]
+			},
+			"properties": {
+				"city": "Michigan City, Indiana",
+				"country": "USA",
+				"id": 184,
+				"state": "Indiana"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					77.2219388,
+					28.6517178
+				]
+			},
+			"properties": {
+				"city": "Delhi, India",
+				"country": "India",
+				"id": 185,
+				"state": "Delhi"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					77.2022662,
+					28.6141793
+				]
+			},
+			"properties": {
+				"city": "New Delhi, India",
+				"country": "India",
+				"id": 186,
+				"state": "Delhi"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					72.8353355,
+					18.9387711
+				]
+			},
+			"properties": {
+				"city": "Mumbai, India",
+				"country": "India",
+				"id": 187,
+				"state": "Maharashtra"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					78.0098161,
+					27.1752554
+				]
+			},
+			"properties": {
+				"city": "Agra, India",
+				"country": "India",
+				"id": 188,
+				"state": "Uttar Pradesh"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					76.2449495,
+					9.9654468
+				]
+			},
+			"properties": {
+				"city": "Fort Kochi, India",
+				"country": "India",
+				"id": 189,
+				"state": "Kerala"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					76.25933395,
+					9.95745295
+				]
+			},
+			"properties": {
+				"city": "Mattancherry, Kochi, India",
+				"country": "India",
+				"id": 191,
+				"state": "Kerala"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					120.3785584,
+					36.0634258
+				]
+			},
+			"properties": {
+				"city": "Qingdao, China",
+				"country": "中国",
+				"id": 192,
+				"state": "山东省"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-66.116666,
+					18.465299
+				]
+			},
+			"properties": {
+				"city": "San Juan, Puerto Rico",
+				"country": "USA",
+				"id": 193,
+				"state": "Puerto Rico"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-85.3416815,
+					10.8241828
+				]
+			},
+			"properties": {
+				"city": "Rincon de la Vieja, Costa Rica",
+				"country": "Costa Rica",
+				"id": 194,
+				"state": "Provincia Guanacaste"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-85.6922619621323,
+					10.5579948
+				]
+			},
+			"properties": {
+				"city": "Playa Del Coco, Costa Rica",
+				"country": "Costa Rica",
+				"id": 195,
+				"state": "Provincia Guanacaste"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-85.4987893394147,
+					10.6927375
+				]
+			},
+			"properties": {
+				"city": "Liberia, Costa Rica",
+				"country": "Costa Rica",
+				"id": 196,
+				"state": "Provincia Guanacaste"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					151.2164539,
+					-33.8548157
+				]
+			},
+			"properties": {
+				"city": "Sydney, Australia",
+				"country": "Australia",
+				"id": 197,
+				"state": "NSW"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					174.7631803,
+					-36.852095
+				]
+			},
+			"properties": {
+				"city": "Auckland, New Zealand",
+				"country": "New Zealand",
+				"id": 198,
+				"state": "Auckland"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					121.5636796,
+					25.0375198
+				]
+			},
+			"properties": {
+				"city": "Taipei, Taiwan",
+				"country": "TW",
+				"id": 199,
+				"state": "臺北市"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					168.6608096,
+					-45.0317203
+				]
+			},
+			"properties": {
+				"city": "Queenstown, New Zealand",
+				"country": "New Zealand / Aotearoa",
+				"id": 200,
+				"state": ""
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-90.0701156,
+					29.9499323
+				]
+			},
+			"properties": {
+				"city": "New Orleans, Louisiana",
+				"country": "USA",
+				"id": 201,
+				"state": "Louisiana"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-89.1914249,
+					13.6989939
+				]
+			},
+			"properties": {
+				"city": "San Salvador, El Salvador",
+				"country": "República de El Salvador",
+				"id": 202,
+				"state": "Departamento de San Salvador"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-71.9711244,
+					-13.5212349
+				]
+			},
+			"properties": {
+				"city": "Cusco, Peru",
+				"country": "Perú",
+				"id": 203,
+				"state": "Cusco"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-66.6201834,
+					-26.2597618
+				]
+			},
+			"properties": {
+				"city": "Aguas Calientes",
+				"country": "Argentina",
+				"id": 204,
+				"state": "CTM"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-77.0365256,
+					-12.0621065
+				]
+			},
+			"properties": {
+				"city": "Lima, Peru",
+				"country": "Peru",
+				"id": 205,
+				"state": "Lima"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6504451,
+					-33.4377968
+				]
+			},
+			"properties": {
+				"city": "Santiago, Chile",
+				"country": "Chile",
+				"id": 206,
+				"state": "Región Metropolitana de Santiago"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.2491559,
+					-33.3543477
+				]
+			},
+			"properties": {
+				"city": "Valle Nevado, Chile",
+				"country": "Chile",
+				"id": 207,
+				"state": "Región Metropolitana de Santiago"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-58.437076,
+					-34.6075616
+				]
+			},
+			"properties": {
+				"city": "Buenos Aires, Argentina",
+				"country": "Argentina",
+				"id": 208,
+				"state": "CABA"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-58.5808967,
+					-34.4226513
+				]
+			},
+			"properties": {
+				"city": "Tigre, Argentina",
+				"country": "Argentina",
+				"id": 209,
+				"state": "Bs. As."
+			}
+		}
+	]
+}

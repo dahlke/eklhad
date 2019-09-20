@@ -7,6 +7,7 @@ My personal web assets.
 ### Requirements
 
 - `make`
+- `git`
 - `go`
 - `npm`
 - `packer`

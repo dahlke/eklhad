@@ -4,11 +4,9 @@ WEB_APP_NAME = eklhad-web
 WEB_APP_TAR_NAME = eklhad-web.tar.gz
 CWD := $(shell pwd)
 
-PACKER_DIR=${CWD}/packer
-PACKER_GCP_DEF_PATH=${PACKER_DIR}/gcp/image.json
-PACKER_IMAGE_CMD=`tail -n 1 ${PACKER_DIR}/gcp/output/gcp_packer_build_output.txt | awk '{print $$8}'`
-ARTIFACT_DIR=${CWD}/artifact
-ARTIFACT_DIR_LINUX=${ARTIFACT_DIR}/tar/linux
+PACKER_GCP_DEF_PATH=packer/gcp/image.json
+PACKER_IMAGE_CMD=`tail -n 1 packer/gcp/output/gcp_packer_build_output.txt | awk '{print $$8}'`
+ARTIFACT_DIR_LINUX=${CWD}/artifact/tar/linux
 TF_GCP_APP_DIR=${CWD}/terraform/app/gcp
 WEB_APP_SRC_DIR=web/
 
@@ -16,12 +14,14 @@ DOCKER_HUB_USER=eklhad
 DOCKER_TEST_IMAGE_NAME=eklhad-web-circleci
 DOCKER_TEST_IMAGE_VERSION=0.1
 
+
 ##########################
 # DEV HELPERS
 ##########################
 .PHONY: todo
 todo:
 	@ag "TODO" --ignore Makefile,web/frontend/node_modules
+
 
 ##########################
 # WEB HELPERS
@@ -50,6 +50,7 @@ frontend_start: npm resume
 frontend_build: npm resume
 	cd web/frontend/ && npm run-script build
 
+
 ##########################
 # GO HELPERS
 ##########################
@@ -65,12 +66,14 @@ go_server_start:
 go_build_linux:
 	cd web && GOOS=linux GOARCH=amd64 go build main.go
 
+
 ##########################
 # IMAGE BUILD HELPERS
 ##########################
 # TODO: only include necessary files for minimum size
 .PHONY: artifact_linux_web
 artifact_linux_web: go_build_linux
+	ls && \
 	tar cf ${ARTIFACT_DIR_LINUX}/${WEB_APP_TAR_NAME} ${WEB_APP_SRC_DIR}
 
 

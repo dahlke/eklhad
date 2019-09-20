@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  test:
+  go_js_test:
     docker:
       - image: eklhad/eklhad-web-circleci:0.1
     working_directory: /go/src/github.com/dahlke/eklhad/
@@ -10,8 +10,28 @@ jobs:
       - run: go test -v ./...
       - run: npm --prefix web/frontend/ install
       - run: npm --prefix web/frontend/ run-script test
+  packer_build_terraform_deploy:
+    docker:
+      - image: eklhad/eklhad-web-circleci:0.1
+    working_directory: /go/src/github.com/dahlke/eklhad/
+    steps:
+      - checkout
+      - run: make frontend_build
+      - run: make go_get
+      # - run: go run main.go -geocode
+      - run: mkdir -p artifact/tar/linux/
+      - run: make artifact_linux_web
+      - run: touch account.json
+      - run: echo $GOOGLE_CREDENTIALS_JSON > account.json
+      - run: mkdir -p packer/gcp/output/
+      - run: packer validate packer/gcp/circleci-image.json
+      - run: packer -machine-readable build packer/gcp/circleci-image.json
 workflows:
   version: 2
   test_and_deploy:
     jobs:
-        - test
+      - go_js_test
+      # - packer_build_terraform_deploy
+      # - packer_build_terraform_deploy:
+          # requires:
+            # - go_js_test

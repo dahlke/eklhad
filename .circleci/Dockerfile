@@ -5,7 +5,8 @@ ENV GO_VERSION 1.13
 ADD https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz /
 RUN tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz
 ENV PATH $PATH:/usr/local/go/bin
-RUN mkdir $HOME/go
+RUN mkdir /go
+ENV GOPATH /go
 
 # Since the musl and glibc so are compatible, you can make this symlink and it will fix the missing dependency.
 # https://stackoverflow.com/questions/34729748/installed-go-binary-not-found-in-path-on-alpine-linux-docker
@@ -14,8 +15,8 @@ RUN mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
 # https://github.com/golang/go/issues/27303
 ENV CGO_ENABLED 0
 
-# Install Node and Git
-RUN apk add --update nodejs npm git
+# Install Node, Make and Git
+RUN apk add --update nodejs npm make git bash
 
 # Install Packer
 ENV PACKER_VERSION 1.4.3
