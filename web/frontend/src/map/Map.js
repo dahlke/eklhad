@@ -17,14 +17,12 @@ class Map extends Component {
             bearing: 0,
             pitch: 50
         },
-        locations: {},
         popupInfo: null
     }
 
     _renderPopup() {
         const {popupInfo} = this.state;
 
-        console.log(popupInfo);
         return popupInfo && (
             <Popup tipSize={5}
                 anchor="top"
@@ -49,13 +47,32 @@ class Map extends Component {
                         latitude={feature.geometry.coordinates[1]}
                         longitude={feature.geometry.coordinates[0]}
                     >
-                        <div className="map-custom-marker" onClick={() => this.setState({popupInfo: feature})} />
+                        <div className="map-custom-marker static-location" onClick={() => this.setState({popupInfo: feature})} />
                     </Marker>
                     );
             });
         }
 
         return markers;
+    }
+
+    _renderCurrentLocation() {
+        const {currentLocation} = this.props;
+        var marker;
+
+        if (currentLocation) {
+            marker = (
+                <Marker
+                    key={currentLocation.properties.id}
+                    latitude={currentLocation.geometry.coordinates[1]}
+                    longitude={currentLocation.geometry.coordinates[0]}
+                >
+                    <div className="map-custom-marker current-location" onClick={() => this.setState({popupInfo: currentLocation})} />
+                </Marker>
+            );
+        }
+
+        return marker;
     }
 
     render() {
@@ -72,6 +89,7 @@ class Map extends Component {
                     >
                 {this._renderPopup()}
                 {this._renderMarkers()}
+                {this._renderCurrentLocation()}
                 </ReactMapGL>
             </div>
             );

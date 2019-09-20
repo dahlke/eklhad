@@ -20,6 +20,13 @@ type templatePayload struct {
 var appHostName, _ = os.Hostname()
 var appPort = 80
 
+func apiCurrentLocationHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	locations := services.GetCurrentLocationGeoJSON()
+	json.NewEncoder(w).Encode(locations)
+}
+
 func apiLocationsHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
@@ -60,8 +67,6 @@ func main() {
 	portPtr := flag.Int("port", 80, "The port to run the HTTP app on.")
 	productionPtr := flag.Bool("production", false, "If true, run the app over HTTPS.")
 	geocodePtr := flag.Bool("geocode", false, "If true, the geojson file will be updated based on the cities-array.json file.")
-
-	// TODO: currentLocation - env var or flag?
 	flag.Parse()
 
 	configLogger()
@@ -77,12 +82,11 @@ func main() {
 
 	http.HandleFunc("/", htmlHandler)
 	http.HandleFunc("/api/locations", apiLocationsHandler)
+	http.HandleFunc("/api/current_location", apiCurrentLocationHandler)
 	http.HandleFunc("/api/links", apiLinksHandler)
 
-	// TODO: add an option to update all the locations GeoJSON
-
 	if isGeocodePass {
-		services.ConvertJSONArrayToGeoJSON()
+		services.GeocodeJSON()
 	} else if isProduction {
 		log.Println("Starting HTTPS server...")
 		go http.ListenAndServe(fmt.Sprintf(":%d", appPort), http.HandlerFunc(redirectToHTTPS))

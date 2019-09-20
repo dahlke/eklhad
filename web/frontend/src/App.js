@@ -25,6 +25,7 @@ class App extends Component {
       zoom: 8
     },
     locations: {},
+    currentLocation: null,
     linksDateMap: [],
     sortedLinks: [],
     selectedYear: parseInt(moment().subtract(1, 'years').format("YYYY")),
@@ -35,6 +36,24 @@ class App extends Component {
     super(props);
     this._fetchLinkData();
     this._fetchLocationData();
+    this._fetchCurrentLocationData();
+  }
+
+  _fetchCurrentLocationData() {
+    const api_url = `${API_BASE_URL}/current_location`;
+
+    fetch(api_url)
+      .then((response) => { return response.json() })
+      .catch((err) => { console.log("Error retrieving current location.", err); })
+      .then((data) => {
+        data = !!data ? data : [];
+
+        console.log(data);
+
+        this.setState({
+          currentLocation: data
+        });
+      });
   }
 
   _fetchLocationData() {
@@ -42,7 +61,7 @@ class App extends Component {
 
     fetch(api_url)
       .then((response) => { return response.json() })
-      .catch((err) => { console.log("Error retrieving links.", err); })
+      .catch((err) => { console.log("Error retrieving locations.", err); })
       .then((data) => {
         data = !!data ? data : [];
 
@@ -115,7 +134,7 @@ class App extends Component {
               <a href="http://twitter.com/neildahlke">Twitter</a> / <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/eklhad">Instagram</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.github.com/dahlke">GitHub</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.linkedin.com/in/neildahlke">LinkedIn</a> / <a href="static/resume.html">Resume</a>
             </h6>
 
-            <Map locations={this.state.locations} />
+            <Map locations={this.state.locations} currentLocation={this.state.currentLocation} />
 
             <div className="select-year">
               <Select
