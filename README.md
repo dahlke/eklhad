@@ -11,22 +11,7 @@ My personal web assets.
 - `packer`
 - `terraform`
 
-### Geocode the JSON array after updating
 
-go run main.go -geocode
-
-### GCP Quick Deploy
-
-There are several build stages that are required for the ultimate deployment. The React / SASS frontend code needs to be built, the Go web server needs to be compiled, an artifact zipped up, a Packer image needs to be created for the target cloud provider, and then that all needs to be deployed using Terraform.
-
-You can read the [Makefile](./Makefile) to see what commands are being run under the hood, but to do all of the above process quickly, run:
-```
-make frontend_build
-make artifact_linux_web
-make image_gcp
-make tf_plan_gcp
-make tf_apply_gcp
-```
 
 ### Development
 
@@ -50,4 +35,24 @@ There are some pre-commit hooks that are useful since the same tests will be run
 cd .git/hooks
 ln -s -f ../../hooks/pre-commit ./pre-commit
 chmod +x ../../hooks/pre-commit ./pre-commit
+```
+
+### Geocoding Cities
+
+The map requires each city visited to be geocoded. To geocode a city, add it to the array in [`cities.json`](./web/services/data/cities-array.json)
+`` `
+go run main.go -geocode
+`` `
+
+
+### GCP Quick Deploy
+
+There are several build stages that are required for the ultimate deployment. The React / SASS frontend code needs to be built, the Go web server needs to be compiled, an artifact zipped up, a Packer image needs to be created for the target cloud provider, and then that all needs to be deployed using Terraform.
+
+You can read the [Makefile](./Makefile) to see what commands are being run under the hood, but to do all of the above process quickly, run:
+```
+make frontend_build
+make artifact_linux_web
+make image_gcp
+make tf_apply_gcp
 ```
