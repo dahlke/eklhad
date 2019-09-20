@@ -15,8 +15,8 @@ web/node_modules/
 .terraform/
 .vagrant/
 output/
-artifact/tar/mac/*
-artifact/tar/linux/*
+artifact/tar/mac/*.tar.gz
+artifact/tar/linux/*.tar.gz
 
 #SSH Keys
 *.pem

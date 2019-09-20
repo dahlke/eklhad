@@ -2,7 +2,7 @@
     "builders": [
       {
         "type": "googlecompute",
-        "account_file": "~/.gcp/eklhad/eklhad-web-e91c00f7deef.json",
+        "account_file": "account.json",
         "project_id": "eklhad-web",
         "source_image": "ubuntu-1604-xenial-v20181204",
         "image_name": "eklhad-web-packer-{{timestamp}}",

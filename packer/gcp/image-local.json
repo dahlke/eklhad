@@ -2,8 +2,8 @@
     "builders": [
       {
         "type": "googlecompute",
-        "account_file": "~/.gcp/eklhad/eklhad-web-e91c00f7deef.json",
         "project_id": "eklhad-web",
+        "account_file": "/Users/neil/.gcp/eklhad/eklhad-web-e91c00f7deef.json",
         "source_image": "ubuntu-1604-xenial-v20181204",
         "image_name": "eklhad-web-packer-{{timestamp}}",
         "machine_type": "n1-standard-1",
