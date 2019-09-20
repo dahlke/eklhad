@@ -286,6 +286,13 @@
             "date": "2018-08-20",
             "type": "webinar",
             "url": "http://go.memsql.com/kafka-and-modern-databases"
+        },
+        {
+            "id": 42,
+            "name": "Oracle Open World: DevOps Automation with HashiCorp Terraform",
+            "date": "2018-09-16",
+            "type": "talk",
+            "url": "https://events.rainfocus.com/widget/oracle/oow19/catalogow19?search.topic=155621695037200362ko&search=terraform"
         }
     ]
 }
