@@ -16,10 +16,11 @@ import (
 )
 
 type eklhadCities struct {
-	Locations []string `json:"cities"`
+	Cities      []string `json:"cities"`
+	CurrentCity string   `json:"current_city"`
 }
 
-func loadCitiesFromJSON() []string {
+func loadCitiesFromJSON() eklhadCities {
 	absCitiesJSONPath, err := filepath.Abs("./services/data/cities-array.json")
 	if err != nil {
 		log.Error(err)
@@ -33,15 +34,18 @@ func loadCitiesFromJSON() []string {
 
 	locationsByteValue, _ := ioutil.ReadAll(citiesJSONFile)
 
-	var allLocations eklhadCities
-	json.Unmarshal(locationsByteValue, &allLocations)
+	var cityData eklhadCities
+	json.Unmarshal(locationsByteValue, &cityData)
 
-	return allLocations.Locations
+	return cityData
 }
 
-func ConvertJSONArrayToGeoJSON() {
+func GeocodeJSON() {
 	geocoder := openstreetmap.Geocoder()
-	citiesArray := loadCitiesFromJSON()
+	cityData := loadCitiesFromJSON()
+	citiesArray := cityData.Cities
+	currentCity := cityData.CurrentCity
+
 	fc := geojson.NewFeatureCollection()
 
 	idCounter := 0
@@ -78,7 +82,22 @@ func ConvertJSONArrayToGeoJSON() {
 	featureCollectionJSONBytes, _ := fc.MarshalJSON()
 	var prettyFeatureCollectionJSONBytes bytes.Buffer
 	json.Indent(&prettyFeatureCollectionJSONBytes, featureCollectionJSONBytes, "", "\t")
-	err := ioutil.WriteFile("./services/data/locations.geojson", prettyFeatureCollectionJSONBytes.Bytes(), 0644)
+	err := ioutil.WriteFile("./services/data/locations_test.geojson", prettyFeatureCollectionJSONBytes.Bytes(), 0644)
+	if err != nil {
+		log.Error(err)
+	}
+
+	currentCityGeocodedLocation, err := geocoder.Geocode(currentCity)
+	var currentCityPF *geojson.Feature
+	currentCityPF = geojson.NewPointFeature([]float64{currentCityGeocodedLocation.Lng, currentCityGeocodedLocation.Lat})
+	currentCityPF.Properties = nil
+	currentCityPF.SetProperty("city", currentCity)
+	currentCityPF.SetProperty("id", idCounter)
+
+	currentCityPFJSONBytes, _ := fc.MarshalJSON()
+	var prettyCurrentCityPFBytes bytes.Buffer
+	json.Indent(&prettyCurrentCityPFBytes, currentCityPFJSONBytes, "", "\t")
+	err = ioutil.WriteFile("./services/data/current_location_test.geojson", prettyCurrentCityPFBytes.Bytes(), 0644)
 	if err != nil {
 		log.Error(err)
 	}
@@ -90,14 +109,32 @@ func GetLocationsGeoJSON() geojson.FeatureCollection {
 		log.Error(err)
 	}
 
-	geojsonFile, err := os.Open(geojsonFilePath)
+	allLocationsGeoJSONFile, err := os.Open(geojsonFilePath)
 	if err != nil {
 		log.Error(err)
 	}
-	defer geojsonFile.Close()
+	defer allLocationsGeoJSONFile.Close()
 
-	geojsonBytes, _ := ioutil.ReadAll(geojsonFile)
+	geojsonBytes, _ := ioutil.ReadAll(allLocationsGeoJSONFile)
 	geojsonFeatureCollection, err := geojson.UnmarshalFeatureCollection(geojsonBytes)
 
 	return *geojsonFeatureCollection
+}
+
+func GetCurrentLocationGeoJSON() geojson.Feature {
+	geojsonFilePath, err := filepath.Abs("./services/data/current_location.geojson")
+	if err != nil {
+		log.Error(err)
+	}
+
+	currentLocationGeoJSONFile, err := os.Open(geojsonFilePath)
+	if err != nil {
+		log.Error(err)
+	}
+	defer currentLocationGeoJSONFile.Close()
+
+	geojsonBytes, _ := ioutil.ReadAll(currentLocationGeoJSONFile)
+	geojsonCurrentLocation, err := geojson.UnmarshalFeature(geojsonBytes)
+
+	return *geojsonCurrentLocation
 }

@@ -11,6 +11,10 @@ My personal web assets.
 - `packer`
 - `terraform`
 
+### Geocode the JSON array after updating
+
+go run main.go -geocode
+
 ### GCP Quick Deploy
 
 There are several build stages that are required for the ultimate deployment. The React / SASS frontend code needs to be built, the Go web server needs to be compiled, an artifact zipped up, a Packer image needs to be created for the target cloud provider, and then that all needs to be deployed using Terraform.
@@ -20,13 +24,6 @@ You can read the [Makefile](./Makefile) to see what commands are being run under
 make frontend_build
 make artifact_linux_web
 make image_gcp
-```
-
-Before proceeding, make sure you set the desired image in the `.tfvars` file.
-
-```
-tail -n 1 packer/gcp/output/gcp_packer_build_output.txt | awk '{print $8}'
-
 make tf_plan_gcp
 make tf_apply_gcp
 ```
