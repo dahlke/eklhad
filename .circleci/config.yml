@@ -1,8 +1,8 @@
 version: 2
 jobs:
-  build:
+  test:
     docker:
-      - image: circleci/golang:1.9-node
+      - image: eklhad/eklhad-web-circleci:0.1
     working_directory: /go/src/github.com/dahlke/eklhad/
     steps:
       - checkout
@@ -10,3 +10,8 @@ jobs:
       - run: go test -v ./...
       - run: npm --prefix web/frontend/ install
       - run: npm --prefix web/frontend/ run-script test
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+        - test

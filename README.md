@@ -47,7 +47,7 @@ ln -s -f ../../hooks/pre-commit ./pre-commit
 chmod +x ../../hooks/pre-commit ./pre-commit
 ```
 
-### GCP Quick Deploy
+### GCP Manual Deploy
 
 There are several build stages that are required for the ultimate deployment. The React / SASS frontend code needs to be built, the Go web server needs to be compiled, an artifact zipped up, a Packer image needs to be created for the target cloud provider, and then that all needs to be deployed using Terraform.
 
@@ -57,4 +57,16 @@ make frontend_build
 make artifact_linux_web
 make image_gcp
 make tf_apply_gcp
+```
+
+
+### CircleCI Docker Test Image
+
+```
+make docker_build
+docker run -i -t eklhad-web-tester:0.1 /bin/sh
+```
+
+```
+make docker_push
 ```
