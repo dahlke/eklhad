@@ -12,6 +12,10 @@ ARTIFACT_DIR_LINUX=${ARTIFACT_DIR}/tar/linux
 TF_GCP_APP_DIR=${CWD}/terraform/app/gcp
 WEB_APP_SRC_DIR=web/
 
+DOCKER_HUB_USER=eklhad
+DOCKER_TEST_IMAGE_NAME=eklhad-web-circleci
+DOCKER_TEST_IMAGE_VERSION=0.1
+
 ##########################
 # DEV HELPERS
 ##########################
@@ -69,12 +73,14 @@ go_build_linux:
 artifact_linux_web: go_build_linux
 	tar cf ${ARTIFACT_DIR_LINUX}/${WEB_APP_TAR_NAME} ${WEB_APP_SRC_DIR}
 
+
 .PHONY: image_gcp
 image_gcp:
 	packer -machine-readable build ${PACKER_GCP_DEF_PATH} >> packer/gcp/output/gcp_packer_build_output.txt
 
+
 ##########################
-# CLOUD DEPLOY HELPERS
+# GCP / TERRAFORM HELPERS
 ##########################
 .PHONY: tf_init_gcp
 tf_init_gcp:
@@ -95,3 +101,20 @@ tf_out_gcp:
 .PHONY: tf_destroy_gcp
 tf_destroy_gcp:
 	cd ${TF_GCP_APP_DIR} && terraform destroy
+
+
+##########################
+# DOCKER HELPERS
+##########################
+docker_build:
+	cd .circleci && \
+	docker build -t ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):$(DOCKER_TEST_IMAGE_VERSION) . && \
+	docker tag ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):$(DOCKER_TEST_IMAGE_VERSION) ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):$(DOCKER_TEST_IMAGE_VERSION) && \
+	docker tag ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):$(DOCKER_TEST_IMAGE_VERSION) ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):latest
+
+docker_push:
+	docker push ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):$(DOCKER_TEST_IMAGE_VERSION)
+	docker push ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):latest
+
+docker_run:
+	docker run -it ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):$(DOCKER_TEST_IMAGE_VERSION)
