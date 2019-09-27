@@ -10,13 +10,13 @@
   "dependencies": {
     "moment": "^2.24.0",
     "node-sass": "^4.11.0",
+    "npm": "^6.11.3",
     "react": "^16.8.3",
     "react-calendar-heatmap": "^1.8.0",
     "react-dom": "^16.8.3",
     "react-map-gl": "^4.0.13",
     "react-scripts": "2.1.5",
-    "react-select": "^2.4.1",
-    "npm": "^6.5.0"
+    "react-select": "^2.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
