@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CalendarHeatmap from 'react-calendar-heatmap';
-import Select from 'react-select'
+// import Select from 'react-select'
 import Map from './map/Map.js';
 import LinksList from './linksList/LinksList.js';
 import moment from 'moment';
@@ -13,17 +13,12 @@ const DEFAULT_PORT = 80;
 const PORT = PROTOCOL === "https:" ? 443 : (window.APP ? window.APP.apiPort : DEFAULT_PORT);
 const HOST = window.APP ? window.APP.apiHost : window.location.hostname;
 const API_BASE_URL = `${PROTOCOL}//${HOST}:${PORT}/api`;
+const BREAKPOINT_TABLET = 768;
 
 class App extends Component {
 
   state = {
-    viewport: {
-      width: "100%",
-      height: 300,
-      latitude: 37.7577,
-      longitude: -122.4376,
-      zoom: 8
-    },
+    width: 0,
     locations: {},
     currentLocation: null,
     linksDateMap: [],
@@ -37,6 +32,29 @@ class App extends Component {
     this._fetchLinkData();
     this._fetchLocationData();
     this._fetchCurrentLocationData();
+
+    this._updateWindowWidth = this._updateWindowWidth.bind(this);
+  }
+
+  componentDidMount() {
+    this._updateWindowWidth();
+    window.addEventListener('resize', this._updateWindowWidth);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._updateWindowWidth);
+  }
+
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.state.selectedDate !== prevState.selectedDate && this.state.width <= BREAKPOINT_TABLET) {
+      const linksList = document.getElementById("linksList")
+      linksList.scrollIntoView(false)
+    }
+  }
+
+  _updateWindowWidth() {
+    this.setState({ width: window.innerWidth });
   }
 
   _fetchCurrentLocationData() {
@@ -47,8 +65,6 @@ class App extends Component {
       .catch((err) => { console.log("Error retrieving current location.", err); })
       .then((data) => {
         data = !!data ? data : [];
-
-        console.log(data);
 
         this.setState({
           currentLocation: data
@@ -105,12 +121,15 @@ class App extends Component {
     });
   }
 
+  /*
   _selectYear(event) {
     this.setState({
       selectedYear: event.value,
       selectedDate: null
     });
   }
+  */
+
   render() {
     const links = this.state.selectedDate ? this.state.linksDateMap[this.state.selectedDate] : [];
 
@@ -118,12 +137,49 @@ class App extends Component {
       return parseInt(moment(date).format("YYYY"));
     }))) : [];
 
-    const yearOptions = years.sort().reverse().map((year) => {
+    const sortedYears = years.sort().reverse();
+
+    /*
+    const yearOptions = sortedYears.map((year) => {
       return {
         value: year,
         label: year
       };
     });
+    */
+
+    const heatmaps = sortedYears.map((year) => {
+        const links = this.state.selectedDate ? this.state.linksDateMap[this.state.selectedDate] : [];
+        const selectedYear = this.state.selectedDate ? parseInt(moment(this.state.selectedDate).format("YYYY")) : 1991;
+        const linksList = year === selectedYear ? (<LinksList ref="links-list" links={links} />) : null;
+
+        return (
+          <div className="heatmap" key={`${year}-heatmap`}>
+            <h4>{year}</h4>
+            <CalendarHeatmap
+              startDate={new Date(`${year}-01-01`)}
+              endDate={new Date(`${year}-12-31`)}
+              values={this.state.sortedLinks}
+              onClick={this._selectDate.bind(this)}
+              showMonthLabels={true}
+              showWeekdayLabels={true}
+              horizontal={this.state.width > BREAKPOINT_TABLET}
+            />
+            {linksList}
+          </div>
+        );
+    });
+
+    /*
+    <div className="select-year">
+      <Select
+        options={yearOptions}
+        value={{value: this.state.selectedYear, label: this.state.selectedYear}}
+        onChange={this._selectYear.bind(this)}
+        isSearchable={false}
+      />
+    </div>
+    */
 
     return (
       <div className="app">
@@ -136,24 +192,7 @@ class App extends Component {
 
             <Map locations={this.state.locations} currentLocation={this.state.currentLocation} />
 
-            <div className="select-year">
-              <Select
-                options={yearOptions}
-                value={{value: this.state.selectedYear, label: this.state.selectedYear}}
-                onChange={this._selectYear.bind(this)}
-                isSearchable={false}
-              />
-            </div>
-
-            <CalendarHeatmap
-              startDate={new Date(`${this.state.selectedYear}-01-01`)}
-              endDate={new Date(`${this.state.selectedYear}-12-31`)}
-              values={this.state.sortedLinks}
-              onClick={this._selectDate.bind(this)}
-              showMonthLabels={true}
-              showWeekdayLabels={true}
-            />
-            <LinksList links={links} />
+            {heatmaps}
         </div>
       </div>
     );

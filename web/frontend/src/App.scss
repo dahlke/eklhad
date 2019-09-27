@@ -11,27 +11,28 @@
 }
 
 html {
-  background: #fcfbf9;
-  font-family: 'VCR OSD Mono', monospace;
-  text-transform: uppercase;
-  color: #333;
+    background: #fcfbf9;
+    font-family: 'VCR OSD Mono', monospace;
+    text-transform: uppercase;
+    color: #333;
 
-  .hide-template {
-      visibility: hidden;
-  }
+    .hide-template {
+        visibility: hidden;
+    }
 
     #root {
+        text-transform: uppercase;
+        color: $chicago-flag-blue;
+        font-family: 'VCR OSD Mono', 'Courier New', monospace;
+
         .app {
             position: relative;
             background: #fcfbf9;
-            font-family: 'VCR OSD Mono', 'Courier New', monospace;
-            text-transform: uppercase;
-            color: $chicago-flag-blue;
             height: 100%;
             width: 720px;
             margin: auto;
 
-            @media screen and (max-width: $break-small) {
+            @media screen and (max-width: $breakpoint-tablet) {
                 width: 100%;
             }
 
@@ -46,48 +47,67 @@ html {
 
             }
 
-            .react-calendar-heatmap {
+            .heatmap {
+                margin-top: 50px;
 
-                text {
-                    font-size: 10px;
-                    fill: #aaa;
+                @media screen and (max-width: $breakpoint-tablet) {
+                    width: 60%;
+                    margin: auto;
                 }
 
-                .react-calendar-heatmap-small-text {
-                    font-size: 5px;
-                }
+                .react-calendar-heatmap {
+                    /*
+                    @media screen and (max-width: $breakpoint-tablet) {
+                        position: relative;
+                        left: 50px;
 
-                rect:hover {
-                    stroke: #555;
-                    stroke-width: 1px;
-                }
+                        .react-calendar-heatmap-month-label {
+                            font-size: 5px;
+                        }
+                    }
+                    */
 
-                .color-empty {
-                    fill: #eeeeee;
-                }
+                    text {
+                        font-size: 10px;
+                        fill: #aaa;
+                    }
 
-                .color-filled {
-                    fill: $chicago-flag-blue;
-                }
+                    .react-calendar-heatmap-small-text {
+                        font-size: 5px;
+                    }
 
-                .color-github-0 {
-                    fill: $chicago-flag-blue;
-                }
+                    rect:hover {
+                        stroke: #555;
+                        stroke-width: 1px;
+                    }
 
-                .color-github-1 {
-                    fill: $chicago-flag-blue;
-                }
+                    .color-empty {
+                        fill: #eeeeee;
+                    }
 
-                .color-github-2 {
-                    fill: $chicago-flag-blue;
-                }
+                    .color-filled {
+                        fill: $chicago-flag-blue;
+                    }
 
-                .color-github-3 {
-                    fill: $chicago-flag-blue;
-                }
+                    .color-github-0 {
+                        fill: $chicago-flag-blue;
+                    }
 
-                .color-github-4 {
-                    fill: $chicago-flag-blue;
+                    .color-github-1 {
+                        fill: $chicago-flag-blue;
+                    }
+
+                    .color-github-2 {
+                        fill: $chicago-flag-blue;
+                    }
+
+                    .color-github-3 {
+                        fill: $chicago-flag-blue;
+                    }
+
+                    .color-github-4 {
+                        fill: $chicago-flag-blue;
+                    }
                 }
             }
         }
