@@ -5,7 +5,7 @@ WEB_APP_TAR_NAME = eklhad-web.tar.gz
 CWD := $(shell pwd)
 
 PACKER_GCP_DEF_PATH=packer/gcp/image.json
-PACKER_IMAGE_CMD=`tail -n 1 packer/gcp/output/gcp_packer_build_output.txt | awk '{print $$8}'`
+PACKER_IMAGE_CMD=`tail -n 1 /Users/neil/src/github.com/dahlke/eklhad/packer/gcp/output/gcp_packer_build_output.txt | awk '{print $$8}'`
 ARTIFACT_DIR_LINUX=${CWD}/artifact/tar/linux
 TF_GCP_APP_DIR=${CWD}/terraform/app/gcp
 WEB_APP_SRC_DIR=web/
@@ -35,7 +35,7 @@ npm:
 resume: npm
 	cd web/frontend/conf/ && \
 	node ${CWD}/web/frontend/node_modules/resume-cli/index.js export resume.html --format html --theme onepage
-	sed 's/1991-03-19/today/g' ${CWD}/web/frontend/conf/resume.html > ${CWD}/web/frontend/public/resume.html && \
+	sed 's/1991-03-19/today/g' ${CWD}/web/frontend/conf/resume.html > ${CWD}/web/frontend/public/static/resume.html && \
 	rm ${CWD}/web/frontend/conf/resume.html
 
 .PHONY: frontend_test
@@ -48,7 +48,7 @@ frontend_start: npm resume
 
 .PHONY: frontend_build
 frontend_build: npm resume
-	cd web/frontend/ && npm run-script build
+	cd web/frontend/ && npm run-script build && rm -rf node_modules
 
 
 ##########################
@@ -73,14 +73,12 @@ go_build_linux:
 # TODO: only include necessary files for minimum size
 .PHONY: artifact_linux_web
 artifact_linux_web: go_build_linux
-	ls && \
 	tar cf ${ARTIFACT_DIR_LINUX}/${WEB_APP_TAR_NAME} ${WEB_APP_SRC_DIR}
 
 
 .PHONY: image_gcp
 image_gcp:
 	packer -machine-readable build ${PACKER_GCP_DEF_PATH} >> packer/gcp/output/gcp_packer_build_output.txt
-
 
 ##########################
 # GCP / TERRAFORM HELPERS

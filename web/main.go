@@ -54,6 +54,7 @@ func redirectToHTTPS(w http.ResponseWriter, r *http.Request) {
 		target += "?" + r.URL.RawQuery
 	}
 	log.Printf("redirect to: %s", target)
+	log.Println("path", r.URL.Path)
 	http.Redirect(w, r, target, http.StatusTemporaryRedirect)
 }
 
@@ -75,12 +76,10 @@ func main() {
 	isProduction := *productionPtr
 	isGeocodePass := *geocodePtr
 
-	log.Println("Starting file server...")
-	fs := http.FileServer(http.Dir("frontend/build/"))
-	http.Handle("/static/", fs)
-	log.Println("File server started.")
+	fileServer := http.FileServer(http.Dir("frontend/build/"))
 
 	http.HandleFunc("/", htmlHandler)
+	http.Handle("/static/", fileServer)
 	http.HandleFunc("/api/locations", apiLocationsHandler)
 	http.HandleFunc("/api/current_location", apiCurrentLocationHandler)
 	http.HandleFunc("/api/links", apiLinksHandler)
