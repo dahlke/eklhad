@@ -60,7 +60,7 @@ class Map extends Component {
         const {currentLocation} = this.props;
         var marker;
 
-        if (currentLocation) {
+        if (currentLocation && currentLocation.geometry) {
             marker = (
                 <Marker
                     key={currentLocation.properties.id}
@@ -83,7 +83,7 @@ class Map extends Component {
                     onViewportChange={(viewport) => this.setState({viewport})}
                     mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
                     attributionControl={false}
-                    worldCopyJump={true}
+                    worldCopyJump={false}
                     mapStyle={MAPBOX_STYLE}
                     width={"100%"}
                     >
