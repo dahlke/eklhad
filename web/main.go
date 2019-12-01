@@ -79,7 +79,7 @@ func parseConfig(configJSONPath string) AppConfig {
 func main() {
 	portPtr := flag.Int("port", 80, "The port to run the HTTP app on.")
 	productionPtr := flag.Bool("production", false, "If true, run the app over HTTPS.")
-	pullGSheetsPtr := flag.Bool("gsheets", false, "If true, pull the latest data from Gsheets.")
+	pullGSheetsPtr := flag.Bool("gsheets", false, "If true, pull the latest data from Google Sheets. ID specified in config.json.")
 	flag.Parse()
 
 	configLogger()
