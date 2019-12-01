@@ -40,6 +40,14 @@ func apiLinksHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(links)
 }
 
+func apiInstagramsHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	instagrams := services.GetInstagrams()
+	json.NewEncoder(w).Encode(instagrams)
+}
+
 func htmlHandler(w http.ResponseWriter, r *http.Request) {
 	t, _ := template.ParseFiles("frontend/build/index.html")
 	payload := templatePayload{appHostName, appPort}
@@ -95,8 +103,10 @@ func main() {
 	http.Handle("/static/", fileServer)
 	http.HandleFunc("/api/locations", apiLocationsHandler)
 	http.HandleFunc("/api/links", apiLinksHandler)
+	http.HandleFunc("/api/instagrams", apiInstagramsHandler)
 
 	if isPullGSheets {
+		// TODO: have this be a worker that pulls constantly, adds timestamped files, and removes the oldest if no errors.
 		services.GetDataFromGSheets(appConfig.GSheetID)
 	} else if isProduction {
 		log.Println("Starting HTTPS server...")
