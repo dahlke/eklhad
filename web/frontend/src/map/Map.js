@@ -93,7 +93,7 @@ class Map extends Component {
                     onViewportChange={(viewport) => this.setState({viewport})}
                     mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
                     attributionControl={false}
-                    worldCopyJump={false}
+                    worldCopyJump={true}
                     mapStyle={MAPBOX_STYLE}
                     width={"100%"}
                     >
