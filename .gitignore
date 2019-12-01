@@ -26,3 +26,6 @@ artifact/tar/linux/*.tar.gz
 
 # Ignored Terraform files
 *gitignore*.tf
+
+# Config Files
+web/config.json
