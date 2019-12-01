@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"html/template"
+	"io/ioutil"
 	"net/http"
 	"os"
 
@@ -15,6 +16,10 @@ import (
 type templatePayload struct {
 	APIHost string
 	APIPort int
+}
+
+type AppConfig struct {
+	GSheetID string `json:"g_sheet_id"`
 }
 
 var appHostName, _ = os.Hostname()
@@ -57,6 +62,20 @@ func configLogger() {
 	log.SetLevel(log.InfoLevel)
 }
 
+func parseConfig(configJSONPath string) AppConfig {
+	configJSONFile, err := os.Open(configJSONPath)
+	if err != nil {
+		log.Error(err)
+	}
+	defer configJSONFile.Close()
+
+	jsonBytes, _ := ioutil.ReadAll(configJSONFile)
+	var config AppConfig
+	json.Unmarshal(jsonBytes, &config)
+
+	return config
+}
+
 func main() {
 	portPtr := flag.Int("port", 80, "The port to run the HTTP app on.")
 	productionPtr := flag.Bool("production", false, "If true, run the app over HTTPS.")
@@ -64,6 +83,7 @@ func main() {
 	flag.Parse()
 
 	configLogger()
+	appConfig := parseConfig("config.json")
 
 	appPort = *portPtr
 	isProduction := *productionPtr
@@ -77,8 +97,7 @@ func main() {
 	http.HandleFunc("/api/links", apiLinksHandler)
 
 	if isPullGSheets {
-		// TODO: feed in a Google Sheet ID, outline the expectations for the sheet in the README.
-		services.GetDataFromGSheets()
+		services.GetDataFromGSheets(appConfig.GSheetID)
 	} else if isProduction {
 		log.Println("Starting HTTPS server...")
 		go http.ListenAndServe(fmt.Sprintf(":%d", appPort), http.HandlerFunc(redirectToHTTPS))
