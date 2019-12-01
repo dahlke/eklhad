@@ -38,7 +38,7 @@ class Map extends Component {
         );
     }
 
-    _renderMarkers() {
+    _renderStaticLocationMarkers() {
         var markers = [];
 
         if (this.props.locations) {
@@ -85,6 +85,23 @@ class Map extends Component {
         return marker;
     }
 
+    _renderInstagramMarkers() {
+        var markers = [];
+
+
+        if (this.props.instagrams) {
+            var testGrams = this.props.instagrams.slice(0,1);
+
+            markers = testGrams.map((instagram) => {
+                console.log("TODO", instagram)
+
+                return null;
+            });
+        }
+
+        return markers;
+    }
+
     render() {
         return (
             <div id="map">
@@ -98,7 +115,8 @@ class Map extends Component {
                     width={"100%"}
                     >
                 {this._renderPopup()}
-                {this._renderMarkers()}
+                {this._renderStaticLocationMarkers()}
+                {this._renderInstagramMarkers()}
                 {this._renderCurrentLocation()}
                 </ReactMapGL>
             </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CalendarHeatmap from 'react-calendar-heatmap';
-// import Select from 'react-select'
+import Select from 'react-select'
 import Map from './map/Map.js';
 import LinksList from './linksList/LinksList.js';
 import moment from 'moment';
@@ -23,6 +23,7 @@ class App extends Component {
     currentLocation: null,
     linksDateMap: [],
     sortedLinks: [],
+    instagrams: [],
     selectedYear: parseInt(moment().subtract(1, 'years').format("YYYY")),
     selectedDate: null
   }
@@ -31,6 +32,7 @@ class App extends Component {
     super(props);
     this._fetchLinkData();
     this._fetchLocationData();
+    this._fetchInstagramData();
 
     this._updateWindowWidth = this._updateWindowWidth.bind(this);
   }
@@ -72,6 +74,21 @@ class App extends Component {
       });
   }
 
+  _fetchInstagramData() {
+    const api_url = `${API_BASE_URL}/instagrams`;
+
+    fetch(api_url)
+      .then((response) => { return response.json() })
+      .catch((err) => { console.log("Error retrieving instagrams.", err); })
+      .then((data) => {
+        data = !!data ? data : [];
+
+        this.setState({
+          instagrams: data
+        });
+      });
+  }
+
   _fetchLinkData() {
     const api_url = `${API_BASE_URL}/links`;
 
@@ -106,14 +123,35 @@ class App extends Component {
     });
   }
 
-  /*
   _selectYear(event) {
     this.setState({
       selectedYear: event.value,
       selectedDate: null
     });
   }
-  */
+
+  _renderLinksHeatMap(year) {
+    const links = this.state.selectedDate ? this.state.linksDateMap[this.state.selectedDate] : [];
+    // TODO: either make use of the selector or get rid of all the code referencing it.
+    const selectedYear = this.state.selectedDate ? parseInt(moment(this.state.selectedDate).format("YYYY")) : 1991;
+    const linksList = year === selectedYear ? (<LinksList ref="links-list" links={links} />) : null;
+
+    return this.state.selectedYear == year ? (
+      <div className="heatmap" key={`${year}-heatmap`}>
+        <h4>{year}</h4>
+        <CalendarHeatmap
+          startDate={new Date(`${year}-01-01`)}
+          endDate={new Date(`${year}-12-31`)}
+          values={this.state.sortedLinks}
+          onClick={this._selectDate.bind(this)}
+          showMonthLabels={true}
+          showWeekdayLabels={true}
+          horizontal={this.state.width > BREAKPOINT_TABLET}
+        />
+        {linksList}
+      </div>
+    ) : undefined;
+  }
 
   render() {
     const links = this.state.selectedDate ? this.state.linksDateMap[this.state.selectedDate] : [];
@@ -124,47 +162,16 @@ class App extends Component {
 
     const sortedYears = years.sort().reverse();
 
-    /*
     const yearOptions = sortedYears.map((year) => {
       return {
         value: year,
         label: year
       };
     });
-    */
 
     const heatmaps = sortedYears.map((year) => {
-        const links = this.state.selectedDate ? this.state.linksDateMap[this.state.selectedDate] : [];
-        const selectedYear = this.state.selectedDate ? parseInt(moment(this.state.selectedDate).format("YYYY")) : 1991;
-        const linksList = year === selectedYear ? (<LinksList ref="links-list" links={links} />) : null;
-
-        return (
-          <div className="heatmap" key={`${year}-heatmap`}>
-            <h4>{year}</h4>
-            <CalendarHeatmap
-              startDate={new Date(`${year}-01-01`)}
-              endDate={new Date(`${year}-12-31`)}
-              values={this.state.sortedLinks}
-              onClick={this._selectDate.bind(this)}
-              showMonthLabels={true}
-              showWeekdayLabels={true}
-              horizontal={this.state.width > BREAKPOINT_TABLET}
-            />
-            {linksList}
-          </div>
-        );
+      return this._renderLinksHeatMap(year);
     });
-
-    /*
-    <div className="select-year">
-      <Select
-        options={yearOptions}
-        value={{value: this.state.selectedYear, label: this.state.selectedYear}}
-        onChange={this._selectYear.bind(this)}
-        isSearchable={false}
-      />
-    </div>
-    */
 
     return (
       <div className="app">
@@ -175,7 +182,20 @@ class App extends Component {
               <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/neildahlke">Twitter</a> / <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/eklhad">Instagram</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.github.com/dahlke">GitHub</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.linkedin.com/in/neildahlke">LinkedIn</a> / <a href="/static/resume.html">Resume</a>
             </h6>
 
-            <Map locations={this.state.locations} currentLocation={this.state.currentLocation} />
+            <Map
+              locations={this.state.locations}
+              currentLocation={this.state.currentLocation}
+              instagrams={this.state.instagrams}
+            />
+
+            <div className="select-year">
+              <Select
+                options={yearOptions}
+                value={{value: this.state.selectedYear, label: this.state.selectedYear}}
+                onChange={this._selectYear.bind(this)}
+                isSearchable={false}
+              />
+            </div>
 
             {heatmaps}
         </div>

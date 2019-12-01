@@ -5,7 +5,7 @@ type gSheetEntryValue struct {
 	Value string `json:"$t"`
 }
 
-// GSheet Spreadsheet Structs
+// GSheet Spreadsheet Parser Structs
 type gSheetPageEntry struct {
 	ID      gSheetEntryValue `json:"id"`
 	Updated gSheetEntryValue `json:"updated"`
@@ -20,7 +20,7 @@ type gSheetMetadata struct {
 	Feed gSheetPageFeed `json:"feed"`
 }
 
-// GSheet Travel Structs
+// GSheet Travel Parser Structs
 type gSheetTravelEntry struct {
 	ID                  gSheetEntryValue `json:"id"`
 	City                gSheetEntryValue `json:"gsx$city"`
@@ -37,7 +37,7 @@ type gSheetTravels struct {
 	Feed gSheetTravelsFeed `json:"feed"`
 }
 
-// GSheet Link Structs
+// GSheet Link Parser Structs
 type gSheetLinkEntry struct {
 	ID   gSheetEntryValue `json:"id"`
 	Name gSheetEntryValue `json:"gsx$name"`
@@ -54,7 +54,7 @@ type gSheetLinks struct {
 	Feed gSheetLinksFeed `json:"feed"`
 }
 
-// Eklhad Travel Structs for JSON Reading
+// Eklhad Travel App Structs
 type eklhadTravel struct {
 	ID                  string  `json:"id"`
 	City                string  `json:"city"`
@@ -65,11 +65,30 @@ type eklhadTravel struct {
 	Lng                 float64 `json:"lng"`
 }
 
-// Eklhad Link Structs
+// Eklhad Link App Structs
 type eklhadLink struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
 	Date string `json:"date"`
 	Type string `json:"type"`
 	URL  string `json:"url"`
+}
+
+// Instagram Parser Structs
+type instagramGraphImageLocation struct {
+	Name        string `json:"name"`
+	AddressJSON string `json:"address_json"`
+}
+
+type instagramGraphImage struct {
+	DisplayURL string                      `json:"display_url"`
+	IsVideo    bool                        `json:"is_video"`
+	ShortCode  string                      `json:"shortcode"`
+	Timestamp  int64                       `json:"taken_at_timestamp"`
+	Location   instagramGraphImageLocation `json:"location"`
+	URLs       []string                    `json:"urls"`
+}
+
+type instagramMetadata struct {
+	GraphImages []instagramGraphImage `json:"GraphImages"`
 }
