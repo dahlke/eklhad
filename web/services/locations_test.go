@@ -5,22 +5,14 @@ import (
 	"testing"
 )
 
-var SOUTH_BEND_ID float64 = 0
-var SAN_FRANCISCO_ID float64 = 60
+var BUENOS_AIRES_ID string = "cokwr"
 
 func TestLocations(t *testing.T) {
-	locations := GetLocations().Features
-	firstLocationID := locations[0].Properties["id"]
-	fmt.Println(locations[0].Properties["id"])
-	if firstLocationID != SOUTH_BEND_ID {
-		t.Errorf("ID was incorrect, got: %f, want: %f.", firstLocationID, SOUTH_BEND_ID)
-	}
-}
+	locations := GetLocations()
+	firstLocationID := locations[0].ID
+	fmt.Println(firstLocationID)
 
-func TestCurrentLocation(t *testing.T) {
-	currentLocation := GetCurrentLocationGeoJSON()
-	currentLocationID := currentLocation.Properties["id"]
-	if currentLocationID != SAN_FRANCISCO_ID {
-		t.Errorf("ID was incorrect, got: %f, want: %f.", currentLocationID, SAN_FRANCISCO_ID)
+	if firstLocationID != BUENOS_AIRES_ID {
+		t.Errorf("ID was incorrect, got: %s, want: %s.", firstLocationID, BUENOS_AIRES_ID)
 	}
 }
