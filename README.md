@@ -23,19 +23,22 @@ make go_get
 make go_server_start
 ```
 
+
+TODO: visit `http://localhost` for the most recent server side.
+
 Install the Javascript development dependencies and start the frontend server. The frontend server will run on port 3000.
 ```bash
 make npm
 make frontend_start
 ```
 
+TODO: visit `http://localhost:3000` for the most recent client side.
+
 To update the resume file, make all changes to `./web/frontend/conf/resume.json` and then run `make resume`.
 
-## Geocoding City Data
-
-The map requires each city visited to be geocoded. To geocode a city, add it to the array in [`cities.json`](./web/services/data/cities-array.json)
+## Pull Most Recent Data from Google Sheets (and Geocode the necessary data points)
 ```
-go run main.go -geocode
+go run main.go -gsheets
 ```
 
 ## Helpful Git Hooks
