@@ -28,10 +28,12 @@ class Map extends Component {
                 anchor="top"
                 offsetTop={10}
                 offsetLeft={5}
-                longitude={popupInfo.geometry.coordinates[0]}
-                latitude={popupInfo.geometry.coordinates[1]}
+                longitude={popupInfo.lng}
+                latitude={popupInfo.lat}
                 onClose={() => this.setState({popupInfo: null})} >
-                {popupInfo.properties.city}, {popupInfo.properties.state}, {popupInfo.properties.country}
+                <b>{popupInfo.city}, {popupInfo.stateprovinceregion} </b>
+                <br />
+                <em>{popupInfo.country}</em>
             </Popup>
         );
     }

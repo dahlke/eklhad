@@ -58,7 +58,7 @@ type gSheetLinks struct {
 type eklhadTravel struct {
 	ID                  string  `json:"id"`
 	City                string  `json:"city"`
-	StateProvinceRegion string  `json:"state_province_region"`
+	StateProvinceRegion string  `json:"stateprovinceregion"`
 	Country             string  `json:"country"`
 	Current             bool    `json:"current"`
 	Lat                 float64 `json:"lat"`
