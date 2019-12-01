@@ -20,17 +20,10 @@ type templatePayload struct {
 var appHostName, _ = os.Hostname()
 var appPort = 80
 
-func apiCurrentLocationHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	locations := services.GetCurrentLocationGeoJSON()
-	json.NewEncoder(w).Encode(locations)
-}
-
 func apiLocationsHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
-	locations := services.GetLocationsGeoJSON()
+	locations := services.GetLocations()
 	json.NewEncoder(w).Encode(locations)
 }
 
@@ -67,25 +60,25 @@ func configLogger() {
 func main() {
 	portPtr := flag.Int("port", 80, "The port to run the HTTP app on.")
 	productionPtr := flag.Bool("production", false, "If true, run the app over HTTPS.")
-	geocodePtr := flag.Bool("geocode", false, "If true, the geojson file will be updated based on the cities-array.json file.")
+	pullGSheetsPtr := flag.Bool("gsheets", false, "If true, pull the latest data from Gsheets.")
 	flag.Parse()
 
 	configLogger()
 
 	appPort = *portPtr
 	isProduction := *productionPtr
-	isGeocodePass := *geocodePtr
+	isPullGSheets := *pullGSheetsPtr
 
 	fileServer := http.FileServer(http.Dir("frontend/build/"))
 
 	http.HandleFunc("/", htmlHandler)
 	http.Handle("/static/", fileServer)
 	http.HandleFunc("/api/locations", apiLocationsHandler)
-	http.HandleFunc("/api/current_location", apiCurrentLocationHandler)
 	http.HandleFunc("/api/links", apiLinksHandler)
 
-	if isGeocodePass {
-		services.GeocodeJSON()
+	if isPullGSheets {
+		// TODO: feed in a Google Sheet ID, outline the expectations for the sheet in the README.
+		services.GetDataFromGSheets()
 	} else if isProduction {
 		log.Println("Starting HTTPS server...")
 		go http.ListenAndServe(fmt.Sprintf(":%d", appPort), http.HandlerFunc(redirectToHTTPS))

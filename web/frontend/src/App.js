@@ -19,7 +19,7 @@ class App extends Component {
 
   state = {
     width: 0,
-    locations: {},
+    locations: [],
     currentLocation: null,
     linksDateMap: [],
     sortedLinks: [],
@@ -31,7 +31,6 @@ class App extends Component {
     super(props);
     this._fetchLinkData();
     this._fetchLocationData();
-    this._fetchCurrentLocationData();
 
     this._updateWindowWidth = this._updateWindowWidth.bind(this);
   }
@@ -57,21 +56,6 @@ class App extends Component {
 
   _updateWindowWidth() {
     this.setState({ width: window.innerWidth });
-  }
-
-  _fetchCurrentLocationData() {
-    const api_url = `${API_BASE_URL}/current_location`;
-
-    fetch(api_url)
-      .then((response) => { return response.json() })
-      .catch((err) => { console.log("Error retrieving current location.", err); })
-      .then((data) => {
-        data = !!data ? data : [];
-
-        this.setState({
-          currentLocation: data
-        });
-      });
   }
 
   _fetchLocationData() {

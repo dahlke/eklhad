@@ -39,17 +39,25 @@ class Map extends Component {
     _renderMarkers() {
         var markers = [];
 
-        if (this.props.locations && this.props.locations.features) {
-            markers = this.props.locations.features.map((feature) => {
+        if (this.props.locations) {
+            markers = this.props.locations.map((location) => {
+                var markerClassName = "map-custom-marker ";
+
+                if (location.current !== true) {
+                    markerClassName += "static-location"
+                } else {
+                    markerClassName += "current-location"
+                }
+
                 return (
                     <Marker
-                        key={feature.properties.id}
-                        latitude={feature.geometry.coordinates[1]}
-                        longitude={feature.geometry.coordinates[0]}
+                        key={location.id}
+                        latitude={location.lat}
+                        longitude={location.lng}
                     >
-                        <div className="map-custom-marker static-location" onClick={() => this.setState({popupInfo: feature})} />
+                        <div className={markerClassName} onClick={() => this.setState({popupInfo: location})} />
                     </Marker>
-                    );
+                );
             });
         }
 
@@ -60,12 +68,12 @@ class Map extends Component {
         const {currentLocation} = this.props;
         var marker;
 
-        if (currentLocation && currentLocation.geometry) {
+        if (currentLocation) {
             marker = (
                 <Marker
                     key={currentLocation.properties.id}
-                    latitude={currentLocation.geometry.coordinates[1]}
-                    longitude={currentLocation.geometry.coordinates[0]}
+                    latitude={currentLocation.lat}
+                    longitude={currentLocation.lng}
                 >
                     <div className="map-custom-marker current-location" onClick={() => this.setState({popupInfo: currentLocation})} />
                 </Marker>

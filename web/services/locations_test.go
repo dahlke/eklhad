@@ -9,7 +9,7 @@ var SOUTH_BEND_ID float64 = 0
 var SAN_FRANCISCO_ID float64 = 60
 
 func TestLocations(t *testing.T) {
-	locations := GetLocationsGeoJSON().Features
+	locations := GetLocations().Features
 	firstLocationID := locations[0].Properties["id"]
 	fmt.Println(locations[0].Properties["id"])
 	if firstLocationID != SOUTH_BEND_ID {
