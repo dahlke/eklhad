@@ -44,7 +44,6 @@ class App extends Component {
     window.removeEventListener('resize', this._updateWindowWidth);
   }
 
-
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.state.selectedDate !== prevState.selectedDate && this.state.width <= BREAKPOINT_TABLET) {
       const linksList = document.getElementById("linksList")
