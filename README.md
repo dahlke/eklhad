@@ -13,7 +13,6 @@ My personal web assets.
 - `packer`
 - `terraform`
 
-
 ## Development
 
 Install the Go development dependencies and start the web/API server. The web/API server will run on port 80.
@@ -23,16 +22,12 @@ make go_get
 make go_server_start
 ```
 
+Install the Javascript development dependencies and start the frontend server. The frontend server will run on [localhost, port 3000](http://localhost:3000).
 
-TODO: visit `http://localhost` for the most recent server side.
-
-Install the Javascript development dependencies and start the frontend server. The frontend server will run on port 3000.
 ```bash
 make npm
 make frontend_start
 ```
-
-TODO: visit `http://localhost:3000` for the most recent client side.
 
 To update the resume file, make all changes to `./web/frontend/conf/resume.json` and then run `make resume`.
 
@@ -60,16 +55,22 @@ You can read the [Makefile](./Makefile) to see what commands are being run under
 make frontend_build
 make artifact_linux_web
 make image_gcp
+
+source ~/.gcp/eklhad/eklhad-creds.sh
+source ~/.cloudflare/eklhad/eklhad-creds.sh
 make tf_apply_gcp
 ```
 
-
 ### CircleCI Docker Test Image
+
+To build the test image, use the following commands.
 
 ```
 make docker_build
 docker run -i -t eklhad-web-tester:0.1 /bin/sh
 ```
+
+Then, push it to Docker Hub.
 
 ```
 make docker_push
