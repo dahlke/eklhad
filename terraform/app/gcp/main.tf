@@ -1,5 +1,5 @@
 terraform {
-  required_version = "0.12.2"
+  required_version = "0.12.17"
 
   backend "remote" {
     hostname     = "app.terraform.io"
@@ -12,7 +12,6 @@ terraform {
 }
 
 provider "google" {
-  credentials = file("/Users/neil/.gcp/eklhad/eklhad-web-e91c00f7deef.json")
   project     = var.project
   region      = var.region
   zone        = var.zone
