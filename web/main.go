@@ -10,6 +10,7 @@ import (
 	"os"
 
 	"github.com/dahlke/eklhad/web/services"
+	"github.com/dahlke/eklhad/web/workers"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -107,7 +108,7 @@ func main() {
 
 	if isPullGSheets {
 		// TODO: have this be a worker that pulls constantly, adds timestamped files, and removes the oldest if no errors.
-		services.GetDataFromGSheets(appConfig.GSheetID)
+		workers.GetDataFromGSheets(appConfig.GSheetID)
 	} else if isProduction {
 		log.Println("Starting HTTPS server...")
 		go http.ListenAndServe(fmt.Sprintf(":%d", appPort), http.HandlerFunc(redirectToHTTPS))

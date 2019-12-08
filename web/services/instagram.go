@@ -6,12 +6,13 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/dahlke/eklhad/web/eklstructs"
 	log "github.com/sirupsen/logrus"
 )
 
-func GetInstagrams() []instagramGraphImage {
+func GetInstagrams() []eklstructs.InstagramGraphImage {
 	// https://github.com/rarcega/instagram-scraper
-	jsonFilePath, err := filepath.Abs("./services/data/instagram/eklhad/eklhad.json")
+	jsonFilePath, err := filepath.Abs("./data/instagram/eklhad/eklhad.json")
 	if err != nil {
 		log.Error(err)
 	}
@@ -23,7 +24,7 @@ func GetInstagrams() []instagramGraphImage {
 	defer instaMetaDataFile.Close()
 
 	jsonBytes, _ := ioutil.ReadAll(instaMetaDataFile)
-	var igMetaData instagramMetadata
+	var igMetaData eklstructs.InstagramMetadata
 	json.Unmarshal(jsonBytes, &igMetaData)
 
 	return igMetaData.GraphImages
