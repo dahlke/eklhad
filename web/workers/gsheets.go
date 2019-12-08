@@ -1,35 +1,17 @@
-package services
+package workers
 
 import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"path/filepath"
 	"strings"
 
-	"github.com/codingsince1985/geo-golang/openstreetmap"
+	"github.com/dahlke/eklhad/web/eklstructs"
+	geo "github.com/dahlke/eklhad/web/geo"
 	log "github.com/sirupsen/logrus"
 )
-
-func geocodeLocation(location string) (float64, float64) {
-	geocoder := openstreetmap.Geocoder()
-	geocodedLocation, err := geocoder.Geocode(location)
-	var lat float64
-	var lng float64
-
-	if err != nil {
-		log.Error(err)
-	}
-
-	if geocodedLocation != nil {
-		lat = float64(geocodedLocation.Lat)
-		lng = float64(geocodedLocation.Lng)
-	} else {
-		fmt.Println("got <nil> address", location)
-	}
-
-	return lat, lng
-}
 
 func GetDataFromGSheets(spreadSheetID string) {
 	// https://medium.com/@scottcents/how-to-convert-google-sheets-to-json-in-just-3-steps-228fe2c24e6
@@ -44,7 +26,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 
-	var sheetMetadata gSheetMetadata
+	var sheetMetadata eklstructs.GSheetMetadata
 	json.Unmarshal(body, &sheetMetadata)
 
 	for _, entry := range sheetMetadata.Feed.Entries {
@@ -68,13 +50,13 @@ func GetDataFromGSheets(spreadSheetID string) {
 		var fileContents []byte
 
 		if entry.Title.Value == "travels" {
-			var gTravels gSheetTravels
+			var gTravels eklstructs.GSheetTravels
 			json.Unmarshal(body, &gTravels)
 
-			var eTravels []eklhadTravel
+			var eTravels []eklstructs.EklhadTravel
 			for _, gTravel := range gTravels.Feed.Entries {
 				location := fmt.Sprintf("%s, %s, %s", gTravel.City.Value, gTravel.StateProvinceRegion.Value, gTravel.Country.Value)
-				lat, lng := geocodeLocation(location)
+				lat, lng := geo.GeocodeLocation(location)
 				current := false
 
 				splitTravelIDURL := strings.Split(gTravel.ID.Value, "/")
@@ -84,7 +66,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 					current = true
 				}
 
-				eTravel := eklhadTravel{
+				eTravel := eklstructs.EklhadTravel{
 					travelID,
 					gTravel.City.Value,
 					gTravel.StateProvinceRegion.Value,
@@ -98,15 +80,15 @@ func GetDataFromGSheets(spreadSheetID string) {
 
 			fileContents, _ = json.MarshalIndent(eTravels, "", " ")
 		} else if entry.Title.Value == "links" {
-			var gLinks gSheetLinks
+			var gLinks eklstructs.GSheetLinks
 			json.Unmarshal(body, &gLinks)
 
-			var eLinks []eklhadLink
+			var eLinks []eklstructs.EklhadLink
 			for _, gLink := range gLinks.Feed.Entries {
 				splitLinkIDURL := strings.Split(gLink.ID.Value, "/")
 				linkID := splitLinkIDURL[len(splitLinkIDURL)-1]
 
-				eLink := eklhadLink{
+				eLink := eklstructs.EklhadLink{
 					linkID,
 					gLink.Name.Value,
 					gLink.Date.Value,
@@ -119,9 +101,13 @@ func GetDataFromGSheets(spreadSheetID string) {
 			fileContents, _ = json.MarshalIndent(eLinks, "", " ")
 		}
 
-		fileWritePath := fmt.Sprintf("./services/data/enriched-gsheets-%s.json", entry.Title.Value)
+		fileWritePath := fmt.Sprintf("./data/enriched-gsheets-%s.json", entry.Title.Value)
+		fileWriteAbsPath, err := filepath.Abs(fileWritePath)
+		if err != nil {
+			log.Error(err)
+		}
 
-		err = ioutil.WriteFile(fileWritePath, fileContents, 0644)
+		err = ioutil.WriteFile(fileWriteAbsPath, fileContents, 0644)
 
 		if err != nil {
 			log.Error(err)
