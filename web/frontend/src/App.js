@@ -136,7 +136,7 @@ class App extends Component {
     const selectedYear = this.state.selectedDate ? parseInt(moment(this.state.selectedDate).format("YYYY")) : 1991;
     const linksList = year === selectedYear ? (<LinksList ref="links-list" links={links} />) : null;
 
-    return this.state.selectedYear == year ? (
+    return this.state.selectedYear === year ? (
       <div className="heatmap" key={`${year}-heatmap`}>
         <h4>{year}</h4>
         <CalendarHeatmap
