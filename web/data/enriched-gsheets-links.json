@@ -1,0 +1,296 @@
+[
+ {
+  "id": "cokwr",
+  "name": "[SCPR] Comedy Hack Day brings comedians and programmers together in Los Angeles",
+  "date": "2014-12-06",
+  "type": "press",
+  "url": "http://www.scpr.org/blogs/newmedia/2014/12/06/17651/comedy-hack-day-brings-comedians-and-programmers-t/"
+ },
+ {
+  "id": "cpzh4",
+  "name": "[ODBMS] Powering Big Data at Pinterest. Interview with Krishna Gade.",
+  "date": "2015-04-22",
+  "type": "press",
+  "url": "http://www.odbms.org/blog/2015/04/powering-big-data-at-pinterest-interview-with-krishna-gade/"
+ },
+ {
+  "id": "cre1l",
+  "name": "Exploring Wikipedia Using MemSQL",
+  "date": "2015-05-07",
+  "type": "demo",
+  "url": "https://www.youtube.com/watch?v=bgXbHL3D3vs"
+ },
+ {
+  "id": "chk2m",
+  "name": "[DePaul University] Computer Science Program Discussion",
+  "date": "2012-03-09",
+  "type": "press",
+  "url": "http://www.depaul.edu/academics/undergraduate/majors/Pages/comp-sci.aspx"
+ },
+ {
+  "id": "ciyn3",
+  "name": "Setting up Sublime Text 3 from the Command Line",
+  "date": "2013-11-23",
+  "type": "blog",
+  "url": "https://gist.github.com/dahlke/7330342"
+ },
+ {
+  "id": "ckd7g",
+  "name": "MemSQL Supercar Real-Time Geospatial Demo",
+  "date": "2015-04-13",
+  "type": "demo",
+  "url": "https://www.youtube.com/watch?v=2txICCLUV-Y"
+ },
+ {
+  "id": "clrrx",
+  "name": "[Medium] Furby does Python - The soul of a furry machine: Scenes from a comedy hackathon",
+  "date": "2014-10-09",
+  "type": "press",
+  "url": "https://backchannel.com/furby-does-python-1b68297d1d26#.c2u8zkwbm"
+ },
+ {
+  "id": "cyevm",
+  "name": "TaxiStats Showcase Application",
+  "date": "2016-02-22",
+  "type": "demo",
+  "url": "https://www.youtube.com/watch?v=26lfq_qgcRI"
+ },
+ {
+  "id": "cztg3",
+  "name": "MemSQL, Tableau, and the Democratization of Data",
+  "date": "2016-11-10",
+  "type": "blog",
+  "url": "http://blog.memsql.com/memsql-tableau-and-the-democratization-of-data/"
+ },
+ {
+  "id": "d180g",
+  "name": "Election 2016: Real-Time Twitter Analytics",
+  "date": "2016-10-18",
+  "type": "demo",
+  "url": "http://election.memsql.com"
+ },
+ {
+  "id": "d2mkx",
+  "name": "[InfoQ] Real-time Data Analytics at Pinterest using MemSQL and Spark Streaming",
+  "date": "2015-03-29",
+  "type": "press",
+  "url": "https://www.infoq.com/news/2015/03/pinterest-memsql-spark-streaming"
+ },
+ {
+  "id": "cssly",
+  "name": "MemSQL Roadshow Phoenix: Real-Time Analytics with MemSQL and Spark",
+  "date": "2016-11-04",
+  "type": "talk",
+  "url": "http://www1.memsql.com/phoenix-roadshow.html"
+ },
+ {
+  "id": "cu76f",
+  "name": "MemSQL Roadshow Orange County: Real-Time Analytics with MemSQL and Spark",
+  "date": "2017-03-17",
+  "type": "talk",
+  "url": "http://www1.memsql.com/ocroadshow.html"
+ },
+ {
+  "id": "cvlqs",
+  "name": "jQuery Conference Austin",
+  "date": "2013-09-10",
+  "type": "blog",
+  "url": "https://gist.github.com/dahlke/6509891"
+ },
+ {
+  "id": "cx0b9",
+  "name": "Comedy Hack Day - AwwCog",
+  "date": "2014-10-06",
+  "type": "demo",
+  "url": "http://www.comedyhackday.org/demosmade/2014/10/6/wearable-furby"
+ },
+ {
+  "id": "d9ney",
+  "name": "WhoJS Tutorial",
+  "date": "2013-08-09",
+  "type": "blog",
+  "url": "https://gist.github.com/dahlke/7ce2ea3e476c04aa7ef7"
+ },
+ {
+  "id": "db1zf",
+  "name": "[GigaOm] Pinterest is experimenting with MemSQL for real-time data analytics",
+  "date": "2015-02-18",
+  "type": "press",
+  "url": "https://gigaom.com/2015/02/18/pinterest-is-experimenting-with-memsql-for-real-time-data-analytics/"
+ },
+ {
+  "id": "dcgjs",
+  "name": "The Internet of Furbies",
+  "date": "2014-10-01",
+  "type": "blog",
+  "url": "http://blog.memsql.com/the-internet-of-furbies/"
+ },
+ {
+  "id": "ddv49",
+  "name": "[Engadget] Dev comedy jam: Cultivated Wit\\s Hack Day chases laughs, not dollars",
+  "date": "2016-10-10",
+  "type": "press",
+  "url": "https://www.engadget.com/2014/10/10/comedy-hack-day/"
+ },
+ {
+  "id": "d415a",
+  "name": "[Silicon Angle] Real-time Twitter analysis shows U.S. election is … too close to call?",
+  "date": "2016-10-21",
+  "type": "press",
+  "url": "http://siliconangle.com/blog/2016/10/21/real-time-twitter-analysis-shows-election-is-too-close-to-call/"
+ },
+ {
+  "id": "d5fpr",
+  "name": "Pinterest Demo of Spark Connector",
+  "date": "2015-06-17",
+  "type": "demo",
+  "url": "https://www.youtube.com/watch?v=KXelkQFVz4E"
+ },
+ {
+  "id": "d6ua4",
+  "name": "[Pinterest Engineering Blog] Real-time analytics at Pinterest",
+  "date": "2015-02-18",
+  "type": "press",
+  "url": "https://engineering.pinterest.com/blog/real-time-analytics-pinterest"
+ },
+ {
+  "id": "d88ul",
+  "name": "Geospatial Data Meetup with Mapbox",
+  "date": "2016-06-29",
+  "type": "talk",
+  "url": "http://blog.memsql.com/geospatial-data-meetup-with-mapbox/"
+ },
+ {
+  "id": "dkvya",
+  "name": "How Pinterest Measures Real-Time User Engagement with Spark",
+  "date": "2015-02-18",
+  "type": "blog",
+  "url": "http://blog.memsql.com/pinterest-apache-spark-use-case/"
+ },
+ {
+  "id": "dmair",
+  "name": "[ReCode] Wearable Furbys and On-Demand High Fives Highlight Comedy Hack Day",
+  "date": "2014-10-11",
+  "type": "press",
+  "url": "http://www.recode.net/2014/10/11/11631780/wearable-furbys-and-on-demand-high-fives-highlight-comedy-hack-day"
+ },
+ {
+  "id": "dnp34",
+  "name": "Bringing OLAP Fully Online: Analyze Changing Datasets in MemSQL and Spark with Pinterest Demo w/ Eric Frenkiel",
+  "date": "2015-05-08",
+  "type": "demo",
+  "url": "https://www.youtube.com/watch?v=5_0rG5GhHNE"
+ },
+ {
+  "id": "dp3nl",
+  "name": "Workshop: Wireframing Tools and Techniques w/ Carolyn Chandler",
+  "date": "2013-11-14",
+  "type": "blog",
+  "url": "https://gist.github.com/dahlke/7452852"
+ },
+ {
+  "id": "df9om",
+  "name": "[Datanami] 8 Interactive Visualizations for Election Day",
+  "date": "2016-11-07",
+  "type": "press",
+  "url": "https://www.datanami.com/2016/11/07/8-visualizations-election-day/"
+ },
+ {
+  "id": "dgo93",
+  "name": "Election 2016: Analyzing Real-Time Twitter Sentiment with MemSQL Pipelines",
+  "date": "2016-10-18",
+  "type": "blog",
+  "url": "http://blog.memsql.com/election-2016-real-time-twitter-sentiment/"
+ },
+ {
+  "id": "di2tg",
+  "name": "Setting up a Raspberry Pi web server using Node \u0026 Express",
+  "date": "2013-11-05",
+  "type": "blog",
+  "url": "https://gist.github.com/dahlke/7330365"
+ },
+ {
+  "id": "djhdx",
+  "name": "Radiant Advisors Presents: MemSQL, Real Time Data Warehousing in the Hybrid Cloud",
+  "date": "2017-06-14",
+  "type": "talk",
+  "url": "http://radiantadvisors.com/"
+ },
+ {
+  "id": "dw4je",
+  "name": "Kafka Summit in New York, Using MemSQL and Kafka",
+  "date": "2017-05-08",
+  "type": "talk",
+  "url": "https://kafka-summit.org/events/kafka-summit-ny/"
+ },
+ {
+  "id": "dxj3v",
+  "name": "MissionBit Student Panel",
+  "date": "2017-07-07",
+  "type": "talk",
+  "url": "http://www.missionbit.com/"
+ },
+ {
+  "id": "dyxo8",
+  "name": "MemSQL San Francisco Roadshow: Streaming in the Enterprise with MemSQL",
+  "date": "2017-06-15",
+  "type": "talk",
+  "url": "http://www1.memsql.com/sf-roadshow-2017.html"
+ },
+ {
+  "id": "e0c8p",
+  "name": "Real-Time Streaming, Analytics, and Visualization with MemSQL and Zoomdata",
+  "date": "2017-08-10",
+  "type": "talk",
+  "url": "https://www.meetup.com/MemSQL/events/241801222/"
+ },
+ {
+  "id": "dqi9q",
+  "name": "Gartner Catalyst Conference: Image Recognition on Streaming Data",
+  "date": "2017-08-20",
+  "type": "talk",
+  "url": "https://www.slideshare.net/MemSQL/image-recognition-on-streaming-data"
+ },
+ {
+  "id": "drwu7",
+  "name": "AWS Re:Invent - Machine Learning and Streaming Data",
+  "date": "2017-11-29",
+  "type": "talk",
+  "url": "https://reinvent.awsevents.com/"
+ },
+ {
+  "id": "dtbek",
+  "name": "Real-Time Streaming, Analytics, and Visualization With MemSQL and Zoomdata",
+  "date": "2017-11-24",
+  "type": "press",
+  "url": "https://dzone.com/articles/real-time-streaming-analytics-and-visualization-wi"
+ },
+ {
+  "id": "dupz1",
+  "name": "Introduction to MemSQL for Developers",
+  "date": "2018-06-19",
+  "type": "webinar",
+  "url": "http://go.memsql.com/an-introduction-to-memsql-for-developers"
+ },
+ {
+  "id": "e7d2q",
+  "name": "Gartner Catalyst 2018: How Kafka and Modern Databases Benefit Apps and Analytics",
+  "date": "2018-08-20",
+  "type": "talk",
+  "url": "https://www.gartner.com/en/conferences/na/catalyst-us/agenda"
+ },
+ {
+  "id": "e8rn7",
+  "name": "How Kafka and Modern Databases Benefit Apps and Analytics",
+  "date": "2018-08-20",
+  "type": "webinar",
+  "url": "http://go.memsql.com/kafka-and-modern-databases"
+ },
+ {
+  "id": "ea67k",
+  "name": "Oracle Open World: DevOps Automation with HashiCorp Terraform",
+  "date": "2018-09-16",
+  "type": "talk",
+  "url": "https://events.rainfocus.com/widget/oracle/oow19/catalogow19?search.topic=155621695037200362ko\u0026search=terraform"
+ }
+]
