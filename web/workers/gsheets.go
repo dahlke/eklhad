@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/dahlke/eklhad/web/eklstructs"
 	geo "github.com/dahlke/eklhad/web/geo"
@@ -88,10 +89,17 @@ func GetDataFromGSheets(spreadSheetID string) {
 				splitLinkIDURL := strings.Split(gLink.ID.Value, "/")
 				linkID := splitLinkIDURL[len(splitLinkIDURL)-1]
 
+				// Has to be a specific date in Golang. /shrug
+				const inputDateFmt = "2006-01-02"
+				timestamp, err := time.Parse(inputDateFmt, gLink.Date.Value)
+				if err != nil {
+					log.Error(err)
+				}
+
 				eLink := eklstructs.EklhadLink{
 					linkID,
 					gLink.Name.Value,
-					gLink.Date.Value,
+					timestamp.Unix(),
 					gLink.Type.Value,
 					gLink.URL.Value,
 				}

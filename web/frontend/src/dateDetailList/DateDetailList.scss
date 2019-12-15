@@ -1,21 +1,21 @@
-.links-list {
+.date-detail-list {
     width: 100%;
     text-align: center;
 
-    .link {
+    .link, .instagram {
         display: block;
         padding: 10px 0;
 
-        .link-metadata,
-        .link-url {
+        .metadata,
+        .url {
             display: inline-block;
         }
-        .link-url {
+
+        .url {
             width: 100%;
         }
 
-
-        .link-metadata {
+        .metadata {
             padding: 5px 0;
 
             .link-type {
@@ -23,6 +23,11 @@
             }
         }
 
+        .photo {
+            max-width: 300px;
+            max-width: 300px;
+            display: block;
+            margin: auto;
+        }
     }
-
 }
