@@ -92,9 +92,8 @@ class Map extends Component {
         if (this.props.instagrams) {
             var testGrams = this.props.instagrams.slice(0,1);
 
+            // TODO
             markers = testGrams.map((instagram) => {
-                console.log("TODO", instagram)
-
                 return null;
             });
         }

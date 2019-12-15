@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import CalendarHeatmap from 'react-calendar-heatmap';
-import Select from 'react-select'
+// import Select from 'react-select'
 import Map from './map/Map.js';
-import LinksList from './linksList/LinksList.js';
+import DateDetailList from './dateDetailList/DateDetailList.js';
 import moment from 'moment';
 import './App.scss';
 
@@ -21,9 +21,9 @@ class App extends Component {
     width: 0,
     locations: [],
     currentLocation: null,
-    linksDateMap: [],
+    heatmapDateMap: [],
     sortedLinks: [],
-    instagrams: [],
+    sortedInstagrams: [],
     selectedYear: parseInt(moment().subtract(1, 'years').format("YYYY")),
     selectedDate: null
   }
@@ -48,9 +48,9 @@ class App extends Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.state.selectedDate !== prevState.selectedDate && this.state.width <= BREAKPOINT_TABLET) {
-      const linksList = document.getElementById("linksList")
-      if (linksList) {
-        linksList.scrollIntoView(false)
+      const dateDetailList = document.getElementById("DateDetailList")
+      if (dateDetailList) {
+        dateDetailList.scrollIntoView(false);
       }
     }
   }
@@ -64,7 +64,7 @@ class App extends Component {
 
     fetch(api_url)
       .then((response) => { return response.json() })
-      .catch((err) => { console.log("Error retrieving locations.", err); })
+      .catch((err) => { console.error("Error retrieving locations.", err); })
       .then((data) => {
         data = !!data ? data : [];
 
@@ -79,12 +79,31 @@ class App extends Component {
 
     fetch(api_url)
       .then((response) => { return response.json() })
-      .catch((err) => { console.log("Error retrieving instagrams.", err); })
+      .catch((err) => { console.error("Error retrieving instagrams.", err); })
       .then((data) => {
+        var heatmapDateMap = this.state.heatmapDateMap;
         data = !!data ? data : [];
 
+        // TODO: use the same keys across data stream type
+        data.sort((a, b) => {
+          return b.taken_at_timestamp - a.taken_at_timestamp;
+        });
+
+        data.forEach((link) => {
+          const d = moment.unix(link.taken_at_timestamp).format("YYYY-MM-DD");
+          link.date = d;
+          if (!heatmapDateMap[d]) {
+            heatmapDateMap[d] = {
+              instagrams: [],
+              links: []
+            };
+          }
+          heatmapDateMap[d]["instagrams"].push(link);
+        });
+
         this.setState({
-          instagrams: data
+          sortedInstagrams: data,
+          heatmapDateMap: heatmapDateMap
         });
       });
   }
@@ -94,25 +113,30 @@ class App extends Component {
 
     fetch(api_url)
       .then((response) => { return response.json() })
-      .catch((err) => { console.log("Error retrieving links.", err); })
+      .catch((err) => { console.error("Error retrieving links.", err); })
       .then((data) => {
-        var linksDateMap = {};
+        var heatmapDateMap = this.state.heatmapDateMap;
         data = !!data ? data : [];
 
         data.sort((a, b) => {
-          return new Date(b.date) - new Date(a.date);
+          return b.timestamp - a.timestamp;
         });
 
         data.forEach((link) => {
-          if (!linksDateMap[link.date]) {
-            linksDateMap[link.date] = [];
+          const d = moment.unix(link.timestamp).format("YYYY-MM-DD");
+          link.date = d;
+          if (!heatmapDateMap[d]) {
+            heatmapDateMap[d] = {
+              instagrams: [],
+              links: []
+            };
           }
-          linksDateMap[link.date].push(link);
+          heatmapDateMap[d]["links"].push(link);
         });
 
         this.setState({
           sortedLinks: data,
-          linksDateMap: linksDateMap
+          heatmapDateMap: heatmapDateMap
         });
       });
   }
@@ -130,38 +154,47 @@ class App extends Component {
     });
   }
 
-  _renderLinksHeatMap(year) {
-    const links = this.state.selectedDate ? this.state.linksDateMap[this.state.selectedDate] : [];
+  _renderHeatMap(year) {
     // TODO: either make use of the selector or get rid of all the code referencing it.
-    const selectedYear = this.state.selectedDate ? parseInt(moment(this.state.selectedDate).format("YYYY")) : 1991;
-    const linksList = year === selectedYear ? (<LinksList ref="links-list" links={links} />) : null;
+    const dataForDate = this.state.selectedDate ? this.state.heatmapDateMap[this.state.selectedDate] : [];
+    const dateDetailList = this.state.selectedDate ? (
+      <DateDetailList
+        ref="date-detail-list"
+        data={dataForDate}
+      />
+    ) : null;
+    const isSelectedDateMap = parseInt(moment(this.state.selectedDate).format("YYYY")) === year;
+    const mapVals = this.state.sortedLinks.concat(this.state.sortedInstagrams);
 
-    return this.state.selectedYear === year ? (
+    return (
       <div className="heatmap" key={`${year}-heatmap`}>
         <h4>{year}</h4>
         <CalendarHeatmap
           startDate={new Date(`${year}-01-01`)}
           endDate={new Date(`${year}-12-31`)}
-          values={this.state.sortedLinks}
+          values={mapVals}
           onClick={this._selectDate.bind(this)}
           showMonthLabels={true}
           showWeekdayLabels={true}
           horizontal={this.state.width > BREAKPOINT_TABLET}
         />
-        {linksList}
+        {isSelectedDateMap ? dateDetailList : undefined}
       </div>
-    ) : undefined;
+    );
   }
 
   render() {
-    const links = this.state.selectedDate ? this.state.linksDateMap[this.state.selectedDate] : [];
-
-    const years = links ? Array.from(new Set(Object.keys(this.state.linksDateMap).map((date) => {
+    const years = Array.from(new Set(Object.keys(this.state.heatmapDateMap).map((date) => {
       return parseInt(moment(date).format("YYYY"));
-    }))) : [];
+    })));
 
     const sortedYears = years.sort().reverse();
 
+    const heatmaps = sortedYears.map((year) => {
+      return this._renderHeatMap(year);
+    });
+
+    /*
     const yearOptions = sortedYears.map((year) => {
       return {
         value: year,
@@ -169,9 +202,15 @@ class App extends Component {
       };
     });
 
-    const heatmaps = sortedYears.map((year) => {
-      return this._renderLinksHeatMap(year);
-    });
+    <div className="select-year">
+      <Select
+        options={yearOptions}
+        value={{value: this.state.selectedYear, label: this.state.selectedYear}}
+        onChange={this._selectYear.bind(this)}
+        isSearchable={false}
+      />
+    </div>
+    */
 
     return (
       <div className="app">
@@ -185,18 +224,8 @@ class App extends Component {
             <Map
               locations={this.state.locations}
               currentLocation={this.state.currentLocation}
-              instagrams={this.state.instagrams}
+              sortedInstagrams={this.state.instagrams}
             />
-
-            <div className="select-year">
-              <Select
-                options={yearOptions}
-                value={{value: this.state.selectedYear, label: this.state.selectedYear}}
-                onChange={this._selectYear.bind(this)}
-                isSearchable={false}
-              />
-            </div>
-
             {heatmaps}
         </div>
       </div>
