@@ -1,0 +1,16 @@
+mode: set
+github.com/dahlke/eklhad/web/services/links.go:13.41,15.16 2 1
+github.com/dahlke/eklhad/web/services/links.go:19.2,20.16 2 1
+github.com/dahlke/eklhad/web/services/links.go:23.2,29.14 5 1
+github.com/dahlke/eklhad/web/services/links.go:15.16,17.3 1 0
+github.com/dahlke/eklhad/web/services/links.go:20.16,22.3 1 0
+github.com/dahlke/eklhad/web/services/locations.go:13.47,15.16 2 1
+github.com/dahlke/eklhad/web/services/locations.go:19.2,20.16 2 1
+github.com/dahlke/eklhad/web/services/locations.go:23.2,29.16 5 1
+github.com/dahlke/eklhad/web/services/locations.go:15.16,17.3 1 0
+github.com/dahlke/eklhad/web/services/locations.go:20.16,22.3 1 0
+github.com/dahlke/eklhad/web/services/instagram.go:13.55,16.16 2 0
+github.com/dahlke/eklhad/web/services/instagram.go:20.2,21.16 2 0
+github.com/dahlke/eklhad/web/services/instagram.go:24.2,30.31 5 0
+github.com/dahlke/eklhad/web/services/instagram.go:16.16,18.3 1 0
+github.com/dahlke/eklhad/web/services/instagram.go:21.16,23.3 1 0

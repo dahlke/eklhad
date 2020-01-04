@@ -58,6 +58,10 @@ frontend_build: npm resume
 go_get:
 	cd web && go get
 
+.PHONY: go_test
+go_test:
+	cd web && go test -v ./... -coverprofile=coverage.out
+
 .PHONY: go_server_start
 go_server_start:
 	cd web && go run main.go
