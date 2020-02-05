@@ -5,8 +5,8 @@
   "stateprovinceregion": "Buenos Aires",
   "country": "Argentina",
   "current": false,
-  "lat": -34.6384904,
-  "lng": -62.476024
+  "lat": -37.2788683,
+  "lng": -59.1328542
  },
  {
   "id": "cpzh4",
@@ -23,8 +23,8 @@
   "stateprovinceregion": "New South Wales",
   "country": "Australia",
   "current": false,
-  "lat": -33.8548157,
-  "lng": 151.2164539
+  "lat": -33.8536692,
+  "lng": 151.2133527
  },
  {
   "id": "chk2m",
@@ -33,7 +33,7 @@
   "country": "Belgium",
   "current": false,
   "lat": 50.8436709,
-  "lng": 4.36743669338796
+  "lng": 4.3674366933879565
  },
  {
   "id": "ciyn3",
@@ -59,8 +59,8 @@
   "stateprovinceregion": "",
   "country": "Turks and Caicos",
   "current": false,
-  "lat": 21.77481295,
-  "lng": -72.2573413910931
+  "lat": 21.774812949999998,
+  "lng": -72.25734704331617
  },
  {
   "id": "cyevm",
@@ -113,8 +113,8 @@
   "stateprovinceregion": "Shandong",
   "country": "China",
   "current": false,
-  "lat": 36.0634258,
-  "lng": 120.3785584
+  "lat": 36.0638034,
+  "lng": 120.3781372
  },
  {
   "id": "cvlqs",
@@ -122,8 +122,8 @@
   "stateprovinceregion": "",
   "country": "China",
   "current": false,
-  "lat": 31.2322735,
-  "lng": 121.4691749
+  "lat": 31.2322758,
+  "lng": 121.4692071
  },
  {
   "id": "cx0b9",
@@ -131,8 +131,8 @@
   "stateprovinceregion": "Guanacaste",
   "country": "Costa Rica",
   "current": false,
-  "lat": 10.8241828,
-  "lng": -85.3416815
+  "lat": 10.8227892,
+  "lng": -85.3472296
  },
  {
   "id": "d9ney",
@@ -140,8 +140,8 @@
   "stateprovinceregion": "Guanacaste",
   "country": "Costa Rica",
   "current": false,
-  "lat": 10.3814276,
-  "lng": -85.0379881
+  "lat": 10.2227373,
+  "lng": -84.93162821619225
  },
  {
   "id": "db1zf",
@@ -150,7 +150,7 @@
   "country": "Costa Rica",
   "current": false,
   "lat": 10.5579948,
-  "lng": -85.6922619621323
+  "lng": -85.69226196213228
  },
  {
   "id": "dcgjs",
@@ -158,8 +158,8 @@
   "stateprovinceregion": "Guanacaste",
   "country": "Costa Rica",
   "current": false,
-  "lat": 10.6333401,
-  "lng": -85.4362722
+  "lat": 10.691642949999999,
+  "lng": -85.49858023533058
  },
  {
   "id": "ddv49",
@@ -185,8 +185,8 @@
   "stateprovinceregion": "Uusimaa",
   "country": "Finland",
   "current": false,
-  "lat": 60.1674086,
-  "lng": 24.9425683
+  "lat": 60.1674098,
+  "lng": 24.9425769
  },
  {
   "id": "d6ua4",
@@ -194,8 +194,8 @@
   "stateprovinceregion": "Ile-de-France",
   "country": "France",
   "current": false,
-  "lat": 48.8566101,
-  "lng": 2.3514992
+  "lat": 48.8566969,
+  "lng": 2.3514616
  },
  {
   "id": "d88ul",
@@ -267,7 +267,7 @@
   "country": "India",
   "current": false,
   "lat": 17.38878595,
-  "lng": 78.4610647345315
+  "lng": 78.46106473453146
  },
  {
   "id": "djhdx",
@@ -294,7 +294,7 @@
   "country": "Ireland",
   "current": false,
   "lat": 53.5577902,
-  "lng": -7.34785582600976
+  "lng": -7.3478558260097575
  },
  {
   "id": "dyxo8",
@@ -312,7 +312,7 @@
   "country": "Ireland",
   "current": false,
   "lat": 52.95814675,
-  "lng": -6.38197070867766
+  "lng": -6.381970708677661
  },
  {
   "id": "dqi9q",
@@ -357,7 +357,7 @@
   "country": "Ireland",
   "current": false,
   "lat": 53.15436455,
-  "lng": -6.81841756609764
+  "lng": -6.8184175660976445
  },
  {
   "id": "e8rn7",
@@ -374,8 +374,8 @@
   "stateprovinceregion": "Leinster",
   "country": "Ireland",
   "current": false,
-  "lat": 53.64978435,
-  "lng": -6.58852949200994
+  "lat": 53.649784350000004,
+  "lng": -6.588529492009938
  },
  {
   "id": "ebks1",
@@ -428,8 +428,8 @@
   "stateprovinceregion": "Lazio",
   "country": "Italy",
   "current": false,
-  "lat": 41.894802,
-  "lng": 12.4853384
+  "lat": 41.8933203,
+  "lng": 12.4829321
  },
  {
   "id": "ek06j",
@@ -437,8 +437,8 @@
   "stateprovinceregion": "Kansai",
   "country": "Japan",
   "current": false,
-  "lat": 34.6198813,
-  "lng": 135.490357
+  "lat": 34.427835,
+  "lng": 135.228941
  },
  {
   "id": "eleqw",
@@ -446,8 +446,8 @@
   "stateprovinceregion": "Okinawa Prefecture",
   "country": "Japan",
   "current": false,
-  "lat": 26.5707754,
-  "lng": 128.0255901
+  "lat": 26.338393,
+  "lng": 127.806341
  },
  {
   "id": "emtbd",
@@ -474,7 +474,7 @@
   "country": "Malta",
   "current": false,
   "lat": 35.8858588,
-  "lng": 14.4027386158198
+  "lng": 14.40273861581985
  },
  {
   "id": "efsh8",
@@ -482,8 +482,8 @@
   "stateprovinceregion": "North Holland",
   "country": "Netherlands",
   "current": false,
-  "lat": 52.38370575,
-  "lng": 4.64355969655963
+  "lat": 52.3885317,
+  "lng": 4.6388048
  },
  {
   "id": "eh71p",
@@ -491,8 +491,8 @@
   "stateprovinceregion": "North Holland",
   "country": "Netherlands",
   "current": false,
-  "lat": 52.3745403,
-  "lng": 4.89797550561798
+  "lat": 52.3727598,
+  "lng": 4.8936041
  },
  {
   "id": "etu5e",
@@ -527,8 +527,8 @@
   "stateprovinceregion": "Cusco",
   "country": "Peru",
   "current": false,
-  "lat": -13.5258001,
-  "lng": -71.9639903
+  "lat": -13.5228392,
+  "lng": -71.967627
  },
  {
   "id": "eo7vq",
@@ -545,8 +545,8 @@
   "stateprovinceregion": "Northwestern",
   "country": "Russia",
   "current": false,
-  "lat": 59.938732,
-  "lng": 30.316229
+  "lat": 59.9606739,
+  "lng": 30.1586551
  },
  {
   "id": "er10k",
@@ -626,8 +626,8 @@
   "stateprovinceregion": "Arizona",
   "country": "United States of America",
   "current": false,
-  "lat": 33.5091215,
-  "lng": -111.8992365
+  "lat": 33.4942189,
+  "lng": -111.9260184
  },
  {
   "id": "a3vdp",
@@ -653,8 +653,8 @@
   "stateprovinceregion": "Arizona",
   "country": "United States of America",
   "current": false,
-  "lat": 33.4485866,
-  "lng": -112.0773456
+  "lat": 33.4484367,
+  "lng": -112.0741417
  },
  {
   "id": "ajbm8",
@@ -699,7 +699,7 @@
   "country": "United States of America",
   "current": false,
   "lat": 36.7295295,
-  "lng": -119.708861260756
+  "lng": -119.70886126075588
  },
  {
   "id": "af3x1",
@@ -815,8 +815,8 @@
   "stateprovinceregion": "California",
   "country": "United States of America",
   "current": true,
-  "lat": 37.7792808,
-  "lng": -122.4192363
+  "lat": 37.7647993,
+  "lng": -122.4629897
  },
  {
   "id": "axdae",
@@ -888,7 +888,7 @@
   "country": "United States of America",
   "current": false,
   "lat": 34.1265262,
-  "lng": -116.320934912149
+  "lng": -116.32093491214893
  },
  {
   "id": "b8lvi",
@@ -897,7 +897,7 @@
   "country": "United States of America",
   "current": false,
   "lat": 38.270022,
-  "lng": -122.606122413043
+  "lng": -122.60612241304348
  },
  {
   "id": "ba0fz",
@@ -914,8 +914,8 @@
   "stateprovinceregion": "California",
   "country": "United States of America",
   "current": false,
-  "lat": 38.4732259,
-  "lng": -121.2980707
+  "lat": 38.5815719,
+  "lng": -121.4943996
  },
  {
   "id": "bctkt",
@@ -942,7 +942,7 @@
   "country": "United States of America",
   "current": false,
   "lat": 37.84054795,
-  "lng": -119.516587798025
+  "lng": -119.51658779802511
  },
  {
   "id": "bs9tc",
@@ -986,8 +986,8 @@
   "stateprovinceregion": "California",
   "country": "United States of America",
   "current": false,
-  "lat": 34.142498,
-  "lng": -118.248596
+  "lat": 34.1469416,
+  "lng": -118.2478471
  },
  {
   "id": "bo245",
@@ -1058,8 +1058,8 @@
   "stateprovinceregion": "California",
   "country": "United States of America",
   "current": false,
-  "lat": 35.272584,
-  "lng": -120.657094365302
+  "lat": 35.3540209,
+  "lng": -120.3757163
  },
  {
   "id": "bzanh",
@@ -1067,8 +1067,8 @@
   "stateprovinceregion": "California",
   "country": "United States of America",
   "current": false,
-  "lat": 37.3029568,
-  "lng": -120.4843269
+  "lat": 37.1641544,
+  "lng": -120.7678602
  },
  {
   "id": "cbxr6",
@@ -1085,8 +1085,8 @@
   "stateprovinceregion": "California",
   "country": "United States of America",
   "current": false,
-  "lat": 33.7288179,
-  "lng": -116.3825711
+  "lat": 33.74079965,
+  "lng": -116.36936983394352
  },
  {
   "id": "ceqw0",
@@ -1103,8 +1103,8 @@
   "stateprovinceregion": "California",
   "country": "United States of America",
   "current": false,
-  "lat": 36.9749416,
-  "lng": -122.0285259
+  "lat": 37.050096,
+  "lng": -121.9905908
  },
  {
   "id": "c6bhi",
@@ -1122,7 +1122,7 @@
   "country": "United States of America",
   "current": false,
   "lat": 39.8211225,
-  "lng": -105.220742990446
+  "lng": -105.22074299044587
  },
  {
   "id": "c94mc",
@@ -1130,8 +1130,8 @@
   "stateprovinceregion": "Colorado",
   "country": "United States of America",
   "current": false,
-  "lat": 40.102555,
-  "lng": -105.3632079
+  "lat": 40.0149856,
+  "lng": -105.2705456
  },
  {
   "id": "caj6t",
@@ -1139,8 +1139,8 @@
   "stateprovinceregion": "Colorado",
   "country": "United States of America",
   "current": false,
-  "lat": 39.7392364,
-  "lng": -104.9848623
+  "lat": 39.7348381,
+  "lng": -104.9653271
  },
  {
   "id": "hmyxm",
@@ -1185,7 +1185,7 @@
   "country": "United States of America",
   "current": false,
   "lat": 28.3298487,
-  "lng": -80.62054663871
+  "lng": -80.62054663871004
  },
  {
   "id": "hir8f",
@@ -1337,8 +1337,8 @@
   "stateprovinceregion": "Illinois",
   "country": "United States of America",
   "current": false,
-  "lat": 41.6026865,
-  "lng": -87.8557225152143
+  "lat": 41.602686500000004,
+  "lng": -87.85572251521427
  },
  {
   "id": "i6mvg",
@@ -1464,7 +1464,7 @@
   "country": "United States of America",
   "current": false,
   "lat": 37.1841693,
-  "lng": -86.1229910291288
+  "lng": -86.12299102912881
  },
  {
   "id": "iqav2",
@@ -1589,8 +1589,8 @@
   "stateprovinceregion": "Missouri",
   "country": "United States of America",
   "current": false,
-  "lat": 38.6268039,
-  "lng": -90.1994097
+  "lat": 38.6529545,
+  "lng": -90.24111656024635
  },
  {
   "id": "jl7c8",
@@ -1607,8 +1607,8 @@
   "stateprovinceregion": "Nevada",
   "country": "United States of America",
   "current": false,
-  "lat": 39.52927,
-  "lng": -119.8136744
+  "lat": 39.5261206,
+  "lng": -119.8126581
  },
  {
   "id": "jcrxq",
@@ -1616,8 +1616,8 @@
   "stateprovinceregion": "Nevada",
   "country": "United States of America",
   "current": false,
-  "lat": 36.1662859,
-  "lng": -115.149225
+  "lat": 36.1672559,
+  "lng": -115.1485163
  },
  {
   "id": "je6i7",
@@ -1733,8 +1733,8 @@
   "stateprovinceregion": "Tennessee",
   "country": "United States of America",
   "current": false,
-  "lat": 35.0456297,
-  "lng": -85.3096801
+  "lat": 35.0457219,
+  "lng": -85.3094883
  },
  {
   "id": "f7vo8",
@@ -1778,8 +1778,8 @@
   "stateprovinceregion": "Utah",
   "country": "United States of America",
   "current": false,
-  "lat": 40.7670126,
-  "lng": -111.8904308
+  "lat": 40.7596198,
+  "lng": -111.8867975
  },
  {
   "id": "f3nz1",
@@ -1787,8 +1787,8 @@
   "stateprovinceregion": "Virginia",
   "country": "United States of America",
   "current": false,
-  "lat": 38.8903961,
-  "lng": -77.0841585
+  "lat": 38.8769326,
+  "lng": -77.0893094
  },
  {
   "id": "fgb2q",
@@ -1873,11 +1873,29 @@
  },
  {
   "id": "fsy6j",
+  "city": "Jackson",
+  "stateprovinceregion": "Wyoming",
+  "country": "United States of America",
+  "current": false,
+  "lat": 43.479965,
+  "lng": -110.761815
+ },
+ {
+  "id": "fucqw",
+  "city": "Jackson Hole",
+  "stateprovinceregion": "Wyoming",
+  "country": "United States of America",
+  "current": false,
+  "lat": 43.684103,
+  "lng": -110.44362483445289
+ },
+ {
+  "id": "fvrbd",
   "city": "Saint Thomas",
   "stateprovinceregion": "United States Virgin Islands",
   "country": "United States Virgin Islands",
   "current": false,
   "lat": 18.34290815,
-  "lng": -64.9188997006027
+  "lng": -64.91889970060265
  }
 ]

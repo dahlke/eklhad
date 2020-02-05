@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import CalendarHeatmap from 'react-calendar-heatmap';
 // import Select from 'react-select'
-import Map from './map/Map.js';
-import DateDetailList from './dateDetailList/DateDetailList.js';
+import Map from './component/map/Map.js';
+import DateDetailList from './component/dateDetailList/DateDetailList.js';
 import moment from 'moment';
 import './App.scss';
 
@@ -215,17 +215,32 @@ class App extends Component {
     return (
       <div className="app">
         <div className="container">
-            <h1>Neil Dahlke</h1>
-            <h6>San Francisco, California, USA</h6>
+            <h1>Neil Dahlke <span className="location-descriptor">(Name)</span></h1>
+            <h2>
+            Engineer (<span className="location-descriptor">Software</span>)
+            </h2>
+            <h4>
+            San Francisco, California, USA <span className="location-descriptor">(Current)</span>
+            </h4>
+            <h4>
+            Chicago, Illinois, USA <span className="location-descriptor">(Origin)</span>
+            </h4>
+            <h5>
+              <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/neildahlke">Twitter</a> / <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/eklhad">Instagram</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.github.com/dahlke">GitHub</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.linkedin.com/in/neildahlke">LinkedIn</a> / <a href="/static/resume.html">Resume</a> (<span className="location-descriptor">Social</span>)
+            </h5>
             <h6>
-              <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/neildahlke">Twitter</a> / <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/eklhad">Instagram</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.github.com/dahlke">GitHub</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.linkedin.com/in/neildahlke">LinkedIn</a> / <a href="/static/resume.html">Resume</a>
+              <a target="_blank" rel="noopener noreferrer" href="https://github.com/dahlke/terrasnek">Terrasnek</a> (<span className="location-descriptor">Pet Project</span>)
             </h6>
-
             <Map
               locations={this.state.locations}
               currentLocation={this.state.currentLocation}
               sortedInstagrams={this.state.instagrams}
             />
+            <br />
+            <br />
+            <h2>
+            My days
+            </h2>
             {heatmaps}
         </div>
       </div>
