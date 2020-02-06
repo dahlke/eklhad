@@ -99,6 +99,10 @@ tf_plan_gcp: tf_init_gcp
 tf_apply_gcp:
 	cd ${TF_GCP_APP_DIR} && terraform apply -var "image_id=${PACKER_IMAGE_CMD}"
 
+.PHONY: tf_apply_gcp_auto
+tf_apply_gcp_auto:
+	cd ${TF_GCP_APP_DIR} && terraform apply -var "image_id=${PACKER_IMAGE_CMD}" -auto-approve
+
 .PHONY: tf_out_gcp
 tf_out_gcp:
 	cd ${TF_GCP_APP_DIR} && terraform output -json

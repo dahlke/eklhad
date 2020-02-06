@@ -59,7 +59,7 @@ make image_gcp
 
 source ~/.gcp/eklhad/eklhad-creds.sh
 source ~/.cloudflare/eklhad/eklhad-creds.sh
-make tf_apply_gcp
+make tf_apply_gcp_auto
 ```
 
 ### CircleCI Docker Test Image
