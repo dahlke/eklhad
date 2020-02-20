@@ -229,7 +229,7 @@ class App extends Component {
     const heatmaps = [];
 
     sortedYears.forEach((year) => {
-      if (year == this.state.selectedYear) {
+      if (year === this.state.selectedYear) {
         heatmaps.push(this._renderHeatMap(year))
       }
     });

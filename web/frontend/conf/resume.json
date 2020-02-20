@@ -40,6 +40,9 @@
 			"startDate": "2018-11-19",
 			"endDate": "1991-03-19",
 			"highlights": [
+				"DevOps domain expert for sales team on strategic client relationships in F500.",
+				"Lead pre-sales engineering activities (discovery, value prop, architectural design).",
+				"Work closely with key client executive decision makers on PoCs ensuring solution validity."
 			]
 		},
 		{
@@ -47,7 +50,7 @@
 			"position": "Senior Solutions Engineer (Team Lead, Western USA)",
 			"website": "http://memsql.com",
 			"startDate": "2017-03-01",
-			"endDate": "1991-03-19",
+			"endDate": "2018-11-16",
 			"highlights": [
 				"Orchestrate pre-sales activities for the development and implementation of complex solutions.",
 				"Evangelize the product: speaking at conferences, writing blogs and technical talks.",
@@ -107,13 +110,19 @@
 	],
 	"awards": [
 		{
-			"title": "SE of the Quarter (FY2020Q1, FY2020Q2)",
+			"title": "SE of the Year, Western NA (FY2020)",
+			"date": "2020-02-11",
+			"awarder": "HashiCorp",
+			"summary": ""
+		},
+		{
+			"title": "SE of the Quarter, Western USA (FY2020Q1, FY2020Q2)",
 			"date": "2018-03-21",
 			"awarder": "HashiCorp",
 			"summary": ""
 		},
 		{
-			"title": "SE of the Year (179%)",
+			"title": "SE of the Year, Global (FY2018)",
 			"date": "2018-03-21",
 			"awarder": "MemSQL",
 			"summary": ""
@@ -126,24 +135,10 @@
 		}
 	],
 	"publications": [
-		{
-			"name": "Election 2016: Analyzing Real-Time Twitter Sentiment with MemSQL Pipelines",
-			"publisher": "",
-			"releaseDate": "2016-10-18",
-			"website": "http://blog.memsql.com/election-2016-real-time-twitter-sentiment/",
-			"summary": ""
-		},
-		{
-			"name": "How Pinterest Measures Real-Time User Engagement with Spark",
-			"publisher": "",
-			"releaseDate": "2015-02-18",
-			"website": "http://blog.memsql.com/pinterest-apache-spark-use-case/",
-			"summary": ""
-		}
 	],
 	"skills": [
 		{
-            "name": "Full Stack",
+            "name": "App Dev",
             "level": "",
             "keywords": [
                 "Python", "Go", "Java", "JavaScript", "React", "Babel", "HTML", "CSS", "Vim", "Tabs"
@@ -153,10 +148,10 @@
             "name": "Dev Ops",
             "level": "",
             "keywords": [
-                "Linux", "Containers", "Automation", "Tools", "Continuous Integration", "Config Management", "Git"
+                "Terraform", "Vault", "Nomad", "Kubernetes", "Consul", "Linux", "Containers", "Automation", "Tools", "Continuous Integration", "Config Management", "Git"
             ]
         },
-        {
+       {
             "name": "Data Infrastructure",
             "level": "",
             "keywords": [
