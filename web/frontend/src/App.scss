@@ -42,15 +42,19 @@ html {
             }
             */
 
-            .location-descriptor {
+            .descriptor {
                 color: #999;
             }
 
-            .select-year {
+            .select {
+                display: inline-block;
                 width: 80px;
-                margin: 25px auto 10px;
                 font-size: 10px;
+                margin-right: 10px;
 
+                &.wide {
+                    width: 140px;
+                }
             }
 
             .heatmap {
