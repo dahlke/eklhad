@@ -20,7 +20,8 @@ type templatePayload struct {
 }
 
 type AppConfig struct {
-	GSheetID string `json:"g_sheet_id"`
+	GSheetID      string `json:"g_sheet_id"`
+	GravatarEmail string `json:"gravatar_email"`
 }
 
 var appHostName, _ = os.Hostname()

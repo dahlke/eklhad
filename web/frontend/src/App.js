@@ -4,8 +4,11 @@ import Select from 'react-select'
 import Map from './component/map/Map.js';
 import DateDetailList from './component/dateDetailList/DateDetailList.js';
 import moment from 'moment';
+import md5 from 'blueimp-md5';
 import './App.scss';
 
+
+// TODO: document what all of these are used for.
 
 // To make it easier for local development with React, include the default port the API server will run on.
 const PROTOCOL = window.location.protocol;
@@ -14,7 +17,10 @@ const PORT = PROTOCOL === "https:" ? 443 : (window.APP ? window.APP.apiPort : DE
 const HOST = window.APP ? window.APP.apiHost : window.location.hostname;
 const API_BASE_URL = `${PROTOCOL}//${HOST}:${PORT}/api`;
 const BREAKPOINT_TABLET = 768;
-const ALL_YEARS_STRING = "All Years";
+
+// const ALL_YEARS_STRING = "All Years";
+
+const GRAVATAR_EMAIL = "neil.dahlke@gmail.com"
 
 const ALL_ACTIVITIES_STRING = "All Activities";
 const INSTAGRAMS_STRING = "Instagrams";
@@ -243,12 +249,13 @@ class App extends Component {
       };
     });
 
-    console.log(yearOptions);
-    console.log(activityOptions);
+    const gravatarEmailMD5 = md5(GRAVATAR_EMAIL);
+    const gravatarURL = `https://www.gravatar.com/avatar/${gravatarEmailMD5}.jpg`
 
     return (
       <div className="app">
         <div className="container">
+            <img className="profile-picture" src={gravatarURL} />
             <h1>Neil Dahlke</h1>
             <h2>Engineer (<span className="descriptor">Software</span>)</h2>
             <h4>
