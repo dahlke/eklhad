@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CalendarHeatmap from 'react-calendar-heatmap';
-// import Select from 'react-select'
+import Select from 'react-select'
 import Map from './component/map/Map.js';
 import DateDetailList from './component/dateDetailList/DateDetailList.js';
 import moment from 'moment';
@@ -14,6 +14,19 @@ const PORT = PROTOCOL === "https:" ? 443 : (window.APP ? window.APP.apiPort : DE
 const HOST = window.APP ? window.APP.apiHost : window.location.hostname;
 const API_BASE_URL = `${PROTOCOL}//${HOST}:${PORT}/api`;
 const BREAKPOINT_TABLET = 768;
+const ALL_YEARS_STRING = "All Years";
+
+const ALL_ACTIVITIES_STRING = "All Activities";
+const INSTAGRAMS_STRING = "Instagrams";
+const LINKS_STRING = "Links";
+
+// TODO
+// const LOCATIONS_STRING = "Locations";
+const ACTIVITY_TYPES = [
+  ALL_ACTIVITIES_STRING,
+  INSTAGRAMS_STRING,
+  LINKS_STRING
+]
 
 class App extends Component {
 
@@ -24,7 +37,8 @@ class App extends Component {
     heatmapDateMap: [],
     sortedLinks: [],
     sortedInstagrams: [],
-    selectedYear: parseInt(moment().subtract(1, 'years').format("YYYY")),
+    selectedYear: parseInt(moment().subtract(0, 'years').format("YYYY")),
+    selectedActivityType: ALL_ACTIVITIES_STRING,
     selectedDate: null
   }
 
@@ -154,6 +168,12 @@ class App extends Component {
     });
   }
 
+  _selectActivity(event) {
+    this.setState({
+      selectedActivityType: event.value,
+    });
+  }
+
   _renderHeatMap(year) {
     // TODO: either make use of the selector or get rid of all the code referencing it.
     const dataForDate = this.state.selectedDate ? this.state.heatmapDateMap[this.state.selectedDate] : [];
@@ -164,7 +184,16 @@ class App extends Component {
       />
     ) : null;
     const isSelectedDateMap = parseInt(moment(this.state.selectedDate).format("YYYY")) === year;
-    const mapVals = this.state.sortedLinks.concat(this.state.sortedInstagrams);
+
+    var mapVals = [];
+    if (this.state.selectedActivityType === ALL_ACTIVITIES_STRING) {
+      mapVals = this.state.sortedLinks.concat(this.state.sortedInstagrams);
+      console.log("mapVals", mapVals)
+    } else if (this.state.selectedActivityType === INSTAGRAMS_STRING) {
+      mapVals = this.state.sortedInstagrams;
+    } else if (this.state.selectedActivityType === LINKS_STRING) {
+      mapVals = this.state.sortedLinks;
+    }
 
     return (
       <div className="heatmap" key={`${year}-heatmap`}>
@@ -189,12 +218,17 @@ class App extends Component {
     })));
 
     const sortedYears = years.sort().reverse();
+    // sortedYears.push(ALL_YEARS_STRING)
 
-    const heatmaps = sortedYears.map((year) => {
-      return this._renderHeatMap(year);
+    const heatmaps = [];
+
+    sortedYears.forEach((year) => {
+      if (year == this.state.selectedYear) {
+        heatmaps.push(this._renderHeatMap(year))
+      }
     });
 
-    /*
+    // TODO: add the option for all years
     const yearOptions = sortedYears.map((year) => {
       return {
         value: year,
@@ -202,35 +236,30 @@ class App extends Component {
       };
     });
 
-    <div className="select-year">
-      <Select
-        options={yearOptions}
-        value={{value: this.state.selectedYear, label: this.state.selectedYear}}
-        onChange={this._selectYear.bind(this)}
-        isSearchable={false}
-      />
-    </div>
-    */
+    const activityOptions = ACTIVITY_TYPES.map((activity) => {
+      return {
+        value: activity,
+        label: activity
+      };
+    });
+
+    console.log(yearOptions);
+    console.log(activityOptions);
 
     return (
       <div className="app">
         <div className="container">
-            <h1>Neil Dahlke <span className="location-descriptor">(Name)</span></h1>
-            <h2>
-            Engineer (<span className="location-descriptor">Software</span>)
-            </h2>
+            <h1>Neil Dahlke</h1>
+            <h2>Engineer (<span className="descriptor">Software</span>)</h2>
             <h4>
-            San Francisco, California, USA <span className="location-descriptor">(Current)</span>
+            San Francisco, California, USA <span className="descriptor">(Current)</span>
             </h4>
-            <h4>
-            Chicago, Illinois, USA <span className="location-descriptor">(Origin)</span>
-            </h4>
-            <h5>
-              <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/neildahlke">Twitter</a> / <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/eklhad">Instagram</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.github.com/dahlke">GitHub</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.linkedin.com/in/neildahlke">LinkedIn</a> / <a href="/static/resume.html">Resume</a> (<span className="location-descriptor">Social</span>)
-            </h5>
             <h6>
-              <a target="_blank" rel="noopener noreferrer" href="https://github.com/dahlke/terrasnek">Terrasnek</a> (<span className="location-descriptor">Pet Project</span>)
+            Chicago, Illinois, USA <span className="descriptor">(Origin)</span>
             </h6>
+            <h5>
+              <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/neildahlke">Twitter</a> / <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/eklhad">Instagram</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.github.com/dahlke">GitHub</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.linkedin.com/in/neildahlke">LinkedIn</a> / <a href="/static/resume.html">Resume</a>
+            </h5>
             <Map
               locations={this.state.locations}
               currentLocation={this.state.currentLocation}
@@ -238,9 +267,25 @@ class App extends Component {
             />
             <br />
             <br />
-            <h2>
-            My days
-            </h2>
+            <h3>Activity</h3>
+
+            <div className="select">
+              <Select
+                options={yearOptions}
+                value={{value: this.state.selectedYear, label: this.state.selectedYear}}
+                onChange={this._selectYear.bind(this)}
+                isSearchable={false}
+              />
+            </div>
+            <div className="select wide">
+              <Select
+                options={activityOptions}
+                value={{value: this.state.selectedActivityType, label: this.state.selectedActivityType}}
+                onChange={this._selectActivity.bind(this)}
+                isSearchable={false}
+              />
+            </div>
+
             {heatmaps}
         </div>
       </div>
