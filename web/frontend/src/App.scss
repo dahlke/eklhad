@@ -32,10 +32,6 @@ html {
             width: 720px;
             margin: auto;
 
-            @media screen and (max-width: $breakpoint-tablet) {
-                width: 100%;
-            }
-
             .profile-picture {
                 margin: 25px 0 0;
                 border-radius: 50%;
@@ -92,28 +88,13 @@ html {
                     .color-filled {
                         fill: $chicago-flag-blue;
                     }
-
-                    .color-github-0 {
-                        fill: $chicago-flag-blue;
-                    }
-
-                    .color-github-1 {
-                        fill: $chicago-flag-blue;
-                    }
-
-                    .color-github-2 {
-                        fill: $chicago-flag-blue;
-                    }
-
-                    .color-github-3 {
-                        fill: $chicago-flag-blue;
-                    }
-
-                    .color-github-4 {
-                        fill: $chicago-flag-blue;
-                    }
                 }
             }
+
+            @media screen and (max-width: $breakpoint-tablet) {
+                width: 90%;
+            }
+
         }
     }
 }
