@@ -201,6 +201,7 @@ class App extends Component {
       mapVals = this.state.sortedLinks;
     }
 
+
     return (
       <div className="heatmap" key={`${year}-heatmap`}>
         <h4>{year}</h4>
