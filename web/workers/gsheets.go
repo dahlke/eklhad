@@ -16,7 +16,6 @@ import (
 
 func GetDataFromGSheets(spreadSheetID string) {
 	// https://medium.com/@scottcents/how-to-convert-google-sheets-to-json-in-just-3-steps-228fe2c24e6
-	// TODO: get this from a config somewhere
 	spreadSheetMetadataURL := fmt.Sprintf("https://spreadsheets.google.com/feeds/worksheets/%s/public/basic?alt=json", spreadSheetID)
 
 	resp, err := http.Get(spreadSheetMetadataURL)

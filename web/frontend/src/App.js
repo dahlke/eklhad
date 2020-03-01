@@ -7,27 +7,21 @@ import moment from 'moment';
 import md5 from 'blueimp-md5';
 import './App.scss';
 
-
-// TODO: document what all of these are used for.
-
 // To make it easier for local development with React, include the default port the API server will run on.
 const PROTOCOL = window.location.protocol;
 const DEFAULT_PORT = 80;
 const PORT = PROTOCOL === "https:" ? 443 : (window.APP ? window.APP.apiPort : DEFAULT_PORT);
 const HOST = window.APP ? window.APP.apiHost : window.location.hostname;
 const API_BASE_URL = `${PROTOCOL}//${HOST}:${PORT}/api`;
+
+// Set the tablet breakpoint for responsive JS
 const BREAKPOINT_TABLET = 768;
 
-// const ALL_YEARS_STRING = "All Years";
-
+// TODO: all of this should come from server
 const GRAVATAR_EMAIL = "neil.dahlke@gmail.com"
-
 const ALL_ACTIVITIES_STRING = "All Activities";
 const INSTAGRAMS_STRING = "Instagrams";
 const LINKS_STRING = "Links";
-
-// TODO
-// const LOCATIONS_STRING = "Locations";
 const ACTIVITY_TYPES = [
   ALL_ACTIVITIES_STRING,
   INSTAGRAMS_STRING,
@@ -181,7 +175,6 @@ class App extends Component {
   }
 
   _renderHeatMap(year) {
-    // TODO: either make use of the selector or get rid of all the code referencing it.
     const dataForDate = this.state.selectedDate ? this.state.heatmapDateMap[this.state.selectedDate] : [];
     const dateDetailList = this.state.selectedDate ? (
       <DateDetailList
@@ -235,7 +228,6 @@ class App extends Component {
       }
     });
 
-    // TODO: add the option for all years
     const yearOptions = sortedYears.map((year) => {
       return {
         value: year,
