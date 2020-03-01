@@ -80,5 +80,6 @@ make docker_push
 
 ### Instagram Scraper, Needing Replacing (TODO)
 ```
+cd web/data/
 instagram-scraper eklhad --media-metadata --include-location --profile-metadata
 ```

@@ -15,8 +15,9 @@ import (
 )
 
 type templatePayload struct {
-	APIHost string
-	APIPort int
+	APIHost       string
+	APIPort       int
+	GravatarEmail string
 }
 
 type AppConfig struct {
@@ -26,6 +27,7 @@ type AppConfig struct {
 
 var appHostName, _ = os.Hostname()
 var appPort = 80
+var gravatarEmail string
 
 func apiLocationsHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")

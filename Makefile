@@ -24,6 +24,16 @@ todo:
 
 
 ##########################
+# DATA HELPERS
+##########################
+
+# TODO: parameterize
+.PHONY: ig_data
+ig_data:
+	cd web/data && instagram-scraper eklhad --media-metadata --include-location --profile-metadata
+
+
+##########################
 # WEB HELPERS
 ##########################
 .PHONY: npm
