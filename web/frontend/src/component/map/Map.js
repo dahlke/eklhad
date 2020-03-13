@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import ReactMapGL, {Marker, Popup} from 'react-map-gl';
-import './Map.scss';
+import React, { Component } from "react";
+import ReactMapGL, {Marker, Popup} from "react-map-gl";
+import "./Map.scss";
 
 const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoibnRkIiwiYSI6ImNqdTM3eXplODBrYTQ0ZHBnNnB6bDcwbjMifQ.JhbZo-A0SGq4Pgk87T2hoQ"
 const MAPBOX_STYLE = "mapbox://styles/ntd/cjsl0z4lm3d971fllo51zcza8"
