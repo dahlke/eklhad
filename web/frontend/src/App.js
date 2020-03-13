@@ -248,7 +248,7 @@ class App extends Component {
     return (
       <div className="app">
         <div className="container">
-            <img className="profile-picture" src={gravatarURL} />
+            <img className="profile-picture" alt="" src={gravatarURL} />
             <h1>Neil Dahlke</h1>
             <h2>Engineer (<span className="descriptor">Software</span>)</h2>
             <h4>
