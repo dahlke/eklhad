@@ -15,9 +15,9 @@ import (
 )
 
 type templatePayload struct {
-	APIHost       string
-	APIPort       int
-	GravatarEmail string
+	APIHost string
+	APIPort int
+	// GravatarEmail string
 }
 
 type AppConfig struct {

@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import CalendarHeatmap from 'react-calendar-heatmap';
-import Select from 'react-select'
-import Map from './component/map/Map.js';
-import DateDetailList from './component/dateDetailList/DateDetailList.js';
-import moment from 'moment';
-import md5 from 'blueimp-md5';
-import './App.scss';
+import React, { Component } from "react";
+import CalendarHeatmap from "react-calendar-heatmap";
+import Select from "react-select"
+import Map from "./component/map/Map.js";
+import DateDetailList from "./component/dateDetailList/DateDetailList.js";
+import moment from "moment";
+import md5 from "blueimp-md5";
+import "./App.scss";
 
 // To make it easier for local development with React, include the default port the API server will run on.
 const PROTOCOL = window.location.protocol;
@@ -37,7 +37,7 @@ class App extends Component {
     heatmapDateMap: [],
     sortedLinks: [],
     sortedInstagrams: [],
-    selectedYear: parseInt(moment().subtract(0, 'years').format("YYYY")),
+    selectedYear: parseInt(moment().subtract(0, "years").format("YYYY")),
     selectedActivityType: ALL_ACTIVITIES_STRING,
     selectedDate: null
   }
@@ -53,11 +53,11 @@ class App extends Component {
 
   componentDidMount() {
     this._updateWindowWidth();
-    window.addEventListener('resize', this._updateWindowWidth);
+    window.addEventListener("resize", this._updateWindowWidth);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this._updateWindowWidth);
+    window.removeEventListener("resize", this._updateWindowWidth);
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {

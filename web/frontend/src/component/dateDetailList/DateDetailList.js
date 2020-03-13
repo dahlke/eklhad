@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './DateDetailList.scss';
+import React, { Component } from "react";
+import "./DateDetailList.scss";
 
 class DateDetailList extends Component {
 
