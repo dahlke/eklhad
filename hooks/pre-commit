@@ -3,7 +3,5 @@
 # Run the Go tests.
 go test -v ./... -cover
 
-# Check for JS vulnerabilities
-cd ./web/frontend/ && npm audit fix
-# Then run the JS tests.
-npm run-script test-once
+# Run the JS tests.
+cd ./web/frontend/ && npm run-script test-once

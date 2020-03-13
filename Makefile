@@ -61,6 +61,10 @@ frontend_start: npm resume
 frontend_build: npm resume
 	cd web/frontend/ && npm run-script build && rm -rf node_modules
 
+.PHONY: frontend_audit_fix
+frontend_audit_fix: npm
+	cd web/frontend/ && npm audit fix
+
 
 ##########################
 # GO HELPERS
