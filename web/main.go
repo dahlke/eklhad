@@ -20,9 +20,14 @@ type templatePayload struct {
 	// GravatarEmail string
 }
 
-type AppConfig struct {
-	GSheetID      string `json:"g_sheet_id"`
-	GravatarEmail string `json:"gravatar_email"`
+type appConfig struct {
+	GSheetID       string `json:"g_sheet_id"`
+	GitHubUsername string `json:"github_username"`
+	GravatarEmail  string `json:"gravatar_email"`
+}
+
+type appSecrets struct {
+	GitHubPersonalAccessToken string `json:"github_personal_access_token"`
 }
 
 var appHostName, _ = os.Hostname()
@@ -74,7 +79,7 @@ func configLogger() {
 	log.SetLevel(log.InfoLevel)
 }
 
-func parseConfig(configJSONPath string) AppConfig {
+func parseConfig(configJSONPath string) appConfig {
 	configJSONFile, err := os.Open(configJSONPath)
 	if err != nil {
 		log.Error(err)
@@ -82,7 +87,7 @@ func parseConfig(configJSONPath string) AppConfig {
 	defer configJSONFile.Close()
 
 	jsonBytes, _ := ioutil.ReadAll(configJSONFile)
-	var config AppConfig
+	var config appConfig
 	json.Unmarshal(jsonBytes, &config)
 
 	return config

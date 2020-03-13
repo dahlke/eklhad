@@ -20,7 +20,7 @@ DOCKER_TEST_IMAGE_VERSION=0.1
 ##########################
 .PHONY: todo
 todo:
-	@ag "TODO" --ignore Makefile,web/frontend/node_modules
+	@ag "TODO" --ignore Makefile,web/frontend/node_modules/*
 
 
 ##########################
