@@ -42,7 +42,7 @@ class Map extends Component {
         var markers = [];
 
         if (this.props.locations) {
-            markers = this.props.locations.map((location) => {
+            markers = this.props.locations.items.map((location) => {
                 var markerClassName = "map-custom-marker ";
 
                 if (location.current !== true) {
@@ -85,22 +85,6 @@ class Map extends Component {
         return marker;
     }
 
-    _renderInstagramMarkers() {
-        var markers = [];
-
-
-        if (this.props.instagrams) {
-            var testGrams = this.props.instagrams.slice(0,1);
-
-            // TODO
-            markers = testGrams.map((instagram) => {
-                return null;
-            });
-        }
-
-        return markers;
-    }
-
     render() {
         return (
             <div id="map">
@@ -115,7 +99,6 @@ class Map extends Component {
                     >
                 {this._renderPopup()}
                 {this._renderStaticLocationMarkers()}
-                {this._renderInstagramMarkers()}
                 {this._renderCurrentLocation()}
                 </ReactMapGL>
             </div>
