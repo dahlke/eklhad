@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import CalendarHeatmap from "react-calendar-heatmap";
 import Select from "react-select"
-import Map from "./component/map/Map.js";
+import PopulatedMap from "./container/PopulatedMap.js";
 import DateDetailList from "./component/dateDetailList/DateDetailList.js";
 import moment from "moment";
 import md5 from "blueimp-md5";
@@ -32,7 +32,7 @@ class App extends Component {
 
   state = {
     width: 0,
-    locations: [],
+    // TODO: how to handle this with Redux? locations: [],
     currentLocation: null,
     heatmapDateMap: [],
     sortedLinks: [],
@@ -45,7 +45,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this._fetchLinkData();
-    this._fetchLocationData();
     this._fetchInstagramData();
 
     this._updateWindowWidth = this._updateWindowWidth.bind(this);
@@ -71,21 +70,6 @@ class App extends Component {
 
   _updateWindowWidth() {
     this.setState({ width: window.innerWidth });
-  }
-
-  _fetchLocationData() {
-    const api_url = `${API_BASE_URL}/locations`;
-
-    fetch(api_url)
-      .then((response) => { return response.json() })
-      .catch((err) => { console.error("Error retrieving locations.", err); })
-      .then((data) => {
-        data = !!data ? data : [];
-
-        this.setState({
-          locations: data
-        });
-      });
   }
 
   _fetchInstagramData() {
@@ -187,7 +171,7 @@ class App extends Component {
     var mapVals = [];
     if (this.state.selectedActivityType === ALL_ACTIVITIES_STRING) {
       mapVals = this.state.sortedLinks.concat(this.state.sortedInstagrams);
-      console.log("mapVals", mapVals)
+      // console.log("mapVals", mapVals)
     } else if (this.state.selectedActivityType === INSTAGRAMS_STRING) {
       mapVals = this.state.sortedInstagrams;
     } else if (this.state.selectedActivityType === LINKS_STRING) {
@@ -260,10 +244,9 @@ class App extends Component {
             <h5>
               <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/neildahlke">Twitter</a> / <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/eklhad">Instagram</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.github.com/dahlke">GitHub</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.linkedin.com/in/neildahlke">LinkedIn</a> / <a href="/static/resume.html">Resume</a>
             </h5>
-            <Map
+            <PopulatedMap
               locations={this.state.locations}
               currentLocation={this.state.currentLocation}
-              sortedInstagrams={this.state.instagrams}
             />
             <br />
             <br />
