@@ -52,45 +52,6 @@ html {
                 }
             }
 
-            .heatmap {
-                margin-top: 50px;
-
-                @media screen and (max-width: $breakpoint-tablet) {
-                    width: 60%;
-                    margin: auto;
-                }
-
-                .react-calendar-heatmap {
-                    @media screen and (max-width: $breakpoint-tablet) {
-                        .react-calendar-heatmap-month-label {
-                            font-size: 5px;
-                        }
-                    }
-
-                    text {
-                        font-size: 10px;
-                        fill: #aaa;
-                    }
-
-                    .react-calendar-heatmap-small-text {
-                        font-size: 5px;
-                    }
-
-                    rect:hover {
-                        stroke: #555;
-                        stroke-width: 1px;
-                    }
-
-                    .color-empty {
-                        fill: #eeeeee;
-                    }
-
-                    .color-filled {
-                        fill: $chicago-flag-blue;
-                    }
-                }
-            }
-
             @media screen and (max-width: $breakpoint-tablet) {
                 width: 90%;
             }
