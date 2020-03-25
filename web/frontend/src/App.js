@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import CalendarHeatmap from "react-calendar-heatmap";
 import Select from "react-select"
-import PopulatedMap from "./container/PopulatedMap.js";
-import DateDetailList from "./component/dateDetailList/DateDetailList.js";
+import PopulatedMap from "./container/PopulatedMap";
+import Heatmap from "./component/heatmap/Heatmap";
+import DateDetailList from "./component/dateDetailList/DateDetailList";
 import moment from "moment";
 import md5 from "blueimp-md5";
+
 import "./App.scss";
 
 // To make it easier for local development with React, include the default port the API server will run on.
@@ -182,13 +183,11 @@ class App extends Component {
     return (
       <div className="heatmap" key={`${year}-heatmap`}>
         <h4>{year}</h4>
-        <CalendarHeatmap
+        <Heatmap
           startDate={new Date(`${year}-01-01`)}
           endDate={new Date(`${year}-12-31`)}
           values={mapVals}
           onClick={this._selectDate.bind(this)}
-          showMonthLabels={true}
-          showWeekdayLabels={true}
           horizontal={this.state.width > BREAKPOINT_TABLET}
         />
         {isSelectedDateMap ? dateDetailList : undefined}
