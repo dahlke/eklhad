@@ -15,8 +15,6 @@ class DateDetailList extends Component {
 
     const instagrams = this.props.data.instagrams.map((instagram) => {
         // TODO: fix dates, naming
-        console.log(instagram);
-
         return (
           <div id="instagramList" key={instagram.shortcode} className="instagram" >
               <div className="url">
