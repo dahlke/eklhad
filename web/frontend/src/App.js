@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Select from "react-select"
 import PopulatedMap from "./container/PopulatedMap";
 import Heatmap from "./component/heatmap/Heatmap";
-import DateDetailList from "./component/dateDetailList/DateDetailList";
 import moment from "moment";
 import md5 from "blueimp-md5";
 
@@ -35,7 +34,7 @@ class App extends Component {
     width: 0,
     // TODO: how to handle this with Redux? locations: [],
     currentLocation: null,
-    heatmapDateMap: [],
+    heatmapDateMap: {},
     sortedLinks: [],
     sortedInstagrams: [],
     selectedYear: parseInt(moment().subtract(0, "years").format("YYYY")),
@@ -159,42 +158,6 @@ class App extends Component {
     });
   }
 
-  _renderHeatMap(year) {
-    const dataForDate = this.state.selectedDate ? this.state.heatmapDateMap[this.state.selectedDate] : [];
-    const dateDetailList = this.state.selectedDate ? (
-      <DateDetailList
-        ref="date-detail-list"
-        data={dataForDate}
-      />
-    ) : null;
-    const isSelectedDateMap = parseInt(moment(this.state.selectedDate).format("YYYY")) === year;
-
-    var mapVals = [];
-    if (this.state.selectedActivityType === ALL_ACTIVITIES_STRING) {
-      mapVals = this.state.sortedLinks.concat(this.state.sortedInstagrams);
-      // console.log("mapVals", mapVals)
-    } else if (this.state.selectedActivityType === INSTAGRAMS_STRING) {
-      mapVals = this.state.sortedInstagrams;
-    } else if (this.state.selectedActivityType === LINKS_STRING) {
-      mapVals = this.state.sortedLinks;
-    }
-
-
-    return (
-      <div className="heatmap" key={`${year}-heatmap`}>
-        <h4>{year}</h4>
-        <Heatmap
-          startDate={new Date(`${year}-01-01`)}
-          endDate={new Date(`${year}-12-31`)}
-          values={mapVals}
-          onClick={this._selectDate.bind(this)}
-          horizontal={this.state.width > BREAKPOINT_TABLET}
-        />
-        {isSelectedDateMap ? dateDetailList : undefined}
-      </div>
-    );
-  }
-
   render() {
     const years = Array.from(new Set(Object.keys(this.state.heatmapDateMap).map((date) => {
       return parseInt(moment(date).format("YYYY"));
@@ -202,14 +165,6 @@ class App extends Component {
 
     const sortedYears = years.sort().reverse();
     // sortedYears.push(ALL_YEARS_STRING)
-
-    const heatmaps = [];
-
-    sortedYears.forEach((year) => {
-      if (year === this.state.selectedYear) {
-        heatmaps.push(this._renderHeatMap(year))
-      }
-    });
 
     const yearOptions = sortedYears.map((year) => {
       return {
@@ -268,7 +223,16 @@ class App extends Component {
               />
             </div>
 
-            {heatmaps}
+            <Heatmap
+              year={this.state.selectedYear}
+              selectedDate={this.state.selectedDate}
+              selectedActivityType={this.state.selectedActivityType}
+              heatmapDateMap={this.state.heatmapDateMap}
+              sortedInstagrams={this.state.sortedInstagrams}
+              sortedLinks={this.state.sortedLinks}
+              onClick={this._selectDate.bind(this)}
+              horizontal={this.state.width > BREAKPOINT_TABLET}
+            />
         </div>
       </div>
     );
