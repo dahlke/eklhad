@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
-import { fetchLocations } from './actions'
+import { fetchLocations, fetchInstagrams, fetchLinks } from './actions'
 import rootReducer from './reducers/index.js'
 import App from "./App";
 
@@ -21,7 +21,13 @@ const store = createStore(
   )
 )
 
-store.dispatch(fetchLocations()).then(() => console.log(store.getState()))
+// store.dispatch(fetchLocations()).then(() => console.log(store.getState()))
+// store.dispatch(fetchInstagrams()).then(() => console.log(store.getState()))
+// store.dispatch(fetchLinks()).then(() => console.log(store.getState()))
+
+store.dispatch(fetchLocations())
+store.dispatch(fetchInstagrams())
+store.dispatch(fetchLinks())
 
 ReactDOM.render(
     <Provider store={store}>

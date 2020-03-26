@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import CalendarHeatmap from "react-calendar-heatmap";
 import DateDetailList from "../..//component/dateDetailList/DateDetailList";
 import moment from "moment";
@@ -22,16 +23,16 @@ class Heatmap extends Component {
         const isSelectedDateMap = parseInt(moment(this.props.selectedDate).format("YYYY")) === this.props.year;
 
         var mapVals = [];
-        mapVals = this.props.sortedLinks.concat(this.props.sortedInstagrams);
+        mapVals = this.props.links.concat(this.props.instagrams);
+        console.log("render props", this.props)
         /*
         // TODO
         if (this.props.selectedActivityType === ALL_ACTIVITIES_STRING) {
-            mapVals = this.props.sortedLinks.concat(this.props.sortedInstagrams);
-            // console.log("mapVals", mapVals)
+            mapVals = this.props.links.concat(this.props.instagrams);
         } else if (this.props.selectedActivityType === INSTAGRAMS_STRING) {
-            mapVals = this.props.sortedInstagrams;
+            mapVals = this.props.links;
         } else if (this.props.selectedActivityType === LINKS_STRING) {
-            mapVals = this.props.sortedLinks;
+            mapVals = this.props.links;
         }
         */
 
@@ -53,5 +54,16 @@ class Heatmap extends Component {
         );
     }
 }
+
+// TODO
+Heatmap.propTypes = {
+  instagrams: PropTypes.array,
+  links: PropTypes.array
+}
+
+Heatmap.defaultProps = {
+  instagrams: [],
+  links: []
+};
 
 export default Heatmap;

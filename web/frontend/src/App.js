@@ -1,18 +1,11 @@
 import React, { Component } from "react";
 import Select from "react-select"
 import PopulatedMap from "./container/PopulatedMap";
-import Heatmap from "./component/heatmap/Heatmap";
+import PopulatedHeatmap from "./container/PopulatedHeatmap";
 import moment from "moment";
 import md5 from "blueimp-md5";
 
 import "./App.scss";
-
-// To make it easier for local development with React, include the default port the API server will run on.
-const PROTOCOL = window.location.protocol;
-const DEFAULT_PORT = 80;
-const PORT = PROTOCOL === "https:" ? 443 : (window.APP ? window.APP.apiPort : DEFAULT_PORT);
-const HOST = window.APP ? window.APP.apiHost : window.location.hostname;
-const API_BASE_URL = `${PROTOCOL}//${HOST}:${PORT}/api`;
 
 // Set the tablet breakpoint for responsive JS
 const BREAKPOINT_TABLET = 768;
@@ -35,8 +28,6 @@ class App extends Component {
     // TODO: how to handle this with Redux? locations: [],
     currentLocation: null,
     heatmapDateMap: {},
-    sortedLinks: [],
-    sortedInstagrams: [],
     selectedYear: parseInt(moment().subtract(0, "years").format("YYYY")),
     selectedActivityType: ALL_ACTIVITIES_STRING,
     selectedDate: null
@@ -44,9 +35,6 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this._fetchLinkData();
-    this._fetchInstagramData();
-
     this._updateWindowWidth = this._updateWindowWidth.bind(this);
   }
 
@@ -70,73 +58,6 @@ class App extends Component {
 
   _updateWindowWidth() {
     this.setState({ width: window.innerWidth });
-  }
-
-  _fetchInstagramData() {
-    const api_url = `${API_BASE_URL}/instagrams`;
-
-    fetch(api_url)
-      .then((response) => { return response.json() })
-      .catch((err) => { console.error("Error retrieving instagrams.", err); })
-      .then((data) => {
-        var heatmapDateMap = this.state.heatmapDateMap;
-        data = !!data ? data : [];
-
-        // TODO: use the same keys across data stream type
-        data.sort((a, b) => {
-          return b.taken_at_timestamp - a.taken_at_timestamp;
-        });
-
-        data.forEach((link) => {
-          const d = moment.unix(link.taken_at_timestamp).format("YYYY-MM-DD");
-          link.date = d;
-          if (!heatmapDateMap[d]) {
-            heatmapDateMap[d] = {
-              instagrams: [],
-              links: []
-            };
-          }
-          heatmapDateMap[d]["instagrams"].push(link);
-        });
-
-        this.setState({
-          sortedInstagrams: data,
-          heatmapDateMap: heatmapDateMap
-        });
-      });
-  }
-
-  _fetchLinkData() {
-    const api_url = `${API_BASE_URL}/links`;
-
-    fetch(api_url)
-      .then((response) => { return response.json() })
-      .catch((err) => { console.error("Error retrieving links.", err); })
-      .then((data) => {
-        var heatmapDateMap = this.state.heatmapDateMap;
-        data = !!data ? data : [];
-
-        data.sort((a, b) => {
-          return b.timestamp - a.timestamp;
-        });
-
-        data.forEach((link) => {
-          const d = moment.unix(link.timestamp).format("YYYY-MM-DD");
-          link.date = d;
-          if (!heatmapDateMap[d]) {
-            heatmapDateMap[d] = {
-              instagrams: [],
-              links: []
-            };
-          }
-          heatmapDateMap[d]["links"].push(link);
-        });
-
-        this.setState({
-          sortedLinks: data,
-          heatmapDateMap: heatmapDateMap
-        });
-      });
   }
 
   _selectDate(cell) {
@@ -223,13 +144,10 @@ class App extends Component {
               />
             </div>
 
-            <Heatmap
+            <PopulatedHeatmap
               year={this.state.selectedYear}
               selectedDate={this.state.selectedDate}
               selectedActivityType={this.state.selectedActivityType}
-              heatmapDateMap={this.state.heatmapDateMap}
-              sortedInstagrams={this.state.sortedInstagrams}
-              sortedLinks={this.state.sortedLinks}
               onClick={this._selectDate.bind(this)}
               horizontal={this.state.width > BREAKPOINT_TABLET}
             />
