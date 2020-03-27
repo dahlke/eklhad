@@ -6,12 +6,12 @@ const API_BASE_URL = `${PROTOCOL}//${HOST}:${PORT}/api`;
 
 
 /* Visibility Filters */
-export const setVisibilityFilter = filter => ({
-  type: 'SET_VISIBILITY_FILTER',
+export const setActivityVisibilityFilter = filter => ({
+  type: 'SET_ACTIVITY_VISIBILITY_FILTER',
   filter
 })
 
-export const VisibilityFilters = {
+export const ActivityVisibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',
   SHOW_INSTAGRAMS: 'SHOW_INSTAGRAMS',
   SHOW_LINKS: 'SHOW_LINKS'

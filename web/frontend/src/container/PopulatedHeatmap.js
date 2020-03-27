@@ -1,4 +1,6 @@
 import { connect } from 'react-redux'
+import { setActivityVisibilityFilter } from '../actions'
+
 import Heatmap from '../component/heatmap/Heatmap'
 import moment from "moment";
 
@@ -19,8 +21,6 @@ function _processLinks(data) {
     data.sort((a, b) => {
       return b.timestamp - a.timestamp;
     });
-
-    console.log("process links", data)
 
     return data
 }
@@ -52,8 +52,6 @@ function _processHeatmapDateMap(instagrams, links) {
       heatmapDateMap[d]["instagrams"].push(instagram);
     });
 
-    console.log("HEATMAP", heatmapDateMap)
-
     return heatmapDateMap;
 }
 
@@ -66,12 +64,13 @@ const mapStateToProps = (state) => {
   return {
     instagrams: sortedInstagrams,
     links: sortedLinks,
-    heatmapDateMap: heatmapDateMap
+    heatmapDateMap: heatmapDateMap,
+    activityVisibilityFilter: state.activityVisibilityFilter
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-
+  setActivityVisibilityFilter: filter => dispatch(setActivityVisibilityFilter(filter))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Heatmap)
