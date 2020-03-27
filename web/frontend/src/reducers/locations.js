@@ -1,7 +1,7 @@
 import {
   REQUEST_LOCATIONS,
   RECEIVE_LOCATIONS
-} from '../actions'
+} from '../actions/locations'
 
 
 const locations = (state = {items: []}, action) => {

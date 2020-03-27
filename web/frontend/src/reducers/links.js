@@ -1,7 +1,7 @@
 import {
   REQUEST_LINKS,
   RECEIVE_LINKS
-} from '../actions'
+} from '../actions/links'
 
 
 const links = (state = {items: []}, action) => {

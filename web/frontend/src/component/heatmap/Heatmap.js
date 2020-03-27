@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Select from "react-select"
-import { ActivityVisibilityFilters } from '../../actions'
+import { ActivityFilters, YearFilters } from '../../actions'
 import PropTypes from 'prop-types';
 import CalendarHeatmap from "react-calendar-heatmap";
 import DateDetailList from "../../component/dateDetailList/DateDetailList";
@@ -12,10 +12,23 @@ import "./Heatmap.scss";
 class Heatmap extends Component {
 
     state = {
-        selectedYear: parseInt(moment().subtract(0, "years").format("YYYY")),
-        selectedActivityType: ActivityVisibilityFilters.SHOW_ALL,
+        yearFilter: parseInt(moment().subtract(0, "years").format("YYYY")),
+        selectedActivityType: ActivityFilters.SHOW_ALL,
         selectedDate: null
     }
+
+    /*
+    // TODO: handle change of a filter
+    // TODO: handle mobile
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.state.selectedDate !== prevState.selectedDate && this.state.width <= BREAKPOINT_TABLET) {
+        const dateDetailList = document.getElementById("DateDetailList")
+        if (dateDetailList) {
+            dateDetailList.scrollIntoView(false);
+        }
+        }
+    }
+    */
 
     _selectDate(cell) {
         this.setState({
@@ -25,21 +38,15 @@ class Heatmap extends Component {
 
     _selectYear(event) {
         this.setState({
-            selectedYear: event.value,
+            yearFilter: event.value,
             selectedDate: null
         });
     }
 
+    // TODO: rename this class / classNames
     render() {
-        // TODO: rename this class / className
-        // TODO: cleanup unused
-        const years = Array.from(new Set(Object.keys(this.props.heatmapDateMap).map((date) => {
-            return parseInt(moment(date).format("YYYY"));
-        }))).sort().reverse();
-
-        const startDate = new Date(`${this.state.selectedYear}-01-01`);
-        const endDate = new Date(`${this.state.selectedYear}-12-31`);
-
+        const startDate = new Date(`${this.props.yearFilter}-01-01`);
+        const endDate = new Date(`${this.props.yearFilter}-12-31`);
         const dataForDate = this.state.selectedDate ? this.props.heatmapDateMap[this.state.selectedDate] : [];
         const dateDetailList = this.state.selectedDate ? (
             <DateDetailList
@@ -47,52 +54,32 @@ class Heatmap extends Component {
                 data={dataForDate}
             />
         ) : null;
-        const isSelectedDateMap = parseInt(moment(this.state.selectedDate).format("YYYY")) === this.state.selectedYear;
+        const isSelectedDateMap = parseInt(moment(this.state.selectedDate).format("YYYY")) === this.props.yearFilter;
 
         var mapVals = [];
-        if (this.props.activityVisibilityFilter === ActivityVisibilityFilters.SHOW_ALL) {
+        if (this.props.activityFilter === ActivityFilters.SHOW_ALL) {
             mapVals = this.props.links.concat(this.props.instagrams);
-        } else if (this.props.activityVisibilityFilter === ActivityVisibilityFilters.SHOW_INSTAGRAMS) {
+        } else if (this.props.activityFilter === ActivityFilters.SHOW_INSTAGRAMS) {
             mapVals = this.props.instagrams;
-        } else if (this.props.activityVisibilityFilter === ActivityVisibilityFilters.SHOW_LINKS) {
+        } else if (this.props.activityFilter === ActivityFilters.SHOW_LINKS) {
             mapVals = this.props.links;
         }
 
-        const yearOptions = years.map((year) => {
-            return {
-                value: year,
-                label: year
-            };
+        const yearOptions = Object.keys(YearFilters).reverse().map((key) => {
+            return { value: key, label: key };
         });
 
-        const activityOptions = [
-            {
-                value: ActivityVisibilityFilters.SHOW_ALL,
-                label: "Show All"
-            },
-            {
-                value: ActivityVisibilityFilters.SHOW_INSTAGRAMS,
-                label: "Show Instagrams"
-            },
-            {
-                value: ActivityVisibilityFilters.SHOW_LINKS,
-                label: "Show Links"
-            }
-        ];
-
-        const filteredOptions = activityOptions.filter((activity) => {
-            return activity.value == this.props.activityVisibilityFilter;
+        const activityOptions = Object.keys(ActivityFilters).map((key) => {
+            return { value: key, label: key };
         });
-
-        const selectedActivityValue = filteredOptions.length > 0 ? filteredOptions[0] : null;
 
         return (
             <div className="heatmap">
                 <div className="select">
                 <Select
                     options={yearOptions}
-                    value={{value: this.state.selectedYear, label: this.state.selectedYear}}
-                    onChange={this._selectYear.bind(this)}
+                    value={{value: this.props.yearFilter, label: this.props.yearFilter}}
+                    onChange={this.props.setYearFilter}
                     isSearchable={false}
                 />
                 </div>
@@ -100,8 +87,8 @@ class Heatmap extends Component {
                 <div className="select wide">
                 <Select
                     options={activityOptions}
-                    value={selectedActivityValue}
-                    onChange={this.props.setActivityVisibilityFilter}
+                    value={{value: this.props.activityFilter, label: this.props.activityFilter}}
+                    onChange={this.props.setActivityFilter}
                     isSearchable={false}
                 />
                 </div>

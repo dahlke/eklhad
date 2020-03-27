@@ -1,7 +1,7 @@
 import {
   REQUEST_INSTAGRAMS,
   RECEIVE_INSTAGRAMS
-} from '../actions'
+} from '../actions/instagrams'
 
 
 const instagrams = (state = {items: []}, action) => {

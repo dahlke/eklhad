@@ -4,8 +4,10 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
-import { fetchLocations, fetchInstagrams, fetchLinks } from './actions'
-import rootReducer from './reducers/index.js'
+import { fetchLocations } from './actions/locations'
+import { fetchInstagrams } from './actions/instagrams'
+import { fetchLinks } from './actions/links'
+import rootReducer from './reducers/index'
 import App from "./App";
 
 import "./index.scss";
