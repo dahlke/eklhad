@@ -2,11 +2,13 @@ import { combineReducers } from 'redux'
 import locations from './locations'
 import links from './links'
 import instagrams from './instagrams'
-import activityVisibilityFilter from './activityVisibilityFilter'
+import ActivityFilter from './activityFilter'
+import YearFilter from './yearFilter'
 
 export default combineReducers({
   locations,
   links,
   instagrams,
-  activityVisibilityFilter
+  ActivityFilter,
+  YearFilter
 })

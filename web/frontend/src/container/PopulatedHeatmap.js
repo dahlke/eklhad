@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { setActivityVisibilityFilter } from '../actions'
+import { setActivityFilter, setYearFilter } from '../actions'
 
 import Heatmap from '../component/heatmap/Heatmap'
 import moment from "moment";
@@ -65,12 +65,14 @@ const mapStateToProps = (state) => {
     instagrams: sortedInstagrams,
     links: sortedLinks,
     heatmapDateMap: heatmapDateMap,
-    activityVisibilityFilter: state.activityVisibilityFilter
+    activityFilter: state.ActivityFilter,
+    yearFilter: state.YearFilter
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  setActivityVisibilityFilter: filter => dispatch(setActivityVisibilityFilter(filter))
+  setActivityFilter: filter => dispatch(setActivityFilter(filter)),
+  setYearFilter: filter => dispatch(setYearFilter(filter))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Heatmap)

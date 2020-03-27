@@ -8,15 +8,13 @@ import "./App.scss";
 // Set the tablet breakpoint for responsive JS
 const BREAKPOINT_TABLET = 768;
 
-// TODO: all of this should come from server
+// TODO: should come from server
 const GRAVATAR_EMAIL = "neil.dahlke@gmail.com"
 
 class App extends Component {
 
   state = {
-    width: 0,
-    // TODO: how to handle this with Redux? locations: [],
-    currentLocation: null
+    width: 0
   }
 
   constructor(props) {
@@ -33,15 +31,6 @@ class App extends Component {
     window.removeEventListener("resize", this._updateWindowWidth);
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.state.selectedDate !== prevState.selectedDate && this.state.width <= BREAKPOINT_TABLET) {
-      const dateDetailList = document.getElementById("DateDetailList")
-      if (dateDetailList) {
-        dateDetailList.scrollIntoView(false);
-      }
-    }
-  }
-
   _updateWindowWidth() {
     this.setState({ width: window.innerWidth });
   }
@@ -49,19 +38,15 @@ class App extends Component {
   render() {
     const gravatarEmailMD5 = md5(GRAVATAR_EMAIL);
     const gravatarURL = `https://www.gravatar.com/avatar/${gravatarEmailMD5}.jpg`
+    console.log(gravatarEmailMD5, gravatarURL, GRAVATAR_EMAIL)
 
     return (
       <div className="app">
         <div className="container">
             <img className="profile-picture" alt="" src={gravatarURL} />
             <h1>Neil Dahlke</h1>
-            <h2>Engineer (<span className="descriptor">Software</span>)</h2>
-            <h4>
-            San Francisco, California, USA <span className="descriptor">(Current)</span>
-            </h4>
-            <h6>
-            Chicago, Illinois, USA <span className="descriptor">(Origin)</span>
-            </h6>
+            <h2>Engineer</h2>
+            <h4>San Francisco, California, USA</h4>
             <h5>
               <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/neildahlke">Twitter</a> / <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/eklhad">Instagram</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.github.com/dahlke">GitHub</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.linkedin.com/in/neildahlke">LinkedIn</a> / <a href="/static/resume.html">Resume</a>
             </h5>
@@ -73,6 +58,7 @@ class App extends Component {
             <br />
             <h3>Activity</h3>
             <PopulatedHeatmap
+              width={this.state.width}
               horizontal={this.state.width > BREAKPOINT_TABLET}
             />
         </div>
