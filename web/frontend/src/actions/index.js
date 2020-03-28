@@ -34,3 +34,9 @@ export const YearFilters = {
   2013: 2013,
   2012: 2012
 }
+
+/* Date Filter */
+export const setDateFilter = filter => ({
+  type: 'SET_DATE_FILTER',
+  filter
+})

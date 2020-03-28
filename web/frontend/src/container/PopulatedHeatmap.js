@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { setActivityFilter, setYearFilter } from '../actions'
+import { setActivityFilter, setYearFilter, setDateFilter } from '../actions'
 
 import Heatmap from '../component/heatmap/Heatmap'
 import moment from "moment";
@@ -66,13 +66,15 @@ const mapStateToProps = (state) => {
     links: sortedLinks,
     heatmapDateMap: heatmapDateMap,
     activityFilter: state.ActivityFilter,
-    yearFilter: state.YearFilter
+    yearFilter: state.YearFilter,
+    dateFilter: state.DateFilter
   }
 }
 
 const mapDispatchToProps = dispatch => ({
   setActivityFilter: filter => dispatch(setActivityFilter(filter)),
-  setYearFilter: filter => dispatch(setYearFilter(filter))
+  setYearFilter: filter => dispatch(setYearFilter(filter)),
+  setDateFilter: filter => dispatch(setDateFilter(filter))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Heatmap)
