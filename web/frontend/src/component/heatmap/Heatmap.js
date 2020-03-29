@@ -11,24 +11,10 @@ import "./Heatmap.scss";
 
 class Heatmap extends Component {
 
-    /*
-    // TODO: handle change of a filter
-    // TODO: handle mobile
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.dateFilter !== prevprops.dateFilter && this.state.width <= BREAKPOINT_TABLET) {
-        const dateDetailList = document.getElementById("DateDetailList")
-        if (dateDetailList) {
-            dateDetailList.scrollIntoView(false);
-        }
-        }
-    }
-    */
-
     // TODO: rename this class / classNames
     render() {
         const startDate = new Date(`${this.props.yearFilter}-01-01`);
         const endDate = new Date(`${this.props.yearFilter}-12-31`);
-        console.log(this.props.dateFilter)
         const dataForDate = this.props.dateFilter ? this.props.heatmapDateMap[this.props.dateFilter] : [];
         const dateDetailList = this.props.dateFilter ? (
             <DateDetailList
@@ -36,7 +22,8 @@ class Heatmap extends Component {
                 data={dataForDate}
             />
         ) : null;
-        const isSelectedDateMap = parseInt(moment(this.props.dateFilter).format("YYYY")) === this.props.yearFilter;
+        const isSelectedDateMap = moment(this.props.dateFilter).format("YYYY") == this.props.yearFilter;
+        console.log(this.props.dateFilter, dateDetailList, isSelectedDateMap, this.props.yearFilter, parseInt(moment(this.props.dateFilter).format("YYYY")));
 
         var mapVals = [];
         if (this.props.activityFilter === ActivityFilters.SHOW_ALL) {
