@@ -24,6 +24,16 @@ export const setYearFilter = filter => ({
 })
 
 // TODO: make this dynamic somehow
+
+/*
+const EARLIEST_YEAR = 2012;
+const yearCursor = new Date().getFullYear();
+export const YearFilters = {}
+
+while (yearCursor >= EARLIEST_YEAR) {
+  YearFilters[yearCursor] = yearCursor;
+}
+*/
 export const YearFilters = {
   2020: 2020,
   2019: 2019,
