@@ -10,6 +10,15 @@ import "./Heatmap.scss";
 
 
 class Heatmap extends Component {
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.dateFilter !== prevProps.dateFilter) {
+            const dateDetailList = document.getElementById("DateDetailList")
+
+            if (dateDetailList) {
+                dateDetailList.scrollIntoView(false);
+            }
+        }
+    }
 
     // TODO: rename this class / classNames
     render() {
