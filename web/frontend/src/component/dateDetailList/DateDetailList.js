@@ -18,7 +18,7 @@ class DateDetailList extends Component {
         return (
           <div id="instagramList" key={instagram.shortcode} className="instagram" >
               <div className="url">
-                <a href={instagram.urls[0]}>
+                <a target="_blank" href={instagram.urls[0]}>
                   <span className="metadata">[<span className="date">{instagram.date}</span>] [<span className="type">{instagram.location.name === "" ? "Unknown" : instagram.location.name}]</span></span>
                   <img className="photo" src={instagram.urls[0]} alt={instagram.location.name} />
                 </a>
