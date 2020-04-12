@@ -292,5 +292,12 @@
   "timestamp": 1537056000,
   "type": "talk",
   "url": "https://events.rainfocus.com/widget/oracle/oow19/catalogow19?search.topic=155621695037200362ko\u0026search=terraform"
+ },
+ {
+  "id": "ebks1",
+  "name": "Migrating A Lot of State with Python and the Terraform Cloud API",
+  "timestamp": 1586476800,
+  "type": "blog",
+  "url": "https://medium.com/hashicorp-engineering/migrating-a-lot-of-state-with-python-and-the-terraform-cloud-api-997ec798cd11"
  }
 ]
