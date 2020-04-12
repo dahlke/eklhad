@@ -9,7 +9,7 @@ function _processInstagrams(data) {
 
     // TODO: use the same keys across data stream type
     data.sort((a, b) => {
-      return b.taken_at_timestamp - a.taken_at_timestamp;
+      return b.timestamp - a.timestamp;
     });
 
     return data;
@@ -41,7 +41,7 @@ function _processHeatmapDateMap(instagrams, links) {
     });
 
     instagrams.forEach((instagram) => {
-      const d = moment.unix(instagram.taken_at_timestamp).format("YYYY-MM-DD");
+      const d = moment.unix(instagram.timestamp).format("YYYY-MM-DD");
       instagram.date = d;
       if (!heatmapDateMap[d]) {
         heatmapDateMap[d] = {
