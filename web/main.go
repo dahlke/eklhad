@@ -21,9 +21,10 @@ type templatePayload struct {
 }
 
 type appConfig struct {
-	GSheetID       string `json:"g_sheet_id"`
-	GitHubUsername string `json:"github_username"`
-	GravatarEmail  string `json:"gravatar_email"`
+	GSheetID          string `json:"g_sheet_id"`
+	GitHubUsername    string `json:"github_username"`
+	GravatarEmail     string `json:"gravatar_email"`
+	InstagramUsername string `json:"instagram_username"`
 }
 
 type appSecrets struct {
@@ -97,6 +98,8 @@ func main() {
 	portPtr := flag.Int("port", 80, "The port to run the HTTP app on.")
 	productionPtr := flag.Bool("production", false, "If true, run the app over HTTPS.")
 	pullGSheetsPtr := flag.Bool("gsheets", false, "If true, pull the latest data from Google Sheets. ID specified in config.json.")
+	pullInstagramPtr := flag.Bool("instagram", false, "If true, pull only the latest data from Instagram. Username specified in config.json.")
+	pullAllInstagramsPtr := flag.Bool("instagram-all", false, "If true, pull all data from Instagram. Username specified in config.json.")
 	flag.Parse()
 
 	configLogger()
@@ -105,6 +108,8 @@ func main() {
 	appPort = *portPtr
 	isProduction := *productionPtr
 	isPullGSheets := *pullGSheetsPtr
+	isPullInstagram := *pullInstagramPtr
+	isPullAllInstagrams := *pullAllInstagramsPtr
 
 	fileServer := http.FileServer(http.Dir("frontend/build/"))
 
@@ -114,9 +119,11 @@ func main() {
 	http.HandleFunc("/api/links", apiLinksHandler)
 	http.HandleFunc("/api/instagrams", apiInstagramsHandler)
 
+	// TODO: make the workers run in go routines constantly
 	if isPullGSheets {
-		// TODO: have this be a worker that pulls constantly, adds timestamped files, and removes the oldest if no errors.
 		workers.GetDataFromGSheets(appConfig.GSheetID)
+	} else if isPullInstagram || isPullAllInstagrams {
+		workers.GetDataFromInstagramForUser(appConfig.InstagramUsername, isPullAllInstagrams)
 	} else if isProduction {
 		log.Println("Starting HTTPS server...")
 		go http.ListenAndServe(fmt.Sprintf(":%d", appPort), http.HandlerFunc(redirectToHTTPS))

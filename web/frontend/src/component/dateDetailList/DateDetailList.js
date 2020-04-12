@@ -8,7 +8,7 @@ class DateDetailList extends Component {
         return (
           <div id="DateDetailList" key={link.id} className="link" >
               <span className="metadata">[<span className="date">{link.date}</span>] [<span className="type">{link.type}]</span></span>
-              <span className="url"><a href={link.url}>{link.name}</a></span>
+              <span className="url"><a href={link.url} target="_blank">{link.name}</a></span>
           </div>
         );
     });
@@ -18,9 +18,9 @@ class DateDetailList extends Component {
         return (
           <div id="instagramList" key={instagram.shortcode} className="instagram" >
               <div className="url">
-                <a target="_blank" href={instagram.urls[0]}>
-                  <span className="metadata">[<span className="date">{instagram.date}</span>] [<span className="type">{instagram.location.name === "" ? "Unknown" : instagram.location.name}]</span></span>
-                  <img className="photo" src={instagram.urls[0]} alt={instagram.location.name} />
+                <a target="_blank" href={instagram.url}>
+                  <span className="metadata">[<span className="date">{instagram.date}</span>] [<span className="type">{instagram.location === "" ? "Unknown" : instagram.location}]</span></span>
+                  <img className="photo" src={instagram.url} alt={instagram.location} />
                 </a>
               </div>
           </div>

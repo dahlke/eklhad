@@ -38,7 +38,6 @@ class App extends Component {
   render() {
     const gravatarEmailMD5 = md5(GRAVATAR_EMAIL);
     const gravatarURL = `https://www.gravatar.com/avatar/${gravatarEmailMD5}.jpg`
-    console.log(gravatarEmailMD5, gravatarURL, GRAVATAR_EMAIL)
 
     return (
       <div className="app">

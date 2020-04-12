@@ -13,6 +13,7 @@ web/main
 # Directories
 web/frontend/node_modules/
 web/frontend/build/static/
+web/data/instagram/worker/media/
 .terraform/
 .vagrant/
 output/
