@@ -1,41 +1,41 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import thunkMiddleware from 'redux-thunk'
-import { createLogger } from 'redux-logger'
-import { fetchLocations } from './actions/locations'
-import { fetchInstagrams } from './actions/instagrams'
-import { fetchLinks } from './actions/links'
-import rootReducer from './reducers/index'
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import thunkMiddleware from "redux-thunk";
+import { createLogger } from "redux-logger";
+import { fetchLocations } from "./actions/locations";
+import { fetchInstagrams } from "./actions/instagrams";
+import { fetchLinks } from "./actions/links";
+import rootReducer from "./reducers/index";
 import App from "./App";
 
 import "./index.scss";
 
 import * as serviceWorker from "./serviceWorker";
 
-const loggerMiddleware = createLogger()
+const loggerMiddleware = createLogger();
 const store = createStore(
-  rootReducer,
-  applyMiddleware(
-    thunkMiddleware, // lets us dispatch() functions
-    loggerMiddleware // neat middleware that logs actions
-  )
-)
+	rootReducer,
+	applyMiddleware(
+		thunkMiddleware, // lets us dispatch() functions
+		loggerMiddleware // neat middleware that logs actions
+	)
+);
 
 // store.dispatch(fetchLocations()).then(() => console.log(store.getState()))
 // store.dispatch(fetchInstagrams()).then(() => console.log(store.getState()))
 // store.dispatch(fetchLinks()).then(() => console.log(store.getState()))
 
-store.dispatch(fetchLocations())
-store.dispatch(fetchInstagrams())
-store.dispatch(fetchLinks())
+store.dispatch(fetchLocations());
+store.dispatch(fetchInstagrams());
+store.dispatch(fetchLinks());
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
-    document.getElementById("root")
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

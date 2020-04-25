@@ -1,61 +1,60 @@
 @import "./variables.scss";
 
 @font-face {
-    font-family:"VCR OSD Mono";
-    src:url("fonts/VCR_OSD_MONO.eot?") format("eot"),
-    url("fonts/VCR_OSD_MONO.woff") format("woff"),
-    url("fonts/VCR_OSD_MONO.ttf") format("truetype"),
-    url("fonts/VCR_OSD_MONO.svg#VCROSDMono") format("svg");
-    font-weight:normal;
-    font-style:normal;
+	font-family: "VCR OSD Mono";
+	src: url("fonts/VCR_OSD_MONO.eot?") format("eot"),
+		url("fonts/VCR_OSD_MONO.woff") format("woff"),
+		url("fonts/VCR_OSD_MONO.ttf") format("truetype"),
+		url("fonts/VCR_OSD_MONO.svg#VCROSDMono") format("svg");
+	font-weight: normal;
+	font-style: normal;
 }
 
 html {
-    background: #fcfbf9;
-    font-family: "VCR OSD Mono", monospace;
-    text-transform: uppercase;
-    color: #333;
+	background: #fcfbf9;
+	font-family: "VCR OSD Mono", monospace;
+	text-transform: uppercase;
+	color: #333;
 
-    .hide-template {
-        visibility: hidden;
-    }
+	.hide-template {
+		visibility: hidden;
+	}
 
-    #root {
-        text-transform: uppercase;
-        color: $chicago-flag-blue;
-        font-family: "VCR OSD Mono", "Courier New", monospace;
+	#root {
+		text-transform: uppercase;
+		color: $chicago-flag-blue;
+		font-family: "VCR OSD Mono", "Courier New", monospace;
 
-        .app {
-            position: relative;
-            background: #fcfbf9;
-            height: 100%;
-            width: 720px;
-            margin: auto;
+		.app {
+			position: relative;
+			background: #fcfbf9;
+			height: 100%;
+			width: 720px;
+			margin: auto;
 
-            .profile-picture {
-                margin: 25px 0 0;
-                border-radius: 50%;
-            }
+			.profile-picture {
+				margin: 25px 0 0;
+				border-radius: 50%;
+			}
 
-            .descriptor {
-                color: #999;
-            }
+			.descriptor {
+				color: #999;
+			}
 
-            .select {
-                display: inline-block;
-                width: 80px;
-                font-size: 10px;
-                margin-right: 10px;
+			.select {
+				display: inline-block;
+				width: 80px;
+				font-size: 10px;
+				margin-right: 10px;
 
-                &.wide {
-                    width: 140px;
-                }
-            }
+				&.wide {
+					width: 140px;
+				}
+			}
 
-            @media screen and (max-width: $breakpoint-tablet) {
-                width: 90%;
-            }
-
-        }
-    }
+			@media screen and (max-width: $breakpoint-tablet) {
+				width: 90%;
+			}
+		}
+	}
 }

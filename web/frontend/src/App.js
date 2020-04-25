@@ -9,61 +9,91 @@ import "./App.scss";
 const BREAKPOINT_TABLET = 768;
 
 // TODO: should come from server
-const GRAVATAR_EMAIL = "neil.dahlke@gmail.com"
+const GRAVATAR_EMAIL = "neil.dahlke@gmail.com";
 
 class App extends Component {
+	state = {
+		width: 0,
+	};
 
-  state = {
-    width: 0
-  }
+	constructor(props) {
+		super(props);
+		this._updateWindowWidth = this._updateWindowWidth.bind(this);
+	}
 
-  constructor(props) {
-    super(props);
-    this._updateWindowWidth = this._updateWindowWidth.bind(this);
-  }
+	componentDidMount() {
+		this._updateWindowWidth();
+		window.addEventListener("resize", this._updateWindowWidth);
+	}
 
-  componentDidMount() {
-    this._updateWindowWidth();
-    window.addEventListener("resize", this._updateWindowWidth);
-  }
+	componentWillUnmount() {
+		window.removeEventListener("resize", this._updateWindowWidth);
+	}
 
-  componentWillUnmount() {
-    window.removeEventListener("resize", this._updateWindowWidth);
-  }
+	_updateWindowWidth() {
+		this.setState({ width: window.innerWidth });
+	}
 
-  _updateWindowWidth() {
-    this.setState({ width: window.innerWidth });
-  }
+	render() {
+		const gravatarEmailMD5 = md5(GRAVATAR_EMAIL);
+		const gravatarURL = `https://www.gravatar.com/avatar/${gravatarEmailMD5}.jpg`;
 
-  render() {
-    const gravatarEmailMD5 = md5(GRAVATAR_EMAIL);
-    const gravatarURL = `https://www.gravatar.com/avatar/${gravatarEmailMD5}.jpg`
-
-    return (
-      <div className="app">
-        <div className="container">
-            <img className="profile-picture" alt="" src={gravatarURL} />
-            <h1>Neil Dahlke</h1>
-            <h2>Engineer</h2>
-            <h4>San Francisco, California, USA</h4>
-            <h5>
-              <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/neildahlke">Twitter</a> / <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/eklhad">Instagram</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.github.com/dahlke">GitHub</a> / <a target="_blank"  rel="noopener noreferrer" href="https://www.linkedin.com/in/neildahlke">LinkedIn</a> / <a href="/static/resume.html">Resume</a>
-            </h5>
-            <PopulatedMap
-              locations={this.state.locations}
-              currentLocation={this.state.currentLocation}
-            />
-            <br />
-            <br />
-            <h3>Activity</h3>
-            <PopulatedHeatmap
-              width={this.state.width}
-              horizontal={this.state.width > BREAKPOINT_TABLET}
-            />
-        </div>
-      </div>
-    );
-  }
+		return (
+			<div className="app">
+				<div className="container">
+					<img className="profile-picture" alt="" src={gravatarURL} />
+					<h1>Neil Dahlke</h1>
+					<h2>Engineer</h2>
+					<h4>San Francisco, California, USA</h4>
+					<h5>
+						<a
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://twitter.com/neildahlke"
+						>
+							Twitter
+						</a>{" "}
+						/{" "}
+						<a
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://www.instagram.com/eklhad"
+						>
+							Instagram
+						</a>{" "}
+						/{" "}
+						<a
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://www.github.com/dahlke"
+						>
+							GitHub
+						</a>{" "}
+						/{" "}
+						<a
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://www.linkedin.com/in/neildahlke"
+						>
+							LinkedIn
+						</a>{" "}
+						/ <a href="/static/resume.html">Resume</a>
+					</h5>
+					<PopulatedMap
+						locations={this.state.locations}
+						currentLocation={this.state.currentLocation}
+					/>
+					<br />
+					<br />
+					<h3>Activity</h3>
+					<PopulatedHeatmap
+						width={this.state.width}
+						horizontal={this.state.width > BREAKPOINT_TABLET}
+					/>
+				</div>
+			</div>
+		);
+	}
 }
 
 export default App;
