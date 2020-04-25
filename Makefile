@@ -35,14 +35,14 @@ ig_data:
 
 
 ##########################
-# WEB HELPERS
+# JS HELPERS
 ##########################
 .PHONY: npm
 npm:
 	cd web/frontend && npm config set strict-ssl false && npm install
 
-.PHONY: prettier
-prettier:
+.PHONY: js_lint
+js_lint:
 	cd web/frontend/&& \
 	prettier --write src/
 
@@ -74,6 +74,11 @@ frontend_audit_fix: npm
 ##########################
 # GO HELPERS
 ##########################
+.PHONY: go_lint
+go_lint:
+	cd web/ && \
+	golint ./...
+
 .PHONY: go_get
 go_get:
 	cd web && go get
