@@ -1,8 +1,6 @@
 package geo
 
 import (
-	"fmt"
-
 	"github.com/codingsince1985/geo-golang/openstreetmap"
 	log "github.com/sirupsen/logrus"
 )
@@ -21,7 +19,7 @@ func GeocodeLocation(location string) (float64, float64) {
 		lat = float64(geocodedLocation.Lat)
 		lng = float64(geocodedLocation.Lng)
 	} else {
-		fmt.Println("got <nil> address", location)
+		log.Error("got <nil> address", location)
 	}
 
 	return lat, lng
