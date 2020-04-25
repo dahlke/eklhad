@@ -1,33 +1,33 @@
 .date-detail-list {
-    width: 100%;
-    text-align: center;
+	width: 100%;
+	text-align: center;
 
-    .link, .instagram {
-        display: block;
-        padding: 10px 0;
+	.link,
+	.instagram {
+		display: block;
+		padding: 10px 0;
 
-        .metadata,
-        .url {
-            display: inline-block;
-        }
+		.metadata,
+		.url {
+			display: inline-block;
+		}
 
-        .url {
-            width: 100%;
-        }
+		.url {
+			width: 100%;
+		}
 
-        .metadata {
-            padding: 5px 0;
+		.metadata {
+			padding: 5px 0;
 
-            .link-type {
+			.link-type {
+			}
+		}
 
-            }
-        }
-
-        .photo {
-            max-width: 300px;
-            max-width: 300px;
-            display: block;
-            margin: auto;
-        }
-    }
+		.photo {
+			max-width: 300px;
+			max-width: 300px;
+			display: block;
+			margin: auto;
+		}
+	}
 }

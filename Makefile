@@ -41,6 +41,11 @@ ig_data:
 npm:
 	cd web/frontend && npm config set strict-ssl false && npm install
 
+.PHONY: prettier
+prettier:
+	cd web/frontend/&& \
+	prettier --write src/
+
 # Hacky hack since I don't want to patch resume-cli at the sed part.
 .PHONY: resume
 resume: npm
