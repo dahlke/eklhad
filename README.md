@@ -10,8 +10,12 @@ My personal web assets.
 - `git`
 - `go`
 - `npm`
-- `packer`
-- `terraform`
+- [`packer`](https://github.com/hashicorp/packer)
+- [`terraform`](https://github.com/hashicorp/terraform)
+
+### Recommended
+- [`prettier`](https://github.com/prettier/prettier)
+- [`golint`](https://github.com/golang/lint)
 
 ## Development
 
