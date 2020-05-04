@@ -35,14 +35,23 @@
 	"work": [
 		{
 			"company": "HashiCorp",
-			"position": "Senior Solutions Engineer (Western NA)",
+			"position": "Staff Solutions Engineer (Western NA)",
 			"website": "http://hashicorp.com",
-			"startDate": "2018-11-19",
+			"startDate": "2020-02-01",
 			"endDate": "1991-03-19",
 			"highlights": [
 				"DevOps domain expert for sales team on strategic client relationships in F500.",
 				"Lead pre-sales engineering activities (discovery, value prop, architectural design).",
 				"Work closely with key client executive decision makers on PoCs ensuring solution validity."
+			]
+		},
+		{
+			"company": "HashiCorp",
+			"position": "Senior Solutions Engineer (Western NA)",
+			"website": "http://hashicorp.com",
+			"startDate": "2018-11-19",
+			"endDate": "2020-02-01",
+			"highlights": [
 			]
 		},
 		{
@@ -55,8 +64,7 @@
 				"Orchestrate pre-sales activities for the development and implementation of complex solutions.",
 				"Evangelize the product: speaking at conferences, writing blogs and technical talks.",
 				"Participate in team coordination, development activities, project planning and recruitment.",
-				"Lead, mentor, and develop the team’s sales, technical, and business skills.",
-				"Develop and execute technical and business programs to maintain high levels of proficiency."
+				"Lead, mentor, and develop the team’s sales, technical, and business skills."
 			]
 		},
 		{
@@ -66,8 +74,6 @@
 			"startDate": "2015-11-01",
 			"endDate": "2017-03-01",
 			"highlights": [
-				"PoC to production for Tier 0 customers (Ex: Goldman, AmEx, Uber, Cisco, Hulu, etc.)",
-				"Support the technical side of the sale, build sales optimization tools, automate operations."
 			]
 		},
 		{
