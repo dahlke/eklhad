@@ -35,7 +35,7 @@
 	"work": [
 		{
 			"company": "HashiCorp",
-			"position": "Staff Solutions Engineer (Western NA)",
+			"position": "Staff Solutions Engineer (West NA)",
 			"website": "http://hashicorp.com",
 			"startDate": "2020-02-01",
 			"endDate": "1991-03-19",
@@ -47,7 +47,7 @@
 		},
 		{
 			"company": "HashiCorp",
-			"position": "Senior Solutions Engineer (Western NA)",
+			"position": "Senior Solutions Engineer (West NA)",
 			"website": "http://hashicorp.com",
 			"startDate": "2018-11-19",
 			"endDate": "2020-02-01",
@@ -56,7 +56,7 @@
 		},
 		{
 			"company": "MemSQL",
-			"position": "Senior Solutions Engineer (Team Lead, Western USA)",
+			"position": "Senior Solutions Engineer (Team Lead, West USA)",
 			"website": "http://memsql.com",
 			"startDate": "2017-03-01",
 			"endDate": "2018-11-16",
@@ -83,8 +83,7 @@
 			"startDate": "2013-12-01",
 			"endDate": "2015-11-01",
 			"highlights": [
-				"Translated design mockups and prototypes into large-scale web applications.",
-				"Owned internal projects: sales tools, demos, docs, corp site, test infra and cloud infra."
+				"Translated design mockups and prototypes into large-scale web applications."
 			]
 		},
 		{
@@ -95,7 +94,6 @@
 			"endDate": "2013-12-01",
 			"summary": "",
 			"highlights": [
-				"Defined and documented requirements, architecture and design of applications.",
 				"Developed, tested, deployed and maintained software, with a focus on front-end."
 			]
 		}
@@ -116,25 +114,31 @@
 	],
 	"awards": [
 		{
-			"title": "SE of the Year, Western USA (FY2020)",
+			"title": "SE of the Quarter, Americas (FY21Q1)",
+			"date": "2020-05-07",
+			"awarder": "HashiCorp",
+			"summary": ""
+		},
+		{
+			"title": "SE of the Quarter, West USA (FY20Q1, FY20Q2, FY20Q3, FY21Q1)",
+			"date": "2020-05-07",
+			"awarder": "HashiCorp",
+			"summary": ""
+		},
+		{
+			"title": "SE of the Year, West USA (FY20)",
 			"date": "2020-02-11",
 			"awarder": "HashiCorp",
 			"summary": ""
 		},
 		{
-			"title": "SE of the Quarter, Western USA (FY2020Q1, FY2020Q2, FY2020Q3)",
-			"date": "2018-03-21",
-			"awarder": "HashiCorp",
-			"summary": ""
-		},
-		{
-			"title": "SE of the Year, Global (FY2018)",
+			"title": "SE of the Year, Global (FY19)",
 			"date": "2018-03-21",
 			"awarder": "MemSQL",
 			"summary": ""
 		},
 		{
-			"title": "President's Club (2016, 2017, 2018)",
+			"title": "President's Club (FY17, FY18, FY19)",
 			"date": "2018-03-21",
 			"awarder": "MemSQL",
 			"summary": ""
