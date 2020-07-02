@@ -30,5 +30,4 @@ artifact/tar/linux/*.tar.gz
 *gitignore*.tf
 
 # Config Files
-web/config.json
 web/secrets.json
