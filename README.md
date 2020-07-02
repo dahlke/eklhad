@@ -4,6 +4,8 @@
 
 My personal web assets.
 
+## Development
+
 ### Requirements
 
 - `make`
@@ -18,7 +20,7 @@ My personal web assets.
 - [`prettier`](https://github.com/prettier/prettier)
 - [`golint`](https://github.com/golang/lint)
 
-## Development
+### Backend Server
 
 Install the Go development dependencies and start the web/API server. The web/API server will run on port 80.
 
@@ -26,6 +28,8 @@ Install the Go development dependencies and start the web/API server. The web/AP
 make go_get
 make go_server_start
 ```
+
+### Frontend Server
 
 Install the Javascript development dependencies and start the frontend server. The frontend server will run on [localhost, port 3000](http://localhost:3000).
 
@@ -36,28 +40,30 @@ make frontend_start
 
 To update the resume file, make all changes to `./web/frontend/conf/resume.json` and then run `make resume`.
 
-## Pull Most Recent Data from Google Sheets (and Geocode the necessary data points)
+### Data Collection
+
+#### Pull Most Recent Data from Google Sheets (and Geocode the necessary data points)
 
 ```bash
 cd web/
 go run main.go -gsheets
 ```
 
-## Pull Most Recent Data from Instagram
+#### Pull Most Recent Data from Instagram
 
 ```bash
 cd web/
 go run main.go -instagram
 ```
 
-## Pull All Data from Instagram
+#### Pull All Data from Instagram
 
 ```bash
 cd web/
 go run main.go -instagram-all
 ```
 
-## Helpful Git Hooks
+### Helpful Git Hooks
 
 There are some pre-commit hooks that are useful since the same tests will be run in CircleCI. They are located in the `./hooks/pre-commit/` folder here. Symlink them to the git repo using:
 
@@ -66,6 +72,8 @@ cd .git/hooks
 ln -s -f ../../hooks/pre-commit ./pre-commit
 chmod +x ../../hooks/pre-commit ./pre-commit
 ```
+
+## Deploying
 
 ### GCP Manual Deploy
 
@@ -83,6 +91,8 @@ source ~/.cloudflare/eklhad/eklhad-creds.sh
 make tf_apply_gcp_auto
 ```
 
+## Testing
+
 ### CircleCI Docker Test Image
 
 To build the test image, use the following commands.
@@ -96,12 +106,4 @@ Then, push it to Docker Hub.
 
 ```bash
 make docker_push
-```
-
-
-### Instagram Scraper, Needing Replacing (TODO)
-
-```bash
-cd web/data/
-instagram-scraper eklhad --media-metadata --include-location --profile-metadata
 ```
