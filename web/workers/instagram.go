@@ -214,7 +214,7 @@ func GetDataFromInstagramForUser(username string, pullAllInstagrams bool) {
 	wroteEndCursor := false
 	var timelineEdges []eklstructs.IGAPITimelineMediaEdge
 
-	// Query or the Instaram media
+	// Query or the Instagram media
 	for true {
 		queryMediaVars := url.QueryEscape(fmt.Sprintf("{\"id\":\"%s\",\"first\":50,\"after\":\"%s\"}", userID, endCursor))
 		nextPageURL := fmt.Sprintf("%s/%s&variables=%s", BaseUrl, "graphql/query/?query_id=17888483320059182", queryMediaVars)
@@ -239,6 +239,8 @@ func GetDataFromInstagramForUser(username string, pullAllInstagrams bool) {
 
 		time.Sleep(3 * time.Second)
 	}
+
+	// TODO: check if shortcode / media exists before retrieving
 
 	fileAbsPath, err := filepath.Abs("./data/instagram/worker/media-shortcodes.json")
 	if err != nil {
