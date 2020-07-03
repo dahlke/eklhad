@@ -30,8 +30,8 @@ class Heatmap extends Component {
 			<DateDetailList ref="date-detail-list" data={dataForDate} />
 		) : null;
 		const isSelectedDateMap =
-			moment(this.props.dateFilter).format("YYYY") ===
-			this.props.yearFilter;
+			parseInt(moment(this.props.dateFilter).format("YYYY")) ===
+			parseInt(this.props.yearFilter);
 
 		var mapVals = [];
 		if (this.props.activityFilter === ActivityFilters.SHOW_ALL) {
