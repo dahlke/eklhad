@@ -23,6 +23,7 @@ class Heatmap extends Component {
 	render() {
 		const startDate = new Date(`${this.props.yearFilter}-01-01`);
 		const endDate = new Date(`${this.props.yearFilter}-12-31`);
+		// TODO: I think I can push this logic into Redux.
 		const dataForDate = this.props.dateFilter
 			? this.props.heatmapDateMap[this.props.dateFilter]
 			: [];
