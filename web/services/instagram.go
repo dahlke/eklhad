@@ -4,12 +4,13 @@ import (
 	"encoding/json"
 	"io/ioutil"
 
-	"github.com/dahlke/eklhad/web/eklstructs"
+	goramma_structs "github.com/dahlke/goramma/structs"
 )
 
-func GetInstagrams() []eklstructs.InstagramMedia {
-	rawFileContents, _ := ioutil.ReadFile("./data/instagram-simplified.json")
-	instagrams := []eklstructs.InstagramMedia{}
+// GetInstagrams reads the instagram JSON data from the file system and returns it
+func GetInstagrams() []goramma_structs.InstagramMedia {
+	rawFileContents, _ := ioutil.ReadFile("./data/instagram/data.json")
+	instagrams := []goramma_structs.InstagramMedia{}
 	_ = json.Unmarshal([]byte(rawFileContents), &instagrams)
 	return instagrams
 }

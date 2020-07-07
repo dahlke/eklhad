@@ -99,7 +99,6 @@ func main() {
 	productionPtr := flag.Bool("production", false, "If true, run the app over HTTPS.")
 	pullGSheetsPtr := flag.Bool("gsheets", false, "If true, pull the latest data from Google Sheets. ID specified in config.json.")
 	pullInstagramPtr := flag.Bool("instagram", false, "If true, pull only the latest data from Instagram. Username specified in config.json.")
-	pullAllInstagramsPtr := flag.Bool("instagram-all", false, "If true, pull all data from Instagram. Username specified in config.json.")
 	flag.Parse()
 
 	configLogger()
@@ -109,7 +108,6 @@ func main() {
 	isProduction := *productionPtr
 	isPullGSheets := *pullGSheetsPtr
 	isPullInstagram := *pullInstagramPtr
-	isPullAllInstagrams := *pullAllInstagramsPtr
 
 	fileServer := http.FileServer(http.Dir("frontend/build/"))
 
@@ -122,8 +120,9 @@ func main() {
 	// TODO: make the workers run in go routines constantly
 	if isPullGSheets {
 		workers.GetDataFromGSheets(appConfig.GSheetID)
-	} else if isPullInstagram || isPullAllInstagrams {
-		workers.GetDataFromInstagramForUser(appConfig.InstagramUsername, isPullAllInstagrams)
+	} else if isPullInstagram {
+		// TODO: note that we will always pull all instagrams for the simplicity as well as making sure that old deleted photos get removed here.
+		workers.GetDataFromInstagramForUser(appConfig.InstagramUsername)
 	} else if isProduction {
 		log.Println("Starting HTTPS server...")
 		go http.ListenAndServe(fmt.Sprintf(":%d", appPort), http.HandlerFunc(redirectToHTTPS))
