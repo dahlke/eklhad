@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/dahlke/eklhad/web/eklstructs"
+	"github.com/dahlke/eklhad/web/eklhad_structs"
 	geo "github.com/dahlke/eklhad/web/geo"
 	log "github.com/sirupsen/logrus"
 )
@@ -26,7 +26,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 
-	var sheetMetadata eklstructs.GSheetMetadata
+	var sheetMetadata eklhad_structs.GSheetMetadata
 	json.Unmarshal(body, &sheetMetadata)
 
 	for _, entry := range sheetMetadata.Feed.Entries {
@@ -50,10 +50,10 @@ func GetDataFromGSheets(spreadSheetID string) {
 		var fileContents []byte
 
 		if entry.Title.Value == "travels" {
-			var gTravels eklstructs.GSheetTravels
+			var gTravels eklhad_structs.GSheetTravels
 			json.Unmarshal(body, &gTravels)
 
-			var eTravels []eklstructs.EklhadTravel
+			var eTravels []eklhad_structs.EklhadTravel
 			for _, gTravel := range gTravels.Feed.Entries {
 				location := fmt.Sprintf("%s, %s, %s", gTravel.City.Value, gTravel.StateProvinceRegion.Value, gTravel.Country.Value)
 				lat, lng := geo.GeocodeLocation(location)
@@ -66,7 +66,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 					current = true
 				}
 
-				eTravel := eklstructs.EklhadTravel{
+				eTravel := eklhad_structs.EklhadTravel{
 					travelID,
 					gTravel.City.Value,
 					gTravel.StateProvinceRegion.Value,
@@ -80,10 +80,10 @@ func GetDataFromGSheets(spreadSheetID string) {
 
 			fileContents, _ = json.MarshalIndent(eTravels, "", " ")
 		} else if entry.Title.Value == "links" {
-			var gLinks eklstructs.GSheetLinks
+			var gLinks eklhad_structs.GSheetLinks
 			json.Unmarshal(body, &gLinks)
 
-			var eLinks []eklstructs.EklhadLink
+			var eLinks []eklhad_structs.EklhadLink
 			for _, gLink := range gLinks.Feed.Entries {
 				splitLinkIDURL := strings.Split(gLink.ID.Value, "/")
 				linkID := splitLinkIDURL[len(splitLinkIDURL)-1]
@@ -95,7 +95,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 					log.Error(err)
 				}
 
-				eLink := eklstructs.EklhadLink{
+				eLink := eklhad_structs.EklhadLink{
 					linkID,
 					gLink.Name.Value,
 					timestamp.Unix(),

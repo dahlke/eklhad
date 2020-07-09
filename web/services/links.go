@@ -6,11 +6,11 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/dahlke/eklhad/web/eklstructs"
+	"github.com/dahlke/eklhad/web/eklhad_structs"
 	log "github.com/sirupsen/logrus"
 )
 
-func GetLinks() []eklstructs.EklhadLink {
+func GetLinks() []eklhad_structs.EklhadLink {
 	jsonFilePath, err := filepath.Abs("./data/enriched-gsheets-links.json")
 	if err != nil {
 		log.Error(err)
@@ -23,7 +23,7 @@ func GetLinks() []eklstructs.EklhadLink {
 	defer linksJSONFile.Close()
 
 	jsonBytes, _ := ioutil.ReadAll(linksJSONFile)
-	var links []eklstructs.EklhadLink
+	var links []eklhad_structs.EklhadLink
 	json.Unmarshal(jsonBytes, &links)
 
 	return links

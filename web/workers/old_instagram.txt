@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/dahlke/eklhad/web/eklstructs"
+	"github.com/dahlke/eklhad/web/eklhad_structs"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -50,10 +50,10 @@ func igAPIHTTPRequest(igURL string) []byte {
 	return body
 }
 
-func getUserMetadataFromInstagramURL(url string) *eklstructs.IGAPIUserMetadata {
+func getUserMetadataFromInstagramURL(url string) *eklhad_structs.IGAPIUserMetadata {
 	body := igAPIHTTPRequest(url)
 
-	var userMetadata = new(eklstructs.IGAPIUserMetadata)
+	var userMetadata = new(eklhad_structs.IGAPIUserMetadata)
 	err := json.Unmarshal(body, &userMetadata)
 
 	if err != nil {
@@ -63,12 +63,12 @@ func getUserMetadataFromInstagramURL(url string) *eklstructs.IGAPIUserMetadata {
 	return userMetadata
 }
 
-func getMediaDetailFromShortcode(shortcode string) *eklstructs.IGAPIMediaDetail {
+func getMediaDetailFromShortcode(shortcode string) *eklhad_structs.IGAPIMediaDetail {
 	// Example URL: https://www.instagram.com/p/B-AlSmXAYFM/?__a=1
 	url := fmt.Sprintf("%s/p/%s/?__a=1", BaseUrl, shortcode)
 	body := igAPIHTTPRequest(url)
 
-	var mediaDetail = new(eklstructs.IGAPIMediaDetail)
+	var mediaDetail = new(eklhad_structs.IGAPIMediaDetail)
 	err := json.Unmarshal(body, &mediaDetail)
 
 	if err != nil {
@@ -78,11 +78,11 @@ func getMediaDetailFromShortcode(shortcode string) *eklstructs.IGAPIMediaDetail 
 	return mediaDetail
 }
 
-func getUserTimelineMediaFromURL(url string) *eklstructs.IGAPITimeline {
+func getUserTimelineMediaFromURL(url string) *eklhad_structs.IGAPITimeline {
 	// Example URL: https://www.instagram.com/graphql/query/?query_id=17888483320059182&variables=%7B%22id%22%3A%2211321561%22%2C%22first%22%3A12%2C%22after%22%3A%22%22%7D
 	body := igAPIHTTPRequest(url)
 
-	var timeline = new(eklstructs.IGAPITimeline)
+	var timeline = new(eklhad_structs.IGAPITimeline)
 	err := json.Unmarshal(body, &timeline)
 
 	if err != nil {
@@ -94,7 +94,7 @@ func getUserTimelineMediaFromURL(url string) *eklstructs.IGAPITimeline {
 
 // func writeInstagramImage(filePath string)
 
-func writeInstagramMedia(filePath string, username string, media eklstructs.IGAPIMediaDetail) {
+func writeInstagramMedia(filePath string, username string, media eklhad_structs.IGAPIMediaDetail) {
 	fileContents, _ := json.MarshalIndent(media, "", " ")
 	err := ioutil.WriteFile(filePath, fileContents, 0644)
 
@@ -106,13 +106,13 @@ func writeInstagramMedia(filePath string, username string, media eklstructs.IGAP
 	}
 }
 
-func writeInstagramShortcodes(filePath string, media []eklstructs.IGAPITimelineMediaEdge, overwriteFiles bool) {
+func writeInstagramShortcodes(filePath string, media []eklhad_structs.IGAPITimelineMediaEdge, overwriteFiles bool) {
 	fileContents := []byte{}
 	if overwriteFiles {
 		fileContents, _ = json.MarshalIndent(media, "", " ")
 	} else {
 		rawFileContents, _ := ioutil.ReadFile(filePath)
-		existingMedia := []eklstructs.IGAPITimelineMediaEdge{}
+		existingMedia := []eklhad_structs.IGAPITimelineMediaEdge{}
 		_ = json.Unmarshal([]byte(rawFileContents), &existingMedia)
 		media = append(media, existingMedia...)
 		fileContents, _ = json.MarshalIndent(media, "", " ")
@@ -144,7 +144,7 @@ func writeInstagramEndCursor(endCursor string) {
 	}
 }
 
-func writeInstagramSimpleMedia(simpleMedia []eklstructs.InstagramMedia) {
+func writeInstagramSimpleMedia(simpleMedia []eklhad_structs.InstagramMedia) {
 	fileWritePath := fmt.Sprintf("./data/instagram-simplified.json")
 	fileWriteAbsPath, err := filepath.Abs(fileWritePath)
 	if err != nil {
@@ -170,18 +170,18 @@ func consolidateAndConvertMedia(directory string) {
 		log.Fatal(err)
 	}
 
-	allMedia := []eklstructs.IGAPIMediaDetail{}
+	allMedia := []eklhad_structs.IGAPIMediaDetail{}
 	for _, f := range files {
 		filePath := fmt.Sprintf("%s/%s", directory, f.Name())
 		rawFileContents, _ := ioutil.ReadFile(filePath)
-		var media eklstructs.IGAPIMediaDetail
+		var media eklhad_structs.IGAPIMediaDetail
 		_ = json.Unmarshal([]byte(rawFileContents), &media)
 		allMedia = append(allMedia, media)
 	}
 
-	allSimpleMedia := []eklstructs.InstagramMedia{}
+	allSimpleMedia := []eklhad_structs.InstagramMedia{}
 	for _, m := range allMedia {
-		simpleMedia := eklstructs.InstagramMedia{
+		simpleMedia := eklhad_structs.InstagramMedia{
 			m.GraphQL.Media.Shortcode,
 			m.GraphQL.Media.Timestamp,
 			m.GraphQL.Media.Location.Name,
@@ -214,7 +214,7 @@ func GetDataFromInstagramForUser(username string, pullAllInstagrams bool) {
 
 	endCursor := string(endCursorBytes)
 	wroteEndCursor := false
-	var timelineEdges []eklstructs.IGAPITimelineMediaEdge
+	var timelineEdges []eklhad_structs.IGAPITimelineMediaEdge
 
 	// Query or the Instagram media
 	for true {

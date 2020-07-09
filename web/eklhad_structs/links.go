@@ -1,4 +1,5 @@
-package eklstructs
+package eklhad_structs
+
 
 // Eklhad Link App Structs
 type EklhadLink struct {
