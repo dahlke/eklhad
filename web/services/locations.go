@@ -6,11 +6,11 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/dahlke/eklhad/web/eklstructs"
+	"github.com/dahlke/eklhad/web/eklhad_structs"
 	log "github.com/sirupsen/logrus"
 )
 
-func GetLocations() []eklstructs.EklhadTravel {
+func GetLocations() []eklhad_structs.EklhadTravel {
 	jsonFilePath, err := filepath.Abs("./data/enriched-gsheets-travels.json")
 	if err != nil {
 		log.Error(err)
@@ -23,7 +23,7 @@ func GetLocations() []eklstructs.EklhadTravel {
 	defer travelsJSONFile.Close()
 
 	jsonBytes, _ := ioutil.ReadAll(travelsJSONFile)
-	var travels []eklstructs.EklhadTravel
+	var travels []eklhad_structs.EklhadTravel
 	json.Unmarshal(jsonBytes, &travels)
 
 	return travels

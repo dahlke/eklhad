@@ -1,4 +1,4 @@
-package eklstructs
+package eklhad_structs
 
 // Eklhad Travel App Structs
 type EklhadTravel struct {

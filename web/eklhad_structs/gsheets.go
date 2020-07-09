@@ -1,4 +1,4 @@
-package eklstructs
+package eklhad_structs
 
 // GSheet Shared Structs
 type GSheetEntryValue struct {
