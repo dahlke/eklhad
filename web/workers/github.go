@@ -21,12 +21,12 @@ const PAGE_SIZE = 100
 // TODO: move to contants file.
 const GITHUB_DATA_PATH = "./data/github/data.json"
 
-func mergeNewGitHubEvents(newGithubEvents []eklhad_structs.GitHubEvent) []eklhad_structs.GitHubEvent {
+func mergeNewGitHubEvents(newGitHubEvents []eklhad_structs.GitHubEvent) []eklhad_structs.GitHubEvent {
 	rawFileContents, _ := ioutil.ReadFile(GITHUB_DATA_PATH)
 	githubEvents := []eklhad_structs.GitHubEvent{}
 	_ = json.Unmarshal([]byte(rawFileContents), &githubEvents)
 
-	for _, newEvent := range newGithubEvents {
+	for _, newEvent := range newGitHubEvents {
 		foundInExistingEvents := false
 		for _, existingEvent := range githubEvents {
 			if newEvent.ID == existingEvent.ID {
@@ -40,7 +40,7 @@ func mergeNewGitHubEvents(newGithubEvents []eklhad_structs.GitHubEvent) []eklhad
 		}
 	}
 
-	log.Info("Github data merged")
+	log.Info("GitHub data merged")
 
 	return githubEvents
 }
@@ -57,7 +57,7 @@ func writeGitHubData(newGitHubEvents []eklhad_structs.GitHubEvent) {
 	if err != nil {
 		log.Error(err)
 	} else {
-		infoMsg := fmt.Sprintf("Github data written")
+		infoMsg := fmt.Sprintf("GitHub data written")
 		log.Info(infoMsg)
 	}
 }

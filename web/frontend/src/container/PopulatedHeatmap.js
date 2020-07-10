@@ -25,7 +25,17 @@ function _processLinks(data) {
 	return data;
 }
 
-function _processHeatmapDateMap(instagrams, links) {
+function _processGitHubEvents(data) {
+	data = data ? data : [];
+
+	data.sort((a, b) => {
+		return b.timestamp - a.timestamp;
+	});
+
+	return data;
+}
+
+function _processHeatmapDateMap(instagrams, links, githubEvents) {
 	var heatmapDateMap = {};
 
 	links.forEach((link) => {
@@ -35,6 +45,7 @@ function _processHeatmapDateMap(instagrams, links) {
 			heatmapDateMap[d] = {
 				instagrams: [],
 				links: [],
+				github_events: [],
 			};
 		}
 		heatmapDateMap[d]["links"].push(link);
@@ -47,10 +58,24 @@ function _processHeatmapDateMap(instagrams, links) {
 			heatmapDateMap[d] = {
 				instagrams: [],
 				links: [],
+				github_events: [],
 			};
 		}
 		heatmapDateMap[d]["instagrams"].push(instagram);
 	});
+
+	githubEvents.forEach((githubEvent) => {
+		const d = moment.unix(githubEvent.timestamp).format("YYYY-MM-DD");
+		githubEvent.date = d;
+		if (!heatmapDateMap[d]) {
+			heatmapDateMap[d] = {
+				instagrams: [],
+				links: [],
+				github_events: [],
+			};
+		}
+		heatmapDateMap[d]["github_events"].push(githubEvent);
+	})
 
 	return heatmapDateMap;
 }
@@ -58,14 +83,17 @@ function _processHeatmapDateMap(instagrams, links) {
 const mapStateToProps = (state) => {
 	const sortedInstagrams = _processInstagrams(state.instagrams.items);
 	const sortedLinks = _processLinks(state.links.items);
+	const sortedGitHubEvents = _processGitHubEvents(state.github.items);
 	const heatmapDateMap = _processHeatmapDateMap(
 		sortedInstagrams,
-		sortedLinks
+		sortedLinks,
+		sortedGitHubEvents
 	);
 
 	return {
 		instagrams: sortedInstagrams,
 		links: sortedLinks,
+		githubEvents: sortedGitHubEvents,
 		heatmapDateMap: heatmapDateMap,
 		activityFilter: state.ActivityFilter,
 		yearFilter: state.YearFilter,

@@ -7,6 +7,7 @@ import { createLogger } from "redux-logger";
 import { fetchLocations } from "./actions/locations";
 import { fetchInstagrams } from "./actions/instagrams";
 import { fetchLinks } from "./actions/links";
+import { fetchGitHubEvents } from "./actions/github";
 import { fetchGravatar } from "./actions/gravatar";
 import rootReducer from "./reducers/index";
 import App from "./App";
@@ -33,6 +34,7 @@ store.dispatch(fetchLocations());
 store.dispatch(fetchInstagrams());
 store.dispatch(fetchLinks());
 store.dispatch(fetchGravatar());
+store.dispatch(fetchGitHubEvents());
 
 ReactDOM.render(
 	<Provider store={store}>

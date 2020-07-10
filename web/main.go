@@ -57,6 +57,14 @@ func apiInstagramsHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(instagrams)
 }
 
+func apiGitHubEventsHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	githubEvents := services.GetGitHubEvents()
+	json.NewEncoder(w).Encode(githubEvents)
+}
+
 func apiGravatarHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
@@ -124,6 +132,7 @@ func main() {
 	http.HandleFunc("/api/locations", apiLocationsHandler)
 	http.HandleFunc("/api/links", apiLinksHandler)
 	http.HandleFunc("/api/instagrams", apiInstagramsHandler)
+	http.HandleFunc("/api/github", apiGitHubEventsHandler)
 	http.HandleFunc("/api/gravatar", apiGravatarHandler)
 
 	// TODO: make the workers run in go routines constantly
