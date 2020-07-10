@@ -8,8 +8,6 @@ import "./App.scss";
 // Set the tablet breakpoint for responsive JS
 const BREAKPOINT_TABLET = 768;
 
-// TODO: should come from server
-const GRAVATAR_EMAIL = "neil.dahlke@gmail.com";
 
 class App extends Component {
 	state = {
@@ -35,7 +33,7 @@ class App extends Component {
 	}
 
 	render() {
-		const gravatarEmailMD5 = md5(GRAVATAR_EMAIL);
+		const gravatarEmailMD5 = md5(this.props.gravatar.email);
 		const gravatarURL = `https://www.gravatar.com/avatar/${gravatarEmailMD5}.jpg`;
 
 		return (

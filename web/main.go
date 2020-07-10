@@ -17,7 +17,6 @@ import (
 type templatePayload struct {
 	APIHost string
 	APIPort int
-	// GravatarEmail string
 }
 
 type appConfig struct {
@@ -33,7 +32,7 @@ type appSecrets struct {
 
 var appHostName, _ = os.Hostname()
 var appPort = 80
-var gravatarEmail string
+var appConfigData appConfig
 
 func apiLocationsHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
@@ -56,6 +55,13 @@ func apiInstagramsHandler(w http.ResponseWriter, r *http.Request) {
 
 	instagrams := services.GetInstagrams()
 	json.NewEncoder(w).Encode(instagrams)
+}
+
+func apiGravatarHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	json.NewEncoder(w).Encode(appConfigData.GravatarEmail)
 }
 
 func htmlHandler(w http.ResponseWriter, r *http.Request) {
@@ -102,7 +108,7 @@ func main() {
 	flag.Parse()
 
 	configLogger()
-	appConfig := parseConfig("config.json")
+	appConfigData = parseConfig("config.json")
 
 	appPort = *portPtr
 	isProduction := *productionPtr
@@ -116,13 +122,13 @@ func main() {
 	http.HandleFunc("/api/locations", apiLocationsHandler)
 	http.HandleFunc("/api/links", apiLinksHandler)
 	http.HandleFunc("/api/instagrams", apiInstagramsHandler)
+	http.HandleFunc("/api/gravatar", apiGravatarHandler)
 
 	// TODO: make the workers run in go routines constantly
 	if isPullGSheets {
-		workers.GetDataFromGSheets(appConfig.GSheetID)
+		workers.GetDataFromGSheets(appConfigData.GSheetID)
 	} else if isPullInstagram {
-		// TODO: note that we will always pull all instagrams for the simplicity as well as making sure that old deleted photos get removed here.
-		workers.GetDataFromInstagramForUser(appConfig.InstagramUsername)
+		workers.GetDataFromInstagramForUser(appConfigData.InstagramUsername)
 	} else if isProduction {
 		log.Println("Starting HTTPS server...")
 		go http.ListenAndServe(fmt.Sprintf(":%d", appPort), http.HandlerFunc(redirectToHTTPS))
