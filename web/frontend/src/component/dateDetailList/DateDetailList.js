@@ -20,7 +20,6 @@ class DateDetailList extends Component {
 		});
 
 		const instagrams = this.props.data.instagrams.map((instagram) => {
-			// TODO: fix dates, naming
 			return (
 				<div
 					id="instagramList"

@@ -104,7 +104,8 @@ func main() {
 	portPtr := flag.Int("port", 80, "The port to run the HTTP app on.")
 	productionPtr := flag.Bool("production", false, "If true, run the app over HTTPS.")
 	pullGSheetsPtr := flag.Bool("gsheets", false, "If true, pull the latest data from Google Sheets. ID specified in config.json.")
-	pullInstagramPtr := flag.Bool("instagram", false, "If true, pull only the latest data from Instagram. Username specified in config.json.")
+	pullInstagramPtr := flag.Bool("instagram", false, "If true, pull the latest data from Instagram. Username specified in config.json.")
+	pullGitHubPtr := flag.Bool("github", false, "If true, pull the latest data from GitHub. Username specified in config.json.")
 	flag.Parse()
 
 	configLogger()
@@ -114,6 +115,7 @@ func main() {
 	isProduction := *productionPtr
 	isPullGSheets := *pullGSheetsPtr
 	isPullInstagram := *pullInstagramPtr
+	isPullGitHub := *pullGitHubPtr
 
 	fileServer := http.FileServer(http.Dir("frontend/build/"))
 
@@ -129,6 +131,8 @@ func main() {
 		workers.GetDataFromGSheets(appConfigData.GSheetID)
 	} else if isPullInstagram {
 		workers.GetDataFromInstagramForUser(appConfigData.InstagramUsername)
+	} else if isPullGitHub {
+		workers.GetDataFromGitHubForUser(appConfigData.GitHubUsername)
 	} else if isProduction {
 		log.Println("Starting HTTPS server...")
 		go http.ListenAndServe(fmt.Sprintf(":%d", appPort), http.HandlerFunc(redirectToHTTPS))

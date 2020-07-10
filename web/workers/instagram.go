@@ -21,8 +21,8 @@ func writeInstagramMedia(instagramMedia []goramma_structs.InstagramMedia) {
 		log.Error(err)
 	}
 
-	newFileContents, _ := json.MarshalIndent(instagramMedia, "", " ")
-	err = ioutil.WriteFile(fileWriteAbsPath, newFileContents, 0644)
+	fileContents, _ := json.MarshalIndent(instagramMedia, "", " ")
+	err = ioutil.WriteFile(fileWriteAbsPath, fileContents, 0644)
 
 	if err != nil {
 		log.Error(err)
