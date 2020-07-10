@@ -7,8 +7,10 @@ import { createLogger } from "redux-logger";
 import { fetchLocations } from "./actions/locations";
 import { fetchInstagrams } from "./actions/instagrams";
 import { fetchLinks } from "./actions/links";
+import { fetchGravatar } from "./actions/gravatar";
 import rootReducer from "./reducers/index";
 import App from "./App";
+import PopulatedApp from "./container/PopulatedApp";
 
 import "./index.scss";
 
@@ -30,10 +32,11 @@ const store = createStore(
 store.dispatch(fetchLocations());
 store.dispatch(fetchInstagrams());
 store.dispatch(fetchLinks());
+store.dispatch(fetchGravatar());
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App />
+		<PopulatedApp />
 	</Provider>,
 	document.getElementById("root")
 );

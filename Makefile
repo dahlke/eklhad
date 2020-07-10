@@ -27,11 +27,9 @@ todo:
 # DATA HELPERS
 ##########################
 
-
-# TODO: install instagram-scraper
 .PHONY: ig_data
 ig_data:
-	cd web/data && instagram-scraper eklhad --media-metadata --include-location --profile-metadata
+	go run main.go -instagram
 
 
 ##########################
