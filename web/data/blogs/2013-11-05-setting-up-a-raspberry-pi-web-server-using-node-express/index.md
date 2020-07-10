@@ -127,7 +127,7 @@ export PATH
 
 Then run `source .bash_profile`. To ensure that everything installed properly, we can use `node -v` and `npm -v` and get the version numbers for Node and the package manager. Now feel free to remove the tarball and uncompressed files we used earlier from your SD card.
 
-### Setting up your Pi with Github
+### Setting up your Pi with GitHub
 [source](https://help.github.com/articles/generating-ssh-keys#platform-linux)
 
 Now we've got Node, and we're going to want to be able to pull in projects to run on top of it. To do this, we're going to register our Pi device with the GitHub account we want to pull from. First, we need to generate an SSH key. To do this, run `ssh-keygen -t rsa -C "YOUR_EMAIL@EXAMPLE.COM"`. You will then be prompted for a file name, just hit enter. You will then be asked to give your ssh key a password. Enter your password twice, and your key will be generated. The contents of the key will be stored at `~/.ssh/id_rsa.pub`. Open the file and copy the contents to your clipboard, then add it to your GitHub account through the GitHub web interface using _Account Settings > SSH Keys > Add SSH Key_. Once you have add your key, you should be able to clone any of your git repositories. For example, enter the directory you would like to clone the project into and use `git@github.com:neildahlke/pi-sockets.git` to clone the `pi-sockets` example we will be using below. With the project cloned, go ahead and run `node app.js` in the new project directory, then visit the URL you specified earlier on port 8888.
