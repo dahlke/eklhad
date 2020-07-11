@@ -14,14 +14,21 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+// TODO: make these constants in a file.
+const INPUT_DATE_FMT = "2006-01-02"
+const LINKS_DATA_PATH = "./data/gsheets/links/data.json"
+const LOCATIONS_DATA_PATH = "./data/gsheets/locations/data.json"
+
 func GetDataFromGSheets(spreadSheetID string) {
 	// https://medium.com/@scottcents/how-to-convert-google-sheets-to-json-in-just-3-steps-228fe2c24e6
 	spreadSheetMetadataURL := fmt.Sprintf("https://spreadsheets.google.com/feeds/worksheets/%s/public/basic?alt=json", spreadSheetID)
 
+	log.Info("Retrieving GSheet data...")
 	resp, err := http.Get(spreadSheetMetadataURL)
 	if err != nil {
 		log.Error(err)
 	}
+	log.Info("GSheet data retrieved.")
 
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
@@ -29,6 +36,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 	var sheetMetadata eklhad_structs.GSheetMetadata
 	json.Unmarshal(body, &sheetMetadata)
 
+	log.Info("Looping GSheet data entries...")
 	for _, entry := range sheetMetadata.Feed.Entries {
 		splitIDUrl := strings.Split(entry.ID.Value, "/")
 		workSheetID := splitIDUrl[len(splitIDUrl)-1]
@@ -48,49 +56,53 @@ func GetDataFromGSheets(spreadSheetID string) {
 		}
 
 		var fileContents []byte
+		var fileWritePath string
 
-		if entry.Title.Value == "travels" {
-			var gTravels eklhad_structs.GSheetTravels
-			json.Unmarshal(body, &gTravels)
+		if entry.Title.Value == "locations" {
+			var gLocations eklhad_structs.GSheetLocations
+			json.Unmarshal(body, &gLocations)
 
-			var eTravels []eklhad_structs.EklhadTravel
-			for _, gTravel := range gTravels.Feed.Entries {
-				location := fmt.Sprintf("%s, %s, %s", gTravel.City.Value, gTravel.StateProvinceRegion.Value, gTravel.Country.Value)
+			var eLocations []eklhad_structs.EklhadLocation
+			for _, gLocation := range gLocations.Feed.Entries {
+				location := fmt.Sprintf("%s, %s, %s", gLocation.City.Value, gLocation.StateProvinceRegion.Value, gLocation.Country.Value)
+				// NOTE: Geocoding each location makes it this loop take longer than you would think.
 				lat, lng := geo.GeocodeLocation(location)
 				current := false
 
-				splitTravelIDURL := strings.Split(gTravel.ID.Value, "/")
-				travelID := splitTravelIDURL[len(splitTravelIDURL)-1]
+				log.Info("Processing location ", gLocation.City.Value)
+				splitLocationIDURL := strings.Split(gLocation.ID.Value, "/")
+				locationID := splitLocationIDURL[len(splitLocationIDURL)-1]
 
-				if gTravel.Current.Value == "TRUE" {
+				if gLocation.Current.Value == "TRUE" {
 					current = true
 				}
 
-				eTravel := eklhad_structs.EklhadTravel{
-					travelID,
-					gTravel.City.Value,
-					gTravel.StateProvinceRegion.Value,
-					gTravel.Country.Value,
+				eLocation := eklhad_structs.EklhadLocation{
+					locationID,
+					gLocation.City.Value,
+					gLocation.StateProvinceRegion.Value,
+					gLocation.Country.Value,
 					current,
 					lat,
 					lng,
 				}
-				eTravels = append(eTravels, eTravel)
+				eLocations = append(eLocations, eLocation)
 			}
 
-			fileContents, _ = json.MarshalIndent(eTravels, "", " ")
+			fileWritePath = LOCATIONS_DATA_PATH
+			fileContents, _ = json.MarshalIndent(eLocations, "", " ")
 		} else if entry.Title.Value == "links" {
 			var gLinks eklhad_structs.GSheetLinks
 			json.Unmarshal(body, &gLinks)
 
 			var eLinks []eklhad_structs.EklhadLink
 			for _, gLink := range gLinks.Feed.Entries {
+				log.Info("Processing link ", gLink.Name.Value)
 				splitLinkIDURL := strings.Split(gLink.ID.Value, "/")
 				linkID := splitLinkIDURL[len(splitLinkIDURL)-1]
 
 				// Has to be a specific date in Golang. /shrug
-				const inputDateFmt = "2006-01-02"
-				timestamp, err := time.Parse(inputDateFmt, gLink.Date.Value)
+				timestamp, err := time.Parse(INPUT_DATE_FMT, gLink.Date.Value)
 				if err != nil {
 					log.Error(err)
 				}
@@ -105,11 +117,12 @@ func GetDataFromGSheets(spreadSheetID string) {
 				eLinks = append(eLinks, eLink)
 			}
 
+			fileWritePath = LINKS_DATA_PATH
 			fileContents, _ = json.MarshalIndent(eLinks, "", " ")
 		}
 
-		fileWritePath := fmt.Sprintf("./data/enriched-gsheets-%s.json", entry.Title.Value)
 		fileWriteAbsPath, err := filepath.Abs(fileWritePath)
+		fmt.Println(fileWriteAbsPath)
 		if err != nil {
 			log.Error(err)
 		}

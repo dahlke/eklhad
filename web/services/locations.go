@@ -10,21 +10,24 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-func GetLocations() []eklhad_structs.EklhadTravel {
-	jsonFilePath, err := filepath.Abs("./data/enriched-gsheets-travels.json")
+// TODO: make this a constant in a file.
+const LOCATIONS_DATA_PATH = "./data/gsheets/locations/data.json"
+
+func GetLocations() []eklhad_structs.EklhadLocation {
+	jsonFilePath, err := filepath.Abs(LOCATIONS_DATA_PATH)
 	if err != nil {
 		log.Error(err)
 	}
 
-	travelsJSONFile, err := os.Open(jsonFilePath)
+	locationsJSONFile, err := os.Open(jsonFilePath)
 	if err != nil {
 		log.Error(err)
 	}
-	defer travelsJSONFile.Close()
+	defer locationsJSONFile.Close()
 
-	jsonBytes, _ := ioutil.ReadAll(travelsJSONFile)
-	var travels []eklhad_structs.EklhadTravel
-	json.Unmarshal(jsonBytes, &travels)
+	jsonBytes, _ := ioutil.ReadAll(locationsJSONFile)
+	var locations []eklhad_structs.EklhadLocation
+	json.Unmarshal(jsonBytes, &locations)
 
-	return travels
+	return locations
 }

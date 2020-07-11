@@ -1,7 +1,7 @@
 package eklhad_structs
 
-// Eklhad Travel App Structs
-type EklhadTravel struct {
+// Eklhad Location App Structs
+type EklhadLocation struct {
 	ID                  string  `json:"id"`
 	City                string  `json:"city"`
 	StateProvinceRegion string  `json:"stateprovinceregion"`
