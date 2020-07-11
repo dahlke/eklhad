@@ -13,10 +13,10 @@ import (
 )
 
 // TODO: move to contants file.
-const igDataPath = "./data/instagram/data.json"
+const IG_DATA_PATH = "./data/instagram/data.json"
 
 func writeInstagramMedia(instagramMedia []goramma_structs.InstagramMedia) {
-	fileWriteAbsPath, err := filepath.Abs(igDataPath)
+	fileWriteAbsPath, err := filepath.Abs(IG_DATA_PATH)
 	if err != nil {
 		log.Error(err)
 	}

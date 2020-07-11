@@ -5,8 +5,8 @@
   "stateprovinceregion": "Buenos Aires",
   "country": "Argentina",
   "current": false,
-  "lat": -34.8352305,
-  "lng": -58.4077201
+  "lat": -37.5997979,
+  "lng": -62.393237
  },
  {
   "id": "cpzh4",
@@ -23,8 +23,8 @@
   "stateprovinceregion": "New South Wales",
   "country": "Australia",
   "current": false,
-  "lat": -33.8888621,
-  "lng": 151.2048978618509
+  "lat": -33.8548157,
+  "lng": 151.2164539
  },
  {
   "id": "chk2m",
@@ -32,8 +32,8 @@
   "stateprovinceregion": "Brussels",
   "country": "Belgium",
   "current": false,
-  "lat": 50.8436709,
-  "lng": 4.3674366933879565
+  "lat": 50.8465573,
+  "lng": 4.351697
  },
  {
   "id": "ciyn3",
@@ -59,8 +59,8 @@
   "stateprovinceregion": "",
   "country": "Turks and Caicos",
   "current": false,
-  "lat": 21.774812949999998,
-  "lng": -72.25734704331617
+  "lat": 21.7752059,
+  "lng": -72.2584555
  },
  {
   "id": "cyevm",
@@ -122,8 +122,8 @@
   "stateprovinceregion": "",
   "country": "China",
   "current": false,
-  "lat": 31.2322758,
-  "lng": 121.4692071
+  "lat": 31.2252985,
+  "lng": 121.4890497
  },
  {
   "id": "cx0b9",
@@ -158,8 +158,8 @@
   "stateprovinceregion": "Guanacaste",
   "country": "Costa Rica",
   "current": false,
-  "lat": 10.691642949999999,
-  "lng": -85.49858023533058
+  "lat": 10.6333401,
+  "lng": -85.4362722
  },
  {
   "id": "ddv49",
@@ -167,8 +167,8 @@
   "stateprovinceregion": "Havana",
   "country": "Cuba",
   "current": false,
-  "lat": 23.135305,
-  "lng": -82.3589631
+  "lat": 23.1388492,
+  "lng": -82.3781622
  },
  {
   "id": "d415a",
@@ -230,8 +230,8 @@
   "stateprovinceregion": "Delhi",
   "country": "India",
   "current": false,
-  "lat": 28.6141793,
-  "lng": 77.2022662
+  "lat": 28.6138954,
+  "lng": 77.2090057
  },
  {
   "id": "dp3nl",
@@ -248,8 +248,8 @@
   "stateprovinceregion": "Maharastra",
   "country": "India",
   "current": false,
-  "lat": 18.9387711,
-  "lng": 72.8353355
+  "lat": 19.0759899,
+  "lng": 72.8773928
  },
  {
   "id": "dgo93",
@@ -266,8 +266,8 @@
   "stateprovinceregion": "Telangana",
   "country": "India",
   "current": false,
-  "lat": 17.38878595,
-  "lng": 78.46106473453146
+  "lat": 17.3616079,
+  "lng": 78.4746286
  },
  {
   "id": "djhdx",
@@ -482,8 +482,8 @@
   "stateprovinceregion": "North Holland",
   "country": "Netherlands",
   "current": false,
-  "lat": 52.3885317,
-  "lng": 4.6388048
+  "lat": 52.383705750000004,
+  "lng": 4.643559696559635
  },
  {
   "id": "eh71p",
@@ -491,8 +491,8 @@
   "stateprovinceregion": "North Holland",
   "country": "Netherlands",
   "current": false,
-  "lat": 52.3727598,
-  "lng": 4.8936041
+  "lat": 52.37454030000001,
+  "lng": 4.897975505617977
  },
  {
   "id": "etu5e",
@@ -581,8 +581,8 @@
   "stateprovinceregion": "Krabi",
   "country": "Thailand",
   "current": false,
-  "lat": 8.03840755,
-  "lng": 98.835556784847
+  "lat": 8.0321024,
+  "lng": 98.8225499
  },
  {
   "id": "a832w",
@@ -590,8 +590,8 @@
   "stateprovinceregion": "Bangkok",
   "country": "Thailand",
   "current": false,
-  "lat": 13.73061665,
-  "lng": 100.57300326797281
+  "lat": 13.7542529,
+  "lng": 100.493087
  },
  {
   "id": "a9hnd",
@@ -1157,8 +1157,8 @@
   "stateprovinceregion": "",
   "country": "United States of America",
   "current": false,
-  "lat": 38.8948932,
-  "lng": -77.0365529
+  "lat": 38.8949855,
+  "lng": -77.0365708
  },
  {
   "id": "hps2g",
@@ -1589,8 +1589,8 @@
   "stateprovinceregion": "Missouri",
   "country": "United States of America",
   "current": false,
-  "lat": 38.6529545,
-  "lng": -90.24111656024635
+  "lat": 38.6268039,
+  "lng": -90.1994097
  },
  {
   "id": "jl7c8",

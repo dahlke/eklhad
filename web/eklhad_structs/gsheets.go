@@ -20,8 +20,8 @@ type GSheetMetadata struct {
 	Feed GSheetPageFeed `json:"feed"`
 }
 
-// GSheet Travel Parser Structs
-type GSheetTravelEntry struct {
+// GSheet Location Parser Structs
+type GSheetLocationEntry struct {
 	ID                  GSheetEntryValue `json:"id"`
 	City                GSheetEntryValue `json:"gsx$city"`
 	StateProvinceRegion GSheetEntryValue `json:"gsx$stateprovinceregion"`
@@ -29,12 +29,12 @@ type GSheetTravelEntry struct {
 	Current             GSheetEntryValue `json:"gsx$current"`
 }
 
-type GSheetTravelsFeed struct {
-	Entries []GSheetTravelEntry `json:"entry"`
+type GSheetLocationsFeed struct {
+	Entries []GSheetLocationEntry `json:"entry"`
 }
 
-type GSheetTravels struct {
-	Feed GSheetTravelsFeed `json:"feed"`
+type GSheetLocations struct {
+	Feed GSheetLocationsFeed `json:"feed"`
 }
 
 // GSheet Link Parser Structs

@@ -10,8 +10,11 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+// TODO: make this a constant in a file.
+const LINKS_DATA_PATH = "./data/gsheets/links/data.json"
+
 func GetLinks() []eklhad_structs.EklhadLink {
-	jsonFilePath, err := filepath.Abs("./data/enriched-gsheets-links.json")
+	jsonFilePath, err := filepath.Abs(LINKS_DATA_PATH)
 	if err != nil {
 		log.Error(err)
 	}
