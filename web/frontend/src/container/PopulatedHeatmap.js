@@ -45,7 +45,7 @@ function _processHeatmapDateMap(instagrams, links, githubEvents) {
 			heatmapDateMap[d] = {
 				instagrams: [],
 				links: [],
-				github_events: [],
+				githubEvents: [],
 			};
 		}
 		heatmapDateMap[d]["links"].push(link);
@@ -58,7 +58,7 @@ function _processHeatmapDateMap(instagrams, links, githubEvents) {
 			heatmapDateMap[d] = {
 				instagrams: [],
 				links: [],
-				github_events: [],
+				githubEvents: [],
 			};
 		}
 		heatmapDateMap[d]["instagrams"].push(instagram);
@@ -71,10 +71,10 @@ function _processHeatmapDateMap(instagrams, links, githubEvents) {
 			heatmapDateMap[d] = {
 				instagrams: [],
 				links: [],
-				github_events: [],
+				githubEvents: [],
 			};
 		}
-		heatmapDateMap[d]["github_events"].push(githubEvent);
+		heatmapDateMap[d]["githubEvents"].push(githubEvent);
 	})
 
 	return heatmapDateMap;

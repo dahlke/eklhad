@@ -19,6 +19,7 @@ export const ActivityFilters = {
 	SHOW_ALL: "SHOW_ALL",
 	SHOW_INSTAGRAMS: "SHOW_INSTAGRAMS",
 	SHOW_LINKS: "SHOW_LINKS",
+	SHOW_GITHUB_EVENTS: "SHOW_GITHUB_EVENTS",
 };
 
 /* Year Filters */

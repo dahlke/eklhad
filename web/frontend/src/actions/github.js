@@ -12,7 +12,7 @@ export const RECEIVE_GITHUB_EVENTS = "RECEIVE_GITHUB_EVENTS";
 function receiveGitHubEvents(json) {
 	return {
 		type: RECEIVE_GITHUB_EVENTS,
-		github_events: json,
+		githubEvents: json,
 		receivedAt: Date.now(),
 	};
 }
