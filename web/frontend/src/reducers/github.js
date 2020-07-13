@@ -1,15 +1,15 @@
-import { REQUEST_GITHUB_EVENTS, RECEIVE_GITHUB_EVENTS } from "../actions/github";
+import { REQUEST_GITHUB_EVENTS, RECEIVE_GITHUB_EVENTS, REQUEST_GITHUB_ACTIVITY, RECEIVE_GITHUB_ACTIVITY } from "../actions/github";
 
-const githubEvents = (state = { items: [] }, action) => {
+const github = (state = { events:[], activity: [] }, action) => {
     switch (action.type) {
-        case REQUEST_GITHUB_EVENTS:
+        case REQUEST_GITHUB_ACTIVITY:
             return Object.assign({}, state, {
                 isFetching: true,
             });
-        case RECEIVE_GITHUB_EVENTS:
+        case RECEIVE_GITHUB_ACTIVITY:
             return Object.assign({}, state, {
                 isFetching: false,
-                items: action.githubEvents,
+                activity: action.githubActivity,
                 lastUpdated: action.receivedAt,
             });
         default:
@@ -17,4 +17,4 @@ const githubEvents = (state = { items: [] }, action) => {
     }
 };
 
-export default githubEvents;
+export default github;

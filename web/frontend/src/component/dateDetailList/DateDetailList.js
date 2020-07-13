@@ -48,18 +48,15 @@ class DateDetailList extends Component {
 			);
 		});
 
-		// TODO: group github events.
-		const githubEvents = this.props.data.githubEvents.map((githubEvent) => {
-			console.log(githubEvent);
+		const githubActivity = this.props.data.githubActivity.map((activity) => {
 			return (
-				<div key={githubEvent.id} className="github-event">
+				<div key={activity.repo_name + activity.timestamp} className="github-activity">
 					<span className="metadata">
-						[<span className="date">{githubEvent.date}</span>] [
-						<span className="type">{githubEvent.type}]</span>
+						[<span className="date">{activity.date}</span>]
 					</span>
 					<span className="url">
-						<a href={"https://github.com/" + githubEvent.url} target="_blank">
-							{githubEvent.repo_name}
+						<a href={"https://github.com/" + activity.repo_name} target="_blank">
+							{activity.repo_name} ({activity.num_commits} commits)
 						</a>
 					</span>
 				</div>
@@ -70,7 +67,7 @@ class DateDetailList extends Component {
 			<div className="date-detail-list">
 				{links}
 				{instagrams}
-				{githubEvents}
+				{githubActivity}
 			</div>
 		);
 	}
