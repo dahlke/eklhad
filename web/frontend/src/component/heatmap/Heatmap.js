@@ -37,16 +37,15 @@ class Heatmap extends Component {
 		var mapVals = [];
 		if (this.props.activityFilter === ActivityFilters.SHOW_ALL) {
 			mapVals = this.props.links.concat(this.props.instagrams);
-			// TODO: need to figure out how to go back farther.
-			mapVals = mapVals.concat(this.props.githubEvents);
+			mapVals = mapVals.concat(this.props.githubActivity);
 		} else if (
 			this.props.activityFilter === ActivityFilters.SHOW_INSTAGRAMS
 		) {
 			mapVals = this.props.instagrams;
 		} else if (
-			this.props.activityFilter === ActivityFilters.SHOW_GITHUB_EVENTS
+			this.props.activityFilter === ActivityFilters.SHOW_GITHUB_ACTIVITY
 		) {
-			mapVals = this.props.githubEvents;
+			mapVals = this.props.githubActivity;
 		} else if (this.props.activityFilter === ActivityFilters.SHOW_LINKS) {
 			mapVals = this.props.links;
 		}

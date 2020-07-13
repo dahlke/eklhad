@@ -4,6 +4,7 @@ import { setActivityFilter, setYearFilter, setDateFilter } from "../actions";
 import Heatmap from "../component/heatmap/Heatmap";
 import moment from "moment";
 
+// TODO: since all these functions do the same thing, consolidate them.
 function _processInstagrams(data) {
 	data = data ? data : [];
 
@@ -25,7 +26,7 @@ function _processLinks(data) {
 	return data;
 }
 
-function _processGitHubEvents(data) {
+function _processGitHubActivity(data) {
 	data = data ? data : [];
 
 	data.sort((a, b) => {
@@ -35,9 +36,10 @@ function _processGitHubEvents(data) {
 	return data;
 }
 
-function _processHeatmapDateMap(instagrams, links, githubEvents) {
+function _processHeatmapDateMap(instagrams, links, githubActivity) {
 	var heatmapDateMap = {};
 
+	// TODO: since all these functions do the same thing, consolidate them.
 	links.forEach((link) => {
 		const d = moment.unix(link.timestamp).format("YYYY-MM-DD");
 		link.date = d;
@@ -45,7 +47,7 @@ function _processHeatmapDateMap(instagrams, links, githubEvents) {
 			heatmapDateMap[d] = {
 				instagrams: [],
 				links: [],
-				githubEvents: [],
+				githubActivity: [],
 			};
 		}
 		heatmapDateMap[d]["links"].push(link);
@@ -58,24 +60,24 @@ function _processHeatmapDateMap(instagrams, links, githubEvents) {
 			heatmapDateMap[d] = {
 				instagrams: [],
 				links: [],
-				githubEvents: [],
+				githubActivity: [],
 			};
 		}
 		heatmapDateMap[d]["instagrams"].push(instagram);
 	});
 
-	githubEvents.forEach((githubEvent) => {
-		const d = moment.unix(githubEvent.timestamp).format("YYYY-MM-DD");
-		githubEvent.date = d;
+	githubActivity.forEach((activity) => {
+		const d = moment.unix(activity.timestamp).format("YYYY-MM-DD");
+		activity.date = d;
 		if (!heatmapDateMap[d]) {
 			heatmapDateMap[d] = {
 				instagrams: [],
 				links: [],
-				githubEvents: [],
+				githubActivity: [],
 			};
 		}
-		heatmapDateMap[d]["githubEvents"].push(githubEvent);
-	})
+		heatmapDateMap[d]["githubActivity"].push(activity);
+	});
 
 	return heatmapDateMap;
 }
@@ -83,17 +85,18 @@ function _processHeatmapDateMap(instagrams, links, githubEvents) {
 const mapStateToProps = (state) => {
 	const sortedInstagrams = _processInstagrams(state.instagrams.items);
 	const sortedLinks = _processLinks(state.links.items);
-	const sortedGitHubEvents = _processGitHubEvents(state.github.items);
+	const sortedGitHubActivity = _processGitHubActivity(state.github.activity);
+
 	const heatmapDateMap = _processHeatmapDateMap(
 		sortedInstagrams,
 		sortedLinks,
-		sortedGitHubEvents
+		sortedGitHubActivity
 	);
 
 	return {
 		instagrams: sortedInstagrams,
 		links: sortedLinks,
-		githubEvents: sortedGitHubEvents,
+		githubActivity: sortedGitHubActivity,
 		heatmapDateMap: heatmapDateMap,
 		activityFilter: state.ActivityFilter,
 		yearFilter: state.YearFilter,
