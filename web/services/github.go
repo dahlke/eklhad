@@ -5,12 +5,13 @@ import (
 	"io/ioutil"
 
 	"github.com/dahlke/eklhad/web/constants"
-	"github.com/dahlke/eklhad/web/eklhad_structs"
+	"github.com/dahlke/eklhad/web/structs"
 )
 
-func GetGitHubActivity() []eklhad_structs.GitHubDailyCommitActivityForRepo {
-	rawFileContents, _ := ioutil.ReadFile(constants.GITHUB_ACTIVITY_PATH)
-	githubActivity := []eklhad_structs.GitHubDailyCommitActivityForRepo{}
+// GetGitHubActivity reads the cached activity data from the file system and returns it.
+func GetGitHubActivity() []structs.GitHubDailyCommitActivityForRepo {
+	rawFileContents, _ := ioutil.ReadFile(constants.GitHubActivityPath)
+	githubActivity := []structs.GitHubDailyCommitActivityForRepo{}
 	_ = json.Unmarshal([]byte(rawFileContents), &githubActivity)
 	return githubActivity
 }

@@ -1,7 +1,6 @@
-package eklhad_structs
+package structs
 
-
-// Eklhad Link App Structs
+// EklhadLink is the clean structure to be used to give link data back to the frontend
 type EklhadLink struct {
 	ID        string `json:"id"`
 	Name      string `json:"name"`

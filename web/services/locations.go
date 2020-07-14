@@ -7,12 +7,13 @@ import (
 	"path/filepath"
 
 	"github.com/dahlke/eklhad/web/constants"
-	"github.com/dahlke/eklhad/web/eklhad_structs"
+	"github.com/dahlke/eklhad/web/structs"
 	log "github.com/sirupsen/logrus"
 )
 
-func GetLocations() []eklhad_structs.EklhadLocation {
-	jsonFilePath, err := filepath.Abs(constants.LOCATIONS_DATA_PATH)
+// GetLocations reads the cached locations data from the file system and returns it.
+func GetLocations() []structs.EklhadLocation {
+	jsonFilePath, err := filepath.Abs(constants.LocationsDataPath)
 	if err != nil {
 		log.Error(err)
 	}
@@ -24,7 +25,7 @@ func GetLocations() []eklhad_structs.EklhadLocation {
 	defer locationsJSONFile.Close()
 
 	jsonBytes, _ := ioutil.ReadAll(locationsJSONFile)
-	var locations []eklhad_structs.EklhadLocation
+	var locations []structs.EklhadLocation
 	json.Unmarshal(jsonBytes, &locations)
 
 	return locations

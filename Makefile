@@ -41,7 +41,7 @@ npm:
 
 .PHONY: js_lint
 js_lint:
-	cd web/frontend/&& \
+	cd web/frontend/ && \
 	prettier --write src/
 
 # Hacky hack since I don't want to patch resume-cli at the sed part.
@@ -74,8 +74,7 @@ frontend_audit_fix: npm
 ##########################
 .PHONY: go_lint
 go_lint:
-	cd web/ && \
-	golint ./...
+	golint web/...
 
 .PHONY: go_get
 go_get:

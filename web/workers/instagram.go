@@ -14,7 +14,7 @@ import (
 )
 
 func writeInstagramMedia(instagramMedia []goramma_structs.InstagramMedia) {
-	fileWriteAbsPath, err := filepath.Abs(constants.IG_DATA_PATH)
+	fileWriteAbsPath, err := filepath.Abs(constants.IGDataPath)
 	if err != nil {
 		log.Error(err)
 	}

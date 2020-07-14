@@ -5,6 +5,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+// GeocodeLocation takes a location string and returns a lat/lng pair of floats from OpenStreetMap
 func GeocodeLocation(location string) (float64, float64) {
 	geocoder := openstreetmap.Geocoder()
 	geocodedLocation, err := geocoder.Geocode(location)

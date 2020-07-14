@@ -7,12 +7,13 @@ import (
 	"path/filepath"
 
 	"github.com/dahlke/eklhad/web/constants"
-	"github.com/dahlke/eklhad/web/eklhad_structs"
+	"github.com/dahlke/eklhad/web/structs"
 	log "github.com/sirupsen/logrus"
 )
 
-func GetLinks() []eklhad_structs.EklhadLink {
-	jsonFilePath, err := filepath.Abs(constants.LINKS_DATA_PATH)
+// GetLinks reads the cached links data from the file system and returns it.
+func GetLinks() []structs.EklhadLink {
+	jsonFilePath, err := filepath.Abs(constants.LinksDataPath)
 	if err != nil {
 		log.Error(err)
 	}
@@ -24,7 +25,7 @@ func GetLinks() []eklhad_structs.EklhadLink {
 	defer linksJSONFile.Close()
 
 	jsonBytes, _ := ioutil.ReadAll(linksJSONFile)
-	var links []eklhad_structs.EklhadLink
+	var links []structs.EklhadLink
 	json.Unmarshal(jsonBytes, &links)
 
 	return links
