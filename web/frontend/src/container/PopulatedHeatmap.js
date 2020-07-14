@@ -4,29 +4,7 @@ import { setActivityFilter, setYearFilter, setDateFilter } from "../actions";
 import Heatmap from "../component/heatmap/Heatmap";
 import moment from "moment";
 
-// TODO: since all these functions do the same thing, consolidate them.
-function _processInstagrams(data) {
-	data = data ? data : [];
-
-	// TODO: use the same keys across data stream type
-	data.sort((a, b) => {
-		return b.timestamp - a.timestamp;
-	});
-
-	return data;
-}
-
-function _processLinks(data) {
-	data = data ? data : [];
-
-	data.sort((a, b) => {
-		return b.timestamp - a.timestamp;
-	});
-
-	return data;
-}
-
-function _processGitHubActivity(data) {
+function _sortByTimestamp(data) {
 	data = data ? data : [];
 
 	data.sort((a, b) => {
@@ -39,7 +17,6 @@ function _processGitHubActivity(data) {
 function _processHeatmapDateMap(instagrams, links, githubActivity) {
 	var heatmapDateMap = {};
 
-	// TODO: since all these functions do the same thing, consolidate them.
 	links.forEach((link) => {
 		const d = moment.unix(link.timestamp).format("YYYY-MM-DD");
 		link.date = d;
@@ -83,9 +60,9 @@ function _processHeatmapDateMap(instagrams, links, githubActivity) {
 }
 
 const mapStateToProps = (state) => {
-	const sortedInstagrams = _processInstagrams(state.instagrams.items);
-	const sortedLinks = _processLinks(state.links.items);
-	const sortedGitHubActivity = _processGitHubActivity(state.github.activity);
+	const sortedInstagrams = _sortByTimestamp(state.instagrams.items);
+	const sortedLinks = _sortByTimestamp(state.links.items);
+	const sortedGitHubActivity = _sortByTimestamp(state.github.activity);
 
 	const heatmapDateMap = _processHeatmapDateMap(
 		sortedInstagrams,

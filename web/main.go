@@ -135,7 +135,6 @@ func main() {
 	http.HandleFunc("/api/github_activity", apiGitHubActivityHandler)
 	http.HandleFunc("/api/gravatar", apiGravatarHandler)
 
-	// TODO: make the workers run in go routines constantly
 	if isPullGSheets {
 		workers.GetDataFromGSheets(appConfigData.GSheetID)
 	} else if isPullInstagram {

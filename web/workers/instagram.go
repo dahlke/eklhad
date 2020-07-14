@@ -7,16 +7,14 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/dahlke/eklhad/web/constants"
 	api "github.com/dahlke/goramma/api"
 	goramma_structs "github.com/dahlke/goramma/structs"
 	log "github.com/sirupsen/logrus"
 )
 
-// TODO: move to contants file.
-const IG_DATA_PATH = "./data/instagram/data.json"
-
 func writeInstagramMedia(instagramMedia []goramma_structs.InstagramMedia) {
-	fileWriteAbsPath, err := filepath.Abs(IG_DATA_PATH)
+	fileWriteAbsPath, err := filepath.Abs(constants.IG_DATA_PATH)
 	if err != nil {
 		log.Error(err)
 	}
@@ -43,6 +41,7 @@ func GetDataFromInstagramForUser(username string) {
 	for true {
 		mediaTimelineSlice, hasNextPage, newEndCursor := api.GetUserTimelineMedia(userID, endCursor)
 		mediaTimeline = append(mediaTimelineSlice, mediaTimeline...)
+
 		// Very stupid that I have to do this, but Golang doesn't recognize
 		// that changing the endCursor in the return value changes this loop
 		// and it complains.
@@ -60,6 +59,4 @@ func GetDataFromInstagramForUser(username string) {
 	}
 
 	writeInstagramMedia(mediaTimeline)
-
-	// TODO: download the files and add them to the struct.
 }

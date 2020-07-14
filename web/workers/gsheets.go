@@ -9,17 +9,14 @@ import (
 	"strings"
 	"time"
 
+	"github.com/dahlke/eklhad/web/constants"
 	"github.com/dahlke/eklhad/web/eklhad_structs"
 	geo "github.com/dahlke/eklhad/web/geo"
 	log "github.com/sirupsen/logrus"
 )
 
-// TODO: make these constants in a file.
-const INPUT_DATE_FMT = "2006-01-02"
-const LINKS_DATA_PATH = "./data/gsheets/links/data.json"
-const LOCATIONS_DATA_PATH = "./data/gsheets/locations/data.json"
-
 func GetDataFromGSheets(spreadSheetID string) {
+	// NOTE: I leveraged this blog post to get this worker to work properly.
 	// https://medium.com/@scottcents/how-to-convert-google-sheets-to-json-in-just-3-steps-228fe2c24e6
 	spreadSheetMetadataURL := fmt.Sprintf("https://spreadsheets.google.com/feeds/worksheets/%s/public/basic?alt=json", spreadSheetID)
 
@@ -89,7 +86,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 				eLocations = append(eLocations, eLocation)
 			}
 
-			fileWritePath = LOCATIONS_DATA_PATH
+			fileWritePath = constants.LOCATIONS_DATA_PATH
 			fileContents, _ = json.MarshalIndent(eLocations, "", " ")
 		} else if entry.Title.Value == "links" {
 			var gLinks eklhad_structs.GSheetLinks
@@ -102,7 +99,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 				linkID := splitLinkIDURL[len(splitLinkIDURL)-1]
 
 				// Has to be a specific date in Golang. /shrug
-				timestamp, err := time.Parse(INPUT_DATE_FMT, gLink.Date.Value)
+				timestamp, err := time.Parse(constants.INPUT_DATE_FMT, gLink.Date.Value)
 				if err != nil {
 					log.Error(err)
 				}
@@ -117,7 +114,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 				eLinks = append(eLinks, eLink)
 			}
 
-			fileWritePath = LINKS_DATA_PATH
+			fileWritePath = constants.LINKS_DATA_PATH
 			fileContents, _ = json.MarshalIndent(eLinks, "", " ")
 		}
 
