@@ -1,4 +1,4 @@
-import { REQUEST_GITHUB_EVENTS, RECEIVE_GITHUB_EVENTS, REQUEST_GITHUB_ACTIVITY, RECEIVE_GITHUB_ACTIVITY } from "../actions/github";
+import { REQUEST_GITHUB_ACTIVITY, RECEIVE_GITHUB_ACTIVITY } from "../actions/github";
 
 const github = (state = { events:[], activity: [] }, action) => {
     switch (action.type) {

@@ -8,17 +8,12 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/dahlke/eklhad/web/constants"
 	"github.com/dahlke/eklhad/web/eklhad_structs"
 	"github.com/google/go-github/github"
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/oauth2"
 )
-
-// TODO: make this a config item
-const PAGE_SIZE = 100
-
-// TODO: move to contants file.
-const GITHUB_ACTIVITY_PATH = "./data/github/activity.json"
 
 func convertGithubActivityData(repoName string, repoCommitActivity []*github.WeeklyCommitActivity) []*eklhad_structs.GitHubDailyCommitActivityForRepo {
 	var allCommitActivitySingleRepo []*eklhad_structs.GitHubDailyCommitActivityForRepo
@@ -42,7 +37,7 @@ func convertGithubActivityData(repoName string, repoCommitActivity []*github.Wee
 }
 
 func writeGitHubActivity(allGitHubActivity []*eklhad_structs.GitHubDailyCommitActivityForRepo) {
-	fileWriteAbsPath, err := filepath.Abs(GITHUB_ACTIVITY_PATH)
+	fileWriteAbsPath, err := filepath.Abs(constants.GITHUB_ACTIVITY_PATH)
 	if err != nil {
 		log.Error(err)
 	}
@@ -72,7 +67,7 @@ func GetDataFromGitHubForUser(username string) {
 		Type: "public",
 		ListOptions: github.ListOptions{
 			Page:    0,
-			PerPage: PAGE_SIZE,
+			PerPage: constants.GITHUB_PAGE_SIZE,
 		},
 	}
 
@@ -85,19 +80,19 @@ func GetDataFromGitHubForUser(username string) {
 			log.Fatal(err)
 		}
 
-		// TODO: Try to get more than just the last year.
+		// Loop through all of the public repos the user contributes to
 		for _, repo := range userRepos {
-			// https://developer.github.com/v3/repos/statistics/#get-the-last-year-of-commit-activity
-			// https://pkg.go.dev/github.com/google/go-github/v32/github?tab=doc
 			log.Info(fmt.Sprintf("Getting GitHub commit activity for %s", *repo.FullName))
+			// https://pkg.go.dev/github.com/google/go-github/v32/github?tab=doc
+			// https://developer.github.com/v3/repos/statistics/#get-the-last-year-of-commit-activity
 			repoCommitActivity, _, err := client.Repositories.ListCommitActivity(ctx, username, *repo.Name)
 			if err != nil {
-				// log.Fatal(err)
 				// TODO: check if it's a 404
 				log.Info(err)
+				// log.Fatal(err)
 			} else {
-				// TODO: Note about only adding to our data points if we have any actual activity
-				// TODO: Note about why we are converting the data
+				// NOTE: Converting the data structure to be something more directly consumable
+				// by the maps in the frontend.
 				dailyCommitActivitySingleRepo := convertGithubActivityData(*repo.FullName, repoCommitActivity)
 				dailyCommitActivityAllRepos = append(dailyCommitActivityAllRepos, dailyCommitActivitySingleRepo...)
 			}
