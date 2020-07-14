@@ -4,10 +4,11 @@ import PopulatedHeatmap from "./container/PopulatedHeatmap";
 import md5 from "blueimp-md5";
 
 import "./App.scss";
+import PopulatedLinksList from "./container/PopulatedLinksList";
 
+// TODO: make this a config item?
 // Set the tablet breakpoint for responsive JS
 const BREAKPOINT_TABLET = 768;
-
 
 class App extends Component {
 	state = {
@@ -38,56 +39,60 @@ class App extends Component {
 
 		return (
 			<div className="app">
-				<div className="container">
-					<img className="profile-picture" alt="" src={gravatarURL} />
-					<h1>Neil Dahlke</h1>
-					<h2>Engineer</h2>
-					<h4>San Francisco, California, USA</h4>
-					<h5>
-						<a
-							target="_blank"
-							rel="noopener noreferrer"
-							href="https://twitter.com/neildahlke"
-						>
-							Twitter
-						</a>{" "}
-						/{" "}
-						<a
-							target="_blank"
-							rel="noopener noreferrer"
-							href="https://www.instagram.com/eklhad"
-						>
-							Instagram
-						</a>{" "}
-						/{" "}
-						<a
-							target="_blank"
-							rel="noopener noreferrer"
-							href="https://www.github.com/dahlke"
-						>
-							GitHub
-						</a>{" "}
-						/{" "}
-						<a
-							target="_blank"
-							rel="noopener noreferrer"
-							href="https://www.linkedin.com/in/neildahlke"
-						>
-							LinkedIn
-						</a>{" "}
-						/ <a href="/static/resume.html">Resume</a>
-					</h5>
+				<div className="app-container">
+					<div className="app-metadata">
+						<img className="profile-picture" alt="" src={gravatarURL} />
+						<h1>Neil Dahlke</h1>
+						<h2>Engineer</h2>
+						<h4>San Francisco, California, USA</h4>
+						<h5>
+							<a
+								target="_blank"
+								rel="noopener noreferrer"
+								href="https://twitter.com/neildahlke"
+							>
+								Twitter
+							</a>{" "}
+							/{" "}
+							<a
+								target="_blank"
+								rel="noopener noreferrer"
+								href="https://www.instagram.com/eklhad"
+							>
+								Instagram
+							</a>{" "}
+							/{" "}
+							<a
+								target="_blank"
+								rel="noopener noreferrer"
+								href="https://www.github.com/dahlke"
+							>
+								GitHub
+							</a>{" "}
+							/{" "}
+							<a
+								target="_blank"
+								rel="noopener noreferrer"
+								href="https://www.linkedin.com/in/neildahlke"
+							>
+								LinkedIn
+							</a>{" "}
+							/ <a href="/static/resume.html">Resume</a>
+						</h5>
+					</div>
 					<PopulatedMap
 						locations={this.state.locations}
 						currentLocation={this.state.currentLocation}
 					/>
 					<br />
 					<br />
-					<h3>Activity</h3>
+					<h3>Last 365 Days of Activity</h3>
 					<PopulatedHeatmap
 						width={this.state.width}
 						horizontal={this.state.width > BREAKPOINT_TABLET}
 					/>
+					<h3>All Links</h3>
+					<PopulatedLinksList />
 				</div>
 			</div>
 		);

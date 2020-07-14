@@ -1,0 +1,22 @@
+.links-list {
+	width: 100%;
+	text-align: center;
+
+	.link {
+		display: block;
+		padding: 10px 0;
+
+		.metadata,
+		.url {
+			display: inline-block;
+		}
+
+		.url {
+			width: 100%;
+		}
+
+		.metadata {
+			padding: 5px 0;
+		}
+	}
+}
