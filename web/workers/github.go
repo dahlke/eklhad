@@ -9,21 +9,21 @@ import (
 	"path/filepath"
 
 	"github.com/dahlke/eklhad/web/constants"
-	"github.com/dahlke/eklhad/web/eklhad_structs"
+	"github.com/dahlke/eklhad/web/structs"
 	"github.com/google/go-github/github"
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/oauth2"
 )
 
-func convertGithubActivityData(repoName string, repoCommitActivity []*github.WeeklyCommitActivity) []*eklhad_structs.GitHubDailyCommitActivityForRepo {
-	var allCommitActivitySingleRepo []*eklhad_structs.GitHubDailyCommitActivityForRepo
+func convertGitHubActivityData(repoName string, repoCommitActivity []*github.WeeklyCommitActivity) []*structs.GitHubDailyCommitActivityForRepo {
+	var allCommitActivitySingleRepo []*structs.GitHubDailyCommitActivityForRepo
 	for _, weeklyCommitActivity := range repoCommitActivity {
 		if *weeklyCommitActivity.Total != 0 {
 			for weekdayNumber, numCommits := range weeklyCommitActivity.Days {
 				if numCommits != 0 {
 					commitTime := weeklyCommitActivity.Week.AddDate(0, 0, weekdayNumber)
 					commitTimestamp := commitTime.Unix()
-					dailyCommitActivitySingleRepo := eklhad_structs.GitHubDailyCommitActivityForRepo{
+					dailyCommitActivitySingleRepo := structs.GitHubDailyCommitActivityForRepo{
 						RepoName:   repoName,
 						Timestamp:  commitTimestamp,
 						NumCommits: numCommits,
@@ -36,8 +36,8 @@ func convertGithubActivityData(repoName string, repoCommitActivity []*github.Wee
 	return allCommitActivitySingleRepo
 }
 
-func writeGitHubActivity(allGitHubActivity []*eklhad_structs.GitHubDailyCommitActivityForRepo) {
-	fileWriteAbsPath, err := filepath.Abs(constants.GITHUB_ACTIVITY_PATH)
+func writeGitHubActivity(allGitHubActivity []*structs.GitHubDailyCommitActivityForRepo) {
+	fileWriteAbsPath, err := filepath.Abs(constants.GitHubActivityPath)
 	if err != nil {
 		log.Error(err)
 	}
@@ -52,6 +52,8 @@ func writeGitHubActivity(allGitHubActivity []*eklhad_structs.GitHubDailyCommitAc
 	}
 }
 
+// GetDataFromGitHubForUser gets all the commit activity for every public repo for the
+// last 365 days and writes it to the file system.
 func GetDataFromGitHubForUser(username string) {
 	githubToken := os.Getenv("GITHUB_TOKEN")
 
@@ -67,11 +69,11 @@ func GetDataFromGitHubForUser(username string) {
 		Type: "public",
 		ListOptions: github.ListOptions{
 			Page:    0,
-			PerPage: constants.GITHUB_PAGE_SIZE,
+			PerPage: constants.GitHubPageSize,
 		},
 	}
 
-	var dailyCommitActivityAllRepos []*eklhad_structs.GitHubDailyCommitActivityForRepo
+	var dailyCommitActivityAllRepos []*structs.GitHubDailyCommitActivityForRepo
 
 	for {
 		userRepos, _, err := client.Repositories.List(context.Background(), "", repoListOptions)
@@ -93,12 +95,12 @@ func GetDataFromGitHubForUser(username string) {
 			} else {
 				// NOTE: Converting the data structure to be something more directly consumable
 				// by the maps in the frontend.
-				dailyCommitActivitySingleRepo := convertGithubActivityData(*repo.FullName, repoCommitActivity)
+				dailyCommitActivitySingleRepo := convertGitHubActivityData(*repo.FullName, repoCommitActivity)
 				dailyCommitActivityAllRepos = append(dailyCommitActivityAllRepos, dailyCommitActivitySingleRepo...)
 			}
 		}
 
-		if len(userRepos) < PAGE_SIZE {
+		if len(userRepos) < constants.GitHubPageSize {
 			break
 		} else {
 			repoListOptions.ListOptions.Page = repoListOptions.ListOptions.Page + 1
