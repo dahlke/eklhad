@@ -1,11 +1,23 @@
 @import "../../variables.scss";
 
 .heatmap {
-	margin-top: 50px;
+	margin-top: 10px;
 
 	@media screen and (max-width: $breakpoint-tablet) {
 		width: 60%;
 		margin: auto;
+	}
+
+	.select {
+		display: block;
+		width: 80px;
+		font-size: 10px;
+		margin: auto;
+		margin-bottom: 20px;
+
+		&.wide {
+			width: 140px;
+		}
 	}
 
 	.react-calendar-heatmap {

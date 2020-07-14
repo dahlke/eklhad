@@ -1,28 +1,39 @@
 import React, { Component } from "react";
 import Select from "react-select";
-import { ActivityFilters, YearFilters } from "../../actions";
+import { ActivityFilters } from "../../actions";
 import PropTypes from "prop-types";
 import CalendarHeatmap from "react-calendar-heatmap";
 import DateDetailList from "../../component/dateDetailList/DateDetailList";
 import moment from "moment";
-
+import Modal from 'react-modal';
 import "./Heatmap.scss";
 
+Modal.setAppElement('#react-modal-target')
+
 class Heatmap extends Component {
+	constructor() {
+		super();
+		this.state = {
+			showModal: false
+		};
+
+		this.handleCloseModal = this.handleCloseModal.bind(this);
+	}
+
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		if (this.props.dateFilter !== prevProps.dateFilter) {
-			const dateDetailList = document.getElementById("DateDetailList");
-
-			if (dateDetailList) {
-				dateDetailList.scrollIntoView(false);
-			}
+			this.setState({
+				showModal: true
+			})
 		}
+	}
+
+	handleCloseModal () {
+		this.setState({ showModal: false });
 	}
 
 	// TODO: rename this class / classNames
 	render() {
-		const startDate = new Date(`${this.props.yearFilter}-01-01`);
-		const endDate = new Date(`${this.props.yearFilter}-12-31`);
 		// TODO: I think I can push this logic into Redux.
 		const dataForDate = this.props.dateFilter
 			? this.props.heatmapDateMap[this.props.dateFilter]
@@ -30,9 +41,6 @@ class Heatmap extends Component {
 		const dateDetailList = this.props.dateFilter ? (
 			<DateDetailList ref="date-detail-list" data={dataForDate} />
 		) : null;
-		const isSelectedDateMap =
-			parseInt(moment(this.props.dateFilter).format("YYYY")) ===
-			parseInt(this.props.yearFilter);
 
 		var mapVals = [];
 		if (this.props.activityFilter === ActivityFilters.SHOW_ALL) {
@@ -50,30 +58,14 @@ class Heatmap extends Component {
 			mapVals = this.props.links;
 		}
 
-		const yearOptions = Object.keys(YearFilters)
-			.reverse()
-			.map((key) => {
-				return { value: key, label: key };
-			});
-
 		const activityOptions = Object.keys(ActivityFilters).map((key) => {
 			return { value: key, label: key };
 		});
 
+		// TODO: show date on hover, hide datedetail list when changing the dateFilter or the activityFilter
+		// TODO: show the years on the calendar heatmap
 		return (
 			<div className="heatmap">
-				<div className="select">
-					<Select
-						options={yearOptions}
-						value={{
-							value: this.props.yearFilter,
-							label: this.props.yearFilter,
-						}}
-						onChange={this.props.setYearFilter}
-						isSearchable={false}
-					/>
-				</div>
-
 				<div className="select wide">
 					<Select
 						options={activityOptions}
@@ -86,17 +78,24 @@ class Heatmap extends Component {
 					/>
 				</div>
 
-				<h4>{this.props.year}</h4>
 				<CalendarHeatmap
-					startDate={startDate}
-					endDate={endDate}
+					startDate={moment().subtract(1, "year").toDate()}
+					endDate={moment().toDate()}
 					values={mapVals}
 					onClick={this.props.setDateFilter}
 					showMonthLabels={true}
 					showWeekdayLabels={true}
 					horizontal={this.props.horizontal}
 				/>
-				{isSelectedDateMap ? dateDetailList : undefined}
+				<Modal
+					isOpen={this.state.showModal}
+					className="date-detail-modal"
+					contentLabel="Date Detail"
+				>
+					{dateDetailList}
+					<button onClick={this.handleCloseModal}>Close Modal</button>
+				</Modal>
+
 			</div>
 		);
 	}

@@ -16,10 +16,6 @@ html {
 	text-transform: uppercase;
 	color: #333;
 
-	.hide-template {
-		visibility: hidden;
-	}
-
 	#root {
 		text-transform: uppercase;
 		color: $chicago-flag-blue;
@@ -32,23 +28,22 @@ html {
 			width: 720px;
 			margin: auto;
 
-			.profile-picture {
-				margin: 25px 0 0;
-				border-radius: 50%;
-			}
+			.app-container {
+				.app-metadata {
+					text-align: center;
+				}
 
-			.descriptor {
-				color: #999;
-			}
+				.profile-picture {
+					margin: 25px 0 0;
+					border-radius: 50%;
+				}
 
-			.select {
-				display: inline-block;
-				width: 80px;
-				font-size: 10px;
-				margin-right: 10px;
+				.descriptor {
+					color: #999;
+				}
 
-				&.wide {
-					width: 140px;
+				h3 {
+					text-align: center;
 				}
 			}
 

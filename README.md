@@ -49,18 +49,18 @@ cd web/
 go run main.go -gsheets
 ```
 
-#### Pull Most Recent Data from Instagram
+#### Pull All Data from Instagram
 
 ```bash
 cd web/
 go run main.go -instagram
 ```
 
-#### Pull All Data from Instagram
+#### Pull All Data from GitHub
 
 ```bash
 cd web/
-go run main.go -instagram-all
+go run main.go -github
 ```
 
 ### Helpful Git Hooks

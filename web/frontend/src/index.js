@@ -10,7 +10,6 @@ import { fetchLinks } from "./actions/links";
 import { fetchGitHubActivity } from "./actions/github";
 import { fetchGravatar } from "./actions/gravatar";
 import rootReducer from "./reducers/index";
-import App from "./App";
 import PopulatedApp from "./container/PopulatedApp";
 
 import "./index.scss";

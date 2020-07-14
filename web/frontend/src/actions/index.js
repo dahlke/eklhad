@@ -22,34 +22,6 @@ export const ActivityFilters = {
 	SHOW_GITHUB_ACTIVITY: "SHOW_GITHUB_ACTIVITY",
 };
 
-/* Year Filters */
-export const setYearFilter = (filter) => ({
-	type: "SET_YEAR_FILTER",
-	filter,
-});
-
-// TODO: make this dynamic somehow
-
-/*
-const EARLIEST_YEAR = 2012;
-const yearCursor = new Date().getFullYear();
-export const YearFilters = {}
-
-while (yearCursor >= EARLIEST_YEAR) {
-  YearFilters[yearCursor] = yearCursor;
-}
-*/
-export const YearFilters = {
-	2020: 2020,
-	2019: 2019,
-	2018: 2018,
-	2017: 2017,
-	2016: 2016,
-	2014: 2014,
-	2013: 2013,
-	2012: 2012,
-};
-
 /* Date Filter */
 export const setDateFilter = (filter) => ({
 	type: "SET_DATE_FILTER",
