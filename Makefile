@@ -54,6 +54,10 @@ resume: npm
 
 .PHONY: frontend_test
 frontend_test: npm resume
+	cd web/frontend/ && npm run-script test-once
+
+.PHONY: frontend_test_watch
+frontend_test_watch: npm resume
 	cd web/frontend/ && npm run-script test
 
 .PHONY: frontend_start

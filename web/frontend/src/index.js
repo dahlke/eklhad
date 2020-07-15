@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
-import { createLogger } from "redux-logger";
+// import { createLogger } from "redux-logger";
 import { fetchLocations } from "./actions/locations";
 import { fetchInstagrams } from "./actions/instagrams";
 import { fetchLinks } from "./actions/links";
@@ -16,7 +16,7 @@ import "./index.scss";
 
 import * as serviceWorker from "./serviceWorker";
 
-const loggerMiddleware = createLogger();
+// const loggerMiddleware = createLogger();
 const store = createStore(
 	rootReducer,
 	applyMiddleware(

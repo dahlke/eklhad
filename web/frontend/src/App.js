@@ -34,7 +34,7 @@ class App extends Component {
 	}
 
 	render() {
-		const gravatarEmailMD5 = md5(this.props.gravatar.email);
+		const gravatarEmailMD5 = md5(this.props.gravatar ? this.props.gravatar.email : "");
 		const gravatarURL = `https://www.gravatar.com/avatar/${gravatarEmailMD5}.jpg`;
 
 		return (

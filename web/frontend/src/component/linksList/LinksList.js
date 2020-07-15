@@ -11,7 +11,7 @@ class LinksList extends Component {
 						<span className="type">{link.type}]</span>
 					</span>
 					<span className="url">
-						<a href={link.url} target="_blank">
+						<a href={link.url} target="_blank" rel="noopener noreferrer">
 							{link.name}
 						</a>
 					</span>

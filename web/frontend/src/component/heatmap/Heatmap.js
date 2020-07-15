@@ -7,8 +7,6 @@ import moment from "moment";
 import Modal from 'react-modal';
 import "./Heatmap.scss";
 
-Modal.setAppElement('#react-modal-target')
-
 class Heatmap extends Component {
 	constructor() {
 		super();
