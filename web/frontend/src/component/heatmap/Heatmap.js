@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Select from "react-select";
 import { ActivityFilters } from "../../actions";
-import PropTypes from "prop-types";
 import CalendarHeatmap from "react-calendar-heatmap";
 import DateDetailList from "../../component/dateDetailList/DateDetailList";
 import moment from "moment";
@@ -100,16 +99,5 @@ class Heatmap extends Component {
 		);
 	}
 }
-
-// TODO
-Heatmap.propTypes = {
-	instagrams: PropTypes.array,
-	links: PropTypes.array,
-};
-
-Heatmap.defaultProps = {
-	instagrams: [],
-	links: [],
-};
 
 export default Heatmap;
