@@ -9,7 +9,7 @@ jobs:
       - run: go get -v -t -d ./...
       - run: go test -v ./...
       - run: npm --prefix web/frontend/ install
-      - run: npm --prefix web/frontend/ run-script test
+      - run: npm --prefix web/frontend/ run-script test-once
   packer_build_terraform_deploy:
     docker:
       - image: eklhad/eklhad-web-circleci:0.1
