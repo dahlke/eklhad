@@ -39,6 +39,7 @@ class App extends Component {
 
 		return (
 			<div className="app">
+      			<div id="modal"></div>
 				<div className="app-container">
 					<div className="app-metadata">
 						<img className="profile-picture" alt="" src={gravatarURL} />
