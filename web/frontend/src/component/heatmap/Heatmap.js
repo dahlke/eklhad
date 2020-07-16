@@ -7,6 +7,8 @@ import moment from "moment";
 import Modal from 'react-modal';
 import "./Heatmap.scss";
 
+Modal.setAppElement('#modal')
+
 class Heatmap extends Component {
 	constructor() {
 		super();
@@ -88,6 +90,8 @@ class Heatmap extends Component {
 					isOpen={this.state.showModal}
 					className="date-detail-modal"
 					contentLabel="Date Detail"
+           			shouldCloseOnOverlayClick={true}
+           			onRequestClose={this.handleCloseModal}
 				>
 					{dateDetailList}
 					<button onClick={this.handleCloseModal}>Close Modal</button>
