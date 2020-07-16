@@ -6,6 +6,7 @@ CWD := $(shell pwd)
 
 PACKER_GCP_DEF_PATH=packer/gcp/image.json
 PACKER_IMAGE_CMD=`tail -n 1 /Users/neil/src/github.com/dahlke/eklhad/packer/gcp/output/gcp_packer_build_output.txt | awk '{print $$8}'`
+PACKER_BUILD_OUTPUT_DIR=packer/gcp/output/
 ARTIFACT_DIR_LINUX=${CWD}/artifact/tar/linux
 TF_GCP_APP_DIR=${CWD}/terraform/app/gcp
 WEB_APP_SRC_DIR=web/
@@ -103,12 +104,14 @@ go_build_linux:
 # TODO: only include necessary files for minimum size
 .PHONY: artifact_linux_web
 artifact_linux_web: go_build_linux
-	tar cf ${ARTIFACT_DIR_LINUX}/${WEB_APP_TAR_NAME} ${WEB_APP_SRC_DIR}
+	mkdir -p ${ARTIFACT_DIR_LINUX};
+	tar cf ${ARTIFACT_DIR_LINUX}/${WEB_APP_TAR_NAME} ${WEB_APP_SRC_DIR};
 
 
 .PHONY: image_gcp
 image_gcp:
-	packer -machine-readable build ${PACKER_GCP_DEF_PATH} >> packer/gcp/output/gcp_packer_build_output.txt
+	mkdir -p ${PACKER_BUILD_OUTPUT_DIR};
+	packer -machine-readable build ${PACKER_GCP_DEF_PATH} >> ${PACKER_BUILD_OUTPUT_DIR}image.txt;
 
 ##########################
 # GCP / TERRAFORM HELPERS
