@@ -84,10 +84,14 @@ You can read the [Makefile](./Makefile) to see what commands are being run under
 ```bash
 make frontend_build
 make artifact_linux_web
-make image_gcp
 
-source ~/.gcp/eklhad/eklhad-creds.sh
-source ~/.cloudflare/eklhad/eklhad-creds.sh
+export GOOGLE_CLOUD_KEYFILE_JSON="/Users/neil/.gcp/eklhad-web-d0ced52f2f26.json"
+export $(envchain cloudflare_eklhVkkad env | grep CLOUDFLARE_)
+# export CLOUDFLARE_TOKEN=""
+# export CLOUDFLARE_EMAIL=""
+# export CLOUDFLARE_API_KEY=""
+
+make image_gcp
 make tf_apply_gcp_auto
 ```
 
