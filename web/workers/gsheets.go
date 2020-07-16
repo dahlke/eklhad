@@ -61,7 +61,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 			var gLocations structs.GSheetLocations
 			json.Unmarshal(body, &gLocations)
 
-			var eLocations []structs.EklhadLocation
+			var eklhadLocations []structs.EklhadLocation
 			for _, gLocation := range gLocations.Feed.Entries {
 				location := fmt.Sprintf("%s, %s, %s", gLocation.City.Value, gLocation.StateProvinceRegion.Value, gLocation.Country.Value)
 				// NOTE: Geocoding each location makes it this loop take longer than you would think.
@@ -76,25 +76,25 @@ func GetDataFromGSheets(spreadSheetID string) {
 					current = true
 				}
 
-				eLocation := structs.EklhadLocation{
-					locationID,
-					gLocation.City.Value,
-					gLocation.StateProvinceRegion.Value,
-					gLocation.Country.Value,
-					current,
-					lat,
-					lng,
+				eklhadLocation := structs.EklhadLocation{
+					ID:                  locationID,
+					City:                gLocation.City.Value,
+					StateProvinceRegion: gLocation.StateProvinceRegion.Value,
+					Country:             gLocation.Country.Value,
+					Current:             current,
+					Lat:                 lat,
+					Lng:                 lng,
 				}
-				eLocations = append(eLocations, eLocation)
+				eklhadLocations = append(eklhadLocations, eklhadLocation)
 			}
 
 			fileWritePath = constants.LocationsDataPath
-			fileContents, _ = json.MarshalIndent(eLocations, "", " ")
+			fileContents, _ = json.MarshalIndent(eklhadLocations, "", " ")
 		} else if entry.Title.Value == "links" {
 			var gLinks structs.GSheetLinks
 			json.Unmarshal(body, &gLinks)
 
-			var eLinks []structs.EklhadLink
+			var eklhadLinks []structs.EklhadLink
 			for _, gLink := range gLinks.Feed.Entries {
 				log.Info("Processing link ", gLink.Name.Value)
 				splitLinkIDURL := strings.Split(gLink.ID.Value, "/")
@@ -106,18 +106,18 @@ func GetDataFromGSheets(spreadSheetID string) {
 					log.Error(err)
 				}
 
-				eLink := structs.EklhadLink{
-					linkID,
-					gLink.Name.Value,
-					timestamp.Unix(),
-					gLink.Type.Value,
-					gLink.URL.Value,
+				eklhadLink := structs.EklhadLink{
+					ID:        linkID,
+					Name:      gLink.Name.Value,
+					Timestamp: timestamp.Unix(),
+					Type:      gLink.Type.Value,
+					URL:       gLink.URL.Value,
 				}
-				eLinks = append(eLinks, eLink)
+				eklhadLinks = append(eklhadLinks, eklhadLink)
 			}
 
 			fileWritePath = constants.LinksDataPath
-			fileContents, _ = json.MarshalIndent(eLinks, "", " ")
+			fileContents, _ = json.MarshalIndent(eklhadLinks, "", " ")
 		}
 
 		fileWriteAbsPath, err := filepath.Abs(fileWritePath)
