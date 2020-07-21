@@ -85,11 +85,9 @@ You can read the [Makefile](./Makefile) to see what commands are being run under
 make frontend_build
 make artifact_linux_web
 
-export GOOGLE_CLOUD_KEYFILE_JSON="/Users/neil/.gcp/eklhad-web-d0ced52f2f26.json"
-export $(envchain cloudflare_eklhVkkad env | grep CLOUDFLARE_)
-# export CLOUDFLARE_TOKEN=""
-# export CLOUDFLARE_EMAIL=""
-# export CLOUDFLARE_API_KEY=""
+export $(envchain gcp_eklhad env | grep GOOGLE_)
+export $(envchain cloudflare_eklhad env | grep CLOUDFLARE_)
+terraform login
 
 make image_gcp
 make tf_apply_gcp_auto
