@@ -113,21 +113,21 @@ resource "google_compute_instance" "web" {
 }
 
 resource "cloudflare_record" "gcp" {
-  domain = var.cloudflare_domain
+  zone_id = var.cloudflare_zone_id
   name   = "gcp"
   value  = google_compute_address.web.address
   type   = "A"
 }
 
 resource "cloudflare_record" "www" {
-  domain = var.cloudflare_domain
+  zone_id = var.cloudflare_zone_id
   name   = "www"
   value  = google_compute_address.web.address
   type   = "A"
 }
 
 resource "cloudflare_record" "dahlkeio" {
-  domain = var.cloudflare_domain
+  zone_id = var.cloudflare_zone_id
   name   = "dahlke.io"
   value  = google_compute_address.web.address
   type   = "A"

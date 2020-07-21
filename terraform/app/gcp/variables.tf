@@ -1,7 +1,3 @@
-variable "gcp_creds_path" {
-  type = string
-}
-
 variable "project" {
   type = string
 }
@@ -39,7 +35,7 @@ variable "ssh_private_key_path" {
   type = string
 }
 
-variable "cloudflare_domain" {
+variable "cloudflare_zone_id" {
   type = string
 }
 
