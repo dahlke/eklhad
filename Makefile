@@ -5,7 +5,9 @@ WEB_APP_TAR_NAME = eklhad-web.tar.gz
 CWD := $(shell pwd)
 
 PACKER_GCP_DEF_PATH=packer/gcp/image.json
-PACKER_IMAGE_CMD=`tail -n 1 /Users/neil/src/github.com/dahlke/eklhad/packer/gcp/output/image.txt | awk '{print $$8}'`
+PACKER_IMAGE_CMD=`tail -n 1 packer/gcp/output/image.txt | awk '{print $$8}'`
+PACKER_CIRCLECI_IMAGE_CMD=`tail -n 1 /go/src/github.com/dahlke/eklhad/packer/gcp/output/image.txt | awk '{print $$8}'`
+
 PACKER_BUILD_OUTPUT_DIR=packer/gcp/output/
 ARTIFACT_DIR_LINUX=${CWD}/artifact/tar/linux
 TF_GCP_APP_DIR=${CWD}/terraform/app/gcp
@@ -13,7 +15,7 @@ WEB_APP_SRC_DIR=web/
 
 DOCKER_HUB_USER=eklhad
 DOCKER_TEST_IMAGE_NAME=eklhad-web-circleci
-DOCKER_TEST_IMAGE_VERSION=0.1
+DOCKER_TEST_IMAGE_VERSION=0.1.1
 
 
 ##########################
@@ -113,9 +115,9 @@ image_gcp:
 	mkdir -p ${PACKER_BUILD_OUTPUT_DIR};
 	packer -machine-readable build ${PACKER_GCP_DEF_PATH} >> ${PACKER_BUILD_OUTPUT_DIR}image.txt;
 
-##########################
-# GCP / TERRAFORM HELPERS
-##########################
+###############################
+# GCP / TERRAFORM DEV HELPERS
+###############################
 .PHONY: tf_init_gcp
 tf_init_gcp:
 	cd ${TF_GCP_APP_DIR} && terraform init
@@ -131,6 +133,14 @@ tf_apply_gcp: tf_init_gcp
 .PHONY: tf_apply_gcp_auto
 tf_apply_gcp_auto: tf_init_gcp
 	cd ${TF_GCP_APP_DIR} && terraform apply -var "image_id=${PACKER_IMAGE_CMD}" -auto-approve
+
+.PHONY: tf_circleci_plan_gcp
+tf_circleci_plan_gcp: tf_init_gcp
+	cd ${TF_GCP_APP_DIR} && terraform plan -var "image_id=$(PACKER_CIRCLECI_IMAGE_CMD)"
+
+.PHONY: tf_circleci_apply_gcp_auto
+tf_circleci_apply_gcp_auto: tf_init_gcp
+	cd ${TF_GCP_APP_DIR} && terraform apply -var "image_id=${PACKER_CIRCLECI_IMAGE_CMD}" -auto-approve
 
 .PHONY: tf_out_gcp
 tf_out_gcp:
