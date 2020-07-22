@@ -12,9 +12,9 @@ terraform {
 }
 
 provider "google" {
-  project     = var.project
-  region      = var.region
-  zone        = var.zone
+  project     = var.gcp_project
+  region      = var.gcp_region
+  zone        = var.gcp_zone
 }
 
 provider "acme" {
@@ -22,12 +22,18 @@ provider "acme" {
   server_url = "https://acme-v02.api.letsencrypt.org/directory"
 }
 
-resource "tls_private_key" "private_key" {
+resource "tls_private_key" "acme_private_key" {
   algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+resource "tls_private_key" "gcp_private_key" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
 }
 
 resource "acme_registration" "reg" {
-  account_key_pem = tls_private_key.private_key.private_key_pem
+  account_key_pem = tls_private_key.acme_private_key.private_key_pem
   email_address = var.email
 }
 
@@ -46,7 +52,7 @@ resource "google_compute_address" "web" {
 }
 
 resource "google_compute_firewall" "web" {
-  name    = "${var.project}-firewall"
+  name    = "${var.gcp_project}-firewall"
   network = google_compute_network.web.name
 
   allow {
@@ -62,13 +68,13 @@ resource "google_compute_firewall" "web" {
 }
 
 resource "google_compute_network" "web" {
-  name = "${var.project}-network"
+  name = "${var.gcp_project}-network"
 }
 
 resource "google_compute_instance" "web" {
-  name         = var.project
-  machine_type = var.machine_type
-  zone         = var.zone
+  name         = var.gcp_project
+  machine_type = var.gcp_machine_type
+  zone         = var.gcp_zone
 
   tags = var.tags
 
@@ -87,14 +93,14 @@ resource "google_compute_instance" "web" {
   }
 
   metadata = {
-    sshKeys = "${var.ssh_user}:${file(var.ssh_pub_key_path)}"
+    sshKeys = "${var.ssh_user}:${tls_private_key.gcp_private_key.private_key_pem}"
   }
 
   provisioner "remote-exec" {
     connection {
       type        = "ssh"
       user        = var.ssh_user
-      private_key = file(var.ssh_private_key_path)
+      private_key = tls_private_key.gcp_private_key.private_key_pem
       host        = google_compute_address.web.address
     }
 

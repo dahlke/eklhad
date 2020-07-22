@@ -2,7 +2,7 @@ version: 2
 jobs:
   go_js_test:
     docker:
-      - image: eklhad/eklhad-web-circleci:0.1
+      - image: eklhad/eklhad-web-circleci:0.1.1
     working_directory: /go/src/github.com/dahlke/eklhad/
     steps:
       - checkout
@@ -10,28 +10,54 @@ jobs:
       - run: go test -v ./...
       - run: npm --prefix web/frontend/ install
       - run: npm --prefix web/frontend/ run-script test-once
-  packer_build_terraform_deploy:
+  packer_build_terraform_plan:
     docker:
-      - image: eklhad/eklhad-web-circleci:0.1
+      - image: eklhad/eklhad-web-circleci:0.1.1
     working_directory: /go/src/github.com/dahlke/eklhad/
     steps:
       - checkout
       - run: make frontend_build
       - run: make go_get
-      # - run: go run main.go -geocode
       - run: mkdir -p artifact/tar/linux/
       - run: make artifact_linux_web
-      - run: touch account.json
-      - run: echo $GOOGLE_CREDENTIALS_JSON > account.json
+      - run: touch $GOOGLE_APPLICATION_CREDENTIALS
+      - run: echo $GOOGLE_CREDENTIALS > $GOOGLE_APPLICATION_CREDENTIALS
       - run: mkdir -p packer/gcp/output/
-      - run: packer validate packer/gcp/circleci-image.json
-      - run: packer -machine-readable build packer/gcp/circleci-image.json
+      - run: packer -machine-readable build packer/gcp/circleci-image.json  > packer/gcp/output/image.txt;
+      - run: echo 'credentials "app.terraform.io" {token = "'$TFC_TOKEN'"} ' > ~/.terraformrc
+      - run: make tf_circleci_plan_gcp
+  packer_build_terraform_deploy:
+    docker:
+      - image: eklhad/eklhad-web-circleci:0.1.1
+    working_directory: /go/src/github.com/dahlke/eklhad/
+    steps:
+      - checkout
+      - run: make frontend_build
+      - run: make go_get
+      - run: mkdir -p artifact/tar/linux/
+      - run: make artifact_linux_web
+      - run: touch $GOOGLE_APPLICATION_CREDENTIALS
+      - run: echo $GOOGLE_CREDENTIALS > $GOOGLE_APPLICATION_CREDENTIALS
+      - run: mkdir -p packer/gcp/output/
+      - run: packer -machine-readable build packer/gcp/circleci-image.json  > packer/gcp/output/image.txt;
+      - run: echo 'credentials "app.terraform.io" {token = "'$TFC_TOKEN'"} ' > ~/.terraformrc
+      - run: make tf_circleci_apply_gcp_auto
 workflows:
   version: 2
   test_and_deploy:
     jobs:
       - go_js_test
-      # - packer_build_terraform_deploy
-      # - packer_build_terraform_deploy:
-          # requires:
-            # - go_js_test
+      - packer_build_terraform_plan
+      - packer_build_terraform_plan:
+          requires:
+            - go_js_test
+          filters:
+            branches:
+              ignore: master
+      - packer_build_terraform_deploy
+      - packer_build_terraform_deploy:
+          requires:
+            - go_js_test
+          filters:
+            branches:
+              only: master

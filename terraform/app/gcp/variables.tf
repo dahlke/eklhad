@@ -1,16 +1,16 @@
-variable "project" {
+variable "gcp_project" {
   type = string
 }
 
-variable "region" {
+variable "gcp_region" {
   type = string
 }
 
-variable "zone" {
+variable "gcp_zone" {
   type = string
 }
 
-variable "machine_type" {
+variable "gcp_machine_type" {
   type = string
 }
 
@@ -24,14 +24,6 @@ variable "image_id" {
 }
 
 variable "ssh_user" {
-  type = string
-}
-
-variable "ssh_pub_key_path" {
-  type = string
-}
-
-variable "ssh_private_key_path" {
   type = string
 }
 

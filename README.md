@@ -85,11 +85,21 @@ You can read the [Makefile](./Makefile) to see what commands are being run under
 make frontend_build
 make artifact_linux_web
 
-export $(envchain gcp_eklhad env | grep GOOGLE_)
-export $(envchain cloudflare_eklhad env | grep CLOUDFLARE_)
-terraform login
+# https://cloud.google.com/cloud-build/docs/building/build-vm-images-with-packer#required_iam_permissions
+# export GOOGLE_CREDENTIALS_PATH=/tmp/gcp.json
+touch $GOOGLE_CREDENTIALS_PATH
+export GOOGLE_CREDENTIALS_JSON=$(op get item "Google dahlke.io" | jq -r '.details.sections[1].fields[0].v' | jq -r .)
+echo $GOOGLE_CREDENTIALS_JSON > $GOOGLE_CREDENTIALS_PATH
 
 make image_gcp
+
+export CLOUDFLARE_TOKEN=$(op get item Cloudflare | jq -r '.details.sections[1].fields[0].v')
+export CLOUDFLARE_EMAIL=$(op get item Cloudflare | jq -r '.details.sections[1].fields[1].v')
+export CLOUDFLARE_API_KEY=$(op get item Cloudflare | jq -r '.details.sections[1].fields[2].v')
+
+export TFC_TOKEN=$(op get item "Terraform Cloud" | jq -r '.details.sections[1].fields[0].v')
+echo 'credentials "app.terraform.io" {\n\ttoken = "'$TFC_TOKEN'"\n} ' > ~/.terraformrc
+
 make tf_apply_gcp_auto
 ```
 
@@ -101,7 +111,6 @@ To build the test image, use the following commands.
 
 ```bash
 make docker_build
-docker run -i -t eklhad-web-tester:0.1 /bin/sh
 ```
 
 Then, push it to Docker Hub.

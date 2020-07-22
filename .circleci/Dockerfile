@@ -24,6 +24,6 @@ ADD https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERS
 RUN unzip /packer_${PACKER_VERSION}_linux_amd64 -d /usr/local/bin/
 
 # Install Terraform
-ENV TERRAFORM_VERSION 0.12.9
+ENV TERRAFORM_VERSION 0.12.26
 ADD https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip /
 RUN unzip /terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/local/bin/
