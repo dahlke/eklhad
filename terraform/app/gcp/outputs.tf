@@ -21,6 +21,7 @@ output "lets_encrypt_id" {
   value = acme_certificate.certificate.id
 }
 
+/*
 output "lets_encrypt_cert_url" {
   value = acme_certificate.certificate.certificate_url
 }
@@ -44,4 +45,4 @@ output "lets_encrypt_issuer_pem" {
 output "lets_encrypt_private_key_pem" {
   value = acme_certificate.certificate.private_key_pem
 }
-
+*/
