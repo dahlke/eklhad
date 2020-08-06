@@ -24,12 +24,10 @@ provider "acme" {
 
 resource "tls_private_key" "acme_private_key" {
   algorithm = "RSA"
-  rsa_bits  = 4096
 }
 
 resource "tls_private_key" "gcp_private_key" {
   algorithm = "RSA"
-  rsa_bits  = 4096
 }
 
 resource "acme_registration" "reg" {
@@ -93,7 +91,8 @@ resource "google_compute_instance" "web" {
   }
 
   metadata = {
-    sshKeys = "${var.ssh_user}:${tls_private_key.gcp_private_key.public_key_pem}"
+    sshKeys = "${var.ssh_user}:${tls_private_key.gcp_private_key.public_key_openssh}"
+    # sshKeys = "${var.ssh_user}:${file(var.ssh_pub_key_path)}"
   }
 
   provisioner "remote-exec" {
@@ -101,14 +100,14 @@ resource "google_compute_instance" "web" {
       type        = "ssh"
       user        = var.ssh_user
       private_key = tls_private_key.gcp_private_key.private_key_pem
-      host_key    = tls_private_key.gcp_private_key.public_key_pem
+      # private_key = file(var.ssh_private_key_path)
       host        = google_compute_address.web.address
     }
 
     inline = [
       "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_cert.pem",
-      "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_issuer.pem'",
-      "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_private_key.pem'",
+      "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_issuer.pem",
+      "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_private_key.pem",
       "echo \"${acme_certificate.certificate.certificate_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_cert.pem",
       "echo \"${acme_certificate.certificate.certificate_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_issuer.pem",
       "echo \"${acme_certificate.certificate.private_key_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_private_key.pem",
@@ -139,4 +138,3 @@ resource "cloudflare_record" "dahlkeio" {
   value  = google_compute_address.web.address
   type   = "A"
 }
-
