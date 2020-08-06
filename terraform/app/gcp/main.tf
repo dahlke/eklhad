@@ -93,7 +93,7 @@ resource "google_compute_instance" "web" {
   }
 
   metadata = {
-    sshKeys = "${var.ssh_user}:${tls_private_key.gcp_private_key.private_key_pem}"
+    sshKeys = "${var.ssh_user}:${tls_private_key.gcp_private_key.public_key_pem}"
   }
 
   provisioner "remote-exec" {
