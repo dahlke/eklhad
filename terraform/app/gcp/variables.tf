@@ -27,6 +27,14 @@ variable "ssh_user" {
   type = string
 }
 
+variable "ssh_pub_key_path" {
+  type = string
+}
+
+variable "ssh_private_key_path" {
+  type = string
+}
+
 variable "cloudflare_zone_id" {
   type = string
 }
