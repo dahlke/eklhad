@@ -101,6 +101,7 @@ resource "google_compute_instance" "web" {
       type        = "ssh"
       user        = var.ssh_user
       private_key = tls_private_key.gcp_private_key.private_key_pem
+      host_key    = tls_private_key.gcp_private_key.public_key_pem
       host        = google_compute_address.web.address
     }
 
