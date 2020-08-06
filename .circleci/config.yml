@@ -42,6 +42,7 @@ jobs:
       - run: packer -machine-readable build packer/gcp/circleci-image.json  > packer/gcp/output/image.txt;
       - run: echo 'credentials "app.terraform.io" {token = "'$TFC_TOKEN'"} ' > ~/.terraformrc
       - run: make tf_circleci_apply_gcp_auto
+      - run: echo "test"
 workflows:
   version: 2
   test_and_deploy:
