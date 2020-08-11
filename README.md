@@ -22,7 +22,7 @@ My personal web assets.
 
 ### Backend Server
 
-Install the Go development dependencies and start the web/API server. The web/API server will run on port 80.
+Install the Go development dependencies and start the web/API server. The web/API server will run on port 3554.
 
 ```bash
 make go_get
@@ -110,11 +110,29 @@ make tf_apply_gcp_auto
 To build the test image, use the following commands.
 
 ```bash
-make docker_build
+make docker_build_circleci
 ```
 
 Then, push it to Docker Hub.
 
 ```bash
-make docker_push
+make docker_push_circleci
 ```
+
+# TODO: add notes on Nomad images and using Nomad.
+
+```
+make frontend_build
+make artifact_linux_web
+make artifact_macos_web
+make docker_build_web
+make docker_push_web
+nomad job run nomad/services.nomad
+nomad job run nomad/workers.nomad
+```
+
+# TODO: note about development and how it can be problematic if you don't setup the default port in the frontend and change it in the backend.
+
+# TODO: add this to a note elsewhere.
+https://cloud.google.com/billing/docs/how-to/notify#cap_disable_billing_to_stop_usage
+https://cloud.google.com/billing/docs/how-to/notify#functions_billing_auth-python

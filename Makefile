@@ -1,5 +1,4 @@
 SHELL := /bin/bash
-# APP_NAME = eklhad
 WEB_APP_NAME = eklhad-web
 WEB_APP_TAR_NAME = eklhad-web.tar.gz
 CWD := $(shell pwd)
@@ -10,29 +9,16 @@ PACKER_CIRCLECI_IMAGE_CMD=`tail -n 1 /go/src/github.com/dahlke/eklhad/packer/gcp
 
 PACKER_BUILD_OUTPUT_DIR=packer/gcp/output/
 ARTIFACT_DIR_LINUX=${CWD}/artifact/tar/linux
-TF_GCP_APP_DIR=${CWD}/terraform/app/gcp
+TF_GCP_APP_DIR=${CWD}/terraform/gcp
 WEB_APP_SRC_DIR=web/
 
 DOCKER_HUB_USER=eklhad
+
+DOCKER_WEB_IMAGE_NAME=eklhad-web
+DOCKER_WEB_IMAGE_VERSION=0.1.0
+
 DOCKER_TEST_IMAGE_NAME=eklhad-web-circleci
 DOCKER_TEST_IMAGE_VERSION=0.1.1
-
-
-##########################
-# DEV HELPERS
-##########################
-.PHONY: todo
-todo:
-	@ag "TODO" --ignore Makefile,web/frontend/node_modules/*
-
-
-##########################
-# DATA HELPERS
-##########################
-
-.PHONY: ig_data
-ig_data:
-	go run main.go -instagram
 
 
 ##########################
@@ -109,7 +95,6 @@ artifact_linux_web: go_build_linux
 	mkdir -p ${ARTIFACT_DIR_LINUX};
 	tar cf ${ARTIFACT_DIR_LINUX}/${WEB_APP_TAR_NAME} ${WEB_APP_SRC_DIR};
 
-
 .PHONY: image_gcp
 image_gcp:
 	mkdir -p ${PACKER_BUILD_OUTPUT_DIR};
@@ -154,15 +139,39 @@ tf_destroy_gcp:
 ##########################
 # DOCKER HELPERS
 ##########################
-docker_build:
+docker_build_web:
+	docker build -t ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION) . && \
+	docker tag ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION) ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION) && \
+	docker tag ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION) ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):latest
+
+docker_push_web:
+	docker push ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION)
+	docker push ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):latest
+
+docker_run_web:
+	docker run \
+		-it  \
+		-p 3554:3554 \
+		${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION)
+
+docker_run_web_dev:
+	docker run \
+		-v ${CWD}/web:/web \
+		-it  \
+		-p 3554:3554 \
+		${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION)
+		# ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION) -port 3000
+		
+
+docker_build_circleci:
 	cd .circleci && \
 	docker build -t ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):$(DOCKER_TEST_IMAGE_VERSION) . && \
 	docker tag ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):$(DOCKER_TEST_IMAGE_VERSION) ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):$(DOCKER_TEST_IMAGE_VERSION) && \
 	docker tag ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):$(DOCKER_TEST_IMAGE_VERSION) ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):latest
 
-docker_push:
+docker_push_circleci:
 	docker push ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):$(DOCKER_TEST_IMAGE_VERSION)
 	docker push ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):latest
 
-docker_run:
+docker_run_circleci:
 	docker run -it ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):$(DOCKER_TEST_IMAGE_VERSION)

@@ -59,7 +59,7 @@ resource "google_compute_firewall" "web" {
 
   allow {
     protocol = "tcp"
-    ports    = ["22", "80", "443"]
+    ports    = ["22", "80", "443", "3554"]
   }
 
   target_tags = var.tags
@@ -113,7 +113,7 @@ resource "google_compute_instance" "web" {
       "echo \"${acme_certificate.certificate.private_key_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_private_key.pem",
       "cd ./go/src/github.com/dahlke/eklhad/web/",
       "nohup ./main -production &",
-      "sleep 1",
+      "sleep 1"
     ]
   }
 }

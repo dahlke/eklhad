@@ -64,7 +64,6 @@ func GetDataFromGitHubForUser(username string) {
 	tc := oauth2.NewClient(ctx, ts)
 	client := github.NewClient(tc)
 
-	// TODO: make sure this pagination works
 	repoListOptions := &github.RepositoryListOptions{
 		Type: "public",
 		ListOptions: github.ListOptions{

@@ -1,11 +1,14 @@
 export const PROTOCOL = window.location.protocol;
-export const DEFAULT_PORT = 80;
+// NOTE: Default app port is required for local development, since 
+// running react-scripts start does not take the server into equation
+// we need to fall back on the port we should communicate with.
+export const DEFAULT_APP_PORT = 3554;
 export const PORT =
 	PROTOCOL === "https:"
 		? 443
 		: window.APP
 		? window.APP.apiPort
-		: DEFAULT_PORT;
+		: DEFAULT_APP_PORT;
 export const HOST = window.APP ? window.APP.apiHost : window.location.hostname;
 export const API_BASE_URL = `${PROTOCOL}//${HOST}:${PORT}/api`;
 
