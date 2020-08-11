@@ -31,7 +31,7 @@ type appSecrets struct {
 }
 
 var appHostName, _ = os.Hostname()
-var appPort = 80
+var appPort = 3554
 var appConfigData appConfig
 
 func apiLocationsHandler(w http.ResponseWriter, r *http.Request) {
@@ -109,7 +109,7 @@ func parseConfig(configJSONPath string) appConfig {
 }
 
 func main() {
-	portPtr := flag.Int("port", 80, "The port to run the HTTP app on.")
+	portPtr := flag.Int("port", appPort, "The port to run the HTTP app on (default: 3554).")
 	productionPtr := flag.Bool("production", false, "If true, run the app over HTTPS.")
 	pullGSheetsPtr := flag.Bool("gsheets", false, "If true, pull the latest data from Google Sheets. ID specified in config.json.")
 	pullInstagramPtr := flag.Bool("instagram", false, "If true, pull the latest data from Instagram. Username specified in config.json.")
