@@ -1,3 +1,8 @@
+variable "env" {
+  type = string
+  default = "prod"
+}
+
 variable "gcp_project" {
   type = string
 }
@@ -27,11 +32,11 @@ variable "ssh_user" {
   type = string
 }
 
-variable "ssh_pub_key_path" {
+variable "local_ssh_pub_key_path" {
   type = string
 }
 
-variable "ssh_private_key_path" {
+variable "local_ssh_private_key_path" {
   type = string
 }
 
@@ -42,4 +47,3 @@ variable "cloudflare_zone_id" {
 variable "email" {
   type = string
 }
-

@@ -6,28 +6,35 @@ job "eklhad-web" {
   group "web-service" {
     count = 1
 
+    volume "data" {
+      type = "host"
+      read_only = false
+      source = "eklhad-web-data"
+    }
+
     task "web" {
       driver = "docker"
 
+      volume_mount {
+        volume      = "data"
+        destination = "/go/eklhad-web/data"
+      }
+
       config {
         image = "eklhad/eklhad-web:latest"
-
-        # TODO: make this for linux specifically in another file
-        volumes = [
-          "/Users/neil/src/github.com/dahlke/eklhad/web/data/:/go/eklhad-web/data/",
+        args = [
+          "-production"
         ]
-        
-        # TODO: need to make sure we route port 80 to port 3554 in some way in prod.
-        port_map {
-          web = 3554
+        port_map = {
+          http = 3555
         }
       }
 
       resources {
         network {
           mbits = 10
-          port  "web"  {
-              static = 3554
+          port "http" {
+            static = 3554
           }
         }
       }
@@ -35,7 +42,7 @@ job "eklhad-web" {
       service {
         name = "eklhad-web"
         tags = ["global", "eklhad", "web"]
-        port = "web"
+        port = "http"
 
         check {
           name     = "alive"

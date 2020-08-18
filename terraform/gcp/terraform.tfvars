@@ -1,3 +1,5 @@
+env = "dev"
+
 gcp_project = "eklhad-web"
 
 gcp_region = "us-west1"
@@ -8,9 +10,9 @@ gcp_machine_type = "f1-micro"
 
 ssh_user = "ubuntu"
 
-ssh_pub_key_path = "~/.ssh/eklhad-web-gcp.pub"
+local_ssh_pub_key_path = "~/.ssh/eklhad-web-gcp.pub"
 
-ssh_private_key_path = "~/.ssh/eklhad-web-gcp"
+local_ssh_private_key_path = "~/.ssh/eklhad-web-gcp"
 
 cloudflare_zone_id = "a70fcfded631f4a054a2876f0a262f7a"
 
