@@ -40,29 +40,6 @@ make frontend_start
 
 To update the resume file, make all changes to `./web/frontend/conf/resume.json` and then run `make resume`.
 
-### Data Collection
-
-#### Pull Most Recent Data from Google Sheets (and Geocode the necessary data points)
-
-```bash
-cd web/
-go run main.go -gsheets
-```
-
-#### Pull All Data from Instagram
-
-```bash
-cd web/
-go run main.go -instagram
-```
-
-#### Pull All Data from GitHub
-
-```bash
-cd web/
-go run main.go -github
-```
-
 ### Helpful Git Hooks
 
 There are some pre-commit hooks that are useful since the same tests will be run in CircleCI. They are located in the `./hooks/pre-commit/` folder here. Symlink them to the git repo using:
@@ -86,7 +63,7 @@ make frontend_build
 make artifact_linux_web
 
 # https://cloud.google.com/cloud-build/docs/building/build-vm-images-with-packer#required_iam_permissions
-# export GOOGLE_CREDENTIALS_PATH=/tmp/gcp.json
+export GOOGLE_CREDENTIALS_PATH=/tmp/gcp.json
 touch $GOOGLE_CREDENTIALS_PATH
 export GOOGLE_CREDENTIALS_JSON=$(op get item "Google dahlke.io" | jq -r '.details.sections[1].fields[0].v' | jq -r .)
 echo $GOOGLE_CREDENTIALS_JSON > $GOOGLE_CREDENTIALS_PATH
@@ -119,17 +96,6 @@ Then, push it to Docker Hub.
 make docker_push_circleci
 ```
 
-# TODO: add notes on Nomad images and using Nomad.
-
-```
-make frontend_build
-make artifact_linux_web
-make artifact_macos_web
-make docker_build_web
-make docker_push_web
-nomad job run nomad/services.nomad
-nomad job run nomad/workers.nomad
-```
 
 # TODO: note about development and how it can be problematic if you don't setup the default port in the frontend and change it in the backend.
 

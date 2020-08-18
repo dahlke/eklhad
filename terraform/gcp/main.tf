@@ -59,7 +59,8 @@ resource "google_compute_firewall" "web" {
 
   allow {
     protocol = "tcp"
-    ports    = ["22", "80", "443", "3554"]
+    # TODO
+    ports    = ["22", "80", "443", "3554", "3555"]
   }
 
   target_tags = var.tags
@@ -91,16 +92,14 @@ resource "google_compute_instance" "web" {
   }
 
   metadata = {
-    sshKeys = "${var.ssh_user}:${tls_private_key.gcp_private_key.public_key_openssh}"
-    # sshKeys = "${var.ssh_user}:${file(var.ssh_pub_key_path)}"
+    sshKeys = "${var.ssh_user}:${var.env == "dev" ? file(var.local_ssh_pub_key_path) : tls_private_key.gcp_private_key.public_key_openssh}"
   }
 
   provisioner "remote-exec" {
     connection {
       type        = "ssh"
       user        = var.ssh_user
-      private_key = tls_private_key.gcp_private_key.private_key_pem
-      # private_key = file(var.ssh_private_key_path)
+      private_key = var.env == "dev" ? file(var.local_ssh_private_key_path) : tls_private_key.gcp_private_key.private_key_pem
       host        = google_compute_address.web.address
     }
 
@@ -111,9 +110,12 @@ resource "google_compute_instance" "web" {
       "echo \"${acme_certificate.certificate.certificate_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_cert.pem",
       "echo \"${acme_certificate.certificate.certificate_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_issuer.pem",
       "echo \"${acme_certificate.certificate.private_key_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_private_key.pem",
-      "cd ./go/src/github.com/dahlke/eklhad/web/",
+      "cd /home/ubuntu/go/src/github.com/dahlke/eklhad/web/",
       "nohup ./main -production &",
-      "sleep 1"
+      "sleep 1",
+      "cd /home/ubuntu/go/src/github.com/dahlke/eklhad/web/nomad/linux",
+      "nohup sudo nomad agent -config server.conf &",
+      "sleep 1",
     ]
   }
 }
