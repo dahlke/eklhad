@@ -41,6 +41,8 @@ jobs:
       - run: mkdir -p packer/gcp/output/
       - run: packer -machine-readable build packer/gcp/circleci-image.json  > packer/gcp/output/image.txt;
       - run: echo 'credentials "app.terraform.io" {token = "'$TFC_TOKEN'"} ' > ~/.terraformrc
+      - run: echo $TF_VAR_env
+      - run: export TF_VAR_end=$TF_VAR_env
       - run: make tf_circleci_apply_gcp_auto
 workflows:
   version: 2
