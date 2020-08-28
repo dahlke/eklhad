@@ -161,7 +161,6 @@ docker_run_web_dev:
 		-p 3554:3554 \
 		${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION)
 		# ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION) -port 3000
-		
 
 docker_build_circleci:
 	cd .circleci && \
