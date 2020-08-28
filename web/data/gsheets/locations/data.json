@@ -5,8 +5,8 @@
   "stateprovinceregion": "Buenos Aires",
   "country": "Argentina",
   "current": false,
-  "lat": -37.5997979,
-  "lng": -62.393237
+  "lat": -34.6075682,
+  "lng": -58.4370894
  },
  {
   "id": "cpzh4",
@@ -59,8 +59,8 @@
   "stateprovinceregion": "",
   "country": "Turks and Caicos",
   "current": false,
-  "lat": 21.7752059,
-  "lng": -72.2584555
+  "lat": 21.7965249,
+  "lng": -72.17850091889127
  },
  {
   "id": "cyevm",
@@ -131,8 +131,8 @@
   "stateprovinceregion": "Guanacaste",
   "country": "Costa Rica",
   "current": false,
-  "lat": 10.8227892,
-  "lng": -85.3472296
+  "lat": 10.7960834,
+  "lng": -85.3482878
  },
  {
   "id": "d9ney",
@@ -266,8 +266,8 @@
   "stateprovinceregion": "Telangana",
   "country": "India",
   "current": false,
-  "lat": 17.3616079,
-  "lng": 78.4746286
+  "lat": 17.38878595,
+  "lng": 78.46106473453146
  },
  {
   "id": "djhdx",
@@ -374,8 +374,8 @@
   "stateprovinceregion": "Leinster",
   "country": "Ireland",
   "current": false,
-  "lat": 53.649784350000004,
-  "lng": -6.588529492009938
+  "lat": 53.88930485,
+  "lng": -6.725519443915223
  },
  {
   "id": "ebks1",
@@ -752,8 +752,8 @@
   "stateprovinceregion": "California",
   "country": "United States of America",
   "current": false,
-  "lat": 36.7295295,
-  "lng": -119.70886126075588
+  "lat": 36.7394421,
+  "lng": -119.7848307
  },
  {
   "id": "anjbj",
@@ -860,8 +860,8 @@
   "stateprovinceregion": "California",
   "country": "United States of America",
   "current": false,
-  "lat": 37.734435,
-  "lng": -119.6064674
+  "lat": 37.7444869,
+  "lng": -119.5925653
  },
  {
   "id": "bfmpn",
