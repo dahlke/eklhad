@@ -33,7 +33,7 @@ go run main.go -github
 
 ## Testing
 
-There are automatic tests for both the frontend and backend, which can be run manually, or are run in CircleCI when a commit is pushed to the repo.
+There tests for both the frontend and backend, which can be run manually, and are always run in CircleCI when a commit is pushed to the repo.
 
 ### Local Test
 

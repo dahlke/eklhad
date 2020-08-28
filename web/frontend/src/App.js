@@ -6,7 +6,6 @@ import md5 from "blueimp-md5";
 import "./App.scss";
 import PopulatedLinksList from "./container/PopulatedLinksList";
 
-// TODO: make this a config item?
 // Set the tablet breakpoint for responsive JS
 const BREAKPOINT_TABLET = 768;
 
