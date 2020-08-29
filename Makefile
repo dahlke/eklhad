@@ -92,10 +92,9 @@ go_build_linux:
 .PHONY: collect_data
 collect_data:
 	cd web && \
+	go run main.go -instagram && \
 	go run main.go -github && \
 	go run main.go -gsheets;
-
-	# go run main.go -instagram && \
 
 ##########################
 # IMAGE BUILD HELPERS
