@@ -87,6 +87,17 @@ go_build_linux:
 
 
 ##########################
+# DATA COLLECTION HELPERS
+##########################
+.PHONY: collect_data
+collect_data:
+	cd web && \
+	go run main.go -instagram && \
+	go run main.go -gsheets && \
+	go run main.go -github
+
+
+##########################
 # IMAGE BUILD HELPERS
 ##########################
 # TODO: only include necessary files for minimum size
