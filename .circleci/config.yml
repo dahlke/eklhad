@@ -34,11 +34,7 @@ jobs:
       - checkout
       - run: make frontend_build
       - run: make go_get
-      - run: cd web/
-      - run: go run main.go -instagram
-      - run: go run main.go -gsheets
-      - run: go run main.go -github
-      - run: cd ../
+      - run: make collect_data
       - run: mkdir -p artifact/tar/linux/
       - run: make artifact_linux_web
       - run: touch $GOOGLE_APPLICATION_CREDENTIALS
