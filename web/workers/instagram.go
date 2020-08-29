@@ -32,14 +32,20 @@ func writeInstagramMedia(instagramMedia []goramma_structs.InstagramMedia) {
 
 // GetDataFromInstagramForUser is used for testing that the API functions work as expected.
 func GetDataFromInstagramForUser(username string) {
+	fmt.Println("CircleTest 1")
 	userID := api.GetUserIDFromMetadata(username)
+	fmt.Println("CircleTest 2")
 	var mediaTimeline []goramma_structs.InstagramMedia
 
+	fmt.Println("CircleTest 3")
 	// NOTE: This worker always pull all posts for simplicity as well as to
 	// make sure sure that old deleted photos are not represented in the data here.
 	endCursor := ""
+	fmt.Println("CircleTest 4")
 	for true {
+		fmt.Println("CircleTest 5")
 		mediaTimelineSlice, hasNextPage, newEndCursor := api.GetUserTimelineMedia(userID, endCursor)
+		fmt.Println("CircleTest 6")
 		mediaTimeline = append(mediaTimelineSlice, mediaTimeline...)
 
 		// Very stupid that I have to do this, but Golang doesn't recognize
