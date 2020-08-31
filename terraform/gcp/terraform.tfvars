@@ -1,4 +1,4 @@
-# env = "dev"
+env = "dev"
 
 gcp_project = "eklhad-web"
 

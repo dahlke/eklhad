@@ -34,7 +34,7 @@ jobs:
       - checkout
       - run: make frontend_build
       - run: make go_get
-      #  - run: make collect_data
+      - run: make collect_data
       - run: mkdir -p artifact/tar/linux/
       - run: make artifact_linux_web
       - run: touch $GOOGLE_APPLICATION_CREDENTIALS
