@@ -26,7 +26,7 @@ job "eklhad-web" {
           "-production"
         ]
         port_map = {
-          http = 3555
+          http = 3554
         }
       }
 

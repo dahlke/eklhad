@@ -137,3 +137,14 @@ func GetDataFromGSheets(spreadSheetID string) {
 	}
 
 }
+
+func ScheduleGSheetsWork(numSleepMins int, spreadSheetID string) {
+	iterationNumber := 0
+	for {
+		fmt.Println(fmt.Sprintf("Starting GSheets worker scheduled task #%d...", iterationNumber))
+		GetDataFromGSheets(spreadSheetID)
+		iterationNumber++
+		fmt.Println(fmt.Sprintf("GSheets worker sleeping for %d minute(s)...", numSleepMins))
+		time.Sleep(time.Duration(numSleepMins) * time.Minute)
+	}
+}

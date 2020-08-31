@@ -20,10 +20,11 @@ type templatePayload struct {
 }
 
 type appConfig struct {
-	GSheetID          string `json:"g_sheet_id"`
-	GitHubUsername    string `json:"github_username"`
-	GravatarEmail     string `json:"gravatar_email"`
-	InstagramUsername string `json:"instagram_username"`
+	GSheetID           string `json:"g_sheet_id"`
+	GitHubUsername     string `json:"github_username"`
+	GravatarEmail      string `json:"gravatar_email"`
+	InstagramUsername  string `json:"instagram_username"`
+	WorkerMinSleepMins int    `json:"worker_min_sleep_mins"`
 }
 
 type appSecrets struct {
@@ -114,6 +115,7 @@ func main() {
 	pullGSheetsPtr := flag.Bool("gsheets", false, "If true, pull the latest data from Google Sheets. ID specified in config.json.")
 	pullInstagramPtr := flag.Bool("instagram", false, "If true, pull the latest data from Instagram. Username specified in config.json.")
 	pullGitHubPtr := flag.Bool("github", false, "If true, pull the latest data from GitHub. Username specified in config.json.")
+	runWorkersPtr := flag.Bool("workers", false, "If true, run all the workers in Go routines.")
 	flag.Parse()
 
 	configLogger()
@@ -124,6 +126,7 @@ func main() {
 	isPullGSheets := *pullGSheetsPtr
 	isPullInstagram := *pullInstagramPtr
 	isPullGitHub := *pullGitHubPtr
+	workerRoutines := *runWorkersPtr
 
 	fileServer := http.FileServer(http.Dir("frontend/build/"))
 
@@ -137,11 +140,24 @@ func main() {
 
 	if isPullGSheets {
 		workers.GetDataFromGSheets(appConfigData.GSheetID)
-	} else if isPullInstagram {
+	}
+
+	if isPullInstagram {
 		workers.GetDataFromInstagramForUser(appConfigData.InstagramUsername)
-	} else if isPullGitHub {
+	}
+
+	if isPullGitHub {
 		workers.GetDataFromGitHubForUser(appConfigData.GitHubUsername)
-	} else if isProduction {
+	}
+
+	if workerRoutines {
+		// go workers.DoSampleWork(appConfigData.WorkerMinSleepMins)
+		go workers.ScheduleGitHubWork(appConfigData.WorkerMinSleepMins, appConfigData.GitHubUsername)
+		go workers.ScheduleGSheetsWork(appConfigData.WorkerMinSleepMins, appConfigData.GSheetID)
+		go workers.ScheduleInstagramWork(appConfigData.WorkerMinSleepMins, appConfigData.InstagramUsername)
+	}
+
+	if isProduction {
 		log.Println("Starting HTTPS server...")
 		go http.ListenAndServe(fmt.Sprintf(":%d", appPort), http.HandlerFunc(redirectToHTTPS))
 		err := http.ListenAndServeTLS(":443", "acme_cert.pem", "acme_private_key.pem", nil)
