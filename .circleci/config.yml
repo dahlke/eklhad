@@ -49,17 +49,17 @@ workflows:
   test_and_deploy:
     jobs:
       - go_js_test
-      - packer_build_terraform_plan
-      - packer_build_terraform_plan:
-          requires:
-            - go_js_test
-          filters:
-            branches:
-              ignore: master
-      - packer_build_terraform_deploy
-      - packer_build_terraform_deploy:
-          requires:
-            - go_js_test
-          filters:
-            branches:
-              only: master
+      # - packer_build_terraform_plan
+      # - packer_build_terraform_plan:
+          # requires:
+            # - go_js_test
+          # filters:
+            # branches:
+              # ignore: master
+      # - packer_build_terraform_deploy
+      # - packer_build_terraform_deploy:
+          # requires:
+            # - go_js_test
+          # filters:
+            # branches:
+              # only: master
