@@ -32,20 +32,14 @@ func writeInstagramMedia(instagramMedia []goramma_structs.InstagramMedia) {
 
 // GetDataFromInstagramForUser is used for testing that the API functions work as expected.
 func GetDataFromInstagramForUser(username string) {
-	fmt.Println("CircleTest 1")
 	userID := api.GetUserIDFromMetadata(username)
-	fmt.Println("CircleTest 2")
 	var mediaTimeline []goramma_structs.InstagramMedia
 
-	fmt.Println("CircleTest 3")
 	// NOTE: This worker always pull all posts for simplicity as well as to
 	// make sure sure that old deleted photos are not represented in the data here.
 	endCursor := ""
-	fmt.Println("CircleTest 4")
 	for true {
-		fmt.Println("CircleTest 5")
 		mediaTimelineSlice, hasNextPage, newEndCursor := api.GetUserTimelineMedia(userID, endCursor)
-		fmt.Println("CircleTest 6")
 		mediaTimeline = append(mediaTimelineSlice, mediaTimeline...)
 
 		// Very stupid that I have to do this, but Golang doesn't recognize
@@ -59,10 +53,21 @@ func GetDataFromInstagramForUser(username string) {
 			break
 		}
 
-		// Sleep 10 seconds in between page requests to alleviate any stress on
+		// Sleep 5 seconds in between page requests to alleviate any stress on
 		// a rate limit.
 		time.Sleep(5 * time.Second)
 	}
 
 	writeInstagramMedia(mediaTimeline)
+}
+
+func ScheduleInstagramWork(numSleepMins int, username string) {
+	iterationNumber := 0
+	for {
+		fmt.Println(fmt.Sprintf("Starting Instagram worker scheduled task #%d...", iterationNumber))
+		GetDataFromInstagramForUser(username)
+		iterationNumber++
+		fmt.Println(fmt.Sprintf("Instagram worker sleeping for %d minute(s)...", numSleepMins))
+		time.Sleep(time.Duration(numSleepMins) * time.Minute)
+	}
 }

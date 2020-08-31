@@ -60,7 +60,7 @@ resource "google_compute_firewall" "web" {
   allow {
     protocol = "tcp"
     # TODO
-    ports    = ["22", "80", "443", "3554", "3555"]
+    ports    = ["22", "80", "443", "3554"]
   }
 
   target_tags = var.tags

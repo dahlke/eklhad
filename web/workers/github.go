@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/dahlke/eklhad/web/constants"
 	"github.com/dahlke/eklhad/web/structs"
@@ -107,4 +108,15 @@ func GetDataFromGitHubForUser(username string) {
 	}
 
 	writeGitHubActivity(dailyCommitActivityAllRepos)
+}
+
+func ScheduleGitHubWork(numSleepMins int, username string) {
+	iterationNumber := 0
+	for {
+		fmt.Println(fmt.Sprintf("Starting GitHub worker scheduled task #%d...", iterationNumber))
+		GetDataFromGitHubForUser(username)
+		iterationNumber++
+		fmt.Println(fmt.Sprintf("GitHub worker sleeping for %d minute(s)...", numSleepMins))
+		time.Sleep(time.Duration(numSleepMins) * time.Minute)
+	}
 }

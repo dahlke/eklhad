@@ -262,7 +262,12 @@
  {
   "repo_name": "dahlke/eklhad",
   "timestamp": 1598572800,
-  "num_commits": 8
+  "num_commits": 13
+ },
+ {
+  "repo_name": "dahlke/eklhad",
+  "timestamp": 1598745600,
+  "num_commits": 2
  },
  {
   "repo_name": "dahlke/eklhad-config",
@@ -402,11 +407,6 @@
  {
   "repo_name": "dahlke/goramma",
   "timestamp": 1598572800,
-  "num_commits": 1
- },
- {
-  "repo_name": "dahlke/hashicat-aws",
-  "timestamp": 1567468800,
   "num_commits": 1
  },
  {
@@ -877,11 +877,6 @@
  {
   "repo_name": "dahlke/winterfall",
   "timestamp": 1590969600,
-  "num_commits": 1
- },
- {
-  "repo_name": "hashicorp/hashicat-aws",
-  "timestamp": 1567468800,
   "num_commits": 1
  }
 ]
