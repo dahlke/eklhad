@@ -90,6 +90,7 @@ Before deploying, a few things need to be done. The React frontend needs to be c
 
 ```bash
 make frontend_build
+make collect_data
 make artifact_linux_web # or make artifact_macos_web
 make image_gcp
 make tf_apply_gcp_auto
