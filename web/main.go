@@ -138,18 +138,6 @@ func main() {
 	http.HandleFunc("/api/github_activity", apiGitHubActivityHandler)
 	http.HandleFunc("/api/gravatar", apiGravatarHandler)
 
-	if isPullGSheets {
-		workers.GetDataFromGSheets(appConfigData.GSheetID)
-	}
-
-	if isPullInstagram {
-		workers.GetDataFromInstagramForUser(appConfigData.InstagramUsername)
-	}
-
-	if isPullGitHub {
-		workers.GetDataFromGitHubForUser(appConfigData.GitHubUsername)
-	}
-
 	if workerRoutines {
 		// go workers.DoSampleWork(appConfigData.WorkerMinSleepMins)
 		go workers.ScheduleGitHubWork(appConfigData.WorkerMinSleepMins, appConfigData.GitHubUsername)
@@ -157,7 +145,13 @@ func main() {
 		go workers.ScheduleInstagramWork(appConfigData.WorkerMinSleepMins, appConfigData.InstagramUsername)
 	}
 
-	if isProduction {
+	if isPullGSheets {
+		workers.GetDataFromGSheets(appConfigData.GSheetID)
+	} else if isPullInstagram {
+		workers.GetDataFromInstagramForUser(appConfigData.InstagramUsername)
+	} else if isPullGitHub {
+		workers.GetDataFromGitHubForUser(appConfigData.GitHubUsername)
+	} else if isProduction {
 		log.Println("Starting HTTPS server...")
 		go http.ListenAndServe(fmt.Sprintf(":%d", appPort), http.HandlerFunc(redirectToHTTPS))
 		err := http.ListenAndServeTLS(":443", "acme_cert.pem", "acme_private_key.pem", nil)
