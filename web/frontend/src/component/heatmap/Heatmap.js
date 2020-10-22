@@ -21,8 +21,17 @@ class Heatmap extends Component {
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		if (this.props.dateFilter !== prevProps.dateFilter) {
+			const dataForDate = this.props.dateFilter
+				? this.props.heatmapDateMap[this.props.dateFilter]
+				: {};
+
+			let totalEvents = 0;
+			totalEvents += dataForDate.instagrams ? dataForDate.instagrams.length : 0;
+			totalEvents += dataForDate.links ? dataForDate.links.length : 0;
+			totalEvents += dataForDate.githubActivity ? dataForDate.githubActivity.length : 0;
+
 			this.setState({
-				showModal: true
+				showModal: totalEvents > 0
 			})
 		}
 	}
