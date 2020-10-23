@@ -2,7 +2,20 @@ import React, { Component } from "react";
 import "./LinksList.scss";
 
 class LinksList extends Component {
+
+	state = {
+		showHistoricalLinks: false
+	};
+
+	_toggleHistoricalLinks() {
+		this.setState({
+			showHistoricalLinks: !this.state.showHistoricalLinks
+		});
+	}
+
 	render() {
+		const historicalLinkButtonText = this.state.showHistoricalLinks ? "Hide Historical Links" : "Show Historical Links";
+
 		const links = this.props.links.map((link) => {
 			return (
 				<div key={link.id} className="link">
@@ -21,7 +34,8 @@ class LinksList extends Component {
 
 		return (
 			<div className="links-list">
-				{links}
+				<button onClick={this._toggleHistoricalLinks.bind(this)}>{historicalLinkButtonText}</button>
+				{this.state.showHistoricalLinks ? links : null}
 			</div>
 		);
 	}
