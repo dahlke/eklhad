@@ -45,6 +45,16 @@ html {
 				h3 {
 					text-align: center;
 				}
+
+				button {
+					text-transform: uppercase;
+					color: $chicago-flag-blue;
+					font-family: "VCR OSD Mono", "Courier New", monospace;
+					background-color: #fff;
+					border: 1px solid #eee;
+					border-radius: 5px;
+					padding: 10px;
+				}
 			}
 
 			@media screen and (max-width: $breakpoint-tablet) {

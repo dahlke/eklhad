@@ -11,7 +11,7 @@ const BREAKPOINT_TABLET = 768;
 
 class App extends Component {
 	state = {
-		width: 0,
+		width: 0
 	};
 
 	constructor(props) {
@@ -91,7 +91,6 @@ class App extends Component {
 						width={this.state.width}
 						horizontal={this.state.width > BREAKPOINT_TABLET}
 					/>
-					<h3>All Links</h3>
 					<PopulatedLinksList />
 				</div>
 			</div>
