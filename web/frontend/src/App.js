@@ -41,6 +41,10 @@ class App extends Component {
       			<div id="modal"></div>
 				<div className="app-container">
 					<div className="app-metadata">
+						<div className="sys-mes sys-mes-top">
+							<span className="sys-mes-contents">&lt;SOM&gt;</span>
+							<span className="sys-mes-description">Start of Message</span>
+						</div>
 						<img className="profile-picture" alt="" src={gravatarURL} />
 						<h1>Neil Dahlke</h1>
 						<h2>Engineer</h2>
@@ -92,6 +96,10 @@ class App extends Component {
 						horizontal={this.state.width > BREAKPOINT_TABLET}
 					/>
 					<PopulatedLinksList />
+					<div className="sys-mes sys-mes-bottom">
+						<span className="sys-mes-contents">&lt;EOM&gt;</span>
+						<span className="sys-mes-description">End of Message</span>
+					</div>
 				</div>
 			</div>
 		);
