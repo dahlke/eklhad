@@ -64,10 +64,10 @@ func GetDataFromInstagramForUser(username string) {
 func ScheduleInstagramWork(numSleepMins int, username string) {
 	iterationNumber := 0
 	for {
-		fmt.Println(fmt.Sprintf("Starting Instagram worker scheduled task #%d...", iterationNumber))
+		log.Info(fmt.Sprintf("Starting Instagram worker scheduled task #%d...", iterationNumber))
 		GetDataFromInstagramForUser(username)
 		iterationNumber++
-		fmt.Println(fmt.Sprintf("Instagram worker sleeping for %d minute(s)...", numSleepMins))
+		log.Info(fmt.Sprintf("Instagram worker sleeping for %d minute(s)...", numSleepMins))
 		time.Sleep(time.Duration(numSleepMins) * time.Minute)
 	}
 }

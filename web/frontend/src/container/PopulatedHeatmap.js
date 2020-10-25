@@ -15,7 +15,7 @@ function _sortByTimestamp(data) {
 }
 
 function _processHeatmapDateMap(instagrams, links, githubActivity) {
-	var heatmapDateMap = {};
+	let heatmapDateMap = {};
 
 	links.forEach((link) => {
 		const d = moment.unix(link.timestamp).format("YYYY-MM-DD");
@@ -70,6 +70,10 @@ const mapStateToProps = (state) => {
 		sortedGitHubActivity
 	);
 
+	const dataForDate = state.dateFilter
+		? heatmapDateMap[state.dateFilter]
+		: [];
+
 	return {
 		instagrams: sortedInstagrams,
 		links: sortedLinks,
@@ -77,6 +81,7 @@ const mapStateToProps = (state) => {
 		heatmapDateMap: heatmapDateMap,
 		activityFilter: state.ActivityFilter,
 		dateFilter: state.DateFilter,
+		dataForDate: dataForDate
 	};
 };
 

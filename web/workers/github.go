@@ -55,7 +55,7 @@ func writeGitHubActivity(allGitHubActivity []*structs.GitHubDailyCommitActivityF
 
 // GetDataFromGitHubForUser gets all the commit activity for every public repo for the
 // last 365 days and writes it to the file system.
-func GetDataFromGitHubForUser(username string) {
+func GetDataFromGitHubForUser() {
 	githubToken := os.Getenv("GITHUB_TOKEN")
 
 	ctx := context.Background()
@@ -87,11 +87,10 @@ func GetDataFromGitHubForUser(username string) {
 			log.Info(fmt.Sprintf("Getting GitHub commit activity for %s", *repo.FullName))
 			// https://pkg.go.dev/github.com/google/go-github/v32/github?tab=doc
 			// https://developer.github.com/v3/repos/statistics/#get-the-last-year-of-commit-activity
-			repoCommitActivity, _, err := client.Repositories.ListCommitActivity(ctx, username, *repo.Name)
+			repoOwner := *repo.Owner.Login
+			repoCommitActivity, _, err := client.Repositories.ListCommitActivity(ctx, repoOwner, *repo.Name)
 			if err != nil {
-				// TODO: check if it's a 404
-				log.Info(err)
-				// log.Fatal(err)
+				log.Error(err)
 			} else {
 				// NOTE: Converting the data structure to be something more directly consumable
 				// by the maps in the frontend.
@@ -110,13 +109,13 @@ func GetDataFromGitHubForUser(username string) {
 	writeGitHubActivity(dailyCommitActivityAllRepos)
 }
 
-func ScheduleGitHubWork(numSleepMins int, username string) {
+func ScheduleGitHubWork(numSleepMins int) {
 	iterationNumber := 0
 	for {
-		fmt.Println(fmt.Sprintf("Starting GitHub worker scheduled task #%d...", iterationNumber))
-		GetDataFromGitHubForUser(username)
+		log.Info(fmt.Sprintf("Starting GitHub worker scheduled task #%d...", iterationNumber))
+		GetDataFromGitHubForUser()
 		iterationNumber++
-		fmt.Println(fmt.Sprintf("GitHub worker sleeping for %d minute(s)...", numSleepMins))
+		log.Info(fmt.Sprintf("GitHub worker sleeping for %d minute(s)...", numSleepMins))
 		time.Sleep(time.Duration(numSleepMins) * time.Minute)
 	}
 }

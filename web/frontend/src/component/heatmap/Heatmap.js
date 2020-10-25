@@ -40,17 +40,12 @@ class Heatmap extends Component {
 		this.setState({ showModal: false });
 	}
 
-	// TODO: rename this class / classNames
 	render() {
-		// TODO: I think I can push this logic into Redux.
-		const dataForDate = this.props.dateFilter
-			? this.props.heatmapDateMap[this.props.dateFilter]
-			: [];
 		const dateDetailList = this.props.dateFilter ? (
-			<DateDetailList ref="date-detail-list" data={dataForDate} />
+			<DateDetailList ref="date-detail-list" data={this.state.dataForDate} />
 		) : null;
 
-		var mapVals = [];
+		let mapVals = [];
 		if (this.props.activityFilter === ActivityFilters.SHOW_ALL) {
 			mapVals = this.props.links.concat(this.props.instagrams);
 			mapVals = mapVals.concat(this.props.githubActivity);
@@ -70,8 +65,6 @@ class Heatmap extends Component {
 			return { value: key, label: key };
 		});
 
-		// TODO: show date on hover, hide datedetail list when changing the dateFilter or the activityFilter
-		// TODO: show the years on the calendar heatmap
 		return (
 			<div className="heatmap">
 				<div className="select wide">
