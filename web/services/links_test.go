@@ -1,17 +1,15 @@
 package services
 
 import (
+	"strings"
 	"testing"
 )
-
-// TODO: make this test more generic
-const SCPRDHackDayID string = "cokwr"
 
 func TestLinks(t *testing.T) {
 	links := GetLinks()
 	firstLink := links[0]
 
-	if firstLink.ID != SCPRDHackDayID {
-		t.Errorf("Link ID was incorrect, got: %s, want: %s.", firstLink.ID, SCPRDHackDayID)
+	if !(strings.Contains(firstLink.URL, "http")) {
+		t.Errorf("Links service did not return valid results.")
 	}
 }

@@ -59,7 +59,6 @@ resource "google_compute_firewall" "web" {
 
   allow {
     protocol = "tcp"
-    # TODO
     ports    = ["22", "80", "443", "3554"]
   }
 

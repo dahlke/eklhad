@@ -15,8 +15,7 @@ job "eklhad-web" {
         volumes = [
           "/Users/neil/src/github.com/dahlke/eklhad/web/data/:/go/eklhad-web/data/"
         ]
-        
-        # TODO: need to make sure we route port 80 to port 3554 in some way in prod.
+
         port_map {
           web = 3554
         }

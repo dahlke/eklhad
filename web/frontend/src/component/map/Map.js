@@ -45,11 +45,11 @@ class Map extends Component {
 	}
 
 	_renderStaticLocationMarkers() {
-		var markers = [];
+		let markers = [];
 
 		if (this.props.locations) {
 			markers = this.props.locations.items.map((location) => {
-				var markerClassName = "map-custom-marker ";
+				let markerClassName = "map-custom-marker ";
 
 				if (location.current !== true) {
 					markerClassName += "static-location";
@@ -79,7 +79,7 @@ class Map extends Component {
 
 	_renderCurrentLocation() {
 		const { currentLocation } = this.props;
-		var marker;
+		let marker;
 
 		if (currentLocation) {
 			marker = (

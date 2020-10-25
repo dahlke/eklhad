@@ -99,7 +99,6 @@ collect_data:
 ##########################
 # IMAGE BUILD HELPERS
 ##########################
-# TODO: only include necessary files for minimum size
 .PHONY: artifact_linux_web
 artifact_linux_web: go_build_linux
 	mkdir -p ${ARTIFACT_DIR_LINUX};
