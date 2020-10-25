@@ -8,7 +8,6 @@ import (
 const SCPRDHackDayID string = "cokwr"
 
 func TestLinks(t *testing.T) {
-	// os.Chdir("../")
 	links := GetLinks()
 	firstLink := links[0]
 

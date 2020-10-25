@@ -121,7 +121,6 @@ func GetDataFromGSheets(spreadSheetID string) {
 		}
 
 		fileWriteAbsPath, err := filepath.Abs(fileWritePath)
-		fmt.Println(fileWriteAbsPath)
 		if err != nil {
 			log.Error(err)
 		}
