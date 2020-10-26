@@ -41,8 +41,12 @@ class Heatmap extends Component {
 	}
 
 	render() {
+		const dataForDate = this.props.dateFilter
+			? this.props.heatmapDateMap[this.props.dateFilter]
+			: [];
+
 		const dateDetailList = this.props.dateFilter ? (
-			<DateDetailList ref="date-detail-list" data={this.state.dataForDate} />
+			<DateDetailList ref="date-detail-list" data={dataForDate} />
 		) : null;
 
 		let mapVals = [];

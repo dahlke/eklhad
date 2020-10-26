@@ -140,7 +140,7 @@ func main() {
 
 	if workerRoutines {
 		// go workers.DoSampleWork(appConfigData.WorkerMinSleepMins)
-		go workers.ScheduleGitHubWork(appConfigData.WorkerMinSleepMins)
+		go workers.ScheduleGitHubWork(appConfigData.WorkerMinSleepMins, appConfigData.GitHubUsername)
 		go workers.ScheduleGSheetsWork(appConfigData.WorkerMinSleepMins, appConfigData.GSheetID)
 		go workers.ScheduleInstagramWork(appConfigData.WorkerMinSleepMins, appConfigData.InstagramUsername)
 	}
@@ -150,7 +150,7 @@ func main() {
 	} else if isPullInstagram {
 		workers.GetDataFromInstagramForUser(appConfigData.InstagramUsername)
 	} else if isPullGitHub {
-		workers.GetDataFromGitHubForUser()
+		workers.GetDataFromGitHubForUser(appConfigData.GitHubUsername)
 	} else if isProduction {
 		log.Println("Starting HTTPS server...")
 		go http.ListenAndServe(fmt.Sprintf(":%d", appPort), http.HandlerFunc(redirectToHTTPS))

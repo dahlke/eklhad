@@ -59,6 +59,7 @@ function _processHeatmapDateMap(instagrams, links, githubActivity) {
 	return heatmapDateMap;
 }
 
+
 const mapStateToProps = (state) => {
 	const sortedInstagrams = _sortByTimestamp(state.instagrams.items);
 	const sortedLinks = _sortByTimestamp(state.links.items);
@@ -70,18 +71,13 @@ const mapStateToProps = (state) => {
 		sortedGitHubActivity
 	);
 
-	const dataForDate = state.dateFilter
-		? heatmapDateMap[state.dateFilter]
-		: [];
-
 	return {
 		instagrams: sortedInstagrams,
 		links: sortedLinks,
 		githubActivity: sortedGitHubActivity,
 		heatmapDateMap: heatmapDateMap,
 		activityFilter: state.ActivityFilter,
-		dateFilter: state.DateFilter,
-		dataForDate: dataForDate
+		dateFilter: state.DateFilter
 	};
 };
 
