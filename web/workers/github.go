@@ -55,7 +55,7 @@ func writeGitHubActivity(allGitHubActivity []*structs.GitHubDailyCommitActivityF
 
 // GetDataFromGitHubForUser gets all the commit activity for every public repo for the
 // last 365 days and writes it to the file system.
-func GetDataFromGitHubForUser() {
+func GetDataFromGitHubForUser(username string) {
 	githubToken := os.Getenv("GITHUB_TOKEN")
 
 	ctx := context.Background()
@@ -88,14 +88,19 @@ func GetDataFromGitHubForUser() {
 			// https://pkg.go.dev/github.com/google/go-github/v32/github?tab=doc
 			// https://developer.github.com/v3/repos/statistics/#get-the-last-year-of-commit-activity
 			repoOwner := *repo.Owner.Login
-			repoCommitActivity, _, err := client.Repositories.ListCommitActivity(ctx, repoOwner, *repo.Name)
-			if err != nil {
-				log.Error(err)
-			} else {
-				// NOTE: Converting the data structure to be something more directly consumable
-				// by the maps in the frontend.
-				dailyCommitActivitySingleRepo := convertGitHubActivityData(*repo.FullName, repoCommitActivity)
-				dailyCommitActivityAllRepos = append(dailyCommitActivityAllRepos, dailyCommitActivitySingleRepo...)
+
+			// NOTE: Don't save any activity on repos that are not owned by the GH user
+			// for privacy / compliance purposes.
+			if repoOwner == username {
+				repoCommitActivity, _, err := client.Repositories.ListCommitActivity(ctx, repoOwner, *repo.Name)
+				if err != nil {
+					log.Error(err)
+				} else {
+					// NOTE: Converting the data structure to be something more directly consumable
+					// by the maps in the frontend.
+					dailyCommitActivitySingleRepo := convertGitHubActivityData(*repo.FullName, repoCommitActivity)
+					dailyCommitActivityAllRepos = append(dailyCommitActivityAllRepos, dailyCommitActivitySingleRepo...)
+				}
 			}
 		}
 
@@ -109,11 +114,11 @@ func GetDataFromGitHubForUser() {
 	writeGitHubActivity(dailyCommitActivityAllRepos)
 }
 
-func ScheduleGitHubWork(numSleepMins int) {
+func ScheduleGitHubWork(numSleepMins int, username string) {
 	iterationNumber := 0
 	for {
 		log.Info(fmt.Sprintf("Starting GitHub worker scheduled task #%d...", iterationNumber))
-		GetDataFromGitHubForUser()
+		GetDataFromGitHubForUser(username)
 		iterationNumber++
 		log.Info(fmt.Sprintf("GitHub worker sleeping for %d minute(s)...", numSleepMins))
 		time.Sleep(time.Duration(numSleepMins) * time.Minute)
