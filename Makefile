@@ -37,7 +37,7 @@ js_lint:
 .PHONY: resume
 resume: npm
 	cd web/frontend/conf/ && \
-	node ${CWD}/web/frontend/node_modules/resume-cli/index.js export resume.html --format html --theme onepage
+	node ${CWD}/web/frontend/node_modules/resume-cli/index.js export resume.html --format html --theme classic
 	sed 's/1991-03-19/today/g' ${CWD}/web/frontend/conf/resume.html > ${CWD}/web/frontend/public/static/resume.html && \
 	rm ${CWD}/web/frontend/conf/resume.html
 
