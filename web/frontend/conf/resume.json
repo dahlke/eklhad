@@ -38,7 +38,6 @@
 			"position": "Staff Solutions Engineer (West NA)",
 			"website": "http://hashicorp.com",
 			"startDate": "2020-02-01",
-			"endDate": "1991-03-19",
 			"highlights": [
 				"DevOps domain expert for sales team on strategic client relationships in F500.",
 				"Lead pre-sales engineering activities (discovery, value prop, architectural design).",
@@ -87,7 +86,7 @@
 			]
 		},
 		{
-			"company": "Computation Institute at University of Chicago",
+			"company": "Computation Institute, University of Chicago",
 			"position": "Software Engineer",
 			"website": "http://globus.org",
 			"startDate": "2013-05-01",
@@ -104,10 +103,10 @@
 		{
 			"institution": "DePaul University",
 			"area": "Computer Science",
-			"studyType": "Bachelor",
+			"studyType": "BS",
 			"startDate": "2009-07-01",
 			"endDate": "2013-05-01",
-			"gpa": "3.925, Dean's List 2009-2013, Radio DePaul Host 2010-2013",
+			"gpa": "3.925, Dean's List 2009-2013",
 			"courses": [
 			]
 		}
@@ -120,7 +119,7 @@
 			"summary": ""
 		},
 		{
-			"title": "SE of the Quarter, West USA (FY20Q1, FY20Q2, FY20Q3, FY21Q1)",
+			"title": "SE of the Quarter, West USA (FY20Q1/Q2/Q3, FY21Q1)",
 			"date": "2020-05-07",
 			"awarder": "HashiCorp",
 			"summary": ""

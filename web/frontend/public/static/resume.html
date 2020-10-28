@@ -9,8 +9,8 @@
 
 	<style>
 	body {
-  background: #EEEEEE;
-  font: 12px "Times New Roman", Times, sans-serif;
+  background: #eee;
+  font: 13px "Times New Roman", Times, sans-serif;
   line-height: 1.4;
   margin: 40px 0;
 }
@@ -51,7 +51,7 @@ a {
 }
 
 .smallFont {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .sectionBlock {
@@ -107,13 +107,30 @@ a {
   margin-top: 6px;
 }
 
+.contactBlock,
+#profilesBlock,
+.sectionBlock,
+.jobBlock {
+  font-size: 12px;
+}
+
 .skillBlock {
   margin-bottom: 4px;
+  font-size: 12px;
 }
 
 .jobBlock {
   page-break-inside: avoid;
 }
+
+#profilesBlock {
+  margin-top: 5px;
+}
+
+#profilesBlock a {
+  font-size: 12px;
+}
+
 
 /* Media Queries */
 @media only screen and (max-width: 40em) {
@@ -126,6 +143,9 @@ a {
     max-width: 600px;
     padding: 0.5em 1em;
     border: none;
+  }
+  .sectionBlock {
+    flex-direction: column;
   }
   .sectionContent {
     width: 100%;
@@ -140,11 +160,14 @@ a {
     font-size: 20px;
   }
   .smallFont {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 
 @media print {
+  body {
+    background: #FFFFFF;
+  }
   #resume {
     margin: 0 auto;
     max-width: 600px;
@@ -184,15 +207,15 @@ a {
     </div>
       <div id='profilesBlock'>
             <span class='url'>
-              <a href='http://github.com/dahlke'>http://github.com/dahlke</a>
+              <a href='http://github.com/dahlke'>GitHub</a>
             </span>
             <span class='divider'>|</span>
             <span class='url'>
-              <a href='http://instagram.com/eklhad'>http://instagram.com/eklhad</a>
+              <a href='http://instagram.com/eklhad'>Instagram</a>
             </span>
             <span class='divider'>|</span>
             <span class='url'>
-              <a href='http://linkedin.com/in/neildahlke'>http://linkedin.com/in/neildahlke</a>
+              <a href='http://linkedin.com/in/neildahlke'>LinkedIn</a>
             </span>
             
       </div>
@@ -208,10 +231,10 @@ a {
 			<div class="jobBlock">
 	      <div class='blockHeader'>
 	        <span class='title'>
-	          HashiCorp, Staff Solutions Engineer (West NA)
+	          HashiCorp - Staff Solutions Engineer (West NA)
 	        </span>
 	        <span class='date'>
-	          2020-02-01 &mdash; today
+          2020-02-01 &mdash; Present
 	        </span>
 	      </div>
 	      <div><a href='http://hashicorp.com'>http://hashicorp.com</a></div>
@@ -225,10 +248,10 @@ a {
 			<div class="jobBlock">
 	      <div class='blockHeader'>
 	        <span class='title'>
-	          HashiCorp, Senior Solutions Engineer (West NA)
+	          HashiCorp - Senior Solutions Engineer (West NA)
 	        </span>
 	        <span class='date'>
-	          2018-11-19 &mdash; 2020-02-01
+          2018-11-19 &mdash; 2020-02-01
 	        </span>
 	      </div>
 	      <div><a href='http://hashicorp.com'>http://hashicorp.com</a></div>
@@ -237,10 +260,10 @@ a {
 			<div class="jobBlock">
 	      <div class='blockHeader'>
 	        <span class='title'>
-	          MemSQL, Senior Solutions Engineer (Team Lead, West USA)
+	          MemSQL - Senior Solutions Engineer (Team Lead, West USA)
 	        </span>
 	        <span class='date'>
-	          2017-03-01 &mdash; 2018-11-16
+          2017-03-01 &mdash; 2018-11-16
 	        </span>
 	      </div>
 	      <div><a href='http://memsql.com'>http://memsql.com</a></div>
@@ -255,10 +278,10 @@ a {
 			<div class="jobBlock">
 	      <div class='blockHeader'>
 	        <span class='title'>
-	          MemSQL, Solutions Engineer
+	          MemSQL - Solutions Engineer
 	        </span>
 	        <span class='date'>
-	          2015-11-01 &mdash; 2017-03-01
+          2015-11-01 &mdash; 2017-03-01
 	        </span>
 	      </div>
 	      <div><a href='http://memsql.com'>http://memsql.com</a></div>
@@ -267,10 +290,10 @@ a {
 			<div class="jobBlock">
 	      <div class='blockHeader'>
 	        <span class='title'>
-	          MemSQL, Software Engineer
+	          MemSQL - Software Engineer
 	        </span>
 	        <span class='date'>
-	          2013-12-01 &mdash; 2015-11-01
+          2013-12-01 &mdash; 2015-11-01
 	        </span>
 	      </div>
 	      <div><a href='http://memsql.com'>http://memsql.com</a></div>
@@ -282,10 +305,10 @@ a {
 			<div class="jobBlock">
 	      <div class='blockHeader'>
 	        <span class='title'>
-	          Computation Institute at University of Chicago, Software Engineer
+	          Computation Institute, University of Chicago - Software Engineer
 	        </span>
 	        <span class='date'>
-	          2013-05-01 &mdash; 2013-12-01
+          2013-05-01 &mdash; 2013-12-01
 	        </span>
 	      </div>
 	      <div><a href='http://globus.org'>http://globus.org</a></div>
@@ -315,7 +338,7 @@ a {
       <div class='separator'></div>
       <div class='blockHeader'>
         <span class='title'>
-          SE of the Quarter, West USA (FY20Q1, FY20Q2, FY20Q3, FY21Q1), HashiCorp
+          SE of the Quarter, West USA (FY20Q1/Q2/Q3, FY21Q1), HashiCorp
         </span>
         <span class='date'>
           <span class='date'>2020-05-07</span>
@@ -367,7 +390,7 @@ a {
           2009-07-01 &mdash; 2013-05-01
         </span>
         <div class=''>
-          Bachelor  - Computer Science, GPA: 3.925, Dean&#x27;s List 2009-2013, Radio DePaul Host 2010-2013
+          BS  - Computer Science, GPA: 3.925, Dean&#x27;s List 2009-2013
         </div>
       </div>
       
