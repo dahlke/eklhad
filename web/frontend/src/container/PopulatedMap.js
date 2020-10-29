@@ -3,7 +3,7 @@ import Map from "../component/map/Map";
 
 const mapStateToProps = (state) => {
 	return {
-		locations: state.locations
+		locations: state.locations,
 	};
 };
 

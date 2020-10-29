@@ -20,7 +20,7 @@ import * as serviceWorker from "./serviceWorker";
 const store = createStore(
 	rootReducer,
 	applyMiddleware(
-		thunkMiddleware, // lets us dispatch() functions
+		thunkMiddleware // lets us dispatch() functions
 		// loggerMiddleware // neat middleware that logs actions
 	)
 );

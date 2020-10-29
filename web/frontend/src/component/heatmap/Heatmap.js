@@ -4,16 +4,16 @@ import { ActivityFilters } from "../../actions";
 import CalendarHeatmap from "react-calendar-heatmap";
 import DateDetailList from "../../component/dateDetailList/DateDetailList";
 import moment from "moment";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 import "./Heatmap.scss";
 
-Modal.setAppElement(document.getElementById('root'));
+Modal.setAppElement(document.getElementById("root"));
 
 class Heatmap extends Component {
 	constructor() {
 		super();
 		this.state = {
-			showModal: false
+			showModal: false,
 		};
 
 		this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -26,17 +26,21 @@ class Heatmap extends Component {
 				: {};
 
 			let totalEvents = 0;
-			totalEvents += dataForDate.instagrams ? dataForDate.instagrams.length : 0;
+			totalEvents += dataForDate.instagrams
+				? dataForDate.instagrams.length
+				: 0;
 			totalEvents += dataForDate.links ? dataForDate.links.length : 0;
-			totalEvents += dataForDate.githubActivity ? dataForDate.githubActivity.length : 0;
+			totalEvents += dataForDate.githubActivity
+				? dataForDate.githubActivity.length
+				: 0;
 
 			this.setState({
-				showModal: totalEvents > 0
-			})
+				showModal: totalEvents > 0,
+			});
 		}
 	}
 
-	handleCloseModal () {
+	handleCloseModal() {
 		this.setState({ showModal: false });
 	}
 
@@ -96,13 +100,12 @@ class Heatmap extends Component {
 					isOpen={this.state.showModal}
 					className="date-detail-modal"
 					contentLabel="Date Detail"
-           			shouldCloseOnOverlayClick={true}
-           			onRequestClose={this.handleCloseModal}
+					shouldCloseOnOverlayClick={true}
+					onRequestClose={this.handleCloseModal}
 				>
 					{dateDetailList}
 					<button onClick={this.handleCloseModal}>Close Modal</button>
 				</Modal>
-
 			</div>
 		);
 	}

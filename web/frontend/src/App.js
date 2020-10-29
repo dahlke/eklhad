@@ -11,7 +11,7 @@ const BREAKPOINT_TABLET = 768;
 
 class App extends Component {
 	state = {
-		width: 0
+		width: 0,
 	};
 
 	constructor(props) {
@@ -33,19 +33,29 @@ class App extends Component {
 	}
 
 	render() {
-		const gravatarEmailMD5 = md5(this.props.gravatar ? this.props.gravatar.email : "");
+		const gravatarEmailMD5 = md5(
+			this.props.gravatar ? this.props.gravatar.email : ""
+		);
 		const gravatarURL = `https://www.gravatar.com/avatar/${gravatarEmailMD5}.jpg`;
 
 		return (
 			<div className="app">
-      			<div id="modal"></div>
+				<div id="modal"></div>
 				<div className="app-container">
 					<div className="app-metadata">
 						<div className="sys-mes sys-mes-top">
-							<span className="sys-mes-contents">&lt;SOM&gt;</span>
-							<span className="sys-mes-description">Start of Message</span>
+							<span className="sys-mes-contents">
+								&lt;SOM&gt;
+							</span>
+							<span className="sys-mes-description">
+								Start of Message
+							</span>
 						</div>
-						<img className="profile-picture" alt="" src={gravatarURL} />
+						<img
+							className="profile-picture"
+							alt=""
+							src={gravatarURL}
+						/>
 						<h1>Neil Dahlke</h1>
 						<h2>Engineer</h2>
 						<h4>San Francisco, California, USA</h4>
@@ -98,7 +108,9 @@ class App extends Component {
 					<PopulatedLinksList />
 					<div className="sys-mes sys-mes-bottom">
 						<span className="sys-mes-contents">&lt;EOM&gt;</span>
-						<span className="sys-mes-description">End of Message</span>
+						<span className="sys-mes-description">
+							End of Message
+						</span>
 					</div>
 				</div>
 			</div>
