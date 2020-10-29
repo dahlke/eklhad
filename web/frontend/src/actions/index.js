@@ -1,5 +1,5 @@
 export const PROTOCOL = window.location.protocol;
-// NOTE: Default app port is required for local development, since 
+// NOTE: Default app port is required for local development, since
 // running react-scripts start does not take the server into equation
 // we need to fall back on the port we should communicate with.
 export const DEFAULT_APP_PORT = 3554;

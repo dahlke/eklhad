@@ -11,7 +11,11 @@ class DateDetailList extends Component {
 						<span className="type">{link.type}]</span>
 					</span>
 					<span className="url">
-						<a href={link.url} target="_blank" rel="noopener noreferrer">
+						<a
+							href={link.url}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
 							{link.name}
 						</a>
 					</span>
@@ -21,12 +25,13 @@ class DateDetailList extends Component {
 
 		const instagrams = this.props.data.instagrams.map((instagram) => {
 			return (
-				<div
-					key={instagram.shortcode}
-					className="instagram"
-				>
+				<div key={instagram.shortcode} className="instagram">
 					<div className="url">
-						<a target="_blank" rel="noopener noreferrer" href={instagram.url}>
+						<a
+							target="_blank"
+							rel="noopener noreferrer"
+							href={instagram.url}
+						>
 							<span className="metadata">
 								[<span className="date">{instagram.date}</span>]
 								[
@@ -48,20 +53,32 @@ class DateDetailList extends Component {
 			);
 		});
 
-		const githubActivity = this.props.data.githubActivity.map((activity) => {
-			return (
-				<div key={activity.repo_name + activity.timestamp} className="github-activity">
-					<span className="metadata">
-						[<span className="date">{activity.date}</span>]
-					</span>
-					<span className="url">
-						<a href={"https://github.com/" + activity.repo_name} target="_blank" rel="noopener noreferrer">
-							{activity.repo_name} ({activity.num_commits} commits)
-						</a>
-					</span>
-				</div>
-			);
-		});
+		const githubActivity = this.props.data.githubActivity.map(
+			(activity) => {
+				return (
+					<div
+						key={activity.repo_name + activity.timestamp}
+						className="github-activity"
+					>
+						<span className="metadata">
+							[<span className="date">{activity.date}</span>]
+						</span>
+						<span className="url">
+							<a
+								href={
+									"https://github.com/" + activity.repo_name
+								}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								{activity.repo_name} ({activity.num_commits}{" "}
+								commits)
+							</a>
+						</span>
+					</div>
+				);
+			}
+		);
 
 		return (
 			<div className="date-detail-list">

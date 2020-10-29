@@ -16,12 +16,10 @@ const mapStateToProps = (state) => {
 	const sortedLinks = _sortByTimestamp(state.links.items);
 
 	return {
-		links: sortedLinks
+		links: sortedLinks,
 	};
 };
 
-const mapDispatchToProps = (dispatch) => ({
-
-});
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(LinksList);

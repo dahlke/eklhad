@@ -18,7 +18,7 @@ function receiveGravatar(value) {
 }
 
 export function fetchGravatar() {
-    const apiUrl = `${API_BASE_URL}/gravatar`;
+	const apiUrl = `${API_BASE_URL}/gravatar`;
 
 	return function (dispatch) {
 		dispatch(requestGravatar());
@@ -31,4 +31,3 @@ export function fetchGravatar() {
 			.then((value) => dispatch(receiveGravatar(value)));
 	};
 }
-
