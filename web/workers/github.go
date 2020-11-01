@@ -114,6 +114,7 @@ func GetDataFromGitHubForUser(username string) {
 	writeGitHubActivity(dailyCommitActivityAllRepos)
 }
 
+// ScheduleGitHubWork schedules GetDataFromGitHubForUser at an interval
 func ScheduleGitHubWork(numSleepMins int, username string) {
 	iterationNumber := 0
 	for {

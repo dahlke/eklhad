@@ -137,6 +137,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 
 }
 
+// ScheduleGSheetsWork schedules GetDataFromGSheets at an interval
 func ScheduleGSheetsWork(numSleepMins int, spreadSheetID string) {
 	iterationNumber := 0
 	for {

@@ -24,6 +24,7 @@ type appConfig struct {
 	GitHubUsername     string `json:"github_username"`
 	GravatarEmail      string `json:"gravatar_email"`
 	InstagramUsername  string `json:"instagram_username"`
+	TwitterUsername    string `json:"twitter_username"`
 	WorkerMinSleepMins int    `json:"worker_min_sleep_mins"`
 }
 
@@ -113,7 +114,8 @@ func main() {
 	portPtr := flag.Int("port", appPort, "The port to run the HTTP app on (default: 3554).")
 	productionPtr := flag.Bool("production", false, "If true, run the app over HTTPS.")
 	pullGSheetsPtr := flag.Bool("gsheets", false, "If true, pull the latest data from Google Sheets. ID specified in config.json.")
-	pullInstagramPtr := flag.Bool("instagram", false, "If true, pull the latest data from Instagram. Username specified in config.json.")
+	pullInstagramPtr := flag.Bool("instagram", false, "If true, pull all data from Instagram. Username specified in config.json.")
+	pullTwitterPtr := flag.Bool("twitter", false, "If true, pull the latest data from Twitter. Username specified in config.json.")
 	pullGitHubPtr := flag.Bool("github", false, "If true, pull the latest data from GitHub. Username specified in config.json.")
 	runWorkersPtr := flag.Bool("workers", false, "If true, run all the workers in Go routines.")
 	flag.Parse()
@@ -125,6 +127,7 @@ func main() {
 	isProduction := *productionPtr
 	isPullGSheets := *pullGSheetsPtr
 	isPullInstagram := *pullInstagramPtr
+	isPullTwitter := *pullTwitterPtr
 	isPullGitHub := *pullGitHubPtr
 	workerRoutines := *runWorkersPtr
 
@@ -143,6 +146,7 @@ func main() {
 		go workers.ScheduleGitHubWork(appConfigData.WorkerMinSleepMins, appConfigData.GitHubUsername)
 		go workers.ScheduleGSheetsWork(appConfigData.WorkerMinSleepMins, appConfigData.GSheetID)
 		go workers.ScheduleInstagramWork(appConfigData.WorkerMinSleepMins, appConfigData.InstagramUsername)
+		go workers.ScheduleTwitterWork(appConfigData.WorkerMinSleepMins, appConfigData.TwitterUsername)
 	}
 
 	if isPullGSheets {
@@ -151,6 +155,8 @@ func main() {
 		workers.GetDataFromInstagramForUser(appConfigData.InstagramUsername)
 	} else if isPullGitHub {
 		workers.GetDataFromGitHubForUser(appConfigData.GitHubUsername)
+	} else if isPullTwitter {
+		workers.GetDataFromTwitterForUser(appConfigData.TwitterUsername)
 	} else if isProduction {
 		log.Println("Starting HTTPS server...")
 		go http.ListenAndServe(fmt.Sprintf(":%d", appPort), http.HandlerFunc(redirectToHTTPS))

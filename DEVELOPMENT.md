@@ -31,6 +31,17 @@ cd web/
 go run main.go -github
 ```
 
+#### Pull All Data from Twitter
+
+```bash
+export TWITTER_CONSUMER_API_KEY=$(op get item Twitter | jq -r '.details.sections[1].fields[0].v')
+export TWITTER_CONSUMER_SECRET_KEY=$(op get item Twitter | jq -r '.details.sections[1].fields[1].v')
+export TWITTER_CONSUMER_ACCESS_TOKEN=$(op get item Twitter | jq -r '.details.sections[1].fields[2].v')
+export TWITTER_CONSUMER_ACCESS_TOKEN_SECRET=$(op get item Twitter | jq -r '.details.sections[1].fields[3].v')
+cd web/
+go run main.go -twitter
+```
+
 ## Testing
 
 There tests for both the frontend and backend, which can be run manually, and are always run in CircleCI when a commit is pushed to the repo.
