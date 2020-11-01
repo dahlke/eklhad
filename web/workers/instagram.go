@@ -30,7 +30,7 @@ func writeInstagramMedia(instagramMedia []goramma_structs.InstagramMedia) {
 	}
 }
 
-// GetDataFromInstagramForUser is used for testing that the API functions work as expected.
+// GetDataFromInstagramForUser retrieves all the Instagram metadata for a user.
 func GetDataFromInstagramForUser(username string) {
 	userID := api.GetUserIDFromMetadata(username)
 	var mediaTimeline []goramma_structs.InstagramMedia
@@ -61,6 +61,7 @@ func GetDataFromInstagramForUser(username string) {
 	writeInstagramMedia(mediaTimeline)
 }
 
+// ScheduleInstagramWork schedules GetDataFromInstagramForUser at an interval
 func ScheduleInstagramWork(numSleepMins int, username string) {
 	iterationNumber := 0
 	for {

@@ -12,6 +12,9 @@ const LocationsDataPath = "./data/gsheets/locations/data.json"
 // IGDataPath is used as the target read/write path for IG data
 const IGDataPath = "./data/instagram/data.json"
 
+// TwitterDataPath is used as the target read/write path for Twitter data
+const TwitterDataPath = "./data/twitter/data.json"
+
 // GitHubActivityPath is used as the target read/write path for GitHub data
 const GitHubActivityPath = "./data/github/activity.json"
 
