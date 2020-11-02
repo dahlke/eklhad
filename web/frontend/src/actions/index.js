@@ -21,6 +21,7 @@ export const setActivityFilter = (filter) => ({
 export const ActivityFilters = {
 	SHOW_ALL: "SHOW_ALL",
 	SHOW_INSTAGRAMS: "SHOW_INSTAGRAMS",
+	SHOW_TWEETS: "SHOW_TWEETS",
 	SHOW_LINKS: "SHOW_LINKS",
 	SHOW_GITHUB_ACTIVITY: "SHOW_GITHUB_ACTIVITY",
 };

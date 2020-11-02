@@ -53,6 +53,33 @@ class DateDetailList extends Component {
 			);
 		});
 
+		const tweets = this.props.data.tweets.map(
+			(tweet) => {
+				console.log(tweet);
+				return (
+					<div
+						key={tweet.id}
+						className="tweet"
+					>
+						<span className="metadata">
+							[<span className="date">{tweet.date}</span>]
+						</span>
+						<span className="url">
+							<a
+								href={
+									tweet.url
+								}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								{tweet.text}
+							</a>
+						</span>
+					</div>
+				);
+			}
+		);
+
 		const githubActivity = this.props.data.githubActivity.map(
 			(activity) => {
 				return (
@@ -82,8 +109,9 @@ class DateDetailList extends Component {
 
 		return (
 			<div className="date-detail-list">
-				{links}
 				{instagrams}
+				{tweets}
+				{links}
 				{githubActivity}
 			</div>
 		);

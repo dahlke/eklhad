@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/dahlke/eklhad/web/constants"
+	"github.com/dahlke/eklhad/web/structs"
 	"github.com/dghubble/go-twitter/twitter"
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/oauth2"
@@ -18,13 +19,38 @@ import (
 const SleepTimeSeconds = 1
 const PageSize = 50
 
+func convertTweets(tweets []twitter.Tweet) []structs.EklhadTweet {
+	convertedTweets := []structs.EklhadTweet{}
+	// TODO: get the username in here somehow?
+	for _, tweet := range tweets {
+
+		// https://godoc.org/github.com/dghubble/go-twitter/twitter#Tweet
+		createdAtTime, err := tweet.CreatedAtTime()
+		if err != nil {
+			log.Error(err)
+		}
+
+		url := fmt.Sprintf("https://twitter.com/%s/status/%d", tweet.User.ScreenName, tweet.ID)
+
+		convertedTweet := structs.EklhadTweet{
+			tweet.IDStr,
+			tweet.Text,
+			createdAtTime.Unix(),
+			url,
+		}
+		convertedTweets = append(convertedTweets, convertedTweet)
+	}
+	return convertedTweets
+}
+
 func writeTweets(tweets []twitter.Tweet) {
 	fileWriteAbsPath, err := filepath.Abs(constants.TwitterDataPath)
 	if err != nil {
 		log.Error(err)
 	}
 
-	fileContents, _ := json.MarshalIndent(tweets, "", " ")
+	convertedTweets := convertTweets(tweets)
+	fileContents, _ := json.MarshalIndent(convertedTweets, "", " ")
 	err = ioutil.WriteFile(fileWriteAbsPath, fileContents, 0644)
 
 	if err != nil {
@@ -35,6 +61,7 @@ func writeTweets(tweets []twitter.Tweet) {
 	}
 }
 
+// GetDataFromTwitterForUser retrieves all the tweets for a user.
 func GetDataFromTwitterForUser(username string) {
 	consumerKey := os.Getenv("TWITTER_CONSUMER_API_KEY")
 	consumerSecret := os.Getenv("TWITTER_CONSUMER_SECRET_KEY")
@@ -69,7 +96,6 @@ func GetDataFromTwitterForUser(username string) {
 
 		// https://godoc.org/github.com/dghubble/go-twitter/twitter#Tweet
 		for _, tweet := range tweets {
-			// fmt.Println("tweet.", "ID", tweet.ID, "CreatedAt", tweet.CreatedAt, "Text", tweet.Text)
 			if minTweetID == 0 || tweet.ID < minTweetID {
 				minTweetID = tweet.ID
 			}
@@ -89,7 +115,7 @@ func GetDataFromTwitterForUser(username string) {
 	writeTweets(allTweets)
 }
 
-// ScheduleTwitterWork schedules GetDataFromTeitterForUser at an interval
+// ScheduleTwitterWork schedules GetDataFromTwitterForUser at an interval
 func ScheduleTwitterWork(numSleepMins int, username string) {
 	iterationNumber := 0
 	for {
