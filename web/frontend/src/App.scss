@@ -16,6 +16,88 @@ html {
 	text-transform: uppercase;
 	color: #333;
 
+	.modal {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		right: auto;
+		bottom: auto;
+		margin-right: -50%;
+		transform: translate(-50%, -50%);
+		max-width: 720px;
+		max-height: 75%;
+	  	overflow: scroll;
+		background-color: #fff;
+		border: 1px solid #000;
+		border-color: $chicago-flag-blue;
+		border-radius: 5px;
+		padding: 50px;
+
+		button {
+			display: block;
+			margin: auto;
+			margin-top: 15px;
+		}
+
+		.blog-content {
+			width: 100%;
+			font-family: "VCR OSD Mono", monospace;
+			color: #333;
+
+			img {
+				width: 100%;
+			}
+
+			pre {
+				background-color: #eee;
+				overflow: scroll;
+				font-size: 12px;
+				padding: 10px;
+
+				code {
+				}
+			}
+		}
+
+		.date-detail-list {
+			width: 100%;
+			text-align: center;
+			font-family: "VCR OSD Mono", monospace;
+			text-transform: uppercase;
+			color: #333;
+
+			.link,
+			.instagram,
+			.tweet,
+			.github-activity,
+			.github-event {
+				display: block;
+				padding: 10px 0;
+				max-width: 500px;
+
+				.metadata,
+				.url {
+					display: inline-block;
+				}
+
+				.url {
+					width: 100%;
+				}
+
+				.metadata {
+					padding: 5px 0;
+				}
+
+				.photo {
+					max-width: 300px;
+					max-width: 300px;
+					display: block;
+					margin: auto;
+				}
+			}
+		}
+	}
+
 	#root {
 		text-transform: uppercase;
 		color: $chicago-flag-blue;

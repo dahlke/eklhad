@@ -27,6 +27,7 @@ function _processHeatmapDateMap(instagrams, tweets, links, githubActivity) {
 	};
 	*/
 
+	// TODO: do this for blogs too
 	links.forEach((link) => {
 		const d = moment.unix(link.timestamp).format("YYYY-MM-DD");
 		link.date = d;

@@ -1,6 +1,6 @@
 # [2013-11-14] Workshop: Wireframing Tools and Techniques w/ [Carolyn Chandler](https://twitter.com/chanan)
 
-![A Design Process](./images/a_design_process.png)
+![A Design Process](https://storage.googleapis.com/eklhad-web-images-public/a_design_process.png)
 
 _**What is a wireframe?** - a visual guide that represents the skeletal framework of a website. Wireframes are created for the purpose of arranging elements to best accomplish a particular purpose._
 
@@ -23,7 +23,7 @@ Capture ideas and sketch lo-fi interfaces. At this stage you are thinking about 
 
 Wireframes only communicate **partial** information to the developers.
 
-![The Process at Large](./images/the_process_at_large.gif)
+![The Process at Large](https://storage.googleapis.com/eklhad-web-images-public/the_process_at_large.gif)
 
 ### Key Benefits
 - Communicate
@@ -75,7 +75,7 @@ Wireframes do **not** communicate:
 
 ### Before and After
 
-![Before and After](./images/before_and_after.jpeg)
+![Before and After](https://storage.googleapis.com/eklhad-web-images-public/before_and_after.jpeg)
 
 **Engage the visual designer earlier in the process.** Do not just hand them off a stack of wireframes. Work with them, so that they are not locked in to your layout choices, etc. You can use color for things like grouping, but try not to use too much. Being prescriptive doesn't provide the best solution.
 

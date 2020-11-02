@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"path/filepath"
 	"strings"
 	"time"
@@ -57,7 +58,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 		var fileContents []byte
 		var fileWritePath string
 
-		if entry.Title.Value == "locations" {
+		if entry.Title.Value == "TODO" {
 			var gLocations structs.GSheetLocations
 			json.Unmarshal(body, &gLocations)
 
@@ -118,6 +119,45 @@ func GetDataFromGSheets(spreadSheetID string) {
 
 			fileWritePath = constants.LinksDataPath
 			fileContents, _ = json.MarshalIndent(eklhadLinks, "", " ")
+		} else if entry.Title.Value == "blogs" {
+			var gBlogs structs.GSheetBlogs
+			json.Unmarshal(body, &gBlogs)
+
+			var eklhadBlogs []structs.EklhadBlog
+			for _, gBlog := range gBlogs.Feed.Entries {
+				log.Info("Processing blog ", gBlog.Name.Value)
+				// Has to be a specific date in Golang. /shrug
+				timestamp, err := time.Parse(constants.GSheetsInputDateFmt, gBlog.Date.Value)
+				if err != nil {
+					log.Error(err)
+				}
+
+				blogContentPath, err := filepath.Abs(fmt.Sprintf("data/blogs/%s/index.md", gBlog.Path.Value))
+
+				if err != nil {
+					log.Error(err)
+				}
+
+				blogContentFile, err := os.Open(blogContentPath)
+				if err != nil {
+					log.Error(err)
+				}
+				defer blogContentFile.Close()
+				jsonBytes, _ := ioutil.ReadAll(blogContentFile)
+
+				eklhadBlog := structs.EklhadBlog{
+					ID:        gBlog.ID.Value,
+					Name:      gBlog.Name.Value,
+					Timestamp: timestamp.Unix(),
+					URL:       gBlog.URL.Value,
+					Path:      gBlog.Path.Value,
+					Content:   string(jsonBytes),
+				}
+				eklhadBlogs = append(eklhadBlogs, eklhadBlog)
+			}
+
+			fileWritePath = constants.BlogsDataPath
+			fileContents, _ = json.MarshalIndent(eklhadBlogs, "", " ")
 		}
 
 		fileWriteAbsPath, err := filepath.Abs(fileWritePath)

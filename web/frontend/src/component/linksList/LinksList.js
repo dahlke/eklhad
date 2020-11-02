@@ -1,14 +1,38 @@
 import React, { Component } from "react";
+import Modal from "react-modal";
+import MarkdownView from 'react-showdown';
 import "./LinksList.scss";
 
 class LinksList extends Component {
-	state = {
-		showHistoricalLinks: false,
-	};
+	constructor() {
+		super();
+		this.state = {
+			showHistoricalLinks: false,
+			showModal: false,
+			shownBlog: undefined
+		};
+
+		this.handleCloseModal = this.handleCloseModal.bind(this);
+	}
 
 	_toggleHistoricalLinks() {
 		this.setState({
 			showHistoricalLinks: !this.state.showHistoricalLinks,
+		});
+	}
+
+	_showBlogViewer(blog) {
+		console.log(blog);
+		this.setState({
+			showModal: true,
+			shownBlog: blog
+		});
+	}
+
+	handleCloseModal() {
+		this.setState({
+			showModal: false,
+			shownBlog: undefined
 		});
 	}
 
@@ -17,26 +41,25 @@ class LinksList extends Component {
 			? "Hide Blogs"
 			: "Show Blogs";
 
-		const links = this.props.links.map((link) => {
-			let component = link.type == "blog" ? (
-				<div key={link.id} className="link">
+		// console.log(this.props.links);
+
+		const blogLinks = this.props.blogs.map((blog) => {
+			return (
+				<div key={blog.id} className="link">
 					<span className="metadata">
-						[<span className="date">{link.date}</span>] [
-						<span className="type">{link.type}]</span>
+						[<span className="date">{blog.date}</span>] [
+						<span className="type">Blog</span>]
 					</span>
 					<span className="url">
 						<a
-							href={link.url}
-							target="_blank"
-							rel="noopener noreferrer"
+							href="#"
+							onClick={() => this._showBlogViewer(blog)}
 						>
-							{link.name}
+							{blog.name}
 						</a>
 					</span>
 				</div>
-			) : null;
-
-			return component;
+			);
 		});
 
 		return (
@@ -44,7 +67,22 @@ class LinksList extends Component {
 				<button onClick={this._toggleHistoricalLinks.bind(this)}>
 					{historicalLinkButtonText}
 				</button>
-				{this.state.showHistoricalLinks ? links : null}
+				{this.state.showHistoricalLinks ? blogLinks : null}
+				<Modal
+					isOpen={this.state.showModal}
+					className="modal"
+					contentLabel="Date Detail"
+					shouldCloseOnOverlayClick={true}
+					onRequestClose={this.handleCloseModal}
+				>
+					<div className="blog-content">
+						<MarkdownView
+							markdown={this.state.shownBlog ? this.state.shownBlog.content : ""}
+							options={{ tables: true, emoji: true }}
+							/>
+					</div>
+					<button onClick={this.handleCloseModal}>Close Modal</button>
+				</Modal>
 			</div>
 		);
 	}

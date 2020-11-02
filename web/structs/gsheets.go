@@ -61,3 +61,23 @@ type gSheetLinksFeed struct {
 type GSheetLinks struct {
 	Feed gSheetLinksFeed `json:"feed"`
 }
+
+/*
+GSheet Blog Parser Structs
+*/
+type gSheetBlogEntry struct {
+	ID   gSheetEntryValue `json:"id"`
+	Name gSheetEntryValue `json:"gsx$name"`
+	Date gSheetEntryValue `json:"gsx$date"`
+	URL  gSheetEntryValue `json:"gsx$url"`
+	Path gSheetEntryValue `json:"gsx$path"`
+}
+
+type gSheetBlogsFeed struct {
+	Entries []gSheetBlogEntry `json:"entry"`
+}
+
+// GSheetBlogs gives us a structure for parsing blogs from GSheets
+type GSheetBlogs struct {
+	Feed gSheetBlogsFeed `json:"feed"`
+}
