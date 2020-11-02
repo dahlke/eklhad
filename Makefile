@@ -94,8 +94,9 @@ go_build_linux:
 collect_data:
 	cd web && \
 	go run main.go -github && \
+	go run main.go -instagram && \
+	go run main.go -twitter && \
 	go run main.go -gsheets;
-	# go run main.go -instagram && \
 
 ##########################
 # IMAGE BUILD HELPERS

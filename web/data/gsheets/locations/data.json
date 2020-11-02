@@ -55,12 +55,12 @@
  },
  {
   "id": "clrrx",
-  "city": "Providenciales",
-  "stateprovinceregion": "",
-  "country": "Turks and Caicos",
+  "city": "Vancouver",
+  "stateprovinceregion": "British Colombia",
+  "country": "Canada",
   "current": false,
-  "lat": 21.7965249,
-  "lng": -72.17850091889127
+  "lat": 49.2608724,
+  "lng": -123.1139529
  },
  {
   "id": "cyevm",
@@ -73,15 +73,6 @@
  },
  {
   "id": "cztg3",
-  "city": "Vancouver",
-  "stateprovinceregion": "British Colombia",
-  "country": "Canada",
-  "current": false,
-  "lat": 49.2608724,
-  "lng": -123.1139529
- },
- {
-  "id": "d180g",
   "city": "Santiago",
   "stateprovinceregion": "Santiago Metropolitan",
   "country": "Chile",
@@ -90,7 +81,7 @@
   "lng": -70.6504451
  },
  {
-  "id": "d2mkx",
+  "id": "d180g",
   "city": "Valle Nevado",
   "stateprovinceregion": "Santiago Metropolitan",
   "country": "Chile",
@@ -99,7 +90,7 @@
   "lng": -70.2491559
  },
  {
-  "id": "cssly",
+  "id": "d2mkx",
   "city": "Beijing",
   "stateprovinceregion": "Beijing Municipality",
   "country": "China",
@@ -108,7 +99,7 @@
   "lng": 116.718583
  },
  {
-  "id": "cu76f",
+  "id": "cssly",
   "city": "Qingdao",
   "stateprovinceregion": "Shandong",
   "country": "China",
@@ -117,7 +108,7 @@
   "lng": 120.3781372
  },
  {
-  "id": "cvlqs",
+  "id": "cu76f",
   "city": "Shanghai",
   "stateprovinceregion": "",
   "country": "China",
@@ -126,34 +117,7 @@
   "lng": 121.4692071
  },
  {
-  "id": "cx0b9",
-  "city": "Rincon de la Vieja",
-  "stateprovinceregion": "Guanacaste",
-  "country": "Costa Rica",
-  "current": false,
-  "lat": 10.7960834,
-  "lng": -85.3482878
- },
- {
-  "id": "d9ney",
-  "city": "San Juan",
-  "stateprovinceregion": "Guanacaste",
-  "country": "Costa Rica",
-  "current": false,
-  "lat": 10.2227373,
-  "lng": -84.93162821619225
- },
- {
-  "id": "db1zf",
-  "city": "Playa Del Coco",
-  "stateprovinceregion": "Guanacaste",
-  "country": "Costa Rica",
-  "current": false,
-  "lat": 10.5579948,
-  "lng": -85.69226196213228
- },
- {
-  "id": "dcgjs",
+  "id": "cvlqs",
   "city": "Liberia",
   "stateprovinceregion": "Guanacaste",
   "country": "Costa Rica",
@@ -162,7 +126,34 @@
   "lng": -85.4362722
  },
  {
-  "id": "ddv49",
+  "id": "cx0b9",
+  "city": "Playa Del Coco",
+  "stateprovinceregion": "Guanacaste",
+  "country": "Costa Rica",
+  "current": false,
+  "lat": 10.5579948,
+  "lng": -85.69226196213228
+ },
+ {
+  "id": "d9ney",
+  "city": "Rincon de la Vieja",
+  "stateprovinceregion": "Guanacaste",
+  "country": "Costa Rica",
+  "current": false,
+  "lat": 10.7960834,
+  "lng": -85.3482878
+ },
+ {
+  "id": "db1zf",
+  "city": "San Juan",
+  "stateprovinceregion": "Guanacaste",
+  "country": "Costa Rica",
+  "current": false,
+  "lat": 10.2227373,
+  "lng": -84.93162821619225
+ },
+ {
+  "id": "dcgjs",
   "city": "Havana",
   "stateprovinceregion": "Havana",
   "country": "Cuba",
@@ -171,7 +162,7 @@
   "lng": -82.3781622
  },
  {
-  "id": "d415a",
+  "id": "ddv49",
   "city": "San Salvador",
   "stateprovinceregion": "San Salvador",
   "country": "El Salvador",
@@ -180,7 +171,7 @@
   "lng": -89.1914249
  },
  {
-  "id": "d5fpr",
+  "id": "d415a",
   "city": "Helsinki",
   "stateprovinceregion": "Uusimaa",
   "country": "Finland",
@@ -189,7 +180,7 @@
   "lng": 24.9425769
  },
  {
-  "id": "d6ua4",
+  "id": "d5fpr",
   "city": "Paris",
   "stateprovinceregion": "Ile-de-France",
   "country": "France",
@@ -198,7 +189,7 @@
   "lng": 2.3514616
  },
  {
-  "id": "d88ul",
+  "id": "d6ua4",
   "city": "Berlin",
   "stateprovinceregion": "Berlin",
   "country": "Germany",
@@ -207,7 +198,7 @@
   "lng": 13.3386373
  },
  {
-  "id": "dkvya",
+  "id": "d88ul",
   "city": "Hamburg",
   "stateprovinceregion": "Hamburg",
   "country": "Germany",
@@ -216,7 +207,7 @@
   "lng": 8.770956749834209
  },
  {
-  "id": "dmair",
+  "id": "dkvya",
   "city": "Delhi",
   "stateprovinceregion": "Delhi",
   "country": "India",
@@ -225,7 +216,7 @@
   "lng": 77.2219388
  },
  {
-  "id": "dnp34",
+  "id": "dmair",
   "city": "New Delhi",
   "stateprovinceregion": "Delhi",
   "country": "India",
@@ -234,7 +225,7 @@
   "lng": 77.2090057
  },
  {
-  "id": "dp3nl",
+  "id": "dnp34",
   "city": "Fort Kochi",
   "stateprovinceregion": "Kerala",
   "country": "India",
@@ -243,7 +234,7 @@
   "lng": 76.2449495
  },
  {
-  "id": "df9om",
+  "id": "dp3nl",
   "city": "Mumbai",
   "stateprovinceregion": "Maharastra",
   "country": "India",
@@ -252,7 +243,7 @@
   "lng": 72.8353355
  },
  {
-  "id": "dgo93",
+  "id": "df9om",
   "city": "Jaipur",
   "stateprovinceregion": "Rajasthan",
   "country": "India",
@@ -261,7 +252,7 @@
   "lng": 75.820349
  },
  {
-  "id": "di2tg",
+  "id": "dgo93",
   "city": "Hyderabad",
   "stateprovinceregion": "Telangana",
   "country": "India",
@@ -270,7 +261,7 @@
   "lng": 78.46106473453146
  },
  {
-  "id": "djhdx",
+  "id": "di2tg",
   "city": "Agra",
   "stateprovinceregion": "Uttar Pradesh",
   "country": "India",
@@ -279,7 +270,7 @@
   "lng": 78.0098161
  },
  {
-  "id": "dw4je",
+  "id": "djhdx",
   "city": "Galway",
   "stateprovinceregion": "Connacht",
   "country": "Ireland",
@@ -288,61 +279,7 @@
   "lng": -9.0490632
  },
  {
-  "id": "dxj3v",
-  "city": "Westmeath",
-  "stateprovinceregion": "Leinster",
-  "country": "Ireland",
-  "current": false,
-  "lat": 53.5577902,
-  "lng": -7.3478558260097575
- },
- {
-  "id": "dyxo8",
-  "city": "Kilkenny",
-  "stateprovinceregion": "Leinster",
-  "country": "Ireland",
-  "current": false,
-  "lat": 52.6510216,
-  "lng": -7.2484948
- },
- {
-  "id": "e0c8p",
-  "city": "Wicklow",
-  "stateprovinceregion": "Leinster",
-  "country": "Ireland",
-  "current": false,
-  "lat": 52.95814675,
-  "lng": -6.381970708677661
- },
- {
-  "id": "dqi9q",
-  "city": "Dundalk",
-  "stateprovinceregion": "Leinster",
-  "country": "Ireland",
-  "current": false,
-  "lat": 54.0046033,
-  "lng": -6.4008879
- },
- {
-  "id": "drwu7",
-  "city": "Howth",
-  "stateprovinceregion": "Leinster",
-  "country": "Ireland",
-  "current": false,
-  "lat": 53.3858337,
-  "lng": -6.0651186
- },
- {
-  "id": "dtbek",
-  "city": "Dublin",
-  "stateprovinceregion": "Leinster",
-  "country": "Ireland",
-  "current": false,
-  "lat": 53.3497645,
-  "lng": -6.2602732
- },
- {
-  "id": "dupz1",
+  "id": "dw4je",
   "city": "Baldoyle",
   "stateprovinceregion": "Leinster",
   "country": "Ireland",
@@ -351,7 +288,34 @@
   "lng": -6.1285497
  },
  {
-  "id": "e7d2q",
+  "id": "dxj3v",
+  "city": "Dublin",
+  "stateprovinceregion": "Leinster",
+  "country": "Ireland",
+  "current": false,
+  "lat": 53.3497645,
+  "lng": -6.2602732
+ },
+ {
+  "id": "dyxo8",
+  "city": "Dundalk",
+  "stateprovinceregion": "Leinster",
+  "country": "Ireland",
+  "current": false,
+  "lat": 54.0046033,
+  "lng": -6.4008879
+ },
+ {
+  "id": "e0c8p",
+  "city": "Howth",
+  "stateprovinceregion": "Leinster",
+  "country": "Ireland",
+  "current": false,
+  "lat": 53.3858337,
+  "lng": -6.0651186
+ },
+ {
+  "id": "dqi9q",
   "city": "Kildare",
   "stateprovinceregion": "Leinster",
   "country": "Ireland",
@@ -360,7 +324,25 @@
   "lng": -6.8184175660976445
  },
  {
-  "id": "e8rn7",
+  "id": "drwu7",
+  "city": "Kilkenny",
+  "stateprovinceregion": "Leinster",
+  "country": "Ireland",
+  "current": false,
+  "lat": 52.6510216,
+  "lng": -7.2484948
+ },
+ {
+  "id": "dtbek",
+  "city": "Meath",
+  "stateprovinceregion": "Leinster",
+  "country": "Ireland",
+  "current": false,
+  "lat": 53.38767489999999,
+  "lng": -6.494665713011136
+ },
+ {
+  "id": "dupz1",
   "city": "Sutton",
   "stateprovinceregion": "Leinster",
   "country": "Ireland",
@@ -369,16 +351,7 @@
   "lng": -6.1098089
  },
  {
-  "id": "ea67k",
-  "city": "Meath",
-  "stateprovinceregion": "Leinster",
-  "country": "Ireland",
-  "current": false,
-  "lat": 53.88930485,
-  "lng": -6.725519443915223
- },
- {
-  "id": "ebks1",
+  "id": "e7d2q",
   "city": "Swords",
   "stateprovinceregion": "Leinster",
   "country": "Ireland",
@@ -387,7 +360,7 @@
   "lng": -6.2184562
  },
  {
-  "id": "e1qt2",
+  "id": "e8rn7",
   "city": "Tullamore",
   "stateprovinceregion": "Leinster",
   "country": "Ireland",
@@ -396,25 +369,34 @@
   "lng": -7.4928384
  },
  {
-  "id": "e35dj",
-  "city": "Waterford",
-  "stateprovinceregion": "Munster",
+  "id": "ea67k",
+  "city": "Westmeath",
+  "stateprovinceregion": "Leinster",
   "country": "Ireland",
   "current": false,
-  "lat": 52.2609997,
-  "lng": -7.1119081
+  "lat": 53.5577902,
+  "lng": -7.3478558260097575
  },
  {
-  "id": "e4jxw",
+  "id": "ebks1",
+  "city": "Wicklow",
+  "stateprovinceregion": "Leinster",
+  "country": "Ireland",
+  "current": false,
+  "lat": 52.95814675,
+  "lng": -6.381970708677661
+ },
+ {
+  "id": "e1qt2",
   "city": "Cork",
   "stateprovinceregion": "Munster",
   "country": "Ireland",
   "current": false,
-  "lat": 51.8979282,
-  "lng": -8.4705806
+  "lat": 51.898627,
+  "lng": -8.4705942
  },
  {
-  "id": "e5yid",
+  "id": "e35dj",
   "city": "Limerick",
   "stateprovinceregion": "Munster",
   "country": "Ireland",
@@ -423,16 +405,25 @@
   "lng": -8.6301239
  },
  {
-  "id": "eilm2",
+  "id": "e4jxw",
+  "city": "Waterford",
+  "stateprovinceregion": "Munster",
+  "country": "Ireland",
+  "current": false,
+  "lat": 52.2609997,
+  "lng": -7.1119081
+ },
+ {
+  "id": "e5yid",
   "city": "Rome",
   "stateprovinceregion": "Lazio",
   "country": "Italy",
   "current": false,
-  "lat": 41.85223935,
-  "lng": 12.631036615953583
+  "lat": 41.8933203,
+  "lng": 12.4829321
  },
  {
-  "id": "ek06j",
+  "id": "eilm2",
   "city": "Osaka",
   "stateprovinceregion": "Kansai",
   "country": "Japan",
@@ -441,7 +432,7 @@
   "lng": 135.228941
  },
  {
-  "id": "eleqw",
+  "id": "ek06j",
   "city": "Okinawa",
   "stateprovinceregion": "Okinawa Prefecture",
   "country": "Japan",
@@ -450,13 +441,22 @@
   "lng": 127.8056597
  },
  {
-  "id": "emtbd",
+  "id": "eleqw",
   "city": "Gozo Marina",
   "stateprovinceregion": "Gozo",
   "country": "Malta",
   "current": false,
   "lat": 36.038252,
   "lng": 14.256238868065235
+ },
+ {
+  "id": "emtbd",
+  "city": "Mdina",
+  "stateprovinceregion": "",
+  "country": "Malta",
+  "current": false,
+  "lat": 35.8858588,
+  "lng": 14.40273861581985
  },
  {
   "id": "eczce",
@@ -469,24 +469,6 @@
  },
  {
   "id": "eedwv",
-  "city": "Mdina",
-  "stateprovinceregion": "",
-  "country": "Malta",
-  "current": false,
-  "lat": 35.8858588,
-  "lng": 14.40273861581985
- },
- {
-  "id": "efsh8",
-  "city": "Haarlem",
-  "stateprovinceregion": "North Holland",
-  "country": "Netherlands",
-  "current": false,
-  "lat": 52.383705750000004,
-  "lng": 4.643559696559635
- },
- {
-  "id": "eh71p",
   "city": "Amsterdam",
   "stateprovinceregion": "North Holland",
   "country": "Netherlands",
@@ -495,7 +477,16 @@
   "lng": 4.8936041
  },
  {
-  "id": "etu5e",
+  "id": "efsh8",
+  "city": "Haarlem",
+  "stateprovinceregion": "North Holland",
+  "country": "Netherlands",
+  "current": false,
+  "lat": 52.3885317,
+  "lng": 4.6388048
+ },
+ {
+  "id": "eh71p",
   "city": "Auckland",
   "stateprovinceregion": "Auckland",
   "country": "New Zealand",
@@ -504,7 +495,7 @@
   "lng": 174.7631803
  },
  {
-  "id": "ev8pv",
+  "id": "etu5e",
   "city": "Takapuna",
   "stateprovinceregion": "Auckland",
   "country": "New Zealand",
@@ -513,7 +504,7 @@
   "lng": 174.7729913
  },
  {
-  "id": "ewna8",
+  "id": "ev8pv",
   "city": "Queenstown",
   "stateprovinceregion": "Otago",
   "country": "New Zealand",
@@ -522,7 +513,7 @@
   "lng": 168.661
  },
  {
-  "id": "ey1up",
+  "id": "ewna8",
   "city": "Cusco",
   "stateprovinceregion": "Cusco",
   "country": "Peru",
@@ -531,7 +522,7 @@
   "lng": -71.9785356
  },
  {
-  "id": "eo7vq",
+  "id": "ey1up",
   "city": "Lima",
   "stateprovinceregion": "Lima",
   "country": "Peru",
@@ -540,7 +531,7 @@
   "lng": -77.0365256
  },
  {
-  "id": "epmg7",
+  "id": "eo7vq",
   "city": "Saint Petersburg",
   "stateprovinceregion": "Northwestern",
   "country": "Russia",
@@ -549,7 +540,7 @@
   "lng": 30.316229
  },
  {
-  "id": "er10k",
+  "id": "epmg7",
   "city": "Barcelona",
   "stateprovinceregion": "Catalonia",
   "country": "Spain",
@@ -558,7 +549,7 @@
   "lng": 2.1774322
  },
  {
-  "id": "esfl1",
+  "id": "er10k",
   "city": "Taipei",
   "stateprovinceregion": "Taiwan",
   "country": "Taiwan",
@@ -567,25 +558,7 @@
   "lng": 121.4656619
  },
  {
-  "id": "a59y2",
-  "city": "Krabi",
-  "stateprovinceregion": "Krabi",
-  "country": "Thailand",
-  "current": false,
-  "lat": 8.0610907,
-  "lng": 98.9161607
- },
- {
-  "id": "a6oij",
-  "city": "Ao Nang",
-  "stateprovinceregion": "Krabi",
-  "country": "Thailand",
-  "current": false,
-  "lat": 8.0321024,
-  "lng": 98.8225499
- },
- {
-  "id": "a832w",
+  "id": "esfl1",
   "city": "Bangkok",
   "stateprovinceregion": "Bangkok",
   "country": "Thailand",
@@ -594,13 +567,40 @@
   "lng": 100.493087
  },
  {
-  "id": "a9hnd",
+  "id": "a59y2",
   "city": "Chiang Mai",
   "stateprovinceregion": "Chiang Mai",
   "country": "Thailand",
   "current": false,
   "lat": 18.790876,
   "lng": 98.988048
+ },
+ {
+  "id": "a6oij",
+  "city": "Ao Nang",
+  "stateprovinceregion": "Krabi",
+  "country": "Thailand",
+  "current": false,
+  "lat": 8.03840755,
+  "lng": 98.835556784847
+ },
+ {
+  "id": "a832w",
+  "city": "Krabi",
+  "stateprovinceregion": "Krabi",
+  "country": "Thailand",
+  "current": false,
+  "lat": 8.0610907,
+  "lng": 98.9161607
+ },
+ {
+  "id": "a9hnd",
+  "city": "Providenciales",
+  "stateprovinceregion": "",
+  "country": "Turks and Caicos",
+  "current": false,
+  "lat": 21.7965249,
+  "lng": -72.17850091889127
  },
  {
   "id": "9znoe",
@@ -622,15 +622,6 @@
  },
  {
   "id": "a2gt8",
-  "city": "Scottsdale",
-  "stateprovinceregion": "Arizona",
-  "country": "United States of America",
-  "current": false,
-  "lat": 33.4942189,
-  "lng": -111.9260184
- },
- {
-  "id": "a3vdp",
   "city": "Chandler",
   "stateprovinceregion": "Arizona",
   "country": "United States of America",
@@ -639,7 +630,7 @@
   "lng": -111.8413317
  },
  {
-  "id": "agihe",
+  "id": "a3vdp",
   "city": "Flagstaff",
   "stateprovinceregion": "Arizona",
   "country": "United States of America",
@@ -648,34 +639,7 @@
   "lng": -111.6518229
  },
  {
-  "id": "ahx1v",
-  "city": "Williams",
-  "stateprovinceregion": "Arizona",
-  "country": "United States of America",
-  "current": false,
-  "lat": 35.2503394,
-  "lng": -112.1869481
- },
- {
-  "id": "ajbm8",
-  "city": "Tusayan",
-  "stateprovinceregion": "Arizona",
-  "country": "United States of America",
-  "current": false,
-  "lat": 35.9735954,
-  "lng": -112.1265569
- },
- {
-  "id": "akq6p",
-  "city": "Grand Canyon Village",
-  "stateprovinceregion": "Arizona",
-  "country": "United States of America",
-  "current": false,
-  "lat": 36.0545151,
-  "lng": -112.1406308
- },
- {
-  "id": "aaw7q",
+  "id": "agihe",
   "city": "Grand Canyon National Park",
   "stateprovinceregion": "Arizona",
   "country": "United States of America",
@@ -684,7 +648,16 @@
   "lng": -112.29289603702432
  },
  {
-  "id": "acas7",
+  "id": "ahx1v",
+  "city": "Grand Canyon Village",
+  "stateprovinceregion": "Arizona",
+  "country": "United States of America",
+  "current": false,
+  "lat": 36.0545151,
+  "lng": -112.1406308
+ },
+ {
+  "id": "ajbm8",
   "city": "Mesa",
   "stateprovinceregion": "Arizona",
   "country": "United States of America",
@@ -693,7 +666,7 @@
   "lng": -111.8314773
  },
  {
-  "id": "adpck",
+  "id": "akq6p",
   "city": "Phoenix",
   "stateprovinceregion": "Arizona",
   "country": "United States of America",
@@ -702,7 +675,16 @@
   "lng": -112.0741417
  },
  {
-  "id": "af3x1",
+  "id": "aaw7q",
+  "city": "Scottsdale",
+  "stateprovinceregion": "Arizona",
+  "country": "United States of America",
+  "current": false,
+  "lat": 33.4942189,
+  "lng": -111.9260184
+ },
+ {
+  "id": "acas7",
   "city": "Tempe",
   "stateprovinceregion": "Arizona",
   "country": "United States of America",
@@ -711,52 +693,25 @@
   "lng": -111.9400125
  },
  {
+  "id": "adpck",
+  "city": "Tusayan",
+  "stateprovinceregion": "Arizona",
+  "country": "United States of America",
+  "current": false,
+  "lat": 35.9735954,
+  "lng": -112.1265569
+ },
+ {
+  "id": "af3x1",
+  "city": "Williams",
+  "stateprovinceregion": "Arizona",
+  "country": "United States of America",
+  "current": false,
+  "lat": 35.2503394,
+  "lng": -112.1869481
+ },
+ {
   "id": "arr0q",
-  "city": "Indio",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 33.7192808,
-  "lng": -116.2188054
- },
- {
-  "id": "at5l7",
-  "city": "Fall River Mills",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 41.00455615,
-  "lng": -121.44117792686552
- },
- {
-  "id": "auk5k",
-  "city": "Half Moon Bay",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 37.4635519,
-  "lng": -122.4285862
- },
- {
-  "id": "avyq1",
-  "city": "Monterey",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 36.2231079,
-  "lng": -121.3877428
- },
- {
-  "id": "am4r2",
-  "city": "Carmel-by-the-Sea",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 36.5552387,
-  "lng": -121.9232879
- },
- {
-  "id": "anjbj",
   "city": "Aguas Calientes",
   "stateprovinceregion": "California",
   "country": "United States of America",
@@ -765,313 +720,16 @@
   "lng": -118.1282065
  },
  {
-  "id": "aoxvw",
-  "city": "Tahoe City",
+  "id": "at5l7",
+  "city": "Alpine Meadows",
   "stateprovinceregion": "California",
   "country": "United States of America",
   "current": false,
-  "lat": 39.1689372,
-  "lng": -120.1434787
+  "lat": 39.1785177,
+  "lng": -120.2276948
  },
  {
-  "id": "aqcgd",
-  "city": "Fresno",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 36.7394421,
-  "lng": -119.7848307
- },
- {
-  "id": "b2zk2",
-  "city": "San Bernardino",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 34.8253019,
-  "lng": -116.0833144
- },
- {
-  "id": "b4e4j",
-  "city": "Burbank",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 34.1816482,
-  "lng": -118.3258554
- },
- {
-  "id": "b5sow",
-  "city": "South San Francisco",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 37.6535403,
-  "lng": -122.4168664
- },
- {
-  "id": "b779d",
-  "city": "Huntington Beach",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 33.6783336,
-  "lng": -118.0000166
- },
- {
-  "id": "axdae",
-  "city": "Pasadena",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 34.1476452,
-  "lng": -118.1444779
- },
- {
-  "id": "ayruv",
-  "city": "Palm Springs",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 33.8246269,
-  "lng": -116.540303
- },
- {
-  "id": "b06f8",
-  "city": "Scotts Valley",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 37.0510595,
-  "lng": -122.0146841
- },
- {
-  "id": "b1kzp",
-  "city": "Yosemite Village",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 37.7481814,
-  "lng": -119.5868869
- },
- {
-  "id": "be856",
-  "city": "Yountville",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 38.4022008,
-  "lng": -122.3595063
- },
- {
-  "id": "bfmpn",
-  "city": "South Lake Tahoe",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 38.9332411,
-  "lng": -119.9843482
- },
- {
-  "id": "bh1a0",
-  "city": "Twentynine Palms",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 34.1356915,
-  "lng": -116.0543506
- },
- {
-  "id": "bifuh",
-  "city": "Yosemite Valley",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 37.7444869,
-  "lng": -119.5925653
- },
- {
-  "id": "b8lvi",
-  "city": "San Francisco",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": true,
-  "lat": 37.7790262,
-  "lng": -122.4199061
- },
- {
-  "id": "ba0fz",
-  "city": "San Clemente",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 33.4270275,
-  "lng": -117.6124179
- },
- {
-  "id": "bbf0c",
-  "city": "Berkeley",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 37.8708393,
-  "lng": -122.2728639
- },
- {
-  "id": "bctkt",
-  "city": "San Jose",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 37.3361905,
-  "lng": -121.8905833
- },
- {
-  "id": "bpgoi",
-  "city": "Stockton",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 37.9577016,
-  "lng": -121.2907796
- },
- {
-  "id": "bqv8z",
-  "city": "Palo Alto",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 37.4443293,
-  "lng": -122.1598465
- },
- {
-  "id": "bs9tc",
-  "city": "Boulder Creek",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 37.1260578,
-  "lng": -122.1221869
- },
- {
-  "id": "btodt",
-  "city": "Napa",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 38.2971367,
-  "lng": -122.2855293
- },
- {
-  "id": "bjueu",
-  "city": "Joshua Tree",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 34.1265262,
-  "lng": -116.32093491214893
- },
- {
-  "id": "bl8zb",
-  "city": "Petaluma",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 38.270022,
-  "lng": -122.60612241304348
- },
- {
-  "id": "bmnjo",
-  "city": "Daly City",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 37.6904826,
-  "lng": -122.4726708
- },
- {
-  "id": "bo245",
-  "city": "Sacramento",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 38.5815719,
-  "lng": -121.4943996
- },
- {
-  "id": "c0p7u",
-  "city": "Newport Beach",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 33.6170092,
-  "lng": -117.9294401
- },
- {
-  "id": "c23sb",
-  "city": "Modesto",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 37.6390972,
-  "lng": -120.9968782
- },
- {
-  "id": "c3ico",
-  "city": "Yosemite National Park",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 37.84054795,
-  "lng": -119.51658779802511
- },
- {
-  "id": "c4wx5",
-  "city": "San Rafael",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 37.9735346,
-  "lng": -122.5310874
- },
- {
-  "id": "bv2y6",
-  "city": "Mountain View",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 37.3893889,
-  "lng": -122.0832101
- },
- {
-  "id": "bwhin",
-  "city": "Los Angeles",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 34.0536909,
-  "lng": -118.2427666
- },
- {
-  "id": "bxw30",
-  "city": "San Diego",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 32.7174209,
-  "lng": -117.1627714
- },
- {
-  "id": "bzanh",
-  "city": "Glendale",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 34.1469416,
-  "lng": -118.2478471
- },
- {
-  "id": "cbxr6",
+  "id": "auk5k",
   "city": "Anaheim",
   "stateprovinceregion": "California",
   "country": "United States of America",
@@ -1080,88 +738,16 @@
   "lng": -117.911732
  },
  {
-  "id": "cdcbn",
-  "city": "Long Beach",
+  "id": "avyq1",
+  "city": "Antioch",
   "stateprovinceregion": "California",
   "country": "United States of America",
   "current": false,
-  "lat": 33.7690164,
-  "lng": -118.1916048
+  "lat": 38.0049214,
+  "lng": -121.805789
  },
  {
-  "id": "ceqw0",
-  "city": "Tahoma",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 39.0680072,
-  "lng": -120.1320205
- },
- {
-  "id": "cg5gh",
-  "city": "Oakland",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 37.8044557,
-  "lng": -122.2713563
- },
- {
-  "id": "c6bhi",
-  "city": "Emeryville",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 37.8314089,
-  "lng": -122.2865266
- },
- {
-  "id": "c7q1z",
-  "city": "Beverly Hills",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 34.0696501,
-  "lng": -118.3963062
- },
- {
-  "id": "c94mc",
-  "city": "Saint Helena",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 38.5052288,
-  "lng": -122.4700424
- },
- {
-  "id": "caj6t",
-  "city": "Riverside",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 33.9533546,
-  "lng": -117.3961623
- },
- {
-  "id": "hmyxm",
-  "city": "San Luis Obispo",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 35.3540209,
-  "lng": -120.3757163
- },
- {
-  "id": "hodi3",
-  "city": "Merced",
-  "stateprovinceregion": "California",
-  "country": "United States of America",
-  "current": false,
-  "lat": 37.1641544,
-  "lng": -120.7678602
- },
- {
-  "id": "hps2g",
+  "id": "am4r2",
   "city": "Bakersfield",
   "stateprovinceregion": "California",
   "country": "United States of America",
@@ -1170,7 +756,7 @@
   "lng": -119.0194639
  },
  {
-  "id": "hr6mx",
+  "id": "anjbj",
   "city": "Barstow",
   "stateprovinceregion": "California",
   "country": "United States of America",
@@ -1179,16 +765,376 @@
   "lng": -117.0172077
  },
  {
-  "id": "hhcny",
-  "city": "Palm Desert",
+  "id": "aoxvw",
+  "city": "Berkeley",
   "stateprovinceregion": "California",
   "country": "United States of America",
   "current": false,
-  "lat": 33.7288179,
-  "lng": -116.3825711
+  "lat": 37.8708393,
+  "lng": -122.2728639
  },
  {
-  "id": "hir8f",
+  "id": "aqcgd",
+  "city": "Berkeley",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.8708393,
+  "lng": -122.2728639
+ },
+ {
+  "id": "b2zk2",
+  "city": "Beverly Hills",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 34.0696501,
+  "lng": -118.3963062
+ },
+ {
+  "id": "b4e4j",
+  "city": "Boulder Creek",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.1260578,
+  "lng": -122.1221869
+ },
+ {
+  "id": "b5sow",
+  "city": "Burbank",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 34.1816482,
+  "lng": -118.3258554
+ },
+ {
+  "id": "b779d",
+  "city": "Burlingame",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.5841026,
+  "lng": -122.3660825
+ },
+ {
+  "id": "axdae",
+  "city": "Carmel-by-the-Sea",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 36.5552387,
+  "lng": -121.9232879
+ },
+ {
+  "id": "ayruv",
+  "city": "Carmel-by-the-Sea",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 36.5552387,
+  "lng": -121.9232879
+ },
+ {
+  "id": "b06f8",
+  "city": "Carnelian Bay",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 39.2270008,
+  "lng": -120.0812364
+ },
+ {
+  "id": "b1kzp",
+  "city": "Concord",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.9768525,
+  "lng": -122.0335624
+ },
+ {
+  "id": "be856",
+  "city": "Cupertino",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.3228934,
+  "lng": -122.0322895
+ },
+ {
+  "id": "bfmpn",
+  "city": "Daly City",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.6904826,
+  "lng": -122.4726708
+ },
+ {
+  "id": "bh1a0",
+  "city": "Daly City",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.6904826,
+  "lng": -122.4726708
+ },
+ {
+  "id": "bifuh",
+  "city": "Danville",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.8215929,
+  "lng": -121.9999606
+ },
+ {
+  "id": "b8lvi",
+  "city": "East Palo Alto",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.4688273,
+  "lng": -122.1410751
+ },
+ {
+  "id": "ba0fz",
+  "city": "El Cerrito",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 33.8410146,
+  "lng": -117.52079778811958
+ },
+ {
+  "id": "bbf0c",
+  "city": "Emeryville",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.8314089,
+  "lng": -122.2865266
+ },
+ {
+  "id": "bctkt",
+  "city": "Emeryville",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.8314089,
+  "lng": -122.2865266
+ },
+ {
+  "id": "bpgoi",
+  "city": "Fall River Mills",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.00455615,
+  "lng": -121.44117792686552
+ },
+ {
+  "id": "bqv8z",
+  "city": "Fremont",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.5482697,
+  "lng": -121.9885719
+ },
+ {
+  "id": "bs9tc",
+  "city": "Fresno",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 36.7394421,
+  "lng": -119.7848307
+ },
+ {
+  "id": "btodt",
+  "city": "Gilroy",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.0065078,
+  "lng": -121.5631723
+ },
+ {
+  "id": "bjueu",
+  "city": "Glendale",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 34.1469416,
+  "lng": -118.2478471
+ },
+ {
+  "id": "bl8zb",
+  "city": "Half Moon Bay",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.4635519,
+  "lng": -122.4285862
+ },
+ {
+  "id": "bmnjo",
+  "city": "Half Moon Bay",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.4635519,
+  "lng": -122.4285862
+ },
+ {
+  "id": "bo245",
+  "city": "Hayward",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.6688205,
+  "lng": -122.0807964
+ },
+ {
+  "id": "c0p7u",
+  "city": "Heavenly",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 33.741419,
+  "lng": -117.7555797
+ },
+ {
+  "id": "c23sb",
+  "city": "Homewood",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 39.0868516,
+  "lng": -120.1601901
+ },
+ {
+  "id": "c3ico",
+  "city": "Huntington Beach",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 33.6783336,
+  "lng": -118.0000166
+ },
+ {
+  "id": "c4wx5",
+  "city": "Indio",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 33.7192808,
+  "lng": -116.2188054
+ },
+ {
+  "id": "bv2y6",
+  "city": "Joshua Tree",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 34.1265262,
+  "lng": -116.32093491214893
+ },
+ {
+  "id": "bwhin",
+  "city": "Kings Beach",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 39.2362794,
+  "lng": -120.0233622
+ },
+ {
+  "id": "bxw30",
+  "city": "Kirkwood",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 38.690863,
+  "lng": -120.0545120325384
+ },
+ {
+  "id": "bzanh",
+  "city": "Livermore",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.6820583,
+  "lng": -121.7680531
+ },
+ {
+  "id": "cbxr6",
+  "city": "Long Beach",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 33.7690164,
+  "lng": -118.1916048
+ },
+ {
+  "id": "cdcbn",
+  "city": "Los Angeles",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 34.0536909,
+  "lng": -118.2427666
+ },
+ {
+  "id": "ceqw0",
+  "city": "Los Gatos",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.226611,
+  "lng": -121.9746797
+ },
+ {
+  "id": "cg5gh",
+  "city": "Menlo Park",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.4519671,
+  "lng": -122.1779927
+ },
+ {
+  "id": "c6bhi",
+  "city": "Merced",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.1641544,
+  "lng": -120.7678602
+ },
+ {
+  "id": "c7q1z",
+  "city": "Milipitas",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 0,
+  "lng": 0
+ },
+ {
+  "id": "c94mc",
+  "city": "Mill Valley",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.9060368,
+  "lng": -122.5449763
+ },
+ {
+  "id": "caj6t",
   "city": "Millbrae",
   "stateprovinceregion": "California",
   "country": "United States of America",
@@ -1197,7 +1143,331 @@
   "lng": -122.4009419
  },
  {
+  "id": "hmyxm",
+  "city": "Modesto",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.6390972,
+  "lng": -120.9968782
+ },
+ {
+  "id": "hodi3",
+  "city": "Monterey",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 36.2231079,
+  "lng": -121.3877428
+ },
+ {
+  "id": "hps2g",
+  "city": "Mountain View",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.3893889,
+  "lng": -122.0832101
+ },
+ {
+  "id": "hr6mx",
+  "city": "Mountain View",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.3893889,
+  "lng": -122.0832101
+ },
+ {
+  "id": "hhcny",
+  "city": "Napa",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 38.2971367,
+  "lng": -122.2855293
+ },
+ {
+  "id": "hir8f",
+  "city": "Newport Beach",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 33.6170092,
+  "lng": -117.9294401
+ },
+ {
   "id": "hk5ss",
+  "city": "Northstar",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 33.9725937,
+  "lng": -118.4588271
+ },
+ {
+  "id": "hlkd9",
+  "city": "Oakland",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.8044557,
+  "lng": -122.2713563
+ },
+ {
+  "id": "hy7gy",
+  "city": "Oakland",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.8044557,
+  "lng": -122.2713563
+ },
+ {
+  "id": "hzm1f",
+  "city": "Palm Desert",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 33.7288179,
+  "lng": -116.3825711
+ },
+ {
+  "id": "i10ls",
+  "city": "Palm Springs",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 33.8246269,
+  "lng": -116.540303
+ },
+ {
+  "id": "i2f69",
+  "city": "Palo Alto",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.4443293,
+  "lng": -122.1598465
+ },
+ {
+  "id": "hsl7a",
+  "city": "Palo Alto",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.4443293,
+  "lng": -122.1598465
+ },
+ {
+  "id": "htzrr",
+  "city": "Pasadena",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 34.1476452,
+  "lng": -118.1444779
+ },
+ {
+  "id": "hvec4",
+  "city": "Petaluma",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 38.270022,
+  "lng": -122.60612241304348
+ },
+ {
+  "id": "hwswl",
+  "city": "Pleasanton",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.6624312,
+  "lng": -121.8746789
+ },
+ {
+  "id": "i9g0a",
+  "city": "Redwood City",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.4863239,
+  "lng": -122.232523
+ },
+ {
+  "id": "iaukr",
+  "city": "Ridgewood",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 38.76869670000001,
+  "lng": -121.30775151602214
+ },
+ {
+  "id": "ic954",
+  "city": "Riverside",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 33.9533546,
+  "lng": -117.3961623
+ },
+ {
+  "id": "idnpl",
+  "city": "Sacramento",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 38.5815719,
+  "lng": -121.4943996
+ },
+ {
+  "id": "i3tqm",
+  "city": "Saint Helena",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 38.5052288,
+  "lng": -122.4700424
+ },
+ {
+  "id": "i58b3",
+  "city": "San Bernardino",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 34.8253019,
+  "lng": -116.0833144
+ },
+ {
+  "id": "i6mvg",
+  "city": "San Clemente",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 33.4270275,
+  "lng": -117.6124179
+ },
+ {
+  "id": "i81fx",
+  "city": "San Diego",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 32.7174209,
+  "lng": -117.1627714
+ },
+ {
+  "id": "ikojm",
+  "city": "San Francisco",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": true,
+  "lat": 37.7790262,
+  "lng": -122.4199061
+ },
+ {
+  "id": "im343",
+  "city": "San Francisco",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.7790262,
+  "lng": -122.4199061
+ },
+ {
+  "id": "inhog",
+  "city": "San Jose",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.3361905,
+  "lng": -121.8905833
+ },
+ {
+  "id": "iow8x",
+  "city": "San Jose",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.3361905,
+  "lng": -121.8905833
+ },
+ {
+  "id": "if29y",
+  "city": "San Leandro",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.7249296,
+  "lng": -122.1560768
+ },
+ {
+  "id": "igguf",
+  "city": "San Luis Obispo",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 35.3540209,
+  "lng": -120.3757163
+ },
+ {
+  "id": "ihves",
+  "city": "San Mateo",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.496904,
+  "lng": -122.3330573
+ },
+ {
+  "id": "ij9z9",
+  "city": "San Pablo",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.9621457,
+  "lng": -122.3455263
+ },
+ {
+  "id": "ivx4q",
+  "city": "San Rafael",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.9735346,
+  "lng": -122.5310874
+ },
+ {
+  "id": "ixbp7",
+  "city": "San Rafael",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.9735346,
+  "lng": -122.5310874
+ },
+ {
+  "id": "iyq9k",
+  "city": "San Ramon",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.7648021,
+  "lng": -121.9544387
+ },
+ {
+  "id": "j04u1",
+  "city": "Santa Clara",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.2333253,
+  "lng": -121.6846349
+ },
+ {
+  "id": "iqav2",
   "city": "Santa Cruz",
   "stateprovinceregion": "California",
   "country": "United States of America",
@@ -1206,7 +1476,7 @@
   "lng": -121.9905908
  },
  {
-  "id": "hlkd9",
+  "id": "irpfj",
   "city": "Santa Nella",
   "stateprovinceregion": "California",
   "country": "United States of America",
@@ -1215,7 +1485,25 @@
   "lng": -122.9666644
  },
  {
-  "id": "hy7gy",
+  "id": "it3zw",
+  "city": "Santa Rosa",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 38.4404925,
+  "lng": -122.7141049
+ },
+ {
+  "id": "iuikd",
+  "city": "Saratoga",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.2638324,
+  "lng": -122.0230146
+ },
+ {
+  "id": "j75o2",
   "city": "Sausalito",
   "stateprovinceregion": "California",
   "country": "United States of America",
@@ -1224,7 +1512,169 @@
   "lng": -122.4854694
  },
  {
-  "id": "hzm1f",
+  "id": "j8k8j",
+  "city": "Sausalito",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.8590272,
+  "lng": -122.4854694
+ },
+ {
+  "id": "j9ysw",
+  "city": "Scotts Valley",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.0510595,
+  "lng": -122.0146841
+ },
+ {
+  "id": "jbddd",
+  "city": "South Lake Tahoe",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 38.9332411,
+  "lng": -119.9843482
+ },
+ {
+  "id": "j1jee",
+  "city": "South San Francisco",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.6535403,
+  "lng": -122.4168664
+ },
+ {
+  "id": "j2xyv",
+  "city": "Stockton",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.9577016,
+  "lng": -121.2907796
+ },
+ {
+  "id": "j4cj8",
+  "city": "Sunnyvale",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.3688301,
+  "lng": -122.0363496
+ },
+ {
+  "id": "j5r3p",
+  "city": "Tahoe City",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 39.1689372,
+  "lng": -120.1434787
+ },
+ {
+  "id": "jie7e",
+  "city": "Tahoe City",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 39.1689372,
+  "lng": -120.1434787
+ },
+ {
+  "id": "jjsrv",
+  "city": "Tahoma",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 39.0680072,
+  "lng": -120.1320205
+ },
+ {
+  "id": "jl7c8",
+  "city": "Tahoma",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 39.0680072,
+  "lng": -120.1320205
+ },
+ {
+  "id": "jmlwp",
+  "city": "Truckee",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 39.327962,
+  "lng": -120.1832533
+ },
+ {
+  "id": "jcrxq",
+  "city": "Twentynine Palms",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 34.1356915,
+  "lng": -116.0543506
+ },
+ {
+  "id": "je6i7",
+  "city": "Vallejo",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 38.1040864,
+  "lng": -122.2566367
+ },
+ {
+  "id": "jfl2k",
+  "city": "Walnut Creek",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.9020731,
+  "lng": -122.0618702
+ },
+ {
+  "id": "jgzn1",
+  "city": "Yosemite National Park",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.84054795,
+  "lng": -119.51658779802511
+ },
+ {
+  "id": "jtmqq",
+  "city": "Yosemite Valley",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.7444869,
+  "lng": -119.5925653
+ },
+ {
+  "id": "jv1b7",
+  "city": "Yosemite Village",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.7481814,
+  "lng": -119.5868869
+ },
+ {
+  "id": "jwfvk",
+  "city": "Yountville",
+  "stateprovinceregion": "California",
+  "country": "United States of America",
+  "current": false,
+  "lat": 38.4022008,
+  "lng": -122.3595063
+ },
+ {
+  "id": "jxug1",
   "city": "Arvada",
   "stateprovinceregion": "Colorado",
   "country": "United States of America",
@@ -1233,7 +1683,7 @@
   "lng": -105.22074299044587
  },
  {
-  "id": "i10ls",
+  "id": "jo0h2",
   "city": "Boulder",
   "stateprovinceregion": "Colorado",
   "country": "United States of America",
@@ -1242,7 +1692,7 @@
   "lng": -105.2705456
  },
  {
-  "id": "i2f69",
+  "id": "jpf1j",
   "city": "Denver",
   "stateprovinceregion": "Colorado",
   "country": "United States of America",
@@ -1251,7 +1701,7 @@
   "lng": -104.9848623
  },
  {
-  "id": "hsl7a",
+  "id": "jqtlw",
   "city": "Hartford",
   "stateprovinceregion": "Connecticut",
   "country": "United States of America",
@@ -1260,7 +1710,7 @@
   "lng": -72.6908547
  },
  {
-  "id": "htzrr",
+  "id": "js86d",
   "city": "Washington",
   "stateprovinceregion": "District of Columbia",
   "country": "United States of America",
@@ -1269,16 +1719,7 @@
   "lng": -77.0365581
  },
  {
-  "id": "hvec4",
-  "city": "Jacksonville",
-  "stateprovinceregion": "Florida",
-  "country": "United States of America",
-  "current": false,
-  "lat": 30.3321838,
-  "lng": -81.655651
- },
- {
-  "id": "hwswl",
+  "id": "f52je",
   "city": "Cape Canaveral",
   "stateprovinceregion": "Florida",
   "country": "United States of America",
@@ -1287,7 +1728,7 @@
   "lng": -80.52662
  },
  {
-  "id": "i9g0a",
+  "id": "f6h3v",
   "city": "Cocoa Beach",
   "stateprovinceregion": "Florida",
   "country": "United States of America",
@@ -1296,7 +1737,16 @@
   "lng": -80.62054663871004
  },
  {
-  "id": "iaukr",
+  "id": "f7vo8",
+  "city": "Jacksonville",
+  "stateprovinceregion": "Florida",
+  "country": "United States of America",
+  "current": false,
+  "lat": 30.3321838,
+  "lng": -81.655651
+ },
+ {
+  "id": "f9a8p",
   "city": "Alpharetta",
   "stateprovinceregion": "Georgia",
   "country": "United States of America",
@@ -1305,7 +1755,7 @@
   "lng": -84.2747329
  },
  {
-  "id": "ic954",
+  "id": "ezg9q",
   "city": "Atlanta",
   "stateprovinceregion": "Georgia",
   "country": "United States of America",
@@ -1314,151 +1764,25 @@
   "lng": -84.3901849
  },
  {
-  "id": "idnpl",
-  "city": "Charleston",
+  "id": "f0uu7",
+  "city": "Alsip",
   "stateprovinceregion": "Illinois",
   "country": "United States of America",
   "current": false,
-  "lat": 39.4961458,
-  "lng": -88.1761521
+  "lat": 41.6689223,
+  "lng": -87.7386619
  },
  {
-  "id": "i3tqm",
-  "city": "Palos Hills",
+  "id": "f29ek",
+  "city": "Bedford Park",
   "stateprovinceregion": "Illinois",
   "country": "United States of America",
   "current": false,
-  "lat": 41.6966992,
-  "lng": -87.8169984
+  "lat": 41.7628101,
+  "lng": -87.8000551
  },
  {
-  "id": "i58b3",
-  "city": "Skokie",
-  "stateprovinceregion": "Illinois",
-  "country": "United States of America",
-  "current": false,
-  "lat": 42.0333694,
-  "lng": -87.7333972
- },
- {
-  "id": "i6mvg",
-  "city": "Mattoon",
-  "stateprovinceregion": "Illinois",
-  "country": "United States of America",
-  "current": false,
-  "lat": 39.4842821,
-  "lng": -88.3773279
- },
- {
-  "id": "i81fx",
-  "city": "Macomb",
-  "stateprovinceregion": "Illinois",
-  "country": "United States of America",
-  "current": false,
-  "lat": 40.4588934,
-  "lng": -90.6713939
- },
- {
-  "id": "ikojm",
-  "city": "Decatur",
-  "stateprovinceregion": "Illinois",
-  "country": "United States of America",
-  "current": false,
-  "lat": 39.8454163,
-  "lng": -88.9524151
- },
- {
-  "id": "im343",
-  "city": "Burbank",
-  "stateprovinceregion": "Illinois",
-  "country": "United States of America",
-  "current": false,
-  "lat": 41.741406,
-  "lng": -87.7686078
- },
- {
-  "id": "inhog",
-  "city": "Oak Lawn",
-  "stateprovinceregion": "Illinois",
-  "country": "United States of America",
-  "current": false,
-  "lat": 41.7108662,
-  "lng": -87.7581081
- },
- {
-  "id": "iow8x",
-  "city": "Frankfort",
-  "stateprovinceregion": "Illinois",
-  "country": "United States of America",
-  "current": false,
-  "lat": 41.4958665,
-  "lng": -87.8486613
- },
- {
-  "id": "if29y",
-  "city": "Evergreen Park",
-  "stateprovinceregion": "Illinois",
-  "country": "United States of America",
-  "current": false,
-  "lat": 41.720136,
-  "lng": -87.7013258
- },
- {
-  "id": "igguf",
-  "city": "Peoria",
-  "stateprovinceregion": "Illinois",
-  "country": "United States of America",
-  "current": false,
-  "lat": 40.6938609,
-  "lng": -89.5891008
- },
- {
-  "id": "ihves",
-  "city": "Chicago",
-  "stateprovinceregion": "Illinois",
-  "country": "United States of America",
-  "current": false,
-  "lat": 41.8755616,
-  "lng": -87.6244212
- },
- {
-  "id": "ij9z9",
-  "city": "Bloomington",
-  "stateprovinceregion": "Illinois",
-  "country": "United States of America",
-  "current": false,
-  "lat": 40.4731073,
-  "lng": -88.9941403
- },
- {
-  "id": "ivx4q",
-  "city": "Palos Heights",
-  "stateprovinceregion": "Illinois",
-  "country": "United States of America",
-  "current": false,
-  "lat": 41.6681632,
-  "lng": -87.7962812
- },
- {
-  "id": "ixbp7",
-  "city": "Orland Park",
-  "stateprovinceregion": "Illinois",
-  "country": "United States of America",
-  "current": false,
-  "lat": 41.630663,
-  "lng": -87.8536288
- },
- {
-  "id": "iyq9k",
-  "city": "Evanston",
-  "stateprovinceregion": "Illinois",
-  "country": "United States of America",
-  "current": false,
-  "lat": 42.0447388,
-  "lng": -87.6930459
- },
- {
-  "id": "j04u1",
+  "id": "f3nz1",
   "city": "Beverly",
   "stateprovinceregion": "Illinois",
   "country": "United States of America",
@@ -1467,7 +1791,169 @@
   "lng": -87.6717674
  },
  {
-  "id": "iqav2",
+  "id": "fgb2q",
+  "city": "Bloomington",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 40.4731073,
+  "lng": -88.9941403
+ },
+ {
+  "id": "fhpn7",
+  "city": "Blue Island",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.65530805,
+  "lng": -87.67759062702602
+ },
+ {
+  "id": "fj47k",
+  "city": "Bridgeview",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.7500323,
+  "lng": -87.8042216
+ },
+ {
+  "id": "fkis1",
+  "city": "Burbank",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.741406,
+  "lng": -87.7686078
+ },
+ {
+  "id": "faot2",
+  "city": "Burbank",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.741406,
+  "lng": -87.7686078
+ },
+ {
+  "id": "fc3dj",
+  "city": "Charleston",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 39.4961458,
+  "lng": -88.1761521
+ },
+ {
+  "id": "fdhxw",
+  "city": "Chicago",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.8755616,
+  "lng": -87.6244212
+ },
+ {
+  "id": "fewid",
+  "city": "Chicago Heights",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.5062834,
+  "lng": -87.6357079
+ },
+ {
+  "id": "frjm2",
+  "city": "Chicago Ridge",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.7014217,
+  "lng": -87.7792196
+ },
+ {
+  "id": "fsy6j",
+  "city": "Crestwood",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.6611444,
+  "lng": -87.7525511
+ },
+ {
+  "id": "fucqw",
+  "city": "Decatur",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 39.8454163,
+  "lng": -88.9524151
+ },
+ {
+  "id": "fvrbd",
+  "city": "Evanston",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 42.0447388,
+  "lng": -87.6930459
+ },
+ {
+  "id": "flxce",
+  "city": "Evanston",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 42.0447388,
+  "lng": -87.6930459
+ },
+ {
+  "id": "fnbwv",
+  "city": "Evergreen Park",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.720136,
+  "lng": -87.7013258
+ },
+ {
+  "id": "foqh8",
+  "city": "Evergreen Park",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.720136,
+  "lng": -87.7013258
+ },
+ {
+  "id": "fq51p",
+  "city": "Flossmoor",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.5428123,
+  "lng": -87.6847684
+ },
+ {
+  "id": "g2s5e",
+  "city": "Frankfort",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.4958665,
+  "lng": -87.8486613
+ },
+ {
+  "id": "g46pv",
+  "city": "Frankfort",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.4958665,
+  "lng": -87.8486613
+ },
+ {
+  "id": "g5la8",
   "city": "Glen Ellyn",
   "stateprovinceregion": "Illinois",
   "country": "United States of America",
@@ -1476,7 +1962,196 @@
   "lng": -88.0670118
  },
  {
-  "id": "irpfj",
+  "id": "g6zup",
+  "city": "Hickory Hills",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.7255879,
+  "lng": -87.825055
+ },
+ {
+  "id": "fx5vq",
+  "city": "Homer Glen",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.6000318,
+  "lng": -87.9381112
+ },
+ {
+  "id": "fykg7",
+  "city": "Hometown",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.731246,
+  "lng": -87.7309534
+ },
+ {
+  "id": "fzz0k",
+  "city": "Macomb",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 40.4588934,
+  "lng": -90.6713939
+ },
+ {
+  "id": "g1dl1",
+  "city": "Mattoon",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 39.4842821,
+  "lng": -88.3773279
+ },
+ {
+  "id": "ge0qi",
+  "city": "Merrionette Park",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.681037,
+  "lng": -87.7009693
+ },
+ {
+  "id": "gffaz",
+  "city": "Midlothian",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.6253116,
+  "lng": -87.7175491
+ },
+ {
+  "id": "ggtvc",
+  "city": "Mokena",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.5261437,
+  "lng": -87.8892189
+ },
+ {
+  "id": "gi8ft",
+  "city": "Monee",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.420034,
+  "lng": -87.7417115
+ },
+ {
+  "id": "g8egu",
+  "city": "Naperville",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.7728699,
+  "lng": -88.1479278
+ },
+ {
+  "id": "g9t1b",
+  "city": "New Lenox",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.5119761,
+  "lng": -87.9656098
+ },
+ {
+  "id": "gb7lo",
+  "city": "Oak Forest",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.6028116,
+  "lng": -87.7439384
+ },
+ {
+  "id": "gcm65",
+  "city": "Oak Lawn",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.7108662,
+  "lng": -87.7581081
+ },
+ {
+  "id": "gp99u",
+  "city": "Oak Lawn",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.7108662,
+  "lng": -87.7581081
+ },
+ {
+  "id": "gqnub",
+  "city": "Orland Hills",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.5853107,
+  "lng": -87.8431078
+ },
+ {
+  "id": "gs2eo",
+  "city": "Orland Park",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.630663,
+  "lng": -87.8536288
+ },
+ {
+  "id": "gtgz5",
+  "city": "Orland Park",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.630663,
+  "lng": -87.8536288
+ },
+ {
+  "id": "gjn06",
+  "city": "Orland Park",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.630663,
+  "lng": -87.8536288
+ },
+ {
+  "id": "gl1kn",
+  "city": "Palatine",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 42.1105779,
+  "lng": -88.0336888
+ },
+ {
+  "id": "gmg50",
+  "city": "Palos Heights",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.6681632,
+  "lng": -87.7962812
+ },
+ {
+  "id": "gnuph",
+  "city": "Palos Heights",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.6681632,
+  "lng": -87.7962812
+ },
+ {
+  "id": "h0ht6",
   "city": "Palos Hills",
   "stateprovinceregion": "Illinois",
   "country": "United States of America",
@@ -1485,7 +2160,115 @@
   "lng": -87.8169984
  },
  {
-  "id": "it3zw",
+  "id": "h1wdn",
+  "city": "Palos Hills",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.6966992,
+  "lng": -87.8169984
+ },
+ {
+  "id": "h3ay0",
+  "city": "Palos Hills",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.6966992,
+  "lng": -87.8169984
+ },
+ {
+  "id": "h4pih",
+  "city": "Palos Park",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.6673636,
+  "lng": -87.8304952
+ },
+ {
+  "id": "guvji",
+  "city": "Park Forest",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.4825788,
+  "lng": -87.6802344
+ },
+ {
+  "id": "gwa3z",
+  "city": "Peoria",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 40.6938609,
+  "lng": -89.5891008
+ },
+ {
+  "id": "gxooc",
+  "city": "Peotone",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.3322554,
+  "lng": -87.7853217
+ },
+ {
+  "id": "gz38t",
+  "city": "Robbins",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.6439227,
+  "lng": -87.7036602
+ },
+ {
+  "id": "hbqci",
+  "city": "Schaumburg",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 42.0333608,
+  "lng": -88.083406
+ },
+ {
+  "id": "hd4wz",
+  "city": "Skokie",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 42.0333694,
+  "lng": -87.7333972
+ },
+ {
+  "id": "hejhc",
+  "city": "Skokie",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 42.0333694,
+  "lng": -87.7333972
+ },
+ {
+  "id": "hfy1t",
+  "city": "South Chicago Heights",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.4808681,
+  "lng": -87.6378211
+ },
+ {
+  "id": "h642u",
+  "city": "South Holland",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.6008681,
+  "lng": -87.6069894
+ },
+ {
+  "id": "h7inb",
   "city": "Springfield",
   "stateprovinceregion": "Illinois",
   "country": "United States of America",
@@ -1494,7 +2277,43 @@
   "lng": -89.6439575
  },
  {
-  "id": "iuikd",
+  "id": "h8x7o",
+  "city": "Summit",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.7880876,
+  "lng": -87.810334
+ },
+ {
+  "id": "habs5",
+  "city": "Thornton",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.5725811,
+  "lng": -87.6095281
+ },
+ {
+  "id": "2nkre",
+  "city": "Tinley Park",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.5733669,
+  "lng": -87.7844944
+ },
+ {
+  "id": "2ozbv",
+  "city": "Tinley Park",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.5733669,
+  "lng": -87.7844944
+ },
+ {
+  "id": "2qdw8",
   "city": "Urbana",
   "stateprovinceregion": "Illinois",
   "country": "United States of America",
@@ -1503,16 +2322,25 @@
   "lng": -88.207301
  },
  {
-  "id": "j75o2",
-  "city": "South Bend",
-  "stateprovinceregion": "Indiana",
+  "id": "2rsgp",
+  "city": "Waukegan",
+  "stateprovinceregion": "Illinois",
   "country": "United States of America",
   "current": false,
-  "lat": 41.6833813,
-  "lng": -86.2500066
+  "lat": 42.3636331,
+  "lng": -87.8447938
  },
  {
-  "id": "j8k8j",
+  "id": "2hyhq",
+  "city": "Worth",
+  "stateprovinceregion": "Illinois",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.6897549,
+  "lng": -87.7972754
+ },
+ {
+  "id": "2jd27",
   "city": "Fort Wayne",
   "stateprovinceregion": "Indiana",
   "country": "United States of America",
@@ -1521,16 +2349,7 @@
   "lng": -85.1386015
  },
  {
-  "id": "j9ysw",
-  "city": "Miami",
-  "stateprovinceregion": "Indiana",
-  "country": "United States of America",
-  "current": false,
-  "lat": 40.6144919,
-  "lng": -86.1059443
- },
- {
-  "id": "jbddd",
+  "id": "2krmk",
   "city": "Gary",
   "stateprovinceregion": "Indiana",
   "country": "United States of America",
@@ -1539,7 +2358,25 @@
   "lng": -87.3371372
  },
  {
-  "id": "j1jee",
+  "id": "2m671",
+  "city": "Gary",
+  "stateprovinceregion": "Indiana",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.6021292,
+  "lng": -87.3371372
+ },
+ {
+  "id": "2ytaq",
+  "city": "Miami",
+  "stateprovinceregion": "Indiana",
+  "country": "United States of America",
+  "current": false,
+  "lat": 40.6144919,
+  "lng": -86.1059443
+ },
+ {
+  "id": "307v7",
   "city": "Michigan City",
   "stateprovinceregion": "Indiana",
   "country": "United States of America",
@@ -1548,7 +2385,16 @@
   "lng": -86.8950297
  },
  {
-  "id": "j2xyv",
+  "id": "31mfk",
+  "city": "South Bend",
+  "stateprovinceregion": "Indiana",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.6833813,
+  "lng": -86.2500066
+ },
+ {
+  "id": "33101",
   "city": "Des Moines",
   "stateprovinceregion": "Iowa",
   "country": "United States of America",
@@ -1557,7 +2403,7 @@
   "lng": -93.6037149
  },
  {
-  "id": "j4cj8",
+  "id": "2t712",
   "city": "Iowa City",
   "stateprovinceregion": "Iowa",
   "country": "United States of America",
@@ -1566,16 +2412,7 @@
   "lng": -91.5299106
  },
  {
-  "id": "j5r3p",
-  "city": "Mammoth Cave National Park",
-  "stateprovinceregion": "Kentucky",
-  "country": "United States of America",
-  "current": false,
-  "lat": 37.1841693,
-  "lng": -86.12299102912881
- },
- {
-  "id": "jie7e",
+  "id": "2ullj",
   "city": "Louisville",
   "stateprovinceregion": "Kentucky",
   "country": "United States of America",
@@ -1584,7 +2421,16 @@
   "lng": -85.759407
  },
  {
-  "id": "jjsrv",
+  "id": "2w05w",
+  "city": "Mammoth Cave National Park",
+  "stateprovinceregion": "Kentucky",
+  "country": "United States of America",
+  "current": false,
+  "lat": 37.1841693,
+  "lng": -86.12299102912881
+ },
+ {
+  "id": "2xeqd",
   "city": "New Orleans",
   "stateprovinceregion": "Louisiana",
   "country": "United States of America",
@@ -1593,7 +2439,7 @@
   "lng": -90.0701156
  },
  {
-  "id": "jl7c8",
+  "id": "3a1u2",
   "city": "Baltimore",
   "stateprovinceregion": "Maryland",
   "country": "United States of America",
@@ -1602,7 +2448,7 @@
   "lng": -76.610759
  },
  {
-  "id": "jmlwp",
+  "id": "3bgej",
   "city": "Boston",
   "stateprovinceregion": "Massachusetts",
   "country": "United States of America",
@@ -1611,7 +2457,7 @@
   "lng": -71.0582912
  },
  {
-  "id": "jcrxq",
+  "id": "3cuyw",
   "city": "Cambridge",
   "stateprovinceregion": "Massachusetts",
   "country": "United States of America",
@@ -1620,16 +2466,7 @@
   "lng": -71.1056157
  },
  {
-  "id": "je6i7",
-  "city": "Portage",
-  "stateprovinceregion": "Michigan",
-  "country": "United States of America",
-  "current": false,
-  "lat": 42.2011538,
-  "lng": -85.5800022
- },
- {
-  "id": "jfl2k",
+  "id": "3e9jd",
   "city": "Battle Creek",
   "stateprovinceregion": "Michigan",
   "country": "United States of America",
@@ -1638,25 +2475,7 @@
   "lng": -85.1824269
  },
  {
-  "id": "jgzn1",
-  "city": "Kalamazoo",
-  "stateprovinceregion": "Michigan",
-  "country": "United States of America",
-  "current": false,
-  "lat": 42.291707,
-  "lng": -85.5872286
- },
- {
-  "id": "jtmqq",
-  "city": "Mackinaw City",
-  "stateprovinceregion": "Michigan",
-  "country": "United States of America",
-  "current": false,
-  "lat": 45.783901,
-  "lng": -84.727828
- },
- {
-  "id": "jv1b7",
+  "id": "34fke",
   "city": "Detroit",
   "stateprovinceregion": "Michigan",
   "country": "United States of America",
@@ -1665,7 +2484,34 @@
   "lng": -83.0466403
  },
  {
-  "id": "jwfvk",
+  "id": "35u4v",
+  "city": "Kalamazoo",
+  "stateprovinceregion": "Michigan",
+  "country": "United States of America",
+  "current": false,
+  "lat": 42.291707,
+  "lng": -85.5872286
+ },
+ {
+  "id": "378p8",
+  "city": "Mackinaw City",
+  "stateprovinceregion": "Michigan",
+  "country": "United States of America",
+  "current": false,
+  "lat": 45.783901,
+  "lng": -84.727828
+ },
+ {
+  "id": "38n9p",
+  "city": "Portage",
+  "stateprovinceregion": "Michigan",
+  "country": "United States of America",
+  "current": false,
+  "lat": 42.2011538,
+  "lng": -85.5800022
+ },
+ {
+  "id": "3lade",
   "city": "Minneapolis",
   "stateprovinceregion": "Minnesota",
   "country": "United States of America",
@@ -1674,7 +2520,7 @@
   "lng": -93.2654692
  },
  {
-  "id": "jxug1",
+  "id": "3moxv",
   "city": "Columbia",
   "stateprovinceregion": "Missouri",
   "country": "United States of America",
@@ -1683,7 +2529,7 @@
   "lng": -92.3337366
  },
  {
-  "id": "jo0h2",
+  "id": "3o3i8",
   "city": "Kansas City",
   "stateprovinceregion": "Missouri",
   "country": "United States of America",
@@ -1692,7 +2538,7 @@
   "lng": -94.5781416
  },
  {
-  "id": "jpf1j",
+  "id": "3pi2p",
   "city": "Saint Louis",
   "stateprovinceregion": "Missouri",
   "country": "United States of America",
@@ -1701,7 +2547,7 @@
   "lng": -90.1994097
  },
  {
-  "id": "jqtlw",
+  "id": "3fo3q",
   "city": "Omaha",
   "stateprovinceregion": "Nebraska",
   "country": "United States of America",
@@ -1710,16 +2556,16 @@
   "lng": -95.9383758
  },
  {
-  "id": "js86d",
-  "city": "Reno",
+  "id": "3h2o7",
+  "city": "Crystal Bay",
   "stateprovinceregion": "Nevada",
   "country": "United States of America",
   "current": false,
-  "lat": 39.5261206,
-  "lng": -119.8126581
+  "lat": 39.2275972,
+  "lng": -120.0020402
  },
  {
-  "id": "f52je",
+  "id": "3ih8k",
   "city": "Eureka",
   "stateprovinceregion": "Nevada",
   "country": "United States of America",
@@ -1728,7 +2574,7 @@
   "lng": -116.2884505
  },
  {
-  "id": "f6h3v",
+  "id": "3jvt1",
   "city": "Fallon",
   "stateprovinceregion": "Nevada",
   "country": "United States of America",
@@ -1737,7 +2583,16 @@
   "lng": -118.7778952
  },
  {
-  "id": "f7vo8",
+  "id": "3wiyi",
+  "city": "Incline Village",
+  "stateprovinceregion": "Nevada",
+  "country": "United States of America",
+  "current": false,
+  "lat": 39.2501246,
+  "lng": -119.9519094
+ },
+ {
+  "id": "3xxiz",
   "city": "Las Vegas",
   "stateprovinceregion": "Nevada",
   "country": "United States of America",
@@ -1746,7 +2601,16 @@
   "lng": -115.1485163
  },
  {
-  "id": "f9a8p",
+  "id": "3zc3c",
+  "city": "Reno",
+  "stateprovinceregion": "Nevada",
+  "country": "United States of America",
+  "current": false,
+  "lat": 39.5261206,
+  "lng": -119.8126581
+ },
+ {
+  "id": "40qnt",
   "city": "Jersey City",
   "stateprovinceregion": "New Jersey",
   "country": "United States of America",
@@ -1755,7 +2619,7 @@
   "lng": -74.0776417
  },
  {
-  "id": "ezg9q",
+  "id": "3qwou",
   "city": "Buffalo",
   "stateprovinceregion": "New York",
   "country": "United States of America",
@@ -1764,7 +2628,7 @@
   "lng": -78.8783922
  },
  {
-  "id": "f0uu7",
+  "id": "3sb9b",
   "city": "New York",
   "stateprovinceregion": "New York",
   "country": "United States of America",
@@ -1773,43 +2637,7 @@
   "lng": -74.0060152
  },
  {
-  "id": "f29ek",
-  "city": "Columbus",
-  "stateprovinceregion": "Ohio",
-  "country": "United States of America",
-  "current": false,
-  "lat": 39.9622601,
-  "lng": -83.0007065
- },
- {
-  "id": "f3nz1",
-  "city": "Dayton",
-  "stateprovinceregion": "Ohio",
-  "country": "United States of America",
-  "current": false,
-  "lat": 39.7589478,
-  "lng": -84.1916069
- },
- {
-  "id": "fgb2q",
-  "city": "Cincinnati",
-  "stateprovinceregion": "Ohio",
-  "country": "United States of America",
-  "current": false,
-  "lat": 39.1014537,
-  "lng": -84.5124602
- },
- {
-  "id": "fhpn7",
-  "city": "Cleveland",
-  "stateprovinceregion": "Ohio",
-  "country": "United States of America",
-  "current": false,
-  "lat": 41.5051613,
-  "lng": -81.6934446
- },
- {
-  "id": "fj47k",
+  "id": "3tpto",
   "city": "Akron",
   "stateprovinceregion": "Ohio",
   "country": "United States of America",
@@ -1818,7 +2646,43 @@
   "lng": -81.518485
  },
  {
-  "id": "fkis1",
+  "id": "3v4e5",
+  "city": "Cincinnati",
+  "stateprovinceregion": "Ohio",
+  "country": "United States of America",
+  "current": false,
+  "lat": 39.1014537,
+  "lng": -84.5124602
+ },
+ {
+  "id": "47rhu",
+  "city": "Cleveland",
+  "stateprovinceregion": "Ohio",
+  "country": "United States of America",
+  "current": false,
+  "lat": 41.5051613,
+  "lng": -81.6934446
+ },
+ {
+  "id": "4962b",
+  "city": "Columbus",
+  "stateprovinceregion": "Ohio",
+  "country": "United States of America",
+  "current": false,
+  "lat": 39.9622601,
+  "lng": -83.0007065
+ },
+ {
+  "id": "4akmo",
+  "city": "Dayton",
+  "stateprovinceregion": "Ohio",
+  "country": "United States of America",
+  "current": false,
+  "lat": 39.7589478,
+  "lng": -84.1916069
+ },
+ {
+  "id": "4bz75",
   "city": "Lincoln",
   "stateprovinceregion": "Ohio",
   "country": "United States of America",
@@ -1827,16 +2691,7 @@
   "lng": -83.125673
  },
  {
-  "id": "faot2",
-  "city": "Pittsburgh",
-  "stateprovinceregion": "Pennsylvania",
-  "country": "United States of America",
-  "current": false,
-  "lat": 40.4416941,
-  "lng": -79.9900861
- },
- {
-  "id": "fc3dj",
+  "id": "42586",
   "city": "Philadelphia",
   "stateprovinceregion": "Pennsylvania",
   "country": "United States of America",
@@ -1845,16 +2700,16 @@
   "lng": -75.1635262
  },
  {
-  "id": "fdhxw",
-  "city": "Nashville",
-  "stateprovinceregion": "Tennessee",
+  "id": "43jsn",
+  "city": "Pittsburgh",
+  "stateprovinceregion": "Pennsylvania",
   "country": "United States of America",
   "current": false,
-  "lat": 36.1622296,
-  "lng": -86.7743531
+  "lat": 40.4416941,
+  "lng": -79.9900861
  },
  {
-  "id": "fewid",
+  "id": "44yd0",
   "city": "Chattanooga",
   "stateprovinceregion": "Tennessee",
   "country": "United States of America",
@@ -1863,25 +2718,16 @@
   "lng": -85.3094883
  },
  {
-  "id": "frjm2",
-  "city": "Dallas",
-  "stateprovinceregion": "Texas",
+  "id": "46cxh",
+  "city": "Nashville",
+  "stateprovinceregion": "Tennessee",
   "country": "United States of America",
   "current": false,
-  "lat": 32.7762719,
-  "lng": -96.7968559
+  "lat": 36.1622296,
+  "lng": -86.7743531
  },
  {
-  "id": "fsy6j",
-  "city": "Houston",
-  "stateprovinceregion": "Texas",
-  "country": "United States of America",
-  "current": false,
-  "lat": 29.7589382,
-  "lng": -95.3676974
- },
- {
-  "id": "fucqw",
+  "id": "4j016",
   "city": "Austin",
   "stateprovinceregion": "Texas",
   "country": "United States of America",
@@ -1890,16 +2736,25 @@
   "lng": -97.7436995
  },
  {
-  "id": "fvrbd",
-  "city": "Dead Horse Point State Park",
-  "stateprovinceregion": "Utah",
+  "id": "4keln",
+  "city": "Dallas",
+  "stateprovinceregion": "Texas",
   "country": "United States of America",
   "current": false,
-  "lat": 38.4708276,
-  "lng": -109.7403052
+  "lat": 32.7762719,
+  "lng": -96.7968559
  },
  {
-  "id": "flxce",
+  "id": "4lt60",
+  "city": "Houston",
+  "stateprovinceregion": "Texas",
+  "country": "United States of America",
+  "current": false,
+  "lat": 29.7589382,
+  "lng": -95.3676974
+ },
+ {
+  "id": "4n7qh",
   "city": "Arches National Park",
   "stateprovinceregion": "Utah",
   "country": "United States of America",
@@ -1908,7 +2763,7 @@
   "lng": -109.56302781715105
  },
  {
-  "id": "fnbwv",
+  "id": "4ddri",
   "city": "Canyonlands National Park",
   "stateprovinceregion": "Utah",
   "country": "United States of America",
@@ -1917,7 +2772,16 @@
   "lng": -109.984017
  },
  {
-  "id": "foqh8",
+  "id": "4esbz",
+  "city": "Dead Horse Point State Park",
+  "stateprovinceregion": "Utah",
+  "country": "United States of America",
+  "current": false,
+  "lat": 38.4708276,
+  "lng": -109.7403052
+ },
+ {
+  "id": "4g6wc",
   "city": "Moab",
   "stateprovinceregion": "Utah",
   "country": "United States of America",
@@ -1926,16 +2790,7 @@
   "lng": -109.5462146
  },
  {
-  "id": "fq51p",
-  "city": "Salina",
-  "stateprovinceregion": "Utah",
-  "country": "United States of America",
-  "current": false,
-  "lat": 38.9577407,
-  "lng": -111.859925
- },
- {
-  "id": "g2s5e",
+  "id": "4hlgt",
   "city": "Park City",
   "stateprovinceregion": "Utah",
   "country": "United States of America",
@@ -1944,7 +2799,16 @@
   "lng": -111.4979741
  },
  {
-  "id": "g46pv",
+  "id": "4u8ki",
+  "city": "Salina",
+  "stateprovinceregion": "Utah",
+  "country": "United States of America",
+  "current": false,
+  "lat": 38.9577407,
+  "lng": -111.859925
+ },
+ {
+  "id": "4vn4z",
   "city": "Salt Lake City",
   "stateprovinceregion": "Utah",
   "country": "United States of America",
@@ -1953,16 +2817,7 @@
   "lng": -111.8867975
  },
  {
-  "id": "g5la8",
-  "city": "Arlington",
-  "stateprovinceregion": "Virginia",
-  "country": "United States of America",
-  "current": false,
-  "lat": 38.8903961,
-  "lng": -77.0841585
- },
- {
-  "id": "g6zup",
+  "id": "4x1pc",
   "city": "Alexandria",
   "stateprovinceregion": "Virginia",
   "country": "United States of America",
@@ -1971,7 +2826,16 @@
   "lng": -77.0470229
  },
  {
-  "id": "fx5vq",
+  "id": "4yg9t",
+  "city": "Arlington",
+  "stateprovinceregion": "Virginia",
+  "country": "United States of America",
+  "current": false,
+  "lat": 38.8903961,
+  "lng": -77.0841585
+ },
+ {
+  "id": "4omau",
   "city": "Bellevue",
   "stateprovinceregion": "Washington",
   "country": "United States of America",
@@ -1980,34 +2844,7 @@
   "lng": -122.1923372
  },
  {
-  "id": "fykg7",
-  "city": "Redmond",
-  "stateprovinceregion": "Washington",
-  "country": "United States of America",
-  "current": false,
-  "lat": 47.6694141,
-  "lng": -122.1238767
- },
- {
-  "id": "fzz0k",
-  "city": "Seattle",
-  "stateprovinceregion": "Washington",
-  "country": "United States of America",
-  "current": false,
-  "lat": 47.6038321,
-  "lng": -122.3300624
- },
- {
-  "id": "g1dl1",
-  "city": "Seattle",
-  "stateprovinceregion": "Washington",
-  "country": "United States of America",
-  "current": false,
-  "lat": 47.6038321,
-  "lng": -122.3300624
- },
- {
-  "id": "ge0qi",
+  "id": "4q0vb",
   "city": "Indianapolis",
   "stateprovinceregion": "Washington",
   "country": "United States of America",
@@ -2016,7 +2853,34 @@
   "lng": -86.1583502
  },
  {
-  "id": "gffaz",
+  "id": "4rffo",
+  "city": "Redmond",
+  "stateprovinceregion": "Washington",
+  "country": "United States of America",
+  "current": false,
+  "lat": 47.6694141,
+  "lng": -122.1238767
+ },
+ {
+  "id": "4su05",
+  "city": "Seattle",
+  "stateprovinceregion": "Washington",
+  "country": "United States of America",
+  "current": false,
+  "lat": 47.6038321,
+  "lng": -122.3300624
+ },
+ {
+  "id": "5od6",
+  "city": "Seattle",
+  "stateprovinceregion": "Washington",
+  "country": "United States of America",
+  "current": false,
+  "lat": 47.6038321,
+  "lng": -122.3300624
+ },
+ {
+  "id": "72xn",
   "city": "Milwaukee",
   "stateprovinceregion": "Wisconsin",
   "country": "United States of America",
@@ -2025,7 +2889,7 @@
   "lng": -87.922497
  },
  {
-  "id": "ggtvc",
+  "id": "8hi0",
   "city": "Oshkosh",
   "stateprovinceregion": "Wisconsin",
   "country": "United States of America",
@@ -2034,7 +2898,7 @@
   "lng": -88.5408574
  },
  {
-  "id": "gi8ft",
+  "id": "9w2h",
   "city": "Cheyenne",
   "stateprovinceregion": "Wyoming",
   "country": "United States of America",
@@ -2043,7 +2907,7 @@
   "lng": -104.820246
  },
  {
-  "id": "g8egu",
+  "id": "23i",
   "city": "Jackson",
   "stateprovinceregion": "Wyoming",
   "country": "United States of America",
@@ -2052,7 +2916,7 @@
   "lng": -110.761815
  },
  {
-  "id": "g9t1b",
+  "id": "1gnz",
   "city": "Jackson Hole",
   "stateprovinceregion": "Wyoming",
   "country": "United States of America",
@@ -2061,7 +2925,7 @@
   "lng": -110.44362483445289
  },
  {
-  "id": "gb7lo",
+  "id": "2v8c",
   "city": "Saint Thomas",
   "stateprovinceregion": "United States Virgin Islands",
   "country": "United States Virgin Islands",

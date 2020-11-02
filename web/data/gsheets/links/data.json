@@ -299,5 +299,40 @@
   "timestamp": 1586476800,
   "type": "blog",
   "url": "https://medium.com/hashicorp-engineering/migrating-a-lot-of-state-with-python-and-the-terraform-cloud-api-997ec798cd11"
+ },
+ {
+  "id": "e1qt2",
+  "name": "HashiCorp Workshop: Northern California Terraform Open Source",
+  "timestamp": 1586908800,
+  "type": "workshop",
+  "url": "https://northerncaliforniaterraformwor.splashthat.com"
+ },
+ {
+  "id": "e35dj",
+  "name": "HashiCorp Workshop: Northern California Consul Open Source",
+  "timestamp": 1588032000,
+  "type": "workshop",
+  "url": "http://events.hashicorp.com/workshops/norcalconsul"
+ },
+ {
+  "id": "e4jxw",
+  "name": "HashiCorp Workshop: Northern California Vault Open Source",
+  "timestamp": 1589414400,
+  "type": "workshop",
+  "url": "http://events.hashicorp.com/workshops/vault-may14"
+ },
+ {
+  "id": "e5yid",
+  "name": "HashiCorp Workshop: Northern California Terraform on AWS",
+  "timestamp": 1594684800,
+  "type": "workshop",
+  "url": "http://events.hashicorp.com/workshops/terraform-july14"
+ },
+ {
+  "id": "eilm2",
+  "name": "HashiCorp Workshop: Northern California Consul Open Source",
+  "timestamp": 1595289600,
+  "type": "workshop",
+  "url": "http://events.hashicorp.com/workshops/consul-july21"
  }
 ]

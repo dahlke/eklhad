@@ -36,8 +36,6 @@ go run main.go -github
 ```bash
 export TWITTER_CONSUMER_API_KEY=$(op get item Twitter | jq -r '.details.sections[1].fields[0].v')
 export TWITTER_CONSUMER_SECRET_KEY=$(op get item Twitter | jq -r '.details.sections[1].fields[1].v')
-export TWITTER_CONSUMER_ACCESS_TOKEN=$(op get item Twitter | jq -r '.details.sections[1].fields[2].v')
-export TWITTER_CONSUMER_ACCESS_TOKEN_SECRET=$(op get item Twitter | jq -r '.details.sections[1].fields[3].v')
 cd web/
 go run main.go -twitter
 ```
@@ -86,6 +84,9 @@ You can read the [Makefile](./Makefile) to see what commands are being run under
 
 ```bash
 export GCLOUD_KEYFILE_JSON=$(op get item "Google dahlke.io" | jq -r '.details.sections[1].fields[0].v' | jq -r .)
+
+export GITHUB_TOKEN=$(op get item GitHub | jq -r '.details.sections[1].fields[0].v')
+export GITHUB_SECRET=$(op get item GitHub | jq -r '.details.sections[1].fields[1].v')
 
 export CLOUDFLARE_TOKEN=$(op get item Cloudflare | jq -r '.details.sections[1].fields[0].v')
 export CLOUDFLARE_EMAIL=$(op get item Cloudflare | jq -r '.details.sections[1].fields[1].v')
