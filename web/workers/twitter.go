@@ -16,7 +16,10 @@ import (
 	"golang.org/x/oauth2/clientcredentials"
 )
 
+// SleepTimeSeconds is  of seconds to sleep between requests to Twitter
 const SleepTimeSeconds = 1
+
+// PageSize is the number of tweets to retrieve per request to Twitter
 const PageSize = 50
 
 func convertTweets(tweets []twitter.Tweet) []structs.EklhadTweet {
