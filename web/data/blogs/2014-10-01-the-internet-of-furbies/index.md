@@ -1,7 +1,7 @@
 # [2014-10-01] The Internet of Furbies
 _Originally published on the [MemSQL Blog](http://blog.memsql.com/the-internet-of-furbies/)._
 
-![The Furbies Themselves](./images/the-internet-of-furbies.png)
+![The Furbies Themselves](https://storage.googleapis.com/eklhad-web-images-public/the-internet-of-furbies.png)
 
 At MemSQL engineering there are few things we love as much as building great products. One, however, is a good laugh. This past weekend a team from MemSQL set out to make our mothers proud at [Cultivated Wit](https://www.cultivatedwit.com/)’s [Comedy Hack Day](http://www.comedyhackday.org/), an event for comedians and hackers to get together in attempt to make the funniest hack. And drink whiskey.
 

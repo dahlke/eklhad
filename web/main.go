@@ -43,6 +43,13 @@ func apiLocationsHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(locations)
 }
 
+func apiBlogsHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	blogs := services.GetBlogs()
+	json.NewEncoder(w).Encode(blogs)
+}
+
 func apiLinksHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
@@ -146,6 +153,7 @@ func main() {
 	http.HandleFunc("/api/locations", apiLocationsHandler)
 	http.HandleFunc("/api/links", apiLinksHandler)
 	http.HandleFunc("/api/instagrams", apiInstagramsHandler)
+	http.HandleFunc("/api/blogs", apiBlogsHandler)
 	http.HandleFunc("/api/github_activity", apiGitHubActivityHandler)
 	http.HandleFunc("/api/gravatar", apiGravatarHandler)
 	http.HandleFunc("/api/tweets", apiTweetsHandler)

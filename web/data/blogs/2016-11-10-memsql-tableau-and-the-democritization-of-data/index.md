@@ -15,7 +15,7 @@ Innovations in data visualization have produced powerful, usable tools that affo
 
 But even with a Tableau license in hand, users still face issues – the dashboards are slow or the data is stale. The problem often lies in the database layer. It is imperative that data is up-to-date to be relevant to today’s fast moving business operations. Common issues include:
 
-![Long Query Time](./images/query-time.gif)
+![Long Query Time](https://storage.googleapis.com/eklhad-web-images-public/query-time.gif)
 
 - No access to real-time, limited to batch loads
 - Slow query execution
@@ -27,7 +27,7 @@ MemSQL and Tableau have collaborated to provide the best possible business intel
 
 At Tableau Conference 2016, MemSQL showcases MemSQL Springs, a real-time showcase application for resort demographic analysis. The story is simple. When a team of executives gathers in a room and ends up staring at a loading spinner, the company bleeds money. You do not have multiple minutes to wait for your dashboards to update each and every time you want to ask your data a question.
 
-![MemSQL Springs](./images/memsql-springs.gif)
+![MemSQL Springs](https://storage.googleapis.com/eklhad-web-images-public/memsql-springs.gif)
 
 And yet this is an issue that many organizations still face. Slow dashboards are a roadblock to becoming data-driven. Your business needs instant results.
 

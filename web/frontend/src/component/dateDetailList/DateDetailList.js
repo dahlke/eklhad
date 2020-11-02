@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./DateDetailList.scss";
 
-const MAX_TWEET_DISPLAY_LENGTH = 60;
-
 class DateDetailList extends Component {
 	render() {
 		const links = this.props.data.links.map((link) => {

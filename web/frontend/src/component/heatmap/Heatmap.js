@@ -105,7 +105,7 @@ class Heatmap extends Component {
 				/>
 				<Modal
 					isOpen={this.state.showModal}
-					className="date-detail-modal"
+					className="modal"
 					contentLabel="Date Detail"
 					shouldCloseOnOverlayClick={true}
 					onRequestClose={this.handleCloseModal}

@@ -6,6 +6,9 @@ const GSheetsInputDateFmt = "2006-01-02"
 // LinksDataPath is used as the target read/write path for GSheets link data
 const LinksDataPath = "./data/gsheets/links/data.json"
 
+// BlogsDataPath is used as the target read/write path for GSheets blog data
+const BlogsDataPath = "./data/gsheets/blogs/data.json"
+
 // LocationsDataPath is used as the target read/write path for GSheets location data
 const LocationsDataPath = "./data/gsheets/locations/data.json"
 
