@@ -9,7 +9,7 @@ func TestTweets(t *testing.T) {
 	tweets := GetTweets()
 	firstTweet := tweets[0]
 
-	if !(strings.Contains(firstTweet.User.URL, "http")) {
+	if !(strings.Contains(firstTweet.URL, "http")) {
 		t.Errorf("Tweets service did not return valid results.")
 	}
 }
