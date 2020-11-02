@@ -14,11 +14,11 @@ class LinksList extends Component {
 
 	render() {
 		const historicalLinkButtonText = this.state.showHistoricalLinks
-			? "Hide Historical Links"
-			: "Show Historical Links";
+			? "Hide Blogs"
+			: "Show Blogs";
 
 		const links = this.props.links.map((link) => {
-			return (
+			let component = link.type == "blog" ? (
 				<div key={link.id} className="link">
 					<span className="metadata">
 						[<span className="date">{link.date}</span>] [
@@ -34,7 +34,9 @@ class LinksList extends Component {
 						</a>
 					</span>
 				</div>
-			);
+			) : null;
+
+			return component;
 		});
 
 		return (

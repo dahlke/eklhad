@@ -57,7 +57,6 @@ class DateDetailList extends Component {
 
 		const tweets = this.props.data.tweets.map(
 			(tweet) => {
-				console.log(tweet);
 				return (
 					<div
 						key={tweet.id}
