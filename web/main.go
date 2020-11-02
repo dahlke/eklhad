@@ -150,6 +150,7 @@ func main() {
 	http.HandleFunc("/api/gravatar", apiGravatarHandler)
 	http.HandleFunc("/api/tweets", apiTweetsHandler)
 
+	// TODO: don't repeat this worker logic.
 	if workerRoutines {
 		// go workers.DoSampleWork(appConfigData.WorkerMinSleepMins)
 		go workers.ScheduleGitHubWork(appConfigData.WorkerMinSleepMins, appConfigData.GitHubUsername)
@@ -167,11 +168,33 @@ func main() {
 	} else if isPullTwitter {
 		workers.GetDataFromTwitterForUser(appConfigData.TwitterUsername)
 	} else if isProduction {
+		if workerRoutines {
+			log.Println("Starting data collection workers...")
+			// go workers.DoSampleWork(appConfigData.WorkerMinSleepMins)
+			go workers.ScheduleGitHubWork(appConfigData.WorkerMinSleepMins, appConfigData.GitHubUsername)
+			go workers.ScheduleGSheetsWork(appConfigData.WorkerMinSleepMins, appConfigData.GSheetID)
+			go workers.ScheduleInstagramWork(appConfigData.WorkerMinSleepMins, appConfigData.InstagramUsername)
+			go workers.ScheduleTwitterWork(appConfigData.WorkerMinSleepMins, appConfigData.TwitterUsername)
+		}
+
 		log.Println("Starting HTTPS server...")
 		go http.ListenAndServe(fmt.Sprintf(":%d", appPort), http.HandlerFunc(redirectToHTTPS))
 		err := http.ListenAndServeTLS(":443", "acme_cert.pem", "acme_private_key.pem", nil)
 		log.Fatal(err)
+
+		log.Info("Starting HTTP server...")
+		err = http.ListenAndServe(fmt.Sprintf(":%d", appPort), nil)
+		log.Fatal(err)
 	} else {
+		if workerRoutines {
+			log.Println("Starting data collection workers...")
+			// go workers.DoSampleWork(appConfigData.WorkerMinSleepMins)
+			go workers.ScheduleGitHubWork(appConfigData.WorkerMinSleepMins, appConfigData.GitHubUsername)
+			go workers.ScheduleGSheetsWork(appConfigData.WorkerMinSleepMins, appConfigData.GSheetID)
+			go workers.ScheduleInstagramWork(appConfigData.WorkerMinSleepMins, appConfigData.InstagramUsername)
+			go workers.ScheduleTwitterWork(appConfigData.WorkerMinSleepMins, appConfigData.TwitterUsername)
+		}
+
 		log.Info("Starting HTTP server...")
 		err := http.ListenAndServe(fmt.Sprintf(":%d", appPort), nil)
 		log.Fatal(err)
