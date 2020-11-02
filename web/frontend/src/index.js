@@ -6,6 +6,7 @@ import thunkMiddleware from "redux-thunk";
 // import { createLogger } from "redux-logger";
 import { fetchLocations } from "./actions/locations";
 import { fetchInstagrams } from "./actions/instagrams";
+import { fetchTweets } from "./actions/tweets";
 import { fetchLinks } from "./actions/links";
 import { fetchGitHubActivity } from "./actions/github";
 import { fetchGravatar } from "./actions/gravatar";
@@ -31,6 +32,7 @@ const store = createStore(
 
 store.dispatch(fetchLocations());
 store.dispatch(fetchInstagrams());
+store.dispatch(fetchTweets());
 store.dispatch(fetchLinks());
 store.dispatch(fetchGravatar());
 store.dispatch(fetchGitHubActivity());

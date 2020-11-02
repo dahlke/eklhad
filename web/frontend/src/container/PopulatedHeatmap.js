@@ -14,8 +14,18 @@ function _sortByTimestamp(data) {
 	return data;
 }
 
-function _processHeatmapDateMap(instagrams, links, githubActivity) {
+function _processHeatmapDateMap(instagrams, tweets, links, githubActivity) {
 	let heatmapDateMap = {};
+
+	/*
+	// TODO: share an empty map like this so I don't have to update them independently every time
+	const emptyHeatmapDate = {
+		instagrams: [],
+		tweets: [],
+		links: [],
+		githubActivity: [],
+	};
+	*/
 
 	links.forEach((link) => {
 		const d = moment.unix(link.timestamp).format("YYYY-MM-DD");
@@ -23,8 +33,9 @@ function _processHeatmapDateMap(instagrams, links, githubActivity) {
 		if (!heatmapDateMap[d]) {
 			heatmapDateMap[d] = {
 				instagrams: [],
+				tweets: [],
 				links: [],
-				githubActivity: [],
+				githubActivity: []
 			};
 		}
 		heatmapDateMap[d]["links"].push(link);
@@ -36,11 +47,27 @@ function _processHeatmapDateMap(instagrams, links, githubActivity) {
 		if (!heatmapDateMap[d]) {
 			heatmapDateMap[d] = {
 				instagrams: [],
+				tweets: [],
 				links: [],
-				githubActivity: [],
+				githubActivity: []
 			};
 		}
 		heatmapDateMap[d]["instagrams"].push(instagram);
+	});
+
+
+	tweets.forEach((tweet) => {
+		const d = moment.unix(tweet.timestamp).format("YYYY-MM-DD");
+		tweet.date = d;
+		if (!heatmapDateMap[d]) {
+			heatmapDateMap[d] = {
+				instagrams: [],
+				tweets: [],
+				links: [],
+				githubActivity: []
+			};
+		}
+		heatmapDateMap[d]["tweets"].push(tweet);
 	});
 
 	githubActivity.forEach((activity) => {
@@ -49,8 +76,9 @@ function _processHeatmapDateMap(instagrams, links, githubActivity) {
 		if (!heatmapDateMap[d]) {
 			heatmapDateMap[d] = {
 				instagrams: [],
+				tweets: [],
 				links: [],
-				githubActivity: [],
+				githubActivity: []
 			};
 		}
 		heatmapDateMap[d]["githubActivity"].push(activity);
@@ -61,17 +89,20 @@ function _processHeatmapDateMap(instagrams, links, githubActivity) {
 
 const mapStateToProps = (state) => {
 	const sortedInstagrams = _sortByTimestamp(state.instagrams.items);
+	const sortedTweets = _sortByTimestamp(state.tweets.items);
 	const sortedLinks = _sortByTimestamp(state.links.items);
 	const sortedGitHubActivity = _sortByTimestamp(state.github.activity);
 
 	const heatmapDateMap = _processHeatmapDateMap(
 		sortedInstagrams,
+		sortedTweets,
 		sortedLinks,
 		sortedGitHubActivity
 	);
 
 	return {
 		instagrams: sortedInstagrams,
+		tweets: sortedTweets,
 		links: sortedLinks,
 		githubActivity: sortedGitHubActivity,
 		heatmapDateMap: heatmapDateMap,

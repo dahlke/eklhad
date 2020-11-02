@@ -34,10 +34,11 @@ js_lint:
 	npx prettier --write src/
 
 # Hacky hack since I don't want to patch resume-cli at the sed part.
+# TODO: remove this sed command.
 .PHONY: resume
 resume: npm
 	cd web/frontend/conf/ && \
-	npx resume export export resume.html --format html --theme classic && \
+	npx resume export resume.html --format html --theme classic && \
 	sed 's/1991-03-19/today/g' ${CWD}/web/frontend/conf/resume.html > ${CWD}/web/frontend/public/static/resume.html && \
 	rm ${CWD}/web/frontend/conf/resume.html
 

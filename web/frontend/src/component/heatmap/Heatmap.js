@@ -29,6 +29,9 @@ class Heatmap extends Component {
 			totalEvents += dataForDate.instagrams
 				? dataForDate.instagrams.length
 				: 0;
+			totalEvents += dataForDate.tweets
+				? dataForDate.tweets.length
+				: 0;
 			totalEvents += dataForDate.links ? dataForDate.links.length : 0;
 			totalEvents += dataForDate.githubActivity
 				? dataForDate.githubActivity.length
@@ -61,6 +64,10 @@ class Heatmap extends Component {
 			this.props.activityFilter === ActivityFilters.SHOW_INSTAGRAMS
 		) {
 			mapVals = this.props.instagrams;
+		} else if (
+			this.props.activityFilter === ActivityFilters.SHOW_TWEETS
+		) {
+			mapVals = this.props.tweets;
 		} else if (
 			this.props.activityFilter === ActivityFilters.SHOW_GITHUB_ACTIVITY
 		) {

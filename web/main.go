@@ -59,6 +59,14 @@ func apiInstagramsHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(instagrams)
 }
 
+func apiTweetsHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	tweets := services.GetTweets()
+	json.NewEncoder(w).Encode(tweets)
+}
+
 func apiGitHubActivityHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
@@ -140,6 +148,7 @@ func main() {
 	http.HandleFunc("/api/instagrams", apiInstagramsHandler)
 	http.HandleFunc("/api/github_activity", apiGitHubActivityHandler)
 	http.HandleFunc("/api/gravatar", apiGravatarHandler)
+	http.HandleFunc("/api/tweets", apiTweetsHandler)
 
 	if workerRoutines {
 		// go workers.DoSampleWork(appConfigData.WorkerMinSleepMins)
