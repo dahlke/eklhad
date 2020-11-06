@@ -1,6 +1,7 @@
 package workers
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -10,11 +11,90 @@ import (
 	"strings"
 	"time"
 
+	storage "cloud.google.com/go/storage"
 	"github.com/dahlke/eklhad/web/constants"
 	geo "github.com/dahlke/eklhad/web/geo"
 	"github.com/dahlke/eklhad/web/structs"
 	log "github.com/sirupsen/logrus"
 )
+
+func writeBlogs(blogs []structs.EklhadBlog) {
+	fileWriteAbsPath, err := filepath.Abs(constants.BlogDataPath)
+	if err != nil {
+		log.Error(err)
+	}
+
+	fileContents, _ := json.MarshalIndent(blogs, "", " ")
+	err = ioutil.WriteFile(fileWriteAbsPath, fileContents, 0644)
+
+	if err != nil {
+		log.Error(err)
+	} else {
+		log.Info("Blogs data written")
+	}
+}
+
+func writeLocationsToGCS(locations []structs.EklhadLocation) {
+	ctx := context.Background()
+	gcsClient, err := storage.NewClient(ctx)
+	if err != nil {
+		log.Error(err)
+	}
+
+	bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
+
+	wc := bkt.Object(constants.LocationDataGCSFilePath).NewWriter(ctx)
+	wc.ContentType = "text/plain"
+	wc.Metadata = map[string]string{
+		"x-goog-meta-app":     "eklhad-web",
+		"x-goog-meta-type":    "data",
+		"x-goog-meta-dataset": "intagram",
+	}
+	fileContents, _ := json.MarshalIndent(locations, "", " ")
+
+	if _, err := wc.Write([]byte(fileContents)); err != nil {
+		log.Error("Unable to write Instagram data to GCS.")
+		return
+	}
+
+	if err := wc.Close(); err != nil {
+		log.Error("Unable to close writer for GCS while writing Instagram data.")
+		return
+	}
+}
+
+func writeLinksToGCS(links []structs.EklhadLink) {
+	ctx := context.Background()
+	gcsClient, err := storage.NewClient(ctx)
+	if err != nil {
+		log.Error(err)
+	}
+
+	bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
+
+	wc := bkt.Object(constants.LinkDataGCSFilePath).NewWriter(ctx)
+	wc.ContentType = "text/plain"
+	wc.Metadata = map[string]string{
+		"x-goog-meta-app":     "eklhad-web",
+		"x-goog-meta-type":    "data",
+		"x-goog-meta-dataset": "links",
+	}
+	fileContents, _ := json.MarshalIndent(links, "", " ")
+
+	if _, err := wc.Write([]byte(fileContents)); err != nil {
+		log.Error("Unable to write link data to GCS.")
+		return
+	}
+
+	if err := wc.Close(); err != nil {
+		log.Error("Unable to close writer for GCS while writing link data.")
+		return
+	}
+}
+
+func writeBlogsToGCS(blogs []structs.EklhadBlog) {
+	// TODO
+}
 
 // GetDataFromGSheets gets all the link and location activity logged in a specific
 // format in GSheets, and writes it to the file system for usage in the frontend.
@@ -55,10 +135,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 			log.Error(err)
 		}
 
-		var fileContents []byte
-		var fileWritePath string
-
-		if entry.Title.Value == "TODO" {
+		if entry.Title.Value == "locations" {
 			var gLocations structs.GSheetLocations
 			json.Unmarshal(body, &gLocations)
 
@@ -89,8 +166,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 				eklhadLocations = append(eklhadLocations, eklhadLocation)
 			}
 
-			fileWritePath = constants.LocationsDataPath
-			fileContents, _ = json.MarshalIndent(eklhadLocations, "", " ")
+			writeLocationsToGCS(eklhadLocations)
 		} else if entry.Title.Value == "links" {
 			var gLinks structs.GSheetLinks
 			json.Unmarshal(body, &gLinks)
@@ -117,8 +193,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 				eklhadLinks = append(eklhadLinks, eklhadLink)
 			}
 
-			fileWritePath = constants.LinksDataPath
-			fileContents, _ = json.MarshalIndent(eklhadLinks, "", " ")
+			writeLinksToGCS(eklhadLinks)
 		} else if entry.Title.Value == "blogs" {
 			var gBlogs structs.GSheetBlogs
 			json.Unmarshal(body, &gBlogs)
@@ -156,25 +231,9 @@ func GetDataFromGSheets(spreadSheetID string) {
 				eklhadBlogs = append(eklhadBlogs, eklhadBlog)
 			}
 
-			fileWritePath = constants.BlogsDataPath
-			fileContents, _ = json.MarshalIndent(eklhadBlogs, "", " ")
-		}
-
-		fileWriteAbsPath, err := filepath.Abs(fileWritePath)
-		if err != nil {
-			log.Error(err)
-		}
-
-		err = ioutil.WriteFile(fileWriteAbsPath, fileContents, 0644)
-
-		if err != nil {
-			log.Error(err)
-		} else {
-			infoMsg := fmt.Sprintf("Google sheets page (%s) successfully saved.", entry.Title.Value)
-			log.Info(infoMsg)
+			writeBlogs(eklhadBlogs)
 		}
 	}
-
 }
 
 // ScheduleGSheetsWork schedules GetDataFromGSheets at an interval

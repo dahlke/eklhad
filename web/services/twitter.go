@@ -2,15 +2,16 @@ package services
 
 import (
 	"encoding/json"
-	"io/ioutil"
 
+	"github.com/dahlke/eklhad/web/constants"
 	"github.com/dahlke/eklhad/web/structs"
 )
 
-// GetTweets reads the Twitter JSON data from the file system and returns it
+// GetTweets reads the Twitter JSON data from GCS
 func GetTweets() []structs.EklhadTweet {
-	rawFileContents, _ := ioutil.ReadFile("./data/twitter/data.json")
-	tweets := []structs.EklhadTweet{}
-	_ = json.Unmarshal([]byte(rawFileContents), &tweets)
+	jsonBytes := ReadJSONFromGCS(constants.GCSPrivateBucketName, constants.TwitterDataGCSFilePath)
+	var tweets []structs.EklhadTweet
+	json.Unmarshal(jsonBytes, &tweets)
+
 	return tweets
 }

@@ -13,7 +13,7 @@ import (
 
 // GetBlogs reads the cached blog data from the file system and returns it.
 func GetBlogs() []structs.EklhadBlog {
-	jsonFilePath, err := filepath.Abs(constants.BlogsDataPath)
+	jsonFilePath, err := filepath.Abs(constants.BlogDataPath)
 	if err != nil {
 		log.Error(err)
 	}
@@ -28,5 +28,6 @@ func GetBlogs() []structs.EklhadBlog {
 	var blogs []structs.EklhadBlog
 	json.Unmarshal(jsonBytes, &blogs)
 
+	// TODO: read the data from GCS if possible
 	return blogs
 }

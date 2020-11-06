@@ -90,6 +90,14 @@ resource "google_compute_instance" "web" {
     }
   }
 
+  allow_stopping_for_update = true
+
+  service_account {
+    # Assume local Packer role, rather than create a 3rd role.
+    email = "eklhad-web-packer@eklhad-web.iam.gserviceaccount.com"
+    scopes = ["storage-rw"]
+  }
+
   metadata = {
     sshKeys = "${var.ssh_user}:${var.env == "dev" ? file(var.local_ssh_pub_key_path) : tls_private_key.gcp_private_key.public_key_openssh}"
   }

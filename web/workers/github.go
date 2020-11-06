@@ -4,11 +4,10 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"os"
-	"path/filepath"
 	"time"
 
+	storage "cloud.google.com/go/storage"
 	"github.com/dahlke/eklhad/web/constants"
 	"github.com/dahlke/eklhad/web/structs"
 	"github.com/google/go-github/github"
@@ -37,19 +36,32 @@ func convertGitHubActivityData(repoName string, repoCommitActivity []*github.Wee
 	return allCommitActivitySingleRepo
 }
 
-func writeGitHubActivity(allGitHubActivity []*structs.GitHubDailyCommitActivityForRepo) {
-	fileWriteAbsPath, err := filepath.Abs(constants.GitHubActivityPath)
+func writeGitHubActivityToGCS(allGitHubActivity []*structs.GitHubDailyCommitActivityForRepo) {
+	ctx := context.Background()
+	gcsClient, err := storage.NewClient(ctx)
 	if err != nil {
 		log.Error(err)
 	}
-	fileContents, _ := json.MarshalIndent(allGitHubActivity, "", " ")
-	err = ioutil.WriteFile(fileWriteAbsPath, fileContents, 0644)
 
-	if err != nil {
-		log.Error(err)
-	} else {
-		infoMsg := fmt.Sprintf("GitHub activity data written")
-		log.Info(infoMsg)
+	bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
+
+	wc := bkt.Object(constants.GitHubActivityGCSFilePath).NewWriter(ctx)
+	wc.ContentType = "text/plain"
+	wc.Metadata = map[string]string{
+		"x-goog-meta-app":     "eklhad-web",
+		"x-goog-meta-type":    "data",
+		"x-goog-meta-dataset": "github",
+	}
+	fileContents, _ := json.MarshalIndent(allGitHubActivity, "", " ")
+
+	if _, err := wc.Write([]byte(fileContents)); err != nil {
+		log.Error("Unable to write GitHub data to GCS.")
+		return
+	}
+
+	if err := wc.Close(); err != nil {
+		log.Error("Unable to close writer for GCS while writing GitHub data.")
+		return
 	}
 }
 
@@ -111,7 +123,7 @@ func GetDataFromGitHubForUser(username string) {
 		}
 	}
 
-	writeGitHubActivity(dailyCommitActivityAllRepos)
+	writeGitHubActivityToGCS(dailyCommitActivityAllRepos)
 }
 
 // ScheduleGitHubWork schedules GetDataFromGitHubForUser at an interval

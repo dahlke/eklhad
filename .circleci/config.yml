@@ -7,6 +7,8 @@ jobs:
     steps:
       - checkout
       - run: go get -v -t -d ./...
+      - run: touch $GOOGLE_APPLICATION_CREDENTIALS
+      - run: echo $GOOGLE_CIRCLECI_CREDENTIALS_JSON > $GOOGLE_APPLICATION_CREDENTIALS
       - run: go test -v ./...
       - run: npm --prefix web/frontend/ install
       - run: npm --prefix web/frontend/ run-script test-once
@@ -21,7 +23,7 @@ jobs:
       - run: mkdir -p artifact/tar/linux/
       - run: make artifact_linux_web
       - run: touch $GOOGLE_APPLICATION_CREDENTIALS
-      - run: echo $GOOGLE_CREDENTIALS > $GOOGLE_APPLICATION_CREDENTIALS
+      - run: echo $GOOGLE_CIRCLECI_CREDENTIALS_JSON > $GOOGLE_APPLICATION_CREDENTIALS
       - run: mkdir -p packer/gcp/output/
       - run: packer -machine-readable build packer/gcp/circleci-image.json  > packer/gcp/output/image.txt;
       - run: echo 'credentials "app.terraform.io" {token = "'$TFC_TOKEN'"} ' > ~/.terraformrc
@@ -38,7 +40,7 @@ jobs:
       - run: mkdir -p artifact/tar/linux/
       - run: make artifact_linux_web
       - run: touch $GOOGLE_APPLICATION_CREDENTIALS
-      - run: echo $GOOGLE_CREDENTIALS > $GOOGLE_APPLICATION_CREDENTIALS
+      - run: echo $GOOGLE_CIRCLECI_CREDENTIALS_JSON > $GOOGLE_APPLICATION_CREDENTIALS
       - run: mkdir -p packer/gcp/output/
       - run: packer -machine-readable build packer/gcp/circleci-image.json  > packer/gcp/output/image.txt;
       - run: echo 'credentials "app.terraform.io" {token = "'$TFC_TOKEN'"} ' > ~/.terraformrc
