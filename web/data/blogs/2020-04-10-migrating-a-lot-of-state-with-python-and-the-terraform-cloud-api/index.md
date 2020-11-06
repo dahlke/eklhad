@@ -62,7 +62,7 @@ Knowing both the state file layout in GCS and the Terraform Configuration layout
 ./two-tier-tfc-demo-app/gcp → gs://hc-neil/demo-tfstates/demo-project-gcp/
 ```
 
-![Mapping Buckets](https://storage.googleapis.com/eklhad-web-images-public/mapping-buckets.png)
+![Mapping Buckets](https://storage.googleapis.com/eklhad-web-public/images/mapping-buckets.png)
 _Mapping GCS buckets to VCS repositories, illustrated_
 
 Once you understand how they map to each other, you can begin the automation process by defining a migration strategy, implemented in this case in a JSON file so that it is machine-readable. Let’s call it the “Migration Map”. You’ll also add a couple other pieces of data to the migration map, including the branch of the VCS repository you want to use, the Terraform version to use, and the name you want to give to the workspace.
@@ -136,7 +136,7 @@ With all the pieces in place, you can execute the migration.
 
 ### Executing the Migration
 
-![Migration Workflow](https://storage.googleapis.com/eklhad-web-images-public/migration-workflow.png)
+![Migration Workflow](https://storage.googleapis.com/eklhad-web-public/images/migration-workflow.png)
 _Migration workflow, illustrated_
 
 You can see the workflow above. Below, you’ll walk through each component. Since the focus in this blog is to help you understand the individual steps, we will focus on those. If you want to see the full script that you can use for automation, it is available [here](https://github.com/dahlke/migrate-to-tfc/blob/master/main.py).
