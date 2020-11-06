@@ -7,7 +7,7 @@ November is nearly upon us, with the spotlight on Election 2016. This election h
 
 By now, most people have probably seen both encouraging and deprecating tweets about two candidates: Hillary Clinton and Donald Trump. Twitter has become a real-time voice for the public watching along with debates and campaign announcements. We wanted to hone in on the sentiments expressed in real time. Using Apache Kafka, MemSQL, Machine Learning and our Pipelines Twitter Demo as a base, we are bringing real-time analytics to Election 2016.
 
-![Hilary vs. Trump Sentiment](https://storage.googleapis.com/eklhad-web-images-public/hillary-vs-trump-twitter-sentiment.png)
+![Hilary vs. Trump Sentiment](https://storage.googleapis.com/eklhad-web-public/images/hillary-vs-trump-twitter-sentiment.png)
 
 ~~Click here to access the live demo.~~
 
@@ -89,4 +89,4 @@ Lastly we constructed a User Interface (UI). We built the graph using WebSockets
 
 ~~Post-Election, we have shut down the demo. View a screencap of it running at the bottom of this post.~~
 
-![Real Time Sentiment Graph Screenshot](https://storage.googleapis.com/eklhad-web-images-public/real-time-twitter-sentiment-election-2016.jpg)
+![Real Time Sentiment Graph Screenshot](https://storage.googleapis.com/eklhad-web-public/images/real-time-twitter-sentiment-election-2016.jpg)

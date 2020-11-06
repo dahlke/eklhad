@@ -1,7 +1,7 @@
 # [2015-06-17] How Pinterest Measures Real-Time User Engagement with Spark
 _Originally published on the [MemSQL Blog](http://blog.memsql.com/pinterest-apache-spark-use-case/)._
 
-![Spark Demo Animated](https://storage.googleapis.com/eklhad-web-images-public/spark-demo-animated.gif)
+![Spark Demo Animated](https://storage.googleapis.com/eklhad-web-public/images/spark-demo-animated.gif)
 
 ### Setting the Stage for Spark
 
@@ -22,7 +22,7 @@ As the world’s premiere visual bookmarking tool, Pinterest is one of the innov
 ### Visualizing the Data
 We built a demo with Pinterest to showcase the locations of repins as they happen. When an image is repinned, circles on the globe expand, providing a visual representation of the concentration of repins by location.
 
-![Spark Demo Static](https://storage.googleapis.com/eklhad-web-images-public/spark-demo-static.gif)
+![Spark Demo Static](https://storage.googleapis.com/eklhad-web-public/images/spark-demo-static.gif)
 
 The demo also leverages Spark to enrich streaming data with geolocation information between the time that it arrives and when it hits the database. MemSQL adds to this enrichment process by serving as a key/value cache for data that has already been processed and can be reused for future repins. Additionally, as part of the enrichment process, any repin that enters the system is looked up against MemSQL, and is saved to MemSQL if the full pin is missing. All full pins that come in through the stream are saved automatically to avoid this lookup.
 
