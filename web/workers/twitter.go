@@ -1,11 +1,10 @@
 package workers
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"os"
-	"path/filepath"
 	"time"
 
 	"github.com/dahlke/eklhad/web/constants"
@@ -14,17 +13,12 @@ import (
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/clientcredentials"
+
+	storage "cloud.google.com/go/storage"
 )
-
-// SleepTimeSeconds is  of seconds to sleep between requests to Twitter
-const SleepTimeSeconds = 1
-
-// PageSize is the number of tweets to retrieve per request to Twitter
-const PageSize = 50
 
 func convertTweets(tweets []twitter.Tweet) []structs.EklhadTweet {
 	convertedTweets := []structs.EklhadTweet{}
-	// TODO: get the username in here somehow?
 	for _, tweet := range tweets {
 
 		// https://godoc.org/github.com/dghubble/go-twitter/twitter#Tweet
@@ -46,21 +40,33 @@ func convertTweets(tweets []twitter.Tweet) []structs.EklhadTweet {
 	return convertedTweets
 }
 
-func writeTweets(tweets []twitter.Tweet) {
-	fileWriteAbsPath, err := filepath.Abs(constants.TwitterDataPath)
+func writeTweetsToGCS(tweets []twitter.Tweet) {
+	ctx := context.Background()
+	gcsClient, err := storage.NewClient(ctx)
 	if err != nil {
 		log.Error(err)
 	}
 
+	bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
+
+	wc := bkt.Object(constants.TwitterDataGCSFilePath).NewWriter(ctx)
+	wc.ContentType = "text/plain"
+	wc.Metadata = map[string]string{
+		"x-goog-meta-app":     "eklhad-web",
+		"x-goog-meta-type":    "data",
+		"x-goog-meta-dataset": "twitter",
+	}
 	convertedTweets := convertTweets(tweets)
 	fileContents, _ := json.MarshalIndent(convertedTweets, "", " ")
-	err = ioutil.WriteFile(fileWriteAbsPath, fileContents, 0644)
 
-	if err != nil {
-		log.Error(err)
-	} else {
-		infoMsg := fmt.Sprintf("Tweets data written")
-		log.Info(infoMsg)
+	if _, err := wc.Write([]byte(fileContents)); err != nil {
+		log.Error("Unable to write Twitter data to GCS.")
+		return
+	}
+
+	if err := wc.Close(); err != nil {
+		log.Error("Unable to close writer for GCS while writing Twitter data.")
+		return
 	}
 }
 
@@ -76,7 +82,7 @@ func GetDataFromTwitterForUser(username string) {
 	}
 
 	httpClient := config.Client(oauth2.NoContext)
-	client := twitter.NewClient(httpClient)
+	twitterClient := twitter.NewClient(httpClient)
 
 	var allTweets []twitter.Tweet
 	var minTweetID int64
@@ -88,13 +94,12 @@ func GetDataFromTwitterForUser(username string) {
 		log.Info(fmt.Sprintf("Retrieving Tweets with min ID %d.", minTweetID))
 		userTimelineParams := &twitter.UserTimelineParams{
 			ScreenName: username,
-			Count:      PageSize,
+			Count:      constants.TwitterPageSize,
 			MaxID:      minTweetID,
 		}
 
 		// https://godoc.org/github.com/dghubble/go-twitter/twitter#TimelineService.UserTimeline
-		tweets, _, _ := client.Timelines.UserTimeline(userTimelineParams)
-		// TODO: deduplicate
+		tweets, _, _ := twitterClient.Timelines.UserTimeline(userTimelineParams)
 		allTweets = append(allTweets, tweets...)
 
 		// https://godoc.org/github.com/dghubble/go-twitter/twitter#Tweet
@@ -104,7 +109,7 @@ func GetDataFromTwitterForUser(username string) {
 			}
 
 		}
-		time.Sleep(SleepTimeSeconds * time.Second)
+		time.Sleep(constants.TwitterSleepTimeSeconds * time.Second)
 		iteration = iteration + 1
 
 		if lastMinTweetID == minTweetID {
@@ -115,7 +120,7 @@ func GetDataFromTwitterForUser(username string) {
 		lastMinTweetID = minTweetID
 	}
 
-	writeTweets(allTweets)
+	writeTweetsToGCS(allTweets)
 }
 
 // ScheduleTwitterWork schedules GetDataFromTwitterForUser at an interval

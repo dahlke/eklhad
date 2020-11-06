@@ -54,9 +54,9 @@
 			]
 		},
 		{
-			"company": "MemSQL",
+			"company": "SingleStore (MemSQL)",
 			"position": "Senior Solutions Engineer (Team Lead, West USA)",
-			"website": "http://memsql.com",
+			"website": "http://singlestore.com",
 			"startDate": "2017-03-01",
 			"endDate": "2018-11-16",
 			"highlights": [
@@ -67,18 +67,18 @@
 			]
 		},
 		{
-			"company": "MemSQL",
+			"company": "SingleStore (MemSQL)",
 			"position": "Solutions Engineer",
-			"website": "http://memsql.com",
+			"website": "http://singlestore.com",
 			"startDate": "2015-11-01",
 			"endDate": "2017-03-01",
 			"highlights": [
 			]
 		},
 		{
-			"company": "MemSQL",
+			"company": "SingleStore (MemSQL)",
 			"position": "Software Engineer",
-			"website": "http://memsql.com",
+			"website": "http://singlestore.com",
 			"startDate": "2013-12-01",
 			"endDate": "2015-11-01",
 			"highlights": [
@@ -133,13 +133,13 @@
 		{
 			"title": "SE of the Year, Global (FY19)",
 			"date": "2018-03-21",
-			"awarder": "MemSQL",
+			"awarder": "SingleStore (MemSQL)",
 			"summary": ""
 		},
 		{
 			"title": "President's Club (FY17, FY18, FY19)",
 			"date": "2018-03-21",
-			"awarder": "MemSQL",
+			"awarder": "SingleStore (MemSQL)",
 			"summary": ""
 		}
 	],

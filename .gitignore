@@ -31,3 +31,6 @@ artifact/tar/linux/*.tar.gz
 
 # Config Files
 web/secrets.json
+
+# Personal Notes
+NEIL.md

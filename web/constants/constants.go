@@ -1,25 +1,53 @@
 package constants
 
+/*
+ USEFUL WORKER CONSTANTS
+*/
+
 // GSheetsInputDateFmt is used as a format for parsing dates from the GSheets worker
 const GSheetsInputDateFmt = "2006-01-02"
 
-// LinksDataPath is used as the target read/write path for GSheets link data
-const LinksDataPath = "./data/gsheets/links/data.json"
-
-// BlogsDataPath is used as the target read/write path for GSheets blog data
-const BlogsDataPath = "./data/gsheets/blogs/data.json"
-
-// LocationsDataPath is used as the target read/write path for GSheets location data
-const LocationsDataPath = "./data/gsheets/locations/data.json"
-
-// IGDataPath is used as the target read/write path for IG data
-const IGDataPath = "./data/instagram/data.json"
-
-// TwitterDataPath is used as the target read/write path for Twitter data
-const TwitterDataPath = "./data/twitter/data.json"
-
-// GitHubActivityPath is used as the target read/write path for GitHub data
-const GitHubActivityPath = "./data/github/activity.json"
-
 // GitHubPageSize is used as the default page size for paged GitHub requests
 const GitHubPageSize = 100
+
+// TwitterSleepTimeSeconds is  of seconds to sleep between requests to Twitter
+const TwitterSleepTimeSeconds = 1
+
+// TwitterPageSize is the number of tweets to retrieve per request to Twitter
+const TwitterPageSize = 50
+
+/*
+ LOCAL DATA CONSTANTS
+
+ TODO: Stop using local files for blog JSON once I have everything uploaded to GCS.
+*/
+
+// BlogDataPath is used as the target read/write path for GSheets blog data
+const BlogDataPath = "./data/gsheets/blogs/data.json"
+
+/*
+ GCS CONSTANTS
+
+ TODO: BlogsDataGCSFileName
+*/
+
+// GCSPublicBucketName is the name of the public bucket in GCS that all the public data is stored in.
+const GCSPublicBucketName = "eklhad-web-public"
+
+// GCSPrivateBucketName is the name of the public bucket in GCS that all the pricate data is stored in.
+const GCSPrivateBucketName = "eklhad-web-private"
+
+// TwitterDataGCSFilePath is the path in GCS to the JSON blob file for Twitter data
+const TwitterDataGCSFilePath = "data/twitter.json"
+
+// InstagramDataGCSFilePath is the path in GCS to the JSON blob file for Instagram data
+const InstagramDataGCSFilePath = "data/instagram.json"
+
+// LocationDataGCSFilePath is the path in GCS to the JSON blob file for location data
+const LocationDataGCSFilePath = "data/locations.json"
+
+// LinkDataGCSFilePath is the path in GCS to the JSON blob file for links data
+const LinkDataGCSFilePath = "data/links.json"
+
+// GitHubActivityGCSFilePath is the path in GCS to the JSON blob file for GitHub data
+const GitHubActivityGCSFilePath = "data/github.json"

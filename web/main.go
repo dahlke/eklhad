@@ -125,6 +125,13 @@ func parseConfig(configJSONPath string) appConfig {
 	return config
 }
 
+func scheduleWorkers(config appConfig) {
+	go workers.ScheduleGitHubWork(config.WorkerMinSleepMins, config.GitHubUsername)
+	go workers.ScheduleGSheetsWork(config.WorkerMinSleepMins, config.GSheetID)
+	go workers.ScheduleInstagramWork(config.WorkerMinSleepMins, config.InstagramUsername)
+	go workers.ScheduleTwitterWork(config.WorkerMinSleepMins, config.TwitterUsername)
+}
+
 func main() {
 	portPtr := flag.Int("port", appPort, "The port to run the HTTP app on (default: 3554).")
 	productionPtr := flag.Bool("production", false, "If true, run the app over HTTPS.")
@@ -158,13 +165,8 @@ func main() {
 	http.HandleFunc("/api/gravatar", apiGravatarHandler)
 	http.HandleFunc("/api/tweets", apiTweetsHandler)
 
-	// TODO: don't repeat this worker logic.
 	if workerRoutines {
-		// go workers.DoSampleWork(appConfigData.WorkerMinSleepMins)
-		go workers.ScheduleGitHubWork(appConfigData.WorkerMinSleepMins, appConfigData.GitHubUsername)
-		go workers.ScheduleGSheetsWork(appConfigData.WorkerMinSleepMins, appConfigData.GSheetID)
-		go workers.ScheduleInstagramWork(appConfigData.WorkerMinSleepMins, appConfigData.InstagramUsername)
-		go workers.ScheduleTwitterWork(appConfigData.WorkerMinSleepMins, appConfigData.TwitterUsername)
+		scheduleWorkers(appConfigData)
 	}
 
 	if isPullGSheets {
@@ -178,11 +180,7 @@ func main() {
 	} else if isProduction {
 		if workerRoutines {
 			log.Println("Starting data collection workers...")
-			// go workers.DoSampleWork(appConfigData.WorkerMinSleepMins)
-			go workers.ScheduleGitHubWork(appConfigData.WorkerMinSleepMins, appConfigData.GitHubUsername)
-			go workers.ScheduleGSheetsWork(appConfigData.WorkerMinSleepMins, appConfigData.GSheetID)
-			go workers.ScheduleInstagramWork(appConfigData.WorkerMinSleepMins, appConfigData.InstagramUsername)
-			go workers.ScheduleTwitterWork(appConfigData.WorkerMinSleepMins, appConfigData.TwitterUsername)
+			scheduleWorkers(appConfigData)
 		}
 
 		log.Println("Starting HTTPS server...")
@@ -194,11 +192,7 @@ func main() {
 	} else {
 		if workerRoutines {
 			log.Println("Starting data collection workers...")
-			// go workers.DoSampleWork(appConfigData.WorkerMinSleepMins)
-			go workers.ScheduleGitHubWork(appConfigData.WorkerMinSleepMins, appConfigData.GitHubUsername)
-			go workers.ScheduleGSheetsWork(appConfigData.WorkerMinSleepMins, appConfigData.GSheetID)
-			go workers.ScheduleInstagramWork(appConfigData.WorkerMinSleepMins, appConfigData.InstagramUsername)
-			go workers.ScheduleTwitterWork(appConfigData.WorkerMinSleepMins, appConfigData.TwitterUsername)
+			scheduleWorkers(appConfigData)
 		}
 
 		log.Info("Starting HTTP server...")

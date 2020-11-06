@@ -1,32 +1,44 @@
 package workers
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
-	"path/filepath"
 	"time"
 
+	storage "cloud.google.com/go/storage"
 	"github.com/dahlke/eklhad/web/constants"
 	api "github.com/dahlke/goramma/api"
 	goramma_structs "github.com/dahlke/goramma/structs"
 	log "github.com/sirupsen/logrus"
 )
 
-func writeInstagramMedia(instagramMedia []goramma_structs.InstagramMedia) {
-	fileWriteAbsPath, err := filepath.Abs(constants.IGDataPath)
+func writeInstagramMediaToGCS(instagramMedia []goramma_structs.InstagramMedia) {
+	ctx := context.Background()
+	gcsClient, err := storage.NewClient(ctx)
 	if err != nil {
 		log.Error(err)
 	}
 
-	fileContents, _ := json.MarshalIndent(instagramMedia, "", " ")
-	err = ioutil.WriteFile(fileWriteAbsPath, fileContents, 0644)
+	bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
 
-	if err != nil {
-		log.Error(err)
-	} else {
-		infoMsg := fmt.Sprintf("Instagram media data written")
-		log.Info(infoMsg)
+	wc := bkt.Object(constants.InstagramDataGCSFilePath).NewWriter(ctx)
+	wc.ContentType = "text/plain"
+	wc.Metadata = map[string]string{
+		"x-goog-meta-app":     "eklhad-web",
+		"x-goog-meta-type":    "data",
+		"x-goog-meta-dataset": "intagram",
+	}
+	fileContents, _ := json.MarshalIndent(instagramMedia, "", " ")
+
+	if _, err := wc.Write([]byte(fileContents)); err != nil {
+		log.Error("Unable to write Instagram data to GCS.")
+		return
+	}
+
+	if err := wc.Close(); err != nil {
+		log.Error("Unable to close writer for GCS while writing Instagram data.")
+		return
 	}
 }
 
@@ -58,7 +70,7 @@ func GetDataFromInstagramForUser(username string) {
 		time.Sleep(5 * time.Second)
 	}
 
-	writeInstagramMedia(mediaTimeline)
+	writeInstagramMediaToGCS(mediaTimeline)
 }
 
 // ScheduleInstagramWork schedules GetDataFromInstagramForUser at an interval
