@@ -17,18 +17,7 @@ const TwitterSleepTimeSeconds = 1
 const TwitterPageSize = 50
 
 /*
- LOCAL DATA CONSTANTS
-
- TODO: Stop using local files for blog JSON once I have everything uploaded to GCS.
-*/
-
-// BlogDataPath is used as the target read/write path for GSheets blog data
-const BlogDataPath = "./data/gsheets/blogs/data.json"
-
-/*
  GCS CONSTANTS
-
- TODO: BlogsDataGCSFileName
 */
 
 // GCSPublicBucketName is the name of the public bucket in GCS that all the public data is stored in.
@@ -51,3 +40,6 @@ const LinkDataGCSFilePath = "data/links.json"
 
 // GitHubActivityGCSFilePath is the path in GCS to the JSON blob file for GitHub data
 const GitHubActivityGCSFilePath = "data/github.json"
+
+// BlogDataGCSFilePath is the path in GCS to the JSON blob file for Blog data
+const BlogDataGCSFilePath = "data/blogs.json"

@@ -18,22 +18,6 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-func writeBlogs(blogs []structs.EklhadBlog) {
-	fileWriteAbsPath, err := filepath.Abs(constants.BlogDataPath)
-	if err != nil {
-		log.Error(err)
-	}
-
-	fileContents, _ := json.MarshalIndent(blogs, "", " ")
-	err = ioutil.WriteFile(fileWriteAbsPath, fileContents, 0644)
-
-	if err != nil {
-		log.Error(err)
-	} else {
-		log.Info("Blogs data written")
-	}
-}
-
 func writeLocationsToGCS(locations []structs.EklhadLocation) {
 	ctx := context.Background()
 	gcsClient, err := storage.NewClient(ctx)
@@ -93,7 +77,32 @@ func writeLinksToGCS(links []structs.EklhadLink) {
 }
 
 func writeBlogsToGCS(blogs []structs.EklhadBlog) {
-	// TODO
+	ctx := context.Background()
+	gcsClient, err := storage.NewClient(ctx)
+	if err != nil {
+		log.Error(err)
+	}
+
+	bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
+
+	wc := bkt.Object(constants.BlogDataGCSFilePath).NewWriter(ctx)
+	wc.ContentType = "text/plain"
+	wc.Metadata = map[string]string{
+		"x-goog-meta-app":     "eklhad-web",
+		"x-goog-meta-type":    "data",
+		"x-goog-meta-dataset": "blogs",
+	}
+	fileContents, _ := json.MarshalIndent(blogs, "", " ")
+
+	if _, err := wc.Write([]byte(fileContents)); err != nil {
+		log.Error("Unable to write blog data to GCS.")
+		return
+	}
+
+	if err := wc.Close(); err != nil {
+		log.Error("Unable to close writer for GCS while writing blog data.")
+		return
+	}
 }
 
 // GetDataFromGSheets gets all the link and location activity logged in a specific
@@ -231,7 +240,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 				eklhadBlogs = append(eklhadBlogs, eklhadBlog)
 			}
 
-			writeBlogs(eklhadBlogs)
+			writeBlogsToGCS(eklhadBlogs)
 		}
 	}
 }
