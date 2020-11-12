@@ -16,6 +16,13 @@ html {
 	text-transform: uppercase;
 	color: #333;
 
+	.mapboxgl-ctrl {
+		// NOTE: Need to hide this manually, otherwise it will show over the blog modal.
+		// Should only show this the blog viewer is open as I'd like to keep
+		// visible attribution to MapBox, but needs some code reorg.
+		visibility: hidden;
+	}
+
 	.modal {
 		position: absolute;
 		top: 50%;
