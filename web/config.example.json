@@ -2,5 +2,7 @@
     "g_sheet_id": "YOUR_GSHEET_ID_HERE",
     "github_username": "USERNAME",
     "gravatar_email": "YOUR@GMAIL.COM",
-    "instagram_username": "KANYEDOINGTHINGS"
+    "instagram_username": "KANYEDOINGTHINGS",
+    "twitter_username": "TRUMPDBA",
+    "worker_min_sleep_mins": 60
 }
