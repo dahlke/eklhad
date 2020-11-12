@@ -86,6 +86,9 @@ You can read the [Makefile](./Makefile) to see what commands are being run under
 export GCLOUD_KEYFILE_JSON=$(op get item "Google dahlke.io" | jq -r '.details.sections[1].fields[0].v' | jq -r .)
 export GOOGLE_APPLICATION_CREDENTIALS="/Users/neil/.gcp/eklhad-web-packer.json"
 
+export TWITTER_CONSUMER_API_KEY=$(op get item Twitter | jq -r '.details.sections[1].fields[0].v')
+export TWITTER_CONSUMER_SECRET_KEY=$(op get item Twitter | jq -r '.details.sections[1].fields[1].v')
+
 export GITHUB_TOKEN=$(op get item GitHub | jq -r '.details.sections[1].fields[0].v')
 export GITHUB_SECRET=$(op get item GitHub | jq -r '.details.sections[1].fields[1].v')
 
