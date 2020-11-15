@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Modal from "react-modal";
-import MarkdownView from 'react-showdown';
+import MarkdownView from "react-showdown";
 import "./LinksList.scss";
 
 class LinksList extends Component {
@@ -9,7 +9,7 @@ class LinksList extends Component {
 		this.state = {
 			showHistoricalLinks: false,
 			showModal: false,
-			shownBlog: undefined
+			shownBlog: undefined,
 		};
 
 		this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -25,14 +25,14 @@ class LinksList extends Component {
 		console.log(blog);
 		this.setState({
 			showModal: true,
-			shownBlog: blog
+			shownBlog: blog,
 		});
 	}
 
 	handleCloseModal() {
 		this.setState({
 			showModal: false,
-			shownBlog: undefined
+			shownBlog: undefined,
 		});
 	}
 
@@ -51,10 +51,7 @@ class LinksList extends Component {
 						<span className="type">Blog</span>]
 					</span>
 					<span className="url">
-						<a
-							href="#"
-							onClick={() => this._showBlogViewer(blog)}
-						>
+						<a href="#" onClick={() => this._showBlogViewer(blog)}>
 							{blog.name}
 						</a>
 					</span>
@@ -77,9 +74,13 @@ class LinksList extends Component {
 				>
 					<div className="blog-content">
 						<MarkdownView
-							markdown={this.state.shownBlog ? this.state.shownBlog.content : ""}
+							markdown={
+								this.state.shownBlog
+									? this.state.shownBlog.content
+									: ""
+							}
 							options={{ tables: true, emoji: true }}
-							/>
+						/>
 					</div>
 					<button onClick={this.handleCloseModal}>Close Modal</button>
 				</Modal>
