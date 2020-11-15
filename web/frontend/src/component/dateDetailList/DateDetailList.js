@@ -33,8 +33,8 @@ class DateDetailList extends Component {
 							href={instagram.url}
 						>
 							<span className="metadata">
-								[<span className="date">{instagram.date}</span>]  [Instagram]
-								[
+								[<span className="date">{instagram.date}</span>]
+								[Instagram] [
 								<span className="type">
 									{instagram.location === ""
 										? "Unknown"
@@ -53,31 +53,24 @@ class DateDetailList extends Component {
 			);
 		});
 
-		const tweets = this.props.data.tweets.map(
-			(tweet) => {
-				return (
-					<div
-						key={tweet.id}
-						className="tweet"
-					>
-						<span className="metadata">
-							[<span className="date">{tweet.date}</span>] [Tweet]
-						</span>
-						<span className="url">
-							<a
-								href={
-									tweet.url
-								}
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								{tweet.text}
-							</a>
-						</span>
-					</div>
-				);
-			}
-		);
+		const tweets = this.props.data.tweets.map((tweet) => {
+			return (
+				<div key={tweet.id} className="tweet">
+					<span className="metadata">
+						[<span className="date">{tweet.date}</span>] [Tweet]
+					</span>
+					<span className="url">
+						<a
+							href={tweet.url}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{tweet.text}
+						</a>
+					</span>
+				</div>
+			);
+		});
 
 		const githubActivity = this.props.data.githubActivity.map(
 			(activity) => {
@@ -87,7 +80,8 @@ class DateDetailList extends Component {
 						className="github-activity"
 					>
 						<span className="metadata">
-							[<span className="date">{activity.date}</span>] [GitHub Activity]
+							[<span className="date">{activity.date}</span>]
+							[GitHub Activity]
 						</span>
 						<span className="url">
 							<a

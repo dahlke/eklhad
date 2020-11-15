@@ -36,7 +36,7 @@ function _processHeatmapDateMap(instagrams, tweets, links, githubActivity) {
 				instagrams: [],
 				tweets: [],
 				links: [],
-				githubActivity: []
+				githubActivity: [],
 			};
 		}
 		heatmapDateMap[d]["links"].push(link);
@@ -50,12 +50,11 @@ function _processHeatmapDateMap(instagrams, tweets, links, githubActivity) {
 				instagrams: [],
 				tweets: [],
 				links: [],
-				githubActivity: []
+				githubActivity: [],
 			};
 		}
 		heatmapDateMap[d]["instagrams"].push(instagram);
 	});
-
 
 	tweets.forEach((tweet) => {
 		const d = moment.unix(tweet.timestamp).format("YYYY-MM-DD");
@@ -65,7 +64,7 @@ function _processHeatmapDateMap(instagrams, tweets, links, githubActivity) {
 				instagrams: [],
 				tweets: [],
 				links: [],
-				githubActivity: []
+				githubActivity: [],
 			};
 		}
 		heatmapDateMap[d]["tweets"].push(tweet);
@@ -79,7 +78,7 @@ function _processHeatmapDateMap(instagrams, tweets, links, githubActivity) {
 				instagrams: [],
 				tweets: [],
 				links: [],
-				githubActivity: []
+				githubActivity: [],
 			};
 		}
 		heatmapDateMap[d]["githubActivity"].push(activity);
