@@ -1,4 +1,5 @@
 # Election 2016: Analyzing Real-Time Twitter Sentiment with MemSQL Pipelines
+
 _Originally published on the [MemSQL Blog](http://blog.memsql.com/election-2016-real-time-twitter-sentiment/)._
 
 November is nearly upon us, with the spotlight on Election 2016. This election has been amplified by millions of digital touchpoints. In particular, Twitter has risen in popularity as a forum for voicing individual opinions as well as tracking statements directly from the candidates. [Pew Research Center states](https://www.journalism.org/2016/07/18/candidates-differ-in-their-use-of-social-media-to-connect-with-the-public/) that “In January 2016, 44% of U.S. adults reported having learned about the 2016 presidential election in the past week from social media, outpacing both local and national print newspapers.” The first 2016 Presidential [debate](https://www.hollywoodreporter.com/news/first-presidential-debate-breaks-twitter-932779) “between Donald Trump and Hillary Clinton was the most-tweeted debate ever. All told, there were 17.1 million interactions on Twitter about the event.”
@@ -15,12 +16,13 @@ By now, most people have probably seen both encouraging and deprecating tweets a
 
 Introducing our latest live demonstration, Election 2016: Real-Time Twitter Analytics. We analyze the sentiment –attitude, emotion, or feeling– of every tweet about Clinton and Trump as it is tweeted. Now, anyone can see how high or low in the negative or positive tweets are trending at any given point. We’re giving everyone access to the broader scope of how each candidate is doing according to the Twittersphere.
 
-### How it Works
+## How it Works
+
 First, we wrote a python script to collect tweets and retweets that contain the words Hillary, hillary, Trump, or trump directly from Twitter.com. We picked the words “Hillary” and “Trump” as descriptors since they are the most used for the candidates. The script pushes this content to an Apache Kafka queue in real time. Messages in this Kafka queue are then streamed using MemSQL Pipelines. Released in September 2016 at Strata+Hadoop World, Pipelines features a brand new SQL command `CREATE PIPELINE`, enabling native ingest from Apache Kafka and creation of real-time streaming pipelines.
 
 The `CREATE PIPELINE` statement looks like this:
 
-```
+```sql
 CREATE PIPELINE `twitter_pipeline`
 AS LOAD DATA KAFKA ‘your-kafka-host-ip:9092/your-kafka-topic’
 INTO TABLE `tweets`
@@ -28,7 +30,7 @@ INTO TABLE `tweets`
 
 The `CREATE TABLE` statement for the `tweets` table in MemSQL is shown below:
 
-```
+```sql
 CREATE TABLE `tweets` (
 `id` bigint(20) DEFAULT NULL,
 `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -49,7 +51,7 @@ _Note: we create `tweets` as a columnstore table so it can handle large amounts 
 
 When the `twitter_pipeline` is run, data in the `tweets` table looks like this:
 
-```
+```bash
 memsql> SELECT * from tweets LIMIT 1\G
 *************************** 1. row ***************************
 id: 786409507039485952
@@ -64,7 +66,7 @@ created: 2016-10-13 03:33:31
 
 Next, we created a second pipeline that pulled from the same Kafka topic, but instead of storing directly into a table, we perform real-time sentiment analysis with a MemSQL Pipelines transform that leverages the Python Natural Language Toolkit ([nltk](http://www.nltk.org/)) Vader module. The `CREATE PIPELINE` statement for the second pipeline looks like this:
 
-```
+```sql
 CREATE PIPELINE `twitter_sentiment_pipeline`
 AS LOAD DATA KAFKA 'your-kafka-host-ip:9092/your-kafka-topic'
 WITH TRANSFORM ('http://download.memsql.com/pipelines-twitter-demo/transform.tar.gz' , 'transform.py' , '')
@@ -73,7 +75,7 @@ INTO TABLE `tweet_sentiment`
 
 Combining data from these two MemSQL pipelines, we can perform analytics using SQL. For example, we can create a histogram of tweet sentiment through the following query:
 
-```
+```sql
 SELECT
 sentiment_bucket,
 SUM(IF(candidate = "Clinton", tweet_volume, 0)) as clinton_tweets,

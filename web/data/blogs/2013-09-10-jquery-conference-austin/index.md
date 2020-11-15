@@ -1,22 +1,22 @@
 # [2013-09-10] jQuery Conference 2013: Austin
 
-##### 10 Sept 2013
+## 10 Sept 2013
 
 ---
 
-## The State of jQuery - Dave Methvin
+### The State of jQuery - Dave Methvin
 
 - Bower and NPM dependency management out next month.
-- Finding forced layouts (http://jsfiddle.net/qjncp)
+- [Finding forced layouts](http://jsfiddle.net/qjncp)
 - Full page forced layouts occur every time you ask the browser if we have enough content during an infinite scroll. That's a lot of work on the browser.
 - Alternative: Instead of asking the browser every time, determine the height of a row, and track how long we've scrolled. Ex: 200px high, the page scrolled 740px, we need 4 more rows.
 - When looking for elements, using class names such as `.hidden` will provide faster selection than `:hidden` as it doesn't need to check style rules or snything else, it only has to inspect the DOM tree. It won't force a layout, works well with styling, and is battery efficient.
-- Throttle high frequency events like mousemove or scroll; handle with requestAnimationFrame (http://www.html5rocks.com/en/tutorials/speed/rendering/)
+- [Throttle high frequency events like mousemove or scroll; handle with requestAnimationFrame](http://www.html5rocks.com/en/tutorials/speed/rendering/)
 - Moral: Know your tools. Modern browsers have the tools to find these issues. (Even IE... 11)
 
 ---
 
-## Digging and Debugging - Brian Arnold
+### Digging and Debugging - Brian Arnold
 
 #### Non Technical Tips
 
@@ -24,6 +24,7 @@
 - Verbally express what the problem is, even if you don't expect help from that person. It helps to give you clarity on the problem.
 
 #### Understand the Tools
+
 - Chrome is the most feature rich debugger.
 - `$0` is an alias in the Chrome command line to the most recently inspected DOM node. When you select something else, it becomes "$1" and so on.
 - `$_` declares a variable for the last command so that we can use it and inspect it's DOM structure easily. This is useful in comparison to `$('label')` which is an invocation, which we cannot use command line autocomplete on.
@@ -38,7 +39,6 @@
 - Using pretty print can help to make minified source a bit more readable.
 - Using profiles, we can record a bit of time on the page, and get a detailed result on processing. This gives you a very clear visual as to where your time is going.
 
-
 #### Techniques
 
 - Private Mode - no history, cache, cookies.
@@ -47,15 +47,15 @@
 - Which code is mine? It's often an `anonymous function` as it is often used as a callback in a library.
 
 #### Resources
+
 - Discover DevTools
 - CommandLine API (Chrome)
 - Console API (Chrome)
 - Command Line API (Firebug)
 
-
 ---
 
-## Getting the Most out of jQuery Widgets - Richard Lindsey
+### Getting the Most out of jQuery Widgets - Richard Lindsey
 
 - Think small. Think modular. Elements, cells, compounds, organisms.
 - Keep them decoupled. Subscribe and Respond. Communicate through events.
@@ -63,13 +63,13 @@
 - Make it testable. Does it perform operation or calculation? Is it part of the widget's public facing API?
 - Public functions should have unit tests, store prototypes in object namespaces, test logical functions separately.
 - *Summary:* _Only make componenets as large as they need to be. Keep them as decoupled as possible. Consume downwards, communicate upwards. Make functions and options granular and robust for potential overrides. Test, test, and test. Make every attempt to ensure backward compatibility._
-- Presentation slides can be found at: http://bit.ly/jqwidgets
+- [Presentation slides](http://bit.ly/jqwidgets)
 
 ---
 
-## Using jQuery Mobile to Build Device Agnostic Pages - Asta Gindulyte
+### Using jQuery Mobile to Build Device Agnostic Pages - Asta Gindulyte
 
-- http://pubchem.ncbi.nlm.nih.gov/
+- [Paper](http://pubchem.ncbi.nlm.nih.gov/)
 - Challenges: screen-size, touch, content organization, and testing.
 - Screen size variety challenge - no scroll, and font size big enough to read.
 - Touch challenge - buttons big enough to touch, swipe and other gestures should be intuitive.
@@ -79,14 +79,15 @@
 
 ---
 
-## Grunt Automates All of the Things ... What's Next? - Aaron Stacy
+### Grunt Automates All of the Things ... What's Next? - Aaron Stacy
 
 - Don't just build, *ship*.
 - _Releases should not be "tribal knowledge"._ If one of your teammates was going to get hit by a bus, could you still push a release?
 - Continuous integration - everything you do when you deploy, except all the time, every commit.
 - [TravisCI](https://travis-ci.org/) as an alternative to [Jenkins](http://jenkins-ci.org/)
 
-##### Continuous integration example.
+#### Continuous Integration Example
+
 [Source](https://github.com/aaronj1335/shipit)
 
 - make `grunt test` work. ([Selenium](http://docs.seleniumhq.org/) and [PhantomJS](http://phantomjs.org) recommended)
@@ -102,7 +103,8 @@
   - _not_ receive an e-mail when something doesn't fail.
   - know if merging a pull request will cause problems.
 
-##### Another example
+#### Another example
+
 - make `grunt deploy` work
   - heroku
   - nodejitsu
@@ -114,7 +116,7 @@
 
 ---
 
-## Simply Pushing the Web Forward - Kris Borchers
+### Simply Pushing the Web Forward - Kris Borchers
 
 [Slides](http://pushtalk-aerogearkb.rhcloud.com/#/), [AeroGear](https://github.com/aerogear)
 
@@ -129,7 +131,7 @@
 
 ---
 
-## Creating 3D Worlds with voxel.js and jQuery - Vlad Flippov
+### Creating 3D Worlds with voxel.js and jQuery - Vlad Flippov
 
 [Site](http://voxeljs.com/)
 
@@ -139,13 +141,15 @@
 
 ---
 
-## How to How-to
-##### Or, Tips for Effectively Educating New Developers
+### How to How-to
+
+#### Or, Tips for Effectively Educating New Developers
 
 - _At one time, we all knew nothing about our jobs. And that's easy to forget. Learning new things is a crucial part of doing your job!_
 - Why be a teacher? It enhances your leadership skills, has a positive influence on other developers careers, and the rest of the dev team will thank you.
 
 #### Making the Most out of Teaching & Learning Styles
+
 - Recognition of distinct learning preferences allows you to customize the teaching process.
 - Two Common Learning Styles
   - Creative / Visual
@@ -218,11 +222,11 @@ A new dev's best weapon is his own curiousity. Hiring *passionate, curious* deve
 
 ---
 
-##### 11 Sept 2013
+## 11 Sept 2013
 
 ---
 
-## jQuery UI & Mobile Keynote (The Great Merger) - Scott González
+### jQuery UI & Mobile Keynote (The Great Merger) - Scott González
 
 - The touch events model is so fragmented on the web that it is rather difficult to implement touch events in jQuery UI
 - jQuery UI is meant to be code that works everywhere.
@@ -259,7 +263,8 @@ A new dev's best weapon is his own curiousity. Hiring *passionate, curious* deve
 
 ---
 
-## In Search of Front-End Modularity - Juan Pablo Buritica
+### In Search of Front-End Modularity - Juan Pablo Buritica
+
 [Slides](https://speakerdeck.com/buritica/in-search-of-front-end-modularity) - Thanks [Juan](https://github.com/Buritica)!
 
 - As our applications evolve, complexity will increase. Function, libraries, frameworks, and architectures.
@@ -295,7 +300,7 @@ A new dev's best weapon is his own curiousity. Hiring *passionate, curious* deve
     - Are meant to enhance or override presentation of an existing element
   - Custom Elements
     - Allow author definition of DOM elements
-    - Access to prototype via nested <script>
+    - Access to prototype via nested `<script>`
     - Element lifecycle callbacks
     - Available via markup and scripts
   - Shadow DOM
@@ -307,7 +312,7 @@ A new dev's best weapon is his own curiousity. Hiring *passionate, curious* deve
 
 ---
 
-## AMD-ifying jQuery Source: Game, Consider Yourself Changed - Timmy Willison
+### AMD-ifying jQuery Source: Game, Consider Yourself Changed - Timmy Willison
 
 [Slides](http://timmywil.github.io/jquery-amdify/)
 
@@ -324,13 +329,13 @@ A new dev's best weapon is his own curiousity. Hiring *passionate, curious* deve
 
 ---
 
-## Stop Procrastinating and Start Deferring - Julian Aubourg
+### Stop Procrastinating and Start Deferring - Julian Aubourg
 
 [Gist of the Talk](https://gist.github.com/jaubourg/6525351)
 
 ---
 
-## Building a Development Culture - Monika Piotrowicz
+### Building a Development Culture - Monika Piotrowicz
 
 - Process - a process to support creativity, not resist it.
 - Web devs should be part of the design process from the very beginning, they should not just be handed down the plans from the designers and PMs.
@@ -358,7 +363,7 @@ A new dev's best weapon is his own curiousity. Hiring *passionate, curious* deve
 
 ---
 
-## jQuery Mobile: Optimizing Performance - Alex Schmitz
+### jQuery Mobile: Optimizing Performance - Alex Schmitz
 
 - On average, mobile is about 3x slower.
 - Simplify your pages
@@ -389,7 +394,7 @@ A new dev's best weapon is his own curiousity. Hiring *passionate, curious* deve
 
 ---
 
-## jQuery + Phantom.js + Node.js = Testing and Automation Awesomesauce! - Travis Tidwell
+### jQuery + Phantom.js + Node.js = Testing and Automation Awesomesauce! - Travis Tidwell
 
 [Slides](http://travistidwell.com/presentations/jquery-node-phantom) - [Source](https://github.com/travist/presentations)
 
@@ -404,14 +409,14 @@ A new dev's best weapon is his own curiousity. Hiring *passionate, curious* deve
 
 ---
 
-## Journey to the Center of jQuery - Anne-Gaelle Colom
+### Journey to the Center of jQuery - Anne-Gaelle Colom
 
 - Interesting anecdotes on moving from GitHub committer to member of the jQuery team.
 - Bits on how to contribute to jQuery.
 
 ---
 
-## Talk To Me: Making websites accessible - Jörn Zaefferer
+### Talk To Me: Making websites accessible - Jörn Zaefferer
 
 - Specifically, for people who can't see well.
 - Convince your boss that accessibility is important, like user experience and security
@@ -433,7 +438,7 @@ A new dev's best weapon is his own curiousity. Hiring *passionate, curious* deve
 
 ---
 
-## Adaptive Images for Responsive Web Design - Christopher Schmitt
+### Adaptive Images for Responsive Web Design - Christopher Schmitt
 
 - Feature testing vs. Browser Sniffing
   - Browser width
@@ -453,6 +458,6 @@ A new dev's best weapon is his own curiousity. Hiring *passionate, curious* deve
   - SVG
     - Use online compression tools as Illustrator generates massive SVGs
   - font-based solutions
-    -  icon fonts
-      -  [fontello](http://fontello.com/)
-      -  [icomoon](http://icomoon.io/)
+    - icon fonts
+      - [fontello](http://fontello.com/)
+      - [icomoon](http://icomoon.io/)
