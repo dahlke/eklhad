@@ -1,4 +1,5 @@
 # [2014-10-01] The Internet of Furbies
+
 _Originally published on the [MemSQL Blog](http://blog.memsql.com/the-internet-of-furbies/)._
 
 ![The Furbies Themselves](https://storage.googleapis.com/eklhad-web-public/images/the-internet-of-furbies.png)

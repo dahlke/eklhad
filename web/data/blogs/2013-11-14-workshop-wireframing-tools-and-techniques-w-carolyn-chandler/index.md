@@ -8,8 +8,7 @@ Capture ideas and sketch lo-fi interfaces. At this stage you are thinking about 
 
 **Do not go down the color and typography rabit hole right at the start.**
 
-
-# Why Wireframe?
+## Why You Should Wireframe
 
 - Don't let "perfect" be the enemy of the GOOD.
 - Don't let the "good enough" be the enemy of the GOOD (or the great).
@@ -26,6 +25,7 @@ Wireframes only communicate **partial** information to the developers.
 ![The Process at Large](https://storage.googleapis.com/eklhad-web-public/images/the_process_at_large.gif)
 
 ### Key Benefits
+
 - Communicate
   - Develop a shared understanding of site layout and functionality
   - Define page requirements
@@ -39,6 +39,7 @@ Wireframes only communicate **partial** information to the developers.
 _What is a common pattern that frustrates people? Are we doing something that potentially makes someone feel stupid just to meet the requirement?_ (Ex: GMail asking if you want to send an e-mail with no attachment after you mention that attachment in the email.)
 
 ### Tools
+
 - Axure
 - Balsamiq
 - Pencil and Paper
@@ -59,6 +60,7 @@ Start with a low detail wireframe, and work your way through medium and high, te
 Wireframes help to communicate page layout, information priority, and content, and behavior relationships.
 
 Wireframes do **not** communicate:
+
 - Look and Feel
 - Treatment of buttons and/or graphic elements
 - Exact copy or verbiage
@@ -72,17 +74,15 @@ Wireframes do **not** communicate:
 - Tell the story of the user.
 - _Why is somebody trying to do this in the first place?_
 
-
 ### Before and After
 
 ![Before and After](https://storage.googleapis.com/eklhad-web-public/images/before_and_after.jpeg)
 
 **Engage the visual designer earlier in the process.** Do not just hand them off a stack of wireframes. Work with them, so that they are not locked in to your layout choices, etc. You can use color for things like grouping, but try not to use too much. Being prescriptive doesn't provide the best solution.
 
+## How to Create a Wireframe
 
-# How do you create a wireframe?
-
-### How will information be arranged?
+### Arranging the Information
 
 Create content groupings of similar information types that are likely to be used together. THis will help users when they are searching for information.
 
@@ -92,7 +92,8 @@ Don't forget that you can always be sketching as you are designing.
 
 Good wireframes will achieve a balance between being too detailed and too vague.
 
-### What do you need to know before you create a wireframe?
+### Prerequisite Knowledge for Creating a Wireframe
+
 - Business requirements
 - Content requirements
 - Existing brand and style requirements
@@ -110,14 +111,16 @@ _How will users navigate around the site?_ Determine this early.
 **Copywriters** - _What do I need to write?_
 **Wireframe Creators** - _Why did I make these deisions?_
 
-##### Terms that are good to know
+### Terms that are Good to Know
+
 - Elements
 - Modules/Widgets
 - Columnar Grid (960)
 - Margins
 - Padding
 
-##### How many pages do I create?
+### Pages You Should Create
+
 - Home page
 - Secondary page templates (as many as needed)
 - Unique pages (search or login)
