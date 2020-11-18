@@ -6,7 +6,7 @@ commands:
       - run: echo $GOOGLE_CIRCLECI_CREDENTIALS_JSON > $GOOGLE_APPLICATION_CREDENTIALS
   go_deps:
     steps:
-      - run: go get -v -t -d ./...
+      - run: go get -v -t -d /go/src/github.com/dahlke/eklhad/...
 jobs:
   go_js_test:
     docker:
