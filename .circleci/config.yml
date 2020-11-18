@@ -27,6 +27,7 @@ jobs:
       - run: go run web/main.go -github
       - run: go run web/main.go -twitter
       - run: go run web/main.go -gsheets
+      - run: go run web/main.go -instagram
   packer_build_terraform_plan:
     docker:
       - image: eklhad/eklhad-web-circleci:0.1.1
