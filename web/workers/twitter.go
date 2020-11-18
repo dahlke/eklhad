@@ -40,6 +40,31 @@ func convertTweets(tweets []twitter.Tweet) []structs.EklhadTweet {
 	return convertedTweets
 }
 
+func findTweetID(tweetSlice []structs.EklhadTweet, tweetID string) bool {
+	found := false
+
+	for _, tweet := range tweetSlice {
+		if tweet.ID == tweetID {
+			found = true
+			break
+		}
+	}
+
+	return found
+}
+
+func deduplicateTweets(tweets []structs.EklhadTweet) []structs.EklhadTweet {
+	deduplicatedTweets := []structs.EklhadTweet{}
+	for _, tweet := range tweets {
+		exists := findTweetID(deduplicatedTweets, tweet.ID)
+		if !exists {
+			deduplicatedTweets = append(deduplicatedTweets, tweet)
+		}
+	}
+	fmt.Println(len(deduplicatedTweets), len(tweets))
+	return deduplicatedTweets
+}
+
 func writeTweetsToGCS(tweets []twitter.Tweet) {
 	ctx := context.Background()
 	gcsClient, err := storage.NewClient(ctx)
@@ -57,7 +82,8 @@ func writeTweetsToGCS(tweets []twitter.Tweet) {
 		"x-goog-meta-dataset": "twitter",
 	}
 	convertedTweets := convertTweets(tweets)
-	fileContents, _ := json.MarshalIndent(convertedTweets, "", " ")
+	deduplicatedTweets := deduplicateTweets(convertedTweets)
+	fileContents, _ := json.MarshalIndent(deduplicatedTweets, "", " ")
 
 	if _, err := wc.Write([]byte(fileContents)); err != nil {
 		log.Error("Unable to write Twitter data to GCS.")
