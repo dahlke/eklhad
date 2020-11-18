@@ -25,28 +25,27 @@ class DateDetailList extends Component {
 
 		const instagrams = this.props.data.instagrams.map((instagram) => {
 			return (
-				<div key={instagram.shortcode} className="instagram">
+				<div key={instagram.id} className="instagram">
 					<div className="url">
 						<a
 							target="_blank"
 							rel="noopener noreferrer"
-							href={instagram.url}
+							href={instagram.permalink}
 						>
 							<span className="metadata">
 								[<span className="date">{instagram.date}</span>]
-								[Instagram] [
-								<span className="type">
-									{instagram.location === ""
-										? "Unknown"
-										: instagram.location}
-									]
-								</span>
+								[Instagram]
 							</span>
 							<img
 								className="photo"
-								src={instagram.url}
-								alt={instagram.location}
+								src={instagram.media_url}
+								alt={instagram.caption}
 							/>
+							<span className="caption">
+								{instagram.caption === ""
+									? "---"
+									: instagram.caption}
+							</span>
 						</a>
 					</div>
 				</div>

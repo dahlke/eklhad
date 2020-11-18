@@ -37,31 +37,37 @@ func convertGitHubActivityData(repoName string, repoCommitActivity []*github.Wee
 }
 
 func writeGitHubActivityToGCS(allGitHubActivity []*structs.GitHubDailyCommitActivityForRepo) {
-	ctx := context.Background()
-	gcsClient, err := storage.NewClient(ctx)
-	if err != nil {
-		log.Error(err)
-	}
+	if len(allGitHubActivity) > 0 {
+		ctx := context.Background()
+		gcsClient, err := storage.NewClient(ctx)
+		if err != nil {
+			log.Error(err)
+		}
 
-	bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
+		bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
 
-	wc := bkt.Object(constants.GitHubActivityGCSFilePath).NewWriter(ctx)
-	wc.ContentType = "text/plain"
-	wc.Metadata = map[string]string{
-		"x-goog-meta-app":     "eklhad-web",
-		"x-goog-meta-type":    "data",
-		"x-goog-meta-dataset": "github",
-	}
-	fileContents, _ := json.MarshalIndent(allGitHubActivity, "", " ")
+		wc := bkt.Object(constants.GitHubActivityGCSFilePath).NewWriter(ctx)
+		wc.ContentType = "text/plain"
+		wc.Metadata = map[string]string{
+			"x-goog-meta-app":     "eklhad-web",
+			"x-goog-meta-type":    "data",
+			"x-goog-meta-dataset": "github",
+		}
+		fileContents, _ := json.MarshalIndent(allGitHubActivity, "", " ")
 
-	if _, err := wc.Write([]byte(fileContents)); err != nil {
-		log.Error("Unable to write GitHub data to GCS.")
-		return
-	}
+		if _, err := wc.Write([]byte(fileContents)); err != nil {
+			log.Error("Unable to write GitHub data to GCS.")
+			return
+		}
 
-	if err := wc.Close(); err != nil {
-		log.Error("Unable to close writer for GCS while writing GitHub data.")
-		return
+		if err := wc.Close(); err != nil {
+			log.Error("Unable to close writer for GCS while writing GitHub data.")
+			return
+		}
+
+		log.Info("GitHub data successfully written to GCS.")
+	} else {
+		log.Error("Something went wrong, the data set was size zero, so no GitHub data was overwritten in GCS.")
 	}
 }
 
