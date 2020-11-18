@@ -4,9 +4,6 @@ commands:
     steps:
       - run: touch $GOOGLE_APPLICATION_CREDENTIALS
       - run: echo $GOOGLE_CIRCLECI_CREDENTIALS_JSON > $GOOGLE_APPLICATION_CREDENTIALS
-  go_deps:
-    steps:
-      - run: go get -v -t -d /go/src/github.com/dahlke/eklhad/...
 jobs:
   go_js_test:
     docker:
@@ -15,22 +12,19 @@ jobs:
     steps:
       - checkout
       - gcp_auth
-      - go_deps
+      - run: go get -v -t -d ./...
       - run: go test -v ./...
       - run: npm --prefix web/frontend/ install
       - run: npm --prefix web/frontend/ run-script test-once
   data_workers:
     docker:
       - image: eklhad/eklhad-web-circleci:0.1.1
-    working_directory: /go/src/github.com/dahlke/eklhad/web/
+    working_directory: /go/src/github.com/dahlke/eklhad/
     steps:
       - checkout
       - gcp_auth
-      - go_deps
-      - run: go run main.go -github
-      - run: go run main.go -twitter
-      - run: go run main.go -gsheets
-      - run: go run main.go -instagram
+      - run: go get -v -t -d ./...
+      - run: make collect_data_no_insta
   packer_build_terraform_plan:
     docker:
       - image: eklhad/eklhad-web-circleci:0.1.1
