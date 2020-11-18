@@ -19,60 +19,72 @@ import (
 )
 
 func writeLocationsToGCS(locations []structs.EklhadLocation) {
-	ctx := context.Background()
-	gcsClient, err := storage.NewClient(ctx)
-	if err != nil {
-		log.Error(err)
-	}
+	if len(locations) > 0 {
+		ctx := context.Background()
+		gcsClient, err := storage.NewClient(ctx)
+		if err != nil {
+			log.Error(err)
+		}
 
-	bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
+		bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
 
-	wc := bkt.Object(constants.LocationDataGCSFilePath).NewWriter(ctx)
-	wc.ContentType = "text/plain"
-	wc.Metadata = map[string]string{
-		"x-goog-meta-app":     "eklhad-web",
-		"x-goog-meta-type":    "data",
-		"x-goog-meta-dataset": "intagram",
-	}
-	fileContents, _ := json.MarshalIndent(locations, "", " ")
+		wc := bkt.Object(constants.LocationDataGCSFilePath).NewWriter(ctx)
+		wc.ContentType = "text/plain"
+		wc.Metadata = map[string]string{
+			"x-goog-meta-app":     "eklhad-web",
+			"x-goog-meta-type":    "data",
+			"x-goog-meta-dataset": "intagram",
+		}
+		fileContents, _ := json.MarshalIndent(locations, "", " ")
 
-	if _, err := wc.Write([]byte(fileContents)); err != nil {
-		log.Error("Unable to write Instagram data to GCS.")
-		return
-	}
+		if _, err := wc.Write([]byte(fileContents)); err != nil {
+			log.Error("Unable to write Instagram data to GCS.")
+			return
+		}
 
-	if err := wc.Close(); err != nil {
-		log.Error("Unable to close writer for GCS while writing Instagram data.")
-		return
+		if err := wc.Close(); err != nil {
+			log.Error("Unable to close writer for GCS while writing Instagram data.")
+			return
+		}
+
+		log.Info("Location data successfully written to GCS.")
+	} else {
+		log.Error("Something went wrong, the data set was size zero, so no location data was overwritten in GCS.")
 	}
 }
 
 func writeLinksToGCS(links []structs.EklhadLink) {
-	ctx := context.Background()
-	gcsClient, err := storage.NewClient(ctx)
-	if err != nil {
-		log.Error(err)
-	}
+	if len(links) > 0 {
+		ctx := context.Background()
+		gcsClient, err := storage.NewClient(ctx)
+		if err != nil {
+			log.Error(err)
+		}
 
-	bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
+		bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
 
-	wc := bkt.Object(constants.LinkDataGCSFilePath).NewWriter(ctx)
-	wc.ContentType = "text/plain"
-	wc.Metadata = map[string]string{
-		"x-goog-meta-app":     "eklhad-web",
-		"x-goog-meta-type":    "data",
-		"x-goog-meta-dataset": "links",
-	}
-	fileContents, _ := json.MarshalIndent(links, "", " ")
+		wc := bkt.Object(constants.LinkDataGCSFilePath).NewWriter(ctx)
+		wc.ContentType = "text/plain"
+		wc.Metadata = map[string]string{
+			"x-goog-meta-app":     "eklhad-web",
+			"x-goog-meta-type":    "data",
+			"x-goog-meta-dataset": "links",
+		}
+		fileContents, _ := json.MarshalIndent(links, "", " ")
 
-	if _, err := wc.Write([]byte(fileContents)); err != nil {
-		log.Error("Unable to write link data to GCS.")
-		return
-	}
+		if _, err := wc.Write([]byte(fileContents)); err != nil {
+			log.Error("Unable to write link data to GCS.")
+			return
+		}
 
-	if err := wc.Close(); err != nil {
-		log.Error("Unable to close writer for GCS while writing link data.")
-		return
+		if err := wc.Close(); err != nil {
+			log.Error("Unable to close writer for GCS while writing link data.")
+			return
+		}
+
+		log.Info("Link data successfully written to GCS.")
+	} else {
+		log.Error("Something went wrong, the data set was size zero, so no link data was overwritten in GCS.")
 	}
 }
 

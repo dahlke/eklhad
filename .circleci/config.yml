@@ -16,6 +16,15 @@ jobs:
       - run: go test -v ./...
       - run: npm --prefix web/frontend/ install
       - run: npm --prefix web/frontend/ run-script test-once
+  data_workers:
+    docker:
+      - image: eklhad/eklhad-web-circleci:0.1.1
+    working_directory: /go/src/github.com/dahlke/eklhad/
+    steps:
+      - checkout
+      - gcp_auth
+      - run: go get -v -t -d ./...
+      - run: make collect_data
   packer_build_terraform_plan:
     docker:
       - image: eklhad/eklhad-web-circleci:0.1.1
@@ -54,6 +63,12 @@ workflows:
   test_and_deploy:
     jobs:
       - go_js_test
+      - data_workers:
+          requires:
+            - go_js_test
+          filters:
+            branches:
+              only: master
       # - packer_build_terraform_plan
       # - packer_build_terraform_plan:
           # requires:

@@ -40,33 +40,65 @@ func convertTweets(tweets []twitter.Tweet) []structs.EklhadTweet {
 	return convertedTweets
 }
 
+func findTweetID(tweetSlice []structs.EklhadTweet, tweetID string) bool {
+	found := false
+
+	for _, tweet := range tweetSlice {
+		if tweet.ID == tweetID {
+			found = true
+			break
+		}
+	}
+
+	return found
+}
+
+func deduplicateTweets(tweets []structs.EklhadTweet) []structs.EklhadTweet {
+	deduplicatedTweets := []structs.EklhadTweet{}
+	for _, tweet := range tweets {
+		exists := findTweetID(deduplicatedTweets, tweet.ID)
+		if !exists {
+			deduplicatedTweets = append(deduplicatedTweets, tweet)
+		}
+	}
+	fmt.Println(len(deduplicatedTweets), len(tweets))
+	return deduplicatedTweets
+}
+
 func writeTweetsToGCS(tweets []twitter.Tweet) {
-	ctx := context.Background()
-	gcsClient, err := storage.NewClient(ctx)
-	if err != nil {
-		log.Error(err)
-	}
+	if len(tweets) > 0 {
+		ctx := context.Background()
+		gcsClient, err := storage.NewClient(ctx)
+		if err != nil {
+			log.Error(err)
+		}
 
-	bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
+		bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
 
-	wc := bkt.Object(constants.TwitterDataGCSFilePath).NewWriter(ctx)
-	wc.ContentType = "text/plain"
-	wc.Metadata = map[string]string{
-		"x-goog-meta-app":     "eklhad-web",
-		"x-goog-meta-type":    "data",
-		"x-goog-meta-dataset": "twitter",
-	}
-	convertedTweets := convertTweets(tweets)
-	fileContents, _ := json.MarshalIndent(convertedTweets, "", " ")
+		wc := bkt.Object(constants.TwitterDataGCSFilePath).NewWriter(ctx)
+		wc.ContentType = "text/plain"
+		wc.Metadata = map[string]string{
+			"x-goog-meta-app":     "eklhad-web",
+			"x-goog-meta-type":    "data",
+			"x-goog-meta-dataset": "twitter",
+		}
+		convertedTweets := convertTweets(tweets)
+		deduplicatedTweets := deduplicateTweets(convertedTweets)
+		fileContents, _ := json.MarshalIndent(deduplicatedTweets, "", " ")
 
-	if _, err := wc.Write([]byte(fileContents)); err != nil {
-		log.Error("Unable to write Twitter data to GCS.")
-		return
-	}
+		if _, err := wc.Write([]byte(fileContents)); err != nil {
+			log.Error("Unable to write Twitter data to GCS.")
+			return
+		}
 
-	if err := wc.Close(); err != nil {
-		log.Error("Unable to close writer for GCS while writing Twitter data.")
-		return
+		if err := wc.Close(); err != nil {
+			log.Error("Unable to close writer for GCS while writing Twitter data.")
+			return
+		}
+
+		log.Info("Twitter data successfully written to GCS.")
+	} else {
+		log.Error("Something went wrong, the data set was size zero, so no Twitter data was overwritten in GCS.")
 	}
 }
 

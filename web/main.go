@@ -172,7 +172,7 @@ func main() {
 	if isPullGSheets {
 		workers.GetDataFromGSheets(appConfigData.GSheetID)
 	} else if isPullInstagram {
-		workers.GetDataFromInstagramForUser(appConfigData.InstagramUsername)
+		workers.GetDataFromInstagramForUser()
 	} else if isPullGitHub {
 		workers.GetDataFromGitHubForUser(appConfigData.GitHubUsername)
 	} else if isPullTwitter {

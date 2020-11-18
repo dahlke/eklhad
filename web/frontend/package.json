@@ -11,7 +11,7 @@
     "eslint-plugin-react-hooks": "^2.5.1",
     "jsonresume-theme-classic": "0.0.1",
     "prettier": "^2.1.2",
-    "resume-cli": "2.0.0"
+    "resume-cli": "2.1.4"
   },
   "dependencies": {
     "blueimp-md5": "^2.16.0",
