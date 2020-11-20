@@ -14,36 +14,37 @@ import (
 )
 
 func writeInstagramMediaToGCS(instagramMedia []goramma_structs.InstagramMedia) {
-	ctx := context.Background()
-	gcsClient, err := storage.NewClient(ctx)
-	if err != nil {
-		log.Error(err)
-	}
-
-	bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
-
-	wc := bkt.Object(constants.InstagramDataGCSFilePath).NewWriter(ctx)
-	wc.ContentType = "text/plain"
-	wc.Metadata = map[string]string{
-		"x-goog-meta-app":     "eklhad-web",
-		"x-goog-meta-type":    "data",
-		"x-goog-meta-dataset": "intagram",
-	}
 	if len(instagramMedia) > 0 {
+		ctx := context.Background()
+		gcsClient, err := storage.NewClient(ctx)
+		if err != nil {
+			log.Error(err)
+		}
+
+		bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
+
+		wc := bkt.Object(constants.InstagramDataGCSFilePath).NewWriter(ctx)
+		wc.ContentType = "text/plain"
+		wc.Metadata = map[string]string{
+			"x-goog-meta-app":     "eklhad-web",
+			"x-goog-meta-type":    "data",
+			"x-goog-meta-dataset": "instagram",
+		}
 		fileContents, _ := json.MarshalIndent(instagramMedia, "", " ")
 
 		if _, err := wc.Write([]byte(fileContents)); err != nil {
 			log.Error("Unable to write Instagram data to GCS.")
 			return
 		}
+
+		if err := wc.Close(); err != nil {
+			log.Error("Unable to close writer for GCS while writing Instagram data.")
+			return
+		}
 	} else {
-		log.Error("Something went wrong, and the Instagram data was not saved so as to not overwrite anything.")
+		log.Error("Something went wrong, the data set was size zero, so no Instagram data was overwritten in GCS.")
 	}
 
-	if err := wc.Close(); err != nil {
-		log.Error("Unable to close writer for GCS while writing Instagram data.")
-		return
-	}
 }
 
 // GetDataFromInstagramForUser retrieves all the Instagram metadata for a user.

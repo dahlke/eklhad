@@ -66,33 +66,38 @@ func deduplicateTweets(tweets []structs.EklhadTweet) []structs.EklhadTweet {
 }
 
 func writeTweetsToGCS(tweets []twitter.Tweet) {
-	ctx := context.Background()
-	gcsClient, err := storage.NewClient(ctx)
-	if err != nil {
-		log.Error(err)
-	}
+	if len(tweets) > 0 {
+		ctx := context.Background()
+		gcsClient, err := storage.NewClient(ctx)
+		if err != nil {
+			log.Error(err)
+		}
 
-	bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
+		bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
 
-	wc := bkt.Object(constants.TwitterDataGCSFilePath).NewWriter(ctx)
-	wc.ContentType = "text/plain"
-	wc.Metadata = map[string]string{
-		"x-goog-meta-app":     "eklhad-web",
-		"x-goog-meta-type":    "data",
-		"x-goog-meta-dataset": "twitter",
-	}
-	convertedTweets := convertTweets(tweets)
-	deduplicatedTweets := deduplicateTweets(convertedTweets)
-	fileContents, _ := json.MarshalIndent(deduplicatedTweets, "", " ")
+		wc := bkt.Object(constants.TwitterDataGCSFilePath).NewWriter(ctx)
+		wc.ContentType = "text/plain"
+		wc.Metadata = map[string]string{
+			"x-goog-meta-app":     "eklhad-web",
+			"x-goog-meta-type":    "data",
+			"x-goog-meta-dataset": "twitter",
+		}
+		convertedTweets := convertTweets(tweets)
+		deduplicatedTweets := deduplicateTweets(convertedTweets)
+		fileContents, _ := json.MarshalIndent(deduplicatedTweets, "", " ")
 
-	if _, err := wc.Write([]byte(fileContents)); err != nil {
-		log.Error("Unable to write Twitter data to GCS.")
-		return
-	}
+		if _, err := wc.Write([]byte(fileContents)); err != nil {
+			log.Error("Unable to write Twitter data to GCS.")
+			return
+		}
 
-	if err := wc.Close(); err != nil {
-		log.Error("Unable to close writer for GCS while writing Twitter data.")
-		return
+		if err := wc.Close(); err != nil {
+			log.Error("Unable to close writer for GCS while writing Twitter data.")
+			return
+		}
+
+	} else {
+		log.Error("Something went wrong, the data set was size zero, so no Twitter data was overwritten in GCS.")
 	}
 }
 
