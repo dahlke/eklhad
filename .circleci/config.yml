@@ -63,7 +63,6 @@ workflows:
   test_and_deploy:
     jobs:
       - go_js_test
-      - data_workers
       - data_workers:
           requires:
             - go_js_test
