@@ -29,11 +29,15 @@ func writeInstagramMediaToGCS(instagramMedia []goramma_structs.InstagramMedia) {
 		"x-goog-meta-type":    "data",
 		"x-goog-meta-dataset": "intagram",
 	}
-	fileContents, _ := json.MarshalIndent(instagramMedia, "", " ")
+	if len(instagramMedia) > 0 {
+		fileContents, _ := json.MarshalIndent(instagramMedia, "", " ")
 
-	if _, err := wc.Write([]byte(fileContents)); err != nil {
-		log.Error("Unable to write Instagram data to GCS.")
-		return
+		if _, err := wc.Write([]byte(fileContents)); err != nil {
+			log.Error("Unable to write Instagram data to GCS.")
+			return
+		}
+	} else {
+		log.Error("Something went wrong, and the Instagram data was not saved so as to not overwrite anything.")
 	}
 
 	if err := wc.Close(); err != nil {
