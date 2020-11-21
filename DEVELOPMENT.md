@@ -113,11 +113,3 @@ make artifact_linux_web # or make artifact_macos_web
 make image_gcp
 make tf_apply_gcp_auto
 ```
-
-// TODO: GCP Service Accounts (Packer / CircleCI) need: Compute Instance Admin (v1), Editor, Service Account User
-// TODO: CircleCi Debugging
-// TODO: Run the test with SSH, then login
-// TODO: note that when adding a GCP JSON env var, need to remove all white space and newlines (newlines that are not already escaped explictly)
-alias go=/usr/local/go/bin/go
-cd /go/src/github.com/dahlke/eklhad/web
-go run main.go -github
