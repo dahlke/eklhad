@@ -97,9 +97,16 @@ html {
 
 				.photo {
 					max-width: 300px;
-					max-width: 300px;
 					display: block;
 					margin: auto;
+				}
+
+				.caption {
+					color: #888;
+					font-size: 10px;
+					margin: 15px auto 0;
+					display: block;
+					max-width: 300px;
 				}
 			}
 		}

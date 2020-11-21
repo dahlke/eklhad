@@ -43,6 +43,8 @@ func writeInstagramMediaToGCS(instagramMedia []goramma_structs.InstagramMedia) {
 			log.Error("Unable to close writer for GCS while writing Instagram data.")
 			return
 		}
+
+		log.Info("Instagram data successfully written to GCS.")
 	} else {
 		log.Error("Something went wrong, the data set was size zero, so no Instagram data was overwritten in GCS.")
 	}

@@ -64,6 +64,8 @@ func writeGitHubActivityToGCS(allGitHubActivity []*structs.GitHubDailyCommitActi
 			log.Error("Unable to close writer for GCS while writing GitHub data.")
 			return
 		}
+
+		log.Info("GitHub data successfully written to GCS.")
 	} else {
 		log.Error("Something went wrong, the data set was size zero, so no GitHub data was overwritten in GCS.")
 	}

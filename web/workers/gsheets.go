@@ -46,6 +46,8 @@ func writeLocationsToGCS(locations []structs.EklhadLocation) {
 			log.Error("Unable to close writer for GCS while writing Instagram data.")
 			return
 		}
+
+		log.Info("Location data successfully written to GCS.")
 	} else {
 		log.Error("Something went wrong, the data set was size zero, so no location data was overwritten in GCS.")
 	}
@@ -79,6 +81,8 @@ func writeLinksToGCS(links []structs.EklhadLink) {
 			log.Error("Unable to close writer for GCS while writing link data.")
 			return
 		}
+
+		log.Info("Link data successfully written to GCS.")
 	} else {
 		log.Error("Something went wrong, the data set was size zero, so no link data was overwritten in GCS.")
 	}

@@ -96,6 +96,7 @@ func writeTweetsToGCS(tweets []twitter.Tweet) {
 			return
 		}
 
+		log.Info("Twitter data successfully written to GCS.")
 	} else {
 		log.Error("Something went wrong, the data set was size zero, so no Twitter data was overwritten in GCS.")
 	}

@@ -30,23 +30,22 @@ class DateDetailList extends Component {
 						<a
 							target="_blank"
 							rel="noopener noreferrer"
-							href={instagram.url}
+							href={instagram.permalink}
 						>
 							<span className="metadata">
 								[<span className="date">{instagram.date}</span>]
-								[Instagram] [
-								<span className="type">
-									{instagram.caption === ""
-										? "---"
-										: instagram.caption}
-									]
-								</span>
+								[Instagram]
 							</span>
 							<img
 								className="photo"
-								src={instagram.url}
+								src={instagram.media_url}
 								alt={instagram.caption}
 							/>
+							<span className="caption">
+								{instagram.caption === ""
+									? "---"
+									: instagram.caption}
+							</span>
 						</a>
 					</div>
 				</div>
