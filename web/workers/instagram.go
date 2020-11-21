@@ -4,11 +4,13 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"os"
 	"time"
 
 	storage "cloud.google.com/go/storage"
 	"github.com/dahlke/eklhad/web/constants"
 	api "github.com/dahlke/goramma/api"
+	"github.com/dahlke/goramma/structs"
 	goramma_structs "github.com/dahlke/goramma/structs"
 	log "github.com/sirupsen/logrus"
 )
@@ -48,34 +50,31 @@ func writeInstagramMediaToGCS(instagramMedia []goramma_structs.InstagramMedia) {
 }
 
 // GetDataFromInstagramForUser retrieves all the Instagram metadata for a user.
-func GetDataFromInstagramForUser(username string) {
-	userID := api.GetUserIDFromMetadata(username)
-	var mediaTimeline []goramma_structs.InstagramMedia
+func GetDataFromInstagramForUser() {
+	instagramToken := os.Getenv("INSTAGRAM_ACCESS_TOKEN")
 
-	// NOTE: This worker always pull all posts for simplicity as well as to
-	// make sure sure that old deleted photos are not represented in the data here.
+	userMetadata := api.GetUserMetadata(instagramToken)
+	fmt.Println(userMetadata)
+
+	var allInstagramMedia []structs.InstagramMedia
+	beforeEndCursor := ""
 	endCursor := ""
+
 	for true {
-		mediaTimelineSlice, hasNextPage, newEndCursor := api.GetUserTimelineMedia(userID, endCursor)
-		mediaTimeline = append(mediaTimelineSlice, mediaTimeline...)
+		log.Info(fmt.Sprintf("Fetching page of Instagram data with end cursor: %s ...", endCursor))
+		userMedia := api.GetUserMedia(instagramToken, endCursor)
+		allInstagramMedia = append(allInstagramMedia, userMedia.Data...)
+		beforeEndCursor = userMedia.Paging.Cursors.Before
+		endCursor = userMedia.Paging.Cursors.After
 
-		// Very stupid that I have to do this, but Golang doesn't recognize
-		// that changing the endCursor in the return value changes this loop
-		// and it complains.
-		endCursor = newEndCursor
-
-		if hasNextPage {
-			log.Info("Getting another page...")
-		} else {
+		if beforeEndCursor == endCursor {
+			log.Info("Finished fetching data from Instagram.")
 			break
 		}
-
-		// Sleep 5 seconds in between page requests to alleviate any stress on
-		// a rate limit.
-		time.Sleep(5 * time.Second)
+		time.Sleep(1 * time.Second)
 	}
 
-	writeInstagramMediaToGCS(mediaTimeline)
+	writeInstagramMediaToGCS(allInstagramMedia)
 }
 
 // ScheduleInstagramWork schedules GetDataFromInstagramForUser at an interval
@@ -83,7 +82,7 @@ func ScheduleInstagramWork(numSleepMins int, username string) {
 	iterationNumber := 0
 	for {
 		log.Info(fmt.Sprintf("Starting Instagram worker scheduled task #%d...", iterationNumber))
-		GetDataFromInstagramForUser(username)
+		GetDataFromInstagramForUser()
 		iterationNumber++
 		log.Info(fmt.Sprintf("Instagram worker sleeping for %d minute(s)...", numSleepMins))
 		time.Sleep(time.Duration(numSleepMins) * time.Minute)
