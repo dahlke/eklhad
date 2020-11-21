@@ -24,7 +24,7 @@ jobs:
       - checkout
       - gcp_auth
       - run: go get -v -t -d ./...
-      - run: make collect_data_no_insta
+      - run: make collect_data
   packer_build_terraform_plan:
     docker:
       - image: eklhad/eklhad-web-circleci:0.1.1

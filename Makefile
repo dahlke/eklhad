@@ -96,13 +96,6 @@ collect_data:
 	go run main.go -twitter && \
 	go run main.go -gsheets;
 
-.PHONY: collect_data_no_insta
-collect_data_no_insta:
-	cd web && \
-	go run main.go -github && \
-	go run main.go -twitter && \
-	go run main.go -gsheets;
-
 ##########################
 # IMAGE BUILD HELPERS
 ##########################
