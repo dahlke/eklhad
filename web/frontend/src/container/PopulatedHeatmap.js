@@ -17,27 +17,18 @@ function _sortByTimestamp(data) {
 function _processHeatmapDateMap(instagrams, tweets, links, githubActivity) {
 	let heatmapDateMap = {};
 
-	/*
-	// TODO: share an empty map like this so I don't have to update them independently every time
 	const emptyHeatmapDate = {
 		instagrams: [],
 		tweets: [],
 		links: [],
 		githubActivity: [],
 	};
-	*/
 
-	// TODO: do this for blogs too
 	links.forEach((link) => {
 		const d = moment.unix(link.timestamp).format("YYYY-MM-DD");
 		link.date = d;
 		if (!heatmapDateMap[d]) {
-			heatmapDateMap[d] = {
-				instagrams: [],
-				tweets: [],
-				links: [],
-				githubActivity: [],
-			};
+			heatmapDateMap[d] = JSON.parse(JSON.stringify(emptyHeatmapDate));
 		}
 		heatmapDateMap[d]["links"].push(link);
 	});
@@ -46,12 +37,7 @@ function _processHeatmapDateMap(instagrams, tweets, links, githubActivity) {
 		const d = moment.unix(instagram.timestamp).format("YYYY-MM-DD");
 		instagram.date = d;
 		if (!heatmapDateMap[d]) {
-			heatmapDateMap[d] = {
-				instagrams: [],
-				tweets: [],
-				links: [],
-				githubActivity: [],
-			};
+			heatmapDateMap[d] = JSON.parse(JSON.stringify(emptyHeatmapDate));
 		}
 		heatmapDateMap[d]["instagrams"].push(instagram);
 	});
@@ -60,12 +46,7 @@ function _processHeatmapDateMap(instagrams, tweets, links, githubActivity) {
 		const d = moment.unix(tweet.timestamp).format("YYYY-MM-DD");
 		tweet.date = d;
 		if (!heatmapDateMap[d]) {
-			heatmapDateMap[d] = {
-				instagrams: [],
-				tweets: [],
-				links: [],
-				githubActivity: [],
-			};
+			heatmapDateMap[d] = JSON.parse(JSON.stringify(emptyHeatmapDate));
 		}
 		heatmapDateMap[d]["tweets"].push(tweet);
 	});
@@ -74,12 +55,7 @@ function _processHeatmapDateMap(instagrams, tweets, links, githubActivity) {
 		const d = moment.unix(activity.timestamp).format("YYYY-MM-DD");
 		activity.date = d;
 		if (!heatmapDateMap[d]) {
-			heatmapDateMap[d] = {
-				instagrams: [],
-				tweets: [],
-				links: [],
-				githubActivity: [],
-			};
+			heatmapDateMap[d] = JSON.parse(JSON.stringify(emptyHeatmapDate));
 		}
 		heatmapDateMap[d]["githubActivity"].push(activity);
 	});
