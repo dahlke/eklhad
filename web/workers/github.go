@@ -97,7 +97,7 @@ func GetDataFromGitHubForUser(username string) {
 		userRepos, _, err := client.Repositories.List(context.Background(), "", repoListOptions)
 
 		if err != nil {
-			log.Fatal(err)
+			log.Error(err)
 		}
 
 		// Loop through all of the public repos the user contributes to

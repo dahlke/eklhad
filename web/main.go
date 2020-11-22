@@ -188,7 +188,7 @@ func main() {
 
 		log.Println("Starting HTTP server that redirects to HTTPS...")
 		err := http.ListenAndServe(":80", http.HandlerFunc(redirectToHTTPS))
-		log.Fatal(err)
+		log.Error(err)
 	} else {
 		if workerRoutines {
 			log.Println("Starting data collection workers...")
@@ -197,6 +197,6 @@ func main() {
 
 		log.Info("Starting HTTP server...")
 		err := http.ListenAndServe(fmt.Sprintf(":%d", appPort), nil)
-		log.Fatal(err)
+		log.Error(err)
 	}
 }
