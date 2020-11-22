@@ -23,7 +23,6 @@ type appConfig struct {
 	GSheetID           string `json:"g_sheet_id"`
 	GitHubUsername     string `json:"github_username"`
 	GravatarEmail      string `json:"gravatar_email"`
-	InstagramUsername  string `json:"instagram_username"`
 	TwitterUsername    string `json:"twitter_username"`
 	WorkerMinSleepMins int    `json:"worker_min_sleep_mins"`
 }
@@ -128,17 +127,20 @@ func parseConfig(configJSONPath string) appConfig {
 func scheduleWorkers(config appConfig) {
 	go workers.ScheduleGitHubWork(config.WorkerMinSleepMins, config.GitHubUsername)
 	go workers.ScheduleGSheetsWork(config.WorkerMinSleepMins, config.GSheetID)
-	go workers.ScheduleInstagramWork(config.WorkerMinSleepMins, config.InstagramUsername)
+	go workers.ScheduleInstagramWork(config.WorkerMinSleepMins)
 	go workers.ScheduleTwitterWork(config.WorkerMinSleepMins, config.TwitterUsername)
+	// TODO add Strava
 }
 
 func main() {
 	portPtr := flag.Int("port", appPort, "The port to run the HTTP app on (default: 3554).")
+	// TODO: add a Config flag, or make a note that the config is required for some of these.
 	productionPtr := flag.Bool("production", false, "If true, run the app over HTTPS.")
-	pullGSheetsPtr := flag.Bool("gsheets", false, "If true, pull the latest data from Google Sheets. ID specified in config.json.")
-	pullInstagramPtr := flag.Bool("instagram", false, "If true, pull all data from Instagram. Username specified in config.json.")
-	pullTwitterPtr := flag.Bool("twitter", false, "If true, pull the latest data from Twitter. Username specified in config.json.")
-	pullGitHubPtr := flag.Bool("github", false, "If true, pull the latest data from GitHub. Username specified in config.json.")
+	pullGSheetsPtr := flag.Bool("gsheets", false, "If true, pull the latest data from Google Sheets.")
+	pullInstagramPtr := flag.Bool("instagram", false, "If true, pull all data from Instagram.")
+	pullTwitterPtr := flag.Bool("twitter", false, "If true, pull the latest data from Twitter.")
+	pullGitHubPtr := flag.Bool("github", false, "If true, pull the latest data from GitHub.")
+	pullStravaPtr := flag.Bool("strava", false, "If true, pull the latest data from Strava.")
 	runWorkersPtr := flag.Bool("workers", false, "If true, run all the workers in Go routines.")
 	flag.Parse()
 
@@ -151,6 +153,7 @@ func main() {
 	isPullInstagram := *pullInstagramPtr
 	isPullTwitter := *pullTwitterPtr
 	isPullGitHub := *pullGitHubPtr
+	isPullStrava := *pullStravaPtr
 	workerRoutines := *runWorkersPtr
 
 	fileServer := http.FileServer(http.Dir("frontend/build/"))
@@ -177,6 +180,8 @@ func main() {
 		workers.GetDataFromGitHubForUser(appConfigData.GitHubUsername)
 	} else if isPullTwitter {
 		workers.GetDataFromTwitterForUser(appConfigData.TwitterUsername)
+	} else if isPullStrava {
+		workers.GetDataFromStrava()
 	} else if isProduction {
 		if workerRoutines {
 			log.Println("Starting data collection workers...")

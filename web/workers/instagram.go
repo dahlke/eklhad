@@ -142,7 +142,7 @@ func GetDataFromInstagramForUser() {
 }
 
 // ScheduleInstagramWork schedules GetDataFromInstagramForUser at an interval
-func ScheduleInstagramWork(numSleepMins int, username string) {
+func ScheduleInstagramWork(numSleepMins int) {
 	iterationNumber := 0
 	for {
 		log.Info(fmt.Sprintf("Starting Instagram worker scheduled task #%d...", iterationNumber))
