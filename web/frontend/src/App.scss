@@ -46,8 +46,10 @@ html {
 			margin-top: 15px;
 		}
 
+		.biography,
 		.blog-content {
 			width: 100%;
+			text-transform: none;
 			font-family: "VCR OSD Mono", monospace;
 			color: #333;
 
@@ -68,7 +70,6 @@ html {
 
 		.date-detail-list {
 			width: 100%;
-			text-align: center;
 			font-family: "VCR OSD Mono", monospace;
 			text-transform: uppercase;
 			color: #333;
@@ -116,6 +117,7 @@ html {
 		text-transform: uppercase;
 		color: $chicago-flag-blue;
 		font-family: "VCR OSD Mono", "Courier New", monospace;
+		text-align: center;
 
 		.app {
 			position: relative;
@@ -126,10 +128,6 @@ html {
 			padding-bottom: 100px;
 
 			.app-container {
-				.app-metadata {
-					text-align: center;
-				}
-
 				.profile-picture {
 					margin: 25px 0 0;
 					border-radius: 50%;
@@ -139,12 +137,7 @@ html {
 					color: #999;
 				}
 
-				h3 {
-					text-align: center;
-				}
-
 				.sys-mes {
-					text-align: center;
 					display: block;
 
 					&.sys-mes-top {
