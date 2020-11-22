@@ -4,18 +4,80 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"net/http"
 	"os"
+	"strconv"
 	"time"
 
 	storage "cloud.google.com/go/storage"
 	"github.com/dahlke/eklhad/web/constants"
-	api "github.com/dahlke/goramma/api"
-	"github.com/dahlke/goramma/structs"
-	goramma_structs "github.com/dahlke/goramma/structs"
+	"github.com/dahlke/eklhad/web/structs"
 	log "github.com/sirupsen/logrus"
 )
 
-func writeInstagramMediaToGCS(instagramMedia []goramma_structs.InstagramMedia) {
+// InstagramTimestampFmt is used as a format for parsing dates from the Instagram Graph API
+const InstagramTimestampFmt = "2006-01-02T15:04:05-0700"
+
+// InstagramGraphBaseURL is the Instagram Graph API base url to use across this library.
+const InstagramGraphBaseURL = "https://graph.instagram.com"
+
+func getUserMetadata(instagramToken string) structs.InstagramUserMetadata {
+	url := fmt.Sprintf("%s/me?fields=id,username&access_token=%s", InstagramGraphBaseURL, instagramToken)
+
+	resp, err := http.Get(url)
+	if err != nil {
+		log.Error(err)
+	}
+
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Error(err)
+	}
+
+	var userMetadata = new(structs.InstagramUserMetadata)
+	err = json.Unmarshal(body, &userMetadata)
+	if err != nil {
+		log.Error(err)
+	}
+
+	return *userMetadata
+}
+
+func getUserMedia(instagramToken string, endCursor string) structs.InstagramUserMedia {
+	url := fmt.Sprintf("%s/me/media?fields=id,media_type,media_url,permalink,username,timestamp,caption&limit=50&access_token=%s&after=%s", InstagramGraphBaseURL, instagramToken, endCursor)
+
+	resp, err := http.Get(url)
+	if err != nil {
+		log.Error(err)
+	}
+
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Error(err)
+	}
+
+	var userMedia = new(structs.InstagramUserMedia)
+	err = json.Unmarshal(body, &userMedia)
+	if err != nil {
+		log.Error(err)
+	}
+
+	for i := range userMedia.Data {
+		timestamp, err := time.Parse(InstagramTimestampFmt, userMedia.Data[i].Timestamp)
+		if err != nil {
+			log.Error(err)
+		}
+		unixTimestampStr := strconv.FormatInt(timestamp.Unix(), 10)
+		userMedia.Data[i].Timestamp = unixTimestampStr
+	}
+
+	return *userMedia
+}
+
+func writeInstagramMediaToGCS(instagramMedia []structs.InstagramMedia) {
 	if len(instagramMedia) > 0 {
 		ctx := context.Background()
 		gcsClient, err := storage.NewClient(ctx)
@@ -55,7 +117,7 @@ func writeInstagramMediaToGCS(instagramMedia []goramma_structs.InstagramMedia) {
 func GetDataFromInstagramForUser() {
 	instagramToken := os.Getenv("INSTAGRAM_ACCESS_TOKEN")
 
-	userMetadata := api.GetUserMetadata(instagramToken)
+	userMetadata := getUserMetadata(instagramToken)
 	fmt.Println(userMetadata)
 
 	var allInstagramMedia []structs.InstagramMedia
@@ -64,7 +126,7 @@ func GetDataFromInstagramForUser() {
 
 	for true {
 		log.Info(fmt.Sprintf("Fetching page of Instagram data with end cursor: %s ...", endCursor))
-		userMedia := api.GetUserMedia(instagramToken, endCursor)
+		userMedia := getUserMedia(instagramToken, endCursor)
 		allInstagramMedia = append(allInstagramMedia, userMedia.Data...)
 		beforeEndCursor = userMedia.Paging.Cursors.Before
 		endCursor = userMedia.Paging.Cursors.After
