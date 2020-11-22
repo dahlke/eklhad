@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PopulatedMap from "./container/PopulatedMap";
 import PopulatedHeatmap from "./container/PopulatedHeatmap";
+import Modal from "react-modal";
+import MarkdownView from "react-showdown";
 import md5 from "blueimp-md5";
 
 import "./App.scss";
@@ -30,6 +32,18 @@ class App extends Component {
 
 	_updateWindowWidth() {
 		this.setState({ width: window.innerWidth });
+	}
+
+	_showBio() {
+		this.setState({
+			showModal: true
+		});
+	}
+
+	handleCloseModal() {
+		this.setState({
+			showModal: false
+		});
 	}
 
 	render() {
@@ -106,6 +120,27 @@ class App extends Component {
 						horizontal={this.state.width > BREAKPOINT_TABLET}
 					/>
 					<PopulatedLinksList />
+
+					<button onClick={this._showBio.bind(this)}>
+						👋
+					</button>
+					<Modal
+						isOpen={this.state.showModal}
+						className="modal"
+						contentLabel="Quick Hello Bio"
+						shouldCloseOnOverlayClick={true}
+						onRequestClose={this.handleCloseModal.bind(this)}
+					>
+						<div className="biography">
+							<MarkdownView
+								markdown={
+									"Hey there, I’m Neil, a software engineer raised in Chicago, living in San Francisco. Thanks for visiting my page!"
+								}
+								options={{ tables: true, emoji: true }}
+							/>
+						</div>
+						<button onClick={this.handleCloseModal.bind(this)}>Close Modal</button>
+					</Modal>
 					<div className="sys-mes sys-mes-bottom">
 						<span className="sys-mes-contents">&lt;EOM&gt;</span>
 						<span className="sys-mes-description">
