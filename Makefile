@@ -142,7 +142,7 @@ tf_out_gcp:
 
 .PHONY: tf_destroy_gcp
 tf_destroy_gcp:
-	cd ${TF_GCP_APP_DIR} && terraform destroy
+	cd ${TF_GCP_APP_DIR} && terraform destroy -var "image_id=${PACKER_IMAGE_CMD}" -auto-approve
 
 
 ##########################
