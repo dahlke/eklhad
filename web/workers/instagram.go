@@ -117,8 +117,6 @@ func writeInstagramMediaToGCS(instagramMedia []structs.InstagramMedia) {
 func GetDataFromInstagramForUser() {
 	instagramToken := os.Getenv("INSTAGRAM_ACCESS_TOKEN")
 
-	userMetadata := getUserMetadata(instagramToken)
-
 	var allInstagramMedia []structs.InstagramMedia
 	beforeEndCursor := ""
 	endCursor := ""
