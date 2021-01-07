@@ -118,7 +118,6 @@ func GetDataFromInstagramForUser() {
 	instagramToken := os.Getenv("INSTAGRAM_ACCESS_TOKEN")
 
 	userMetadata := getUserMetadata(instagramToken)
-	fmt.Println(userMetadata)
 
 	var allInstagramMedia []structs.InstagramMedia
 	beforeEndCursor := ""
