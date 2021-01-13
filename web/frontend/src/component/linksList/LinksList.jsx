@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import Modal from "react-modal";
 import MarkdownView from "react-showdown";
 import "./LinksList.scss";
@@ -15,9 +16,10 @@ class LinksList extends Component {
 		this.handleCloseModal = this.handleCloseModal.bind(this);
 	}
 
-	_toggleHistoricalLinks() {
+	handleCloseModal() {
 		this.setState({
-			showHistoricalLinks: !this.state.showHistoricalLinks,
+			showModal: false,
+			shownBlog: undefined,
 		});
 	}
 
@@ -29,11 +31,8 @@ class LinksList extends Component {
 		});
 	}
 
-	handleCloseModal() {
-		this.setState({
-			showModal: false,
-			shownBlog: undefined,
-		});
+	_toggleHistoricalLinks() {
+		this.setState((prevState) => ({ showHistoricalLinks: !prevState.showHistoricalLinks }));
 	}
 
 	render() {
@@ -43,25 +42,24 @@ class LinksList extends Component {
 
 		// console.log(this.props.links);
 
-		const blogLinks = this.props.blogs.map((blog) => {
-			return (
-				<div key={blog.id} className="link">
-					<span className="metadata">
-						[<span className="date">{blog.date}</span>] [
-						<span className="type">Blog</span>]
-					</span>
-					<span className="url">
-						<a href="#" onClick={() => this._showBlogViewer(blog)}>
-							{blog.name}
-						</a>
-					</span>
-				</div>
-			);
-		});
+		const blogLinks = this.props.blogs.map((blog) => (
+			<div key={blog.id} className="link">
+				<span className="metadata">
+					[
+					<span className="date">{blog.date}</span>
+					] [
+					<span className="type">Blog</span>
+					]
+				</span>
+				<span className="url">
+					<button type="button" onClick={() => this._showBlogViewer(blog)}>{blog.name}</button>
+				</span>
+			</div>
+		));
 
 		return (
 			<div className="links-list">
-				<button onClick={this._toggleHistoricalLinks.bind(this)}>
+				<button type="button" onClick={this._toggleHistoricalLinks.bind(this)}>
 					{historicalLinkButtonText}
 				</button>
 				{this.state.showHistoricalLinks ? blogLinks : null}
@@ -82,11 +80,15 @@ class LinksList extends Component {
 							options={{ tables: true, emoji: true }}
 						/>
 					</div>
-					<button onClick={this.handleCloseModal}>Close Modal</button>
+					<button type="button" onClick={this.handleCloseModal}>Close Modal</button>
 				</Modal>
 			</div>
 		);
 	}
 }
+
+LinksList.propTypes = {
+	blogs: PropTypes.array.isRequired,
+};
 
 export default LinksList;

@@ -20,13 +20,13 @@ function receiveInstagrams(json) {
 export function fetchInstagrams() {
 	const apiUrl = `${API_BASE_URL}/instagrams`;
 
-	return function (dispatch) {
+	return (dispatch) => {
 		dispatch(requestInstagrams());
 
 		return fetch(apiUrl)
 			.then(
 				(response) => response.json(),
-				(error) => console.error("An error occurred.", error)
+				(error) => console.error("An error occurred.", error),
 			)
 			.then((json) => dispatch(receiveInstagrams(json)));
 	};

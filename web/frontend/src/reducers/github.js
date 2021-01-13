@@ -6,15 +6,14 @@ import {
 const github = (state = { events: [], activity: [] }, action) => {
 	switch (action.type) {
 		case REQUEST_GITHUB_ACTIVITY:
-			return Object.assign({}, state, {
-				isFetching: true,
-			});
+			return { ...state, isFetching: true };
 		case RECEIVE_GITHUB_ACTIVITY:
-			return Object.assign({}, state, {
+			return {
+				...state,
 				isFetching: false,
 				activity: action.githubActivity,
 				lastUpdated: action.receivedAt,
-			});
+			};
 		default:
 			return state;
 	}

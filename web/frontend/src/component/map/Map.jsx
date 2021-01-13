@@ -1,27 +1,34 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
+
 import "./Map.scss";
 
 // NOTE: I could remove this, but I have to get it into the JS somehow, so it will be
 // exposed no matter what. All it does is associate the map to my account, so unless
 // that becomes a problem, I'll just leave it.
-const MAPBOX_ACCESS_TOKEN =
-	"pk.eyJ1IjoibnRkIiwiYSI6ImNqdTM3eXplODBrYTQ0ZHBnNnB6bDcwbjMifQ.JhbZo-A0SGq4Pgk87T2hoQ";
+const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoibnRkIiwiYSI6ImNqdTM3eXplODBrYTQ0ZHBnNnB6bDcwbjMifQ.JhbZo-A0SGq4Pgk87T2hoQ";
 const MAPBOX_STYLE = "mapbox://styles/ntd/cjsl0z4lm3d971fllo51zcza8";
 
 class Map extends Component {
-	state = {
-		viewport: {
-			width: "100%",
-			height: 300,
-			latitude: 37.7577,
-			longitude: -122.4376,
-			zoom: 6,
-			bearing: 0,
-			pitch: 50,
-		},
-		popupInfo: null,
-	};
+	constructor() {
+		super();
+		this.state = {
+			viewport: {
+				width: "100%",
+				height: 300,
+				latitude: 37.7577,
+				longitude: -122.4376,
+				zoom: 6,
+				bearing: 0,
+				pitch: 50,
+			},
+			popupInfo: null,
+		};
+	}
 
 	_renderPopup() {
 		const { popupInfo } = this.state;
@@ -38,7 +45,10 @@ class Map extends Component {
 					onClose={() => this.setState({ popupInfo: null })}
 				>
 					<b>
-						{popupInfo.city}, {popupInfo.stateprovinceregion}{" "}
+						{popupInfo.city}
+						,
+						{popupInfo.stateprovinceregion}
+						{" "}
 					</b>
 					<br />
 					<em>{popupInfo.country}</em>
@@ -68,9 +78,8 @@ class Map extends Component {
 					>
 						<div
 							className={markerClassName}
-							onClick={() =>
-								this.setState({ popupInfo: location })
-							}
+							role="button"
+							onClick={() => this.setState({ popupInfo: location })}
 						/>
 					</Marker>
 				);
@@ -93,9 +102,7 @@ class Map extends Component {
 				>
 					<div
 						className="map-custom-marker current-location"
-						onClick={() =>
-							this.setState({ popupInfo: currentLocation })
-						}
+						onClick={() => this.setState({ popupInfo: currentLocation })}
 					/>
 				</Marker>
 			);
@@ -105,16 +112,22 @@ class Map extends Component {
 	}
 
 	render() {
+					// width="100%"
 		return (
 			<div id="map">
 				<ReactMapGL
-					{...this.state.viewport}
+					width={this.state.viewport.width}
+					height={this.state.viewport.height}
+					latitude={this.state.viewport.latitude}
+					longitude={this.state.viewport.longitude}
+					zoom={this.state.viewport.zoom}
+					bearing={this.state.viewport.bearing}
+					pitch={this.state.viewport.pitch}
 					onViewportChange={(viewport) => this.setState({ viewport })}
 					mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
 					attributionControl={false}
 					worldCopyJump={true}
 					mapStyle={MAPBOX_STYLE}
-					width={"100%"}
 				>
 					{this._renderPopup()}
 					{this._renderStaticLocationMarkers()}
@@ -124,5 +137,10 @@ class Map extends Component {
 		);
 	}
 }
+
+Map.propTypes = {
+	currentLocation: PropTypes.string.isRequired,
+	locations: PropTypes.array.isRequired,
+};
 
 export default Map;

@@ -137,32 +137,6 @@ html {
 					color: #999;
 				}
 
-				.sys-mes {
-					display: block;
-
-					&.sys-mes-top {
-						margin: 25px 0 10px;
-					}
-
-					&.sys-mes-bottom {
-						margin: 50px 0;
-					}
-
-					span {
-						display: block;
-					}
-
-					.sys-mes-contents {
-						color: #ddd;
-						font-size: 16px;
-					}
-
-					.sys-mes-description {
-						color: #ccc;
-						font-size: 8px;
-					}
-				}
-
 				button {
 					text-transform: uppercase;
 					color: black;

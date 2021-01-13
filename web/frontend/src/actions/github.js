@@ -20,13 +20,13 @@ function receiveGitHubActivity(json) {
 export function fetchGitHubActivity() {
 	const apiUrl = `${API_BASE_URL}/github_activity`;
 
-	return function (dispatch) {
+	return (dispatch) => {
 		dispatch(requestGitHubActivity());
 
 		return fetch(apiUrl)
 			.then(
 				(response) => response.json(),
-				(error) => console.error("An error occurred.", error)
+				(error) => console.error("An error occurred.", error),
 			)
 			.then((json) => dispatch(receiveGitHubActivity(json)));
 	};

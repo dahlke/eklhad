@@ -20,13 +20,13 @@ function receiveLinks(json) {
 export function fetchLinks() {
 	const apiUrl = `${API_BASE_URL}/links`;
 
-	return function (dispatch) {
+	return (dispatch) => {
 		dispatch(requestLinks());
 
 		return fetch(apiUrl)
 			.then(
 				(response) => response.json(),
-				(error) => console.error("An error occurred.", error)
+				(error) => console.error("An error occurred.", error),
 			)
 			.then((json) => dispatch(receiveLinks(json)));
 	};

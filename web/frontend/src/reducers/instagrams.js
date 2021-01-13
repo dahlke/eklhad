@@ -4,15 +4,14 @@ const instagrams = (state = { items: [] }, action) => {
 	console.log("RECEIVED", action);
 	switch (action.type) {
 		case REQUEST_INSTAGRAMS:
-			return Object.assign({}, state, {
-				isFetching: true,
-			});
+			return { ...state, isFetching: true };
 		case RECEIVE_INSTAGRAMS:
-			return Object.assign({}, state, {
+			return {
+				...state,
 				isFetching: false,
 				items: action.instagrams,
 				lastUpdated: action.receivedAt,
-			});
+			};
 		default:
 			return state;
 	}

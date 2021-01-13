@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-filename-extension */
+
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
@@ -14,7 +16,7 @@ import { fetchGravatar } from "./actions/gravatar";
 import rootReducer from "./reducers/index";
 import PopulatedApp from "./container/PopulatedApp";
 
-import "./index.scss";
+import "./index.css";
 
 import * as serviceWorker from "./serviceWorker";
 
@@ -22,9 +24,9 @@ import * as serviceWorker from "./serviceWorker";
 const store = createStore(
 	rootReducer,
 	applyMiddleware(
-		thunkMiddleware // lets us dispatch() functions
+		thunkMiddleware, // lets us dispatch() functions
 		// loggerMiddleware // neat middleware that logs actions
-	)
+	),
 );
 
 // store.dispatch(fetchLocations()).then(() => console.log(store.getState()))
@@ -43,7 +45,7 @@ ReactDOM.render(
 	<Provider store={store}>
 		<PopulatedApp />
 	</Provider>,
-	document.getElementById("root")
+	document.getElementById("root"),
 );
 
 // If you want your app to work offline and load faster, you can change

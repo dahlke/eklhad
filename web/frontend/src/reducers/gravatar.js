@@ -3,15 +3,14 @@ import { REQUEST_GRAVATAR, RECEIVE_GRAVATAR } from "../actions/gravatar";
 const gravatar = (state = { email: "" }, action) => {
 	switch (action.type) {
 		case REQUEST_GRAVATAR:
-			return Object.assign({}, state, {
-				isFetching: true,
-			});
+			return { ...state, isFetching: true };
 		case RECEIVE_GRAVATAR:
-			return Object.assign({}, state, {
+			return {
+				...state,
 				isFetching: false,
 				email: action.gravatar,
 				lastUpdated: action.receivedAt,
-			});
+			};
 		default:
 			return state;
 	}
