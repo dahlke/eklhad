@@ -20,13 +20,13 @@ function receiveGravatar(value) {
 export function fetchGravatar() {
 	const apiUrl = `${API_BASE_URL}/gravatar`;
 
-	return function (dispatch) {
+	return (dispatch) => {
 		dispatch(requestGravatar());
 
 		return fetch(apiUrl)
 			.then(
 				(response) => response.json(),
-				(error) => console.error("An error occurred.", error)
+				(error) => console.error("An error occurred.", error),
 			)
 			.then((value) => dispatch(receiveGravatar(value)));
 	};

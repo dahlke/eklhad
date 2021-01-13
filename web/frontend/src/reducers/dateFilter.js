@@ -1,8 +1,8 @@
 const DateFilter = (state = null, action) => {
-	const date =
-		action && action.filter && action.filter.date
+	const date = action && action.filter && action.filter.date
 			? action.filter.date
 			: null;
+
 	switch (action.type) {
 		case "SET_DATE_FILTER":
 			return date;

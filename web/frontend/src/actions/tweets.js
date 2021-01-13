@@ -20,13 +20,13 @@ function receiveTweets(json) {
 export function fetchTweets() {
 	const apiUrl = `${API_BASE_URL}/tweets`;
 
-	return function (dispatch) {
+	return (dispatch) => {
 		dispatch(requestTweets());
 
 		return fetch(apiUrl)
 			.then(
 				(response) => response.json(),
-				(error) => console.error("An error occurred.", error)
+				(error) => console.error("An error occurred.", error),
 			)
 			.then((json) => dispatch(receiveTweets(json)));
 	};

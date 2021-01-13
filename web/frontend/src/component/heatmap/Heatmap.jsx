@@ -1,10 +1,15 @@
+/* eslint-disable react/no-did-update-set-state */
+
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import Select from "react-select";
-import { ActivityFilters } from "../../actions";
 import CalendarHeatmap from "react-calendar-heatmap";
-import DateDetailList from "../../component/dateDetailList/DateDetailList";
 import moment from "moment";
 import Modal from "react-modal";
+
+import { ActivityFilters } from "../../actions";
+import DateDetailList from "../dateDetailList/DateDetailList";
+
 import "./Heatmap.scss";
 
 Modal.setAppElement(document.getElementById("root"));
@@ -19,7 +24,8 @@ class Heatmap extends Component {
 		this.handleCloseModal = this.handleCloseModal.bind(this);
 	}
 
-	componentDidUpdate(prevProps, prevState, snapshot) {
+	// https://reactjs.org/docs/react-component.html#componentdidupdate
+	componentDidUpdate(prevProps) {
 		if (this.props.dateFilter !== prevProps.dateFilter) {
 			const dataForDate = this.props.dateFilter
 				? this.props.heatmapDateMap[this.props.dateFilter]
@@ -50,8 +56,9 @@ class Heatmap extends Component {
 			? this.props.heatmapDateMap[this.props.dateFilter]
 			: [];
 
+		// TODO: does this need a ref anymore?
 		const dateDetailList = this.props.dateFilter ? (
-			<DateDetailList ref="date-detail-list" data={dataForDate} />
+			<DateDetailList data={dataForDate} />
 		) : null;
 
 		let mapVals = [];
@@ -72,9 +79,10 @@ class Heatmap extends Component {
 			mapVals = this.props.links;
 		}
 
-		const activityOptions = Object.keys(ActivityFilters).map((key) => {
-			return { value: key, label: key };
-		});
+		const activityOptions = Object.keys(ActivityFilters).map((key) => ({
+			value: key,
+			label: key,
+		}));
 
 		return (
 			<div className="heatmap">
@@ -107,11 +115,24 @@ class Heatmap extends Component {
 					onRequestClose={this.handleCloseModal}
 				>
 					{dateDetailList}
-					<button onClick={this.handleCloseModal}>Close Modal</button>
+					<button type="button" onClick={this.handleCloseModal}>Close Modal</button>
 				</Modal>
 			</div>
 		);
 	}
 }
+
+Heatmap.propTypes = {
+	dateFilter: PropTypes.string.isRequired,
+	activityFilter: PropTypes.string.isRequired,
+	githubActivity: PropTypes.array.isRequired,
+	instagrams: PropTypes.array.isRequired,
+	tweets: PropTypes.array.isRequired,
+	links: PropTypes.array.isRequired,
+	heatmapDateMap: PropTypes.object.isRequired,
+	setActivityFilter: PropTypes.func.isRequired,
+	setDateFilter: PropTypes.func.isRequired,
+	horizontal: PropTypes.bool.isRequired,
+};
 
 export default Heatmap;

@@ -28,10 +28,26 @@ DOCKER_TEST_IMAGE_VERSION=0.1.1
 npm:
 	cd web/frontend && npm config set strict-ssl false && npm install
 
+.PHONY: js_prettify
+js_prettify:
+	cd web/frontend/ && \
+	npx prettier --write src/
+
 .PHONY: js_lint
 js_lint:
 	cd web/frontend/ && \
-	npx prettier --write src/
+	node node_modules/eslint/bin/eslint.js src/*.js* src/**/*.js*
+
+.PHONY: js_lint_fix
+js_lint_fix:
+	cd web/frontend/ && \
+	node node_modules/eslint/bin/eslint.js --fix src/**/*.js*
+	# node node_modules/eslint/bin/eslint.js --fix src/*.js* src/**/*.js*
+
+.PHONY: js_lint_fix_dry
+js_lint_fix_dry:
+	cd web/frontend/ && \
+	node node_modules/eslint/bin/eslint.js --fix-dry-run src/*.js src/**/*.js
 
 # Hacky hack since I don't want to patch resume-cli at the sed part.
 .PHONY: resume

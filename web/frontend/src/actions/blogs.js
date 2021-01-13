@@ -20,13 +20,13 @@ function receiveBlogs(json) {
 export function fetchBlogs() {
 	const apiUrl = `${API_BASE_URL}/blogs`;
 
-	return function (dispatch) {
+	return (dispatch) => {
 		dispatch(requestBlogs());
 
 		return fetch(apiUrl)
 			.then(
 				(response) => response.json(),
-				(error) => console.error("An error occurred.", error)
+				(error) => console.error("An error occurred.", error),
 			)
 			.then((json) => dispatch(receiveBlogs(json)));
 	};

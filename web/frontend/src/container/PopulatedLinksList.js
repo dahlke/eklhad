@@ -1,22 +1,23 @@
+import moment from "moment";
 import { connect } from "react-redux";
 
 import LinksList from "../component/linksList/LinksList";
-import moment from "moment";
 
-function _sortByTimestamp(data) {
-	data = data ? data : [];
+function _sortByTimestamp(rawData) {
+	const data = rawData || [];
 
-	data.sort((a, b) => {
-		return b.timestamp - a.timestamp;
-	});
+	data.sort((a, b) => b.timestamp - a.timestamp);
 
 	return data;
 }
 
 function _processBlogs(blogs) {
-	blogs.forEach((blog) => {
-		const d = moment.unix(blog.timestamp).format("YYYY-MM-DD");
-		blog.date = d;
+	blogs.map((blog) => {
+		const processedBlog = blog;
+		const d = moment.unix(processedBlog.timestamp).format("YYYY-MM-DD");
+		processedBlog.date = d;
+
+		return processedBlog;
 	});
 
 	return _sortByTimestamp(blogs);
@@ -32,6 +33,7 @@ const mapStateToProps = (state) => {
 	};
 };
 
-const mapDispatchToProps = (dispatch) => ({});
+// const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = () => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(LinksList);
