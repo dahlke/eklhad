@@ -85,18 +85,17 @@ class Heatmap extends Component {
 		}));
 
 		return (
-			<div className="heatmap">
-				<div className="select wide">
-					<Select
-						options={activityOptions}
-						value={{
-							value: this.props.activityFilter,
-							label: this.props.activityFilter,
-						}}
-						onChange={this.props.setActivityFilter}
-						isSearchable={false}
-					/>
-				</div>
+			<div id="heatmap">
+				<Select
+					className="m-10"
+					options={activityOptions}
+					value={{
+						value: this.props.activityFilter,
+						label: this.props.activityFilter,
+					}}
+					onChange={this.props.setActivityFilter}
+					isSearchable={false}
+				/>
 
 				<CalendarHeatmap
 					startDate={moment().subtract(1, "year").toDate()}
@@ -109,21 +108,32 @@ class Heatmap extends Component {
 				/>
 				<Modal
 					isOpen={this.state.showModal}
-					className="modal"
+					id="heatmap-modal"
+					className="absolute text-center font-mono bg-gray-50 p-50 top-1/4 left-1/4 w-1/2 max-h-1/2 overflow-scroll p-5"
 					contentLabel="Date Detail"
 					shouldCloseOnOverlayClick={true}
 					onRequestClose={this.handleCloseModal}
 				>
 					{dateDetailList}
-					<button type="button" onClick={this.handleCloseModal}>Close Modal</button>
+					<button
+						type="button"
+						className="text-xs border border-solid border-indigo-500 hover:bg-gray-200 p-2 m-5 rounded"
+						onClick={this.handleCloseModal}
+					>
+						Close Modal
+					</button>
 				</Modal>
 			</div>
 		);
 	}
 }
 
+Heatmap.defaultProps = {
+	dateFilter: "",
+};
+
 Heatmap.propTypes = {
-	dateFilter: PropTypes.string.isRequired,
+	dateFilter: PropTypes.string,
 	activityFilter: PropTypes.string.isRequired,
 	githubActivity: PropTypes.array.isRequired,
 	instagrams: PropTypes.array.isRequired,

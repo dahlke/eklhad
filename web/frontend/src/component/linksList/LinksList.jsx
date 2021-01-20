@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import Modal from "react-modal";
 import MarkdownView from "react-showdown";
-import "./LinksList.scss";
 
 class LinksList extends Component {
 	constructor() {
@@ -24,7 +23,6 @@ class LinksList extends Component {
 	}
 
 	_showBlogViewer(blog) {
-		console.log(blog);
 		this.setState({
 			showModal: true,
 			shownBlog: blog,
@@ -40,47 +38,53 @@ class LinksList extends Component {
 			? "Hide Blogs"
 			: "Show Blogs";
 
-		// console.log(this.props.links);
-
 		const blogLinks = this.props.blogs.map((blog) => (
-			<div key={blog.id} className="link">
-				<span className="metadata">
+			<div key={blog.id}>
+				<span className="block text-xs mt-6">
 					[
-					<span className="date">{blog.date}</span>
+					{blog.date}
 					] [
-					<span className="type">Blog</span>
+					Blog
 					]
 				</span>
-				<span className="url">
-					<button type="button" onClick={() => this._showBlogViewer(blog)}>{blog.name}</button>
-				</span>
+				<button type="button" className="underline" onClick={() => this._showBlogViewer(blog)}>{blog.name}</button>
 			</div>
 		));
 
 		return (
-			<div className="links-list">
-				<button type="button" onClick={this._toggleHistoricalLinks.bind(this)}>
+			<div className="container mx-auto">
+
+				<button
+					type="button"
+					className="text-xs border border-solid border-indigo-500 hover:bg-gray-200 p-2 m-5 rounded"
+					onClick={this._toggleHistoricalLinks.bind(this)}
+				>
 					{historicalLinkButtonText}
 				</button>
 				{this.state.showHistoricalLinks ? blogLinks : null}
 				<Modal
+					className="absolute text-center font-mono bg-gray-50 p-50 top-1/4 left-1/4 w-1/2 max-h-1/2 overflow-scroll p-5"
+					id="date-detail-modal"
 					isOpen={this.state.showModal}
-					className="modal"
 					contentLabel="Date Detail"
 					shouldCloseOnOverlayClick={true}
 					onRequestClose={this.handleCloseModal}
 				>
-					<div className="blog-content">
-						<MarkdownView
-							markdown={
-								this.state.shownBlog
-									? this.state.shownBlog.content
-									: ""
-							}
-							options={{ tables: true, emoji: true }}
-						/>
-					</div>
-					<button type="button" onClick={this.handleCloseModal}>Close Modal</button>
+					<MarkdownView
+						markdown={
+							this.state.shownBlog
+								? this.state.shownBlog.content
+								: ""
+						}
+						options={{ tables: true, emoji: true }}
+					/>
+					<button
+						type="button"
+						className="text-xs border border-solid border-indigo-500 hover:bg-gray-200 p-2 m-5 rounded"
+						onClick={this.handleCloseModal}
+					>
+						Close Modal
+					</button>
 				</Modal>
 			</div>
 		);

@@ -1,4 +1,6 @@
+/*
 @import "./variables.scss";
+*/
 
 @font-face {
 	font-family: "VCR OSD Mono";
@@ -10,148 +12,11 @@
 	font-style: normal;
 }
 
+/*
 html {
 	background: #fcfbf9;
 	font-family: "VCR OSD Mono", monospace;
 	text-transform: uppercase;
 	color: #333;
-
-	.mapboxgl-ctrl {
-		// NOTE: Need to hide this manually, otherwise it will show over the blog modal.
-		// Should only show this the blog viewer is open as I'd like to keep
-		// visible attribution to MapBox, but needs some code reorg.
-		visibility: hidden;
-	}
-
-	.modal {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		right: auto;
-		bottom: auto;
-		margin-right: -50%;
-		transform: translate(-50%, -50%);
-		max-width: 720px;
-		max-height: 75%;
-		overflow: scroll;
-		background-color: #fff;
-		border: 1px solid #000;
-		border-color: $chicago-flag-blue;
-		border-radius: 5px;
-		padding: 50px;
-
-		button {
-			display: block;
-			margin: auto;
-			margin-top: 15px;
-		}
-
-		.biography,
-		.blog-content {
-			width: 100%;
-			text-transform: none;
-			font-family: "VCR OSD Mono", monospace;
-			color: #333;
-
-			img {
-				width: 100%;
-			}
-
-			pre {
-				background-color: #eee;
-				overflow: scroll;
-				font-size: 12px;
-				padding: 10px;
-
-				code {
-				}
-			}
-		}
-
-		.date-detail-list {
-			width: 100%;
-			font-family: "VCR OSD Mono", monospace;
-			text-transform: uppercase;
-			color: #333;
-
-			.link,
-			.instagram,
-			.tweet,
-			.github-activity,
-			.github-event {
-				display: block;
-				padding: 10px 0;
-				max-width: 500px;
-
-				.metadata,
-				.url {
-					display: inline-block;
-				}
-
-				.url {
-					width: 100%;
-				}
-
-				.metadata {
-					padding: 5px 0;
-				}
-
-				.photo {
-					max-width: 300px;
-					display: block;
-					margin: auto;
-				}
-
-				.caption {
-					color: #888;
-					font-size: 10px;
-					margin: 15px auto 0;
-					display: block;
-					max-width: 300px;
-				}
-			}
-		}
-	}
-
-	#root {
-		text-transform: uppercase;
-		color: $chicago-flag-blue;
-		font-family: "VCR OSD Mono", "Courier New", monospace;
-		text-align: center;
-
-		.app {
-			position: relative;
-			background: #fcfbf9;
-			height: 100%;
-			width: 720px;
-			margin: auto;
-			padding-bottom: 100px;
-
-			.app-container {
-				.profile-picture {
-					margin: 25px 0 0;
-					border-radius: 50%;
-				}
-
-				.descriptor {
-					color: #999;
-				}
-
-				button {
-					text-transform: uppercase;
-					color: black;
-					font-family: "VCR OSD Mono", "Courier New", monospace;
-					background-color: #fff;
-					border: 1px solid #ccc;
-					border-radius: 5px;
-					padding: 10px;
-					font-size: 10px;
-				}
-			}
-
-			@media screen and (max-width: $breakpoint-tablet) {
-				width: 90%;
-			}
-		}
-	}
 }
+*/

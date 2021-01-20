@@ -57,11 +57,11 @@ class Map extends Component {
 		);
 	}
 
-	_renderStaticLocationMarkers() {
+	_renderLocationMarkers() {
 		let markers = [];
 
 		if (this.props.locations) {
-			markers = this.props.locations.items.map((location) => {
+			markers = this.props.locations.map((location) => {
 				let markerClassName = "map-custom-marker ";
 
 				if (location.current !== true) {
@@ -89,28 +89,6 @@ class Map extends Component {
 		return markers;
 	}
 
-	_renderCurrentLocation() {
-		const { currentLocation } = this.props;
-		let marker;
-
-		if (currentLocation) {
-			marker = (
-				<Marker
-					key={currentLocation.properties.id}
-					latitude={currentLocation.lat}
-					longitude={currentLocation.lng}
-				>
-					<div
-						className="map-custom-marker current-location"
-						onClick={() => this.setState({ popupInfo: currentLocation })}
-					/>
-				</Marker>
-			);
-		}
-
-		return marker;
-	}
-
 	render() {
 					// width="100%"
 		return (
@@ -130,8 +108,7 @@ class Map extends Component {
 					mapStyle={MAPBOX_STYLE}
 				>
 					{this._renderPopup()}
-					{this._renderStaticLocationMarkers()}
-					{this._renderCurrentLocation()}
+					{this._renderLocationMarkers()}
 				</ReactMapGL>
 			</div>
 		);
@@ -139,7 +116,6 @@ class Map extends Component {
 }
 
 Map.propTypes = {
-	currentLocation: PropTypes.string.isRequired,
 	locations: PropTypes.array.isRequired,
 };
 

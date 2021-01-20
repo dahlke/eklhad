@@ -1,7 +1,6 @@
 import { REQUEST_INSTAGRAMS, RECEIVE_INSTAGRAMS } from "../actions/instagrams";
 
 const instagrams = (state = { items: [] }, action) => {
-	console.log("RECEIVED", action);
 	switch (action.type) {
 		case REQUEST_INSTAGRAMS:
 			return { ...state, isFetching: true };
