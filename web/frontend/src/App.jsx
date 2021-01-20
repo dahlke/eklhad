@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
-import Modal from "react-modal";
-import MarkdownView from "react-showdown";
 import md5 from "blueimp-md5";
 
 import PopulatedMap from "./container/PopulatedMap";
@@ -31,20 +29,8 @@ class App extends Component {
 		window.removeEventListener("resize", this._updateWindowWidth);
 	}
 
-	handleCloseModal() {
-		this.setState({
-			showModal: false,
-		});
-	}
-
 	_updateWindowWidth() {
 		this.setState({ width: window.innerWidth });
-	}
-
-	_showBio() {
-		this.setState({
-			showModal: true,
-		});
 	}
 
 	render() {
@@ -54,20 +40,21 @@ class App extends Component {
 		const gravatarURL = `https://www.gravatar.com/avatar/${gravatarEmailMD5}.jpg`;
 
 		return (
-			<div className="app">
-				<div id="modal" />
-				<div className="app-container">
-					<div className="app-metadata">
+			<div id="app">
+				<div id="modal" className="border-indigo-500 p-5" />
+				<div className="container mx-auto text-center space-y-4 font-mono text-indigo-500 uppercase">
+					<div className="block">
 						<img
-							className="profile-picture"
-							alt=""
+							className="m-auto mt-6 mb-6 rounded-full"
+							alt="Neil Dahlke"
 							src={gravatarURL}
 						/>
-						<h1>Neil Dahlke</h1>
-						<h2>Engineer</h2>
-						<h4>San Francisco, California, USA</h4>
-						<h5>
+						<h1 className="text-3xl p-1">Neil Dahlke</h1>
+						<h2 className="text-2xl p-1">Engineer</h2>
+						<h4 className="text-xl p-1">San Francisco, California, USA</h4>
+						<h5 className="text-l p-1">
 							<a
+								className="underline"
 								target="_blank"
 								rel="noopener noreferrer"
 								href="https://twitter.com/neildahlke"
@@ -78,6 +65,7 @@ class App extends Component {
 							/
 							{" "}
 							<a
+								className="underline"
 								target="_blank"
 								rel="noopener noreferrer"
 								href="https://www.instagram.com/eklhad"
@@ -88,6 +76,7 @@ class App extends Component {
 							/
 							{" "}
 							<a
+								className="underline"
 								target="_blank"
 								rel="noopener noreferrer"
 								href="https://www.github.com/dahlke"
@@ -98,6 +87,7 @@ class App extends Component {
 							/
 							{" "}
 							<a
+								className="underline"
 								target="_blank"
 								rel="noopener noreferrer"
 								href="https://www.linkedin.com/in/neildahlke"
@@ -107,40 +97,21 @@ class App extends Component {
 							{" "}
 							/
 							{' '}
-							<a href="/static/resume.html">Resume</a>
+							<a
+								className="underline"
+								href="/static/resume.html"
+							>
+								Resume
+							</a>
 						</h5>
 					</div>
-					<PopulatedMap
-						locations={this.state.locations}
-						currentLocation={this.state.currentLocation}
-					/>
-					<br />
-					<br />
+					<PopulatedMap />
 					<h3>Last 365 Days of Activity</h3>
 					<PopulatedHeatmap
 						width={this.state.width}
 						horizontal={this.state.width > BREAKPOINT_TABLET}
 					/>
 					<PopulatedLinksList />
-
-					<button type="button" onClick={this._showBio.bind(this)}>👋</button>
-					<Modal
-						isOpen={this.state.showModal}
-						className="modal"
-						contentLabel="Quick Hello Bio"
-						shouldCloseOnOverlayClick
-						onRequestClose={this.handleCloseModal}
-					>
-						<div className="biography">
-							<MarkdownView
-								markdown="Hey there, I’m Neil, a software engineer raised in Chicago, living in San Francisco. Thanks for visiting my page!"
-								options={{ tables: true, emoji: true }}
-							/>
-						</div>
-						<button type="button" onClick={this.handleCloseModal}>
-							Close Modal
-						</button>
-					</Modal>
 				</div>
 			</div>
 		);

@@ -1,9 +1,9 @@
+// TODO: manage these via Tailwind where possible.
+
 @import "../../variables.scss";
 
+// NOTE: Overrides for Map and Heatmap should not be addressed by Tailwind.
 #map {
-	position: relative;
-	width: 100%;
-
 	.map-custom-marker {
 		width: 10px;
 		height: 10px;

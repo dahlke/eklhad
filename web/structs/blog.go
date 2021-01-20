@@ -1,5 +1,6 @@
 package structs
 
+// EklhadBlog represents a blog post's metadata and it's contents.
 type EklhadBlog struct {
 	ID        string `json:"id"`
 	Name      string `json:"name"`

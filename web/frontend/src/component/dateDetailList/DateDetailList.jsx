@@ -1,23 +1,19 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 
-import "./DateDetailList.scss";
-
 class DateDetailList extends Component {
 	render() {
 		const links = this.props.data.links.map((link) => (
-			<div key={link.id} className="link">
-				<span className="metadata">
+			<div key={link.id}>
+				<span className="block text-xs mt-6">
 					[
-					<span className="date">{link.date}</span>
+					{link.date}
 					]
 					[
-					<span className="type">
-						{link.type}
-					</span>
+					{link.type}
 					]
 				</span>
-				<span className="url">
+				<span className="underline">
 					<a
 						href={link.url}
 						target="_blank"
@@ -30,84 +26,80 @@ class DateDetailList extends Component {
 		));
 
 		const instagrams = this.props.data.instagrams.map((instagram) => (
-			<div key={instagram.id} className="instagram">
-				<div className="url">
-					<a
-						target="_blank"
-						rel="noopener noreferrer"
-						href={instagram.permalink}
-					>
-						<span className="metadata">
-							[
-							<span className="date">{instagram.date}</span>
-							]
-							[Instagram]
-						</span>
-						<img
-							className="photo"
-							src={instagram.media_url}
-							alt={instagram.caption}
-						/>
-						<span className="caption">
-							{instagram.caption === ""
-								? "---"
-								: instagram.caption}
-						</span>
-					</a>
-				</div>
+			<div key={instagram.id}>
+				<a
+					target="_blank"
+					rel="noopener noreferrer"
+					href={instagram.permalink}
+				>
+					<span className="block m-auto center">
+						[
+						<span className="">{instagram.date}</span>
+						]
+						[Instagram]
+					</span>
+					<img
+						className="m-auto w-2/4"
+						src={instagram.media_url}
+						alt={instagram.caption}
+					/>
+					<span className="underline">
+						{instagram.caption === ""
+							? "---"
+							: instagram.caption}
+					</span>
+				</a>
 			</div>
 		));
 
 		const tweets = this.props.data.tweets.map((tweet) => (
-			<div key={tweet.id} className="tweet">
-				<span className="metadata">
+			<div key={tweet.id}>
+				<span className="block text-xs mt-6">
 					[
-					<span className="date">{tweet.date}</span>
+					{tweet.date}
 					] [Tweet]
 				</span>
-				<span className="url">
-					<a
-						href={tweet.url}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						{tweet.text}
-					</a>
-				</span>
+				<a
+					href={tweet.url}
+					target="_blank"
+					className="block underline"
+					rel="noopener noreferrer"
+				>
+					{tweet.text}
+				</a>
 			</div>
 		));
 
 		const githubActivity = this.props.data.githubActivity.map((activity) => (
 			<div
 				key={activity.repo_name + activity.timestamp}
-				className="github-activity"
+				className="m-5"
 			>
-				<span className="metadata">
+				<span className="block text-xs">
 					[
-					<span className="date">{activity.date}</span>
+					{activity.date}
 					] [GitHub Activity]
 				</span>
-				<span className="url">
-					<a
-						href={
-							`https://github.com/${activity.repo_name}`
-						}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						{activity.repo_name}
-						(
-						{activity.num_commits}
-						{" "}
-						commits
-						)
-					</a>
-				</span>
+				<a
+					href={
+						`https://github.com/${activity.repo_name}`
+					}
+					className="block underline"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					{activity.repo_name}
+					{" "}
+					(
+					{activity.num_commits}
+					{" "}
+					commits)
+				</a>
 			</div>
 		));
 
 		return (
-			<div className="date-detail-list">
+			<div id="date-detail-list">
 				{instagrams}
 				{tweets}
 				{links}
