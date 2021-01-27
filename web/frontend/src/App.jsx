@@ -40,21 +40,20 @@ class App extends Component {
 		const gravatarURL = `https://www.gravatar.com/avatar/${gravatarEmailMD5}.jpg`;
 
 		return (
-			<div id="app">
-				<div id="modal" className="border-indigo-500 p-5" />
-				<div className="container mx-auto text-center space-y-4 font-mono text-indigo-500 uppercase">
+			<div id="app" className="container mx-auto p-4 text-chicago-flag-blue">
+				<div id="modal" className="border-chicago-flag-blue p-5" />
+				<div className="text-center font-mono w-1/2 mx-auto uppercase">
 					<div className="block">
 						<img
-							className="m-auto mt-6 mb-6 rounded-full"
+							className="w-24 h-24 mx-auto rounded-full"
 							alt="Neil Dahlke"
 							src={gravatarURL}
 						/>
-						<h1 className="text-3xl p-1">Neil Dahlke</h1>
-						<h2 className="text-2xl p-1">Engineer</h2>
-						<h4 className="text-xl p-1">San Francisco, California, USA</h4>
-						<h5 className="text-l p-1">
+						<h1 className="pt-5 pb-2">Neil Dahlke</h1>
+						<h2 className="pb-2">Engineer</h2>
+						<h4 className="pb-2">San Francisco, California, USA</h4>
+						<h5 className="pb-10">
 							<a
-								className="underline"
 								target="_blank"
 								rel="noopener noreferrer"
 								href="https://twitter.com/neildahlke"
@@ -65,18 +64,6 @@ class App extends Component {
 							/
 							{" "}
 							<a
-								className="underline"
-								target="_blank"
-								rel="noopener noreferrer"
-								href="https://www.instagram.com/eklhad"
-							>
-								Instagram
-							</a>
-							{" "}
-							/
-							{" "}
-							<a
-								className="underline"
 								target="_blank"
 								rel="noopener noreferrer"
 								href="https://www.github.com/dahlke"
@@ -87,7 +74,6 @@ class App extends Component {
 							/
 							{" "}
 							<a
-								className="underline"
 								target="_blank"
 								rel="noopener noreferrer"
 								href="https://www.linkedin.com/in/neildahlke"
@@ -98,7 +84,6 @@ class App extends Component {
 							/
 							{' '}
 							<a
-								className="underline"
 								href="/static/resume.html"
 							>
 								Resume
@@ -106,7 +91,6 @@ class App extends Component {
 						</h5>
 					</div>
 					<PopulatedMap />
-					<h3>Last 365 Days of Activity</h3>
 					<PopulatedHeatmap
 						width={this.state.width}
 						horizontal={this.state.width > BREAKPOINT_TABLET}

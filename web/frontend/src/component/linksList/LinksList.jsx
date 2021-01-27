@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Modal from "react-modal";
 import MarkdownView from "react-showdown";
 
+import "./LinksList.scss";
+
 class LinksList extends Component {
 	constructor() {
 		super();
@@ -52,8 +54,7 @@ class LinksList extends Component {
 		));
 
 		return (
-			<div className="container mx-auto">
-
+			<div id="links-list">
 				<button
 					type="button"
 					className="text-xs border border-solid border-indigo-500 hover:bg-gray-200 p-2 m-5 rounded"
@@ -63,8 +64,8 @@ class LinksList extends Component {
 				</button>
 				{this.state.showHistoricalLinks ? blogLinks : null}
 				<Modal
-					className="absolute text-center font-mono bg-gray-50 p-50 top-1/4 left-1/4 w-1/2 max-h-1/2 overflow-scroll p-5"
-					id="date-detail-modal"
+					className="absolute font-mono bg-gray-50 p-50 inset-1/10 overflow-scroll p-5 border-solid border-indigo-500"
+					id="link-detail-modal"
 					isOpen={this.state.showModal}
 					contentLabel="Date Detail"
 					shouldCloseOnOverlayClick={true}

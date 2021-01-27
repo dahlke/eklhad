@@ -2,8 +2,15 @@
 
 @import "../../variables.scss";
 
-// NOTE: Overrides for Map and Heatmap should not be addressed by Tailwind.
+// NOTE: This override is required since we're leveraging a React project that I don't control.
 #map {
+	.mapboxgl-ctrl-top-left,
+	.mapboxgl-ctrl-top-right,
+	.mapboxgl-ctrl-bottom-left,
+	.mapboxgl-ctrl-bottom-right {
+		visibility: hidden;
+	}
+
 	.map-custom-marker {
 		width: 10px;
 		height: 10px;

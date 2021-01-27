@@ -9,8 +9,18 @@ module.exports = {
       "1/2": "50%",
       "3/4": "75%",
     },
+    inset: {
+      "1/10": "10%",
+      "1/4": "25%",
+    },
     extend: {
-        sans: ["VCR OSD Mono", ...defaultTheme.fontFamily.mono],
+      fontFamily: {
+        mono: ["VCR OSD Mono", ...defaultTheme.fontFamily.mono],
+      },
+      colors: {
+        "chicago-flag-blue": "#58b9f7",
+        "chicago-flag-red": "#cc0000",
+      },
     },
   },
   variants: {
