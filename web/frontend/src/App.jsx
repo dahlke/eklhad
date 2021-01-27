@@ -42,7 +42,7 @@ class App extends Component {
 		return (
 			<div id="app" className="container mx-auto p-4 text-indigo-500">
 				<div id="modal" className="border-indigo-500 p-5" />
-				<div className="text-center font-mono uppercase">
+				<div className="text-center font-mono uppercase w-1/2 mx-auto">
 					<div className="block">
 						<img
 							className="w-24 h-24 mx-auto rounded-full"

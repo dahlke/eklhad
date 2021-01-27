@@ -86,8 +86,8 @@ class Heatmap extends Component {
 
 		return (
 			<div id="heatmap">
-				<h3 className="pt-10 pb-5">Last 365 Days of Activity</h3>
 				<Select
+					className="text-xs w-1/2 mx-auto"
 					options={activityOptions}
 					value={{
 						value: this.props.activityFilter,

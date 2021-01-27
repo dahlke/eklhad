@@ -10,7 +10,9 @@ module.exports = {
       "3/4": "75%",
     },
     extend: {
-        sans: ["VCR OSD Mono", ...defaultTheme.fontFamily.mono],
+      fontFamily: {
+        mono: ["VCR OSD Mono", ...defaultTheme.fontFamily.mono],
+      },
     },
   },
   variants: {
