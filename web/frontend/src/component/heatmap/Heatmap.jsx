@@ -86,8 +86,9 @@ class Heatmap extends Component {
 
 		return (
 			<div id="heatmap">
+				<h3 className="pt-10 pb-5">Last 365 Days of Activity</h3>
 				<Select
-					className="m-10"
+					className="text-xs w-1/2 mx-auto mb-5"
 					options={activityOptions}
 					value={{
 						value: this.props.activityFilter,
@@ -96,7 +97,6 @@ class Heatmap extends Component {
 					onChange={this.props.setActivityFilter}
 					isSearchable={false}
 				/>
-
 				<CalendarHeatmap
 					startDate={moment().subtract(1, "year").toDate()}
 					endDate={moment().toDate()}
@@ -109,7 +109,7 @@ class Heatmap extends Component {
 				<Modal
 					isOpen={this.state.showModal}
 					id="heatmap-modal"
-					className="absolute text-center font-mono bg-gray-50 p-50 top-1/4 left-1/4 w-1/2 max-h-1/2 overflow-scroll p-5"
+					className="absolute font-mono text-center bg-gray-50 p-50 inset-1/4 overflow-scroll p-5 border-solid border-indigo-500"
 					contentLabel="Date Detail"
 					shouldCloseOnOverlayClick={true}
 					onRequestClose={this.handleCloseModal}
@@ -117,7 +117,7 @@ class Heatmap extends Component {
 					{dateDetailList}
 					<button
 						type="button"
-						className="text-xs border border-solid border-indigo-500 hover:bg-gray-200 p-2 m-5 rounded"
+						className="text-xs border border-solid border-indigo-500 hover:bg-gray-200 p-2 mx-auto rounded"
 						onClick={this.handleCloseModal}
 					>
 						Close Modal
