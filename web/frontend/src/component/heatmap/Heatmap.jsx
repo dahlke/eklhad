@@ -86,8 +86,8 @@ class Heatmap extends Component {
 
 		return (
 			<div id="heatmap">
+				<h3 className="pt-10 pb-5">Last 365 Days of Activity</h3>
 				<Select
-					className="m-10"
 					options={activityOptions}
 					value={{
 						value: this.props.activityFilter,
@@ -96,7 +96,6 @@ class Heatmap extends Component {
 					onChange={this.props.setActivityFilter}
 					isSearchable={false}
 				/>
-
 				<CalendarHeatmap
 					startDate={moment().subtract(1, "year").toDate()}
 					endDate={moment().toDate()}
