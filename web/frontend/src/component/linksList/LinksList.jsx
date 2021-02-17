@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import Modal from "react-modal";
 import MarkdownView from "react-showdown";
 
-import "./LinksList.scss";
-
 class LinksList extends Component {
 	constructor() {
 		super();
@@ -64,28 +62,37 @@ class LinksList extends Component {
 				</button>
 				{this.state.showHistoricalLinks ? blogLinks : null}
 				<Modal
-					className="absolute font-mono bg-gray-50 p-50 inset-1/10 overflow-scroll p-5 border-solid border-indigo-500"
+					className="eklhad-modal absolute font-mono bg-gray-50 p-50 inset-1/10 p-50 border-solid border-indigo-500"
 					id="link-detail-modal"
 					isOpen={this.state.showModal}
 					contentLabel="Date Detail"
 					shouldCloseOnOverlayClick={true}
 					onRequestClose={this.handleCloseModal}
 				>
-					<MarkdownView
-						markdown={
-							this.state.shownBlog
-								? this.state.shownBlog.content
-								: ""
-						}
-						options={{ tables: true, emoji: true }}
-					/>
-					<button
-						type="button"
-						className="text-xs border border-solid border-indigo-500 hover:bg-gray-200 p-2 m-5 rounded"
-						onClick={this.handleCloseModal}
-					>
-						Close Modal
-					</button>
+					<div className="eklhad-modal-content">
+						<button
+							type="button"
+							className="eklhad-modal-top-x-button"
+							onClick={this.handleCloseModal}
+						>
+							X
+						</button>
+						<MarkdownView
+							markdown={
+								this.state.shownBlog
+									? this.state.shownBlog.content
+									: ""
+							}
+							options={{ tables: true, emoji: true }}
+						/>
+						<button
+							type="button"
+							className="eklhad-modal-bottom-button text-xs border border-solid border-indigo-500 hover:bg-gray-200 p-2 m-5 rounded"
+							onClick={this.handleCloseModal}
+						>
+							Close Modal
+						</button>
+					</div>
 				</Modal>
 			</div>
 		);
