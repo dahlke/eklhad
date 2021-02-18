@@ -88,7 +88,7 @@ class Heatmap extends Component {
 			<div id="heatmap">
 				<h3 className="pt-10 pb-5">Last 365 Days of Activity</h3>
 				<Select
-					className="text-xs w-1/2 mx-auto mb-5"
+					className="text-xs w-full md:w-1/2 mx-auto mb-5"
 					options={activityOptions}
 					value={{
 						value: this.props.activityFilter,
@@ -109,7 +109,7 @@ class Heatmap extends Component {
 				<Modal
 					isOpen={this.state.showModal}
 					id="heatmap-modal"
-					className="eklhad-modal absolute font-mono text-center bg-gray-50 inset-1/4 overflow-scroll p-5 border-solid border-indigo-500"
+					className="eklhad-modal absolute font-mono text-center bg-gray-50 inset-1/10 md:inset-1/4 overflow-scroll p-5 border-solid border-indigo-500"
 					contentLabel="Date Detail"
 					shouldCloseOnOverlayClick={true}
 					onRequestClose={this.handleCloseModal}
