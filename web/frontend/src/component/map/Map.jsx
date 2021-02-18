@@ -101,7 +101,6 @@ class Map extends Component {
 					zoom={this.state.viewport.zoom}
 					bearing={this.state.viewport.bearing}
 					pitch={this.state.viewport.pitch}
-					onViewportChange={(viewport) => this.setState({ viewport })}
 					mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
 					attributionControl={false}
 					worldCopyJump={true}
