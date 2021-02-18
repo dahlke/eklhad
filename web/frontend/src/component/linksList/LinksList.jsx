@@ -62,14 +62,14 @@ class LinksList extends Component {
 				</button>
 				{this.state.showHistoricalLinks ? blogLinks : null}
 				<Modal
-					className="eklhad-modal absolute font-mono bg-gray-50 p-50 inset-1/10 p-50 border-solid border-indigo-500"
+					className="eklhad-modal absolute font-mono bg-gray-50 inset-1/10 border-solid border-indigo-500"
 					id="link-detail-modal"
 					isOpen={this.state.showModal}
 					contentLabel="Date Detail"
 					shouldCloseOnOverlayClick={true}
 					onRequestClose={this.handleCloseModal}
 				>
-					<div className="eklhad-modal-content">
+					<div className="eklhad-modal-content p-50">
 						<button
 							type="button"
 							className="eklhad-modal-top-x-button"

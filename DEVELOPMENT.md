@@ -40,6 +40,13 @@ cd web/
 go run main.go -twitter
 ```
 
+#### Pull All Data from All Sources
+
+```
+source secrets.op.sh
+make collect_data
+```
+
 ## Testing
 
 There tests for both the frontend and backend, which can be run manually, and are always run in CircleCI when a commit is pushed to the repo.

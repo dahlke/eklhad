@@ -94,11 +94,9 @@
 		width: 100%;
 		height: 100%;
 		overflow: scroll;
-		text-align: center;
 
 		button {
     		background-color: #fcfbf9;
-    		color: #fcfbf9;
 
 			&.eklhad-modal-top-x-button {
 				position: absolute;
@@ -120,4 +118,16 @@
 			}
 		}
     }
+}
+
+#heatmap-modal {
+	.eklhad-modal-content {
+		padding: 10px;
+	}
+}
+
+#link-detail-modal {
+	.eklhad-modal-content {
+		padding: 50px;
+	}
 }

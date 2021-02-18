@@ -109,7 +109,7 @@ class Heatmap extends Component {
 				<Modal
 					isOpen={this.state.showModal}
 					id="heatmap-modal"
-					className="eklhad-modal absolute font-mono text-center bg-gray-50 p-50 inset-1/4 overflow-scroll p-5 border-solid border-indigo-500"
+					className="eklhad-modal absolute font-mono text-center bg-gray-50 inset-1/4 overflow-scroll p-5 border-solid border-indigo-500"
 					contentLabel="Date Detail"
 					shouldCloseOnOverlayClick={true}
 					onRequestClose={this.handleCloseModal}
@@ -125,7 +125,7 @@ class Heatmap extends Component {
 						{dateDetailList}
 						<button
 							type="button"
-							className="text-xs border border-solid border-indigo-500 hover:bg-gray-200 p-2 mx-auto rounded"
+							className="eklhad-modal-bottom-button text-xs border border-solid border-indigo-500 hover:bg-gray-200 p-2 m-5 rounded"
 							onClick={this.handleCloseModal}
 						>
 							Close Modal
