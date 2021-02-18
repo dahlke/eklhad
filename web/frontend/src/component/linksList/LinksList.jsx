@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Modal from "react-modal";
 import MarkdownView from "react-showdown";
 
+import "./LinksList.scss";
+
 class LinksList extends Component {
 	constructor() {
 		super();

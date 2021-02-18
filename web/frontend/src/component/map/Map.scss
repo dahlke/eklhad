@@ -1,8 +1,7 @@
-// TODO: manage these via Tailwind where possible.
-
 @import "../../variables.scss";
 
-// NOTE: This override is required since we're leveraging a React project that I don't control.
+// NOTE: Since I use react-mapbox-gl I have to override some things that
+// get auto-generated.
 #map {
 	.mapboxgl-ctrl-top-left,
 	.mapboxgl-ctrl-top-right,

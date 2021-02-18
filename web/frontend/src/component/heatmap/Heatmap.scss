@@ -1,6 +1,7 @@
 @import "../../variables.scss";
 
-// NOTE: This override is required since we're leveraging a React project that I don't control.
+// NOTE: Since I use react-calendar-heatmap I have to override some things that
+// get auto-generated.
 #heatmap {
 	margin-top: 10px;
 

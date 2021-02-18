@@ -3,8 +3,6 @@
 // NOTE: Since I use react-modal and react-showdown in the JS, so I have to
 // override some things that get auto-generated.
 .eklhad-modal {
-	// TODO: consolidate the below styles
-
     h1, h2, h3, h4, h5, h6 {
         display: block;
         font-weight: bold;
@@ -110,11 +108,4 @@
 			}
 		}
     }
-}
-
-// TODO: put these in theirown .scss files
-#link-detail-modal {
-	.eklhad-modal-content {
-		padding: 50px;
-	}
 }

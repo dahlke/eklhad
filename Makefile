@@ -49,7 +49,6 @@ js_lint_fix_dry:
 	cd web/frontend/ && \
 	node node_modules/eslint/bin/eslint.js --fix-dry-run src/*.js src/**/*.js
 
-# Hacky hack since I don't want to patch resume-cli at the sed part.
 .PHONY: resume
 resume: npm
 	cd web/frontend/conf/ && \

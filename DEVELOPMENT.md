@@ -42,7 +42,7 @@ go run main.go -twitter
 
 #### Pull All Data from All Sources
 
-```
+```bash
 source secrets.op.sh
 make collect_data
 ```
@@ -85,7 +85,7 @@ There are several build stages that are required for the ultimate deployment. Th
 
 You can read the [Makefile](./Makefile) to see what commands are being run under the hood, but to do all of the above process quickly, run:
 
-### Authenticating to GCP, TFC and Cloudflare.
+### Authenticating to GCP, TFC and Cloudflare
 
 - [Required GCP IAM Permissions](https://cloud.google.com/cloud-build/docs/building/build-vm-images-with-packer#required_iam_permissions)
 

@@ -48,7 +48,11 @@ class Heatmap extends Component {
 	}
 
 	handleCloseModal() {
-		this.setState({ showModal: false });
+		this.setState({
+			showModal: false,
+		});
+
+		this.props.setDateFilter("");
 	}
 
 	render() {
@@ -56,7 +60,6 @@ class Heatmap extends Component {
 			? this.props.heatmapDateMap[this.props.dateFilter]
 			: [];
 
-		// TODO: does this need a ref anymore?
 		const dateDetailList = this.props.dateFilter ? (
 			<DateDetailList data={dataForDate} />
 		) : null;
@@ -122,6 +125,7 @@ class Heatmap extends Component {
 						>
 							X
 						</button>
+						<h1>{this.props.dateFilter}</h1>
 						{dateDetailList}
 						<button
 							type="button"

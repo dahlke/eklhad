@@ -27,17 +27,16 @@ class DateDetailList extends Component {
 
 		const instagrams = this.props.data.instagrams.map((instagram) => (
 			<div key={instagram.id}>
+				<span className="block text-xs mt-6">
+					[
+					{instagram.date}
+					] [Instagram]
+				</span>
 				<a
 					target="_blank"
 					rel="noopener noreferrer"
 					href={instagram.permalink}
 				>
-					<span className="block m-auto center">
-						[
-						<span className="">{instagram.date}</span>
-						]
-						[Instagram]
-					</span>
 					<img
 						className="m-auto w-2/4"
 						src={instagram.media_url}
