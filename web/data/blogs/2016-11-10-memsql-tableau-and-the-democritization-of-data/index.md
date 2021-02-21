@@ -1,4 +1,4 @@
-# MemSQL, Tableau, and the Democratization of Data
+# [2016-11-10] MemSQL, Tableau, and the Democratization of Data
 
 _Originally published on the [MemSQL Blog](http://blog.memsql.com/memsql-tableau-and-the-democratization-of-data/)._
 

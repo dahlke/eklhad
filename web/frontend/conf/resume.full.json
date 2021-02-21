@@ -35,7 +35,7 @@
 	"work": [
 		{
 			"company": "HashiCorp",
-			"position": "Field Technology Specialist, Globals",
+			"position": "Field Technology Specialist (Global)",
 			"website": "http://hashicorp.com",
 			"startDate": "2021-02-01",
 			"highlights": [
@@ -51,6 +51,7 @@
 			"position": "Staff Solutions Engineer (West NA)",
 			"website": "http://hashicorp.com",
 			"startDate": "2020-02-01",
+			"endDate": "2021-02-01",
 			"highlights": [
 				"DevOps domain expert for sales team on strategic client relationships in F500.",
 				"Lead pre-sales engineering activities (discovery, value prop, architectural design).",
@@ -64,6 +65,7 @@
 			"startDate": "2018-11-19",
 			"endDate": "2020-02-01",
 			"highlights": [
+				"TODO"
 			]
 		},
 		{
@@ -86,7 +88,12 @@
 			"startDate": "2015-11-01",
 			"endDate": "2017-03-01",
 			"highlights": [
-			]
+				"Execute PoCs and build systems with customers such as: Goldman Sachs, Pinterest, Uber, etc.",
+				"Define requirements and success criteria with customers.",
+				"Optimize schemas and queries, find bottlenecks, analyze hardware utilization and performance.",
+				"Design and deploy environments from PoC to production; automate operations.",
+				"Support the sales team on the technical side of the sale, build reusable sales optimization tools."
+            ]
 		},
 		{
 			"company": "SingleStore (MemSQL)",
@@ -95,7 +102,9 @@
 			"startDate": "2013-12-01",
 			"endDate": "2015-11-01",
 			"highlights": [
-				"Translated design mockups and prototypes into large-scale web applications."
+				"Translated design mockups and prototypes into large-scale web applications.",
+				"Owned internal projects, including: sales tools, demos, documentation, company website, testing infrastructure and cloud infrastructure.",
+				"Collaborated with support and end users to resolve any technical issues in the field."
 			]
 		},
 		{
@@ -106,11 +115,45 @@
 			"endDate": "2013-12-01",
 			"summary": "",
 			"highlights": [
-				"Developed, tested, deployed and maintained software, with a focus on front-end."
+				"Developed, tested, deployed and maintained software, with a focus on front-end.",
+				"Defined and documented requirements, architecture and design of applications.",
+				"Maintained knowledge of technologies used in scientific and commercial communities."
+			]
+		},
+        {
+			"company": "ICON Technologies",
+			"position": "Senior Software Engineer",
+			"website": "",
+			"startDate": "",
+			"endDate": "",
+			"summary": "",
+			"highlights": [
+				"TODO"
+			]
+		},
+        {
+			"company": "MentorMob",
+			"position": "Software Engineer",
+			"website": "",
+			"startDate": "",
+			"endDate": "",
+			"summary": "",
+			"highlights": [
+				"TODO"
 			]
 		}
 	],
 	"volunteer": [
+		{
+			"organization": "San Francisco Penitentiary",
+			"position": "Volunteer Lecturer",
+			"website": "",
+			"startDate": "2012-01-01",
+			"endDate": "2013-01-01",
+			"summary": "",
+			"highlights": [
+			]
+		},
 	],
 	"education": [
 		{
@@ -119,7 +162,8 @@
 			"studyType": "BS",
 			"startDate": "2009-07-01",
 			"endDate": "2013-05-01",
-			"gpa": "3.925, Dean's List 2009-2013",
+			// "gpa": "3.925, Dean's List 2009-2013",
+			"gpa": "Dean's List 2009-2013, Radio DePaul Host 2010-2013",
 			"courses": [
 			]
 		}
@@ -154,9 +198,56 @@
 			"date": "2018-03-21",
 			"awarder": "SingleStore (MemSQL)",
 			"summary": ""
+		},
+		{
+			"title": "SE of the Year (179%)",
+			"date": "2016-03-21",
+			"awarder": "MemSQL",
+			"summary": ""
+		},
+		{
+			"title": "President's Club 2018",
+			"date": "2016-03-21",
+			"awarder": "MemSQL",
+			"summary": ""
+		},
+		{
+			"title": "President's Club 2017",
+			"date": "2017-03-21",
+			"awarder": "MemSQL",
+			"summary": ""
+		},
+		{
+			"title": "President's Club 2016",
+			"date": "2016-03-21",
+			"awarder": "MemSQL",
+			"summary": ""
 		}
+
 	],
 	"publications": [
+        {
+			"name": "Election 2016: Analyzing Real-Time Twitter Sentiment with MemSQL Pipelines",
+			"publisher": "",
+			"releaseDate": "2016-10-18",
+			"website": "http://blog.memsql.com/election-2016-real-time-twitter-sentiment/",
+			"summary": ""
+		},
+		{
+			"name": "How Pinterest Measures Real-Time User Engagement with Spark",
+			"publisher": "",
+			"releaseDate": "2015-02-18",
+			"website": "http://blog.memsql.com/pinterest-apache-spark-use-case/",
+			"summary": ""
+		},
+		{
+			"name": "Migrating TOD",
+			"publisher": "",
+			"releaseDate": "2015-02-18",
+			"website": "http://blog.memsql.com/pinterest-apache-spark-use-case/",
+			"summary": ""
+		}
+
 	],
 	"skills": [
 		{
@@ -184,7 +275,7 @@
 	"interests": [
 		{
 			"name": "Being outside.",
-			"keywords": [ "surfing", "running", "skiing", "hiking", "travel", "photography", "stories", "people", "team sports"]
+			"keywords": [ "cycling", "running", "golfing", "skiing", "hiking", "travel", "photography", "stories", "people", "team sports"]
 		}
 	],
 	"references": [
