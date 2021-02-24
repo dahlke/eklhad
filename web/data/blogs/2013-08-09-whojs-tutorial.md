@@ -4,20 +4,9 @@ _[WhoJS README](https://github.com/dahlke/whojs/blob/master/README.md)_
 
 It is important to note, that while using WhoJS, it is assumed that all HTML forms are marked up properly, including `label` tags having the proper `for` attribute pointed at their corresponding `input`, `select`, `textarea` or what have you. If the form is not marked up properly it is highly probable that Who will be unable to locate the correct input, despite having some small builtin fallbacks.
 
-## Contents
-
-1. Getting Started
-2. Using WhoJS
-    - Setting Context
-    - Reset Context
-    - Typing Values Into a Form
-    - Reading Values from a Form
-    - Clicking Elements
-    - Passing Time
-
 ## Getting Started
 
-Grab yourself a copy of WhoJS from [GitHub](https://github.com/globusonline/whojs) and include it in your page similar to this:
+Grab yourself a copy of WhoJS from [the GitHub repo](https://github.com/globusonline/whojs) and include it in your page similar to this:
 
 ```html
 <script src="javascripts/who.js"> </script>
@@ -84,10 +73,6 @@ Who.clicksElement({
     findByPartial : true
 });
 ```
-
-#### Clicking buttons
-
-#### Clicking other elements
 
 ### Reading form values
 

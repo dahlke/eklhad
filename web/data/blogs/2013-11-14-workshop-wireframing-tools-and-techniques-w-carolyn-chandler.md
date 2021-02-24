@@ -4,9 +4,9 @@
 
 _**What is a wireframe?** - a visual guide that represents the skeletal framework of a website. Wireframes are created for the purpose of arranging elements to best accomplish a particular purpose._
 
-Capture ideas and sketch lo-fi interfaces. At this stage you are thinking about what _features_ not whether or not we should have a radio button or a dropdown. The lo-fi interface is useful because people are more inclined to give **honest** feedback. They are less aprehensive to make comments about a prototype than they something that looks as though someone has put a lot of effort into polishing.
+Capture ideas and sketch lo-fi interfaces. At this stage you are thinking about what _features_ not whether or not we should have a radio button or a dropdown. The lo-fi interface is useful because people are more inclined to give **honest** feedback. They are less apprehensive to make comments about a prototype than they something that looks as though someone has put a lot of effort into polishing.
 
-**Do not go down the color and typography rabit hole right at the start.**
+**Do not go down the color and typography rabbit hole right at the start.**
 
 ## Why You Should Wireframe
 
@@ -84,7 +84,7 @@ Wireframes do **not** communicate:
 
 ### Arranging the Information
 
-Create content groupings of similar information types that are likely to be used together. THis will help users when they are searching for information.
+Create content groupings of similar information types that are likely to be used together. This will help users when they are searching for information.
 
 **Consider chunks**. The parts that need to be on every page (content, primary nav, utility nav, site logo, image, news, left nav, footer, etc). Add callouts and and annotations to these chunks about what you think might work for that chunk.
 
@@ -107,9 +107,9 @@ _How will users navigate around the site?_ Determine this early.
 
 **Primary Stakeholders** - _How have our business goals been met?_
 **Developers** - _What do I have to support ad how does the site work?_
-**Visual Designers** - _What visual elements need to be displayed on the pagte?_
+**Visual Designers** - _What visual elements need to be displayed on the page?_
 **Copywriters** - _What do I need to write?_
-**Wireframe Creators** - _Why did I make these deisions?_
+**Wireframe Creators** - _Why did I make these decisions?_
 
 ### Terms that are Good to Know
 

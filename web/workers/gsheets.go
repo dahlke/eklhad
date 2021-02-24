@@ -228,7 +228,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 					log.Error(err)
 				}
 
-				blogContentPath, err := filepath.Abs(fmt.Sprintf("data/blogs/%s/index.md", gBlog.Path.Value))
+				blogContentPath, err := filepath.Abs(fmt.Sprintf("data/blogs/%s.md", gBlog.Path.Value))
 
 				if err != nil {
 					log.Error(err)
