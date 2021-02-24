@@ -10,7 +10,7 @@
 - [Finding forced layouts](http://jsfiddle.net/qjncp)
 - Full page forced layouts occur every time you ask the browser if we have enough content during an infinite scroll. That's a lot of work on the browser.
 - Alternative: Instead of asking the browser every time, determine the height of a row, and track how long we've scrolled. Ex: 200px high, the page scrolled 740px, we need 4 more rows.
-- When looking for elements, using class names such as `.hidden` will provide faster selection than `:hidden` as it doesn't need to check style rules or snything else, it only has to inspect the DOM tree. It won't force a layout, works well with styling, and is battery efficient.
+- When looking for elements, using class names such as `.hidden` will provide faster selection than `:hidden` as it doesn't need to check style rules or anything else, it only has to inspect the DOM tree. It won't force a layout, works well with styling, and is battery efficient.
 - [Throttle high frequency events like mousemove or scroll; handle with requestAnimationFrame](http://www.html5rocks.com/en/tutorials/speed/rendering/)
 - Moral: Know your tools. Modern browsers have the tools to find these issues. (Even IE... 11)
 
@@ -59,7 +59,7 @@
 
 - Think small. Think modular. Elements, cells, compounds, organisms.
 - Keep them decoupled. Subscribe and Respond. Communicate through events.
-- Observe and mediate. Bundle smaller moduls, provide a public api, direct references only go downward, each layer consumes lower-level events and publishes upwards.
+- Observe and mediate. Bundle smaller modules, provide a public api, direct references only go downward, each layer consumes lower-level events and publishes upwards.
 - Make it testable. Does it perform operation or calculation? Is it part of the widget's public facing API?
 - Public functions should have unit tests, store prototypes in object namespaces, test logical functions separately.
 - *Summary:* _Only make componenets as large as they need to be. Keep them as decoupled as possible. Consume downwards, communicate upwards. Make functions and options granular and robust for potential overrides. Test, test, and test. Make every attempt to ensure backward compatibility._
@@ -73,7 +73,7 @@
 - Challenges: screen-size, touch, content organization, and testing.
 - Screen size variety challenge - no scroll, and font size big enough to read.
 - Touch challenge - buttons big enough to touch, swipe and other gestures should be intuitive.
-- Content organization challegne - showing/hiding based on screen size (sometimes people with small screens seem penalized.). Having diffferent layouts from large to small screen may confuse users.
+- Content organization challenge - showing/hiding based on screen size (sometimes people with small screens seem penalized.). Having different layouts from large to small screen may confuse users.
 - Device testing challenge - no free lunch, you really need to test on all devices to make sure everything is working as expected. Emulators like [screenfly](http://quirktools.com/screenfly/) can help.
 - Why jQuery Mobile? Cross browser, cross device, touch friendly, responsive, layout and theming engine, ajax page navigation and _great documentation_.
 
@@ -106,7 +106,7 @@
 #### Another example
 
 - make `grunt deploy` work
-  - heroku
+  - heoku
   - nodejitsu
   - openshift
   - github pages (example grunt task)
