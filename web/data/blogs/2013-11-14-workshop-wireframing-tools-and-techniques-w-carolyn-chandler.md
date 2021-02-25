@@ -103,7 +103,7 @@ Good wireframes will achieve a balance between being too detailed and too vague.
 
 _How will users navigate around the site?_ Determine this early.
 
-+What information should be included in a wireframe? Content, layout, behavior?_
+_What information should be included in a wireframe? Content, layout, behavior?_
 
 **Primary Stakeholders** - _How have our business goals been met?_
 **Developers** - _What do I have to support ad how does the site work?_

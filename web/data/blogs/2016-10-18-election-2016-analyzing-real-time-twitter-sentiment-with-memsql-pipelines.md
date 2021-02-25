@@ -1,4 +1,4 @@
-# Election 2016: Analyzing Real-Time Twitter Sentiment with MemSQL Pipelines
+# [2016-10-18] Election 2016: Analyzing Real-Time Twitter Sentiment with MemSQL Pipelines
 
 _Originally published on the [MemSQL Blog](http://blog.memsql.com/election-2016-real-time-twitter-sentiment/)._
 
@@ -10,9 +10,7 @@ By now, most people have probably seen both encouraging and deprecating tweets a
 
 ![Hilary vs. Trump Sentiment](https://storage.googleapis.com/eklhad-web-public/images/hillary-vs-trump-twitter-sentiment.png)
 
-~~Click here to access the live demo.~~
-
-~~Post-Election, we have shut down the demo. View a screencap of it running at the bottom of this post.~~
+_NOTE: Post-Election, we have shut down the live demo. View a screencap of it running at the bottom of this post._
 
 Introducing our latest live demonstration, Election 2016: Real-Time Twitter Analytics. We analyze the sentiment –attitude, emotion, or feeling– of every tweet about Clinton and Trump as it is tweeted. Now, anyone can see how high or low in the negative or positive tweets are trending at any given point. We’re giving everyone access to the broader scope of how each candidate is doing according to the Twittersphere.
 
@@ -25,7 +23,7 @@ The `CREATE PIPELINE` statement looks like this:
 ```sql
 CREATE PIPELINE `twitter_pipeline`
 AS LOAD DATA KAFKA ‘your-kafka-host-ip:9092/your-kafka-topic’
-INTO TABLE `tweets`
+INTO TABLE `tweets`;
 ```
 
 The `CREATE TABLE` statement for the `tweets` table in MemSQL is shown below:
@@ -44,10 +42,10 @@ ELSE 'Unknown' END PERSISTED text CHARACTER SET utf8 COLLATE utf8_general_ci,
 `created` as FROM_UNIXTIME(`tweet`::$created_at) PERSISTED datetime,
 KEY `id` (`id`) /*!90619 USING CLUSTERED COLUMNSTORE */,
 /*!90618 SHARD */ KEY `id_2` (`id`)
-)
+);
 ```
 
-_Note: we create `tweets` as a columnstore table so it can handle large amounts of data for analytics. We also utilize persisted computed columns in MemSQL to parse JSON data for categorizing each tweet by candidate. MemSQL natively supports the JSON data format.
+_NOTE: we create `tweets` as a columnstore table so it can handle large amounts of data for analytics. We also utilize persisted computed columns in MemSQL to parse JSON data for categorizing each tweet by candidate. MemSQL natively supports the JSON data format._
 
 When the `twitter_pipeline` is run, data in the `tweets` table looks like this:
 
@@ -70,16 +68,16 @@ Next, we created a second pipeline that pulled from the same Kafka topic, but in
 CREATE PIPELINE `twitter_sentiment_pipeline`
 AS LOAD DATA KAFKA 'your-kafka-host-ip:9092/your-kafka-topic'
 WITH TRANSFORM ('http://download.memsql.com/pipelines-twitter-demo/transform.tar.gz' , 'transform.py' , '')
-INTO TABLE `tweet_sentiment`
+INTO TABLE `tweet_sentiment`;
 ```
 
 Combining data from these two MemSQL pipelines, we can perform analytics using SQL. For example, we can create a histogram of tweet sentiment through the following query:
 
 ```sql
 SELECT
-sentiment_bucket,
-SUM(IF(candidate = "Clinton", tweet_volume, 0)) as clinton_tweets,
-SUM(IF(candidate = "Trump", tweet_volume, 0)) as trump_tweets
+    sentiment_bucket,
+    SUM(IF(candidate = "Clinton", tweet_volume, 0)) as clinton_tweets,
+    SUM(IF(candidate = "Trump", tweet_volume, 0)) as trump_tweets
 FROM tweets_per_sentiment_per_candidate_timeseries t
 GROUP BY sentiment_bucket
 ORDER BY sentiment_bucket;
@@ -87,8 +85,6 @@ ORDER BY sentiment_bucket;
 
 Lastly we constructed a User Interface (UI). We built the graph using WebSockets and React to visualize the rolling average tweet sentiment for both candidates, drawn in real time.
 
-~~Click here to access the live demo.~~
-
-~~Post-Election, we have shut down the demo. View a screencap of it running at the bottom of this post.~~
+_NOTE: Post-Election, we have shut down the live demo. View a screencap of it running at the bottom of this post._
 
 ![Real Time Sentiment Graph Screenshot](https://storage.googleapis.com/eklhad-web-public/images/real-time-twitter-sentiment-election-2016.jpg)

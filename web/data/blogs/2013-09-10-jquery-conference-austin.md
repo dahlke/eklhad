@@ -172,7 +172,7 @@
   - Encourage an optimistic attitude.
   - Show respect.
 - The best learning happens when solving real problems.
-  - Get new devs in the traenches!
+  - Get new devs in the trenches!
 - Best times?
   - Pair Programming
   - Code Reviews
@@ -190,7 +190,7 @@
   - Debugging (tools as well)
 
 _New devs are eager to learn and build. More experience developers can either be intimidating or inspiring. *Be inspiring.*_
-A new dev's best weapon is his own curiousity. Hiring *passionate, curious* developers goes a long way in the learning process.
+A new dev's best weapon is his own curiosity. Hiring *passionate, curious* developers goes a long way in the learning process.
 
 ---
 
@@ -306,7 +306,7 @@ A new dev's best weapon is his own curiousity. Hiring *passionate, curious* deve
   - Shadow DOM
     - Provides encapsulation and enables composition
     - The meat of web components
-    - Complext topic, read [spec](http://www.w3.org/TR/shadow-dom/) for further ifo
+    - Complex topic, read [spec](http://www.w3.org/TR/shadow-dom/) for further ifo
   - HTML Imports
   - Other stuff (mutation observers, pointer events, data binding)
 
