@@ -24,8 +24,9 @@ function _processBlogs(blogs) {
 }
 
 const mapStateToProps = (state) => {
+	// TODO: handle the items being undefined more cleanly
 	const sortedLinks = _sortByTimestamp(state.links.items);
-	const sortedBlogs = _processBlogs(state.blogs.items);
+	const sortedBlogs = _processBlogs(state.blogs.items || []);
 
 	return {
 		links: sortedLinks,
