@@ -6,14 +6,12 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"os"
-	"path/filepath"
 	"strings"
 	"time"
 
 	storage "cloud.google.com/go/storage"
 	"github.com/dahlke/eklhad/web/constants"
-	geo "github.com/dahlke/eklhad/web/geo"
+	"github.com/dahlke/eklhad/web/geo"
 	"github.com/dahlke/eklhad/web/structs"
 	log "github.com/sirupsen/logrus"
 )
@@ -228,26 +226,15 @@ func GetDataFromGSheets(spreadSheetID string) {
 					log.Error(err)
 				}
 
-				blogContentPath, err := filepath.Abs(fmt.Sprintf("data/blogs/%s.md", gBlog.Path.Value))
-
-				if err != nil {
-					log.Error(err)
-				}
-
-				blogContentFile, err := os.Open(blogContentPath)
-				if err != nil {
-					log.Error(err)
-				}
-				defer blogContentFile.Close()
-				jsonBytes, _ := ioutil.ReadAll(blogContentFile)
-
 				eklhadBlog := structs.EklhadBlog{
-					ID:        gBlog.ID.Value,
-					Name:      gBlog.Name.Value,
-					Timestamp: timestamp.Unix(),
-					URL:       gBlog.URL.Value,
-					Path:      gBlog.Path.Value,
-					Content:   string(jsonBytes),
+					ID:          gBlog.ID.Value,
+					Name:        gBlog.Name.Value,
+					Timestamp:   timestamp.Unix(),
+					URL:         gBlog.URL.Value,
+					MediumURL:   gBlog.MediumURL.Value,
+					OriginalURL: gBlog.OriginalURL.Value,
+					GistURL:     gBlog.GistURL.Value,
+					Path:        gBlog.Path.Value,
 				}
 				eklhadBlogs = append(eklhadBlogs, eklhadBlog)
 			}

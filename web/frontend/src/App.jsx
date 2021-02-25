@@ -76,6 +76,26 @@ class App extends Component {
 							<a
 								target="_blank"
 								rel="noopener noreferrer"
+								href="https://instagram.com/eklhad"
+							>
+								Instagram
+							</a>
+							{" "}
+							/
+							{" "}
+							<a
+								target="_blank"
+								rel="noopener noreferrer"
+								href="https://eklhad.medium.com/"
+							>
+								Medium
+							</a>
+							{" "}
+							/
+							{" "}
+							<a
+								target="_blank"
+								rel="noopener noreferrer"
 								href="https://www.linkedin.com/in/neildahlke"
 							>
 								LinkedIn

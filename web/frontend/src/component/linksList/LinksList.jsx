@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
-import Modal from "react-modal";
-import MarkdownView from "react-showdown";
 
 import "./LinksList.scss";
 
@@ -10,25 +8,7 @@ class LinksList extends Component {
 		super();
 		this.state = {
 			showHistoricalLinks: false,
-			showModal: false,
-			shownBlog: undefined,
 		};
-
-		this.handleCloseModal = this.handleCloseModal.bind(this);
-	}
-
-	handleCloseModal() {
-		this.setState({
-			showModal: false,
-			shownBlog: undefined,
-		});
-	}
-
-	_showBlogViewer(blog) {
-		this.setState({
-			showModal: true,
-			shownBlog: blog,
-		});
 	}
 
 	_toggleHistoricalLinks() {
@@ -49,7 +29,13 @@ class LinksList extends Component {
 					Blog
 					]
 				</span>
-				<button type="button" className="underline" onClick={() => this._showBlogViewer(blog)}>{blog.name}</button>
+				<a
+					href={blog.url}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					{blog.name}
+				</a>
 			</div>
 		));
 
@@ -63,39 +49,6 @@ class LinksList extends Component {
 					{historicalLinkButtonText}
 				</button>
 				{this.state.showHistoricalLinks ? blogLinks : null}
-				<Modal
-					className="eklhad-modal absolute font-mono bg-gray-50 inset-1/10 border-solid border-indigo-500"
-					id="link-detail-modal"
-					isOpen={this.state.showModal}
-					contentLabel="Date Detail"
-					shouldCloseOnOverlayClick={true}
-					onRequestClose={this.handleCloseModal}
-				>
-					<div className="eklhad-modal-content p-50">
-						<button
-							type="button"
-							className="eklhad-modal-top-x-button"
-							onClick={this.handleCloseModal}
-						>
-							X
-						</button>
-						<MarkdownView
-							markdown={
-								this.state.shownBlog
-									? this.state.shownBlog.content
-									: ""
-							}
-							options={{ tables: true, emoji: true }}
-						/>
-						<button
-							type="button"
-							className="eklhad-modal-bottom-button text-xs border border-solid border-indigo-500 hover:bg-gray-200 p-2 m-5 rounded"
-							onClick={this.handleCloseModal}
-						>
-							Close Modal
-						</button>
-					</div>
-				</Modal>
 			</div>
 		);
 	}

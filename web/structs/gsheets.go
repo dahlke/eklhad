@@ -66,11 +66,14 @@ type GSheetLinks struct {
 GSheet Blog Parser Structs
 */
 type gSheetBlogEntry struct {
-	ID   gSheetEntryValue `json:"id"`
-	Name gSheetEntryValue `json:"gsx$name"`
-	Date gSheetEntryValue `json:"gsx$date"`
-	URL  gSheetEntryValue `json:"gsx$url"`
-	Path gSheetEntryValue `json:"gsx$path"`
+	ID          gSheetEntryValue `json:"id"`
+	Name        gSheetEntryValue `json:"gsx$name"`
+	Date        gSheetEntryValue `json:"gsx$date"`
+	URL         gSheetEntryValue `json:"gsx$displayurl"`
+	MediumURL   gSheetEntryValue `json:"gsx$mediumurl"`
+	OriginalURL gSheetEntryValue `json:"gsx$originalurl"`
+	GistURL     gSheetEntryValue `json:"gsx$gisturl"`
+	Path        gSheetEntryValue `json:"gsx$path"`
 }
 
 type gSheetBlogsFeed struct {
