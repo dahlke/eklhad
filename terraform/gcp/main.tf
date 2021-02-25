@@ -118,11 +118,8 @@ resource "google_compute_instance" "web" {
       "echo \"${acme_certificate.certificate.certificate_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_issuer.pem",
       "echo \"${acme_certificate.certificate.private_key_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_private_key.pem",
       "cd /home/ubuntu/go/src/github.com/dahlke/eklhad/web/",
-      "nohup ./main -production &",
-      "sleep 1",
-      "cd /home/ubuntu/go/src/github.com/dahlke/eklhad/web/nomad/linux",
-      "nohup sudo nomad agent -config server.conf &",
-      "sleep 1",
+      "nohup ./main -production 2>&1 | tee /tmp/eklhad-web-logs.txt",
+      "sleep 1"
     ]
   }
 }
