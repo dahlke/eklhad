@@ -10,7 +10,6 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "jsonresume-theme-classic": "0.0.1",
-    "prettier": "^2.1.2",
     "resume-cli": "2.1.4"
   },
   "dependencies": {
