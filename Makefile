@@ -9,8 +9,10 @@ PACKER_CIRCLECI_IMAGE_CMD=`tail -n 1 /go/src/github.com/dahlke/eklhad/packer/gcp
 
 PACKER_BUILD_OUTPUT_DIR=packer/gcp/output/
 ARTIFACT_DIR_LINUX=${CWD}/artifact/tar/linux
+ARTIFACT_DIR_MACOS=${CWD}/artifact/tar/macos
 TF_GCP_APP_DIR=${CWD}/terraform/gcp
 WEB_APP_SRC_DIR=web/
+WEB_APP_PROD_BUILD_DIR=web/frontend/build/
 
 DOCKER_HUB_USER=eklhad
 
@@ -27,11 +29,6 @@ DOCKER_TEST_IMAGE_VERSION=0.1.1
 .PHONY: npm
 npm:
 	cd web/frontend && npm config set strict-ssl false && npm install
-
-.PHONY: js_prettify
-js_prettify:
-	cd web/frontend/ && \
-	npx prettier --write src/
 
 .PHONY: js_lint
 js_lint:
@@ -69,7 +66,7 @@ frontend_start: npm resume
 
 .PHONY: frontend_build
 frontend_build: npm resume
-	cd web/frontend/ && npm run-script build && rm -rf node_modules
+	cd web/frontend/ && npm run-script build
 
 .PHONY: frontend_audit_fix
 frontend_audit_fix: npm
@@ -99,6 +96,10 @@ go_server_start:
 go_build_linux:
 	cd web && GOOS=linux GOARCH=amd64 go build main.go
 
+.PHONY: go_build_macos
+go_build_macos:
+	cd web && GOOS=darwin GOARCH=amd64 go build main.go
+
 
 ##########################
 # DATA COLLECTION HELPERS
@@ -117,7 +118,13 @@ collect_data:
 .PHONY: artifact_linux_web
 artifact_linux_web: go_build_linux
 	mkdir -p ${ARTIFACT_DIR_LINUX};
-	tar cf ${ARTIFACT_DIR_LINUX}/${WEB_APP_TAR_NAME} ${WEB_APP_SRC_DIR};
+	tar cf ${ARTIFACT_DIR_LINUX}/${WEB_APP_TAR_NAME} ${WEB_APP_PROD_BUILD_DIR};
+
+# TODO: why am I not allowing MacOS builds anymore?
+.PHONY: artifact_macos_web
+artifact_macos_web: go_build_macos
+	mkdir -p ${ARTIFACT_DIR_MACOS};
+	tar cf ${ARTIFACT_DIR_MACOS}/${WEB_APP_TAR_NAME} ${WEB_APP_PROD_BUILD_DIR};
 
 .PHONY: image_gcp
 image_gcp:

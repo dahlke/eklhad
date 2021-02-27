@@ -1,7 +1,7 @@
 {
 	"basics": {
 		"name": "Neil Dahlke",
-		"label": "Solutions Engineer",
+		"label": "Software Engineer",
 		"picture": "https://en.gravatar.com/userimage/25206271/c07bb7c64399588ea12e52065f2b6dda.jpg",
 		"email": "neil+eklhad-web@dahlke.io",
 		"phone": "cell not available here",
@@ -19,6 +19,11 @@
 				"network": "GitHub",
 				"username": "dahlke",
 				"url": "http://github.com/dahlke"
+			},
+			{
+				"network": "Twitter",
+				"username": "neildahlke",
+				"url": "http://twitter.com/neildahlke"
 			},
 			{
 				"network": "Instagram",
