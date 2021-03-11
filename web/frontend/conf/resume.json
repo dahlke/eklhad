@@ -121,6 +121,12 @@
 	],
 	"awards": [
 		{
+			"title": "SE of the Year, West USA (FY21)",
+			"date": "2020-02-11",
+			"awarder": "HashiCorp",
+			"summary": ""
+		},
+		{
 			"title": "SE of the Quarter, Americas (FY21Q1)",
 			"date": "2020-05-07",
 			"awarder": "HashiCorp",

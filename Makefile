@@ -12,7 +12,9 @@ ARTIFACT_DIR_LINUX=${CWD}/artifact/tar/linux
 ARTIFACT_DIR_MACOS=${CWD}/artifact/tar/macos
 TF_GCP_APP_DIR=${CWD}/terraform/gcp
 WEB_APP_SRC_DIR=web/
-WEB_APP_PROD_BUILD_DIR=web/frontend/build/
+WEB_APP_FRONTEND_BUILD_DIR=web/frontend/build/
+WEB_APP_GO_BINARY_PATH=web/main
+WEB_APP_CONFIG_PATH=web/config.json
 
 DOCKER_HUB_USER=eklhad
 
@@ -118,13 +120,13 @@ collect_data:
 .PHONY: artifact_linux_web
 artifact_linux_web: go_build_linux
 	mkdir -p ${ARTIFACT_DIR_LINUX};
-	tar cf ${ARTIFACT_DIR_LINUX}/${WEB_APP_TAR_NAME} ${WEB_APP_PROD_BUILD_DIR};
+	tar zcf ${ARTIFACT_DIR_LINUX}/${WEB_APP_TAR_NAME} ${WEB_APP_FRONTEND_BUILD_DIR} ${WEB_APP_GO_BINARY_PATH} ${WEB_APP_CONFIG_PATH};
 
-# TODO: why am I not allowing MacOS builds anymore?
+# TODO: do I need the config files or are they in the build?
 .PHONY: artifact_macos_web
 artifact_macos_web: go_build_macos
 	mkdir -p ${ARTIFACT_DIR_MACOS};
-	tar cf ${ARTIFACT_DIR_MACOS}/${WEB_APP_TAR_NAME} ${WEB_APP_PROD_BUILD_DIR};
+	tar zcf ${ARTIFACT_DIR_MACOS}/${WEB_APP_TAR_NAME} ${WEB_APP_FRONTEND_BUILD_DIR} ${WEB_APP_GO_BINARY_PATH} ${WEB_APP_CONFIG_PATH};
 
 .PHONY: image_gcp
 image_gcp:
