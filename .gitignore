@@ -17,8 +17,7 @@ web/data/instagram/worker/media/
 .terraform/
 .vagrant/
 output/
-artifact/tar/mac/*.tar.gz
-artifact/tar/linux/*.tar.gz
+artifact/*
 
 #SSH Keys
 *.pem
