@@ -121,6 +121,12 @@
 	],
 	"awards": [
 		{
+			"title": "APEX Club (FY21)",
+			"date": "2020-03-10",
+			"awarder": "HashiCorp",
+			"summary": ""
+		},
+		{
 			"title": "SE of the Year, West USA (FY21)",
 			"date": "2020-02-11",
 			"awarder": "HashiCorp",
