@@ -12,8 +12,8 @@ jobs:
     steps:
       - checkout
       - gcp_auth
-      - run: go get -v -t -d ./...
-      - run: go test -v ./...
+      - run: make go_get
+      - run: make go_test
       - run: npm --prefix web/frontend/ install
       - run: npm --prefix web/frontend/ run-script test-once
   data_workers:
@@ -23,7 +23,8 @@ jobs:
     steps:
       - checkout
       - gcp_auth
-      - run: go get -v -t -d ./...
+      - run: make go_get
+      - run: make go_test
       - run: make collect_data
   packer_build_terraform_plan:
     docker:
