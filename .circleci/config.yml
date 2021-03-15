@@ -7,7 +7,7 @@ commands:
 jobs:
   go_js_test:
     docker:
-      - image: eklhad/eklhad-web-circleci:0.1.1
+      - image: eklhad/eklhad-web-circleci:0.1.2
     working_directory: /go/src/github.com/dahlke/eklhad/
     steps:
       - checkout
@@ -18,7 +18,7 @@ jobs:
       - run: npm --prefix web/frontend/ run-script test-once
   data_workers:
     docker:
-      - image: eklhad/eklhad-web-circleci:0.1.1
+      - image: eklhad/eklhad-web-circleci:0.1.2
     working_directory: /go/src/github.com/dahlke/eklhad/
     steps:
       - checkout
@@ -27,7 +27,7 @@ jobs:
       - run: make collect_data
   packer_build_terraform_plan:
     docker:
-      - image: eklhad/eklhad-web-circleci:0.1.1
+      - image: eklhad/eklhad-web-circleci:0.1.2
     working_directory: /go/src/github.com/dahlke/eklhad/
     steps:
       - checkout
@@ -42,7 +42,7 @@ jobs:
       - run: make tf_circleci_plan_gcp
   packer_build_terraform_deploy:
     docker:
-      - image: eklhad/eklhad-web-circleci:0.1.1
+      - image: eklhad/eklhad-web-circleci:0.1.2
     working_directory: /go/src/github.com/dahlke/eklhad/
     steps:
       - checkout

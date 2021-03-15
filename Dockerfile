@@ -1,7 +1,7 @@
 FROM alpine:3.10.2
 
 # Install Golang
-ENV GO_VERSION 1.13
+ENV GO_VERSION 1.16
 ADD https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz /
 RUN tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz
 ENV PATH $PATH:/usr/local/go/bin
@@ -19,7 +19,7 @@ ENV CGO_ENABLED 0
 # Install some useful tools
 RUN apk add --update make git bash
 
-# Copy the web directory in 
+# Copy the web directory in
 COPY ./web/ /src/github.com/dahlke/eklhad/web/
 WORKDIR /src/github.com/dahlke/eklhad/web
 RUN go get
