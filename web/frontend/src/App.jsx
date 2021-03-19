@@ -122,8 +122,12 @@ class App extends Component {
 	}
 }
 
+App.defaultProps = {
+  gravatar: {},
+};
+
 App.propTypes = {
-	gravatar: PropTypes.object.isRequired,
+	gravatar: PropTypes.object,
 };
 
 export default App;
