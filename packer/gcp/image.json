@@ -4,7 +4,7 @@
         "type": "googlecompute",
         "account_file": "/Users/neil/.gcp/eklhad-web-packer.json",
         "project_id": "eklhad-web",
-        "source_image": "ubuntu-1604-xenial-v20181204",
+        "source_image": "ubuntu-2004-focal-v20210415",
         "image_name": "eklhad-web-packer-{{timestamp}}",
         "machine_type": "n1-standard-1",
         "service_account_email": "eklhad-web-packer@eklhad-web.iam.gserviceaccount.com",

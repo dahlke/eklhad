@@ -133,18 +133,23 @@
 			"endDate": "",
 			"summary": "",
 			"highlights": [
-				"TODO"
+				"Interfaced with clients to understand business requirements, documented them, and mapped those requirements to software solutions.",
+				"Reviewed technical design, provided recommendations for software development and implemented those recommendations.",
+				"Coordinated with clients to document the software solution and provide support as their teams took ownership of the deliverables."
 			]
 		},
         {
 			"company": "MentorMob",
 			"position": "Software Engineer",
-			"website": "",
+			"website": "https://mentormob.com",
 			"startDate": "",
 			"endDate": "",
 			"summary": "",
 			"highlights": [
-				"TODO"
+				"Co-designed API interfaces with backend team",
+				"Developed JavaScript libraries for AJAX communication with backend API.",
+				"Designed and developed MentorMob core learning workflow and quiz interface",
+				"Worked with design team to develop page structure and feel, ensuring a quality user experience."
 			]
 		}
 	],
@@ -152,6 +157,56 @@
 		{
 			"organization": "San Francisco Penitentiary",
 			"position": "Volunteer Lecturer",
+			"website": "",
+			"startDate": "2012-01-01",
+			"endDate": "2013-01-01",
+			"summary": "",
+			"highlights": [
+			]
+		},
+		{
+			"organization": "San Francisco SVDP",
+			"position": "Volunteer Lecturer",
+			"website": "",
+			"startDate": "2012-01-01",
+			"endDate": "2013-01-01",
+			"summary": "",
+			"highlights": [
+			]
+		},
+		{
+			"organization": "Healthier Evergreen",
+			"position": "",
+			"website": "",
+			"startDate": "2012-01-01",
+			"endDate": "2013-01-01",
+			"summary": "",
+			"highlights": [
+			]
+		},
+		{
+			"organization": "St. Alberts CCD",
+			"position": "",
+			"website": "",
+			"startDate": "2012-01-01",
+			"endDate": "2013-01-01",
+			"summary": "",
+			"highlights": [
+			]
+		},
+		{
+			"organization": "PAWS Chicago",
+			"position": "",
+			"website": "",
+			"startDate": "2012-01-01",
+			"endDate": "2013-01-01",
+			"summary": "",
+			"highlights": [
+			]
+		},
+		{
+			"organization": "Brother Edmund Rice Camp",
+			"position": "",
 			"website": "",
 			"startDate": "2012-01-01",
 			"endDate": "2013-01-01",

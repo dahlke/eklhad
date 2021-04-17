@@ -2,6 +2,8 @@
 
 _[WhoJS README](https://github.com/dahlke/whojs/blob/master/README.md)_
 
+![WhoJS Logo](https://storage.googleapis.com/eklhad-web-public/images/whojs_logo.png)
+
 It is important to note, that while using WhoJS, it is assumed that all HTML forms are marked up properly, including `label` tags having the proper `for` attribute pointed at their corresponding `input`, `select`, `textarea` or what have you. If the form is not marked up properly it is highly probable that Who will be unable to locate the correct input, despite having some small builtin fallbacks.
 
 ## Getting Started
