@@ -70,6 +70,16 @@ workflows:
           filters:
             branches:
               only: master
+  data_workers:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - data_workers
       # - packer_build_terraform_plan
       # - packer_build_terraform_plan:
           # requires:
