@@ -1,5 +1,6 @@
+
 terraform {
-  required_version = ">0.12.17"
+  # TF and TF provider versions in versions.tf
 
   backend "remote" {
     hostname     = "app.terraform.io"
@@ -49,6 +50,10 @@ resource "google_compute_address" "web" {
   name = "ipv4-address"
 }
 
+resource "google_compute_network" "web" {
+  name = "${var.gcp_project}-network"
+}
+
 resource "google_compute_firewall" "web" {
   name    = "${var.gcp_project}-firewall"
   network = google_compute_network.web.name
@@ -63,10 +68,6 @@ resource "google_compute_firewall" "web" {
   }
 
   target_tags = var.tags
-}
-
-resource "google_compute_network" "web" {
-  name = "${var.gcp_project}-network"
 }
 
 resource "google_compute_instance" "web" {
