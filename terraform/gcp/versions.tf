@@ -1,17 +1,25 @@
 terraform {
+  required_version = ">=0.15.3"
+
   required_providers {
-    acme = {
-      source = "terraform-providers/acme"
-    }
-    cloudflare = {
-      source = "cloudflare/cloudflare"
-    }
     google = {
-      source = "hashicorp/google"
+      source  = "hashicorp/google"
+      version = "~> 3.66"
     }
+
     tls = {
       source = "hashicorp/tls"
+      version = "~> 3.1"
+    }
+
+    acme = {
+      source = "vancluever/acme"
+      version = "~> 2.4"
+    }
+
+    cloudflare = {
+      source = "cloudflare/cloudflare"
+      version = "~> 2.20"
     }
   }
-  required_version = ">= 0.13"
 }
