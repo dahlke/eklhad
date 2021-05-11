@@ -1,11 +1,11 @@
 
 terraform {
-  # TF and TF provider versions in versions.tf
-
+  # NOTE: TF and TF provider versions in versions.tf
   backend "remote" {
     hostname     = "app.terraform.io"
     organization = "eklhad"
 
+    # NOTE: Change execution mode to local after initial workspace creation
     workspaces {
       name = "gcp-eklhad-web"
     }
