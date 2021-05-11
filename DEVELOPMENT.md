@@ -81,7 +81,7 @@ make docker_push_circleci
 
 ## Deploying Eklhad Web (Manual)
 
-There are several build stages that are required for the ultimate deployment. The React / SASS frontend code needs to be built, the Go web server needs to be compiled, an artifact zipped up, a Packer image needs to be created for the target cloud provider, and then that all needs to be deployed using Terraform.
+There are several build stages that are required for the ultimate deployment. The React frontend code needs to be built, the Go web server needs to be compiled, an artifact zipped up, a Packer image needs to be created for the target cloud provider, and then that all needs to be deployed using Terraform.
 
 You can read the [Makefile](./Makefile) to see what commands are being run under the hood, but to do all of the above process quickly, run:
 

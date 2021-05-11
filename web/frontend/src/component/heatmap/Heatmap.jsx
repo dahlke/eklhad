@@ -10,7 +10,7 @@ import Modal from "react-modal";
 import { ActivityFilters } from "../../actions";
 import DateDetailList from "../dateDetailList/DateDetailList";
 
-import "./Heatmap.scss";
+import "./Heatmap.css";
 
 Modal.setAppElement(document.getElementById("root"));
 

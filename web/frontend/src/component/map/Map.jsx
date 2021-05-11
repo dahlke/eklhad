@@ -5,7 +5,7 @@ import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 
-import "./Map.scss";
+import "./Map.css";
 
 // NOTE: I could remove this, but I have to get it into the JS somehow, so it will be
 // exposed no matter what. All it does is associate the map to my account, so unless
