@@ -6,7 +6,7 @@ import PopulatedMap from "./container/PopulatedMap";
 import PopulatedHeatmap from "./container/PopulatedHeatmap";
 import PopulatedLinksList from "./container/PopulatedLinksList";
 
-import "./App.scss";
+import "./App.css";
 
 // Set the tablet breakpoint for responsive JS
 const BREAKPOINT_TABLET = 768;
