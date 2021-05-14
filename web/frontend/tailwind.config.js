@@ -18,6 +18,7 @@ module.exports = {
         mono: ["VCR OSD Mono", ...defaultTheme.fontFamily.mono],
       },
       colors: {
+        "off-white": "#fcfbf9",
         "chicago-flag-blue": "#58b9f7",
         "chicago-flag-red": "#cc0000",
       },
