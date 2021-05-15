@@ -47,6 +47,15 @@ source secrets.op.sh
 make collect_data
 ```
 
+## Fallback Page (for Maintenance)
+
+Mistakes are made, and due to trying to use only free-tier offerings from the cloud providers,
+that means some unexpected things come up where you might not have the time to fix it immediately and instead,
+need a fallback maintenance page. Leveraging the User GitHub Pages feature provides a good option for this.
+
+- [Example Repo](https://github.com/dahlke/dahlke.github.io)
+- [Example Page](https://dahlke.github.io/)
+
 ## Testing
 
 There tests for both the frontend and backend, which can be run manually, and are always run in CircleCI when a commit is pushed to the repo.
