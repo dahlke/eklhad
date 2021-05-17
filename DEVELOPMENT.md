@@ -81,7 +81,8 @@ chmod +x ../../hooks/pre-commit ./pre-commit
 
 ### CircleCI Docker Test Image
 
-To run the tests in CircleCI, a custom image is required. To build this test image and push it to Docker Hub, use the following commands:
+To run the tests in CircleCI, a custom image is required. To build this test image and push it to Docker Hub, use the
+following commands:
 
 ```bash
 make docker_build_circleci
@@ -90,9 +91,20 @@ make docker_push_circleci
 
 ## Deploying Eklhad Web (Manual)
 
-There are several build stages that are required for the ultimate deployment. The React frontend code needs to be built, the Go web server needs to be compiled, an artifact zipped up, a Packer image needs to be created for the target cloud provider, and then that all needs to be deployed using Terraform.
+There are several build stages that are required for the ultimate deployment. The React frontend code needs to be
+built, the Go web server needs to be compiled, an artifact zipped up, a Packer image needs to be created for the target
+cloud provider, and then that all needs to be deployed using Terraform.
 
-You can read the [Makefile](./Makefile) to see what commands are being run under the hood, but to do all of the above process quickly, run:
+You can read the [Makefile](./Makefile) to see what commands are being run under the hood, but to do all of the above
+process quickly, run:
+
+### Backup Static Version
+
+There is a static version of the page that has none of the dynamic content that can be reached at
+[static.dahlke.io](https://static.dahlke.io), which is a redirect to GitHub Pages
+[dahlke.github.io](https://dahlke.github.io) (the [repo](https://github.com/dahlke/dahlke.github.io)).
+This is useful to fall back to if anything goes wrong deploying the app to the free tier of cloud
+provider services.
 
 ### Authenticating to GCP, TFC and Cloudflare
 
@@ -120,7 +132,9 @@ echo 'credentials "app.terraform.io" {\n\ttoken = "'$TFC_TOKEN'"\n} ' > ~/.terra
 
 ### Deploying
 
-Before deploying, a few things need to be done. The React frontend needs to be compiled. A Linux artifact of the application needs to be built. Then a GCP image is created using Packer containing the new Linux artifact, and is used to deploy using Terraform.
+Before deploying, a few things need to be done. The React frontend needs to be compiled. A Linux artifact of the
+application needs to be built. Then a GCP image is created using Packer containing the new Linux artifact, and is used
+to deploy using Terraform.
 
 ```bash
 make collect_data
