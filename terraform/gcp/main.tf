@@ -140,6 +140,13 @@ resource "cloudflare_record" "www" {
   type   = "A"
 }
 
+resource "cloudflare_record" "static" {
+  zone_id = var.cloudflare_zone_id
+  name   = "static"
+  value  = "dahlke.github.io"
+  type   = "CNAME"
+}
+
 resource "cloudflare_record" "dahlkeio" {
   zone_id = var.cloudflare_zone_id
   name   = "dahlke.io"
