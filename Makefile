@@ -152,6 +152,10 @@ tf_apply_gcp: tf_init_gcp
 tf_apply_gcp_auto: tf_init_gcp
 	cd ${TF_GCP_APP_DIR} && terraform apply -var "image_id=${PACKER_IMAGE_CMD}" -auto-approve
 
+.PHONY: tf_apply_gcp_rotate_certs_auto
+tf_apply_gcp_rotate_certs_auto: tf_init_gcp
+	cd ${TF_GCP_APP_DIR} && terraform apply -var "image_id=${PACKER_IMAGE_CMD}" -replace "acme_certificate.certificate" -auto-approve
+
 .PHONY: tf_circleci_plan_gcp
 tf_circleci_plan_gcp: tf_init_gcp
 	cd ${TF_GCP_APP_DIR} && terraform plan -var "image_id=$(PACKER_CIRCLECI_IMAGE_CMD)"
