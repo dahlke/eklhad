@@ -6,7 +6,7 @@ gcp_region = "us-west1"
 
 gcp_zone = "us-west1-a"
 
-gcp_machine_type = "f1-micro"
+gcp_machine_type = "e2-micro"
 
 ssh_user = "ubuntu"
 
