@@ -111,6 +111,15 @@ func GetDataFromGitHubForUser(username string) {
 			// for privacy / compliance purposes.
 			if repoOwner == username {
 				repoCommitActivity, _, err := client.Repositories.ListCommitActivity(ctx, repoOwner, *repo.Name)
+				/*
+					TODO: This is now returning an empty array?
+
+					https://docs.github.com/en/rest/reference/repos#get-the-last-year-of-commit-activity
+
+					curl \
+						-H "Accept: application/vnd.github.v3+json" \
+						https://api.github.com/repos/dahlke/terrasnek/stats/commit_activity
+				*/
 				if err != nil {
 					log.Error(err)
 				} else {
