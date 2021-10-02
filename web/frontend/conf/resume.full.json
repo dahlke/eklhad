@@ -298,24 +298,45 @@
 	],
 	"publications": [
         {
+			"name": "Hashicorp Vault PKI White Paper",
+			"publisher": "",
+			"releaseDate": "2021-09-24",
+			"website": "https://www.datocms-assets.com/2885/1632943952-moderndaypkimanagementwhitepaperdigitalv1.pdf",
+			"summary": ""
+		},
+        {
+			"name": "Migrating A Lot of State with Python and the Terraform Cloud API",
+			"publisher": "",
+			"releaseDate": "2021-09-24",
+			"website": "https://medium.com/hashicorp-engineering/migrating-a-lot-of-state-with-python-and-the-terraform-cloud-api-997ec798cd11",
+			"summary": ""
+		},
+        {
+			"name": "MemSQL, Tableau, and the Democratization of Data",
+			"publisher": "",
+			"releaseDate": "2016-11-10",
+			"website": "https://eklhad.medium.com/2016-11-10-memsql-tableau-and-the-democratization-of-data-bc28d2495d68",
+			"summary": ""
+		},
+        {
 			"name": "Election 2016: Analyzing Real-Time Twitter Sentiment with MemSQL Pipelines",
 			"publisher": "",
 			"releaseDate": "2016-10-18",
-			"website": "http://blog.memsql.com/election-2016-real-time-twitter-sentiment/",
+			"website": "https://eklhad.medium.com/2016-10-18-election-2016-analyzing-real-time-twitter-sentiment-with-memsql-pipelines-4cbdc5856354",
 			"summary": ""
 		},
 		{
 			"name": "How Pinterest Measures Real-Time User Engagement with Spark",
 			"publisher": "",
 			"releaseDate": "2015-02-18",
-			"website": "http://blog.memsql.com/pinterest-apache-spark-use-case/",
+			"website": "https://eklhad.medium.com/2015-06-17-how-pinterest-measures-real-time-user-engagement-with-spark-338bb8c6271d",
 			"summary": ""
 		},
 		{
-			"name": "Migrating TOD",
+			"name": "The Internet of Furbies",
 			"publisher": "",
-			"releaseDate": "2015-02-18",
-			"website": "http://blog.memsql.com/pinterest-apache-spark-use-case/",
+			"releaseDate": "2014-10-18",
+			"website": "https://eklhad.medium.com/2014-10-01-the-internet-of-furbies-81a90d9084fa",
 			"summary": ""
 		}
 
