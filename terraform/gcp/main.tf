@@ -1,4 +1,3 @@
-
 terraform {
   # NOTE: TF and TF provider versions in versions.tf
   backend "remote" {
@@ -40,6 +39,8 @@ resource "acme_certificate" "certificate" {
   account_key_pem           = acme_registration.reg.account_key_pem
   common_name               = "dahlke.io"
   subject_alternative_names = ["www.dahlke.io", "gcp.dahlke.io", "aws.dahlke.io", "static.dahlke.io"]
+  # Due to the expiration of DST Root CA X3
+  preferred_chain = "ISRG Root X1"
 
   dns_challenge {
     provider = "cloudflare"
@@ -111,12 +112,12 @@ resource "google_compute_instance" "web" {
       host        = google_compute_address.web.address
     }
 
+    # The certificate pemfile and the issuer pemfile need to be concatenated to get the full trust chain.
     inline = [
       "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_cert.pem",
       "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_issuer.pem",
       "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_private_key.pem",
-      "echo \"${acme_certificate.certificate.certificate_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_cert.pem",
-      "echo \"${acme_certificate.certificate.certificate_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_issuer.pem",
+      "echo \"${acme_certificate.certificate.certificate_pem}${acme_certificate.certificate.issuer_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_cert.pem",
       "echo \"${acme_certificate.certificate.private_key_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_private_key.pem",
       "cd /home/ubuntu/go/src/github.com/dahlke/eklhad/web/",
       "touch /tmp/eklhad-web-logs.txt",
