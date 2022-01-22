@@ -10,7 +10,7 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "jsonresume-theme-classic": "0.0.1",
-    "postcss": "^7.0.33",
+    "postcss": "^8.2.13",
     "postcss-nested": "^4.2.3",
     "resume-cli": "2.1.4"
   },
