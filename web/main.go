@@ -28,10 +28,6 @@ type appConfig struct {
 	WorkerMinSleepMins int    `json:"worker_min_sleep_mins"`
 }
 
-type appSecrets struct {
-	GitHubPersonalAccessToken string `json:"github_personal_access_token"`
-}
-
 var appHostName, _ = os.Hostname()
 var appPort = 3554
 var appConfigData appConfig

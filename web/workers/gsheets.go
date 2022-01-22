@@ -4,9 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
-	"net/http"
-	"strings"
+	"os"
 	"time"
 
 	storage "cloud.google.com/go/storage"
@@ -14,6 +12,8 @@ import (
 	"github.com/dahlke/eklhad/web/geo"
 	"github.com/dahlke/eklhad/web/structs"
 	log "github.com/sirupsen/logrus"
+	"google.golang.org/api/option"
+	"google.golang.org/api/sheets/v4"
 )
 
 func writeLocationsToGCS(locations []structs.EklhadLocation) {
@@ -118,129 +118,149 @@ func writeBlogsToGCS(blogs []structs.EklhadBlog) {
 // GetDataFromGSheets gets all the link and location activity logged in a specific
 // format in GSheets, and writes it to the file system for usage in the frontend.
 func GetDataFromGSheets(spreadSheetID string) {
-	// NOTE: I leveraged this blog post to get this worker to work properly.
-	// https://medium.com/@scottcents/how-to-convert-google-sheets-to-json-in-just-3-steps-228fe2c24e6
-	spreadSheetMetadataURL := fmt.Sprintf("https://spreadsheets.google.com/feeds/worksheets/%s/public/basic?alt=json", spreadSheetID)
+	googleAPIKey := os.Getenv("GOOGLE_API_KEY")
 
-	log.Info("Retrieving GSheet data...")
-	resp, err := http.Get(spreadSheetMetadataURL)
+	ctx := context.Background()
+	sheetsService, err := sheets.NewService(ctx, option.WithAPIKey(googleAPIKey))
 	if err != nil {
-		log.Error(err)
+		log.Fatalf("Unable to retrieve Sheets client: %v", err)
 	}
-	log.Info("GSheet data retrieved.")
 
-	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	locationsReadRange := "locations!A2:E"
+	// NOTE: https://pkg.go.dev/google.golang.org/api@v0.64.0/sheets/v4?utm_source=gopls#SpreadsheetsValuesService.Get
+	locationsResp, err := sheetsService.Spreadsheets.Values.Get(spreadSheetID, locationsReadRange).Do()
+	if err != nil {
+		log.Fatalf("Unable to retrieve data from sheet: %v", err)
+	}
 
-	var sheetMetadata structs.GSheetMetadata
-	json.Unmarshal(body, &sheetMetadata)
+	if len(locationsResp.Values) == 0 {
+		log.Info("No data found for locations.")
+	} else {
+		var eklhadLocations []structs.EklhadLocation
 
-	log.Info("Looping GSheet data entries...")
-	for _, entry := range sheetMetadata.Feed.Entries {
-		splitIDUrl := strings.Split(entry.ID.Value, "/")
-		workSheetID := splitIDUrl[len(splitIDUrl)-1]
+		for i, row := range locationsResp.Values {
+			locationID := fmt.Sprint("location-", i)
+			locationCity := row[0].(string)
+			locationStateProviceRegion := row[1].(string)
+			locationCountry := row[2].(string)
+			locationCurrent := row[3].(string)
+			locationLayover := row[4].(string)
 
-		sheetURL := fmt.Sprintf("https://spreadsheets.google.com/feeds/list/%s/%s/public/values?alt=json", spreadSheetID, workSheetID)
-		resp, err = http.Get(sheetURL)
+			locationConcat := fmt.Sprintf("%s, %s, %s", locationCity, locationStateProviceRegion, locationCountry)
+			log.Info("Processing location ", locationConcat)
+			// NOTE: Geocoding each location makes it this loop take longer than you would think.
+			lat, lng := geo.GeocodeLocation(locationConcat)
 
-		if err != nil {
-			log.Error(err)
-		}
-
-		defer resp.Body.Close()
-		body, err = ioutil.ReadAll(resp.Body)
-
-		if err != nil {
-			log.Error(err)
-		}
-
-		if entry.Title.Value == "locations" {
-			var gLocations structs.GSheetLocations
-			json.Unmarshal(body, &gLocations)
-
-			var eklhadLocations []structs.EklhadLocation
-			for _, gLocation := range gLocations.Feed.Entries {
-				location := fmt.Sprintf("%s, %s, %s", gLocation.City.Value, gLocation.StateProvinceRegion.Value, gLocation.Country.Value)
-				// NOTE: Geocoding each location makes it this loop take longer than you would think.
-				lat, lng := geo.GeocodeLocation(location)
-				current := false
-
-				log.Info("Processing location ", gLocation.City.Value)
-				splitLocationIDURL := strings.Split(gLocation.ID.Value, "/")
-				locationID := splitLocationIDURL[len(splitLocationIDURL)-1]
-
-				if gLocation.Current.Value == "TRUE" {
-					current = true
-				}
-
-				eklhadLocation := structs.EklhadLocation{
-					ID:                  locationID,
-					City:                gLocation.City.Value,
-					StateProvinceRegion: gLocation.StateProvinceRegion.Value,
-					Country:             gLocation.Country.Value,
-					Current:             current,
-					Lat:                 lat,
-					Lng:                 lng,
-				}
-				eklhadLocations = append(eklhadLocations, eklhadLocation)
+			current := false
+			if locationCurrent == "TRUE" {
+				current = true
 			}
 
-			writeLocationsToGCS(eklhadLocations)
-		} else if entry.Title.Value == "links" {
-			var gLinks structs.GSheetLinks
-			json.Unmarshal(body, &gLinks)
-
-			var eklhadLinks []structs.EklhadLink
-			for _, gLink := range gLinks.Feed.Entries {
-				log.Info("Processing link ", gLink.Name.Value)
-				splitLinkIDURL := strings.Split(gLink.ID.Value, "/")
-				linkID := splitLinkIDURL[len(splitLinkIDURL)-1]
-
-				// Has to be a specific date in Golang. /shrug
-				timestamp, err := time.Parse(constants.GSheetsInputDateFmt, gLink.Date.Value)
-				if err != nil {
-					log.Error(err)
-				}
-
-				eklhadLink := structs.EklhadLink{
-					ID:        linkID,
-					Name:      gLink.Name.Value,
-					Timestamp: timestamp.Unix(),
-					Type:      gLink.Type.Value,
-					URL:       gLink.URL.Value,
-				}
-				eklhadLinks = append(eklhadLinks, eklhadLink)
+			layover := false
+			if locationLayover == "TRUE" {
+				layover = true
 			}
 
-			writeLinksToGCS(eklhadLinks)
-		} else if entry.Title.Value == "blogs" {
-			var gBlogs structs.GSheetBlogs
-			json.Unmarshal(body, &gBlogs)
-
-			var eklhadBlogs []structs.EklhadBlog
-			for _, gBlog := range gBlogs.Feed.Entries {
-				log.Info("Processing blog ", gBlog.Name.Value)
-				// Has to be a specific date in Golang. /shrug
-				timestamp, err := time.Parse(constants.GSheetsInputDateFmt, gBlog.Date.Value)
-				if err != nil {
-					log.Error(err)
-				}
-
-				eklhadBlog := structs.EklhadBlog{
-					ID:          gBlog.ID.Value,
-					Name:        gBlog.Name.Value,
-					Timestamp:   timestamp.Unix(),
-					URL:         gBlog.URL.Value,
-					MediumURL:   gBlog.MediumURL.Value,
-					OriginalURL: gBlog.OriginalURL.Value,
-					GistURL:     gBlog.GistURL.Value,
-					Path:        gBlog.Path.Value,
-				}
-				eklhadBlogs = append(eklhadBlogs, eklhadBlog)
+			eklhadLocation := structs.EklhadLocation{
+				ID:                  locationID,
+				City:                locationCity,
+				StateProvinceRegion: locationStateProviceRegion,
+				Country:             locationCountry,
+				Current:             current,
+				Layover:             layover,
+				Lat:                 lat,
+				Lng:                 lng,
 			}
 
-			writeBlogsToGCS(eklhadBlogs)
+			eklhadLocations = append(eklhadLocations, eklhadLocation)
 		}
+
+		writeLocationsToGCS(eklhadLocations)
+	}
+
+	blogsReadRange := "blogs!A2:G"
+	// NOTE: https://pkg.go.dev/google.golang.org/api@v0.64.0/sheets/v4?utm_source=gopls#SpreadsheetsValuesService.Get
+	blogsResp, err := sheetsService.Spreadsheets.Values.Get(spreadSheetID, blogsReadRange).Do()
+	if err != nil {
+		log.Fatalf("Unable to retrieve data from sheet: %v", err)
+	}
+
+	if len(blogsResp.Values) == 0 {
+		log.Info("No data found for blogs.")
+	} else {
+		var eklhadBlogs []structs.EklhadBlog
+
+		for i, row := range blogsResp.Values {
+			blogID := fmt.Sprint("blog-", i)
+			blogName := row[0].(string)
+			blogDate := row[1].(string)
+			blogURL := row[2].(string)
+			blogMediumURL := row[3].(string)
+			blogOriginalURL := row[4].(string)
+			blogGistURL := row[5].(string)
+			blogPath := row[6].(string)
+
+			log.Info("Processing blog ", blogName)
+
+			timestamp, err := time.Parse(constants.GSheetsInputDateFmt, blogDate)
+			if err != nil {
+				log.Error(err)
+			}
+
+			eklhadBlog := structs.EklhadBlog{
+				ID:          blogID,
+				Name:        blogName,
+				Timestamp:   timestamp.Unix(),
+				URL:         blogURL,
+				MediumURL:   blogMediumURL,
+				OriginalURL: blogOriginalURL,
+				GistURL:     blogGistURL,
+				Path:        blogPath,
+			}
+
+			eklhadBlogs = append(eklhadBlogs, eklhadBlog)
+		}
+		writeBlogsToGCS(eklhadBlogs)
+	}
+
+	linksReadRange := "links!A2:E"
+	// NOTE: https://www.any-api.com/googleapis_com/sheets/docs/spreadsheets/sheets_spreadsheets_values_get
+	linksResp, err := sheetsService.Spreadsheets.Values.Get(spreadSheetID, linksReadRange).Do()
+	if err != nil {
+		log.Fatalf("Unable to retrieve data from sheet: %v", err)
+	}
+
+	if len(linksResp.Values) == 0 {
+		log.Info("No data found for links.")
+	} else {
+		var eklhadLinks []structs.EklhadLink
+
+		for i, row := range linksResp.Values {
+			linkID := fmt.Sprint("link-", i)
+			linkName := row[0].(string)
+			linkDate := row[1].(string)
+			linkType := row[2].(string)
+			linkURL := row[3].(string)
+
+			log.Info("Processing link ", linkName)
+
+			timestamp, err := time.Parse(constants.GSheetsInputDateFmt, linkDate)
+			if err != nil {
+				log.Error(err)
+			}
+
+			eklhadLink := structs.EklhadLink{
+				ID:        linkID,
+				Name:      linkName,
+				Timestamp: timestamp.Unix(),
+				Type:      linkType,
+				URL:       linkURL,
+			}
+
+			eklhadLinks = append(eklhadLinks, eklhadLink)
+		}
+
+		writeLinksToGCS(eklhadLinks)
 	}
 }
 
