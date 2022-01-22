@@ -4,13 +4,13 @@ import (
 	"testing"
 )
 
-const BuenosAiresID string = "cokwr"
+const ExpectedID string = "location-0"
 
 func TestLocations(t *testing.T) {
 	locations := GetLocations()
 	firstLocationID := locations[0].ID
 
-	if firstLocationID != BuenosAiresID {
-		t.Errorf("ID was incorrect, got: %s, want: %s.", firstLocationID, BuenosAiresID)
+	if firstLocationID != ExpectedID {
+		t.Errorf("ID was incorrect, got: %s, want: %s.", firstLocationID, ExpectedID)
 	}
 }

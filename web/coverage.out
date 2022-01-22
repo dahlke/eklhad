@@ -1,5 +1,4 @@
 mode: set
-github.com/dahlke/eklhad/web/services/blogs.go:11.38,16.2 4 1
 github.com/dahlke/eklhad/web/services/common.go:12.61,16.16 3 1
 github.com/dahlke/eklhad/web/services/common.go:20.2,24.16 4 1
 github.com/dahlke/eklhad/web/services/common.go:28.2,31.16 3 1
@@ -12,3 +11,4 @@ github.com/dahlke/eklhad/web/services/instagram.go:11.47,17.2 4 1
 github.com/dahlke/eklhad/web/services/links.go:11.38,17.2 4 1
 github.com/dahlke/eklhad/web/services/locations.go:11.46,17.2 4 1
 github.com/dahlke/eklhad/web/services/twitter.go:11.40,17.2 4 1
+github.com/dahlke/eklhad/web/services/blogs.go:11.38,16.2 4 1
