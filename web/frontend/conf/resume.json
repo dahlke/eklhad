@@ -122,8 +122,14 @@
 	],
 	"awards": [
 		{
-			"title": "APEX Club (FY21)",
-			"date": "2020-03-10",
+			"title": "APEX Club (FY21, FY22)",
+			"date": "2021-03-10",
+			"awarder": "HashiCorp",
+			"summary": ""
+		},
+		{
+			"title": "Tech Specialist of the Year, Global (FY22)",
+			"date": "2021-02-11",
 			"awarder": "HashiCorp",
 			"summary": ""
 		},
@@ -154,13 +160,13 @@
 		{
 			"title": "SE of the Year, Global (FY19)",
 			"date": "2018-03-21",
-			"awarder": "SingleStore (MemSQL)",
+			"awarder": "SingleStore [MemSQL]",
 			"summary": ""
 		},
 		{
 			"title": "President's Club (FY17, FY18, FY19)",
 			"date": "2018-03-21",
-			"awarder": "SingleStore (MemSQL)",
+			"awarder": "SingleStore [MemSQL]",
 			"summary": ""
 		}
 	],
