@@ -49,12 +49,13 @@ class App extends Component {
 							alt="Neil Dahlke"
 							src={gravatarURL}
 						/>
-						<h1 className="pt-5 pb-2">Neil Dahlke</h1>
+						<h1 className="pt-5 pb-2 text-3xl font-bold">Neil Dahlke</h1>
 						<h2 className="pb-2">Engineer</h2>
 						<h4 className="pb-2">San Francisco, California, USA</h4>
 						<h5 className="pb-10">
 							<a
 								target="_blank"
+								className="underline"
 								rel="noopener noreferrer"
 								href="https://twitter.com/neildahlke"
 							>
@@ -65,6 +66,7 @@ class App extends Component {
 							{" "}
 							<a
 								target="_blank"
+								className="underline"
 								rel="noopener noreferrer"
 								href="https://www.github.com/dahlke"
 							>
@@ -75,6 +77,7 @@ class App extends Component {
 							{" "}
 							<a
 								target="_blank"
+								className="underline"
 								rel="noopener noreferrer"
 								href="https://instagram.com/eklhad"
 							>
@@ -85,6 +88,7 @@ class App extends Component {
 							{" "}
 							<a
 								target="_blank"
+								className="underline"
 								rel="noopener noreferrer"
 								href="https://eklhad.medium.com/"
 							>
@@ -95,6 +99,7 @@ class App extends Component {
 							{" "}
 							<a
 								target="_blank"
+								className="underline"
 								rel="noopener noreferrer"
 								href="https://www.linkedin.com/in/neildahlke"
 							>
@@ -105,6 +110,7 @@ class App extends Component {
 							{' '}
 							<a
 								href="/static/resume.html"
+								className="underline"
 							>
 								Resume
 							</a>

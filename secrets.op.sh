@@ -3,7 +3,7 @@
 eval $(op signin my)
 
 export GCLOUD_KEYFILE_JSON=$(op get item "Google dahlke.io" | jq -r '.details.sections[1].fields[0].v' | jq -r .)
-export GOOGLE_APPLICATION_CREDENTIALS="/Users/neil/.gcp/eklhad-web-packer.json"
+export GOOGLE_APPLICATION_CREDENTIALS="/Users/neildahlke/.gcp/eklhad-web-packer.json"
 
 export GOOGLE_API_KEY=$(op get item "Google dahlke.io" | jq -r '.details.sections[1].fields[2].v')
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 
-import "./LinksList.css";
+// import "./LinksList.css";
 
 class LinksList extends Component {
 	constructor() {
@@ -33,6 +33,7 @@ class LinksList extends Component {
 					href={blog.url}
 					target="_blank"
 					rel="noopener noreferrer"
+					className="underline"
 				>
 					{blog.name}
 				</a>

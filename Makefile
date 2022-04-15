@@ -4,7 +4,7 @@ WEB_APP_TAR_NAME = eklhad-web.tar.gz
 CWD := $(shell pwd)
 
 PACKER_GCP_DEF_PATH=packer/gcp/image.json
-PACKER_IMAGE_CMD=`tail -n 1 /Users/neil/src/github.com/dahlke/eklhad/packer/gcp/output/image.txt | awk '{print $$8}'`
+PACKER_IMAGE_CMD=`tail -n 1 /Users/neildahlke/src/github.com/dahlke/eklhad/packer/gcp/output/image.txt | awk '{print $$8}'`
 PACKER_CIRCLECI_IMAGE_CMD=`tail -n 1 /go/src/github.com/dahlke/eklhad/packer/gcp/output/image.txt | awk '{print $$8}'`
 
 PACKER_BUILD_OUTPUT_DIR=packer/gcp/output/

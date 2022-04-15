@@ -13,7 +13,7 @@ job "eklhad-web" {
         image = "eklhad/eklhad-web:latest"
 
         volumes = [
-          "/Users/neil/src/github.com/dahlke/eklhad/web/data/:/go/eklhad-web/data/"
+          "/Users/neildahlke/src/github.com/dahlke/eklhad/web/data/:/go/eklhad-web/data/"
         ]
 
         port_map {
