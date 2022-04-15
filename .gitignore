@@ -4,7 +4,6 @@
 
 # Built / Compiled Files
 *.tar.gz
-*.css
 *.tfstate
 *.tfstate.backup
 *.tfstate.lock.info

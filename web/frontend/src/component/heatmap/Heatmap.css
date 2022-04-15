@@ -1,0 +1,66 @@
+/*
+NOTE: Since I use react-calendar-heatmap I have to override some things that
+get auto-generated.
+*/
+
+/* breakpoint-table = 720; */
+
+#heatmap {
+	margin-top: 10px;
+
+	/*
+	@media screen and (max-width: $breakpoint-tablet) {
+		width: 60%;
+		margin: auto;
+	}
+	*/
+
+	.react-calendar-heatmap {
+		.react-calendar-heatmap-month-label,
+		.react-calendar-heatmap-weekday-label {
+			font-size: 0.5em;
+		}
+
+		/*
+		@media screen and (max-width: $breakpoint-tablet) {
+			.react-calendar-heatmap-month-label {
+				font-size: 5px;
+			}
+		}
+		*/
+
+		text {
+			fill: #aaa;
+		}
+
+		.react-calendar-heatmap-small-text {
+			font-size: 5px;
+		}
+
+		rect:hover {
+			stroke: #555;
+			stroke-width: 1px;
+		}
+
+		.color-empty {
+			fill: #eeeeee;
+		}
+
+		.color-filled {
+			fill: theme("colors.chicago-flag-blue");
+		}
+	}
+}
+
+#heatmap-modal {
+	.eklhad-modal-content {
+		padding: 10px;
+
+		.close-button {
+			position: absolute;
+			top: 0;
+			right: 0;
+			border-radius: 100%;
+		}
+	}
+}

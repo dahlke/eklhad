@@ -94,7 +94,7 @@ In the end, you should have one of these JSON objects for each state file you pl
 In order to make requests against the GCP API using the Google Cloud Storage Python library, you will need to authenticate. There are some instructions for setting up authentication here. Make sure that you follow these instructions and set the `GOOGLE_APPLICATION_CREDENTIALS` environment variable properly for your OS.
 
 ```bash
-export GOOGLE_APPLICATION_CREDENTIALS=”/Users/neil/.gcp/hashi/foo.json”
+export GOOGLE_APPLICATION_CREDENTIALS=”/Users/neildahlke/.gcp/hashi/foo.json”
 ```
 
 _Warning: Do NOT store these credentials in VCS._

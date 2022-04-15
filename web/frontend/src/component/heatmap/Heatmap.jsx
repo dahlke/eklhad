@@ -120,16 +120,16 @@ class Heatmap extends Component {
 					<div className="eklhad-modal-content">
 						<button
 							type="button"
-							className="eklhad-modal-top-x-button"
+							className="border border-solid border-indigo-500 p-2 m-5 close-button h-12 w-12"
 							onClick={this.handleCloseModal}
 						>
-							X
+							x
 						</button>
 						<h1>{this.props.dateFilter}</h1>
 						{dateDetailList}
 						<button
 							type="button"
-							className="eklhad-modal-bottom-button text-xs border border-solid border-indigo-500 hover:bg-gray-200 p-2 m-5 rounded"
+							className="text-xs border border-solid border-indigo-500 hover:bg-gray-200 p-2 m-5 rounded"
 							onClick={this.handleCloseModal}
 						>
 							Close Modal

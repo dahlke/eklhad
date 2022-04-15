@@ -2,7 +2,7 @@
     "builders": [
       {
         "type": "googlecompute",
-        "account_file": "/Users/neil/.gcp/eklhad-web-packer.json",
+        "account_file": "/Users/neildahlke/.gcp/eklhad-web-packer.json",
         "project_id": "eklhad-web",
         "source_image": "ubuntu-2004-focal-v20210415",
         "image_name": "eklhad-web-packer-{{timestamp}}",
@@ -49,22 +49,8 @@
         {
             "type": "shell",
             "inline": [
-                "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -",
-                "sudo add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\""
-            ]
-        },
-        {
-            "type": "shell",
-            "inline": [
                 "curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -",
                 "sudo apt-add-repository \"deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main\""
-            ]
-        },
-        {
-            "type": "shell",
-            "inline": [
-                "sudo usermod -a -G docker ubuntu",
-                "sudo service docker restart"
             ]
         }
     ]
