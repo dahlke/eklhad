@@ -30,12 +30,22 @@
 	"work": [
 		{
 			"company": "HashiCorp",
-			"position": "Staff Field Technology Specialist (Global)",
+			"position": "Sr. Staff Field Technology Specialist - Vault (Global)",
+			"website": "http://hashicorp.com",
+			"startDate": "2022-05-02",
+			"highlights": [
+                "Work with practitioners and executives, as a product subject matter expert.",
+                "Escalation point for technology questions and issues in F50.",
+				"Deeply integrated with the product team for feedback loops and product direction."
+			]
+		},
+		{
+			"company": "HashiCorp",
+			"position": "Staff Field Technology Specialist - Vault (Global)",
 			"website": "http://hashicorp.com",
 			"startDate": "2021-02-01",
+			"endDate": "2022-05-02",
 			"highlights": [
-                "Escalation point for technology questions and issues in F50.",
-                "Work with practitioners and executives, as a product subject matter expert.",
                 "Design training, demos and workshops for customers; design training and enablement material for sales team.",
                 "Triage field requests, bi-directional product feedback loop between field, engineering, and go-to-market.",
                 "Maintain product, technical deep dive, and roadmap decks; competitive analysis documentation."
@@ -50,7 +60,8 @@
 			"highlights": [
 				"DevOps domain expert for sales team on strategic client relationships in F500.",
 				"Lead pre-sales engineering activities (discovery, value prop, architectural design).",
-				"Work closely with key client executive decision makers on PoCs ensuring solution validity."
+				"Work closely with key client executive decision makers on PoCs ensuring solution validity.",
+				"Focus spread across the entire HashiCorp stack."
 			]
 		},
 		{
@@ -122,8 +133,8 @@
 	],
 	"awards": [
 		{
-			"title": "APEX Club (FY21)",
-			"date": "2020-03-10",
+			"title": "APEX Club (FY21, FY22)",
+			"date": "2022-03-07",
 			"awarder": "HashiCorp",
 			"summary": ""
 		},
