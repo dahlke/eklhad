@@ -12,7 +12,7 @@
     "jsonresume-theme-classic": "0.0.1",
     "postcss": "^8.2.13",
     "postcss-nested": "^4.2.3",
-    "resume-cli": "2.1.4"
+    "resume-cli": "3.0.7"
   },
   "dependencies": {
     "@craco/craco": "^6.1.2",
