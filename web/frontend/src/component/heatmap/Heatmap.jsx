@@ -67,6 +67,7 @@ class Heatmap extends Component {
 		let mapVals = [];
 		if (this.props.activityFilter === ActivityFilters.SHOW_ALL) {
 			mapVals = this.props.links.concat(this.props.instagrams);
+			mapVals = this.props.links.concat(this.props.tweets);
 			mapVals = mapVals.concat(this.props.githubActivity);
 		} else if (
 			this.props.activityFilter === ActivityFilters.SHOW_INSTAGRAMS
