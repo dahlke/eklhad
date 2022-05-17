@@ -4,7 +4,7 @@ gcp_project = "eklhad-web"
 
 gcp_region = "us-west1"
 
-gcp_zone = "us-west1-a"
+gcp_zone = "us-west1-b"
 
 gcp_machine_type = "e2-micro"
 
