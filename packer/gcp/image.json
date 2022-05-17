@@ -2,14 +2,13 @@
     "builders": [
       {
         "type": "googlecompute",
-        "account_file": "/Users/neildahlke/.gcp/eklhad-web-packer.json",
         "project_id": "eklhad-web",
         "source_image": "ubuntu-2004-focal-v20210415",
         "image_name": "eklhad-web-packer-{{timestamp}}",
         "machine_type": "n1-standard-1",
         "service_account_email": "eklhad-web-packer@eklhad-web.iam.gserviceaccount.com",
         "ssh_username": "ubuntu",
-        "zone": "us-west1-a"
+        "zone": "us-west1-b"
       }
     ],
     "provisioners": [
