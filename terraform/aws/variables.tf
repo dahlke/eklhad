@@ -3,26 +3,29 @@ variable "env" {
   default = "dev"
 }
 
-variable "gcp_project" {
+variable "prefix" {
+  # TODO: do this in the GCP one as well
   type = string
   default = "eklhad-web"
 }
 
-variable "gcp_region" {
+variable "aws_region" {
   type = string
 }
 
-variable "gcp_zone" {
+variable "aws_zone" {
   type = string
 }
 
-variable "gcp_machine_type" {
+variable "aws_machine_type" {
   type = string
 }
 
 variable "tags" {
-  type    = list(string)
-  default = ["web"]
+  type    = map
+  default = {
+    name = "eklhad-web"
+  }
 }
 
 variable "image_id" {

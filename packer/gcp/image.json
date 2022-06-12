@@ -44,13 +44,6 @@
             "inline": [
                 "sudo setcap CAP_NET_BIND_SERVICE=+eip /home/ubuntu/go/src/github.com/dahlke/eklhad/web/main"
             ]
-        },
-        {
-            "type": "shell",
-            "inline": [
-                "curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -",
-                "sudo apt-add-repository \"deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main\""
-            ]
         }
     ]
   }

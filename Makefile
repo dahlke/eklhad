@@ -3,14 +3,21 @@ WEB_APP_NAME = eklhad-web
 WEB_APP_TAR_NAME = eklhad-web.tar.gz
 CWD := $(shell pwd)
 
-PACKER_GCP_DEF_PATH=packer/gcp/image.json
-PACKER_IMAGE_CMD=`tail -n 1 /Users/neildahlke/src/github.com/dahlke/eklhad/packer/gcp/output/image.txt | awk '{print $$8}'`
-PACKER_CIRCLECI_IMAGE_CMD=`tail -n 1 /go/src/github.com/dahlke/eklhad/packer/gcp/output/image.txt | awk '{print $$8}'`
+# TODO: switch to HCL for both
+PACKER_GCP_DEF_PATH=packer/gcp/image.pkr.json
+PACKER_AWS_DEF_PATH=packer/aws/image.pkr.hcl
+# TODO: compare these two commands and choose the more reliable one
+PACKER_AWS_IMAGE_CMD=`tail -n 1 /Users/neildahlke/src/github.com/dahlke/eklhad/packer/aws/output/image.txt | awk '{print $$6}' | cut -c 1-21`
+PACKER_GCP_IMAGE_CMD=`tail -n 1 /Users/neildahlke/src/github.com/dahlke/eklhad/packer/gcp/output/image.txt | awk '{print $$8}'`
+# TODO: AWS CIRCLECI
+PACKER_GCP_CIRCLECI_IMAGE_ID=`tail -n 1 /go/src/github.com/dahlke/eklhad/packer/gcp/output/image.txt | awk '{print $$8}'`
 
-PACKER_BUILD_OUTPUT_DIR=packer/gcp/output/
+PACKER_GCP_OUTPUT_DIR=packer/gcp/output/
+PACKER_AWS_OUTPUT_DIR=packer/aws/output/
 ARTIFACT_DIR_LINUX=${CWD}/artifact/tar/linux
 ARTIFACT_DIR_MACOS=${CWD}/artifact/tar/macos
 TF_GCP_APP_DIR=${CWD}/terraform/gcp
+TF_AWS_APP_DIR=${CWD}/terraform/aws
 WEB_APP_SRC_DIR=web/
 WEB_APP_FRONTEND_BUILD_DIR=web/frontend/build/
 WEB_APP_GO_BINARY_PATH=web/main
@@ -130,8 +137,13 @@ artifact_macos_web: go_build_macos
 
 .PHONY: image_gcp
 image_gcp:
-	mkdir -p ${PACKER_BUILD_OUTPUT_DIR};
-	packer -machine-readable build ${PACKER_GCP_DEF_PATH} >> ${PACKER_BUILD_OUTPUT_DIR}image.txt;
+	mkdir -p ${PACKER_GCP_OUTPUT_DIR};
+	packer -machine-readable build ${PACKER_GCP_DEF_PATH} >> ${PACKER_GCP_OUTPUT_DIR}image.txt;
+
+.PHONY: image_aws
+image_aws:
+	mkdir -p ${PACKER_AWS_OUTPUT_DIR};
+	packer -machine-readable build ${PACKER_AWS_DEF_PATH} >> ${PACKER_AWS_OUTPUT_DIR}image.txt;
 
 ###############################
 # GCP / TERRAFORM DEV HELPERS
@@ -142,36 +154,60 @@ tf_init_gcp:
 
 .PHONY: tf_plan_gcp
 tf_plan_gcp: tf_init_gcp
-	cd ${TF_GCP_APP_DIR} && terraform plan -var "image_id=$(PACKER_IMAGE_CMD)"
+	cd ${TF_GCP_APP_DIR} && terraform plan -var "image_id=$(PACKER_GCP_IMAGE_CMD)"
 
 .PHONY: tf_apply_gcp
 tf_apply_gcp: tf_init_gcp
-	cd ${TF_GCP_APP_DIR} && terraform apply -var "image_id=${PACKER_IMAGE_CMD}"
+	cd ${TF_GCP_APP_DIR} && terraform apply -var "image_id=${PACKER_GCP_IMAGE_CMD}"
 
 .PHONY: tf_apply_gcp_auto
 tf_apply_gcp_auto: tf_init_gcp
-	cd ${TF_GCP_APP_DIR} && terraform apply -var "image_id=${PACKER_IMAGE_CMD}" -auto-approve
+	cd ${TF_GCP_APP_DIR} && terraform apply -var "image_id=${PACKER_GCP_IMAGE_CMD}" -auto-approve
 
 .PHONY: tf_apply_gcp_rotate_certs_auto
 tf_apply_gcp_rotate_certs_auto: tf_init_gcp
-	cd ${TF_GCP_APP_DIR} && terraform apply -var "image_id=${PACKER_IMAGE_CMD}" -replace "acme_certificate.certificate" -auto-approve
+	cd ${TF_GCP_APP_DIR} && terraform apply -var "image_id=${PACKER_GCP_IMAGE_CMD}" -replace "acme_certificate.certificate" -auto-approve
 
 .PHONY: tf_circleci_plan_gcp
 tf_circleci_plan_gcp: tf_init_gcp
-	cd ${TF_GCP_APP_DIR} && terraform plan -var "image_id=$(PACKER_CIRCLECI_IMAGE_CMD)"
+	cd ${TF_GCP_APP_DIR} && terraform plan -var "image_id=$(PACKER_GCP_CIRCLECI_IMAGE_ID)"
 
 .PHONY: tf_circleci_apply_gcp_auto
 tf_circleci_apply_gcp_auto: tf_init_gcp
-	cd ${TF_GCP_APP_DIR} && terraform apply -var "image_id=${PACKER_CIRCLECI_IMAGE_CMD}" -auto-approve
+	cd ${TF_GCP_APP_DIR} && terraform apply -var "image_id=${PACKER_GCP_CIRCLECI_IMAGE_ID}" -auto-approve
 
 .PHONY: tf_out_gcp
 tf_out_gcp:
-	cd ${TF_GCP_APP_DIR} && terraform output -json
+	cd ${TF_GCP_APP_DIR} && terraform output
 
 .PHONY: tf_destroy_gcp
 tf_destroy_gcp:
-	cd ${TF_GCP_APP_DIR} && terraform destroy -var "image_id=${PACKER_IMAGE_CMD}" -auto-approve
+	cd ${TF_GCP_APP_DIR} && terraform destroy -var "image_id=${PACKER_GCP_IMAGE_CMD}" -auto-approve
 
+###############################
+# AWS / TERRAFORM DEV HELPERS
+###############################
+.PHONY: tf_aws_init
+tf_aws_init:
+	cd ${TF_AWS_APP_DIR} && terraform init
+
+.PHONY: tf_plan_aws
+tf_plan_aws: tf_aws_init
+	cd ${TF_AWS_APP_DIR} && terraform plan -var "image_id=$(PACKER_AWS_IMAGE_CMD)"
+
+.PHONY: tf_apply_aws
+tf_apply_aws: tf_aws_init
+	cd ${TF_AWS_APP_DIR} && terraform apply -var "image_id=${PACKER_AWS_IMAGE_CMD}"
+
+.PHONY: tf_out_aws
+tf_out_aws:
+	cd ${TF_AWS_APP_DIR} && terraform output
+
+.PHONY: tf_destroy_aws
+tf_destroy_aws:
+	cd ${TF_AWS_APP_DIR} && terraform destroy -var "image_id=${PACKER_AWS_IMAGE_CMD}" -auto-approve
+
+# TODO: More AWS helpers
 
 ##########################
 # DOCKER HELPERS
