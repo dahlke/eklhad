@@ -53,14 +53,15 @@ get auto-generated.
 }
 
 #heatmap-modal {
+	.close-button {
+		position: absolute;
+		top: 0;
+		right: 0;
+		border-radius: 100%;
+		z-index: 2;
+	}
+
 	.eklhad-modal-content {
 		padding: 10px;
-
-		.close-button {
-			position: absolute;
-			top: 0;
-			right: 0;
-			border-radius: 100%;
-		}
 	}
 }
