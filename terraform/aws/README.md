@@ -1,6 +1,6 @@
-# Eklhad Web GCP Terraform Deployment
+# Eklhad Web AWS Terraform Deployment
 
-TODO: notes about using the free tier https://cloud.google.com/free
+TODO: notes about using the free tier https://aws.amazon.com/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all
 
 Install `graphviz` to generate a graph of the deployed resources:
 ```

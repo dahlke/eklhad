@@ -35,11 +35,12 @@ resource "acme_registration" "reg" {
   email_address = var.email
 }
 
+# TODO: figure out the `static` DNS address here.
 resource "acme_certificate" "certificate" {
   account_key_pem           = acme_registration.reg.account_key_pem
   common_name               = "dahlke.io"
-  subject_alternative_names = ["www.dahlke.io", "gcp.dahlke.io", "aws.dahlke.io", "static.dahlke.io", "test2.dahlke.io"]
-  # Due to the expiration of DST Root CA X3
+  subject_alternative_names = ["www.dahlke.io", "gcp.dahlke.io", "gcp1.dahlke.io", "static.dahlke.io"]
+  # NOTE: Due to the expiration of DST Root CA X3, we use ISRG Root X1
   preferred_chain = "ISRG Root X1"
 
   dns_challenge {
@@ -101,9 +102,10 @@ resource "google_compute_instance" "web" {
   }
 
   metadata = {
-    sshKeys = "${var.ssh_user}:${var.env == "dev" ? file(var.local_ssh_pub_key_path) : tls_private_key.gcp_private_key.public_key_openssh}"
+    sshKeys = "${var.ssh_user}:${var.env == "dev" ? file(var.local_ssh_public_key_path) : tls_private_key.gcp_private_key.public_key_openssh}"
   }
 
+  # TODO: why does this work well for GCP and now AWS?
   provisioner "remote-exec" {
     connection {
       type        = "ssh"
@@ -112,7 +114,7 @@ resource "google_compute_instance" "web" {
       host        = google_compute_address.web.address
     }
 
-    # The certificate pemfile and the issuer pemfile need to be concatenated to get the full trust chain.
+    # NOTE: The certificate pemfile and the issuer pemfile need to be concatenated to get the full trust chain.
     inline = [
       "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_cert.pem",
       "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_issuer.pem",
@@ -134,13 +136,10 @@ resource "cloudflare_record" "gcp" {
   type   = "A"
 }
 
-resource "cloudflare_record" "www" {
-  zone_id = var.cloudflare_zone_id
-  name   = "www"
-  value  = google_compute_address.web.address
-  type   = "A"
-}
-
+/*
+NOTE: These resources could also be managed from the AWS configuration in the
+event of a failover
+*/
 resource "cloudflare_record" "static" {
   zone_id = var.cloudflare_zone_id
   name   = "static"
