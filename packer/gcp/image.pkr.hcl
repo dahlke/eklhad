@@ -1,26 +1,16 @@
-# TODO: take in more variables / name as variable, add timestamp
-source "amazon-ebs" "ubuntu" {
-  ami_name      = "eklhad-web-packer-{{timestamp}}"
-  instance_type = "t2.micro"
-  region        = "us-west-1"
-
-  source_ami_filter {
-    filters = {
-      name                = "ubuntu/images/*ubuntu-focal-20.04-amd64-server-*"
-      root-device-type    = "ebs"
-      virtualization-type = "hvm"
-    }
-
-    most_recent = true
-    owners      = ["099720109477"]
-  }
-
+# TODO: take in more variables / name as variable
+  image_name = "eklhad-web-packer-{{timestamp}}"
+  project_id = "eklhad-web"
+  source_image = "ubuntu-2004-focal-v20210415"
   ssh_username = "ubuntu"
+  machine_type = "n1-standard-1"
+  zone = "us-west1-b"
+  service_account_email = "eklhad-web-packer@eklhad-web.iam.gserviceaccount.com"
 }
 
 build {
   sources = [
-    "source.amazon-ebs.ubuntu"
+    "source.googlecompute.ubuntu"
   ]
 
   provisioner "shell" {

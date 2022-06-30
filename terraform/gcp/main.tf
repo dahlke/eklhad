@@ -26,10 +26,6 @@ resource "tls_private_key" "acme_private_key" {
   algorithm = "RSA"
 }
 
-resource "tls_private_key" "gcp_private_key" {
-  algorithm = "RSA"
-}
-
 resource "acme_registration" "reg" {
   account_key_pem = tls_private_key.acme_private_key.private_key_pem
   email_address = var.email
@@ -81,7 +77,7 @@ resource "google_compute_instance" "web" {
 
   boot_disk {
     initialize_params {
-      image = var.image_id
+      image = var.gcp_image_id
     }
   }
 
@@ -102,19 +98,25 @@ resource "google_compute_instance" "web" {
   }
 
   metadata = {
-    sshKeys = "${var.ssh_user}:${var.env == "dev" ? file(var.local_ssh_public_key_path) : tls_private_key.gcp_private_key.public_key_openssh}"
+    sshKeys = "${var.ssh_user}:${file(var.local_ssh_public_key_path)}"
+  }
+}
+
+resource "null_resource" "setup-web" {
+  depends_on = [google_compute_instance.web]
+
+  triggers = {
+    build_number = timestamp()
   }
 
-  # TODO: why does this work well for GCP and now AWS?
   provisioner "remote-exec" {
     connection {
       type        = "ssh"
       user        = var.ssh_user
-      private_key = var.env == "dev" ? file(var.local_ssh_private_key_path) : tls_private_key.gcp_private_key.private_key_pem
+      private_key = file(var.local_ssh_private_key_path)
       host        = google_compute_address.web.address
     }
 
-    # NOTE: The certificate pemfile and the issuer pemfile need to be concatenated to get the full trust chain.
     inline = [
       "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_cert.pem",
       "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_issuer.pem",

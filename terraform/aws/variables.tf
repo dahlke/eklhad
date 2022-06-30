@@ -1,10 +1,4 @@
-variable "env" {
-  type = string
-  default = "dev"
-}
-
 variable "prefix" {
-  # TODO: do this in the GCP one as well
   type = string
   default = "eklhad-web"
 }
@@ -21,15 +15,15 @@ variable "aws_machine_type" {
   type = string
 }
 
+variable "aws_image_id" {
+  type = string
+}
+
 variable "tags" {
   type    = map
   default = {
-    name = "eklhad-web"
+    Name = "eklhad-web"
   }
-}
-
-variable "image_id" {
-  type = string
 }
 
 variable "ssh_user" {

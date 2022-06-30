@@ -4,7 +4,7 @@ WEB_APP_TAR_NAME = eklhad-web.tar.gz
 CWD := $(shell pwd)
 
 # TODO: switch to HCL for both
-PACKER_GCP_DEF_PATH=packer/gcp/image.pkr.json
+PACKER_GCP_DEF_PATH=packer/gcp/image.pkr.hcl
 PACKER_AWS_DEF_PATH=packer/aws/image.pkr.hcl
 # TODO: compare these two commands and choose the more reliable one
 PACKER_AWS_IMAGE_CMD=`tail -n 1 /Users/neildahlke/src/github.com/dahlke/eklhad/packer/aws/output/image.txt | awk '{print $$6}' | cut -c 1-21`
@@ -154,27 +154,27 @@ tf_init_gcp:
 
 .PHONY: tf_plan_gcp
 tf_plan_gcp: tf_init_gcp
-	cd ${TF_GCP_APP_DIR} && terraform plan -var "image_id=$(PACKER_GCP_IMAGE_CMD)"
+	cd ${TF_GCP_APP_DIR} && terraform plan -var "gcp_image_id=$(PACKER_GCP_IMAGE_CMD)"
 
 .PHONY: tf_apply_gcp
 tf_apply_gcp: tf_init_gcp
-	cd ${TF_GCP_APP_DIR} && terraform apply -var "image_id=${PACKER_GCP_IMAGE_CMD}"
+	cd ${TF_GCP_APP_DIR} && terraform apply -var "gcp_image_id=${PACKER_GCP_IMAGE_CMD}"
 
 .PHONY: tf_apply_gcp_auto
 tf_apply_gcp_auto: tf_init_gcp
-	cd ${TF_GCP_APP_DIR} && terraform apply -var "image_id=${PACKER_GCP_IMAGE_CMD}" -auto-approve
+	cd ${TF_GCP_APP_DIR} && terraform apply -var "gcp_image_id=${PACKER_GCP_IMAGE_CMD}" -auto-approve
 
 .PHONY: tf_apply_gcp_rotate_certs_auto
 tf_apply_gcp_rotate_certs_auto: tf_init_gcp
-	cd ${TF_GCP_APP_DIR} && terraform apply -var "image_id=${PACKER_GCP_IMAGE_CMD}" -replace "acme_certificate.certificate" -auto-approve
+	cd ${TF_GCP_APP_DIR} && terraform apply -var "gcp_image_id=${PACKER_GCP_IMAGE_CMD}" -replace "acme_certificate.certificate" -auto-approve
 
 .PHONY: tf_circleci_plan_gcp
 tf_circleci_plan_gcp: tf_init_gcp
-	cd ${TF_GCP_APP_DIR} && terraform plan -var "image_id=$(PACKER_GCP_CIRCLECI_IMAGE_ID)"
+	cd ${TF_GCP_APP_DIR} && terraform plan -var "gcp_image_id=$(PACKER_GCP_CIRCLECI_IMAGE_ID)"
 
 .PHONY: tf_circleci_apply_gcp_auto
 tf_circleci_apply_gcp_auto: tf_init_gcp
-	cd ${TF_GCP_APP_DIR} && terraform apply -var "image_id=${PACKER_GCP_CIRCLECI_IMAGE_ID}" -auto-approve
+	cd ${TF_GCP_APP_DIR} && terraform apply -var "gcp_image_id=${PACKER_GCP_CIRCLECI_IMAGE_ID}" -auto-approve
 
 .PHONY: tf_out_gcp
 tf_out_gcp:
@@ -182,7 +182,11 @@ tf_out_gcp:
 
 .PHONY: tf_destroy_gcp
 tf_destroy_gcp:
-	cd ${TF_GCP_APP_DIR} && terraform destroy -var "image_id=${PACKER_GCP_IMAGE_CMD}" -auto-approve
+	cd ${TF_GCP_APP_DIR} && terraform destroy -var "gcp_image_id=${PACKER_GCP_IMAGE_CMD}"
+
+.PHONY: tf_destroy_gcp_auto
+tf_destroy_gcp_auto:
+	cd ${TF_GCP_APP_DIR} && terraform destroy -var "gcp_image_id=${PACKER_GCP_IMAGE_CMD}" -auto-approve
 
 ###############################
 # AWS / TERRAFORM DEV HELPERS
@@ -193,11 +197,18 @@ tf_aws_init:
 
 .PHONY: tf_plan_aws
 tf_plan_aws: tf_aws_init
-	cd ${TF_AWS_APP_DIR} && terraform plan -var "image_id=$(PACKER_AWS_IMAGE_CMD)"
+	cd ${TF_AWS_APP_DIR} && terraform plan -var "aws_image_id=$(PACKER_AWS_IMAGE_CMD)"
 
 .PHONY: tf_apply_aws
 tf_apply_aws: tf_aws_init
-	cd ${TF_AWS_APP_DIR} && terraform apply -var "image_id=${PACKER_AWS_IMAGE_CMD}"
+	cd ${TF_AWS_APP_DIR} && terraform apply -var "aws_image_id=${PACKER_AWS_IMAGE_CMD}"
+
+.PHONY: tf_apply_aws_auto
+tf_apply_aws_auto: tf_aws_init
+	cd ${TF_AWS_APP_DIR} && terraform apply -var "aws_image_id=${PACKER_AWS_IMAGE_CMD}" -auto-approve
+
+# TODO: AWS helpers for CircleCI
+# TODO: AWS helpers for cert rotation
 
 .PHONY: tf_out_aws
 tf_out_aws:
@@ -205,9 +216,12 @@ tf_out_aws:
 
 .PHONY: tf_destroy_aws
 tf_destroy_aws:
-	cd ${TF_AWS_APP_DIR} && terraform destroy -var "image_id=${PACKER_AWS_IMAGE_CMD}" -auto-approve
+	cd ${TF_AWS_APP_DIR} && terraform destroy -var "aws_image_id=${PACKER_AWS_IMAGE_CMD}"
 
-# TODO: More AWS helpers
+.PHONY: tf_destroy_aws_auto
+tf_destroy_aws_auto:
+	cd ${TF_AWS_APP_DIR} && terraform destroy -var "aws_image_id=${PACKER_AWS_IMAGE_CMD}" -auto-approve
+
 
 ##########################
 # DOCKER HELPERS

@@ -1,8 +1,3 @@
-variable "env" {
-  type = string
-  default = "dev"
-}
-
 variable "gcp_project" {
   type = string
   default = "eklhad-web"
@@ -20,13 +15,13 @@ variable "gcp_machine_type" {
   type = string
 }
 
-variable "tags" {
-  type    = list(string)
-  default = ["web"]
+variable "gcp_image_id" {
+  type = string
 }
 
-variable "image_id" {
-  type = string
+variable "tags" {
+  type    = list(string)
+  default = ["eklhad-web"]
 }
 
 variable "ssh_user" {
