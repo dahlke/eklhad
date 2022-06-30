@@ -1,21 +1,3 @@
 # Eklhad Web GCP Terraform Deployment
 
-TODO: notes about using the free tier https://cloud.google.com/free
-
-Install `graphviz` to generate a graph of the deployed resources:
-```
-brew install graphviz
-```
-
-Initialize `terraform` and graph the deployed resources:
-
-```
-terraform init
-terraform graph | dot -Tsvg > graph.svg
-```
-
-See your changes and deploy:
-```
-terraform plan
-terraform apply
-```
+This GCP Terraform configuration does it's best to use as many of the [GCP free tier](https://cloud.google.com/free) offers.
