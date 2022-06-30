@@ -3,10 +3,8 @@ WEB_APP_NAME = eklhad-web
 WEB_APP_TAR_NAME = eklhad-web.tar.gz
 CWD := $(shell pwd)
 
-# TODO: switch to HCL for both
 PACKER_GCP_DEF_PATH=packer/gcp/image.pkr.hcl
 PACKER_AWS_DEF_PATH=packer/aws/image.pkr.hcl
-# TODO: compare these two commands and choose the more reliable one
 PACKER_AWS_IMAGE_CMD=`tail -n 1 /Users/neildahlke/src/github.com/dahlke/eklhad/packer/aws/output/image.txt | awk '{print $$6}' | cut -c 1-21`
 PACKER_GCP_IMAGE_CMD=`tail -n 1 /Users/neildahlke/src/github.com/dahlke/eklhad/packer/gcp/output/image.txt | awk '{print $$8}'`
 # TODO: AWS CIRCLECI
