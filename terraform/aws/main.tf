@@ -33,7 +33,7 @@ resource "acme_registration" "reg" {
 resource "acme_certificate" "certificate" {
   account_key_pem           = acme_registration.reg.account_key_pem
   common_name               = "dahlke.io"
-  subject_alternative_names = ["www.dahlke.io", "aws.dahlke.io", "aws3.dahlke.io", "static.dahlke.io"]
+  subject_alternative_names = ["aws.dahlke.io", "aws3.dahlke.io"]
 
   # Due to the expiration of DST Root CA X3
   preferred_chain = "ISRG Root X1"
@@ -175,6 +175,7 @@ resource "null_resource" "setup-web" {
       host        = aws_eip.web.public_ip
     }
 
+    # TODO: inject GCP creds to retrieve data
     inline = [
       "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_cert.pem",
       "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_issuer.pem",

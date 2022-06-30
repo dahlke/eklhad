@@ -1,4 +1,3 @@
-# TODO: take in more variables / name as variable, add timestamp
 source "amazon-ebs" "ubuntu" {
   ami_name      = "eklhad-web-packer-{{timestamp}}"
   instance_type = "t2.micro"

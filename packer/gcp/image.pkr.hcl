@@ -1,4 +1,4 @@
-# TODO: take in more variables / name as variable
+source "googlecompute" "ubuntu" {
   image_name = "eklhad-web-packer-{{timestamp}}"
   project_id = "eklhad-web"
   source_image = "ubuntu-2004-focal-v20210415"
