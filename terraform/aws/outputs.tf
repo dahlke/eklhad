@@ -1,4 +1,3 @@
-# TODO: change the SSH key if it's prod, otherwise just get rid of all that keygen logic here and in GCP
 output "ip_ssh" {
   value = "ssh -i ${var.local_ssh_private_key_path} ${var.ssh_user}@${aws_eip.web.public_ip}"
 }

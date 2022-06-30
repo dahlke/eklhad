@@ -25,10 +25,6 @@ resource "tls_private_key" "acme_private_key" {
   algorithm = "RSA"
 }
 
-resource "tls_private_key" "aws_private_key" {
-  algorithm = "RSA"
-}
-
 resource "acme_registration" "reg" {
   account_key_pem = tls_private_key.acme_private_key.private_key_pem
   email_address = var.email
@@ -51,10 +47,9 @@ locals {
   private_key_filename = "${var.prefix}-ssh-key.pem"
 }
 
-# TODO: should I use this key? Fix the key issues.
 resource "aws_key_pair" "web" {
   key_name   = var.prefix
-  public_key = var.env == "dev" ? file(var.local_ssh_public_key_path) : tls_private_key.aws_private_key.public_key_openssh
+  public_key = file(var.local_ssh_public_key_path)
 }
 
 resource "aws_vpc" "web" {
@@ -151,9 +146,8 @@ resource "aws_eip_association" "web" {
 
 resource "aws_instance" "web" {
   # TODO: set a name on the instance
-  ami                         = var.image_id
+  ami                         = var.aws_image_id
   instance_type               = var.aws_machine_type
-  # TODO: remove this or switch to local key
   key_name                    = aws_key_pair.web.key_name
   associate_public_ip_address = true
   subnet_id                   = aws_subnet.web.id
@@ -164,32 +158,6 @@ resource "aws_instance" "web" {
   credit_specification {
     cpu_credits = "unlimited"
   }
-
-  /*
-  # TODO: do I want to remove this now?
-
-  provisioner "remote-exec" {
-    connection {
-      type        = "ssh"
-      user        = var.ssh_user
-      private_key = var.env == "dev" ? file(var.local_ssh_private_key_path) : tls_private_key.aws_private_key.private_key_pem
-      host        = self.public_ip
-    }
-
-    # NOTE: The certificate pemfile and the issuer pemfile need to be concatenated to get the full trust chain.
-    inline = [
-      "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_cert.pem",
-      "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_issuer.pem",
-      "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_private_key.pem",
-      "echo \"${acme_certificate.certificate.certificate_pem}${acme_certificate.certificate.issuer_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_cert.pem",
-      "echo \"${acme_certificate.certificate.private_key_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_private_key.pem",
-      "cd /home/ubuntu/go/src/github.com/dahlke/eklhad/web/",
-      "touch /tmp/eklhad-web-logs.txt",
-      "nohup ./main -production &> /tmp/eklhad-web-logs.txt",
-      "sleep 1"
-    ]
-  }
-  */
 }
 
 resource "null_resource" "setup-web" {
@@ -203,7 +171,7 @@ resource "null_resource" "setup-web" {
     connection {
       type        = "ssh"
       user        = var.ssh_user
-      private_key = var.env == "dev" ? file(var.local_ssh_private_key_path) : tls_private_key.aws_private_key.private_key_pem
+      private_key = file(var.local_ssh_private_key_path)
       host        = aws_eip.web.public_ip
     }
 
