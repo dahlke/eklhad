@@ -8,6 +8,7 @@ type EklhadLocation struct {
 	Country             string  `json:"country"`
 	Current             bool    `json:"current"`
 	Layover             bool    `json:"layover"`
+	Home                bool    `json:"home"`
 	Lat                 float64 `json:"lat"`
 	Lng                 float64 `json:"lng"`
 }

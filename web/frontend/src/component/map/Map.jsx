@@ -63,11 +63,28 @@ class Map extends Component {
 		if (this.props.locations) {
 			markers = this.props.locations.map((location) => {
 				let markerClassName = "map-custom-marker ";
+				let markerIcon = null;
 
-				if (location.current !== true) {
-					markerClassName += "static-location";
-				} else {
+				if (location.current) {
 					markerClassName += "current-location";
+				} else if (!location.layover) {
+					markerClassName += "static-location";
+				}
+
+				if (location.layover) {
+					markerIcon = (
+						<span className="location-icon layover">
+							✈
+						</span>
+					);
+				}
+
+				if (location.home) {
+					markerIcon = (
+						<span className="location-icon home">
+							★
+						</span>
+					);
 				}
 
 				return (
@@ -80,7 +97,9 @@ class Map extends Component {
 							className={markerClassName}
 							role="button"
 							onClick={() => this.setState({ popupInfo: location })}
-						/>
+						>
+							{markerIcon}
+						</div>
 					</Marker>
 				);
 			});

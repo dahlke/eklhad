@@ -126,7 +126,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 		log.Fatalf("Unable to retrieve Sheets client: %v", err)
 	}
 
-	locationsReadRange := "locations!A2:E"
+	locationsReadRange := "locations!A2:F"
 	// NOTE: https://pkg.go.dev/google.golang.org/api@v0.64.0/sheets/v4?utm_source=gopls#SpreadsheetsValuesService.Get
 	locationsResp, err := sheetsService.Spreadsheets.Values.Get(spreadSheetID, locationsReadRange).Do()
 	if err != nil {
@@ -145,6 +145,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 			locationCountry := row[2].(string)
 			locationCurrent := row[3].(string)
 			locationLayover := row[4].(string)
+			locationHome := row[5].(string)
 
 			locationConcat := fmt.Sprintf("%s, %s, %s", locationCity, locationStateProviceRegion, locationCountry)
 			log.Info("Processing location ", locationConcat)
@@ -161,6 +162,11 @@ func GetDataFromGSheets(spreadSheetID string) {
 				layover = true
 			}
 
+			home := false
+			if locationHome == "TRUE" {
+				home = true
+			}
+
 			eklhadLocation := structs.EklhadLocation{
 				ID:                  locationID,
 				City:                locationCity,
@@ -168,6 +174,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 				Country:             locationCountry,
 				Current:             current,
 				Layover:             layover,
+				Home:                home,
 				Lat:                 lat,
 				Lng:                 lng,
 			}
