@@ -127,7 +127,6 @@ artifact_linux_web: go_build_linux
 	mkdir -p ${ARTIFACT_DIR_LINUX};
 	tar zcf ${ARTIFACT_DIR_LINUX}/${WEB_APP_TAR_NAME} ${WEB_APP_FRONTEND_BUILD_DIR} ${WEB_APP_GO_BINARY_PATH} ${WEB_APP_CONFIG_PATH};
 
-# TODO: do I need the config files or are they in the build?
 .PHONY: artifact_macos_web
 artifact_macos_web: go_build_macos
 	mkdir -p ${ARTIFACT_DIR_MACOS};
@@ -166,14 +165,6 @@ tf_apply_gcp_auto: tf_init_gcp
 tf_apply_gcp_rotate_certs_auto: tf_init_gcp
 	cd ${TF_GCP_APP_DIR} && terraform apply -var "gcp_image_id=${PACKER_GCP_IMAGE_CMD}" -replace "acme_certificate.certificate" -auto-approve
 
-.PHONY: tf_circleci_plan_gcp
-tf_circleci_plan_gcp: tf_init_gcp
-	cd ${TF_GCP_APP_DIR} && terraform plan -var "gcp_image_id=$(PACKER_GCP_CIRCLECI_IMAGE_ID)"
-
-.PHONY: tf_circleci_apply_gcp_auto
-tf_circleci_apply_gcp_auto: tf_init_gcp
-	cd ${TF_GCP_APP_DIR} && terraform apply -var "gcp_image_id=${PACKER_GCP_CIRCLECI_IMAGE_ID}" -auto-approve
-
 .PHONY: tf_out_gcp
 tf_out_gcp:
 	cd ${TF_GCP_APP_DIR} && terraform output
@@ -205,8 +196,12 @@ tf_apply_aws: tf_aws_init
 tf_apply_aws_auto: tf_aws_init
 	cd ${TF_AWS_APP_DIR} && terraform apply -var "aws_image_id=${PACKER_AWS_IMAGE_CMD}" -auto-approve
 
-# TODO: AWS helpers for CircleCI
-# TODO: AWS helpers for cert rotation
+# TODO: AWS helper for CircleCI
+
+.PHONY: tf_apply_aws_rotate_certs_auto
+tf_apply_aws_rotate_certs_auto: tf_init_aws
+	cd ${TF_AWS_APP_DIR} && terraform apply -var "aws_image_id=${PACKER_AWS_IMAGE_CMD}" -replace "acme_certificate.certificate" -auto-approve
+
 
 .PHONY: tf_out_aws
 tf_out_aws:

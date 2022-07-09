@@ -111,30 +111,7 @@ func GetDataFromGitHubForUser(username string) {
 			// for privacy / compliance purposes.
 			if repoOwner == username {
 				repoCommitActivity, _, err := client.Repositories.ListCommitActivity(ctx, repoOwner, *repo.Name)
-				/*
-					TODO: This is now returning an empty array?
 
-					https://docs.github.com/en/rest/reference/repos#get-the-last-year-of-commit-activity
-
-					curl \
-						-H "Accept: application/vnd.github.v3+json" \
-						https://api.github.com/repos/dahlke/terrasnek/stats/commit_activity
-
-					curl \
-						-H "Accept: application/vnd.github.v3+json" \
-						https://api.github.com/repos/hashicorp/vault/stats/commit_activity
-						{"level":"info","msg":"Getting GitHub commit activity for cneralich/tfe-tfc-migration-tool","time":"2021-08-27T12:49:13-07:00"}
-
-					~/pkg/mod/github.com/google/go-github@v17.0.0+incompatible
-
-					{"level":"info","msg":"Getting GitHub commit activity for dahlke/consul-aks-and-vm","time":"2021-08-27T12:49:13-07:00"}
-					github.Rate{Limit:5000, Remaining:4682, Reset:github.Timestamp{2021-08-27 12:55:48 -0700 PDT}} &{GET https://api.github.com/repos/dahlke/consul-aks-and-vm/stats/commit_activity HTTP/1.1 1 1 map[Accept:[application/vnd.github.v3+json] User-Agent:[go-github]] <nil> <nil> 0 [] false api.github.com map[] map[] <nil> map[]   <nil> <nil> <nil> 0xc0000c2008}
-					{"level":"error","msg":"json: cannot unmarshal object into Go value of type []*github.WeeklyCommitActivity","time":"2021-08-27T12:49:14-07:00"}
-					{"level":"info","msg":"Getting GitHub commit activity for dahlke/consul-aks-to-aks","time":"2021-08-27T12:49:14-07:00"}
-					github.Rate{Limit:5000, Remaining:4681, Reset:github.Timestamp{2021-08-27 12:55:48 -0700 PDT}} &{GET https://api.github.com/repos/dahlke/consul-aks-to-aks/stats/commit_activity HTTP/1.1 1 1 map[Accept:[application/vnd.github.v3+json] User-Agent:[go-github]] <nil> <nil> 0 [] false api.github.com map[] map[] <nil> map[]   <nil> <nil> <nil> 0xc0000c2008}
-					{"level":"error","msg":"json: cannot unmarshal object into Go value of type []*github.WeeklyCommitActivity","time":"2021-08-27T12:49:14-07:00"}
-					{"level":"info","msg":"Getting GitHub commit activity for dahlke/consul-demo","time":"2021-08-27T12:49:14-07:00"}
-				*/
 				if err != nil {
 					log.Error(err)
 				} else {

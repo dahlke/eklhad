@@ -89,8 +89,6 @@ make docker_build_circleci
 make docker_push_circleci
 ```
 
-*TODO: when making image changes, be sure to update these?*
-
 ## Deploying Eklhad Web (Manual)
 
 There are several build stages that are required for the ultimate deployment. The React frontend code needs to be
