@@ -1,0 +1,4 @@
+make: Entering directory `/Users/neildahlke/src/github.com/dahlke/eklhad'
+cd web/frontend && npm config set strict-ssl false && npm install
+make: Leaving directory `/Users/neildahlke/src/github.com/dahlke/eklhad'
+ 
