@@ -17,6 +17,10 @@ get auto-generated. */
 
 		&.static-location {
 			background: theme("colors.chicago-flag-blue");
+
+			 &.layover {
+				opacity: 0.75;
+			 }
 		}
 
 		&.current-location {
@@ -51,6 +55,26 @@ get auto-generated. */
 					cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
 			}
 		}
+
+		.location-icon {
+			&.home {
+				font-size: 40px;
+				position: relative;
+				color: theme("colors.chicago-flag-red");
+				top: -28px;
+				left: -7px;
+			}
+
+			&.layover {
+				font-size: 25px;
+				position: relative;
+				color: #58b9f7;
+				top: -15px;
+				left: -5px;
+				opacity: 0.8;
+			}
+		}
+
 	}
 
 	.mapboxgl-popup {
