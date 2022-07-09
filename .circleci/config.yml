@@ -26,39 +26,6 @@ jobs:
       - run: make go_get
       - run: make go_test
       - run: make collect_data
-  packer_build_terraform_plan:
-    docker:
-      - image: eklhad/eklhad-web-circleci:0.1.2
-    working_directory: /go/src/github.com/dahlke/eklhad/
-    steps:
-      - checkout
-      - gcp_auth
-      - run: make frontend_build
-      - run: make go_get
-      - run: mkdir -p artifact/tar/linux/
-      - run: make artifact_linux_web
-      - run: mkdir -p packer/gcp/output/
-      - run: packer -machine-readable build packer/gcp/circleci-image.json  > packer/gcp/output/image.txt;
-      - run: echo 'credentials "app.terraform.io" {token = "'$TFC_TOKEN'"} ' > ~/.terraformrc
-      - run: make tf_circleci_plan_gcp
-  packer_build_terraform_deploy:
-    docker:
-      - image: eklhad/eklhad-web-circleci:0.1.2
-    working_directory: /go/src/github.com/dahlke/eklhad/
-    steps:
-      - checkout
-      - gcp_auth
-      - run: make frontend_build
-      - run: make frontend_build
-      - run: make go_get
-      - run: make collect_data
-      - run: mkdir -p artifact/tar/linux/
-      - run: make artifact_linux_web
-      - run: mkdir -p packer/gcp/output/
-      - run: packer -machine-readable build packer/gcp/circleci-image.json  > packer/gcp/output/image.txt;
-      - run: echo 'credentials "app.terraform.io" {token = "'$TFC_TOKEN'"} ' > ~/.terraformrc
-      - run: export TF_VAR_env=$TF_VAR_env
-      - run: make tf_circleci_apply_gcp_auto
 workflows:
   version: 2
   test_and_deploy:
@@ -80,17 +47,3 @@ workflows:
                 - master
     jobs:
       - data_workers
-      # - packer_build_terraform_plan
-      # - packer_build_terraform_plan:
-          # requires:
-            # - go_js_test
-          # filters:
-            # branches:
-              # ignore: master
-      # - packer_build_terraform_deploy
-      # - packer_build_terraform_deploy:
-          # requires:
-            # - go_js_test
-          # filters:
-            # branches:
-              # only: master
