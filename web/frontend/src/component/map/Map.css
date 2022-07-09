@@ -1,12 +1,6 @@
 /* NOTE: Since I use react-mapbox-gl I have to override some things that
 get auto-generated. */
 
-:root {
-	--off-white: "#fcfbf9";
-	--chicago-flag-blue: "#58b9f7";
-	--chicago-flag-red: "#cc0000";
-}
-
 #map {
 	.mapboxgl-ctrl-top-left,
 	.mapboxgl-ctrl-top-right,

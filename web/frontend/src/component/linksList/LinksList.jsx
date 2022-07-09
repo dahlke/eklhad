@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 
-// import "./LinksList.css";
-
 class LinksList extends Component {
 	constructor() {
 		super();
