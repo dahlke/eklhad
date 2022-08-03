@@ -46,7 +46,51 @@ get auto-generated.
 			fill: #eeeeee;
 		}
 
+		/*
 		.color-filled {
+			fill: theme("colors.chicago-flag-blue");
+		}
+		*/
+
+		.color-scale-1 {
+			fill: theme("colors.chicago-flag-blue");
+			opacity: 0.4;
+		}
+
+		.color-scale-2 {
+			fill: theme("colors.chicago-flag-blue");
+			opacity: 0.5;
+		}
+
+		.color-scale-3 {
+			fill: theme("colors.chicago-flag-blue");
+			opacity: 0.6;
+		}
+
+		.color-scale-4 {
+			fill: theme("colors.chicago-flag-blue");
+			opacity: 0.7;
+		}
+
+		.color-scale-5 {
+			fill: theme("colors.chicago-flag-blue");
+			opacity: 0.8;
+		}
+
+		.color-scale-6 {
+			fill: theme("colors.chicago-flag-blue");
+			opacity: 0.9;
+		}
+
+		.color-scale-7,
+		.color-scale-8,
+		.color-scale-9,
+		.color-scale-10,
+		.color-scale-11,
+		.color-scale-12,
+		.color-scale-13,
+		.color-scale-14,
+		.color-scale-15 {
 			fill: theme("colors.chicago-flag-blue");
 		}
 	}
