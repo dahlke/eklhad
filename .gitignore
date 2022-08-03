@@ -10,6 +10,7 @@
 web/main
 
 # Directories
+.vscode/
 web/frontend/node_modules/
 web/frontend/build/static/
 web/data/instagram/worker/media/
