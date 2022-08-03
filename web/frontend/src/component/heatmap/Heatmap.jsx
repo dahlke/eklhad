@@ -88,6 +88,9 @@ class Heatmap extends Component {
 			label: key,
 		}));
 
+		// TODO: figure out this variable name
+		const dateMapColors = {};
+
 		return (
 			<div id="heatmap">
 				<h3 className="pt-10 pb-5">Last 365 Days of Activity</h3>
@@ -109,6 +112,23 @@ class Heatmap extends Component {
 					showMonthLabels={true}
 					showWeekdayLabels={true}
 					horizontal={this.props.horizontal}
+					classForValue={(value) => {
+						let dateMapColor;
+
+						if (value && value.date) {
+							if (!dateMapColors[value.date]) {
+								dateMapColors[value.date] = 0;
+							}
+
+							dateMapColors[value.date] += 1;
+							dateMapColor = dateMapColors[value.date];
+						}
+
+						if (!value) {
+							return 'color-empty';
+						}
+						return `color-scale-${dateMapColor}`;
+					}}
 				/>
 				<Modal
 					isOpen={this.state.showModal}
