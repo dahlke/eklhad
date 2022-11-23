@@ -36,7 +36,7 @@ workflows:
             - go_js_test
           filters:
             branches:
-              only: master
+              only: main
   data_workers:
     triggers:
       - schedule:
@@ -44,6 +44,6 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
     jobs:
       - data_workers

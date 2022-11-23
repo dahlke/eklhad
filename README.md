@@ -1,6 +1,6 @@
 # Eklhad
 
-[![CircleCI](https://circleci.com/gh/dahlke/eklhad/tree/master.svg?style=svg&circle-token=e37d2b20028dc6e1a4c66a18688d04d29d1c7fef)](https://circleci.com/gh/dahlke/eklhad/tree/master)
+[![CircleCI](https://circleci.com/gh/dahlke/eklhad/tree/main.svg?style=svg&circle-token=e37d2b20028dc6e1a4c66a18688d04d29d1c7fef)](https://circleci.com/gh/dahlke/eklhad/tree/main)
 
 My personal web assets. I use this project to try out many different types of new web technologies, so it is highly overengineered and shouldn't be used by anybody.
 
