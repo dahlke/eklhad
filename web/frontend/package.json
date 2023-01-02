@@ -15,7 +15,7 @@
     "resume-cli": "3.0.7"
   },
   "dependencies": {
-    "@craco/craco": "^6.1.2",
+    "@craco/craco": "^7.0.0",
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "autoprefixer": "^9.8.6",
     "blueimp-md5": "^2.16.0",
@@ -29,7 +29,7 @@
     "react-map-gl": "^5.2.7",
     "react-modal": "3.11.2",
     "react-redux": "^7.2.0",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "^5.0.1",
     "react-select": "^4.2.1",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
