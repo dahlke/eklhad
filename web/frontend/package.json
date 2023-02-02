@@ -20,7 +20,7 @@
     "autoprefixer": "^9.8.6",
     "blueimp-md5": "^2.16.0",
     "moment": "^2.27.0",
-    "npm": "^6.14.6",
+    "npm": "^9.4.1",
     "package.json": "^2.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
