@@ -3,7 +3,7 @@ commands:
   gcp_auth:
     steps:
       - run: touch $GOOGLE_APPLICATION_CREDENTIALS
-      - run: echo $GOOGLE_CIRCLECI_CREDENTIALS_JSON > $GOOGLE_APPLICATION_CREDENTIALS
+      - run: echo $GOOGLE_ACTIONS_CREDENTIALS_JSON > $GOOGLE_APPLICATION_CREDENTIALS
 jobs:
   go_js_test:
     docker:
