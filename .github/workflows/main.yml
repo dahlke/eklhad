@@ -1,0 +1,58 @@
+name: CI
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    # Run at 5PM every day
+    - cron: "0 19 * * *"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  collect_data:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Run the worker
+      - name: Run eklhad data worker
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS : ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          GOOGLE_ACTIONS_CREDENTIALS_JSON : ${{ secrets.GOOGLE_ACTIONS_CREDENTIALS_JSON}}
+          TWITTER_CONSUMER_API_KEY : ${{ secrets.TWITTER_CONSUMER_API_KEY}}
+          TWITTER_CONSUMER_SECRET_KEY : ${{ secrets.TWITTER_CONSUMER_SECRET_KEY}}
+          GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN}}
+          INSTAGRAM_ACCESS_TOKEN : ${{ secrets.INSTAGRAM_ACCESS_TOKEN}}
+        run: |
+          touch $GOOGLE_APPLICATION_CREDENTIALS
+          echo $GOOGLE_ACTIONS_CREDENTIALS_JSON > $GOOGLE_APPLICATION_CREDENTIALS
+          ls
+          make go_get
+          make go_test
+          make collect_data
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Run the worker
+      - name: Run eklhad JS and Go tests
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS : ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          GOOGLE_ACTIONS_CREDENTIALS_JSON : ${{ secrets.GOOGLE_ACTIONS_CREDENTIALS_JSON}}
+        run: |
+          touch $GOOGLE_APPLICATION_CREDENTIALS
+          echo $GOOGLE_ACTIONS_CREDENTIALS_JSON > $GOOGLE_APPLICATION_CREDENTIALS
+          make go_get
+          make go_test
+          npm --prefix web/frontend/ install
+          npm --prefix web/frontend/ run-script test-once
