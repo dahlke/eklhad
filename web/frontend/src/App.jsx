@@ -3,15 +3,18 @@ import PropTypes from 'prop-types';
 import md5 from "blueimp-md5";
 
 import PopulatedMap from "./container/PopulatedMap";
-import PopulatedHeatmap from "./container/PopulatedHeatmap";
-import PopulatedLinksList from "./container/PopulatedLinksList";
+// NOTE: Now that Twitter is paid for, I don't think I am going to have the heatmap anymore.
+// import PopulatedHeatmap from "./container/PopulatedHeatmap";
+// import PopulatedLinksList from "./container/PopulatedLinksList";
 
 import "./App.css";
 
 // Set the tablet breakpoint for responsive JS
-const BREAKPOINT_TABLET = 768;
+// const BREAKPOINT_TABLET = 768;
 
 class App extends Component {
+	/*
+	// NOTE: Now that Twitter is paid for, I don't think I am going to have the heatmap anymore.
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -32,12 +35,22 @@ class App extends Component {
 	_updateWindowWidth() {
 		this.setState({ width: window.innerWidth });
 	}
+	*/
 
 	render() {
 		const gravatarEmailMD5 = md5(
 			this.props.gravatar ? this.props.gravatar.email : "",
 		);
 		const gravatarURL = `https://www.gravatar.com/avatar/${gravatarEmailMD5}.jpg`;
+
+		/*
+			// NOTE: Now that Twitter is paid for, I don't think I am going to have the heatmap anymore.
+			<PopulatedHeatmap
+				width={this.state.width}
+				horizontal={this.state.width > BREAKPOINT_TABLET}
+			/>
+			<PopulatedLinksList />
+		*/
 
 		return (
 			<div id="app" className="container mx-auto p-4 text-chicago-flag-blue">
@@ -117,11 +130,6 @@ class App extends Component {
 						</h5>
 					</div>
 					<PopulatedMap />
-					<PopulatedHeatmap
-						width={this.state.width}
-						horizontal={this.state.width > BREAKPOINT_TABLET}
-					/>
-					<PopulatedLinksList />
 				</div>
 			</div>
 		);
