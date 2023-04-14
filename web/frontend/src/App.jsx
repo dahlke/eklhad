@@ -63,7 +63,7 @@ class App extends Component {
 							src={gravatarURL}
 						/>
 						<h1 className="pt-5 pb-2 text-3xl font-bold">Neil Dahlke</h1>
-						<h2 className="pb-2">Engineer</h2>
+						<h2 className="pb-2">Software Solutions Engineer</h2>
 						<h4 className="pb-2">San Francisco, California, USA</h4>
 						<h5 className="pb-10">
 							<a
@@ -120,12 +120,23 @@ class App extends Component {
 							</a>
 							{" "}
 							/
+							{" "}
+							<a
+								target="_blank"
+								className="underline"
+								rel="noopener noreferrer"
+								href="https://www.strava.com/athletes/4351145"
+							>
+								Strava
+							</a>
+							{" "}
+							/
 							{' '}
 							<a
 								href="/static/resume.html"
 								className="underline"
 							>
-								Resume
+								Résumé
 							</a>
 						</h5>
 					</div>
