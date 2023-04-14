@@ -1,7 +1,7 @@
 {
 	"basics": {
 		"name": "Neil Dahlke",
-		"label": "Software Engineer",
+		"label": "Software Solutions Engineer",
 		"picture": "https://en.gravatar.com/userimage/25206271/c07bb7c64399588ea12e52065f2b6dda.jpg",
 		"email": "neil+eklhad-web@dahlke.io",
 		"phone": "cell not available here",
@@ -30,7 +30,7 @@
 	"work": [
 		{
 			"company": "HashiCorp",
-			"position": "Sr. Staff Field Technology Specialist - Vault (Global)",
+			"position": "Sr. Staff Solutions Engineer, Global (Vault SME Leader)",
 			"website": "http://hashicorp.com",
 			"startDate": "2022-05-02",
 			"highlights": [
@@ -39,14 +39,12 @@
                 "Triage field requests, bi-directional product feedback loop between field, engineering, and go-to-market.",
 				"Deeply integrated with the product team for feedback loops and product direction.",
                 "Design training, demos and workshops for customers; design training and enablement material for sales team.",
-                "Maintain product, technical deep dive, and roadmap decks; competitive analysis documentation.",
-				"Vault SME Leader.",
-				"Boundary SME Leader."
+                "Maintain product, technical deep dive, and roadmap decks; competitive analysis documentation."
 			]
 		},
 		{
 			"company": "HashiCorp",
-			"position": "Staff Field Technology Specialist - Vault (Global)",
+			"position": "Staff Solutions Engineer, Global (Vault SME)",
 			"website": "http://hashicorp.com",
 			"startDate": "2021-02-01",
 			"endDate": "2022-05-02",
@@ -55,7 +53,7 @@
 		},
 		{
 			"company": "HashiCorp",
-			"position": "Staff Solutions Engineer (West NA)",
+			"position": "Staff Solutions Engineer, West North America",
 			"website": "http://hashicorp.com",
 			"startDate": "2020-02-01",
 			"endDate": "2021-02-01",
@@ -68,7 +66,7 @@
 		},
 		{
 			"company": "HashiCorp",
-			"position": "Senior Solutions Engineer (West NA)",
+			"position": "Senior Solutions Engineer, West North America",
 			"website": "http://hashicorp.com",
 			"startDate": "2018-11-19",
 			"endDate": "2020-02-01",
@@ -77,7 +75,7 @@
 		},
 		{
 			"company": "SingleStore (MemSQL)",
-			"position": "Senior Solutions Engineer (Team Lead, West USA)",
+			"position": "Senior Solutions Engineer, West North America (Team Lead)",
 			"website": "http://singlestore.com",
 			"startDate": "2017-03-01",
 			"endDate": "2018-11-16",
@@ -226,7 +224,7 @@
             "name": "Dev Ops",
             "level": "",
             "keywords": [
-                "Terraform", "Vault", "Nomad", "Kubernetes", "Consul", "Linux", "Containers", "Automation", "Tools", "Continuous Integration", "Config Management", "Git"
+                "Terraform", "Vault", "Nomad", "Kubernetes", "Consul", "Boundary", "Waypoint", "Vagrant", "Packer", "Linux", "Containers", "Automation", "Tools", "Continuous Integration", "Config Management", "Git"
             ]
         },
        {

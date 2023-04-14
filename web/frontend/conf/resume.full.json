@@ -1,7 +1,7 @@
 {
 	"basics": {
 		"name": "Neil Dahlke",
-		"label": "Software Engineer",
+		"label": "Software Solutions Engineer",
 		"picture": "https://en.gravatar.com/userimage/25206271/c07bb7c64399588ea12e52065f2b6dda.jpg",
 		"email": "neil+eklhad-web@dahlke.io",
 		"phone": "cell not available here",
@@ -50,8 +50,7 @@
 				"Deeply integrated with the product team for feedback loops and product direction.",
                 "Design training, demos and workshops for customers; design training and enablement material for sales team.",
                 "Maintain product, technical deep dive, and roadmap decks; competitive analysis documentation.",
-				"Vault SME Leader.",
-				"Boundary SME Leader."
+				"Vault SME Leader."
 			]
 		},
 		{
@@ -370,7 +369,7 @@
             "name": "Dev Ops",
             "level": "",
             "keywords": [
-                "Terraform", "Vault", "Nomad", "Kubernetes", "Consul", "Linux", "Containers", "Automation", "Tools", "Continuous Integration", "Config Management", "Git"
+                "Terraform", "Vault", "Nomad", "Kubernetes", "Consul", "Boundary", "Waypoint", "Vagrant", "Packer", "Linux", "Containers", "Automation", "Tools", "Continuous Integration", "Config Management", "Git"
             ]
         },
        {
