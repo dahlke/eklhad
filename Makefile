@@ -89,7 +89,7 @@ go_lint:
 
 .PHONY: go_get
 go_get:
-	cd web && go get
+	cd web && go get -u && go mod tidy
 
 .PHONY: go_test
 go_test:
@@ -113,11 +113,7 @@ go_build_macos:
 ##########################
 .PHONY: collect_data
 collect_data:
-	cd web && \
-	go run main.go -github && \
-	go run main.go -instagram && \
-	go run main.go -twitter && \
-	go run main.go -gsheets;
+	cd web && go run main.go -gsheets;
 
 ##########################
 # IMAGE BUILD HELPERS

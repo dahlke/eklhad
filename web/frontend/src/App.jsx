@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import md5 from "blueimp-md5";
 
 import PopulatedMap from "./container/PopulatedMap";
-// NOTE: Now that Twitter is paid for, I don't think I am going to have the heatmap anymore.
-// import PopulatedHeatmap from "./container/PopulatedHeatmap";
 // import PopulatedLinksList from "./container/PopulatedLinksList";
 
 import "./App.css";
@@ -14,7 +12,6 @@ import "./App.css";
 
 class App extends Component {
 	/*
-	// NOTE: Now that Twitter is paid for, I don't think I am going to have the heatmap anymore.
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -44,11 +41,6 @@ class App extends Component {
 		const gravatarURL = `https://www.gravatar.com/avatar/${gravatarEmailMD5}.jpg`;
 
 		/*
-			// NOTE: Now that Twitter is paid for, I don't think I am going to have the heatmap anymore.
-			<PopulatedHeatmap
-				width={this.state.width}
-				horizontal={this.state.width > BREAKPOINT_TABLET}
-			/>
 			<PopulatedLinksList />
 		*/
 
@@ -70,17 +62,6 @@ class App extends Component {
 								target="_blank"
 								className="underline"
 								rel="noopener noreferrer"
-								href="https://twitter.com/neildahlke"
-							>
-								Twitter
-							</a>
-							{" "}
-							/
-							{" "}
-							<a
-								target="_blank"
-								className="underline"
-								rel="noopener noreferrer"
 								href="https://www.github.com/dahlke"
 							>
 								GitHub
@@ -95,6 +76,17 @@ class App extends Component {
 								href="https://instagram.com/eklhad"
 							>
 								Instagram
+							</a>
+							{" "}
+							/
+							{" "}
+							<a
+								target="_blank"
+								className="underline"
+								rel="noopener noreferrer"
+								href="https://x.com/neildahlke"
+							>
+								X
 							</a>
 							{" "}
 							/

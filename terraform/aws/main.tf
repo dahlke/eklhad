@@ -27,7 +27,7 @@ resource "tls_private_key" "acme_private_key" {
 
 resource "acme_registration" "reg" {
   account_key_pem = tls_private_key.acme_private_key.private_key_pem
-  email_address = var.email
+  email_address   = var.email
 }
 
 resource "acme_certificate" "certificate" {
@@ -60,9 +60,9 @@ resource "aws_vpc" "web" {
 }
 
 resource "aws_subnet" "web" {
-  vpc_id     = aws_vpc.web.id
-  availability_zone =  var.aws_zone
-  cidr_block = "10.0.10.0/24"
+  vpc_id            = aws_vpc.web.id
+  availability_zone = var.aws_zone
+  cidr_block        = "10.0.10.0/24"
 
   tags = var.tags
 }
@@ -94,9 +94,9 @@ resource "aws_security_group" "web" {
   }
 
   ingress {
-    from_port        = 3554
-    to_port          = 3554
-    protocol         = "tcp"
+    from_port   = 3554
+    to_port     = 3554
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -192,9 +192,9 @@ resource "null_resource" "setup-web" {
 
 resource "cloudflare_record" "aws" {
   zone_id = var.cloudflare_zone_id
-  name   = "aws"
-  value  = aws_eip.web.public_ip
-  type   = "A"
+  name    = "aws"
+  value   = aws_eip.web.public_ip
+  type    = "A"
 }
 
 /*

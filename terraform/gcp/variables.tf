@@ -1,5 +1,5 @@
 variable "gcp_project" {
-  type = string
+  type    = string
   default = "eklhad-web"
 }
 

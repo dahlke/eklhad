@@ -13,33 +13,6 @@ cd web/
 go run main.go -gsheets
 ```
 
-#### Pull All Data from Instagram
-
-```bash
-cd web/
-go run main.go -instagram
-```
-
-#### Pull All Data from GitHub
-
-Before running the worker, you'll need to export a `GITHUB_TOKEN` env var (a [personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)).
-
-```bash
-export GITHUB_TOKEN=$(op get item GitHub | jq -r '.details.sections[1].fields[0].v')
-export GITHUB_SECRET=$(op get item GitHub | jq -r '.details.sections[1].fields[1].v')
-cd web/
-go run main.go -github
-```
-
-#### Pull All Data from Twitter
-
-```bash
-export TWITTER_CONSUMER_API_KEY=$(op get item Twitter | jq -r '.details.sections[1].fields[0].v')
-export TWITTER_CONSUMER_SECRET_KEY=$(op get item Twitter | jq -r '.details.sections[1].fields[1].v')
-cd web/
-go run main.go -twitter
-```
-
 #### Pull All Data from All Sources
 
 ```bash
@@ -117,17 +90,9 @@ export GOOGLE_APPLICATION_CREDENTIALS="/Users/neildahlke/.gcp/eklhad-web-packer.
 # For the data collector
 export GOOGLE_API_KEY=$(op get item "Google dahlke.io" | jq -r '.details.sections[1].fields[2].v')
 
-export TWITTER_CONSUMER_API_KEY=$(op get item Twitter | jq -r '.details.sections[1].fields[0].v')
-export TWITTER_CONSUMER_SECRET_KEY=$(op get item Twitter | jq -r '.details.sections[1].fields[1].v')
-
-export GITHUB_TOKEN=$(op get item GitHub | jq -r '.details.sections[1].fields[0].v')
-export GITHUB_SECRET=$(op get item GitHub | jq -r '.details.sections[1].fields[1].v')
-
 export CLOUDFLARE_TOKEN=$(op get item Cloudflare | jq -r '.details.sections[1].fields[0].v')
 export CLOUDFLARE_EMAIL=$(op get item Cloudflare | jq -r '.details.sections[1].fields[1].v')
 export CLOUDFLARE_API_KEY=$(op get item Cloudflare | jq -r '.details.sections[1].fields[2].v')
-
-export INSTAGRAM_ACCESS_TOKEN=$(op get item Instagram | jq -r '.details.sections[1].fields[0].v')
 
 export TFC_TOKEN=$(op get item "Terraform Cloud" | jq -r '.details.sections[1].fields[0].v')
 echo 'credentials "app.terraform.io" {\n\ttoken = "'$TFC_TOKEN'"\n} ' > ~/.terraformrc

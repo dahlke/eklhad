@@ -8,17 +8,17 @@ terraform {
     }
 
     tls = {
-      source = "hashicorp/tls"
+      source  = "hashicorp/tls"
       version = "~> 3.1"
     }
 
     acme = {
-      source = "vancluever/acme"
+      source  = "vancluever/acme"
       version = "~> 2.5"
     }
 
     cloudflare = {
-      source = "cloudflare/cloudflare"
+      source  = "cloudflare/cloudflare"
       version = "~> 2.20"
     }
   }
