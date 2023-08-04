@@ -1,5 +1,5 @@
 variable "prefix" {
-  type = string
+  type    = string
   default = "eklhad-web"
 }
 
@@ -20,7 +20,7 @@ variable "aws_image_id" {
 }
 
 variable "tags" {
-  type    = map
+  type = map(any)
   default = {
     Name = "eklhad-web"
   }

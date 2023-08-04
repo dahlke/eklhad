@@ -8,13 +8,8 @@ import thunkMiddleware from "redux-thunk";
 // import { createLogger } from "redux-logger";
 import { fetchLocations } from "./actions/locations";
 import { fetchGravatar } from "./actions/gravatar";
-/*
-import { fetchInstagrams } from "./actions/instagrams";
-import { fetchTweets } from "./actions/tweets";
-import { fetchLinks } from "./actions/links";
-import { fetchBlogs } from "./actions/blogs";
-import { fetchGitHubActivity } from "./actions/github";
-*/
+// import { fetchLinks } from "./actions/links";
+// import { fetchBlogs } from "./actions/blogs";
 import rootReducer from "./reducers/index";
 import PopulatedApp from "./container/PopulatedApp";
 
@@ -32,19 +27,13 @@ const store = createStore(
 );
 
 // store.dispatch(fetchLocations()).then(() => console.log(store.getState()))
-// store.dispatch(fetchInstagrams()).then(() => console.log(store.getState()))
 // store.dispatch(fetchLinks()).then(() => console.log(store.getState()))
 
 store.dispatch(fetchLocations());
 store.dispatch(fetchGravatar());
 
-/*
-store.dispatch(fetchInstagrams());
-store.dispatch(fetchTweets());
-store.dispatch(fetchLinks());
-store.dispatch(fetchBlogs());
-store.dispatch(fetchGitHubActivity());
-*/
+// store.dispatch(fetchLinks());
+// store.dispatch(fetchBlogs());
 
 ReactDOM.render(
 	<Provider store={store}>

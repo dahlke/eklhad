@@ -12,9 +12,9 @@ terraform {
 }
 
 provider "google" {
-  project     = var.gcp_project
-  region      = var.gcp_region
-  zone        = var.gcp_zone
+  project = var.gcp_project
+  region  = var.gcp_region
+  zone    = var.gcp_zone
 }
 
 provider "acme" {
@@ -28,7 +28,7 @@ resource "tls_private_key" "acme_private_key" {
 
 resource "acme_registration" "reg" {
   account_key_pem = tls_private_key.acme_private_key.private_key_pem
-  email_address = var.email
+  email_address   = var.email
 }
 
 resource "acme_certificate" "certificate" {
@@ -92,7 +92,7 @@ resource "google_compute_instance" "web" {
 
   service_account {
     # Assume local Packer role, rather than create a 3rd role.
-    email = "eklhad-web-packer@eklhad-web.iam.gserviceaccount.com"
+    email  = "eklhad-web-packer@eklhad-web.iam.gserviceaccount.com"
     scopes = ["storage-rw"]
   }
 
@@ -132,9 +132,9 @@ resource "null_resource" "setup-web" {
 
 resource "cloudflare_record" "gcp" {
   zone_id = var.cloudflare_zone_id
-  name   = "gcp"
-  value  = google_compute_address.web.address
-  type   = "A"
+  name    = "gcp"
+  value   = google_compute_address.web.address
+  type    = "A"
 }
 
 /*
@@ -143,14 +143,14 @@ event of a failover
 */
 resource "cloudflare_record" "static" {
   zone_id = var.cloudflare_zone_id
-  name   = "static"
-  value  = "dahlke.github.io"
-  type   = "CNAME"
+  name    = "static"
+  value   = "dahlke.github.io"
+  type    = "CNAME"
 }
 
 resource "cloudflare_record" "dahlkeio" {
   zone_id = var.cloudflare_zone_id
-  name   = "dahlke.io"
-  value  = google_compute_address.web.address
-  type   = "A"
+  name    = "dahlke.io"
+  value   = google_compute_address.web.address
+  type    = "A"
 }

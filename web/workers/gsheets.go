@@ -36,12 +36,12 @@ func writeLocationsToGCS(locations []structs.EklhadLocation) {
 		fileContents, _ := json.MarshalIndent(locations, "", " ")
 
 		if _, err := wc.Write([]byte(fileContents)); err != nil {
-			log.Error("Unable to write Instagram data to GCS.")
+			log.Error("Unable to write location data to GCS.")
 			return
 		}
 
 		if err := wc.Close(); err != nil {
-			log.Error("Unable to close writer for GCS while writing Instagram data.")
+			log.Error("Unable to close writer for GCS while writing location data.")
 			return
 		}
 

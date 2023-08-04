@@ -21,10 +21,7 @@ type templatePayload struct {
 
 type appConfig struct {
 	GSheetID           string `json:"g_sheet_id"`
-	GitHubUsername     string `json:"github_username"`
 	GravatarEmail      string `json:"gravatar_email"`
-	InstagramUsername  string `json:"instagram_username"`
-	TwitterUsername    string `json:"twitter_username"`
 	WorkerMinSleepMins int    `json:"worker_min_sleep_mins"`
 }
 
@@ -52,30 +49,6 @@ func apiLinksHandler(w http.ResponseWriter, r *http.Request) {
 
 	links := services.GetLinks()
 	json.NewEncoder(w).Encode(links)
-}
-
-func apiInstagramsHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-
-	instagrams := services.GetInstagrams()
-	json.NewEncoder(w).Encode(instagrams)
-}
-
-func apiTweetsHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-
-	tweets := services.GetTweets()
-	json.NewEncoder(w).Encode(tweets)
-}
-
-func apiGitHubActivityHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-
-	githubActivity := services.GetGitHubActivity()
-	json.NewEncoder(w).Encode(githubActivity)
 }
 
 func apiGravatarHandler(w http.ResponseWriter, r *http.Request) {
@@ -122,19 +95,13 @@ func parseConfig(configJSONPath string) appConfig {
 }
 
 func scheduleWorkers(config appConfig) {
-	go workers.ScheduleGitHubWork(config.WorkerMinSleepMins, config.GitHubUsername)
 	go workers.ScheduleGSheetsWork(config.WorkerMinSleepMins, config.GSheetID)
-	go workers.ScheduleInstagramWork(config.WorkerMinSleepMins, config.InstagramUsername)
-	go workers.ScheduleTwitterWork(config.WorkerMinSleepMins, config.TwitterUsername)
 }
 
 func main() {
 	portPtr := flag.Int("port", appPort, "The port to run the HTTP app on (default: 3554).")
 	productionPtr := flag.Bool("production", false, "If true, run the app over HTTPS.")
 	pullGSheetsPtr := flag.Bool("gsheets", false, "If true, pull the latest data from Google Sheets. ID specified in config.json.")
-	pullInstagramPtr := flag.Bool("instagram", false, "If true, pull all data from Instagram. Username specified in config.json.")
-	pullTwitterPtr := flag.Bool("twitter", false, "If true, pull the latest data from Twitter. Username specified in config.json.")
-	pullGitHubPtr := flag.Bool("github", false, "If true, pull the latest data from GitHub. Username specified in config.json.")
 	runWorkersPtr := flag.Bool("workers", false, "If true, run all the workers in Go routines.")
 	flag.Parse()
 
@@ -144,9 +111,6 @@ func main() {
 	appPort = *portPtr
 	isProduction := *productionPtr
 	isPullGSheets := *pullGSheetsPtr
-	isPullInstagram := *pullInstagramPtr
-	isPullTwitter := *pullTwitterPtr
-	isPullGitHub := *pullGitHubPtr
 	workerRoutines := *runWorkersPtr
 
 	fileServer := http.FileServer(http.Dir("frontend/build/"))
@@ -155,11 +119,8 @@ func main() {
 	http.Handle("/static/", fileServer)
 	http.HandleFunc("/api/locations", apiLocationsHandler)
 	http.HandleFunc("/api/links", apiLinksHandler)
-	http.HandleFunc("/api/instagrams", apiInstagramsHandler)
 	http.HandleFunc("/api/blogs", apiBlogsHandler)
-	http.HandleFunc("/api/github_activity", apiGitHubActivityHandler)
 	http.HandleFunc("/api/gravatar", apiGravatarHandler)
-	http.HandleFunc("/api/tweets", apiTweetsHandler)
 
 	if workerRoutines {
 		scheduleWorkers(appConfigData)
@@ -167,12 +128,6 @@ func main() {
 
 	if isPullGSheets {
 		workers.GetDataFromGSheets(appConfigData.GSheetID)
-	} else if isPullInstagram {
-		workers.GetDataFromInstagramForUser()
-	} else if isPullGitHub {
-		workers.GetDataFromGitHubForUser(appConfigData.GitHubUsername)
-	} else if isPullTwitter {
-		workers.GetDataFromTwitterForUser(appConfigData.TwitterUsername)
 	} else if isProduction {
 		if workerRoutines {
 			log.Println("Starting data collection workers...")

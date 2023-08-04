@@ -6,6 +6,7 @@ source "googlecompute" "ubuntu" {
   machine_type = "n1-standard-1"
   zone = "us-west1-b"
   service_account_email = "eklhad-web-packer@eklhad-web.iam.gserviceaccount.com"
+  disk_size = 5
 }
 
 build {
