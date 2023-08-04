@@ -9,7 +9,7 @@ import (
 
 // GetLocations reads the locations data from GCS
 func GetLocations() []structs.EklhadLocation {
-	jsonBytes := ReadJSONFromGCS(constants.GCSPrivateBucketName, constants.LocationDataGCSFilePath)
+	jsonBytes := ReadJSONFromGCS(constants.GCSPublicBucketName, constants.LocationDataGCSFilePath)
 	var locations []structs.EklhadLocation
 	json.Unmarshal(jsonBytes, &locations)
 

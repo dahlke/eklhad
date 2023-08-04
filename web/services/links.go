@@ -9,7 +9,7 @@ import (
 
 // GetLinks reads the links data from GCS
 func GetLinks() []structs.EklhadLink {
-	jsonBytes := ReadJSONFromGCS(constants.GCSPrivateBucketName, constants.LinkDataGCSFilePath)
+	jsonBytes := ReadJSONFromGCS(constants.GCSPublicBucketName, constants.LinkDataGCSFilePath)
 	var links []structs.EklhadLink
 	json.Unmarshal(jsonBytes, &links)
 

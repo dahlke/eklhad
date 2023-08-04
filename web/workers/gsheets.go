@@ -24,7 +24,7 @@ func writeLocationsToGCS(locations []structs.EklhadLocation) {
 			log.Error(err)
 		}
 
-		bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
+		bkt := gcsClient.Bucket(constants.GCSPublicBucketName)
 
 		wc := bkt.Object(constants.LocationDataGCSFilePath).NewWriter(ctx)
 		wc.ContentType = "text/plain"
@@ -59,7 +59,7 @@ func writeLinksToGCS(links []structs.EklhadLink) {
 			log.Error(err)
 		}
 
-		bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
+		bkt := gcsClient.Bucket(constants.GCSPublicBucketName)
 
 		wc := bkt.Object(constants.LinkDataGCSFilePath).NewWriter(ctx)
 		wc.ContentType = "text/plain"
@@ -93,7 +93,7 @@ func writeBlogsToGCS(blogs []structs.EklhadBlog) {
 		log.Error(err)
 	}
 
-	bkt := gcsClient.Bucket(constants.GCSPrivateBucketName)
+	bkt := gcsClient.Bucket(constants.GCSPublicBucketName)
 
 	wc := bkt.Object(constants.BlogDataGCSFilePath).NewWriter(ctx)
 	wc.ContentType = "text/plain"

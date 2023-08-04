@@ -9,7 +9,7 @@ import (
 
 // GetBlogs reads the blog data from GCS.
 func GetBlogs() []structs.EklhadBlog {
-	jsonBytes := ReadJSONFromGCS(constants.GCSPrivateBucketName, constants.BlogDataGCSFilePath)
+	jsonBytes := ReadJSONFromGCS(constants.GCSPublicBucketName, constants.BlogDataGCSFilePath)
 	var blogs []structs.EklhadBlog
 	json.Unmarshal(jsonBytes, &blogs)
 	return blogs

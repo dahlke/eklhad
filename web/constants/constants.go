@@ -14,9 +14,6 @@ const GSheetsInputDateFmt = "2006-01-02"
 // GCSPublicBucketName is the name of the public bucket in GCS that all the public data is stored in.
 const GCSPublicBucketName = "eklhad-web-public"
 
-// GCSPrivateBucketName is the name of the public bucket in GCS that all the pricate data is stored in.
-const GCSPrivateBucketName = "eklhad-web-private"
-
 // LocationDataGCSFilePath is the path in GCS to the JSON blob file for location data
 const LocationDataGCSFilePath = "data/locations.json"
 
