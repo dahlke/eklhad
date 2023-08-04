@@ -2,7 +2,6 @@ source "amazon-ebs" "ubuntu" {
   ami_name      = "eklhad-web-packer-{{timestamp}}"
   instance_type = "t2.micro"
   region        = "us-west-1"
-  volume_size   = 5
 
   source_ami_filter {
     filters = {
