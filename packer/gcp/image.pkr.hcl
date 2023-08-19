@@ -3,7 +3,7 @@ source "googlecompute" "ubuntu" {
   project_id = "eklhad-web"
   source_image = "ubuntu-2004-focal-v20210415"
   ssh_username = "ubuntu"
-  machine_type = "n1-standard-1"
+  machine_type = "n2-standard-2"
   zone = "us-west1-b"
   service_account_email = "eklhad-web-packer@eklhad-web.iam.gserviceaccount.com"
 }
