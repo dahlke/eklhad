@@ -79,11 +79,14 @@ There is a static version of the page that has none of the dynamic content that 
 This is useful to fall back to if anything goes wrong deploying the app to the free tier of cloud
 provider services.
 
-### Authenticating to GCP, TFC and Cloudflare
+### Authenticating to AWS, GCP, TFC and Cloudflare
 
 - [Required GCP IAM Permissions](https://cloud.google.com/cloud-build/docs/building/build-vm-images-with-packer#required_iam_permissions)
 
 ```bash
+export AWS_ACCESS_KEY_ID=$(op item get "Amazon" --format=json | jq -r '.fields[3].value')
+export AWS_SECRET_ACCESS_KEY=$(op item get "Amazon" --format=json | jq -r '.fields[4].value')
+
 # For Packer and Terraform
 export GOOGLE_APPLICATION_CREDENTIALS="/Users/neildahlke/.gcp/eklhad-web-packer.json"
 
@@ -101,7 +104,7 @@ echo 'credentials "app.terraform.io" {\n\ttoken = "'$TFC_TOKEN'"\n} ' > ~/.terra
 ### Deploying
 
 Before deploying, a few things need to be done. The React frontend needs to be compiled. A Linux artifact of the
-application needs to be built. Then a GCP image is created using Packer containing the new Linux artifact, and is used
+application needs to be built. Then a Packer image needs to get created in either AWS or GCP, and then used
 to deploy using Terraform.
 
 ```bash
@@ -110,4 +113,11 @@ make frontend_build
 make artifact_linux_web # or make artifact_macos_web
 make image_gcp
 make tf_apply_gcp_auto
+```
+
+or:
+
+```bash
+make image_aws
+make tf_apply_aws_auto
 ```
