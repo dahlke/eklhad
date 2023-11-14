@@ -175,7 +175,6 @@ resource "null_resource" "setup-web" {
       host        = aws_eip.web.public_ip
     }
 
-    # TODO: inject GCP creds to retrieve data
     inline = [
       "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_cert.pem",
       "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_issuer.pem",
