@@ -36,15 +36,17 @@
 			"highlights": [
                 "Work with practitioners and executives, as a product subject matter expert.",
                 "Escalation point for technology questions and issues in F50.",
-                "Triage field requests, bi-directional product feedback loop between field, engineering, and go-to-market.",
+                "Triage all Vault field requests, bi-directional product feedback loop between field, engineering, and go-to-market.",
 				"Deeply integrated with the product team for feedback loops and product direction.",
                 "Design training, demos and workshops for customers; design training and enablement material for sales team.",
-                "Maintain product, technical deep dive, and roadmap decks; competitive analysis documentation."
+                "Maintain product, technical deep dive, and roadmap decks; competitive analysis documentation.",
+				"Manage pre-sales engineering activities (discovery, value prop, architectural design) with new products.",
+				"Manage post-sales engineering activities (onboarding, growth, expansion, etc.) with existing products."
 			]
 		},
 		{
 			"company": "HashiCorp",
-			"position": "Staff Solutions Engineer, Global (Vault SME)",
+			"position": "Staff Solutions Engineer, Global (Vault SME Leader)",
 			"website": "http://hashicorp.com",
 			"startDate": "2021-02-01",
 			"endDate": "2022-05-02",
@@ -238,7 +240,7 @@
 	"interests": [
 		{
 			"name": "Being outside.",
-			"keywords": [ "surfing", "running", "skiing", "hiking", "travel", "photography", "stories", "people", "team sports"]
+			"keywords": [ "cycling", "running", "skiing", "hiking", "travel", "photography", "stories", "people", "team sports"]
 		}
 	],
 	"references": [
