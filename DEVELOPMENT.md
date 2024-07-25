@@ -31,7 +31,7 @@ need a fallback maintenance page. Leveraging the User GitHub Pages feature provi
 
 ## Testing
 
-There tests for both the frontend and backend, which can be run manually, and are always run in CircleCI when a commit is pushed to the repo.
+There tests for both the frontend and backend, which can be run manually, and are always run in GitHub Actions when a commit is pushed to the repo.
 
 ### Local Test
 
@@ -50,16 +50,6 @@ If you'd like to run the tests on every commit, you can use one of the provided 
 cd .git/hooks
 ln -s -f ../../hooks/pre-commit ./pre-commit
 chmod +x ../../hooks/pre-commit ./pre-commit
-```
-
-### CircleCI Docker Test Image
-
-To run the tests in CircleCI, a custom image is required. To build this test image and push it to Docker Hub, use the
-following commands:
-
-```bash
-make docker_build_circleci
-make docker_push_circleci
 ```
 
 ## Deploying Eklhad Web (Manual)

@@ -11,28 +11,6 @@ import "./App.css";
 // const BREAKPOINT_TABLET = 768;
 
 class App extends Component {
-	/*
-	constructor(props) {
-		super(props);
-		this.state = {
-			width: 0,
-		};
-		this._updateWindowWidth = this._updateWindowWidth.bind(this);
-	}
-
-	componentDidMount() {
-		this._updateWindowWidth();
-		window.addEventListener("resize", this._updateWindowWidth);
-	}
-
-	componentWillUnmount() {
-		window.removeEventListener("resize", this._updateWindowWidth);
-	}
-
-	_updateWindowWidth() {
-		this.setState({ width: window.innerWidth });
-	}
-	*/
 
 	render() {
 		const gravatarEmailMD5 = md5(
@@ -46,7 +24,6 @@ class App extends Component {
 
 		return (
 			<div id="app" className="container mx-auto p-4 text-chicago-flag-blue">
-				<div id="modal" className="border-chicago-flag-blue p-5" />
 				<div className="text-center font-mono w-full md:w-1/2 mx-auto uppercase">
 					<div className="block">
 						<img
