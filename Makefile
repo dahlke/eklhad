@@ -5,10 +5,9 @@ CWD := $(shell pwd)
 
 PACKER_GCP_DEF_PATH=packer/gcp/image.pkr.hcl
 PACKER_AWS_DEF_PATH=packer/aws/image.pkr.hcl
+# TODO: fix the AWS one as well
 PACKER_AWS_IMAGE_CMD=`tail -n 1 /Users/neildahlke/src/github.com/dahlke/eklhad/packer/aws/output/image.txt | awk '{print $$6}' | cut -c 1-21`
-PACKER_GCP_IMAGE_CMD=`tail -n 1 /Users/neildahlke/src/github.com/dahlke/eklhad/packer/gcp/output/image.txt | awk '{print $$8}'`
-# TODO: AWS CIRCLECI
-PACKER_GCP_CIRCLECI_IMAGE_ID=`tail -n 1 /go/src/github.com/dahlke/eklhad/packer/gcp/output/image.txt | awk '{print $$8}'`
+PACKER_GCP_IMAGE_CMD=`tail -n 1 /Users/neildahlke/src/github.com/dahlke/eklhad/packer/gcp/output/image.txt | awk '{print $$12}'`
 
 PACKER_GCP_OUTPUT_DIR=packer/gcp/output/
 PACKER_AWS_OUTPUT_DIR=packer/aws/output/
@@ -192,12 +191,10 @@ tf_apply_aws: tf_aws_init
 tf_apply_aws_auto: tf_aws_init
 	cd ${TF_AWS_APP_DIR} && terraform apply -var "aws_image_id=${PACKER_AWS_IMAGE_CMD}" -auto-approve
 
-# TODO: AWS helper for CircleCI
-
+# TODO: remove this or add it to GCP?
 .PHONY: tf_apply_aws_rotate_certs_auto
 tf_apply_aws_rotate_certs_auto: tf_init_aws
 	cd ${TF_AWS_APP_DIR} && terraform apply -var "aws_image_id=${PACKER_AWS_IMAGE_CMD}" -replace "acme_certificate.certificate" -auto-approve
-
 
 .PHONY: tf_out_aws
 tf_out_aws:
@@ -237,16 +234,3 @@ docker_run_web_dev:
 		-p 3554:3554 \
 		${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION)
 		# ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION) -port 3000
-
-docker_build_circleci:
-	cd .circleci && \
-	docker build --platform linux/amd64 -t ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):$(DOCKER_TEST_IMAGE_VERSION) . && \
-	docker tag ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):$(DOCKER_TEST_IMAGE_VERSION) ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):$(DOCKER_TEST_IMAGE_VERSION) && \
-	docker tag ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):$(DOCKER_TEST_IMAGE_VERSION) ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):latest
-
-docker_push_circleci:
-	docker push ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):$(DOCKER_TEST_IMAGE_VERSION)
-	docker push ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):latest
-
-docker_run_circleci:
-	docker run -it ${DOCKER_HUB_USER}/$(DOCKER_TEST_IMAGE_NAME):$(DOCKER_TEST_IMAGE_VERSION)

@@ -1,5 +1,5 @@
 {
     "g_sheet_id": "YOUR_GSHEET_ID_HERE",
     "gravatar_email": "YOUR@GMAIL.COM",
-    "worker_min_sleep_mins": 60
+    "worker_min_sleep_mins": 43200
 }

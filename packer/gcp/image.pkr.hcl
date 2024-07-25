@@ -1,3 +1,12 @@
+packer {
+  required_plugins {
+    googlecompute = {
+      source  = "github.com/hashicorp/googlecompute"
+      version = "~> 1"
+    }
+  }
+}
+
 source "googlecompute" "ubuntu" {
   image_name = "eklhad-web-packer-{{timestamp}}"
   project_id = "eklhad-web"

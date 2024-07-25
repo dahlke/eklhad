@@ -34,7 +34,7 @@ resource "acme_registration" "reg" {
 resource "acme_certificate" "certificate" {
   account_key_pem           = acme_registration.reg.account_key_pem
   common_name               = "dahlke.io"
-  subject_alternative_names = ["gcp.dahlke.io", "gcp2.dahlke.io"]
+  subject_alternative_names = ["gcp.dahlke.io", "gcp4.dahlke.io"]
   # NOTE: Due to the expiration of DST Root CA X3, we use ISRG Root X1
   preferred_chain = "ISRG Root X1"
 
