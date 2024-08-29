@@ -21,7 +21,7 @@ Install the Go development dependencies and start the web/API server. The web/AP
 
 ```bash
 make go_get
-make go_server_start
+make go_server_run
 ```
 
 ### Frontend Server
@@ -30,7 +30,7 @@ Install the Javascript development dependencies and start the frontend server. T
 
 ```bash
 make npm
-make frontend_start
+make frontend_run
 ```
 
 To update the resume file, make all changes to `./web/frontend/conf/resume.json` and then run `make resume`.

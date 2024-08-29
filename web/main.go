@@ -119,6 +119,7 @@ func main() {
 
 	http.HandleFunc("/", htmlHandler)
 	http.Handle("/static/", fileServer)
+	http.Handle("/assets/", fileServer)
 	http.HandleFunc("/api/locations", apiLocationsHandler)
 	http.HandleFunc("/api/links", apiLinksHandler)
 	http.HandleFunc("/api/blogs", apiBlogsHandler)
@@ -136,6 +137,7 @@ func main() {
 			scheduleWorkers(appConfigData)
 		}
 
+		// TODO
 		// Configure CertMagic
 		certmagic.DefaultACME.Email = "neil.dahlke@gmail.com"
 		certmagic.DefaultACME.Agreed = true

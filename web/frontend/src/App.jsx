@@ -11,8 +11,9 @@ import "./App.css";
 // const BREAKPOINT_TABLET = 768;
 
 class App extends Component {
-
 	render() {
+		const { gravatar = {} } = this.props;  // Default prop value
+
 		const gravatarEmailMD5 = md5(
 			this.props.gravatar ? this.props.gravatar.email : "",
 		);
@@ -115,10 +116,6 @@ class App extends Component {
 		);
 	}
 }
-
-App.defaultProps = {
-  gravatar: {},
-};
 
 App.propTypes = {
 	gravatar: PropTypes.object,
