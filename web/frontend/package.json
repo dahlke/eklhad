@@ -17,7 +17,7 @@
     "resume-cli": "3.1.2"
   },
   "dependencies": {
-    "autoprefixer": "^9.8.6",
+    "autoprefixer": "^10.4.20",
     "blueimp-md5": "^2.19.0",
     "moment": "^2.30.0",
     "prop-types": "^15.8.1",
