@@ -11,7 +11,6 @@ import "./App.css";
 // const BREAKPOINT_TABLET = 768;
 
 class App extends Component {
-
 	render() {
 		const gravatarEmailMD5 = md5(
 			this.props.gravatar ? this.props.gravatar.email : "",
