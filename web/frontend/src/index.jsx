@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-filename-extension */
 
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
+
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
@@ -22,9 +23,12 @@ const store = createStore(
 	rootReducer,
 	applyMiddleware(
 		thunkMiddleware, // lets us dispatch() functions
+		// TODO: do I need this?
 		// loggerMiddleware // neat middleware that logs actions
-	),
+	)
 );
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
 // store.dispatch(fetchLocations()).then(() => console.log(store.getState()))
 // store.dispatch(fetchLinks()).then(() => console.log(store.getState()))
@@ -35,11 +39,12 @@ store.dispatch(fetchGravatar());
 // store.dispatch(fetchLinks());
 // store.dispatch(fetchBlogs());
 
-ReactDOM.render(
-	<Provider store={store}>
-		<PopulatedApp />
-	</Provider>,
-	document.getElementById("root"),
+root.render(
+	<React.StrictMode>
+		<Provider store={store}>
+			<PopulatedApp />
+		</Provider>
+	</React.StrictMode>,
 );
 
 // If you want your app to work offline and load faster, you can change

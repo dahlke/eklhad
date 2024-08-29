@@ -58,26 +58,25 @@ resume: npm
 	npx resume export resume.html --format html --theme classic && \
 	mv ${CWD}/web/frontend/conf/resume.html ${CWD}/web/frontend/public/static/resume.html;
 
-.PHONY: frontend_test
-frontend_test: npm resume
-	cd web/frontend/ && npm run-script test-once
+ .PHONY: frontend_test
+ frontend_test: npm resume
+	 cd web/frontend/ && npm run test
+
+.PHONY: frontend_test_coverage
+frontend_test_coverage: npm resume
+	cd web/frontend/ && npm run test:coverage
 
 .PHONY: frontend_test_watch
 frontend_test_watch: npm resume
-	cd web/frontend/ && npm run-script test
+	cd web/frontend/ && npm run test:watch
 
-.PHONY: frontend_start
-frontend_start: npm resume
-	cd web/frontend/ && npm run-script start
+.PHONY: frontend_run
+frontend_run: npm resume
+	cd web/frontend/ && npm run dev
 
 .PHONY: frontend_build
 frontend_build: npm resume
-	cd web/frontend/ && npm run-script build
-
-.PHONY: frontend_audit_fix
-frontend_audit_fix: npm
-	cd web/frontend/ && npm audit fix
-
+	PUBLIC_URL=/static cd web/frontend/ && npm run build
 
 ##########################
 # GO HELPERS
@@ -94,8 +93,8 @@ go_get:
 go_test:
 	cd web && go test -v ./... -coverprofile=coverage.out
 
-.PHONY: go_server_start
-go_server_start:
+.PHONY: go_server_run
+go_server_run:
 	cd web && go run main.go
 
 .PHONY: go_build_linux

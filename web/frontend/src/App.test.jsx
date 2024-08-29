@@ -1,15 +1,16 @@
 /* eslint-disable no-undef */ // not sure where it() comes from.
-
 import React from "react";
+import { render, screen } from '@testing-library/react';
 import { Provider } from "react-redux";
-import ReactDOM from "react-dom";
-import { createStore, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
+import { createStore, applyMiddleware } from "redux";
 import { createLogger } from "redux-logger";
-import App from "./App";
 import rootReducer from "./reducers/index";
+import App from "./App";
 
 const loggerMiddleware = createLogger();
+
+// TODO: remove deprecated things, do we need the logger?
 const store = createStore(
 	rootReducer,
 	applyMiddleware(
@@ -18,13 +19,14 @@ const store = createStore(
 	),
 );
 
-it("renders without crashing", () => {
+test('renders the App component', () => {
 	const div = document.createElement("div");
-	ReactDOM.render(
+	render(
 		<Provider store={store}>
 			<App />
 		</Provider>,
 		div,
 	);
-	ReactDOM.unmountComponentAtNode(div);
+  const linkElement = screen.getByText(/Software Solutions Engineer/i);
+  expect(linkElement).toBeInTheDocument();
 });
