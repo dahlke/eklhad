@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
     "eslint": "^7.17.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
@@ -11,8 +12,10 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "jsonresume-theme-classic": "0.0.1",
     "postcss": "^8.2.13",
+    "postcss-import": "^16.1.0",
     "postcss-nested": "^4.2.3",
-    "resume-cli": "3.0.7"
+    "resume-cli": "3.0.7",
+    "vite-plugin-env-compatible": "^2.0.1"
   },
   "dependencies": {
     "@craco/craco": "^6.1.2",
@@ -23,26 +26,24 @@
     "npm": "^6.14.6",
     "package.json": "^2.0.1",
     "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-map-gl": "^5.2.7",
     "react-redux": "^7.2.0",
-    "react-scripts": "^4.0.3",
     "react-select": "^4.2.1",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
+    "vite": "^5.4.2"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "test-once": "craco test --watchAll=false",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "browserslist": [
     ">0.2%",
