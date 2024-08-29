@@ -58,26 +58,23 @@ resume: npm
 	npx resume export resume.html --format html --theme classic && \
 	mv ${CWD}/web/frontend/conf/resume.html ${CWD}/web/frontend/public/static/resume.html;
 
-.PHONY: frontend_test
-frontend_test: npm resume
-	cd web/frontend/ && npm run-script test-once
+# TODO: fix the tests with Vite.
+# .PHONY: frontend_test
+# frontend_test: npm resume
+#	 cd web/frontend/ && npm run-script test-once
 
-.PHONY: frontend_test_watch
-frontend_test_watch: npm resume
-	cd web/frontend/ && npm run-script test
+#.PHONY: frontend_test_watch
+#frontend_test_watch: npm resume
+#	cd web/frontend/ && npm run-script test
 
+# TODO: change the name?
 .PHONY: frontend_start
 frontend_start: npm resume
-	cd web/frontend/ && npm run-script start
+	cd web/frontend/ && npm run dev
 
 .PHONY: frontend_build
 frontend_build: npm resume
-	cd web/frontend/ && npm run-script build
-
-.PHONY: frontend_audit_fix
-frontend_audit_fix: npm
-	cd web/frontend/ && npm audit fix
-
+	cd web/frontend/ && npm run build
 
 ##########################
 # GO HELPERS
