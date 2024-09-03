@@ -2,8 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { configDefaults } from 'vitest/config';
 
-export default defineConfig(() => {
-  return {
+export default defineConfig(() => ({
     build: {
       outDir: 'build',
     },
@@ -11,9 +10,9 @@ export default defineConfig(() => {
     optimizeDeps: {
       esbuildOptions: {
         loader: {
-          '.js': 'jsx'
+          '.js': 'jsx',
         },
-      }
+      },
     },
     test: {
       globals: true,
@@ -21,8 +20,7 @@ export default defineConfig(() => {
       setupFiles: './src/setupTests.js', // Similar to CRA's setupTests.js
       exclude: [...configDefaults.exclude, 'node_modules/'], // Exclude node_modules from test runs
     },
-  };
-});
+}));
 
 /*
 // TODO

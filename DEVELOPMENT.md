@@ -38,7 +38,7 @@ There tests for both the frontend and backend, which can be run manually, and ar
 To run the tests locally, you can use one of the provided `make` commands.
 
 ```bash
-make frontend_test
+make frontend_test_coverage
 make go_test
 ```
 

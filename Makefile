@@ -58,7 +58,6 @@ resume: npm
 	npx resume export resume.html --format html --theme classic && \
 	mv ${CWD}/web/frontend/conf/resume.html ${CWD}/web/frontend/public/static/resume.html;
 
-# TODO: fix the tests with Vite.
  .PHONY: frontend_test
  frontend_test: npm resume
 	 cd web/frontend/ && npm run test:
@@ -71,9 +70,8 @@ frontend_test_coverage: npm resume
 frontend_test_watch: npm resume
 	cd web/frontend/ && npm run test:watch
 
-# TODO: change the name?
-.PHONY: frontend_start
-frontend_start: npm resume
+.PHONY: frontend_run
+frontend_run: npm resume
 	cd web/frontend/ && npm run dev
 
 .PHONY: frontend_build
@@ -95,8 +93,8 @@ go_get:
 go_test:
 	cd web && go test -v ./... -coverprofile=coverage.out
 
-.PHONY: go_server_start
-go_server_start:
+.PHONY: go_server_run
+go_server_run:
 	cd web && go run main.go
 
 .PHONY: go_build_linux
