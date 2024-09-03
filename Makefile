@@ -59,13 +59,17 @@ resume: npm
 	mv ${CWD}/web/frontend/conf/resume.html ${CWD}/web/frontend/public/static/resume.html;
 
 # TODO: fix the tests with Vite.
-# .PHONY: frontend_test
-# frontend_test: npm resume
-#	 cd web/frontend/ && npm run-script test-once
+ .PHONY: frontend_test
+ frontend_test: npm resume
+	 cd web/frontend/ && npm run test:
 
-#.PHONY: frontend_test_watch
-#frontend_test_watch: npm resume
-#	cd web/frontend/ && npm run-script test
+.PHONY: frontend_test_coverage
+frontend_test_coverage: npm resume
+	cd web/frontend/ && npm run test:coverage
+
+.PHONY: frontend_test_watch
+frontend_test_watch: npm resume
+	cd web/frontend/ && npm run test:watch
 
 # TODO: change the name?
 .PHONY: frontend_start
