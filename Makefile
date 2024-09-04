@@ -60,7 +60,7 @@ resume: npm
 
  .PHONY: frontend_test
  frontend_test: npm resume
-	 cd web/frontend/ && npm run test:
+	 cd web/frontend/ && npm run test
 
 .PHONY: frontend_test_coverage
 frontend_test_coverage: npm resume
@@ -76,7 +76,7 @@ frontend_run: npm resume
 
 .PHONY: frontend_build
 frontend_build: npm resume
-	cd web/frontend/ && npm run build
+	PUBLIC_URL=/static cd web/frontend/ && npm run build
 
 ##########################
 # GO HELPERS
