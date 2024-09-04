@@ -25,7 +25,7 @@ const store = createStore(
 		thunkMiddleware, // lets us dispatch() functions
 		// TODO: do I need this?
 		// loggerMiddleware // neat middleware that logs actions
-	)
+	),
 );
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

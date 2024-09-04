@@ -80,9 +80,7 @@ export AWS_SECRET_ACCESS_KEY=$(op item get Amazon --format=json | jq -r '.fields
 ```bash
 # For Packer and Terraform
 export GOOGLE_APPLICATION_CREDENTIALS="/Users/neildahlke/.gcp/eklhad-web-packer.json"
-# TODO
-# For GH Actions
-# export GOOGLE_APPLICATION_CREDENTIALS="/home/runner/work/eklhad/eklhad/gcp-actions.json"
+
 # For the data collector
 export GOOGLE_API_KEY=$(op item get "Google dahlke.io" --format=json | jq -r '.fields[5].value')
 
@@ -106,7 +104,7 @@ to deploy using Terraform.
 make collect_data
 make frontend_build
 make artifact_linux_web
-make artifact_macos_web
+make go_build_macos
 make image_gcp
 make tf_apply_gcp_auto
 ```
