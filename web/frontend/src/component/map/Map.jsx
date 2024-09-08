@@ -57,55 +57,48 @@ class Map extends Component {
 		);
 	}
 
+	static defaultProps = {
+		locations: [],
+	};
+
 	_renderLocationMarkers() {
-		let markers = [];
+		if (!this.props.locations) return null;
 
-		if (this.props.locations) {
-			markers = this.props.locations.map((location) => {
-				let markerClassName = "map-custom-marker ";
-				let markerIcon = null;
+		return this.props.locations.map((location) => {
+			let markerClassName = "map-custom-marker ";
+			let markerIcon = null;
 
-				if (location.current) {
-					markerClassName += "current-location";
-				} else if (!location.layover) {
-					markerClassName += "static-location";
-				}
+			if (location.current) {
+				markerClassName += "current-location";
+			} else if (!location.layover) {
+				markerClassName += "static-location";
+			}
 
-				if (location.layover) {
-					markerIcon = (
-						<span className="location-icon layover">
-							✈
-						</span>
-					);
-				}
+			if (location.layover) {
+				markerIcon = <span className="location-icon layover">✈</span>;
+			}
 
-				if (location.home) {
-					markerIcon = (
-						<span className="location-icon home">
-							★
-						</span>
-					);
-				}
+			if (location.home) {
+				markerIcon = <span className="location-icon home">★</span>;
+			}
 
-				return (
-					<Marker
-						key={location.id}
-						latitude={location.lat}
-						longitude={location.lng}
+			return (
+				<Marker
+					key={location.id}
+					latitude={location.lat}
+					longitude={location.lng}
+					anchor="bottom"
+				>
+					<div
+						className={markerClassName}
+						role="button"
+						onClick={() => this.setState({ popupInfo: location })}
 					>
-						<div
-							className={markerClassName}
-							role="button"
-							onClick={() => this.setState({ popupInfo: location })}
-						>
-							{markerIcon}
-						</div>
-					</Marker>
-				);
-			});
-		}
-
-		return markers;
+						{markerIcon}
+					</div>
+				</Marker>
+			);
+		});
 	}
 
 	render() {
