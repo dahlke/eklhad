@@ -9,7 +9,7 @@ function requestBlogs() {
 }
 
 export const RECEIVE_BLOGS = "RECEIVE_BLOGS";
-function receiveBlogs(json) {
+function receiveBlogs(json: any): { type: string; blogs: any; receivedAt: number } {
 	return {
 		type: RECEIVE_BLOGS,
 		blogs: json,
@@ -17,7 +17,7 @@ function receiveBlogs(json) {
 	};
 }
 
-export function fetchBlogs() {
+export function fetchBlogs(): (dispatch: (action: { type: string; blogs?: any; receivedAt?: number }) => void) => Promise<void> {
 	const apiUrl = `${API_BASE_URL}/blogs`;
 
 	return (dispatch) => {

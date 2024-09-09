@@ -1,21 +1,36 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
-import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import ReactMapGL, { Marker, Popup, ViewportProps } from "react-map-gl";
 
 import "./Map.css";
 
-// NOTE: I could remove this, but I have to get it into the JS somehow, so it will be
-// exposed no matter what. All it does is associate the map to my account, so unless
-// that becomes a problem, I'll just leave it.
 const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoibnRkIiwiYSI6ImNqdTM3eXplODBrYTQ0ZHBnNnB6bDcwbjMifQ.JhbZo-A0SGq4Pgk87T2hoQ";
 const MAPBOX_STYLE = "mapbox://styles/ntd/cjsl0z4lm3d971fllo51zcza8";
 
-class Map extends Component {
-	constructor() {
-		super();
+interface Location {
+	id: string;
+	lat: number;
+	lng: number;
+	current?: boolean;
+	layover?: boolean;
+	home?: boolean;
+	city?: string;
+	stateprovinceregion?: string;
+	country?: string;
+}
+
+interface MapProps {
+	locations: Location[];
+}
+
+interface MapState {
+	viewport: ViewportProps;
+	popupInfo: Location | null;
+}
+
+class Map extends Component<MapProps, MapState> {
+	constructor(props: MapProps) {
+		super(props);
 		this.state = {
 			viewport: {
 				width: "100%",
@@ -57,7 +72,7 @@ class Map extends Component {
 		);
 	}
 
-	static defaultProps = {
+	static defaultProps: Partial<MapProps> = {
 		locations: [],
 	};
 
@@ -102,7 +117,6 @@ class Map extends Component {
 	}
 
 	render() {
-					// width="100%"
 		return (
 			<div id="map">
 				<ReactMapGL
@@ -113,7 +127,7 @@ class Map extends Component {
 					zoom={this.state.viewport.zoom}
 					bearing={this.state.viewport.bearing}
 					pitch={this.state.viewport.pitch}
-					onViewportChange={(viewport) => this.setState({ viewport })}
+					onViewportChange={(viewport: ViewportProps) => this.setState({ viewport })}
 					mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
 					attributionControl={false}
 					worldCopyJump={true}
