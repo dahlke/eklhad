@@ -99,8 +99,10 @@ to deploy using Terraform.
 ```bash
 make collect_data
 make frontend_build
+make go_build_linux
 make artifact_linux_web
 make go_build_macos
+make artifact_macos_web
 make image_gcp
 make tf_apply_gcp_auto
 ```

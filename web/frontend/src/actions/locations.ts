@@ -9,7 +9,7 @@ function requestLocations() {
 }
 
 export const RECEIVE_LOCATIONS = "RECEIVE_LOCATIONS";
-function receiveLocations(json) {
+function receiveLocations(json: any): { type: string; locations: any; receivedAt: number } { // Added parameter and return types
 	return {
 		type: RECEIVE_LOCATIONS,
 		locations: json,
@@ -17,7 +17,7 @@ function receiveLocations(json) {
 	};
 }
 
-export function fetchLocations() {
+export function fetchLocations(): (dispatch: (action: { type: string; locations?: any; receivedAt?: number }) => void) => Promise<void> { // Added return type
 	const apiUrl = `${API_BASE_URL}/locations`;
 
 	return (dispatch) => {

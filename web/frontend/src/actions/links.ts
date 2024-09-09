@@ -9,7 +9,7 @@ function requestLinks() {
 }
 
 export const RECEIVE_LINKS = "RECEIVE_LINKS";
-function receiveLinks(json) {
+function receiveLinks(json: any): { type: string; links: any; receivedAt: number } { // Added parameter and return types
 	return {
 		type: RECEIVE_LINKS,
 		links: json,
@@ -17,7 +17,7 @@ function receiveLinks(json) {
 	};
 }
 
-export function fetchLinks() {
+export function fetchLinks(): (dispatch: (action: { type: string; links?: any; receivedAt?: number }) => void) => Promise<void> { // Added return type
 	const apiUrl = `${API_BASE_URL}/links`;
 
 	return (dispatch) => {

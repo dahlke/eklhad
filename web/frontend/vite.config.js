@@ -11,6 +11,8 @@ export default defineConfig(() => ({
       esbuildOptions: {
         loader: {
           '.js': 'jsx',
+          // TODO
+          '.ts': 'tsx',
         },
       },
     },
