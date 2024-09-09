@@ -6,7 +6,7 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
-// import { createLogger } from "redux-logger";
+import { createLogger } from "redux-logger";
 import { fetchLocations } from "./actions/locations";
 import { fetchGravatar } from "./actions/gravatar";
 // import { fetchLinks } from "./actions/links";
@@ -18,13 +18,12 @@ import "./index.css";
 
 import * as serviceWorker from "./serviceWorker";
 
-// const loggerMiddleware = createLogger();
+const loggerMiddleware = createLogger();
 const store = createStore(
 	rootReducer,
 	applyMiddleware(
 		thunkMiddleware, // lets us dispatch() functions
-		// TODO: do I need this?
-		// loggerMiddleware // neat middleware that logs actions
+		loggerMiddleware // neat middleware that logs actions
 	),
 );
 

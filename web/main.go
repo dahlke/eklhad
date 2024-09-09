@@ -9,8 +9,6 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/caddyserver/certmagic"
-
 	"github.com/dahlke/eklhad/web/services"
 	"github.com/dahlke/eklhad/web/workers"
 	log "github.com/sirupsen/logrus"
@@ -136,12 +134,6 @@ func main() {
 			log.Println("Starting data collection workers...")
 			scheduleWorkers(appConfigData)
 		}
-
-		// TODO
-		// Configure CertMagic
-		certmagic.DefaultACME.Email = "neil.dahlke@gmail.com"
-		certmagic.DefaultACME.Agreed = true
-		certmagic.DefaultACME.CA = certmagic.LetsEncryptProductionCA
 
 		log.Println("Starting HTTPS server...")
 		go http.ListenAndServeTLS(":443", "acme_cert.pem", "acme_private_key.pem", nil)

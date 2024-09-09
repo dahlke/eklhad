@@ -73,10 +73,6 @@ provider services.
 
 - [Required GCP IAM Permissions](https://cloud.google.com/cloud-build/docs/building/build-vm-images-with-packer#required_iam_permissions)
 
-# TODO: migrate these
-export AWS_ACCESS_KEY_ID=$(op item get Amazon --format=json | jq -r '.fields[3].value')
-export AWS_SECRET_ACCESS_KEY=$(op item get Amazon --format=json | jq -r '.fields[4].value')
-
 ```bash
 # For Packer and Terraform
 export GOOGLE_APPLICATION_CREDENTIALS="/Users/neildahlke/.gcp/eklhad-web-packer.json"
