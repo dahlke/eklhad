@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import md5 from "blueimp-md5";
 
 // Import custom components
-import PopulatedMap from "./container/PopulatedMap";
-// import PopulatedLinksList from "./container/PopulatedLinksList";
+import PopulatedMap from "./container/PopulatedMap.ts";
+// import PopulatedLinksList from "./container/PopulatedLinksList.ts";
 
 // Import styles
 import "./App.css";
