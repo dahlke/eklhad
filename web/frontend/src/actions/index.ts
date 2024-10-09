@@ -1,3 +1,11 @@
+// Extend the Window interface to include APP
+interface Window {
+    APP?: {
+        apiPort: number;
+        apiHost: string;
+    };
+}
+
 export const PROTOCOL = window.location.protocol;
 // NOTE: Default app port is required for local development, since
 // running react-scripts start does not take the server into equation
@@ -21,7 +29,7 @@ export const HOST = window.APP ? window.APP.apiHost : window.location.hostname;
 export const API_BASE_URL = `${PROTOCOL}//${HOST}:${PORT}/api`;
 
 /* Activity Filters */
-export const setActivityFilter = (filter) => ({
+export const setActivityFilter = (filter: any) => ({ // Specify the type for filter
 	type: "SET_ACTIVITY_FILTER",
 	filter,
 });
@@ -32,7 +40,7 @@ export const ActivityFilters = {
 };
 
 /* Date Filter */
-export const setDateFilter = (filter) => ({
+export const setDateFilter = (filter: any) => ({ // Specify the type for filter
 	type: "SET_DATE_FILTER",
 	filter,
 });
