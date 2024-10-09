@@ -1,7 +1,5 @@
 import { API_BASE_URL } from "./index";
 
-console.log("Neil")
-
 /* Gravatar */
 export const REQUEST_GRAVATAR = "REQUEST_GRAVATAR";
 function requestGravatar(): { type: string } { // Added return type

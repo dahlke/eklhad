@@ -1,6 +1,18 @@
 import { REQUEST_LOCATIONS, RECEIVE_LOCATIONS } from "../actions/locations";
 
-const locations = (state = { items: [] }, action) => {
+interface LocationsState {
+    items: any[];
+    isFetching?: boolean;
+    lastUpdated?: number;
+}
+
+interface LocationsAction {
+    type: string;
+    locations?: any[];
+    receivedAt?: number;
+}
+
+const locations = (state: LocationsState = { items: [] }, action: LocationsAction): LocationsState => {
 	switch (action.type) {
 		case REQUEST_LOCATIONS:
 			return { ...state, isFetching: true };
@@ -8,7 +20,7 @@ const locations = (state = { items: [] }, action) => {
 			return {
 				...state,
 				isFetching: false,
-				items: action.locations,
+				items: action.locations || [],
 				lastUpdated: action.receivedAt,
 			};
 		default:

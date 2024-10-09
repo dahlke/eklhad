@@ -1,6 +1,18 @@
 import { REQUEST_BLOGS, RECEIVE_BLOGS } from "../actions/blogs";
 
-const blogs = (state = { items: [] }, action) => {
+interface BlogState {
+    items: any[];
+    isFetching?: boolean;
+    lastUpdated?: number;
+}
+
+interface BlogAction {
+    type: string;
+    blogs?: any[];
+    receivedAt?: number;
+}
+
+const blogs = (state: BlogState = { items: [] }, action: BlogAction): BlogState => {
 	switch (action.type) {
 		case REQUEST_BLOGS:
 			return { ...state, isFetching: true };
@@ -8,7 +20,7 @@ const blogs = (state = { items: [] }, action) => {
 			return {
 				...state,
 				isFetching: false,
-				items: action.blogs,
+				items: action.blogs || [],
 				lastUpdated: action.receivedAt,
 			};
 		default:
