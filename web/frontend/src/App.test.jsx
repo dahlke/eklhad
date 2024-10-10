@@ -4,18 +4,15 @@ import { render, screen } from '@testing-library/react';
 import { Provider } from "react-redux";
 import thunkMiddleware from "redux-thunk";
 import { createStore, applyMiddleware } from "redux";
-import { createLogger } from "redux-logger";
 import rootReducer from "./reducers/index";
 import App from "./App";
 
-const loggerMiddleware = createLogger();
 
 // TODO: remove deprecated things, do we need the logger?
 const store = createStore(
 	rootReducer,
 	applyMiddleware(
 		thunkMiddleware, // lets us dispatch() functions
-		loggerMiddleware, // neat middleware that logs actions
 	),
 );
 
