@@ -1,35 +1,31 @@
 package services
 
 import (
-	"context"
+	"fmt"
 	"io/ioutil"
+	"net/http"
 
-	"cloud.google.com/go/storage"
 	log "github.com/sirupsen/logrus"
 )
 
 // ReadJSONFromGCS reads data from a bucket at a specific path and returns a byte array.
 func ReadJSONFromGCS(bucketName string, path string) []byte {
-	ctx := context.Background()
-	gcsClient, err := storage.NewClient(ctx)
+	// Construct the public URL for the object
+	publicURL := fmt.Sprintf("https://storage.googleapis.com/%s/%s", bucketName, path)
 
+	// Make an HTTP GET request to the public URL
+	resp, err := http.Get(publicURL)
 	if err != nil {
-		log.Error(err)
+		log.Error("Failed to fetch the object:", err)
+		return nil
 	}
+	defer resp.Body.Close()
 
-	bkt := gcsClient.Bucket(bucketName)
-	obj := bkt.Object(path)
-	rc, err := obj.NewReader(ctx)
-
+	// Read the response body
+	jsonBytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		log.Error(err)
-	}
-
-	jsonBytes, err := ioutil.ReadAll(rc)
-	rc.Close()
-
-	if err != nil {
-		log.Error(err)
+		log.Error("Failed to read the object data:", err)
+		return nil
 	}
 
 	return jsonBytes
