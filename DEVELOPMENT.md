@@ -90,6 +90,19 @@ export AWS_ACCESS_KEY_ID=$(op item get "Amazon" --format=json | jq -r '.fields[3
 export AWS_SECRET_ACCESS_KEY=$(op item get "Amazon" --format=json | jq -r '.fields[4].value')
 ```
 
+### Building the Docker Image
+
+```bash
+make collect_data
+make frontend_build
+make go_build_linux
+docker build -t eklhad/eklhad-web:0.0.1 .
+docker tag eklhad/eklhad-web:0.0.1 eklhad/eklhad-web:0.0.1
+docker tag eklhad/eklhad-web:0.0.1 eklhad/eklhad-web:latest
+docker push eklhad/eklhad-web:0.0.1
+docker push eklhad/eklhad-web:latest
+```
+
 ### Deploying
 
 Before deploying, a few things need to be done. The React frontend needs to be compiled. A Linux artifact of the
