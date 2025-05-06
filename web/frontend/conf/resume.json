@@ -178,6 +178,13 @@
 	],
 	"publications": [
 		{
+			"name": "Building Resilient Distributed Systems with Temporal and AWS",
+			"publisher": "",
+			"releaseDate": "2025-05-02",
+			"website": "https://aws.amazon.com/blogs/apn/building-resilient-distributed-systems-with-temporal-and-aws/",
+			"summary": ""
+		},
+		{
 			"name": "Hashicorp Vault PKI White Paper",
 			"publisher": "",
 			"releaseDate": "2021-09-24",
