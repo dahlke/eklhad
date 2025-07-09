@@ -1,254 +1,305 @@
 {
 	"basics": {
-		"name": "Neil Dahlke",
-		"label": "Software Solutions Engineer",
-		"picture": "https://en.gravatar.com/userimage/25206271/c07bb7c64399588ea12e52065f2b6dda.jpg",
-		"email": "neil+eklhad-web@dahlke.io",
-		"phone": "cell not available here",
-		"website": "http://dahlke.io",
-		"summary": "",
-		"location": {
-			"address": "",
-			"postalCode": "CA 91402",
-			"city": "San Francisco",
-			"countryCode": "US",
-			"region": "California"
+	  "name": "Neil Dahlke",
+	  "label": "Software Solutions Engineer",
+	  "picture": "https://en.gravatar.com/userimage/25206271/c07bb7c64399588ea12e52065f2b6dda.jpg",
+	  "email": "neil+eklhad-web@dahlke.io",
+	  "phone": "cell not available here",
+	  "website": "http://dahlke.io",
+	  "summary": "",
+	  "location": {
+		"address": "",
+		"postalCode": "CA 91402",
+		"city": "San Francisco",
+		"countryCode": "US",
+		"region": "California"
+	  },
+	  "profiles": [
+		{
+		  "network": "GitHub",
+		  "username": "dahlke",
+		  "url": "http://github.com/dahlke"
 		},
-		"profiles": [
-			{
-				"network": "GitHub",
-				"username": "dahlke",
-				"url": "http://github.com/dahlke"
-			},
-			{
-				"network": "LinkedIn",
-				"username": "neildahlke",
-				"url": "http://linkedin.com/in/neildahlke"
-			}
-		]
+		{
+		  "network": "LinkedIn",
+		  "username": "neildahlke",
+		  "url": "http://linkedin.com/in/neildahlke"
+		}
+	  ]
 	},
 	"work": [
-		{
-			"company": "HashiCorp",
-			"position": "Sr. Staff Solutions Engineer, Global (Vault SME Leader)",
-			"website": "http://hashicorp.com",
-			"startDate": "2022-05-02",
-			"highlights": [
-				"Manage pre-sales engineering activities (discovery, value prop, architectural design) with new products, as well as post-sales engineering activities (onboarding, growth, expansion, etc.) with existing products.",
-                "Work with practitioners and executives, as a product subject matter expert.",
-                "Escalation point for technology questions and issues in F50.",
-                "Triage all Vault field requests, bi-directional product feedback loop between field, engineering, and go-to-market.",
-				"Deeply integrated with the product team for feedback loops and product direction.",
-                "Design training, demos and workshops for customers; design training and enablement material for sales team.",
-                "Maintain product, technical deep dive, and roadmap decks; competitive analysis documentation."
-			]
-		},
-		{
-			"company": "HashiCorp",
-			"position": "Staff Solutions Engineer, Global (Vault SME Leader)",
-			"website": "http://hashicorp.com",
-			"startDate": "2021-02-01",
-			"endDate": "2022-05-02",
-			"highlights": [
-			]
-		},
-		{
-			"company": "HashiCorp",
-			"position": "Staff Solutions Engineer, West North America",
-			"website": "http://hashicorp.com",
-			"startDate": "2020-02-01",
-			"endDate": "2021-02-01",
-			"highlights": [
-				"DevOps domain expert for sales team on strategic client relationships in F500.",
-				"Lead pre-sales engineering activities (discovery, value prop, architectural design).",
-				"Work closely with key client executive decision makers on PoCs ensuring solution validity.",
-				"Focus spread across the entire HashiCorp stack."
-			]
-		},
-		{
-			"company": "HashiCorp",
-			"position": "Senior Solutions Engineer, West North America",
-			"website": "http://hashicorp.com",
-			"startDate": "2018-11-19",
-			"endDate": "2020-02-01",
-			"highlights": [
-			]
-		},
-		{
-			"company": "SingleStore (MemSQL)",
-			"position": "Senior Solutions Engineer, West North America (Team Lead)",
-			"website": "http://singlestore.com",
-			"startDate": "2017-03-01",
-			"endDate": "2018-11-16",
-			"highlights": [
-				"Orchestrate pre-sales activities for the development and implementation of complex solutions.",
-				"Evangelize the product: speaking at conferences, writing blogs and technical talks.",
-				"Participate in team coordination, development activities, project planning and recruitment.",
-				"Lead, mentor, and develop the team’s sales, technical, and business skills."
-			]
-		},
-		{
-			"company": "SingleStore (MemSQL)",
-			"position": "Solutions Engineer",
-			"website": "http://singlestore.com",
-			"startDate": "2015-11-01",
-			"endDate": "2017-03-01",
-			"highlights": [
-			]
-		},
-		{
-			"company": "SingleStore (MemSQL)",
-			"position": "Software Engineer",
-			"website": "http://singlestore.com",
-			"startDate": "2013-12-01",
-			"endDate": "2015-11-01",
-			"highlights": [
-				"Translated design mockups and prototypes into large-scale web applications."
-			]
-		},
-		{
-			"company": "Computation Institute, University of Chicago",
-			"position": "Software Engineer",
-			"website": "http://globus.org",
-			"startDate": "2013-05-01",
-			"endDate": "2013-12-01",
-			"summary": "",
-			"highlights": [
-				"Developed, tested, deployed and maintained software, with a focus on front-end."
-			]
-		}
+	  {
+		"company": "Temporal Technologies",
+		"position": "Staff Solutions Architect",
+		"website": "https://temporal.io",
+		"startDate": "2024-07-01",
+		"highlights": [
+			"Collaborated with prospects to assess technical fit for Temporal's platform, providing architectural guidance on distributed systems and workflow orchestration.",
+			"Educated customers and stakeholders on Temporal's capabilities, and value proposition through presentations, whiteboarding sessions, and technical documentation.",
+			"Partnered closely with Account Executives to develop and execute strategic account plans, aligning technical solutions with business objectives.",
+			"Positioned Temporal competitively against alternative technologies and architectural patterns, educating customers on a developing market category.",
+			"Built application prototypes and offered hands-on design, development, and deployment support across Java, Golang, TypeScript, Python, C#, and PHP.",
+			"Advised customer engineering teams on operational considerations including security, scalability, reliability, cost optimization, and maintainability.",
+			"Maintained trusted relationships with technical decision-makers to ensure successful implementation and long-term value realization.",
+			"Provided strategic technical insights and guidance to qualify, scope, and size opportunities in collaboration with sales teams.",
+			"Integrated into new logo acquisition and existing customer growth initiatives, bridging pre-sales technical discovery with post-sales implementation and expansion support"
+		]
+	  },
+	  {
+		"company": "HashiCorp",
+		"position": "Sr. Staff Solutions Engineer, Global (Vault SME Leader)",
+		"website": "http://hashicorp.com",
+		"startDate": "2022-05-02",
+		"highlights": [
+		  "Manage pre-sales engineering activities (discovery, value prop, architectural design) with new products, as well as post-sales engineering activities (onboarding, growth, expansion, etc.) with existing products.",
+		  "Work with practitioners and executives, as a product subject matter expert.",
+		  "Escalation point for technology questions and issues in F50.",
+		  "Triage all Vault field requests, bi-directional product feedback loop between field, engineering, and go-to-market.",
+		  "Deeply integrated with the product team for feedback loops and product direction.",
+		  "Design training, demos and workshops for customers; design training and enablement material for sales team.",
+		  "Maintain product, technical deep dive, and roadmap decks; competitive analysis documentation."
+		]
+	  },
+	  {
+		"company": "HashiCorp",
+		"position": "Staff Solutions Engineer, Global (Vault SME Leader)",
+		"website": "http://hashicorp.com",
+		"startDate": "2021-02-01",
+		"endDate": "2022-05-02",
+		"highlights": []
+	  },
+	  {
+		"company": "HashiCorp",
+		"position": "Staff Solutions Engineer, West North America",
+		"website": "http://hashicorp.com",
+		"startDate": "2020-02-01",
+		"endDate": "2021-02-01",
+		"highlights": [
+		  "DevOps domain expert for sales team on strategic client relationships in F500.",
+		  "Lead pre-sales engineering activities (discovery, value prop, architectural design).",
+		  "Work closely with key client executive decision makers on PoCs ensuring solution validity.",
+		  "Focus spread across the entire HashiCorp stack."
+		]
+	  },
+	  {
+		"company": "HashiCorp",
+		"position": "Senior Solutions Engineer, West North America",
+		"website": "http://hashicorp.com",
+		"startDate": "2018-11-19",
+		"endDate": "2020-02-01",
+		"highlights": []
+	  },
+	  {
+		"company": "SingleStore (MemSQL)",
+		"position": "Senior Solutions Engineer, West North America (Team Lead)",
+		"website": "http://singlestore.com",
+		"startDate": "2017-03-01",
+		"endDate": "2018-11-16",
+		"highlights": [
+		  "Orchestrate pre-sales activities for the development and implementation of complex solutions.",
+		  "Evangelize the product: speaking at conferences, writing blogs and technical talks.",
+		  "Participate in team coordination, development activities, project planning and recruitment.",
+		  "Lead, mentor, and develop the team\u2019s sales, technical, and business skills."
+		]
+	  },
+	  {
+		"company": "SingleStore (MemSQL)",
+		"position": "Solutions Engineer",
+		"website": "http://singlestore.com",
+		"startDate": "2015-11-01",
+		"endDate": "2017-03-01",
+		"highlights": []
+	  },
+	  {
+		"company": "SingleStore (MemSQL)",
+		"position": "Software Engineer",
+		"website": "http://singlestore.com",
+		"startDate": "2013-12-01",
+		"endDate": "2015-11-01",
+		"highlights": [
+		  "Translated design mockups and prototypes into large-scale web applications."
+		]
+	  },
+	  {
+		"company": "Computation Institute, University of Chicago",
+		"position": "Software Engineer",
+		"website": "http://globus.org",
+		"startDate": "2013-05-01",
+		"endDate": "2013-12-01",
+		"summary": "",
+		"highlights": [
+		  "Developed, tested, deployed and maintained software, with a focus on front-end."
+		]
+	  }
 	],
-	"volunteer": [
-	],
+	"volunteer": [],
 	"education": [
-		{
-			"institution": "DePaul University",
-			"area": "Computer Science",
-			"studyType": "BS",
-			"startDate": "2009-07-01",
-			"endDate": "2013-05-01",
-			"gpa": "3.925, Dean's List 2009-2013",
-			"courses": [
-			]
-		}
+	  {
+		"institution": "DePaul University",
+		"area": "Computer Science",
+		"studyType": "BS",
+		"startDate": "2009-07-01",
+		"endDate": "2013-05-01",
+		"gpa": "3.925, Dean's List 2009-2013",
+		"courses": []
+	  }
 	],
 	"awards": [
-		{
-			"title": "APEX Club (FY21, FY22)",
-			"date": "2022-03-07",
-			"awarder": "HashiCorp",
-			"summary": ""
-		},
-		{
-			"title": "SE of the Year, West USA (FY21)",
-			"date": "2020-02-11",
-			"awarder": "HashiCorp",
-			"summary": ""
-		},
-		{
-			"title": "SE of the Quarter, Americas (FY21Q1)",
-			"date": "2020-05-07",
-			"awarder": "HashiCorp",
-			"summary": ""
-		},
-		{
-			"title": "SE of the Quarter, West USA (FY20Q1/Q2/Q3, FY21Q1)",
-			"date": "2020-05-07",
-			"awarder": "HashiCorp",
-			"summary": ""
-		},
-		{
-			"title": "SE of the Year, West USA (FY20)",
-			"date": "2020-02-11",
-			"awarder": "HashiCorp",
-			"summary": ""
-		},
-		{
-			"title": "SE of the Year, Global (FY19)",
-			"date": "2018-03-21",
-			"awarder": "SingleStore (MemSQL)",
-			"summary": ""
-		},
-		{
-			"title": "President's Club (FY17, FY18, FY19)",
-			"date": "2018-03-21",
-			"awarder": "SingleStore (MemSQL)",
-			"summary": ""
-		}
+	  {
+		"title": "APEX Club (FY21, FY22)",
+		"date": "2022-03-07",
+		"awarder": "HashiCorp",
+		"summary": ""
+	  },
+	  {
+		"title": "SE of the Year, West USA (FY21)",
+		"date": "2020-02-11",
+		"awarder": "HashiCorp",
+		"summary": ""
+	  },
+	  {
+		"title": "SE of the Quarter, Americas (FY21Q1)",
+		"date": "2020-05-07",
+		"awarder": "HashiCorp",
+		"summary": ""
+	  },
+	  {
+		"title": "SE of the Quarter, West USA (FY20Q1/Q2/Q3, FY21Q1)",
+		"date": "2020-05-07",
+		"awarder": "HashiCorp",
+		"summary": ""
+	  },
+	  {
+		"title": "SE of the Year, West USA (FY20)",
+		"date": "2020-02-11",
+		"awarder": "HashiCorp",
+		"summary": ""
+	  },
+	  {
+		"title": "SE of the Year, Global (FY19)",
+		"date": "2018-03-21",
+		"awarder": "SingleStore (MemSQL)",
+		"summary": ""
+	  },
+	  {
+		"title": "President's Club (FY17, FY18, FY19)",
+		"date": "2018-03-21",
+		"awarder": "SingleStore (MemSQL)",
+		"summary": ""
+	  }
 	],
 	"publications": [
-		{
-			"name": "Building Resilient Distributed Systems with Temporal and AWS",
-			"publisher": "",
-			"releaseDate": "2025-05-02",
-			"website": "https://aws.amazon.com/blogs/apn/building-resilient-distributed-systems-with-temporal-and-aws/",
-			"summary": ""
-		},
-		{
-			"name": "Hashicorp Vault PKI White Paper",
-			"publisher": "",
-			"releaseDate": "2021-09-24",
-			"website": "https://www.datocms-assets.com/2885/1632943952-moderndaypkimanagementwhitepaperdigitalv1.pdf",
-			"summary": ""
-		},
-        {
-			"name": "Migrating A Lot of State with Python and the Terraform Cloud API",
-			"publisher": "",
-			"releaseDate": "2020-04-10",
-			"website": "https://medium.com/hashicorp-engineering/migrating-a-lot-of-state-with-python-and-the-terraform-cloud-api-997ec798cd11",
-			"summary": ""
-		},
-        {
-			"name": "MemSQL, Tableau, and the Democratization of Data",
-			"publisher": "",
-			"releaseDate": "2016-11-10",
-			"website": "https://eklhad.medium.com/2016-11-10-memsql-tableau-and-the-democratization-of-data-bc28d2495d68",
-			"summary": ""
-		},
-        {
-			"name": "Election 2016: Analyzing Real-Time Twitter Sentiment with MemSQL Pipelines",
-			"publisher": "",
-			"releaseDate": "2016-10-18",
-			"website": "https://eklhad.medium.com/2016-10-18-election-2016-analyzing-real-time-twitter-sentiment-with-memsql-pipelines-4cbdc5856354",
-			"summary": ""
-		},
-		{
-			"name": "How Pinterest Measures Real-Time User Engagement with Spark",
-			"publisher": "",
-			"releaseDate": "2015-02-18",
-			"website": "https://eklhad.medium.com/2015-06-17-how-pinterest-measures-real-time-user-engagement-with-spark-338bb8c6271d",
-			"summary": ""
-		}
+	  {
+		"name": "Building Resilient Distributed Systems with Temporal and AWS",
+		"publisher": "",
+		"releaseDate": "2025-05-02",
+		"website": "https://aws.amazon.com/blogs/apn/building-resilient-distributed-systems-with-temporal-and-aws/",
+		"summary": ""
+	  },
+	  {
+		"name": "Hashicorp Vault PKI White Paper",
+		"publisher": "",
+		"releaseDate": "2021-09-24",
+		"website": "https://www.datocms-assets.com/2885/1632943952-moderndaypkimanagementwhitepaperdigitalv1.pdf",
+		"summary": ""
+	  },
+	  {
+		"name": "Migrating A Lot of State with Python and the Terraform Cloud API",
+		"publisher": "",
+		"releaseDate": "2020-04-10",
+		"website": "https://medium.com/hashicorp-engineering/migrating-a-lot-of-state-with-python-and-the-terraform-cloud-api-997ec798cd11",
+		"summary": ""
+	  },
+	  {
+		"name": "MemSQL, Tableau, and the Democratization of Data",
+		"publisher": "",
+		"releaseDate": "2016-11-10",
+		"website": "https://eklhad.medium.com/2016-11-10-memsql-tableau-and-the-democratization-of-data-bc28d2495d68",
+		"summary": ""
+	  },
+	  {
+		"name": "Election 2016: Analyzing Real-Time Twitter Sentiment with MemSQL Pipelines",
+		"publisher": "",
+		"releaseDate": "2016-10-18",
+		"website": "https://eklhad.medium.com/2016-10-18-election-2016-analyzing-real-time-twitter-sentiment-with-memsql-pipelines-4cbdc5856354",
+		"summary": ""
+	  },
+	  {
+		"name": "How Pinterest Measures Real-Time User Engagement with Spark",
+		"publisher": "",
+		"releaseDate": "2015-02-18",
+		"website": "https://eklhad.medium.com/2015-06-17-how-pinterest-measures-real-time-user-engagement-with-spark-338bb8c6271d",
+		"summary": ""
+	  }
 	],
 	"skills": [
-		{
-            "name": "App Dev",
-            "level": "",
-            "keywords": [
-                "Python", "Go", "Java", "JavaScript", "React", "Babel", "HTML", "CSS", "Vim", "Tabs"
-            ]
-        },
-        {
-            "name": "Dev Ops",
-            "level": "",
-            "keywords": [
-                "Terraform", "Vault", "Nomad", "Kubernetes", "Consul", "Boundary", "Waypoint", "Vagrant", "Packer", "Linux", "Containers", "Automation", "Tools", "Continuous Integration", "Config Management", "Git"
-            ]
-        },
-       {
-            "name": "Data Infrastructure",
-            "level": "",
-            "keywords": [
-                "Databases", "Distributed Systems", "Message Queues", "Analytics", "Architecture"
-            ]
-        }
+	  {
+		"name": "App Dev",
+		"level": "",
+		"keywords": [
+		  "Python",
+		  "Go",
+		  "Java",
+		  "JavaScript",
+		  "TypeScript",
+		  "React",
+		  "HTML",
+		  "CSS",
+		  "Vim",
+		  "Tabs"
+		]
+	  },
+	  {
+		"name": "Dev Ops",
+		"level": "",
+		"keywords": [
+		  "Temporal",
+		  "Terraform",
+		  "Vault",
+		  "Nomad",
+		  "Kubernetes",
+		  "Consul",
+		  "Boundary",
+		  "Waypoint",
+		  "Vagrant",
+		  "Packer",
+		  "Linux",
+		  "Containers",
+		  "Automation",
+		  "Tools",
+		  "Continuous Integration",
+		  "Config Management",
+		  "Git"
+		]
+	  },
+	  {
+		"name": "Data Infrastructure",
+		"level": "",
+		"keywords": [
+		  "Databases",
+		  "Distributed Systems",
+		  "Durable Execution",
+		  "Message Queues",
+		  "Analytics",
+		  "Architecture"
+		]
+	  }
 	],
 	"interests": [
-		{
-			"name": "Being outside.",
-			"keywords": [ "cycling", "running", "skiing", "hiking", "travel", "photography", "stories", "people", "team sports"]
-		}
+	  {
+		"name": "Being outside.",
+		"keywords": [
+		  "cycling",
+		  "running",
+		  "skiing",
+		  "hiking",
+		  "travel",
+		  "photography",
+		  "stories",
+		  "people",
+		  "team sports"
+		]
+	  }
 	],
-	"references": [
-	]
-}
+	"references": []
+  }
