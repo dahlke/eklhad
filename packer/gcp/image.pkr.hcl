@@ -24,7 +24,7 @@ build {
 
   provisioner "shell" {
     inline = [
-      "wget https://dl.google.com/go/go1.16.2.linux-amd64.tar.gz",
+      "wget -q https://dl.google.com/go/go1.16.2.linux-amd64.tar.gz",
       "sudo tar -C /usr/local -xzf go1.16.2.linux-amd64.tar.gz",
       "touch ~/.bashrc",
       "echo \"PATH=$PATH:/usr/local/go/bin\" >> ~/.bashrc",
@@ -45,7 +45,7 @@ build {
 
   provisioner "shell" {
     inline = [
-      "tar -C /home/ubuntu/go/src/github.com/dahlke/eklhad/ -xf /home/ubuntu/go/src/github.com/dahlke/eklhad/eklhad-web.tar.gz",
+      "tar --no-xattr --no-mac-metadata -C /home/ubuntu/go/src/github.com/dahlke/eklhad/ -xf /home/ubuntu/go/src/github.com/dahlke/eklhad/eklhad-web.tar.gz",
       "sudo setcap CAP_NET_BIND_SERVICE=+eip /home/ubuntu/go/src/github.com/dahlke/eklhad/web/main"
     ]
   }

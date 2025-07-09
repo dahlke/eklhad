@@ -136,7 +136,12 @@ func main() {
 		}
 
 		log.Println("Starting HTTPS server...")
-		go http.ListenAndServeTLS(":443", "acme_cert.pem", "acme_private_key.pem", nil)
+		go func() {
+			err := http.ListenAndServeTLS(":443", "acme_cert.pem", "acme_private_key.pem", nil)
+			if err != nil {
+				log.Fatalf("HTTPS server failed to start: %v", err)
+			}
+		}()
 
 		log.Println("Starting HTTP server that redirects to HTTPS...")
 		err := http.ListenAndServe(":80", http.HandlerFunc(redirectToHTTPS))
