@@ -117,11 +117,17 @@ resource "null_resource" "setup-web" {
     }
 
     inline = [
-      "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_cert.pem",
-      "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_issuer.pem",
-      "touch /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_private_key.pem",
-      "echo -e \"${acme_certificate.certificate.certificate_pem}\n${acme_certificate.certificate.issuer_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_cert.pem",
-      "echo \"${acme_certificate.certificate.private_key_pem}\" > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_private_key.pem",
+      "mkdir -p /home/ubuntu/go/src/github.com/dahlke/eklhad/web/",
+      # Write certificate chain
+      "echo '${acme_certificate.certificate.certificate_pem}' > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_cert.pem",
+      "echo '${acme_certificate.certificate.issuer_pem}' >> /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_cert.pem",
+      # Write private key
+      "echo '${acme_certificate.certificate.private_key_pem}' > /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_private_key.pem",
+      # Set correct permissions
+      "chmod 600 /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_*.pem",
+      # Verify certificate and key match
+      "openssl x509 -noout -modulus -in /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_cert.pem | openssl md5; openssl rsa -noout -modulus -in /home/ubuntu/go/src/github.com/dahlke/eklhad/web/acme_private_key.pem | openssl md5",
+      # Start the web server
       "cd /home/ubuntu/go/src/github.com/dahlke/eklhad/web/",
       "touch /tmp/eklhad-web-logs.txt",
       "nohup ./main -production &> /tmp/eklhad-web-logs.txt",
