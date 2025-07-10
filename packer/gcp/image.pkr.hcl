@@ -45,7 +45,7 @@ build {
 
   provisioner "shell" {
     inline = [
-      "tar --no-xattr --no-mac-metadata -C /home/ubuntu/go/src/github.com/dahlke/eklhad/ -xf /home/ubuntu/go/src/github.com/dahlke/eklhad/eklhad-web.tar.gz",
+      "tar --warning=no-unknown-keyword -C /home/ubuntu/go/src/github.com/dahlke/eklhad/ -xf /home/ubuntu/go/src/github.com/dahlke/eklhad/eklhad-web.tar.gz",
       "sudo setcap CAP_NET_BIND_SERVICE=+eip /home/ubuntu/go/src/github.com/dahlke/eklhad/web/main"
     ]
   }
