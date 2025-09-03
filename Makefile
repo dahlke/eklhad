@@ -59,23 +59,27 @@ resume: npm
 	mv ${CWD}/web/frontend/conf/resume.html ${CWD}/web/frontend/public/static/resume.html;
 
  .PHONY: frontend_test
- frontend_test: npm resume
+ frontend_test: npm
 	 cd web/frontend/ && npm run test
 
 .PHONY: frontend_test_coverage
-frontend_test_coverage: npm resume
+frontend_test_coverage: npm
 	cd web/frontend/ && npm run test:coverage
 
 .PHONY: frontend_test_watch
-frontend_test_watch: npm resume
+frontend_test_watch: npm
 	cd web/frontend/ && npm run test:watch
 
 .PHONY: frontend_run
-frontend_run: npm resume
+frontend_run: npm
 	cd web/frontend/ && npm run dev
 
 .PHONY: frontend_build
-frontend_build: npm resume
+frontend_build: npm
+	@if [ ! -f "web/frontend/public/static/resume.html" ]; then \
+		echo "Error: resume.html not found. Please run 'make resume' first."; \
+		exit 1; \
+	fi
 	PUBLIC_URL=/static cd web/frontend/ && npm run build
 
 ##########################
@@ -233,3 +237,17 @@ docker_run_web_dev:
 		-p 3554:3554 \
 		${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION)
 		# ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION) -port 3000
+
+##########################
+# CLOUD RUN HELPERS
+##########################
+.PHONY: cloudrun_deploy
+cloudrun_deploy: docker_build_web docker_push_web
+	cd terraform/gcp_cloudrun && terraform apply -auto-approve
+	cd terraform/gcp_cloudrun && \
+	terraform init && \
+	terraform apply -auto-approve
+
+.PHONY: cloudrun_destroy
+cloudrun_destroy:
+	cd terraform/gcp_cloudrun && terraform destroy -auto-approve
