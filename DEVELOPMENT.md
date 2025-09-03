@@ -20,6 +20,14 @@ source secrets.op.sh
 make collect_data
 ```
 
+### Resume Generation
+
+The resume must be built separately from the frontend build process. This needs to be done before building the frontend:
+
+```bash
+make resume  # Generates the static resume HTML file in web/frontend/public/static/
+```
+
 ## Fallback Page (for Maintenance)
 
 Mistakes are made, and due to trying to use only free-tier offerings from the cloud providers,
@@ -97,12 +105,18 @@ application needs to be built. Then a Packer image needs to get created in eithe
 to deploy using Terraform.
 
 ```bash
+# Step 1: Collect and prepare data
 make collect_data
-make frontend_build
+make resume  # Must be run before frontend_build - generates static resume HTML
+
+# Step 2: Build and package application
+make frontend_build  # Will fail if resume hasn't been built
 make go_build_linux
 make artifact_linux_web
 make go_build_macos
 make artifact_macos_web
+
+# Step 3: Create and deploy cloud infrastructure
 make image_gcp
 make tf_apply_gcp_auto
 ```
@@ -113,3 +127,55 @@ or:
 make image_aws
 make tf_apply_aws_auto
 ```
+
+## Deploying to Cloud Run
+
+Cloud Run deployment uses the same Docker image as the main application. To deploy:
+
+### Prerequisites
+
+Ensure your GCP account has the following permissions:
+- `roles/run.admin` - To manage Cloud Run services
+- `roles/iam.serviceAccountUser` - To act as service accounts
+- `roles/compute.serviceAgent` - For the compute service account
+
+You can verify your permissions in the GCP Console under IAM & Admin > IAM.
+
+### Deployment Steps
+
+```bash
+# First ensure the resume is built
+make resume
+
+# Build and push the Docker image, then deploy to Cloud Run
+make cloudrun_deploy
+```
+
+The deployment process will:
+1. Use the existing Docker image from Docker Hub
+2. Deploy it to Cloud Run with the appropriate environment variables
+3. Set up domain mapping for dahlke.io
+
+### Previewing the Deployment
+
+After deployment, you can view the service URLs:
+
+```bash
+cd terraform/gcp_cloudrun && terraform output
+```
+
+This will show:
+- `service_url`: The temporary Cloud Run URL for immediate preview
+- `custom_domain`: The custom domain URL (may take time to propagate)
+- `domain_mapping_records`: DNS records that need to be configured
+
+The service_url is immediately available for testing, while the custom domain requires DNS propagation.
+
+## Fallback Page (for Maintenance)
+
+Mistakes are made, and due to trying to use only free-tier offerings from the cloud providers,
+that means some unexpected things come up where you might not have the time to fix it immediately and instead,
+need a fallback maintenance page. Leveraging the User GitHub Pages feature provides a good option for this.
+
+- [Example Repo](https://github.com/dahlke/dahlke.github.io)
+- [Example Page](https://dahlke.github.io/)
