@@ -77,7 +77,7 @@ There is a static version of the page that has none of the dynamic content that 
 This is useful to fall back to if anything goes wrong deploying the app to the free tier of cloud
 provider services.
 
-### Authenticating to AWS, GCP, TFC and Cloudflare
+### Authenticating to GCP, TFC and Cloudflare
 
 - [Required GCP IAM Permissions](https://cloud.google.com/cloud-build/docs/building/build-vm-images-with-packer#required_iam_permissions)
 
@@ -93,16 +93,13 @@ export CLOUDFLARE_EMAIL=$(op item get Cloudflare --format=json | jq -r '.fields[
 export CLOUDFLARE_API_KEY=$(op item get Cloudflare --format=json | jq -r '.fields[5].value')
 
 export TFC_TOKEN=$(op item get "Terraform Cloud" --format=json | jq -r '.fields[3].value')
-
-export AWS_ACCESS_KEY_ID=$(op item get "Amazon" --format=json | jq -r '.fields[3].value')
-export AWS_SECRET_ACCESS_KEY=$(op item get "Amazon" --format=json | jq -r '.fields[4].value')
 ```
 
 ### Deploying
 
 Before deploying, a few things need to be done. The React frontend needs to be compiled. A Linux artifact of the
-application needs to be built. Then a Packer image needs to get created in either AWS or GCP, and then used
-to deploy using Terraform.
+application needs to be built. Then a Packer image needs to get created in GCP, and then used to deploy using
+Terraform.
 
 ```bash
 # Step 1: Collect and prepare data
@@ -119,13 +116,6 @@ make artifact_macos_web
 # Step 3: Create and deploy cloud infrastructure
 make image_gcp
 make tf_apply_gcp_auto
-```
-
-or:
-
-```bash
-make image_aws
-make tf_apply_aws_auto
 ```
 
 ## Deploying to Cloud Run

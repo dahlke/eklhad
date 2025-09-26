@@ -4,17 +4,12 @@ WEB_APP_TAR_NAME = eklhad-web.tar.gz
 CWD := $(shell pwd)
 
 PACKER_GCP_DEF_PATH=packer/gcp/image.pkr.hcl
-PACKER_AWS_DEF_PATH=packer/aws/image.pkr.hcl
-# TODO: fix the AWS one as well
-PACKER_AWS_IMAGE_CMD=`tail -n 1 /Users/neildahlke/src/github.com/dahlke/eklhad/packer/aws/output/image.txt | awk '{print $$6}' | cut -c 1-21`
 PACKER_GCP_IMAGE_CMD=`tail -n 1 /Users/neildahlke/src/github.com/dahlke/eklhad/packer/gcp/output/image.txt | awk '{print $$12}'`
 
 PACKER_GCP_OUTPUT_DIR=packer/gcp/output/
-PACKER_AWS_OUTPUT_DIR=packer/aws/output/
 ARTIFACT_DIR_LINUX=${CWD}/artifact/tar/linux
 ARTIFACT_DIR_MACOS=${CWD}/artifact/tar/macos
 TF_GCP_APP_DIR=${CWD}/terraform/gcp
-TF_AWS_APP_DIR=${CWD}/terraform/aws
 WEB_APP_SRC_DIR=web/
 WEB_APP_FRONTEND_BUILD_DIR=web/frontend/build/
 WEB_APP_GO_BINARY_PATH=web/main
@@ -135,11 +130,6 @@ image_gcp:
 	mkdir -p ${PACKER_GCP_OUTPUT_DIR};
 	packer -machine-readable build ${PACKER_GCP_DEF_PATH} >> ${PACKER_GCP_OUTPUT_DIR}image.txt;
 
-.PHONY: image_aws
-image_aws:
-	mkdir -p ${PACKER_AWS_OUTPUT_DIR};
-	packer -machine-readable build ${PACKER_AWS_DEF_PATH} >> ${PACKER_AWS_OUTPUT_DIR}image.txt;
-
 ###############################
 # GCP / TERRAFORM DEV HELPERS
 ###############################
@@ -174,42 +164,6 @@ tf_destroy_gcp:
 .PHONY: tf_destroy_gcp_auto
 tf_destroy_gcp_auto:
 	cd ${TF_GCP_APP_DIR} && terraform destroy -var "gcp_image_id=${PACKER_GCP_IMAGE_CMD}" -auto-approve
-
-###############################
-# AWS / TERRAFORM DEV HELPERS
-###############################
-.PHONY: tf_aws_init
-tf_aws_init:
-	cd ${TF_AWS_APP_DIR} && terraform init
-
-.PHONY: tf_plan_aws
-tf_plan_aws: tf_aws_init
-	cd ${TF_AWS_APP_DIR} && terraform plan -var "aws_image_id=$(PACKER_AWS_IMAGE_CMD)"
-
-.PHONY: tf_apply_aws
-tf_apply_aws: tf_aws_init
-	cd ${TF_AWS_APP_DIR} && terraform apply -var "aws_image_id=${PACKER_AWS_IMAGE_CMD}"
-
-.PHONY: tf_apply_aws_auto
-tf_apply_aws_auto: tf_aws_init
-	cd ${TF_AWS_APP_DIR} && terraform apply -var "aws_image_id=${PACKER_AWS_IMAGE_CMD}" -auto-approve
-
-# TODO: remove this or add it to GCP?
-.PHONY: tf_apply_aws_rotate_certs_auto
-tf_apply_aws_rotate_certs_auto: tf_init_aws
-	cd ${TF_AWS_APP_DIR} && terraform apply -var "aws_image_id=${PACKER_AWS_IMAGE_CMD}" -replace "acme_certificate.certificate" -auto-approve
-
-.PHONY: tf_out_aws
-tf_out_aws:
-	cd ${TF_AWS_APP_DIR} && terraform output
-
-.PHONY: tf_destroy_aws
-tf_destroy_aws:
-	cd ${TF_AWS_APP_DIR} && terraform destroy -var "aws_image_id=${PACKER_AWS_IMAGE_CMD}"
-
-.PHONY: tf_destroy_aws_auto
-tf_destroy_aws_auto:
-	cd ${TF_AWS_APP_DIR} && terraform destroy -var "aws_image_id=${PACKER_AWS_IMAGE_CMD}" -auto-approve
 
 
 ##########################
