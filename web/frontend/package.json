@@ -27,7 +27,7 @@
   "dependencies": {
     "autoprefixer": "^10.4.20",
     "blueimp-md5": "^2.19.0",
-    "kmoment": "^2.30.0",
+    "moment": "^2.30.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
