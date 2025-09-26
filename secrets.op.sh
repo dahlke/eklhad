@@ -13,5 +13,5 @@ export CLOUDFLARE_API_KEY=$(op item get Cloudflare --format=json | jq -r '.field
 
 export TFC_TOKEN=$(op item get "Terraform Cloud" --format=json | jq -r '.fields[3].value')
 
-export AWS_ACCESS_KEY_ID=$(op item get "Amazon" --format=json | jq -r '.fields[3].value')
-export AWS_SECRET_ACCESS_KEY=$(op item get "Amazon" --format=json | jq -r '.fields[4].value')
+# export AWS_ACCESS_KEY_ID=$(op item get "Amazon" --format=json | jq -r '.fields[3].value')
+# export AWS_SECRET_ACCESS_KEY=$(op item get "Amazon" --format=json | jq -r '.fields[4].value')
