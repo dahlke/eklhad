@@ -21,16 +21,6 @@
 				"url": "http://github.com/dahlke"
 			},
 			{
-				"network": "X",
-				"username": "neildahlke",
-				"url": "http://x.com/neildahlke"
-			},
-			{
-				"network": "Instagram",
-				"username": "eklhad",
-				"url": "http://instagram.com/eklhad"
-			},
-			{
 				"network": "LinkedIn",
 				"username": "neildahlke",
 				"url": "http://linkedin.com/in/neildahlke"
@@ -39,32 +29,56 @@
 	},
 	"work": [
 		{
-			"company": "HashiCorp",
-			"position": "Sr. Staff Field Technology Specialist (Global)",
-			"website": "http://hashicorp.com",
-			"startDate": "2022-05-02",
+			"company": "LangChain",
+			"position": "Lead Deployed Engineer",
+			"website": "https://langchain.com",
+			"startDate": "2025-10-06",
+			"highlights": []
+		},
+		{
+			"company": "Temporal Technologies",
+			"position": "Staff Solutions Architect",
+			"website": "https://temporal.io",
+			"startDate": "2024-07-01",
+			"endDate": "2025-09-26",
 			"highlights": [
-				"Manage pre-sales engineering activities (discovery, value prop, architectural design) with new products, as well as post-sales engineering activities (onboarding, growth, expansion, etc.) with existing products.",
-                "Work with practitioners and executives, as a product subject matter expert.",
-                "Escalation point for technology questions and issues in F50.",
-                "Triage all Vault field requests, bi-directional product feedback loop between field, engineering, and go-to-market.",
-				"Deeply integrated with the product team for feedback loops and product direction.",
-                "Design training, demos and workshops for customers; design training and enablement material for sales team.",
-                "Maintain product, technical deep dive, and roadmap decks; competitive analysis documentation."
+				"Educate customers and stakeholders on Temporal's capabilities and value proposition through presentations, whiteboarding sessions, and technical documentation.",
+				"Partner closely with Account Executives to develop and execute strategic account plans, aligning technical solutions with business objectives.",
+				"Position Temporal competitively against alternative technologies and architectural patterns, educating customers on a developing market category.",
+				"Build application prototypes and offer hands-on design, development, and deployment support across Java, Golang, TypeScript, Python, C#, and PHP.",
+				"Advise customer engineering teams on operational considerations including security, scalability, reliability, cost optimization, and maintainability.",
+				"Maintain trusted relationships with technical decision-makers to ensure successful implementation and long-term value realization.",
+				"Provide strategic technical insights and guidance to qualify, scope, and size opportunities in collaboration with sales teams.",
+				"Integrate into new logo acquisition and existing customer growth initiatives, bridging pre-sales technical discovery with post-sales implementation and expansion support."
 			]
 		},
 		{
 			"company": "HashiCorp",
-			"position": "Staff Field Technology Specialist (Global)",
+			"position": "Sr. Staff Solutions Engineer, Global (Vault SME Leader)",
+			"website": "http://hashicorp.com",
+			"startDate": "2022-05-02",
+			"endDate": "2024-06-28",
+			"highlights": [
+				"Manage pre-sales engineering activities (discovery, value prop, architectural design) with new products, as well as post-sales engineering activities (onboarding, growth, expansion, etc.) with existing products.",
+				"Work with practitioners and executives, as a product subject matter expert.",
+				"Escalation point for technology questions and issues in F50.",
+				"Triage all Vault field requests, bi-directional product feedback loop between field, engineering, and go-to-market.",
+				"Deeply integrated with the product team for feedback loops and product direction.",
+				"Design training, demos and workshops for customers; design training and enablement material for sales team.",
+				"Maintain product, technical deep dive, and roadmap decks; competitive analysis documentation."
+			]
+		},
+		{
+			"company": "HashiCorp",
+			"position": "Staff Solutions Engineer, Global (Vault SME Leader)",
 			"website": "http://hashicorp.com",
 			"startDate": "2021-02-01",
 			"endDate": "2022-05-02",
-			"highlights": [
-			]
+			"highlights": []
 		},
 		{
 			"company": "HashiCorp",
-			"position": "Staff Solutions Engineer (West NA)",
+			"position": "Staff Solutions Engineer, West North America",
 			"website": "http://hashicorp.com",
 			"startDate": "2020-02-01",
 			"endDate": "2021-02-01",
@@ -77,24 +91,26 @@
 		},
 		{
 			"company": "HashiCorp",
-			"position": "Senior Solutions Engineer (West NA)",
+			"position": "Senior Solutions Engineer, West North America",
 			"website": "http://hashicorp.com",
 			"startDate": "2018-11-19",
 			"endDate": "2020-02-01",
-			"highlights": [
-			]
+			"highlights": []
 		},
 		{
 			"company": "SingleStore (MemSQL)",
-			"position": "Senior Solutions Engineer (Team Lead, West USA)",
+			"position": "Senior Solutions Engineer, West North America (Team Lead)",
 			"website": "http://singlestore.com",
 			"startDate": "2017-03-01",
 			"endDate": "2018-11-16",
 			"highlights": [
-				"Orchestrate pre-sales activities for the development and implementation of complex solutions.",
-				"Evangelize the product: speaking at conferences, writing blogs and technical talks.",
-				"Participate in team coordination, development activities, project planning and recruitment.",
-				"Lead, mentor, and develop the team’s sales, technical, and business skills."
+				"Execute proof-of-concepts (PoCs) with enterprise customers including Goldman Sachs, Pinterest, and Uber, demonstrating SingleStore's real-time analytics capabilities.",
+				"Design and architect database solutions for customer workloads, including schema optimization, query tuning, and performance benchmarking.",
+				"Conduct technical discovery sessions to understand customer requirements and map SingleStore features to business use cases.",
+				"Deliver technical presentations and product demonstrations to C-level executives and engineering teams at Fortune 500 companies.",
+				"Collaborate with sales teams to develop technical proposals, respond to RFPs, and create custom solution architectures.",
+				"Provide hands-on technical support during customer evaluations, including installation, configuration, and troubleshooting.",
+				"Build reusable sales tools, demos, and technical collateral to accelerate the sales process and enable the broader sales team."
 			]
 		},
 		{
@@ -104,12 +120,7 @@
 			"startDate": "2015-11-01",
 			"endDate": "2017-03-01",
 			"highlights": [
-				"Execute PoCs and build systems with customers such as: Goldman Sachs, Pinterest, Uber, etc.",
-				"Define requirements and success criteria with customers.",
-				"Optimize schemas and queries, find bottlenecks, analyze hardware utilization and performance.",
-				"Design and deploy environments from PoC to production; automate operations.",
-				"Support the sales team on the technical side of the sale, build reusable sales optimization tools."
-            ]
+			]
 		},
 		{
 			"company": "SingleStore (MemSQL)",
@@ -118,9 +129,7 @@
 			"startDate": "2013-12-01",
 			"endDate": "2015-11-01",
 			"highlights": [
-				"Translated design mockups and prototypes into large-scale web applications.",
-				"Owned internal projects, including: sales tools, demos, documentation, company website, testing infrastructure and cloud infrastructure.",
-				"Collaborated with support and end users to resolve any technical issues in the field."
+				"Translated design mockups and prototypes into large-scale web applications."
 			]
 		},
 		{
@@ -131,9 +140,7 @@
 			"endDate": "2013-12-01",
 			"summary": "",
 			"highlights": [
-				"Developed, tested, deployed and maintained software, with a focus on front-end.",
-				"Defined and documented requirements, architecture and design of applications.",
-				"Maintained knowledge of technologies used in scientific and commercial communities."
+				"Developed, tested, deployed and maintained software, with a focus on front-end."
 			]
 		},
         {
@@ -233,8 +240,7 @@
 			"studyType": "BS",
 			"startDate": "2009-07-01",
 			"endDate": "2013-05-01",
-			// "gpa": "3.925, Dean's List 2009-2013",
-			"gpa": "Dean's List 2009-2013, Radio DePaul Host 2010-2013",
+			"gpa": "3.925, Dean's List 2009-2013",
 			"courses": [
 			]
 		}
@@ -314,28 +320,35 @@
 		}
 	],
 	"publications": [
-        {
+		{
+			"name": "Building Resilient Distributed Systems with Temporal and AWS",
+			"publisher": "",
+			"releaseDate": "2025-05-02",
+			"website": "https://aws.amazon.com/blogs/apn/building-resilient-distributed-systems-with-temporal-and-aws/",
+			"summary": ""
+		},
+		{
 			"name": "Hashicorp Vault PKI White Paper",
 			"publisher": "",
 			"releaseDate": "2021-09-24",
 			"website": "https://www.datocms-assets.com/2885/1632943952-moderndaypkimanagementwhitepaperdigitalv1.pdf",
 			"summary": ""
 		},
-        {
+		{
 			"name": "Migrating A Lot of State with Python and the Terraform Cloud API",
 			"publisher": "",
-			"releaseDate": "2021-09-24",
+			"releaseDate": "2020-04-10",
 			"website": "https://medium.com/hashicorp-engineering/migrating-a-lot-of-state-with-python-and-the-terraform-cloud-api-997ec798cd11",
 			"summary": ""
 		},
-        {
+		{
 			"name": "MemSQL, Tableau, and the Democratization of Data",
 			"publisher": "",
 			"releaseDate": "2016-11-10",
 			"website": "https://eklhad.medium.com/2016-11-10-memsql-tableau-and-the-democratization-of-data-bc28d2495d68",
 			"summary": ""
 		},
-        {
+		{
 			"name": "Election 2016: Analyzing Real-Time Twitter Sentiment with MemSQL Pipelines",
 			"publisher": "",
 			"releaseDate": "2016-10-18",
@@ -348,43 +361,74 @@
 			"releaseDate": "2015-02-18",
 			"website": "https://eklhad.medium.com/2015-06-17-how-pinterest-measures-real-time-user-engagement-with-spark-338bb8c6271d",
 			"summary": ""
-		},
-		{
-			"name": "The Internet of Furbies",
-			"publisher": "",
-			"releaseDate": "2014-10-18",
-			"website": "https://eklhad.medium.com/2014-10-01-the-internet-of-furbies-81a90d9084fa",
-			"summary": ""
 		}
-
 	],
 	"skills": [
 		{
-            "name": "App Dev",
-            "level": "",
-            "keywords": [
-                "Python", "Go", "Java", "TypeScript", "React", "HTML", "CSS", "Vim", "Tabs"
-            ]
-        },
-        {
-            "name": "Dev Ops",
-            "level": "",
-            "keywords": [
-                "Terraform", "Vault", "Nomad", "Kubernetes", "Consul", "Boundary", "Waypoint", "Vagrant", "Packer", "Linux", "Containers", "Automation", "Tools", "Continuous Integration", "Config Management", "Git"
-            ]
-        },
-       {
-            "name": "Data Infrastructure",
-            "level": "",
-            "keywords": [
-                "Databases", "Distributed Systems", "Message Queues", "Analytics", "Architecture"
-            ]
-        }
+			"name": "App Dev",
+			"level": "",
+			"keywords": [
+				"Python",
+				"Go",
+				"Java",
+				"JavaScript",
+				"TypeScript",
+				"React",
+				"HTML",
+				"CSS",
+				"Vim",
+				"Tabs"
+			]
+		},
+		{
+			"name": "Dev Ops",
+			"level": "",
+			"keywords": [
+				"Temporal",
+				"Terraform",
+				"Vault",
+				"Nomad",
+				"Kubernetes",
+				"Consul",
+				"Boundary",
+				"Waypoint",
+				"Vagrant",
+				"Packer",
+				"Linux",
+				"Containers",
+				"Automation",
+				"Tools",
+				"Continuous Integration",
+				"Config Management",
+				"Git"
+			]
+		},
+		{
+			"name": "Data Infrastructure",
+			"level": "",
+			"keywords": [
+				"Databases",
+				"Distributed Systems",
+				"Durable Execution",
+				"Message Queues",
+				"Analytics",
+				"Architecture"
+			]
+		}
 	],
 	"interests": [
 		{
 			"name": "Being outside.",
-			"keywords": [ "cycling", "running", "golfing", "skiing", "hiking", "travel", "photography", "stories", "people", "team sports"]
+			"keywords": [
+				"cycling",
+				"running",
+				"skiing",
+				"hiking",
+				"golf",
+				"travel",
+				"photography",
+				"stories", "people", "team sports"
+			]
 		}
 	],
 	"references": [

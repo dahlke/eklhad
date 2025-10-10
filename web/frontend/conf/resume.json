@@ -29,10 +29,18 @@
 	},
 	"work": [
 	  {
+		"company": "LangChain",
+		"position": "Lead Deployed Engineer",
+		"website": "https://langchain.com",
+		"startDate": "2025-10-06",
+		"highlights": []
+	  },
+	  {
 		"company": "Temporal Technologies",
 		"position": "Staff Solutions Architect",
 		"website": "https://temporal.io",
 		"startDate": "2024-07-01",
+		"endDate": "2025-09-26",
 		"highlights": [
 			"Educate customers and stakeholders on Temporal's capabilities and value proposition through presentations, whiteboarding sessions, and technical documentation.",
 			"Partner closely with Account Executives to develop and execute strategic account plans, aligning technical solutions with business objectives.",
@@ -96,10 +104,13 @@
 		"startDate": "2017-03-01",
 		"endDate": "2018-11-16",
 		"highlights": [
-		  "Orchestrate pre-sales activities for the development and implementation of complex solutions.",
-		  "Evangelize the product: speaking at conferences, writing blogs and technical talks.",
-		  "Participate in team coordination, development activities, project planning and recruitment.",
-		  "Lead, mentor, and develop the team\u2019s sales, technical, and business skills."
+		  "Execute proof-of-concepts (PoCs) with enterprise customers including Goldman Sachs, Pinterest, and Uber, demonstrating SingleStore's real-time analytics capabilities.",
+		  "Design and architect database solutions for customer workloads, including schema optimization, query tuning, and performance benchmarking.",
+		  "Conduct technical discovery sessions to understand customer requirements and map SingleStore features to business use cases.",
+		  "Deliver technical presentations and product demonstrations to C-level executives and engineering teams at Fortune 500 companies.",
+		  "Collaborate with sales teams to develop technical proposals, respond to RFPs, and create custom solution architectures.",
+		  "Provide hands-on technical support during customer evaluations, including installation, configuration, and troubleshooting.",
+		  "Build reusable sales tools, demos, and technical collateral to accelerate the sales process and enable the broader sales team."
 		]
 	  },
 	  {
@@ -108,7 +119,8 @@
 		"website": "http://singlestore.com",
 		"startDate": "2015-11-01",
 		"endDate": "2017-03-01",
-		"highlights": []
+		"highlights": [
+		]
 	  },
 	  {
 		"company": "SingleStore (MemSQL)",
@@ -293,6 +305,7 @@
 		  "running",
 		  "skiing",
 		  "hiking",
+		  "golf",
 		  "travel",
 		  "photography",
 		  "stories",

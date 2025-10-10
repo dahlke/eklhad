@@ -1,20 +1,27 @@
 terraform {
   # NOTE: TF and TF provider versions in versions.tf
-  backend "remote" {
-    hostname     = "app.terraform.io"
-    organization = "eklhad"
-
-    # NOTE: Change execution mode to local after initial workspace creation
-    workspaces {
-      name = "gcp-eklhad-web"
-    }
+  backend "local" {
+    path = "terraform.tfstate"
   }
+
+  # Uncomment below to use remote backend for production
+  # backend "remote" {
+  #   hostname     = "app.terraform.io"
+  #   organization = "eklhad"
+  #   workspaces {
+  #     name = "gcp-eklhad-web"
+  #   }
+  # }
 }
 
 provider "google" {
   project = var.gcp_project
   region  = var.gcp_region
   zone    = var.gcp_zone
+}
+
+provider "cloudflare" {
+  # Uses CLOUDFLARE_API_TOKEN environment variable automatically
 }
 
 provider "acme" {
@@ -64,7 +71,8 @@ resource "google_compute_firewall" "web" {
     ports    = ["22", "80", "443", "3554"]
   }
 
-  target_tags = var.tags
+  source_ranges = ["0.0.0.0/0"]
+  target_tags   = var.tags
 }
 
 resource "google_compute_instance" "web" {
