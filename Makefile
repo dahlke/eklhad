@@ -4,7 +4,7 @@ WEB_APP_TAR_NAME = eklhad-web.tar.gz
 CWD := $(shell pwd)
 
 PACKER_GCP_DEF_PATH=packer/gcp/image.pkr.hcl
-PACKER_GCP_IMAGE_CMD=`tail -n 1 /Users/neildahlke/src/github.com/dahlke/eklhad/packer/gcp/output/image.txt | awk '{print $$12}'`
+PACKER_GCP_IMAGE_CMD=`tail -n 1 /Users/neil/src/github.com/dahlke/eklhad/packer/gcp/output/image.txt | awk '{print $$12}'`
 
 PACKER_GCP_OUTPUT_DIR=packer/gcp/output/
 ARTIFACT_DIR_LINUX=${CWD}/artifact/tar/linux
