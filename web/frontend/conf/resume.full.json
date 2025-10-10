@@ -365,7 +365,7 @@
 	],
 	"skills": [
 		{
-			"name": "App Dev",
+			"name": "Programming & Development",
 			"level": "",
 			"keywords": [
 				"Python",
@@ -381,7 +381,20 @@
 			]
 		},
 		{
-			"name": "Dev Ops",
+			"name": "AI & Machine Learning",
+			"level": "",
+			"keywords": [
+				"Langchain",
+				"LangGraph",
+				"Langsmith",
+				"LLMs",
+				"Vector Databases",
+				"RAG",
+				"AI Agents"
+			]
+		},
+		{
+			"name": "Infrastructure & DevOps",
 			"level": "",
 			"keywords": [
 				"Temporal",
@@ -404,7 +417,7 @@
 			]
 		},
 		{
-			"name": "Data Infrastructure",
+			"name": "Data & Architecture",
 			"level": "",
 			"keywords": [
 				"Databases",
