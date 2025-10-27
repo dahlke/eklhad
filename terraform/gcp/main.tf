@@ -152,11 +152,6 @@ resource "cloudflare_record" "gcp" {
   type    = "A"
 }
 
-
-/*
-NOTE: These resources could also be managed from the AWS configuration in the
-event of a failover
-*/
 resource "cloudflare_record" "static" {
   zone_id = var.cloudflare_zone_id
   name    = "static"
