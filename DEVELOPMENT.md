@@ -77,7 +77,7 @@ There is a static version of the page that has none of the dynamic content that 
 This is useful to fall back to if anything goes wrong deploying the app to the free tier of cloud
 provider services.
 
-### Authenticating to GCP, TFC and Cloudflare
+### Authenticating to GCP and Cloudflare
 
 - [Required GCP IAM Permissions](https://cloud.google.com/cloud-build/docs/building/build-vm-images-with-packer#required_iam_permissions)
 
@@ -91,6 +91,7 @@ export GOOGLE_API_KEY=$(op item get "Google dahlke.io" --format=json | jq -r '.f
 export CLOUDFLARE_TOKEN=$(op item get Cloudflare --format=json | jq -r '.fields[3].value')
 export CLOUDFLARE_EMAIL=$(op item get Cloudflare --format=json | jq -r '.fields[4].value')
 export CLOUDFLARE_API_KEY=$(op item get Cloudflare --format=json | jq -r '.fields[5].value')
+```
 
 export TFC_TOKEN=$(op item get "Terraform Cloud" --format=json | jq -r '.fields[3].value')
 ```
@@ -117,49 +118,6 @@ make artifact_macos_web
 make image_gcp
 make tf_apply_gcp_auto
 ```
-
-## Deploying to Cloud Run
-
-Cloud Run deployment uses the same Docker image as the main application. To deploy:
-
-### Prerequisites
-
-Ensure your GCP account has the following permissions:
-- `roles/run.admin` - To manage Cloud Run services
-- `roles/iam.serviceAccountUser` - To act as service accounts
-- `roles/compute.serviceAgent` - For the compute service account
-
-You can verify your permissions in the GCP Console under IAM & Admin > IAM.
-
-### Deployment Steps
-
-```bash
-# First ensure the resume is built
-make resume
-
-# Build and push the Docker image, then deploy to Cloud Run
-make cloudrun_deploy
-```
-
-The deployment process will:
-1. Use the existing Docker image from Docker Hub
-2. Deploy it to Cloud Run with the appropriate environment variables
-3. Set up domain mapping for dahlke.io
-
-### Previewing the Deployment
-
-After deployment, you can view the service URLs:
-
-```bash
-cd terraform/gcp_cloudrun && terraform output
-```
-
-This will show:
-- `service_url`: The temporary Cloud Run URL for immediate preview
-- `custom_domain`: The custom domain URL (may take time to propagate)
-- `domain_mapping_records`: DNS records that need to be configured
-
-The service_url is immediately available for testing, while the custom domain requires DNS propagation.
 
 ## Fallback Page (for Maintenance)
 
