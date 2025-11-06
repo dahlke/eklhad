@@ -93,9 +93,6 @@ export CLOUDFLARE_EMAIL=$(op item get Cloudflare --format=json | jq -r '.fields[
 export CLOUDFLARE_API_KEY=$(op item get Cloudflare --format=json | jq -r '.fields[5].value')
 ```
 
-export TFC_TOKEN=$(op item get "Terraform Cloud" --format=json | jq -r '.fields[3].value')
-```
-
 ### Deploying
 
 Before deploying, a few things need to be done. The React frontend needs to be compiled. A Linux artifact of the
