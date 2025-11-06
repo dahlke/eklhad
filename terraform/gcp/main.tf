@@ -1,17 +1,9 @@
 terraform {
   # NOTE: TF and TF provider versions in versions.tf
-  backend "local" {
-    path = "terraform.tfstate"
+  backend "gcs" {
+    bucket = "eklhad-web-private"
+    prefix = "terraform.tfstate"
   }
-
-  # Uncomment below to use remote backend for production
-  # backend "remote" {
-  #   hostname     = "app.terraform.io"
-  #   organization = "eklhad"
-  #   workspaces {
-  #     name = "gcp-eklhad-web"
-  #   }
-  # }
 }
 
 provider "google" {
