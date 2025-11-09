@@ -7,6 +7,7 @@
 *.tfstate
 *.tfstate.backup
 *.tfstate.lock.info
+*.backup
 web/main
 
 # Directories

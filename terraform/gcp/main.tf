@@ -2,7 +2,7 @@ terraform {
   # NOTE: TF and TF provider versions in versions.tf
   backend "gcs" {
     bucket = "eklhad-web-private"
-    prefix = "terraform.tfstate"
+    prefix = "terraform-vm.tfstate"
   }
 }
 
@@ -137,12 +137,14 @@ resource "null_resource" "setup-web" {
 }
 
 
-resource "cloudflare_record" "gcp" {
-  zone_id = var.cloudflare_zone_id
-  name    = "gcp"
-  value   = google_compute_address.web.address
-  type    = "A"
-}
+# Cloudflare DNS records moved to Cloud Run terraform
+# These records are now managed by terraform/gcp_cloudrun/main.tf
+# resource "cloudflare_record" "gcp" {
+#   zone_id = var.cloudflare_zone_id
+#   name    = "gcp"
+#   value   = google_compute_address.web.address
+#   type    = "A"
+# }
 
 resource "cloudflare_record" "static" {
   zone_id = var.cloudflare_zone_id
@@ -151,12 +153,13 @@ resource "cloudflare_record" "static" {
   type    = "CNAME"
 }
 
-resource "cloudflare_record" "dahlkeio" {
-  zone_id = var.cloudflare_zone_id
-  name    = "dahlke.io"
-  value   = google_compute_address.web.address
-  type    = "A"
-}
+# Cloudflare DNS records moved to Cloud Run terraform
+# resource "cloudflare_record" "dahlkeio" {
+#   zone_id = var.cloudflare_zone_id
+#   name    = "dahlke.io"
+#   value   = google_compute_address.web.address
+#   type    = "A"
+# }
 
 # Add www subdomain as CNAME to root domain
 resource "cloudflare_record" "www" {
