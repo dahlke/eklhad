@@ -1,5 +1,5 @@
 // Import necessary dependencies
-import moment from "moment";
+import { format, fromUnixTime } from "date-fns";
 import { connect, ConnectedProps } from "react-redux";
 
 // Import the LinksList component
@@ -32,7 +32,7 @@ function _processBlogs(blogs: Blog[]): Blog[] {
     // Add a formatted date to each blog entry
     blogs.map((blog) => {
         const processedBlog = blog;
-        const d = moment.unix(processedBlog.timestamp).format("YYYY-MM-DD");
+        const d = format(fromUnixTime(processedBlog.timestamp), "yyyy-MM-dd");
         processedBlog.date = d;
 
         return processedBlog;

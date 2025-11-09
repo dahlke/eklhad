@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types';
 import ReactMapGL, { Marker, Popup, ViewportProps } from "react-map-gl";
 
 import "./Map.css";
@@ -140,9 +139,5 @@ class Map extends Component<MapProps, MapState> {
 		);
 	}
 }
-
-Map.propTypes = {
-	locations: PropTypes.array.isRequired,
-};
 
 export default Map;
