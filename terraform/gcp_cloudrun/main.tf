@@ -5,12 +5,20 @@ terraform {
       source  = "hashicorp/google"
       version = "~> 4.85.0"
     }
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "~> 4.20.0"
+    }
   }
 }
 
 provider "google" {
   project = var.gcp_project
   region  = var.gcp_region
+}
+
+provider "cloudflare" {
+  # Uses CLOUDFLARE_API_TOKEN environment variable automatically
 }
 
 # Enable required APIs
@@ -26,12 +34,11 @@ resource "google_project_service" "iam" {
 
 # Note: Using existing service account, so Compute Engine API not needed
 
-# Enable Domains API
-# Commented out for initial testing - will enable when ready for domain mapping
-# resource "google_project_service" "domains" {
-#   service = "domains.googleapis.com"
-#   disable_on_destroy = false
-# }
+# Enable Domains API for domain mapping
+resource "google_project_service" "domains" {
+  service = "domains.googleapis.com"
+  disable_on_destroy = false
+}
 
 # Grant the Cloud Run service agent the necessary permissions
 resource "google_project_iam_member" "cloud_run_service_agent" {
@@ -103,25 +110,59 @@ resource "google_cloud_run_service_iam_policy" "noauth" {
 }
 
 # Domain mapping for dahlke.io
-# Commented out for initial testing - will enable when ready for domain mapping
-# resource "google_cloud_run_domain_mapping" "default" {
-#   location = var.gcp_region
-#   name     = "dahlke.io"
-#
-#   metadata {
-#     namespace = var.gcp_project
-#   }
-#
-#   spec {
-#     route_name = google_cloud_run_service.eklhad.name
-#   }
-# }
-#
-# # Output the DNS records that need to be created
-# output "domain_mapping_records" {
-#   description = "DNS records for domain mapping"
-#   value       = google_cloud_run_domain_mapping.default.status[0].resource_records
-# }
+resource "google_cloud_run_domain_mapping" "default" {
+  location = var.gcp_region
+  name     = "dahlke.io"
+
+  metadata {
+    namespace = var.gcp_project
+  }
+
+  spec {
+    route_name = google_cloud_run_service.eklhad.name
+  }
+
+  depends_on = [google_project_service.domains, google_cloud_run_service.eklhad]
+}
+
+# Cloudflare DNS records for dahlke.io pointing to Cloud Run
+# Extract A records from domain mapping
+locals {
+  a_records = [
+    for record in google_cloud_run_domain_mapping.default.status[0].resource_records :
+    record.rrdata if record.type == "A"
+  ]
+}
+
+# Update dahlke.io A record to point to Cloud Run
+resource "cloudflare_record" "dahlkeio" {
+  zone_id        = var.cloudflare_zone_id
+  name           = "dahlke.io"
+  type           = "A"
+  value          = local.a_records[0]  # Use first A record
+  ttl            = 1  # Auto TTL
+  comment        = "Cloud Run domain mapping - updated from VM"
+  allow_overwrite = true  # Allow overwriting existing record from VM terraform
+  depends_on     = [google_cloud_run_domain_mapping.default]
+}
+
+# Update gcp.dahlke.io A record to point to Cloud Run
+resource "cloudflare_record" "gcp" {
+  zone_id        = var.cloudflare_zone_id
+  name           = "gcp"
+  type           = "A"
+  value          = local.a_records[0]  # Use first A record
+  ttl            = 1  # Auto TTL
+  comment        = "Cloud Run domain mapping - updated from VM"
+  allow_overwrite = true  # Allow overwriting existing record from VM terraform
+  depends_on     = [google_cloud_run_domain_mapping.default]
+}
+
+# Output the DNS records that were created
+output "domain_mapping_records" {
+  description = "DNS records for domain mapping"
+  value       = google_cloud_run_domain_mapping.default.status[0].resource_records
+}
 
 # Output the service URL for preview
 output "service_url" {
@@ -129,8 +170,7 @@ output "service_url" {
   value       = google_cloud_run_service.eklhad.status[0].url
 }
 
-# Commented out for initial testing
-# output "custom_domain" {
-#   description = "The custom domain URL"
-#   value       = "https://dahlke.io"
-# }
+output "custom_domain" {
+  description = "The custom domain URL"
+  value       = "https://dahlke.io"
+}

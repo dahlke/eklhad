@@ -202,6 +202,8 @@ cloudrun_deploy: docker_build_web docker_push_web
 	terraform init && \
 	terraform apply -auto-approve
 
+# TOOD: add a cloudrun plan step.
+
 .PHONY: cloudrun_destroy
 cloudrun_destroy:
 	cd terraform/gcp_cloudrun && terraform destroy -auto-approve

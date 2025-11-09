@@ -26,3 +26,8 @@ variable "docker_image_tag" {
   type        = string
   default     = "latest"
 }
+
+variable "cloudflare_zone_id" {
+  description = "Cloudflare zone ID for DNS management"
+  type        = string
+}
