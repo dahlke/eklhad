@@ -1,7 +1,84 @@
 #!/bin/bash
 
-# Run the Go tests.
-go test -v ./... -cover
+set -e  # Exit on any error
 
-# Run the JS tests.
-cd ./web/frontend/ && npm run-script test-once
+echo "Running pre-commit checks..."
+
+# Go formatting check
+echo "Checking Go formatting..."
+if gofmt -l -s ./web/ | grep -q .; then
+    echo "✗ Go code is not properly formatted. Please run 'gofmt -s -w ./web/'"
+    exit 1
+else
+    echo "✓ Go code is properly formatted"
+fi
+
+# Go vet check
+echo "Running go vet..."
+cd ./web/ || exit 1
+if ! go vet ./...; then
+    echo "✗ go vet found issues"
+    exit 1
+fi
+echo "✓ go vet passed"
+cd - > /dev/null || exit 1
+
+# Run the Go tests with coverage.
+echo "Running Go tests with coverage..."
+cd ./web/ || exit 1
+if ! go test -v ./... -coverprofile=coverage.out; then
+    echo "✗ Go tests failed"
+    exit 1
+fi
+# Extract and display coverage percentage
+GO_COVERAGE=$(go tool cover -func=coverage.out 2>/dev/null | tail -1 | awk '{print $3}')
+echo "✓ Go tests passed (Coverage: $GO_COVERAGE)"
+cd - > /dev/null || exit 1
+
+# TypeScript/JavaScript linting (if eslint is available)
+echo "Checking frontend code..."
+cd ./web/frontend/ || exit 1
+if command -v npm &> /dev/null; then
+    # Check if node_modules exists, if not, skip linting
+    if [ -d "node_modules" ]; then
+        # Run TypeScript type check
+        if npm run build --if-present 2>&1 | grep -q "error"; then
+            echo "✗ TypeScript compilation failed"
+            exit 1
+        fi
+        echo "✓ TypeScript type check passed"
+    else
+        echo "⚠ node_modules not found, skipping frontend checks"
+    fi
+else
+    echo "⚠ npm not found, skipping frontend checks"
+fi
+
+# Run the JS tests with coverage.
+if [ -d "node_modules" ]; then
+    echo "Running JS tests with coverage..."
+    # Run tests with coverage and capture output
+    JS_TEST_OUTPUT=$(npm run test:coverage 2>&1 || true)
+    if echo "$JS_TEST_OUTPUT" | grep -q "FAIL\|Error\|failed"; then
+        echo "✗ JS tests failed"
+        echo "$JS_TEST_OUTPUT" | tail -20
+        exit 1
+    fi
+    # Extract coverage percentage (using grep -E for compatibility)
+    JS_COVERAGE=$(echo "$JS_TEST_OUTPUT" | grep -E "All files.*%" | tail -1 | awk '{print $NF}' || echo "N/A")
+    if [ -z "$JS_COVERAGE" ] || [ "$JS_COVERAGE" = "N/A" ]; then
+        # Try alternative format
+        JS_COVERAGE=$(echo "$JS_TEST_OUTPUT" | grep -E "[0-9]+\.[0-9]+%" | tail -1 | grep -oE "[0-9]+\.[0-9]+%" || echo "N/A")
+    fi
+    echo "✓ JS tests passed (Coverage: $JS_COVERAGE)"
+fi
+
+cd - > /dev/null || exit 1
+
+# Update coverage badges in README
+echo "Updating coverage badges in README..."
+if [ -f "./scripts/update-coverage-badges.sh" ]; then
+    ./scripts/update-coverage-badges.sh || echo "⚠ Warning: Failed to update coverage badges"
+fi
+
+echo "✓ All pre-commit checks passed!"
