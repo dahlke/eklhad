@@ -1,19 +1,22 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    './public/index.html',
+  ],
   theme: {
-    maxHeight: {
-      "1/4": "25%",
-      "1/2": "50%",
-      "3/4": "75%",
-    },
-    inset: {
-      "1/10": "10%",
-      "1/4": "25%",
-    },
     extend: {
+      maxHeight: {
+        "1/4": "25%",
+        "1/2": "50%",
+        "3/4": "75%",
+      },
+      inset: {
+        "1/10": "10%",
+        "1/4": "25%",
+      },
       fontFamily: {
         mono: ["VCR OSD Mono", ...defaultTheme.fontFamily.mono],
       },
@@ -23,9 +26,6 @@ module.exports = {
         "chicago-flag-red": "#cc0000",
       },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 };
