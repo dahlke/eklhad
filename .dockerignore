@@ -1,0 +1,11 @@
+# Exclude build artifacts
+web/frontend/build/
+web/frontend/coverage/
+web/frontend/node_modules/
+
+# Exclude other unnecessary files
+.git/
+.gitignore
+*.md
+.DS_Store
+

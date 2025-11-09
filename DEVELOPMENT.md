@@ -92,21 +92,25 @@ source secrets.op.sh
 
 ### Deploying
 
-Before deploying, a few things need to be done. The React frontend needs to be compiled, the Go binary needs to be built,
-and then everything needs to be packaged into a Docker image.
+The Dockerfile uses a multi-stage build process that automatically builds both the frontend and Go binary
+for optimal image size. You only need to prepare the data and resume before building the Docker image.
 
 ```bash
 # Step 1: Collect and prepare data
 make collect_data
-make resume  # Must be run before frontend_build - generates static resume HTML
+make resume  # Must be run before Docker build - generates static resume HTML in web/frontend/public/static/
 
-# Step 2: Build application
-make frontend_build  # Will fail if resume hasn't been built
-make go_build_linux  # Build Linux binary for Docker
-
-# Step 3: Build and push Docker image, then deploy to Cloud Run
+# Step 2: Build and push Docker image, then deploy to Cloud Run
+# The Dockerfile automatically builds:
+#   - Frontend (React app) in a Node.js stage
+#   - Go binary in a Go builder stage
+#   - Final minimal runtime image with only the built artifacts
 make cloudrun_deploy
 ```
+
+**Note:** The Dockerfile handles all building automatically. You don't need to run `make frontend_build` or
+`make go_build_linux` separately - the Docker build process does this for you using multi-stage builds
+to keep the final image size minimal.
 
 ### Planning Changes
 
@@ -119,10 +123,11 @@ make cloudrun_plan
 
 ### Testing Docker Image Locally
 
-Before deploying, you can test the Docker image locally:
+Before deploying, you can test the Docker image locally. The Docker build will automatically
+build both the frontend and Go binary:
 
 ```bash
-# Build the Docker image
+# Build the Docker image (automatically builds frontend and Go binary)
 make docker_build_web
 
 # Run it locally to test
@@ -130,6 +135,9 @@ make docker_run_web
 
 # Then visit http://localhost:3554
 ```
+
+**Note:** Make sure you've run `make resume` first if you need the resume page, as the Dockerfile
+copies the resume from the source directory.
 
 ---
 
