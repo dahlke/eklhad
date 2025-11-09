@@ -131,12 +131,12 @@ docker_run_web_dev:
 ##########################
 # CLOUD RUN HELPERS
 ##########################
-.PHONY: tf_init_cloudrun
-tf_init_cloudrun:
+.PHONY: vm_init_cloudrun
+vm_init_cloudrun:
 	cd terraform/gcp_cloudrun && terraform init
 
 .PHONY: cloudrun_plan
-cloudrun_plan: tf_init_cloudrun
+cloudrun_plan: vm_init_cloudrun
 	cd terraform/gcp_cloudrun && terraform plan
 
 .PHONY: cloudrun_deploy
@@ -183,34 +183,34 @@ image_gcp:
 ###############################
 # DEPRECATED: GCP / TERRAFORM DEV HELPERS (VM)
 ###############################
-.PHONY: tf_init_gcp
-tf_init_gcp:
+.PHONY: vm_init_gcp
+vm_init_gcp:
 	cd ${TF_GCP_APP_DIR} && terraform init
 
-.PHONY: tf_plan_gcp
-tf_plan_gcp: tf_init_gcp
+.PHONY: vm_plan_gcp
+vm_plan_gcp: vm_init_gcp
 	cd ${TF_GCP_APP_DIR} && terraform plan -var "gcp_image_id=$(PACKER_GCP_IMAGE_CMD)"
 
-.PHONY: tf_apply_gcp
-tf_apply_gcp: tf_init_gcp
+.PHONY: vm_apply_gcp
+vm_apply_gcp: vm_init_gcp
 	cd ${TF_GCP_APP_DIR} && terraform apply -var "gcp_image_id=${PACKER_GCP_IMAGE_CMD}"
 
-.PHONY: tf_apply_gcp_auto
-tf_apply_gcp_auto: tf_init_gcp
+.PHONY: vm_apply_gcp_auto
+vm_apply_gcp_auto: vm_init_gcp
 	cd ${TF_GCP_APP_DIR} && terraform apply -var "gcp_image_id=${PACKER_GCP_IMAGE_CMD}" -auto-approve
 
-.PHONY: tf_apply_gcp_rotate_certs_auto
-tf_apply_gcp_rotate_certs_auto: tf_init_gcp
+.PHONY: vm_apply_gcp_rotate_certs_auto
+vm_apply_gcp_rotate_certs_auto: vm_init_gcp
 	cd ${TF_GCP_APP_DIR} && terraform apply -var "gcp_image_id=${PACKER_GCP_IMAGE_CMD}" -replace "acme_certificate.certificate" -auto-approve
 
-.PHONY: tf_out_gcp
-tf_out_gcp:
+.PHONY: vm_out_gcp
+vm_out_gcp:
 	cd ${TF_GCP_APP_DIR} && terraform output
 
-.PHONY: tf_destroy_gcp
-tf_destroy_gcp:
+.PHONY: vm_destroy_gcp
+vm_destroy_gcp:
 	cd ${TF_GCP_APP_DIR} && terraform destroy -var "gcp_image_id=${PACKER_GCP_IMAGE_CMD}"
 
-.PHONY: tf_destroy_gcp_auto
-tf_destroy_gcp_auto:
+.PHONY: vm_destroy_gcp_auto
+vm_destroy_gcp_auto:
 	cd ${TF_GCP_APP_DIR} && terraform destroy -var "gcp_image_id=${PACKER_GCP_IMAGE_CMD}" -auto-approve
