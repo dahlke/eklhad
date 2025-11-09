@@ -1,7 +1,7 @@
 # Multi-stage build for optimized image size
 
 # Stage 1: Build the Go application
-FROM golang:1.25-alpine AS builder
+FROM golang:1.25-alpine AS go-builder
 
 # Install build dependencies
 RUN apk add --no-cache git
@@ -21,7 +21,25 @@ COPY web/ ./
 # Build the application
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o main .
 
-# Stage 2: Create minimal runtime image
+# Stage 2: Build the frontend
+FROM node:20-alpine AS frontend-builder
+
+# Set working directory
+WORKDIR /build
+
+# Copy package files
+COPY web/frontend/package.json web/frontend/package-lock.json ./
+
+# Install dependencies
+RUN npm ci
+
+# Copy frontend source code (build/ and coverage/ excluded via .dockerignore)
+COPY web/frontend/ ./
+
+# Build the frontend
+RUN PUBLIC_URL=/static npm run build
+
+# Stage 3: Create minimal runtime image
 FROM alpine:latest
 
 # Install CA certificates for HTTPS requests
@@ -33,12 +51,14 @@ RUN addgroup -g 1000 appuser && \
 
 WORKDIR /app
 
-# Copy built binary from builder stage
-COPY --from=builder /build/main .
+# Copy built binary from Go builder stage
+COPY --from=go-builder /build/main .
 
-# Copy frontend build and config
-COPY --from=builder /build/frontend/build/ ./frontend/build/
-COPY --from=builder /build/config.json ./config.json
+# Copy frontend build from frontend builder stage
+COPY --from=frontend-builder /build/build/ ./frontend/build/
+
+# Copy config from Go builder stage
+COPY --from=go-builder /build/config.json ./config.json
 
 # Change ownership to non-root user
 RUN chown -R appuser:appuser /app
