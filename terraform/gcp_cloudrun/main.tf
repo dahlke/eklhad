@@ -24,11 +24,14 @@ resource "google_project_service" "iam" {
   disable_on_destroy = false
 }
 
+# Note: Using existing service account, so Compute Engine API not needed
+
 # Enable Domains API
-resource "google_project_service" "domains" {
-  service = "domains.googleapis.com"
-  disable_on_destroy = false
-}
+# Commented out for initial testing - will enable when ready for domain mapping
+# resource "google_project_service" "domains" {
+#   service = "domains.googleapis.com"
+#   disable_on_destroy = false
+# }
 
 # Grant the Cloud Run service agent the necessary permissions
 resource "google_project_iam_member" "cloud_run_service_agent" {
@@ -42,12 +45,13 @@ resource "google_project_iam_member" "cloud_run_service_agent" {
 data "google_project" "project" {
 }
 
-# Grant the compute service account permission to be used by Cloud Run
-resource "google_service_account_iam_member" "compute_service_account" {
-  service_account_id = "projects/${var.gcp_project}/serviceAccounts/${data.google_project.project.number}-compute@developer.gserviceaccount.com"
+# Grant the Cloud Run service agent permission to act as the packer service account
+# This allows Cloud Run to use the existing service account
+resource "google_service_account_iam_member" "cloud_run_act_as_packer" {
+  service_account_id = "projects/${var.gcp_project}/serviceAccounts/eklhad-web-packer@${var.gcp_project}.iam.gserviceaccount.com"
   role               = "roles/iam.serviceAccountUser"
-  member             = "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
-  depends_on         = [google_project_service.iam]
+  member             = "serviceAccount:service-${data.google_project.project.number}@serverless-robot-prod.iam.gserviceaccount.com"
+  depends_on         = [google_project_service.iam, google_project_service.run]
 }
 
 locals {
@@ -61,15 +65,14 @@ resource "google_cloud_run_service" "eklhad" {
 
   template {
     spec {
+      # Use the existing packer service account
+      service_account_name = "eklhad-web-packer@${var.gcp_project}.iam.gserviceaccount.com"
       containers {
         image = local.container_image
         ports {
           container_port = 3554
         }
-        env {
-          name  = "PORT"
-          value = "3554"
-        }
+        # PORT is automatically set by Cloud Run - don't set it manually
       }
     }
   }
@@ -79,7 +82,7 @@ resource "google_cloud_run_service" "eklhad" {
     latest_revision = true
   }
 
-  depends_on = [google_project_service.run]
+  depends_on = [google_project_service.run, google_service_account_iam_member.cloud_run_act_as_packer]
 }
 
 # Make the service public
@@ -100,24 +103,25 @@ resource "google_cloud_run_service_iam_policy" "noauth" {
 }
 
 # Domain mapping for dahlke.io
-resource "google_cloud_run_domain_mapping" "default" {
-  location = var.gcp_region
-  name     = "dahlke.io"
-
-  metadata {
-    namespace = var.gcp_project
-  }
-
-  spec {
-    route_name = google_cloud_run_service.eklhad.name
-  }
-}
-
-# Output the DNS records that need to be created
-output "domain_mapping_records" {
-  description = "DNS records for domain mapping"
-  value       = google_cloud_run_domain_mapping.default.status[0].resource_records
-}
+# Commented out for initial testing - will enable when ready for domain mapping
+# resource "google_cloud_run_domain_mapping" "default" {
+#   location = var.gcp_region
+#   name     = "dahlke.io"
+#
+#   metadata {
+#     namespace = var.gcp_project
+#   }
+#
+#   spec {
+#     route_name = google_cloud_run_service.eklhad.name
+#   }
+# }
+#
+# # Output the DNS records that need to be created
+# output "domain_mapping_records" {
+#   description = "DNS records for domain mapping"
+#   value       = google_cloud_run_domain_mapping.default.status[0].resource_records
+# }
 
 # Output the service URL for preview
 output "service_url" {
@@ -125,7 +129,8 @@ output "service_url" {
   value       = google_cloud_run_service.eklhad.status[0].url
 }
 
-output "custom_domain" {
-  description = "The custom domain URL"
-  value       = "https://dahlke.io"
-}
+# Commented out for initial testing
+# output "custom_domain" {
+#   description = "The custom domain URL"
+#   value       = "https://dahlke.io"
+# }
