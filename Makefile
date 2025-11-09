@@ -195,14 +195,17 @@ docker_run_web_dev:
 ##########################
 # CLOUD RUN HELPERS
 ##########################
+.PHONY: tf_init_cloudrun
+tf_init_cloudrun:
+	cd terraform/gcp_cloudrun && terraform init
+
+.PHONY: cloudrun_plan
+cloudrun_plan: tf_init_cloudrun
+	cd terraform/gcp_cloudrun && terraform plan
+
 .PHONY: cloudrun_deploy
 cloudrun_deploy: docker_build_web docker_push_web
-	cd terraform/gcp_cloudrun && terraform apply -auto-approve
-	cd terraform/gcp_cloudrun && \
-	terraform init && \
-	terraform apply -auto-approve
-
-# TOOD: add a cloudrun plan step.
+	cd terraform/gcp_cloudrun && terraform init && terraform apply -auto-approve
 
 .PHONY: cloudrun_destroy
 cloudrun_destroy:
