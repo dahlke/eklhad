@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import ReactMapGL, { Marker, Popup, ViewportProps } from "react-map-gl";
+import MapGL, { Marker, Popup } from "react-map-gl/mapbox";
+import type { ViewState } from "react-map-gl/mapbox";
 
+import "mapbox-gl/dist/mapbox-gl.css";
 import "./Map.css";
 
 const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoibnRkIiwiYSI6ImNqdTM3eXplODBrYTQ0ZHBnNnB6bDcwbjMifQ.JhbZo-A0SGq4Pgk87T2hoQ";
@@ -19,11 +21,11 @@ interface Location {
 }
 
 interface MapProps {
-	locations: Location[];
+	locations?: Location[];
 }
 
 interface MapState {
-	viewport: ViewportProps;
+	viewState: ViewState;
 	popupInfo: Location | null;
 }
 
@@ -31,17 +33,21 @@ class Map extends Component<MapProps, MapState> {
 	constructor(props: MapProps) {
 		super(props);
 		this.state = {
-			viewport: {
-				width: "100%",
-				height: 300,
+			viewState: {
 				latitude: 37.7577,
 				longitude: -122.4376,
 				zoom: 6,
 				bearing: 0,
 				pitch: 50,
+				padding: { top: 0, bottom: 0, left: 0, right: 0 },
 			},
 			popupInfo: null,
 		};
+	}
+
+	// Use default parameter instead of defaultProps
+	get locations(): Location[] {
+		return this.props.locations || [];
 	}
 
 	_renderPopup() {
@@ -50,13 +56,12 @@ class Map extends Component<MapProps, MapState> {
 		return (
 			popupInfo && (
 				<Popup
-					tipSize={5}
 					anchor="top"
-					offsetTop={10}
-					offsetLeft={5}
 					longitude={popupInfo.lng}
 					latitude={popupInfo.lat}
 					onClose={() => this.setState({ popupInfo: null })}
+					closeButton={true}
+					closeOnClick={false}
 				>
 					<b>
 						{popupInfo.city}
@@ -71,14 +76,10 @@ class Map extends Component<MapProps, MapState> {
 		);
 	}
 
-	static defaultProps: Partial<MapProps> = {
-		locations: [],
-	};
-
 	_renderLocationMarkers() {
-		if (!this.props.locations) return null;
+		if (!this.locations || this.locations.length === 0) return null;
 
-		return this.props.locations.map((location) => {
+		return this.locations.map((location) => {
 			let markerClassName = "map-custom-marker ";
 			let markerIcon = null;
 
@@ -118,23 +119,17 @@ class Map extends Component<MapProps, MapState> {
 	render() {
 		return (
 			<div id="map">
-				<ReactMapGL
-					width={this.state.viewport.width}
-					height={this.state.viewport.height}
-					latitude={this.state.viewport.latitude}
-					longitude={this.state.viewport.longitude}
-					zoom={this.state.viewport.zoom}
-					bearing={this.state.viewport.bearing}
-					pitch={this.state.viewport.pitch}
-					onViewportChange={(viewport: ViewportProps) => this.setState({ viewport })}
-					mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
-					attributionControl={false}
-					worldCopyJump={true}
+				<MapGL
+					{...this.state.viewState}
+					onMove={(evt: { viewState: ViewState }) => this.setState({ viewState: evt.viewState })}
+					mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
+					style={{ width: "100%", height: "100%" }}
 					mapStyle={MAPBOX_STYLE}
+					attributionControl={false}
 				>
 					{this._renderPopup()}
 					{this._renderLocationMarkers()}
-				</ReactMapGL>
+				</MapGL>
 			</div>
 		);
 	}
