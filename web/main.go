@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"strconv"
 
 	"github.com/dahlke/eklhad/web/services"
 	"github.com/dahlke/eklhad/web/workers"
@@ -99,7 +100,15 @@ func scheduleWorkers(config appConfig) {
 }
 
 func main() {
-	portPtr := flag.Int("port", appPort, "The port to run the HTTP app on (default: 3554).")
+	// Check for PORT environment variable (set by Cloud Run)
+	// This takes precedence over the default, but can be overridden by the -port flag
+	if portEnv := os.Getenv("PORT"); portEnv != "" {
+		if port, err := strconv.Atoi(portEnv); err == nil {
+			appPort = port
+		}
+	}
+
+	portPtr := flag.Int("port", appPort, "The port to run the HTTP app on (default: 3554, or PORT env var).")
 	productionPtr := flag.Bool("production", false, "If true, run the app over HTTPS.")
 	pullGSheetsPtr := flag.Bool("gsheets", false, "If true, pull the latest data from Google Sheets. ID specified in config.json.")
 	runWorkersPtr := flag.Bool("workers", false, "If true, run all the workers in Go routines.")
@@ -108,6 +117,7 @@ func main() {
 	configLogger()
 	appConfigData = parseConfig("config.json")
 
+	// Use flag value if provided (flag overrides env var)
 	appPort = *portPtr
 	isProduction := *productionPtr
 	isPullGSheets := *pullGSheetsPtr
