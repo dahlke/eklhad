@@ -2,7 +2,7 @@ package services
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 
 	log "github.com/sirupsen/logrus"
@@ -22,7 +22,7 @@ func ReadJSONFromGCS(bucketName string, path string) []byte {
 	defer resp.Body.Close()
 
 	// Read the response body
-	jsonBytes, err := ioutil.ReadAll(resp.Body)
+	jsonBytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		log.Error("Failed to read the object data:", err)
 		return nil

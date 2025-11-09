@@ -1,6 +1,5 @@
 // Import necessary dependencies
 import React, { Component } from "react";
-import PropTypes from 'prop-types';
 
 // Define the LinksList component
 class LinksList extends Component {
@@ -61,11 +60,6 @@ class LinksList extends Component {
 		);
 	}
 }
-
-// Define prop types for the component
-LinksList.propTypes = {
-	blogs: PropTypes.array.isRequired,
-};
 
 // Export the component
 export default LinksList;

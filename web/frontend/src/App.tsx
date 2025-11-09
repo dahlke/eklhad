@@ -1,6 +1,5 @@
 // Import necessary dependencies
 import React, { Component } from "react";
-import PropTypes from 'prop-types';
 import md5 from "blueimp-md5";
 
 // Import custom components
@@ -127,12 +126,7 @@ class App extends Component<AppProps> {
                 </div>
             </div>
         );
-    }
+	}
 }
-
-// Define prop types for the component
-App.propTypes = {
-    gravatar: PropTypes.object,
-};
 
 export default App;
