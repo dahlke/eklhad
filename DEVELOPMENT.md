@@ -179,23 +179,23 @@ make artifact_macos_web
 
 # Step 3: Create and deploy cloud infrastructure
 make image_gcp
-make tf_apply_gcp_auto
+make vm_apply_gcp_auto
 ```
 
 #### VM Terraform Commands (DEPRECATED)
 
 ```bash
 # Initialize Terraform
-make tf_init_gcp
+make vm_init_gcp
 
 # Plan changes
-make tf_plan_gcp
+make vm_plan_gcp
 
 # Apply changes
-make tf_apply_gcp_auto
+make vm_apply_gcp_auto
 
 # Destroy infrastructure
-make tf_destroy_gcp_auto
+make vm_destroy_gcp_auto
 ```
 
 The VM infrastructure Terraform state is stored in GCS at:
