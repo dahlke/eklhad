@@ -36,6 +36,7 @@ need a fallback maintenance page. Leveraging the User GitHub Pages feature provi
 
 - [Example Repo](https://github.com/dahlke/dahlke.github.io)
 - [Example Page](https://dahlke.github.io/)
+- [DNS Redirect Page](https://static.dahlke.io/)
 
 ## Testing
 
@@ -60,11 +61,10 @@ ln -s -f ../../hooks/pre-commit ./pre-commit
 chmod +x ../../hooks/pre-commit ./pre-commit
 ```
 
-## Deploying Eklhad Web (Manual)
+## Deploying Eklhad Web to Cloud Run (Manual)
 
-There are several build stages that are required for the ultimate deployment. The React frontend code needs to be
-built, the Go web server needs to be compiled, an artifact zipped up, a Packer image needs to be created for the target
-cloud provider, and then that all needs to be deployed using Terraform.
+The application is deployed to Google Cloud Run. The deployment process involves building the React frontend,
+compiling the Go web server, creating a Docker image, pushing it to Docker Hub, and then deploying using Terraform.
 
 You can read the [Makefile](./Makefile) to see what commands are being run under the hood, but to do all of the above
 process quickly, run:
@@ -74,12 +74,74 @@ process quickly, run:
 There is a static version of the page that has none of the dynamic content that can be reached at
 [static.dahlke.io](https://static.dahlke.io), which is a redirect to GitHub Pages
 [dahlke.github.io](https://dahlke.github.io) (the [repo](https://github.com/dahlke/dahlke.github.io)).
-This is useful to fall back to if anything goes wrong deploying the app to the free tier of cloud
-provider services.
+This is useful to fall back to if anything goes wrong deploying the app.
 
 ### Authenticating to GCP and Cloudflare
 
-- [Required GCP IAM Permissions](https://cloud.google.com/cloud-build/docs/building/build-vm-images-with-packer#required_iam_permissions)
+The deployment requires authentication to both GCP and Cloudflare. Make sure you have the necessary credentials set up.
+
+```bash
+# Source the secrets file which sets up all required environment variables
+source secrets.op.sh
+
+# This sets up:
+# - GOOGLE_APPLICATION_CREDENTIALS for GCP authentication
+# - CLOUDFLARE_API_TOKEN for Cloudflare DNS management
+# - Other required API keys
+```
+
+### Deploying
+
+Before deploying, a few things need to be done. The React frontend needs to be compiled, the Go binary needs to be built,
+and then everything needs to be packaged into a Docker image.
+
+```bash
+# Step 1: Collect and prepare data
+make collect_data
+make resume  # Must be run before frontend_build - generates static resume HTML
+
+# Step 2: Build application
+make frontend_build  # Will fail if resume hasn't been built
+make go_build_linux  # Build Linux binary for Docker
+
+# Step 3: Build and push Docker image, then deploy to Cloud Run
+make cloudrun_deploy
+```
+
+### Planning Changes
+
+Before deploying, you can preview what Terraform will change:
+
+```bash
+# Plan Cloud Run deployment changes
+make cloudrun_plan
+```
+
+### Testing Docker Image Locally
+
+Before deploying, you can test the Docker image locally:
+
+```bash
+# Build the Docker image
+make docker_build_web
+
+# Run it locally to test
+make docker_run_web
+
+# Then visit http://localhost:3554
+```
+
+---
+
+## DEPRECATED: VM-Based Deployment
+
+The VM-based deployment has been deprecated in favor of Cloud Run. The following information is kept for reference only.
+
+### Deploying to VM (DEPRECATED)
+
+The old deployment process used a VM-based infrastructure. This required building Packer images and deploying to Compute Engine.
+
+#### Authenticating to GCP and Cloudflare (VM Version)
 
 ```bash
 # For Packer and Terraform
@@ -93,11 +155,7 @@ export CLOUDFLARE_EMAIL=$(op item get Cloudflare --format=json | jq -r '.fields[
 export CLOUDFLARE_API_KEY=$(op item get Cloudflare --format=json | jq -r '.fields[5].value')
 ```
 
-### Deploying
-
-Before deploying, a few things need to be done. The React frontend needs to be compiled. A Linux artifact of the
-application needs to be built. Then a Packer image needs to get created in GCP, and then used to deploy using
-Terraform.
+#### VM Deployment Steps (DEPRECATED)
 
 ```bash
 # Step 1: Collect and prepare data
@@ -116,11 +174,22 @@ make image_gcp
 make tf_apply_gcp_auto
 ```
 
-## Fallback Page (for Maintenance)
+#### VM Terraform Commands (DEPRECATED)
 
-Mistakes are made, and due to trying to use only free-tier offerings from the cloud providers,
-that means some unexpected things come up where you might not have the time to fix it immediately and instead,
-need a fallback maintenance page. Leveraging the User GitHub Pages feature provides a good option for this.
+```bash
+# Initialize Terraform
+make tf_init_gcp
 
-- [Example Repo](https://github.com/dahlke/dahlke.github.io)
-- [Example Page](https://dahlke.github.io/)
+# Plan changes
+make tf_plan_gcp
+
+# Apply changes
+make tf_apply_gcp_auto
+
+# Destroy infrastructure
+make tf_destroy_gcp_auto
+```
+
+The VM infrastructure Terraform state is stored in GCS at:
+
+- `gs://eklhad-web-private/terraform-vm.tfstate/`
