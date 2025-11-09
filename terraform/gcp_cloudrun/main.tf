@@ -1,5 +1,9 @@
 terraform {
   required_version = ">=1.7.0"
+  backend "gcs" {
+    bucket = "eklhad-web-private"
+    prefix = "terraform-cloudrun.tfstate"
+  }
   required_providers {
     google = {
       source  = "hashicorp/google"
@@ -126,36 +130,151 @@ resource "google_cloud_run_domain_mapping" "default" {
 }
 
 # Cloudflare DNS records for dahlke.io pointing to Cloud Run
-# Extract A records from domain mapping
+# Extract A and AAAA records from domain mapping
 locals {
   a_records = [
     for record in google_cloud_run_domain_mapping.default.status[0].resource_records :
     record.rrdata if record.type == "A"
   ]
+  aaaa_records = [
+    for record in google_cloud_run_domain_mapping.default.status[0].resource_records :
+    record.rrdata if record.type == "AAAA"
+  ]
 }
 
-# Update dahlke.io A record to point to Cloud Run
-resource "cloudflare_record" "dahlkeio" {
+# Create all 4 A records for dahlke.io (Cloud Run requires all of them)
+resource "cloudflare_record" "dahlkeio_a1" {
   zone_id        = var.cloudflare_zone_id
   name           = "dahlke.io"
   type           = "A"
-  value          = local.a_records[0]  # Use first A record
-  ttl            = 1  # Auto TTL
-  comment        = "Cloud Run domain mapping - updated from VM"
-  allow_overwrite = true  # Allow overwriting existing record from VM terraform
+  value          = local.a_records[0]
+  ttl            = 1
+  comment        = "Cloud Run domain mapping - A record 1/4"
+  allow_overwrite = true
   depends_on     = [google_cloud_run_domain_mapping.default]
 }
 
-# Update gcp.dahlke.io A record to point to Cloud Run
-resource "cloudflare_record" "gcp" {
+resource "cloudflare_record" "dahlkeio_a2" {
   zone_id        = var.cloudflare_zone_id
-  name           = "gcp"
+  name           = "dahlke.io"
   type           = "A"
-  value          = local.a_records[0]  # Use first A record
-  ttl            = 1  # Auto TTL
-  comment        = "Cloud Run domain mapping - updated from VM"
-  allow_overwrite = true  # Allow overwriting existing record from VM terraform
+  value          = local.a_records[1]
+  ttl            = 1
+  comment        = "Cloud Run domain mapping - A record 2/4"
+  allow_overwrite = true
   depends_on     = [google_cloud_run_domain_mapping.default]
+}
+
+resource "cloudflare_record" "dahlkeio_a3" {
+  zone_id        = var.cloudflare_zone_id
+  name           = "dahlke.io"
+  type           = "A"
+  value          = local.a_records[2]
+  ttl            = 1
+  comment        = "Cloud Run domain mapping - A record 3/4"
+  allow_overwrite = true
+  depends_on     = [google_cloud_run_domain_mapping.default]
+}
+
+resource "cloudflare_record" "dahlkeio_a4" {
+  zone_id        = var.cloudflare_zone_id
+  name           = "dahlke.io"
+  type           = "A"
+  value          = local.a_records[3]
+  ttl            = 1
+  comment        = "Cloud Run domain mapping - A record 4/4"
+  allow_overwrite = true
+  depends_on     = [google_cloud_run_domain_mapping.default]
+}
+
+# Create all 4 AAAA records for dahlke.io (Cloud Run requires all of them)
+resource "cloudflare_record" "dahlkeio_aaaa1" {
+  zone_id        = var.cloudflare_zone_id
+  name           = "dahlke.io"
+  type           = "AAAA"
+  value          = local.aaaa_records[0]
+  ttl            = 1
+  comment        = "Cloud Run domain mapping - AAAA record 1/4"
+  allow_overwrite = true
+  depends_on     = [google_cloud_run_domain_mapping.default]
+}
+
+resource "cloudflare_record" "dahlkeio_aaaa2" {
+  zone_id        = var.cloudflare_zone_id
+  name           = "dahlke.io"
+  type           = "AAAA"
+  value          = local.aaaa_records[1]
+  ttl            = 1
+  comment        = "Cloud Run domain mapping - AAAA record 2/4"
+  allow_overwrite = true
+  depends_on     = [google_cloud_run_domain_mapping.default]
+}
+
+resource "cloudflare_record" "dahlkeio_aaaa3" {
+  zone_id        = var.cloudflare_zone_id
+  name           = "dahlke.io"
+  type           = "AAAA"
+  value          = local.aaaa_records[2]
+  ttl            = 1
+  comment        = "Cloud Run domain mapping - AAAA record 3/4"
+  allow_overwrite = true
+  depends_on     = [google_cloud_run_domain_mapping.default]
+}
+
+resource "cloudflare_record" "dahlkeio_aaaa4" {
+  zone_id        = var.cloudflare_zone_id
+  name           = "dahlke.io"
+  type           = "AAAA"
+  value          = local.aaaa_records[3]
+  ttl            = 1
+  comment        = "Cloud Run domain mapping - AAAA record 4/4"
+  allow_overwrite = true
+  depends_on     = [google_cloud_run_domain_mapping.default]
+}
+
+# gcp.dahlke.io DNS record removed - no longer needed
+
+# Other Cloudflare DNS records (moved from VM terraform)
+resource "cloudflare_record" "static" {
+  zone_id = var.cloudflare_zone_id
+  name    = "static"
+  value   = "dahlke.github.io"
+  type    = "CNAME"
+  allow_overwrite = true
+}
+
+resource "cloudflare_record" "www" {
+  zone_id = var.cloudflare_zone_id
+  name    = "www"
+  value   = "dahlke.io"
+  type    = "CNAME"
+  proxied = true
+  allow_overwrite = true
+}
+
+resource "cloudflare_record" "mx" {
+  zone_id  = var.cloudflare_zone_id
+  name     = "dahlke.io"
+  value    = "mail.dahlke.io"
+  type     = "MX"
+  priority = 10
+  allow_overwrite = true
+}
+
+resource "cloudflare_record" "spf" {
+  zone_id = var.cloudflare_zone_id
+  name    = "dahlke.io"
+  value   = "v=spf1 -all"
+  type    = "TXT"
+  allow_overwrite = true
+}
+
+resource "cloudflare_record" "dmarc" {
+  zone_id = var.cloudflare_zone_id
+  name    = "_dmarc"
+  value   = "v=DMARC1; p=reject; rua=mailto:dmarc@dahlke.io"
+  type    = "TXT"
+  allow_overwrite = true
 }
 
 # Output the DNS records that were created
