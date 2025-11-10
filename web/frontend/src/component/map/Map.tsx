@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import MapGL, { Marker, Popup } from "react-map-gl/mapbox";
 import type { ViewState } from "react-map-gl/mapbox";
 
@@ -24,42 +24,26 @@ interface MapProps {
 	locations?: Location[];
 }
 
-interface MapState {
-	viewState: ViewState;
-	popupInfo: Location | null;
-}
+function Map({ locations = [] }: MapProps) {
+	// Initialize state
+	const [viewState, setViewState] = useState<ViewState>({
+		latitude: 37.7577,
+		longitude: -122.4376,
+		zoom: 6,
+		bearing: 0,
+		pitch: 50,
+		padding: { top: 0, bottom: 0, left: 0, right: 0 },
+	});
+	const [popupInfo, setPopupInfo] = useState<Location | null>(null);
 
-class Map extends Component<MapProps, MapState> {
-	constructor(props: MapProps) {
-		super(props);
-		this.state = {
-			viewState: {
-				latitude: 37.7577,
-				longitude: -122.4376,
-				zoom: 6,
-				bearing: 0,
-				pitch: 50,
-				padding: { top: 0, bottom: 0, left: 0, right: 0 },
-			},
-			popupInfo: null,
-		};
-	}
-
-	// Use default parameter instead of defaultProps
-	get locations(): Location[] {
-		return this.props.locations || [];
-	}
-
-	_renderPopup() {
-		const { popupInfo } = this.state;
-
+	const renderPopup = () => {
 		return (
 			popupInfo && (
 				<Popup
 					anchor="top"
 					longitude={popupInfo.lng}
 					latitude={popupInfo.lat}
-					onClose={() => this.setState({ popupInfo: null })}
+					onClose={() => setPopupInfo(null)}
 					closeButton={true}
 					closeOnClick={false}
 				>
@@ -74,12 +58,12 @@ class Map extends Component<MapProps, MapState> {
 				</Popup>
 			)
 		);
-	}
+	};
 
-	_renderLocationMarkers() {
-		if (!this.locations || this.locations.length === 0) return null;
+	const renderLocationMarkers = () => {
+		if (!locations || locations.length === 0) return null;
 
-		return this.locations.map((location) => {
+		return locations.map((location) => {
 			let markerClassName = "map-custom-marker ";
 			let markerIcon = null;
 
@@ -107,32 +91,30 @@ class Map extends Component<MapProps, MapState> {
 					<div
 						className={markerClassName}
 						role="button"
-						onClick={() => this.setState({ popupInfo: location })}
+						onClick={() => setPopupInfo(location)}
 					>
 						{markerIcon}
 					</div>
 				</Marker>
 			);
 		});
-	}
+	};
 
-	render() {
-		return (
-			<div id="map">
-				<MapGL
-					{...this.state.viewState}
-					onMove={(evt: { viewState: ViewState }) => this.setState({ viewState: evt.viewState })}
-					mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
-					style={{ width: "100%", height: "100%" }}
-					mapStyle={MAPBOX_STYLE}
-					attributionControl={false}
-				>
-					{this._renderPopup()}
-					{this._renderLocationMarkers()}
-				</MapGL>
-			</div>
-		);
-	}
+	return (
+		<div id="map">
+			<MapGL
+				{...viewState}
+				onMove={(evt: { viewState: ViewState }) => setViewState(evt.viewState)}
+				mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
+				style={{ width: "100%", height: "100%" }}
+				mapStyle={MAPBOX_STYLE}
+				attributionControl={false}
+			>
+				{renderPopup()}
+				{renderLocationMarkers()}
+			</MapGL>
+		</div>
+	);
 }
 
 export default Map;
