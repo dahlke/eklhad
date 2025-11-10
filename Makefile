@@ -10,8 +10,6 @@ WEB_APP_CONFIG_PATH=web/config.json
 DOCKER_HUB_USER=eklhad
 DOCKER_WEB_IMAGE_NAME=eklhad-web
 DOCKER_WEB_IMAGE_VERSION=0.1.1
-DOCKER_TEST_IMAGE_NAME=eklhad-web-circleci
-DOCKER_TEST_IMAGE_VERSION=0.1.2
 
 
 ##########################
@@ -131,17 +129,22 @@ docker_run_web_dev:
 ##########################
 # CLOUD RUN HELPERS
 ##########################
-.PHONY: vm_init_cloudrun
-vm_init_cloudrun:
+.PHONY: cloudrun_init
+cloudrun_init:
 	cd terraform/gcp_cloudrun && terraform init
 
 .PHONY: cloudrun_plan
-cloudrun_plan: vm_init_cloudrun
+cloudrun_plan: cloudrun_init
 	cd terraform/gcp_cloudrun && terraform plan
 
 .PHONY: cloudrun_deploy
-cloudrun_deploy: docker_build_web docker_push_web
-	cd terraform/gcp_cloudrun && terraform init && terraform apply -auto-approve
+cloudrun_deploy:
+	@echo "Building and pushing Docker image with tag: $(DOCKER_WEB_IMAGE_VERSION)"; \
+	docker build --platform linux/amd64 -t ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION) . && \
+	docker tag ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION) ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):latest && \
+	docker push ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION) && \
+	docker push ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):latest && \
+	cd terraform/gcp_cloudrun && terraform init && terraform apply -auto-approve -var="docker_image_tag=$(DOCKER_WEB_IMAGE_VERSION)"
 
 .PHONY: cloudrun_destroy
 cloudrun_destroy:

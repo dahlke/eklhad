@@ -114,6 +114,10 @@ resource "google_cloud_run_service_iam_policy" "noauth" {
 }
 
 # Domain mapping for dahlke.io
+# Note: If certificate provisioning gets stuck, you can force a refresh by:
+# 1. terraform destroy -target=google_cloud_run_domain_mapping.default
+# 2. Wait 5-10 minutes for cleanup
+# 3. terraform apply
 resource "google_cloud_run_domain_mapping" "default" {
   location = var.gcp_region
   name     = "dahlke.io"
