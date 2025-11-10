@@ -112,6 +112,10 @@ make cloudrun_deploy
 `make go_build_linux` separately - the Docker build process does this for you using multi-stage builds
 to keep the final image size minimal.
 
+The Cloud Run infrastructure Terraform state is stored in GCS at:
+
+- `gs://eklhad-web-private/terraform-cloudrun.tfstate/`
+
 ### Planning Changes
 
 Before deploying, you can preview what Terraform will change:
@@ -201,7 +205,3 @@ make vm_destroy_gcp_auto
 The VM infrastructure Terraform state is stored in GCS at:
 
 - `gs://eklhad-web-private/terraform-vm.tfstate/`
-
-The Cloud Run infrastructure Terraform state is stored in GCS at:
-
-- `gs://eklhad-web-private/terraform-cloudrun.tfstate/`
