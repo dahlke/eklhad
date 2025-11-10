@@ -1,46 +1,24 @@
-// Extend the Window interface to include APP
-interface Window {
-    APP?: {
-        apiPort: number;
-        apiHost: string;
-    };
-}
+// Re-export API constants for backward compatibility
+export {
+	PROTOCOL,
+	IS_HTTPS,
+	HAS_SERVER_CONFIG,
+	DEFAULT_APP_PORT,
+	PORT,
+	HOST,
+	API_BASE_URL,
+} from "../constants/api";
 
-export const PROTOCOL = window.location.protocol;
-// NOTE: Default app port is required for local development, since
-// running react-scripts start does not take the server into equation
-// we need to fall back on the port we should communicate with.
-export const IS_HTTPS = PROTOCOL.includes("https");
-export const HAS_SERVER_CONFIG = !!window.APP;
+// Import actions from slices
+import { setActivityFilter as setActivityFilterAction } from "../reducers/activityFilterSlice";
+import { setDateFilter as setDateFilterAction } from "../reducers/dateFilterSlice";
 
-export const DEFAULT_APP_PORT = 3554;
-let appPort = DEFAULT_APP_PORT;
+// Re-export ActivityFilters for backward compatibility
+export { ActivityFilters } from "../constants/activityFilters";
 
-if (IS_HTTPS) {
-	appPort = 443;
-} else if (HAS_SERVER_CONFIG) {
-	appPort = window.APP.apiPort;
-}
+// Wrapper action creators for backward compatibility with old API
+export const setActivityFilter = (filter: { value: string }) =>
+	setActivityFilterAction({ value: filter.value });
 
-console.log("APP PORT", appPort);
-
-export const PORT = appPort;
-export const HOST = window.APP ? window.APP.apiHost : window.location.hostname;
-export const API_BASE_URL = `${PROTOCOL}//${HOST}:${PORT}/api`;
-
-/* Activity Filters */
-export const setActivityFilter = (filter: any) => ({ // Specify the type for filter
-	type: "SET_ACTIVITY_FILTER",
-	filter,
-});
-
-export const ActivityFilters = {
-	SHOW_ALL: "SHOW_ALL",
-	SHOW_LINKS: "SHOW_LINKS",
-};
-
-/* Date Filter */
-export const setDateFilter = (filter: any) => ({ // Specify the type for filter
-	type: "SET_DATE_FILTER",
-	filter,
-});
+export const setDateFilter = (filter?: { date: string }) =>
+	setDateFilterAction(filter ? { date: filter.date } : undefined);

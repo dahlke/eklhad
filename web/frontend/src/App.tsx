@@ -1,31 +1,25 @@
 // Import necessary dependencies
 import React from "react";
+import { useSelector } from "react-redux";
 import md5 from "blueimp-md5";
 
 // Import custom components
-import PopulatedMap from "./container/PopulatedMap";
+import Map from "./component/map/Map";
 
 // Import styles
 import "./App.css";
 
-// Define the props interface
-interface AppProps {
-    gravatar?: {
-        email?: string;
-    };
-}
+// Import types
+import { RootState } from "./reducers/index";
 
-function App({ gravatar = {} }: AppProps) {
+function App() {
+    const gravatar = useSelector((state: RootState) => state.gravatar);
     // Generate MD5 hash of the gravatar email (if available)
     const gravatarEmailMD5 = md5(
         gravatar ? gravatar.email : "",
     );
     // Construct the Gravatar URL using the MD5 hash
     const gravatarURL = `https://www.gravatar.com/avatar/${gravatarEmailMD5}.jpg`;
-
-    /*
-        <PopulatedLinksList />
-    */
 
     return (
         <div id="app" className="container mx-auto p-4 text-chicago-flag-blue">
@@ -117,8 +111,8 @@ function App({ gravatar = {} }: AppProps) {
                         </a>
                     </h5>
                 </div>
-                {/* Render the populated map component */}
-                <PopulatedMap />
+                {/* Render the map component */}
+                <Map />
             </div>
         </div>
     );
