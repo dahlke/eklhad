@@ -36,6 +36,7 @@
     "vitest": "^2.0.5"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.10.1",
     "autoprefixer": "^10.4.21",
     "blueimp-md5": "^2.19.0",
     "date-fns": "^4.1.0",

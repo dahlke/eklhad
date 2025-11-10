@@ -4,23 +4,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import thunkMiddleware from "redux-thunk";
-import { fetchLocations } from "./actions/locations";
-import { fetchGravatar } from "./actions/gravatar";
-import rootReducer from "./reducers/index";
-import PopulatedApp from "./container/PopulatedApp";
+import { store } from "./store";
+import { fetchLocations } from "./reducers/locationsSlice";
+import { fetchGravatar } from "./reducers/gravatarSlice";
+import App from "./App";
 
 import "./index.css";
 
 import * as serviceWorker from "./serviceWorker";
-
-const store = createStore(
-    rootReducer,
-    applyMiddleware(
-        thunkMiddleware, // lets us dispatch() functions
-    ),
-);
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
@@ -30,7 +21,7 @@ store.dispatch(fetchGravatar());
 root.render(
     <React.StrictMode>
         <Provider store={store}>
-            <PopulatedApp />
+            <App />
         </Provider>
     </React.StrictMode>,
 );

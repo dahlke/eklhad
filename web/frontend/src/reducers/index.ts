@@ -1,12 +1,12 @@
-import { combineReducers } from "redux";
-import locations from "./locations";
-import links from "./links";
-import blogs from "./blogs";
-import gravatar from "./gravatar";
-import ActivityFilter from "./activityFilter";
-import DateFilter from "./dateFilter";
+import { combineReducers } from "@reduxjs/toolkit";
+import locations from "./locationsSlice";
+import links from "./linksSlice";
+import blogs from "./blogsSlice";
+import gravatar from "./gravatarSlice";
+import ActivityFilter from "./activityFilterSlice";
+import DateFilter from "./dateFilterSlice";
 
-export default combineReducers({
+const rootReducer = combineReducers({
 	locations,
 	links,
 	blogs,
@@ -14,3 +14,7 @@ export default combineReducers({
 	ActivityFilter,
 	DateFilter,
 });
+
+export default rootReducer;
+
+export type RootState = ReturnType<typeof rootReducer>;
