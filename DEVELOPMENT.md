@@ -201,3 +201,7 @@ make vm_destroy_gcp_auto
 The VM infrastructure Terraform state is stored in GCS at:
 
 - `gs://eklhad-web-private/terraform-vm.tfstate/`
+
+The Cloud Run infrastructure Terraform state is stored in GCS at:
+
+- `gs://eklhad-web-private/terraform-cloudrun.tfstate/`

@@ -161,6 +161,7 @@ resource "cloudflare_record" "static" {
 #   type    = "A"
 # }
 
+# TODO is this needed?
 # Add www subdomain as CNAME to root domain
 resource "cloudflare_record" "www" {
   zone_id = var.cloudflare_zone_id
