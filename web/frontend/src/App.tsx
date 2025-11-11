@@ -1,10 +1,10 @@
 // Import necessary dependencies
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { useSelector } from "react-redux";
 import md5 from "blueimp-md5";
 
-// Import custom components
-import Map from "./component/map/Map";
+// Lazy load heavy components for code splitting
+const Map = lazy(() => import("./component/map/Map"));
 
 // Import styles
 import "./App.css";
@@ -111,8 +111,17 @@ function App() {
                         </a>
                     </h5>
                 </div>
-                {/* Render the map component */}
-                <Map />
+                {/* Render the map component with lazy loading */}
+                <Suspense fallback={
+                    <div className="flex items-center justify-center h-96">
+                        <div className="text-center">
+                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-chicago-flag-blue mx-auto mb-4"></div>
+                            <p className="text-sm">Loading map...</p>
+                        </div>
+                    </div>
+                }>
+                    <Map />
+                </Suspense>
             </div>
         </div>
     );
