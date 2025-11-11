@@ -1,10 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { API_BASE_URL } from '../constants/api';
-
-interface Link {
-	timestamp: number;
-	[key: string]: any;
-}
+import type { Link } from '../types';
 
 interface LinksState {
 	items: Link[];
@@ -18,14 +14,18 @@ const initialState: LinksState = {
 	lastUpdated: null,
 };
 
-export const fetchLinks = createAsyncThunk(
+export const fetchLinks = createAsyncThunk<Link[]>(
 	'links/fetch',
 	async () => {
 		const response = await fetch(`${API_BASE_URL}/links`);
 		if (!response.ok) {
 			throw new Error('Failed to fetch links');
 		}
-		return response.json();
+		const links = await response.json() as Link[];
+		if (!Array.isArray(links)) {
+			throw new Error('Expected array of links');
+		}
+		return links;
 	}
 );
 

@@ -1,15 +1,10 @@
-import { REQUEST_LINKS, RECEIVE_LINKS } from "../actions/links";
+import { REQUEST_LINKS, RECEIVE_LINKS, type LinksAction } from "../actions/links";
+import type { Link } from "../types";
 
 interface LinksState {
-    items: any[];
-    isFetching?: boolean;
-    lastUpdated?: number;
-}
-
-interface LinksAction {
-    type: string;
-    links?: any[];
-    receivedAt?: number;
+	items: Link[];
+	isFetching?: boolean;
+	lastUpdated?: number;
 }
 
 const links = (state: LinksState = { items: [] }, action: LinksAction): LinksState => {
