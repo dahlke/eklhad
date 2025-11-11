@@ -8,6 +8,21 @@ export default defineConfig(() => ({
       commonjsOptions: {
         include: [/react-map-gl/, /node_modules/],
       },
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            // Separate mapbox-gl into its own chunk (largest dependency)
+            'mapbox-gl': ['mapbox-gl', 'react-map-gl/mapbox'],
+            // Separate vendor libraries
+            'vendor-react': ['react', 'react-dom'],
+            'vendor-redux': ['redux', 'react-redux', '@reduxjs/toolkit'],
+            // Date utilities
+            'vendor-date': ['date-fns'],
+          },
+        },
+      },
+      // Increase chunk size warning limit since mapbox-gl is inherently large
+      chunkSizeWarningLimit: 1000,
     },
     plugins: [react()],
     optimizeDeps: {
