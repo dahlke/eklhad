@@ -102,6 +102,42 @@ func readyHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
+// responseWriter wraps http.ResponseWriter to capture status code
+type responseWriter struct {
+	http.ResponseWriter
+	statusCode int
+}
+
+func (rw *responseWriter) WriteHeader(code int) {
+	rw.statusCode = code
+	rw.ResponseWriter.WriteHeader(code)
+}
+
+// requestLoggingMiddleware logs all HTTP requests with consistent format
+func requestLoggingMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		start := time.Now()
+
+		// Create a response writer wrapper to capture status code
+		rw := &responseWriter{ResponseWriter: w, statusCode: http.StatusOK}
+
+		// Process the request
+		next.ServeHTTP(rw, r)
+
+		// Log the request
+		duration := time.Since(start)
+		log.WithFields(log.Fields{
+			"method":      r.Method,
+			"path":        r.URL.Path,
+			"query":       r.URL.RawQuery,
+			"ip":          r.RemoteAddr,
+			"user_agent":  r.UserAgent(),
+			"status":      rw.statusCode,
+			"duration_ms": duration.Milliseconds(),
+		}).Info("HTTP request")
+	})
+}
+
 // securityHeadersMiddleware adds security headers to responses
 func securityHeadersMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -256,7 +292,8 @@ func main() {
 	http.HandleFunc("/api/gravatar", apiGravatarHandler)
 
 	// Apply middleware to all routes (compression removed as it was causing issues)
-	handler := securityHeadersMiddleware(http.DefaultServeMux)
+	// Chain: requestLoggingMiddleware -> securityHeadersMiddleware -> routes
+	handler := requestLoggingMiddleware(securityHeadersMiddleware(http.DefaultServeMux))
 
 	if workerRoutines {
 		scheduleWorkers(appConfigData)

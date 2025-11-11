@@ -365,6 +365,76 @@ func TestParseConfig(t *testing.T) {
 	}
 }
 
+func TestRequestLoggingMiddleware(t *testing.T) {
+	handler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("test response"))
+	})
+
+	middleware := requestLoggingMiddleware(handler)
+
+	tests := []struct {
+		name           string
+		method         string
+		path           string
+		query          string
+		userAgent      string
+		expectedStatus int
+	}{
+		{
+			name:           "GET request",
+			method:         "GET",
+			path:           "/api/test",
+			query:          "",
+			userAgent:      "test-agent",
+			expectedStatus: http.StatusOK,
+		},
+		{
+			name:           "POST request with query",
+			method:         "POST",
+			path:           "/api/data",
+			query:          "param=value",
+			userAgent:      "Mozilla/5.0",
+			expectedStatus: http.StatusOK,
+		},
+		{
+			name:           "404 handler",
+			method:         "GET",
+			path:           "/notfound",
+			query:          "",
+			userAgent:      "",
+			expectedStatus: http.StatusOK, // Our test handler always returns 200
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			url := tt.path
+			if tt.query != "" {
+				url += "?" + tt.query
+			}
+			req := httptest.NewRequest(tt.method, url, nil)
+			if tt.userAgent != "" {
+				req.Header.Set("User-Agent", tt.userAgent)
+			}
+			w := httptest.NewRecorder()
+
+			middleware.ServeHTTP(w, req)
+
+			resp := w.Result()
+			if resp.StatusCode != tt.expectedStatus {
+				t.Errorf("Expected status %d, got %d", tt.expectedStatus, resp.StatusCode)
+			}
+
+			// Verify response body is still correct
+			body := w.Body.String()
+			if body != "test response" {
+				t.Errorf("Expected body 'test response', got '%s'", body)
+			}
+		})
+	}
+}
+
 func TestConfigLogger(t *testing.T) {
 	// This function is hard to test directly, but we can verify it doesn't panic
 	defer func() {
