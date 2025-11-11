@@ -1,23 +1,30 @@
 import { API_BASE_URL } from "./index";
+import type { Location } from "../types";
 
 /* Locations */
 export const REQUEST_LOCATIONS = "REQUEST_LOCATIONS";
-function requestLocations() {
+function requestLocations(): { type: string } {
 	return {
 		type: REQUEST_LOCATIONS,
 	};
 }
 
 export const RECEIVE_LOCATIONS = "RECEIVE_LOCATIONS";
-function receiveLocations(json: any): { type: string; locations: any; receivedAt: number } { // Added parameter and return types
+function receiveLocations(locations: Location[]): { type: string; locations: Location[]; receivedAt: number } {
 	return {
 		type: RECEIVE_LOCATIONS,
-		locations: json,
+		locations,
 		receivedAt: Date.now(),
 	};
 }
 
-export function fetchLocations(): (dispatch: (action: { type: string; locations?: any; receivedAt?: number }) => void) => Promise<void> { // Added return type
+export interface LocationsAction {
+	type: string;
+	locations?: Location[];
+	receivedAt?: number;
+}
+
+export function fetchLocations(): (dispatch: (action: LocationsAction) => void) => Promise<void> {
 	const apiUrl = `${API_BASE_URL}/locations`;
 
 	return (dispatch) => {
@@ -25,9 +32,26 @@ export function fetchLocations(): (dispatch: (action: { type: string; locations?
 
 		return fetch(apiUrl)
 			.then(
-				(response) => response.json(),
-				(error) => console.error("An error occurred.", error),
+				(response) => {
+					if (!response.ok) {
+						throw new Error(`HTTP error! status: ${response.status}`);
+					}
+					return response.json() as Promise<Location[]>;
+				},
+				(error) => {
+					console.error("An error occurred.", error);
+					throw error;
+				},
 			)
-			.then((json) => dispatch(receiveLocations(json)));
+			.then((locations: Location[]) => {
+				// Validate that we received an array
+				if (!Array.isArray(locations)) {
+					throw new Error("Expected array of locations");
+				}
+				dispatch(receiveLocations(locations));
+			})
+			.catch((error) => {
+				console.error("Failed to fetch locations:", error);
+			});
 	};
 }

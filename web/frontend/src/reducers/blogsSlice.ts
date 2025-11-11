@@ -1,11 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { API_BASE_URL } from '../constants/api';
-
-interface Blog {
-	timestamp: number;
-	date?: string;
-	[key: string]: any;
-}
+import type { Blog } from '../types';
 
 interface BlogsState {
 	items: Blog[];
@@ -19,14 +14,18 @@ const initialState: BlogsState = {
 	lastUpdated: null,
 };
 
-export const fetchBlogs = createAsyncThunk(
+export const fetchBlogs = createAsyncThunk<Blog[]>(
 	'blogs/fetch',
 	async () => {
 		const response = await fetch(`${API_BASE_URL}/blogs`);
 		if (!response.ok) {
 			throw new Error('Failed to fetch blogs');
 		}
-		return response.json();
+		const blogs = await response.json() as Blog[];
+		if (!Array.isArray(blogs)) {
+			throw new Error('Expected array of blogs');
+		}
+		return blogs;
 	}
 );
 

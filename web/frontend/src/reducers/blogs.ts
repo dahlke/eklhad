@@ -1,15 +1,10 @@
-import { REQUEST_BLOGS, RECEIVE_BLOGS } from "../actions/blogs";
+import { REQUEST_BLOGS, RECEIVE_BLOGS, type BlogAction } from "../actions/blogs";
+import type { Blog } from "../types";
 
 interface BlogState {
-    items: any[];
-    isFetching?: boolean;
-    lastUpdated?: number;
-}
-
-interface BlogAction {
-    type: string;
-    blogs?: any[];
-    receivedAt?: number;
+	items: Blog[];
+	isFetching?: boolean;
+	lastUpdated?: number;
 }
 
 const blogs = (state: BlogState = { items: [] }, action: BlogAction): BlogState => {

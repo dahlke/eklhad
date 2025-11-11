@@ -1,17 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { API_BASE_URL } from '../constants/api';
+import type { Location } from '../types';
 
-export interface Location {
-	id: string;
-	lat: number;
-	lng: number;
-	current?: boolean;
-	layover?: boolean;
-	home?: boolean;
-	city?: string;
-	stateprovinceregion?: string;
-	country?: string;
-}
+// Re-export Location type for convenience (Map.tsx imports it from here)
+export type { Location } from '../types';
 
 interface LocationsState {
 	items: Location[];
@@ -25,14 +17,18 @@ const initialState: LocationsState = {
 	lastUpdated: null,
 };
 
-export const fetchLocations = createAsyncThunk(
+export const fetchLocations = createAsyncThunk<Location[]>(
 	'locations/fetch',
 	async () => {
 		const response = await fetch(`${API_BASE_URL}/locations`);
 		if (!response.ok) {
 			throw new Error('Failed to fetch locations');
 		}
-		return response.json();
+		const locations = await response.json() as Location[];
+		if (!Array.isArray(locations)) {
+			throw new Error('Expected array of locations');
+		}
+		return locations;
 	}
 );
 
