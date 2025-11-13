@@ -1,8 +1,7 @@
 // Import necessary dependencies
 import React, { useState, useMemo } from "react";
-import { useSelector } from "react-redux";
 import { format, fromUnixTime } from "date-fns";
-import { RootState } from "../../reducers/index";
+import { useLinks, useBlogs } from "../../contexts";
 import type { Link, Blog } from "../../types";
 
 // Helper function to sort data by timestamp in descending order
@@ -26,9 +25,9 @@ function processBlogs(blogs: Blog[]): Blog[] {
 
 // Define the LinksList component
 function LinksList() {
-	// Get data from Redux store
-	const rawLinks = useSelector((state: RootState) => state.links.items);
-	const rawBlogs = useSelector((state: RootState) => state.blogs.items || []);
+	// Get data from Context
+	const { items: rawLinks } = useLinks();
+	const { items: rawBlogs } = useBlogs();
 
 	// Process and sort the data
 	const sortedLinks = useMemo(() => sortByTimestamp(rawLinks), [rawLinks]);

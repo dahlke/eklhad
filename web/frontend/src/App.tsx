@@ -1,6 +1,5 @@
 // Import necessary dependencies
 import React, { Suspense, lazy } from "react";
-import { useSelector } from "react-redux";
 import md5 from "blueimp-md5";
 
 // Lazy load heavy components for code splitting
@@ -9,15 +8,13 @@ const Map = lazy(() => import("./component/map/Map"));
 // Import styles
 import "./App.css";
 
-// Import types
-import { RootState } from "./reducers/index";
+// Import hooks
+import { useGravatar } from "./contexts";
 
 function App() {
-    const gravatar = useSelector((state: RootState) => state.gravatar);
-    // Generate MD5 hash of the gravatar email (if available)
-    const gravatarEmailMD5 = md5(
-        gravatar ? gravatar.email : "",
-    );
+    const gravatar = useGravatar();
+    // Generate MD5 hash of the gravatar email
+    const gravatarEmailMD5 = md5(gravatar.email || "");
     // Construct the Gravatar URL using the MD5 hash
     const gravatarURL = `https://www.gravatar.com/avatar/${gravatarEmailMD5}.jpg`;
 
