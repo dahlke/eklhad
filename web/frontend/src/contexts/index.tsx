@@ -5,6 +5,7 @@ import { BlogsProvider } from './BlogsContext';
 import { GravatarProvider } from './GravatarContext';
 import { ActivityFilterProvider } from './ActivityFilterContext';
 import { DateFilterProvider } from './DateFilterContext';
+import { DarkModeProvider } from './DarkModeContext';
 
 interface AppProvidersProps {
 	children: ReactNode;
@@ -16,19 +17,21 @@ interface AppProvidersProps {
  */
 export function AppProviders({ children }: AppProvidersProps) {
 	return (
-		<LocationsProvider>
-			<LinksProvider>
-				<BlogsProvider>
-					<GravatarProvider>
-						<ActivityFilterProvider>
-							<DateFilterProvider>
-								{children}
-							</DateFilterProvider>
-						</ActivityFilterProvider>
-					</GravatarProvider>
-				</BlogsProvider>
-			</LinksProvider>
-		</LocationsProvider>
+		<DarkModeProvider>
+			<LocationsProvider>
+				<LinksProvider>
+					<BlogsProvider>
+						<GravatarProvider>
+							<ActivityFilterProvider>
+								<DateFilterProvider>
+									{children}
+								</DateFilterProvider>
+							</ActivityFilterProvider>
+						</GravatarProvider>
+					</BlogsProvider>
+				</LinksProvider>
+			</LocationsProvider>
+		</DarkModeProvider>
 	);
 }
 
@@ -39,6 +42,7 @@ export { useBlogs } from './BlogsContext';
 export { useGravatar } from './GravatarContext';
 export { useActivityFilter } from './ActivityFilterContext';
 export { useDateFilter } from './DateFilterContext';
+export { useDarkMode } from './DarkModeContext';
 
 // Re-export Location type
 export type { Location } from './LocationsContext';
