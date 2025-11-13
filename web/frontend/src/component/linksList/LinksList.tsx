@@ -73,7 +73,7 @@ function LinksList() {
 			{/* Toggle button for showing/hiding blogs */}
 			<button
 				type="button"
-				className="text-xs border border-solid border-indigo-500 hover:bg-gray-200 p-2 m-5 rounded"
+				className="text-xs border border-solid border-indigo-500 dark:border-indigo-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-gray-200 p-2 m-5 rounded"
 				onClick={toggleHistoricalLinks}
 			>
 				{historicalLinkButtonText}

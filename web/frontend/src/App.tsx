@@ -10,6 +10,7 @@ import "./App.css";
 
 // Import hooks
 import { useGravatar } from "./contexts";
+import { DarkModeToggle } from "./component/darkModeToggle/DarkModeToggle";
 
 function App() {
     const gravatar = useGravatar();
@@ -19,7 +20,8 @@ function App() {
     const gravatarURL = `https://www.gravatar.com/avatar/${gravatarEmailMD5}.jpg`;
 
     return (
-        <div id="app" className="container mx-auto p-4 text-chicago-flag-blue">
+        <div id="app" className="container mx-auto p-4 text-chicago-flag-blue dark:text-chicago-flag-blue">
+            <DarkModeToggle />
             <div className="text-center font-mono w-full md:w-1/2 mx-auto uppercase">
                 <div className="block">
                     {/* Profile image */}
@@ -36,7 +38,7 @@ function App() {
                     <h5 className="pb-10">
                         <a
                             target="_blank"
-                            className="underline"
+                            className="underline hover:opacity-80 dark:hover:opacity-70"
                             rel="noopener noreferrer"
                             href="https://www.github.com/dahlke"
                         >
@@ -47,7 +49,7 @@ function App() {
                         {" "}
                         <a
                             target="_blank"
-                            className="underline"
+                            className="underline hover:opacity-80 dark:hover:opacity-70"
                             rel="noopener noreferrer"
                             href="https://instagram.com/eklhad"
                         >
@@ -58,7 +60,7 @@ function App() {
                         {" "}
                         <a
                             target="_blank"
-                            className="underline"
+                            className="underline hover:opacity-80 dark:hover:opacity-70"
                             rel="noopener noreferrer"
                             href="https://x.com/neildahlke"
                         >
@@ -69,7 +71,7 @@ function App() {
                         {" "}
                         <a
                             target="_blank"
-                            className="underline"
+                            className="underline hover:opacity-80 dark:hover:opacity-70"
                             rel="noopener noreferrer"
                             href="https://eklhad.medium.com/"
                         >
@@ -80,7 +82,7 @@ function App() {
                         {" "}
                         <a
                             target="_blank"
-                            className="underline"
+                            className="underline hover:opacity-80 dark:hover:opacity-70"
                             rel="noopener noreferrer"
                             href="https://www.linkedin.com/in/neildahlke"
                         >
@@ -91,7 +93,7 @@ function App() {
                         {" "}
                         <a
                             target="_blank"
-                            className="underline"
+                            className="underline hover:opacity-80 dark:hover:opacity-70"
                             rel="noopener noreferrer"
                             href="https://www.strava.com/athletes/4351145"
                         >
@@ -102,7 +104,7 @@ function App() {
                         {' '}
                         <a
                             href="/static/resume.html"
-                            className="underline"
+                            className="underline hover:opacity-80 dark:hover:opacity-70"
                         >
                             Résumé
                         </a>
@@ -112,8 +114,8 @@ function App() {
                 <Suspense fallback={
                     <div className="flex items-center justify-center h-96">
                         <div className="text-center">
-                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-chicago-flag-blue mx-auto mb-4"></div>
-                            <p className="text-sm">Loading map...</p>
+                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-chicago-flag-blue dark:border-chicago-flag-blue mx-auto mb-4"></div>
+                            <p className="text-sm dark:text-gray-300">Loading map...</p>
                         </div>
                     </div>
                 }>
