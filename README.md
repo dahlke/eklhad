@@ -1,8 +1,5 @@
 # Eklhad
 
-![Go Coverage](https://img.shields.io/badge/coverage-28.3%25-orange?logo=go&logoColor=white)
-![JavaScript Coverage](https://img.shields.io/badge/coverage-37.39%25-orange?logo=javascript&logoColor=white)
-
 My personal web assets. I use this project to try out many different types of new web technologies, so it is highly overengineered and shouldn't be used by anybody.
 
 ## Getting Started
