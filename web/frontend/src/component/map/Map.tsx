@@ -1,19 +1,17 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import MapGL, { Marker, Popup } from "react-map-gl/mapbox";
 import type { ViewState } from "react-map-gl/mapbox";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./Map.css";
 
-import { RootState } from "../../reducers/index";
-import type { Location } from "../../reducers/locationsSlice";
+import { useLocations, type Location } from "../../contexts";
 
 const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoibnRkIiwiYSI6ImNqdTM3eXplODBrYTQ0ZHBnNnB6bDcwbjMifQ.JhbZo-A0SGq4Pgk87T2hoQ";
 const MAPBOX_STYLE = "mapbox://styles/ntd/cjsl0z4lm3d971fllo51zcza8";
 
 function Map() {
-	const locations = useSelector((state: RootState) => state.locations.items);
+	const { items: locations } = useLocations();
 	// Initialize state
 	const [viewState, setViewState] = useState<ViewState>({
 		latitude: 37.7577,

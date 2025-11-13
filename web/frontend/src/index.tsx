@@ -3,10 +3,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import { Provider } from "react-redux";
-import { store } from "./store";
-import { fetchLocations } from "./reducers/locationsSlice";
-import { fetchGravatar } from "./reducers/gravatarSlice";
+import { AppProviders } from "./contexts";
 import App from "./App";
 
 import "./index.css";
@@ -15,14 +12,11 @@ import * as serviceWorker from "./serviceWorker";
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
-store.dispatch(fetchLocations());
-store.dispatch(fetchGravatar());
-
 root.render(
     <React.StrictMode>
-        <Provider store={store}>
+        <AppProviders>
             <App />
-        </Provider>
+        </AppProviders>
     </React.StrictMode>,
 );
 
