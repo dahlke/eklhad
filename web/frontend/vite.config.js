@@ -15,7 +15,6 @@ export default defineConfig(() => ({
             'mapbox-gl': ['mapbox-gl', 'react-map-gl/mapbox'],
             // Separate vendor libraries
             'vendor-react': ['react', 'react-dom'],
-            'vendor-redux': ['redux', 'react-redux', '@reduxjs/toolkit'],
             // Date utilities
             'vendor-date': ['date-fns'],
           },
