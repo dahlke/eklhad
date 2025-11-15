@@ -265,14 +265,6 @@ resource "cloudflare_record" "mx" {
   allow_overwrite = true
 }
 
-resource "cloudflare_record" "spf" {
-  zone_id = var.cloudflare_zone_id
-  name    = "dahlke.io"
-  value   = "v=spf1 -all"
-  type    = "TXT"
-  allow_overwrite = true
-}
-
 resource "cloudflare_record" "dmarc" {
   zone_id = var.cloudflare_zone_id
   name    = "_dmarc"
