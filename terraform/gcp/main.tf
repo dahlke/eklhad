@@ -180,14 +180,6 @@ resource "cloudflare_record" "mx" {
   priority = 10
 }
 
-# Add SPF record to prevent email spoofing
-resource "cloudflare_record" "spf" {
-  zone_id = var.cloudflare_zone_id
-  name    = "dahlke.io"
-  value   = "v=spf1 -all"
-  type    = "TXT"
-}
-
 # Add DMARC record
 resource "cloudflare_record" "dmarc" {
   zone_id = var.cloudflare_zone_id
