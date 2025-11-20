@@ -5,20 +5,22 @@ import type { ViewState } from "react-map-gl/mapbox";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./Map.css";
 
-import { useLocations, type Location } from "../../contexts";
+import { useLocations, useDarkMode, type Location } from "../../contexts";
 
 const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoibnRkIiwiYSI6ImNqdTM3eXplODBrYTQ0ZHBnNnB6bDcwbjMifQ.JhbZo-A0SGq4Pgk87T2hoQ";
-const MAPBOX_STYLE = "mapbox://styles/ntd/cjsl0z4lm3d971fllo51zcza8";
+const MAPBOX_STYLE_LIGHT = "mapbox://styles/mapbox/light-v11";
+const MAPBOX_STYLE_DARK = "mapbox://styles/mapbox/dark-v11";
 
 function Map() {
 	const { items: locations } = useLocations();
+	const { isDarkMode } = useDarkMode();
 	// Initialize state
 	const [viewState, setViewState] = useState<ViewState>({
 		latitude: 37.7577,
 		longitude: -122.4376,
 		zoom: 6,
 		bearing: 0,
-		pitch: 50,
+		pitch: 0,  // Changed from 50
 		padding: { top: 0, bottom: 0, left: 0, right: 0 },
 	});
 	const [popupInfo, setPopupInfo] = useState<Location | null>(null);
@@ -94,7 +96,7 @@ function Map() {
 				onMove={(evt: { viewState: ViewState }) => setViewState(evt.viewState)}
 				mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
 				style={{ width: "100%", height: "100%" }}
-				mapStyle={MAPBOX_STYLE}
+				mapStyle={isDarkMode ? MAPBOX_STYLE_DARK : MAPBOX_STYLE_LIGHT}
 				attributionControl={false}
 			>
 				{renderPopup()}
