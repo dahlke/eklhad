@@ -1,7 +1,9 @@
 body {
 	background: theme("colors.off-white");
+	font-family: theme("fontFamily.sans");
 }
 
 .dark body {
 	background: #1a1a1a;
+	font-family: theme("fontFamily.sans");
 }

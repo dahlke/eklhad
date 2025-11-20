@@ -19,7 +19,7 @@ module.exports = {
         "1/4": "25%",
       },
       fontFamily: {
-        mono: ["VCR OSD Mono", ...defaultTheme.fontFamily.mono],
+        sans: ["Open Sans", "Arial", "sans-serif"],
       },
       colors: {
         "off-white": "#fcfbf9",

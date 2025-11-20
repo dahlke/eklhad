@@ -22,7 +22,7 @@ function App() {
     return (
         <div id="app" className="container mx-auto p-4 text-chicago-flag-blue dark:text-chicago-flag-blue">
             <DarkModeToggle />
-            <div className="text-center font-mono w-full md:w-1/2 mx-auto uppercase">
+            <div className="text-center w-full md:w-1/2 mx-auto">
                 <div className="block">
                     {/* Profile image */}
                     <img
@@ -32,7 +32,7 @@ function App() {
                     />
                     {/* Name and job title */}
                     <h1 className="pt-5 pb-2 text-3xl font-bold">Neil Dahlke</h1>
-                    <h2 className="pb-2">Software Solutions Engineer</h2>
+                    <h2 className="pb-2">Software Sales Engineer</h2>
                     <h4 className="pb-2">San Francisco, California, USA</h4>
                     {/* Social media and professional links */}
                     <h5 className="pb-10">
