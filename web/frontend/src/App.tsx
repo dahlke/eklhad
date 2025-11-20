@@ -20,22 +20,22 @@ function App() {
     const gravatarURL = `https://www.gravatar.com/avatar/${gravatarEmailMD5}.jpg`;
 
     return (
-        <div id="app" className="container mx-auto p-4 text-chicago-flag-blue dark:text-chicago-flag-blue">
+        <div id="app" className="container mx-auto p-6 md:p-8 text-chicago-flag-blue dark:text-chicago-flag-blue">
             <DarkModeToggle />
-            <div className="text-center w-full md:w-1/2 mx-auto">
-                <div className="block">
+            <div className="text-center w-full md:w-1/2 mx-auto mt-8 md:mt-12">
+                <div className="block mb-8">
                     {/* Profile image */}
                     <img
-                        className="w-24 h-24 mx-auto rounded-full"
+                        className="w-24 h-24 md:w-28 md:h-28 mx-auto rounded-full mb-4"
                         alt="Neil Dahlke"
                         src={gravatarURL}
                     />
                     {/* Name and job title */}
-                    <h1 className="pt-5 pb-2 text-3xl font-bold">Neil Dahlke</h1>
-                    <h2 className="pb-2">Software Sales Engineer</h2>
-                    <h4 className="pb-2">San Francisco, California, USA</h4>
+                    <h1 className="pb-2 text-2xl md:text-3xl font-bold">Neil Dahlke</h1>
+                    <h2 className="pb-2 text-sm md:text-base">Software Sales Engineer</h2>
+                    <h4 className="pb-3 text-xs md:text-sm">San Francisco, California, USA</h4>
                     {/* Social media and professional links */}
-                    <h5 className="pb-10">
+                    <h5 className="pb-6 text-xs md:text-sm">
                         <a
                             target="_blank"
                             className="underline hover:opacity-80 dark:hover:opacity-70"
