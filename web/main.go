@@ -24,9 +24,8 @@ type templatePayload struct {
 }
 
 type appConfig struct {
-	GSheetID           string `json:"g_sheet_id"`
-	GravatarEmail      string `json:"gravatar_email"`
-	WorkerMinSleepMins int    `json:"worker_min_sleep_mins"`
+	GSheetID      string `json:"g_sheet_id"`
+	GravatarEmail string `json:"gravatar_email"`
 }
 
 var appHostName, _ = os.Hostname()
@@ -249,7 +248,8 @@ func parseConfig(configJSONPath string) appConfig {
 }
 
 func scheduleWorkers(config appConfig) {
-	go workers.ScheduleGSheetsWork(config.WorkerMinSleepMins, config.GSheetID)
+	// Workers are no longer scheduled on a timer
+	// Use the -gsheets flag to manually pull data when needed
 }
 
 func main() {
