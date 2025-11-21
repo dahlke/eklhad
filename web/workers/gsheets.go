@@ -421,15 +421,3 @@ func GetDataFromGSheets(spreadSheetID string) {
 		writeLinksToGCS(eklhadLinks)
 	}
 }
-
-// ScheduleGSheetsWork schedules GetDataFromGSheets at an interval
-func ScheduleGSheetsWork(numSleepMins int, spreadSheetID string) {
-	iterationNumber := 0
-	for {
-		log.Info(fmt.Sprintf("Starting GSheets worker scheduled task #%d...", iterationNumber))
-		GetDataFromGSheets(spreadSheetID)
-		iterationNumber++
-		log.Info(fmt.Sprintf("GSheets worker sleeping for %d minute(s)...", numSleepMins))
-		time.Sleep(time.Duration(numSleepMins) * time.Minute)
-	}
-}

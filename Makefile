@@ -9,7 +9,7 @@ WEB_APP_CONFIG_PATH=web/config.json
 
 DOCKER_HUB_USER=eklhad
 DOCKER_WEB_IMAGE_NAME=eklhad-web
-DOCKER_WEB_IMAGE_VERSION=0.1.4
+DOCKER_WEB_IMAGE_VERSION=0.1.5
 
 
 ##########################
