@@ -7,7 +7,7 @@ import "./Map.css";
 
 import { useLocations, useDarkMode, type Location } from "../../contexts";
 
-const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoibnRkIiwiYSI6ImNqdTM3eXplODBrYTQ0ZHBnNnB6bDcwbjMifQ.JhbZo-A0SGq4Pgk87T2hoQ";
+const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoibnRkIiwiYSI6ImNtaTgzOTgyaTA3b28ybG9najd0b3M0Ym4ifQ.ZXgoLdf7oVnUFD1-TbSILQ";
 const MAPBOX_STYLE_LIGHT = "mapbox://styles/mapbox/light-v11";
 const MAPBOX_STYLE_DARK = "mapbox://styles/mapbox/dark-v11";
 
