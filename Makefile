@@ -39,7 +39,13 @@ js_lint_fix_dry:
 resume: npm
 	cd web/frontend/conf/ && \
 	npx resume export resume.html --format html --theme classic && \
-	mv ${CWD}/web/frontend/conf/resume.html ${CWD}/web/frontend/public/static/resume.html;
+	mv ${CWD}/web/frontend/conf/resume.html ${CWD}/web/frontend/public/static/resume.html
+	# Patch CSS for information density
+	sed -i '' 's/max-width: 600px;/max-width: 750px;/g' ${CWD}/web/frontend/public/static/resume.html
+	sed -i '' '/\.sectionLine/,/}/ s/margin-top: 10px;/margin-top: 6px;/' ${CWD}/web/frontend/public/static/resume.html
+	sed -i '' '/\.sectionLine/,/}/ s/margin-bottom: 10px;/margin-bottom: 6px;/' ${CWD}/web/frontend/public/static/resume.html
+	sed -i '' 's/height: 14px;/height: 8px;/g' ${CWD}/web/frontend/public/static/resume.html
+	sed -i '' 's/line-height: 1\.4;/line-height: 1.3;/g' ${CWD}/web/frontend/public/static/resume.html
 
  .PHONY: frontend_test
  frontend_test: npm
