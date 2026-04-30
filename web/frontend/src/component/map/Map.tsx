@@ -20,7 +20,7 @@ function Map() {
 		longitude: -122.4376,
 		zoom: 6,
 		bearing: 0,
-		pitch: 0,  // Changed from 50
+		pitch: 0,
 		padding: { top: 0, bottom: 0, left: 0, right: 0 },
 	});
 	const [popupInfo, setPopupInfo] = useState<Location | null>(null);

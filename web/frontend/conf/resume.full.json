@@ -1,15 +1,15 @@
 {
 	"basics": {
 		"name": "Neil Dahlke",
-		"label": "Software Sales Engineer",
+		"label": "Deployed Engineering Leader",
 		"picture": "https://en.gravatar.com/userimage/25206271/c07bb7c64399588ea12e52065f2b6dda.jpg",
 		"email": "neil+eklhad-web@dahlke.io",
 		"phone": "cell not available here",
 		"website": "http://dahlke.io",
-		"summary": "",
+		"summary": "Engineering leader with 10+ years in software development, solutions engineering, and field leadership across AI, infrastructure, and data. Won Solutions Engineer of the Year and President's Club multiple times as an individual contributor, then founded and built the West Deployed Engineering team at LangChain. Technical depth spans AI/ML frameworks, cloud infrastructure, and distributed systems, with a history of staying close to customers and feeding field insights directly into product decisions.",
 		"location": {
 			"address": "",
-			"postalCode": "CA 91402",
+			"postalCode": "91402",
 			"city": "San Francisco",
 			"countryCode": "US",
 			"region": "California"
@@ -30,10 +30,18 @@
 	"work": [
 		{
 			"company": "LangChain",
-			"position": "Lead Deployed Engineer",
+			"position": "Director, Deployed Engineering - West",
 			"website": "https://langchain.com",
 			"startDate": "2025-10-06",
-			"highlights": []
+			"highlights": [
+				"Lead the West Deployed Engineering team from its founding, including all hiring, onboarding, and process development.",
+				"Manage a portfolio of strategic accounts as a certified technical resource, focused on adoption, expansion, and renewals.",
+				"Run quarterly business reviews across all regions to connect customer engineering teams to business goals.",
+				"Maintain dashboards and automations to track OKRs across the Deployed Engineering organization, improving business quality and visibility.",
+				"Contribute to pricing strategy and maintain forecasting models to support revenue planning.",
+				"Manage the feature request and feedback process between field engineers and product teams, driving faster turnaround on key customer requests.",
+				"Develop and run onboarding programs, enablement docs, and technical tooling to get new hires productive faster."
+			]
 		},
 		{
 			"company": "Temporal Technologies",
@@ -42,60 +50,48 @@
 			"startDate": "2024-07-01",
 			"endDate": "2025-09-26",
 			"highlights": [
-				"Educated customers and stakeholders on Temporal's capabilities and value proposition through presentations, whiteboarding sessions, and technical documentation.",
-				"Partnered closely with Account Executives to develop and execute strategic account plans, aligning technical solutions with business objectives.",
-				"Positioned Temporal competitively against alternative technologies and architectural patterns, educating customers on a developing market category.",
-				"Built application prototypes and offered hands-on design, development, and deployment support across Java, Golang, TypeScript, Python, C#, and PHP.",
-				"Advised customer engineering teams on operational considerations including security, scalability, reliability, cost optimization, and maintainability.",
-				"Maintained trusted relationships with technical decision-makers to ensure successful implementation and long-term value realization.",
-				"Provided strategic technical insights and guidance to qualify, scope, and size opportunities in collaboration with sales teams.",
-				"Integrated into new logo acquisition and existing customer growth initiatives, bridging pre-sales technical discovery with post-sales implementation and expansion support."
+				"Educated customers and technical stakeholders on Temporal through presentations, whiteboarding sessions, and technical documentation.",
+				"Worked with Account Executives on account plans and strategy, connecting technical solutions to customer goals.",
+				"Positioned Temporal against competing technologies and architectural approaches in a still-developing market.",
+				"Built application prototypes and provided hands-on support across Java, Golang, TypeScript, Python, C#, and PHP.",
+				"Advised engineering teams on security, scalability, reliability, cost, and maintainability.",
+				"Maintained relationships with technical decision-makers through post-sales implementation.",
+				"Worked with sales teams to qualify, scope, and size opportunities."
 			]
 		},
 		{
 			"company": "HashiCorp",
 			"position": "Sr. Staff Solutions Engineer, Global (Vault SME Leader)",
 			"website": "http://hashicorp.com",
-			"startDate": "2022-05-02",
+			"startDate": "2021-02-01",
 			"endDate": "2024-06-28",
 			"highlights": [
-				"Managed pre-sales engineering activities (discovery, value prop, architectural design) with new products, as well as post-sales engineering activities (onboarding, growth, expansion, etc.) with existing products.",
-				"Worked with practitioners and executives, as a product subject matter expert.",
-				"Served as escalation point for technology questions and issues in F50.",
-				"Triaged all Vault field requests, bi-directional product feedback loop between field, engineering, and go-to-market.",
-				"Was deeply integrated with the product team for feedback loops and product direction.",
-				"Designed training, demos and workshops for customers; designed training and enablement material for sales team.",
-				"Maintained product, technical deep dive, and roadmap decks; competitive analysis documentation."
+				"Promoted to Sr. Staff based on consistent quota overachievement, Vault expertise, and contributions across the broader organization.",
+				"Handled pre-sales (discovery, value prop, architectural design) for new products and post-sales (onboarding, growth, expansion) for existing ones.",
+				"Worked with practitioners and executives as a product subject matter expert.",
+				"Served as the escalation point for technical questions and issues in Fortune 50 accounts.",
+				"Triaged all Vault field requests and ran a feedback loop between field, engineering, and go-to-market.",
+				"Embedded with the product team on roadmap direction and field feedback.",
+				"Designed training, demos, and workshops for customers; built enablement material for the sales team.",
+				"Maintained product, technical deep dive, and roadmap decks plus competitive analysis documentation.",
+				"Selected for the Top Financials program, working with HashiCorp's most strategic financial services accounts."
 			]
-		},
-		{
-			"company": "HashiCorp",
-			"position": "Staff Solutions Engineer, Global (Vault SME Leader)",
-			"website": "http://hashicorp.com",
-			"startDate": "2021-02-01",
-			"endDate": "2022-05-02",
-			"highlights": []
 		},
 		{
 			"company": "HashiCorp",
 			"position": "Staff Solutions Engineer, West North America",
 			"website": "http://hashicorp.com",
-			"startDate": "2020-02-01",
+			"startDate": "2018-11-19",
 			"endDate": "2021-02-01",
 			"highlights": [
-				"DevOps domain expert for sales team on strategic client relationships in F500.",
-				"Led pre-sales engineering activities (discovery, value prop, architectural design).",
-				"Worked closely with key client executive decision makers on PoCs ensuring solution validity.",
-				"Focused across the entire HashiCorp stack."
+				"Promoted from Senior to Staff Solutions Engineer in the West region based on quota attainment and team contributions.",
+				"DevOps domain expert for the sales team across strategic Fortune 500 accounts.",
+				"Led pre-sales activities including discovery, value prop, and architectural design.",
+				"Worked directly with client executive decision-makers to validate technical approaches.",
+				"Worked across the full HashiCorp product suite, including Terraform, Vault, Consul, Nomad, and Boundary.",
+				"Mentored new Solutions Engineers and helped build out demo frameworks and team enablement.",
+				"Earned SE of the Quarter and SE of the Year recognition in FY20, consistently exceeding quota throughout the West region tenure."
 			]
-		},
-		{
-			"company": "HashiCorp",
-			"position": "Senior Solutions Engineer, West North America",
-			"website": "http://hashicorp.com",
-			"startDate": "2018-11-19",
-			"endDate": "2020-02-01",
-			"highlights": []
 		},
 		{
 			"company": "SingleStore (MemSQL)",
@@ -104,13 +100,13 @@
 			"startDate": "2017-03-01",
 			"endDate": "2018-11-16",
 			"highlights": [
-				"Executed proof-of-concepts (PoCs) with enterprise customers including Goldman Sachs, Pinterest, and Uber, demonstrating SingleStore's real-time analytics capabilities.",
+				"Led technical evaluations with enterprise customers including Goldman Sachs, Pinterest, and Uber, demonstrating SingleStore's real-time analytics capabilities.",
 				"Designed and architected database solutions for customer workloads, including schema optimization, query tuning, and performance benchmarking.",
-				"Conducted technical discovery sessions to understand customer requirements and map SingleStore features to business use cases.",
+				"Ran discovery sessions to understand customer requirements and identify where SingleStore could address them.",
 				"Delivered technical presentations and product demonstrations to C-level executives and engineering teams at Fortune 500 companies.",
-				"Collaborated with sales teams to develop technical proposals, respond to RFPs, and create custom solution architectures.",
-				"Provided hands-on technical support during customer evaluations, including installation, configuration, and troubleshooting.",
-				"Built reusable sales tools, demos, and technical collateral to accelerate the sales process and enable the broader sales team."
+				"Worked with sales teams on technical proposals, RFP responses, and custom solution architectures.",
+				"Provided hands-on support during customer evaluations, including installation, configuration, and troubleshooting.",
+				"Built reusable demos, tools, and technical collateral to speed up the sales process and enable the broader team."
 			]
 		},
 		{
@@ -120,6 +116,11 @@
 			"startDate": "2015-11-01",
 			"endDate": "2017-03-01",
 			"highlights": [
+				"Partnered with Account Executives on new logo acquisition and account expansion across Fortune 100 accounts, serving as the primary technical resource throughout the sales cycle.",
+				"Designed, developed, and deployed customer evaluations demonstrating SingleStore's capabilities against complex analytical and transactional workloads.",
+				"Led technical evaluations including query tuning, load testing, and competitive benchmarking against Oracle, SQL Server, Postgres, Snowflake, and other data platforms.",
+				"Relayed customer requirements and field feedback to Product and Engineering to influence the roadmap.",
+				"Earned SE of the Year (Global) recognition, consistently exceeding quota across the West region."
 			]
 		},
 		{
@@ -129,6 +130,8 @@
 			"startDate": "2013-12-01",
 			"endDate": "2015-11-01",
 			"highlights": [
+				"Built frontend interfaces and data visualization tools for SingleStore's real-time analytics database product.",
+				"Developed deep product knowledge working directly alongside the engineering team, which later supported a move into Solutions Engineering.",
 				"Translated design mockups and prototypes into large-scale web applications."
 			]
 		},
@@ -140,34 +143,34 @@
 			"endDate": "2013-12-01",
 			"summary": "",
 			"highlights": [
-				"Developed, tested, deployed and maintained software, with a focus on front-end."
+				"Built and maintained frontend features for Globus, a research data management platform used by universities and national labs.",
+				"Worked alongside researchers to translate technical requirements into software."
 			]
 		},
-        {
+		{
 			"company": "ICON Technologies",
 			"position": "Senior Software Engineer",
 			"website": "",
-			"startDate": "",
-			"endDate": "",
+			"startDate": "2012-01-01",
+			"endDate": "2013-05-01",
 			"summary": "",
 			"highlights": [
-				"Interfaced with clients to understand business requirements, documented them, and mapped those requirements to software solutions.",
-				"Reviewed technical design, provided recommendations for software development and implemented those recommendations.",
-				"Coordinated with clients to document the software solution and provide support as their teams took ownership of the deliverables."
+				"Worked directly with clients to gather requirements, document solutions, and deliver software to spec.",
+				"Reviewed technical designs, provided recommendations, and implemented them.",
+				"Coordinated handoffs to client teams as they took ownership of deliverables."
 			]
 		},
-        {
+		{
 			"company": "MentorMob",
 			"position": "Software Engineer",
 			"website": "https://mentormob.com",
-			"startDate": "",
-			"endDate": "",
+			"startDate": "2010-01-01",
+			"endDate": "2012-01-01",
 			"summary": "",
 			"highlights": [
-				"Co-designed API interfaces with backend team",
-				"Developed JavaScript libraries for AJAX communication with backend API.",
-				"Designed and developed MentorMob core learning workflow and quiz interface",
-				"Worked with design team to develop page structure and feel, ensuring a quality user experience."
+				"Co-designed and built the core learning workflow and quiz interface as part of a small startup team.",
+				"Developed JavaScript libraries for AJAX communication with the backend API.",
+				"Worked with the design team on page structure and user experience."
 			]
 		}
 	],
@@ -179,8 +182,7 @@
 			"startDate": "2012-01-01",
 			"endDate": "2013-01-01",
 			"summary": "",
-			"highlights": [
-			]
+			"highlights": []
 		},
 		{
 			"organization": "San Francisco SVDP",
@@ -189,8 +191,7 @@
 			"startDate": "2012-01-01",
 			"endDate": "2013-01-01",
 			"summary": "",
-			"highlights": [
-			]
+			"highlights": []
 		},
 		{
 			"organization": "Healthier Evergreen",
@@ -199,8 +200,7 @@
 			"startDate": "2012-01-01",
 			"endDate": "2013-01-01",
 			"summary": "",
-			"highlights": [
-			]
+			"highlights": []
 		},
 		{
 			"organization": "St. Alberts CCD",
@@ -209,8 +209,7 @@
 			"startDate": "2012-01-01",
 			"endDate": "2013-01-01",
 			"summary": "",
-			"highlights": [
-			]
+			"highlights": []
 		},
 		{
 			"organization": "PAWS Chicago",
@@ -219,8 +218,7 @@
 			"startDate": "2012-01-01",
 			"endDate": "2013-01-01",
 			"summary": "",
-			"highlights": [
-			]
+			"highlights": []
 		},
 		{
 			"organization": "Brother Edmund Rice Camp",
@@ -229,8 +227,7 @@
 			"startDate": "2012-01-01",
 			"endDate": "2013-01-01",
 			"summary": "",
-			"highlights": [
-			]
+			"highlights": []
 		}
 	],
 	"education": [
@@ -241,8 +238,7 @@
 			"startDate": "2009-07-01",
 			"endDate": "2013-05-01",
 			"gpa": "3.925, Dean's List 2009-2013",
-			"courses": [
-			]
+			"courses": []
 		}
 	],
 	"awards": [
@@ -260,13 +256,13 @@
 		},
 		{
 			"title": "SE of the Year, West USA (FY21)",
-			"date": "2020-02-11",
+			"date": "2021-02-11",
 			"awarder": "HashiCorp",
 			"summary": ""
 		},
 		{
 			"title": "SE of the Quarter, Americas (FY21Q1)",
-			"date": "2020-05-07",
+			"date": "2021-05-07",
 			"awarder": "HashiCorp",
 			"summary": ""
 		},
@@ -293,30 +289,6 @@
 			"date": "2018-03-21",
 			"awarder": "SingleStore (MemSQL)",
 			"summary": ""
-		},
-		{
-			"title": "SE of the Year (179%)",
-			"date": "2016-03-21",
-			"awarder": "MemSQL",
-			"summary": ""
-		},
-		{
-			"title": "President's Club 2018",
-			"date": "2016-03-21",
-			"awarder": "MemSQL",
-			"summary": ""
-		},
-		{
-			"title": "President's Club 2017",
-			"date": "2017-03-21",
-			"awarder": "MemSQL",
-			"summary": ""
-		},
-		{
-			"title": "President's Club 2016",
-			"date": "2016-03-21",
-			"awarder": "MemSQL",
-			"summary": ""
 		}
 	],
 	"publications": [
@@ -324,28 +296,28 @@
 			"name": "Building Resilient Distributed Systems with Temporal and AWS",
 			"publisher": "",
 			"releaseDate": "2025-05-02",
-			"website": "https://aws.amazon.com/blogs/apn/building-resilient-distributed-systems-with-temporal-and-aws/",
+			"website": "https://dahlke.io/pub/temporal",
 			"summary": ""
 		},
 		{
 			"name": "Hashicorp Vault PKI White Paper",
 			"publisher": "",
 			"releaseDate": "2021-09-24",
-			"website": "https://www.datocms-assets.com/2885/1632943952-moderndaypkimanagementwhitepaperdigitalv1.pdf",
+			"website": "https://dahlke.io/pub/vault",
 			"summary": ""
 		},
 		{
 			"name": "Migrating A Lot of State with Python and the Terraform Cloud API",
 			"publisher": "",
 			"releaseDate": "2020-04-10",
-			"website": "https://medium.com/hashicorp-engineering/migrating-a-lot-of-state-with-python-and-the-terraform-cloud-api-997ec798cd11",
+			"website": "https://dahlke.io/pub/terraform",
 			"summary": ""
 		},
 		{
 			"name": "MemSQL, Tableau, and the Democratization of Data",
 			"publisher": "",
 			"releaseDate": "2016-11-10",
-			"website": "https://eklhad.medium.com/2016-11-10-memsql-tableau-and-the-democratization-of-data-bc28d2495d68",
+			"website": "https://dahlke.io/pub/memsql",
 			"summary": ""
 		},
 		{
@@ -384,9 +356,9 @@
 			"name": "AI & Machine Learning",
 			"level": "",
 			"keywords": [
-				"Langchain",
+				"LangChain",
 				"LangGraph",
-				"Langsmith",
+				"LangSmith",
 				"LLMs",
 				"Vector Databases",
 				"RAG",
@@ -409,8 +381,6 @@
 				"Packer",
 				"Linux",
 				"Containers",
-				"Automation",
-				"Tools",
 				"Continuous Integration",
 				"Config Management",
 				"Git"
@@ -431,8 +401,9 @@
 	],
 	"interests": [
 		{
-			"name": "Being outside.",
+			"name": "Outside of work",
 			"keywords": [
+				"being outside",
 				"cycling",
 				"running",
 				"skiing",
@@ -440,10 +411,15 @@
 				"golf",
 				"travel",
 				"photography",
-				"stories", "people", "team sports"
+				"cooking",
+				"live music",
+				"stories",
+				"people",
+				"team sports",
+				"backpacking",
+				"camping"
 			]
 		}
 	],
-	"references": [
-	]
+	"references": []
 }

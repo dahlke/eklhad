@@ -96,6 +96,12 @@ get auto-generated. */
 	}
 }
 
+@media (min-width: 768px) {
+	#map {
+		height: 100vh;
+	}
+}
+
 @keyframes pulse-ring {
 	0% {
 		transform: scale(0.33);
