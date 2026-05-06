@@ -13,9 +13,10 @@ const photoMap = locationPhotos as Record<string, PhotoEntry>;
 
 function withPhoto(location: Location): Location {
 	const entry = photoMap[location.city ?? ""];
-	const photourl   = location.photourl   || entry?.url   || undefined;
-	const photoemoji = location.photoemoji || entry?.emoji || undefined;
-	const photodate  = location.photodate  || (entry?.date ?? undefined);
+	// JSON is authoritative for URLs (sheet has bare filenames without dates)
+	const photourl   = entry?.url   || location.photourl   || undefined;
+	const photoemoji = entry?.emoji || location.photoemoji || undefined;
+	const photodate  = (entry?.date ?? undefined) || location.photodate || undefined;
 	return { ...location, photourl, photoemoji, photodate };
 }
 
