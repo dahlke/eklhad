@@ -47,7 +47,7 @@ function App() {
                     Deployed Engineering Leader
                 </p>
 
-                <p className="text-sm text-chicago-flag-blue/70 dark:text-slate-500 mb-10 animate-fade-up delay-300">
+                <p className="text-sm italic text-chicago-flag-blue dark:text-slate-400 mb-10 animate-fade-up delay-300">
                     San Francisco, California
                 </p>
 
