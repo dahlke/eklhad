@@ -282,6 +282,20 @@ func main() {
 	http.HandleFunc("/health", healthHandler)
 	http.HandleFunc("/ready", readyHandler)
 
+	// Publication redirects
+	http.HandleFunc("/pub/temporal", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "https://aws.amazon.com/blogs/apn/building-resilient-distributed-systems-with-temporal-and-aws/", http.StatusMovedPermanently)
+	})
+	http.HandleFunc("/pub/vault", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "https://www.datocms-assets.com/2885/1632943952-moderndaypkimanagementwhitepaperdigitalv1.pdf", http.StatusMovedPermanently)
+	})
+	http.HandleFunc("/pub/terraform", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "https://medium.com/hashicorp-engineering/migrating-a-lot-of-state-with-python-and-the-terraform-cloud-api-997ec798cd11", http.StatusMovedPermanently)
+	})
+	http.HandleFunc("/pub/memsql", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "https://eklhad.medium.com/2016-11-10-memsql-tableau-and-the-democratization-of-data-bc28d2495d68", http.StatusMovedPermanently)
+	})
+
 	// Main routes
 	http.HandleFunc("/", htmlHandler)
 	http.Handle("/static/", fileServer)

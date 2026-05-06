@@ -31,5 +31,20 @@ artifact/*
 # Config Files
 web/secrets.json
 
+# Secrets — never commit these
+.env
+.env.*
+credentials.json
+token.json
+*.key
+*service_account*.json
+*_sa.json
+
+# Local photo copies (served from GCS in production)
+web/frontend/public/static/locations/
+
 # Personal Notes
 NEIL.md
+
+# Claude Code local settings (may contain MCP tokens/permissions)
+.claude/settings.local.json

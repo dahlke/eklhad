@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Mobile: gradient background — solid top fades to transparent at bottom, revealing the map behind */
+.profile-mobile-bg {
+    background: linear-gradient(to bottom, #e8eaf0 60%, transparent 100%);
+}
+
+.dark .profile-mobile-bg {
+    background: linear-gradient(to bottom, #0d1117 60%, transparent 100%);
+}
+
+/* Desktop: let Tailwind md:bg-off-white / md:dark:bg-dark-bg handle the solid background */
+@media (min-width: 768px) {
+    .profile-mobile-bg {
+        background: none;
+    }
+}

@@ -9,8 +9,17 @@ WEB_APP_CONFIG_PATH=web/config.json
 
 DOCKER_HUB_USER=eklhad
 DOCKER_WEB_IMAGE_NAME=eklhad-web
-DOCKER_WEB_IMAGE_VERSION=0.1.5
+DOCKER_WEB_IMAGE_VERSION=$(shell git rev-parse --short HEAD)
 
+
+##########################
+# DEV SETUP
+##########################
+.PHONY: install-hooks
+install-hooks:
+	cp scripts/hooks/pre-commit .git/hooks/pre-commit
+	chmod +x .git/hooks/pre-commit
+	@echo "Git hooks installed."
 
 ##########################
 # JS HELPERS
@@ -38,8 +47,8 @@ js_lint_fix_dry:
 .PHONY: resume
 resume: npm
 	cd web/frontend/conf/ && \
-	npx resume export resume.html --format html --theme classic && \
-	mv ${CWD}/web/frontend/conf/resume.html ${CWD}/web/frontend/public/static/resume.html;
+	node render-resume.js && \
+	mv ${CWD}/web/frontend/conf/resume.html ${CWD}/web/frontend/public/static/resume.html
 
  .PHONY: frontend_test
  frontend_test: npm
@@ -140,7 +149,8 @@ cloudrun_plan: cloudrun_init
 .PHONY: cloudrun_deploy
 cloudrun_deploy:
 	@echo "Building and pushing Docker image with tag: $(DOCKER_WEB_IMAGE_VERSION)"; \
-	docker build --platform linux/amd64 -t ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION) . && \
+	@test -n "$(MAPBOX_TOKEN_PROD)" || (echo "ERROR: MAPBOX_TOKEN_PROD is not set. Run: source secrets.op.sh" && exit 1)
+	docker build --platform linux/amd64 --build-arg VITE_MAPBOX_TOKEN=$(MAPBOX_TOKEN_PROD) -t ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION) . && \
 	docker tag ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION) ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):latest && \
 	docker push ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION) && \
 	docker push ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):latest && \
