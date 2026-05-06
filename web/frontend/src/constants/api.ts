@@ -22,8 +22,6 @@ if (IS_HTTPS) {
 	appPort = window.APP.apiPort;
 }
 
-console.log("APP PORT", appPort);
-
 export const PORT = appPort;
 export const HOST = window.APP ? window.APP.apiHost : window.location.hostname;
 export const API_BASE_URL = `${PROTOCOL}//${HOST}:${PORT}/api`;

@@ -11,4 +11,7 @@ type EklhadLocation struct {
 	Home                bool    `json:"home"`
 	Lat                 float64 `json:"lat"`
 	Lng                 float64 `json:"lng"`
+	PhotoURL            string  `json:"photourl"`
+	PhotoEmoji          string  `json:"photoemoji"`
+	PhotoDate           string  `json:"photodate"`
 }

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="#58b9f7" rx="8"/>
+  <!-- N: filled white box -->
+  <rect x="4" y="10" width="24" height="44" rx="3" fill="white"/>
+  <text x="16" y="43" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-weight="bold" fill="#58b9f7" text-anchor="middle">N</text>
+  <!-- D: outlined white box -->
+  <rect x="36" y="10" width="24" height="44" rx="3" fill="none" stroke="white" stroke-width="2"/>
+  <text x="48" y="43" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-weight="bold" fill="white" text-anchor="middle">D</text>
+</svg>
