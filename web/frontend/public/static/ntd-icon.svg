@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="white"/>
+  <text x="38" y="128" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-weight="bold" fill="#58b9f7" text-anchor="middle">N</text>
+  <line x1="70" y1="72" x2="70" y2="138" stroke="#58b9f7" stroke-width="2"/>
+  <text x="100" y="128" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-weight="bold" fill="#58b9f7" text-anchor="middle">T</text>
+  <line x1="130" y1="72" x2="130" y2="138" stroke="#58b9f7" stroke-width="2"/>
+  <text x="162" y="128" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-weight="bold" fill="#58b9f7" text-anchor="middle">D</text>
+</svg>

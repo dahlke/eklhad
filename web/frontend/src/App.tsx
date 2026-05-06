@@ -20,8 +20,7 @@ const socialLinks = [
 
 function App() {
     const gravatar = useGravatar();
-    const gravatarEmailMD5 = md5(gravatar.email || "");
-    const gravatarURL = `https://www.gravatar.com/avatar/${gravatarEmailMD5}.jpg?s=200`;
+    const gravatarURL = `https://www.gravatar.com/avatar/${md5(gravatar.email || "")}.jpg?s=200`;
     const [profileOpacity, setProfileOpacity] = useState(1);
 
     useEffect(() => {
