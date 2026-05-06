@@ -10,3 +10,7 @@ export GOOGLE_API_KEY=$(op item get "Google dahlke.io" --format=json | jq -r '.f
 export CLOUDFLARE_TOKEN=$(op item get Cloudflare --format=json | jq -r '.fields[3].value')
 export CLOUDFLARE_EMAIL=$(op item get Cloudflare --format=json | jq -r '.fields[4].value')
 export CLOUDFLARE_API_KEY=$(op item get Cloudflare --format=json | jq -r '.fields[5].value')
+
+# Mapbox token — dev token is localhost-restricted; prod token is used in docker builds
+export VITE_MAPBOX_TOKEN=$(op item get "MapBox" --format=json | jq -r '.fields[] | select(.label == "Mapbox dahlke.io Dev") | .value')
+export MAPBOX_TOKEN_PROD=$(op item get "MapBox" --format=json | jq -r '.fields[] | select(.label == "Mapbox dahlke.io Prod") | .value')

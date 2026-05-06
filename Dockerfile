@@ -24,6 +24,9 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o main
 # Stage 2: Build the frontend
 FROM node:20-alpine AS frontend-builder
 
+ARG VITE_MAPBOX_TOKEN
+ENV VITE_MAPBOX_TOKEN=$VITE_MAPBOX_TOKEN
+
 # Set working directory
 WORKDIR /build
 

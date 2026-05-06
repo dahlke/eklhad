@@ -26,12 +26,8 @@ export default defineConfig(() => ({
     plugins: [react()],
     optimizeDeps: {
       include: ['react-map-gl/mapbox', 'mapbox-gl'],
-      esbuildOptions: {
-        loader: {
-          '.js': 'jsx',
-          // TODO
-          '.ts': 'tsx',
-        },
+      rolldownOptions: {
+        onwarn() {},
       },
     },
     test: {
