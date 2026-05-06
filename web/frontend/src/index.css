@@ -4,6 +4,6 @@ body {
 }
 
 .dark body {
-	background: #1a1a1a;
+	background: theme("colors.dark-bg");
 	font-family: theme("fontFamily.sans");
 }
