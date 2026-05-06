@@ -5,25 +5,29 @@ import type { ViewState } from "react-map-gl/mapbox";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./Map.css";
 
-import { useLocations, useDarkMode, type Location } from "../../contexts";
+import { useLocations, type Location } from "../../contexts";
 
 const MAPBOX_ACCESS_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN as string;
-const MAPBOX_STYLE_LIGHT = "mapbox://styles/mapbox/light-v11";
-const MAPBOX_STYLE_DARK = "mapbox://styles/mapbox/dark-v11";
+const MAPBOX_STYLE_SATELLITE = "mapbox://styles/mapbox/satellite-v9";
 
 function Map() {
 	const { items: locations } = useLocations();
-	const { isDarkMode } = useDarkMode();
-	const [viewState, setViewState] = useState<ViewState>({
+const [viewState, setViewState] = useState<ViewState>({
 		latitude: 37.7577,
 		longitude: -122.4376,
-		zoom: 6,
+		zoom: 9,
 		bearing: 0,
-		pitch: 0,
+		pitch: 45,
 		padding: { top: 0, bottom: 0, left: 0, right: 0 },
 	});
 	const [lightboxUrl, setLightboxUrl] = useState<string | null>(null);
 	const mapRef = useRef<MapRef>(null);
+
+	const INITIAL_VIEW = { latitude: 37.7577, longitude: -122.4376, zoom: 9, bearing: 0, pitch: 45 };
+
+	const handleReset = useCallback(() => {
+		mapRef.current?.easeTo({ bearing: 0, pitch: 45, duration: 800 });
+	}, []);
 
 	const handleMapLoad = useCallback(() => {
 		const map = mapRef.current?.getMap();
@@ -52,7 +56,7 @@ function Map() {
 		const startSpin = () => {
 			cancelAnimationFrame(animFrame);
 			const spin = () => {
-				map.setBearing((map.getBearing() + 0.05) % 360);
+				map.setBearing((map.getBearing() + 0.02) % 360);
 				animFrame = requestAnimationFrame(spin);
 			};
 			animFrame = requestAnimationFrame(spin);
@@ -65,7 +69,7 @@ function Map() {
 
 		const scheduleSpin = () => {
 			clearTimeout(resumeTimer);
-			resumeTimer = setTimeout(startSpin, 2000);
+			resumeTimer = setTimeout(startSpin, 30000);
 		};
 
 		startSpin();
@@ -92,7 +96,7 @@ function Map() {
 			const location = loc;
 			let markerClassName = "map-custom-marker";
 			let markerIcon = null;
-			const hasPhoto = !!location.photoemoji && !location.layover && !location.home && !location.current;
+			const hasPhoto = !!location.photoemoji && !location.layover;
 
 			if (location.current) {
 				markerClassName += " current-location";
@@ -102,14 +106,8 @@ function Map() {
 
 			if (hasPhoto) markerClassName += " has-photo";
 
-			if (location.current) {
-				markerIcon = <span className="location-icon current">🌉</span>;
-			}
 			if (location.layover) {
 				markerIcon = <span className="location-icon layover">✈</span>;
-			}
-			if (location.home) {
-				markerIcon = <span className="location-icon home">🏠</span>;
 			}
 
 			const isNorthAmerica = location.country === "United States" || location.country === "Canada";
@@ -135,11 +133,11 @@ function Map() {
 							if (location.photourl) setLightboxUrl(location.photourl);
 						}}
 					>
-						{hasPhoto && (
-							<span className="photo-emoji-label">{location.photoemoji}</span>
-						)}
 						<div className={markerClassName}>
-							{markerIcon}
+							{hasPhoto
+								? <span className="photo-emoji-label">{location.photoemoji}</span>
+								: markerIcon
+							}
 						</div>
 						{location.photourl ? (
 							<div className="marker-photo-tooltip">
@@ -170,12 +168,14 @@ function Map() {
 				ref={mapRef}
 				onLoad={handleMapLoad}
 				style={{ width: "100%", height: "100%" }}
-				mapStyle={isDarkMode ? MAPBOX_STYLE_DARK : MAPBOX_STYLE_LIGHT}
+				mapStyle={MAPBOX_STYLE_SATELLITE}
 				attributionControl={false}
 				cooperativeGestures={true}
 			>
 				{locationMarkers}
 			</MapGL>
+
+			<button className="map-reset-btn" onClick={handleReset} title="Reset orientation">↺</button>
 
 			{lightboxUrl && (
 				<div className="lightbox-overlay" onClick={() => setLightboxUrl(null)}>

@@ -1,0 +1,11 @@
+{
+  "name": "jsonresume-theme-classic",
+  "version": "0.0.2",
+  "description": "Maximally compact JSON resume theme, with classic resume styling.",
+  "author": "Neil Dahlke",
+  "license": "MIT",
+  "main": "index.js",
+  "dependencies": {
+    "handlebars": "^4.7.8"
+  }
+}

@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+# Pre-commit hook: block org-specific or sensitive content from this personal repo.
+# Install: make install-hooks
+
+set -euo pipefail
+
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+found_issues=0
+
+flag() {
+    echo -e "${RED}BLOCKED${NC} [$1]: $2"
+    found_issues=1
+}
+
+warn() {
+    echo -e "${YELLOW}WARNING${NC} [$1]: $2"
+    found_issues=1
+}
+
+# ── 1. Block Claude settings files ──────────────────────────────────────────
+# These may contain MCP tokens, org-specific server lists, and allowed commands.
+while IFS= read -r f; do
+    case "$f" in
+        .claude/settings.json|.claude/settings.local.json)
+            flag "claude-settings" "Attempt to commit Claude settings file: $f"
+            ;;
+    esac
+done < <(git diff --cached --name-only)
+
+# ── 2. Scan staged diff for org-specific patterns ───────────────────────────
+# Only added lines (^+), skip diff headers (^+++).
+staged_diff=$(git diff --cached -U0 -- ':!scripts/hooks/pre-commit' ':!.claude/commands/' | grep '^+' | grep -v '^+++' || true)
+
+if [ -n "$staged_diff" ]; then
+    check_pattern() {
+        local label="$1"
+        local pattern="$2"
+        local hits
+        hits=$(echo "$staged_diff" | grep -iE "$pattern" || true)
+        if [ -n "$hits" ]; then
+            warn "$label" "Pattern matched: $pattern"
+            echo "$hits" | head -3 | sed 's/^/  /'
+        fi
+    }
+
+    # LangChain operational secrets / identifiers
+    check_pattern "langchain-key"   'LANGSMITH_API_KEY|LANGCHAIN_API_KEY|LANGCHAIN_HUB_API_KEY'
+    check_pattern "langchain-email" 'neil@langchain\.dev'
+
+    # Org-specific MCP servers (work tools, not personal)
+    check_pattern "work-mcp"   '"gtm-agent"|"linear-server"|"hex"|mcp__gtm-agent|mcp__linear'
+
+    # Generic secret patterns
+    check_pattern "api-key"    '(api|secret|token|password)[_-]?(key)?[[:space:]]*[:=][[:space:]]*"?[A-Za-z0-9+/]{20,}'
+    check_pattern "bearer"     'Bearer\s+[A-Za-z0-9\-._~+/]{20,}'
+fi
+
+# ── Result ───────────────────────────────────────────────────────────────────
+if [ "$found_issues" -ne 0 ]; then
+    echo ""
+    echo -e "${RED}Commit blocked.${NC} Remove the above before committing."
+    echo "To bypass (use with caution): git commit --no-verify"
+    exit 1
+fi
+
+exit 0
