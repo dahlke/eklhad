@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useState, useEffect } from "react";
 import md5 from "blueimp-md5";
 
 const Map = lazy(() => import("./component/map/Map"));
@@ -22,20 +22,37 @@ function App() {
     const gravatar = useGravatar();
     const gravatarEmailMD5 = md5(gravatar.email || "");
     const gravatarURL = `https://www.gravatar.com/avatar/${gravatarEmailMD5}.jpg?s=200`;
+    const [profileOpacity, setProfileOpacity] = useState(1);
+
+    useEffect(() => {
+        const onScroll = () => {
+            if (window.innerWidth >= 768) { setProfileOpacity(1); return; }
+            const vh = window.innerHeight;
+            const raw = (window.scrollY - vh * 0.15) / (vh * 0.45);
+            setProfileOpacity(1 - Math.max(0, Math.min(raw, 1)));
+        };
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll, { passive: true });
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+            window.removeEventListener("resize", onScroll);
+        };
+    }, []);
 
     return (
         <div className="flex flex-col md:flex-row md:min-h-screen">
 
-            {/* Left — profile panel */}
-            <div className="md:w-2/5 md:min-h-screen flex flex-col justify-center px-10 md:px-16 py-20 bg-off-white dark:bg-dark-bg">
-
+            {/* Profile panel — overlays the fixed map on mobile via z-10 */}
+            <div
+                className="relative min-h-screen md:w-2/5 md:min-h-screen flex flex-col justify-center px-10 md:px-16 py-20 profile-mobile-bg md:bg-off-white md:dark:bg-dark-bg z-10"
+                style={{ opacity: profileOpacity }}
+            >
                 <img
                     className="w-16 h-16 rounded-full mb-10 animate-fade-up"
                     alt="Neil Dahlke"
                     src={gravatarURL}
                 />
 
-                {/* Name + drawing line */}
                 <div className="mb-5 animate-fade-up delay-150">
                     <h1 className="font-serif text-5xl md:text-6xl font-semibold tracking-tight text-chicago-flag-blue dark:text-white leading-none">
                         Neil<br />Dahlke
@@ -68,10 +85,18 @@ function App() {
                         </React.Fragment>
                     ))}
                 </div>
+
+                {/* Scroll hint — mobile only, lives in the transparent fade zone */}
+                <div className="md:hidden absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none animate-bounce">
+                    <span className="text-2xl">🌍</span>
+                    <svg className="w-4 h-4 text-chicago-flag-blue/60 dark:text-white/40" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M3 6l5 5 5-5"/>
+                    </svg>
+                </div>
             </div>
 
-            {/* Right — map */}
-            <div className="md:w-3/5 md:sticky md:top-0 md:h-screen">
+            {/* Map — fixed full-screen behind profile on mobile, sticky column on desktop */}
+            <div className="fixed inset-0 z-0 md:inset-auto md:w-3/5 md:sticky md:top-0 md:h-screen">
                 <Suspense fallback={
                     <div className="flex items-center justify-center h-full bg-gray-100 dark:bg-dark-surface">
                         <p className="text-xs tracking-widest uppercase text-gray-400 dark:text-slate-600">loading</p>
@@ -80,6 +105,9 @@ function App() {
                     <Map />
                 </Suspense>
             </div>
+
+            {/* Mobile-only spacer — gives the map section its scroll height */}
+            <div className="h-screen md:hidden" />
 
             <DarkModeToggle />
         </div>
