@@ -55,7 +55,7 @@ if [ -n "$staged_diff" ]; then
 
     # Generic secret patterns
     check_pattern "api-key"    '(api|secret|token|password)[_-]?(key)?[[:space:]]*[:=][[:space:]]*"?[A-Za-z0-9+/]{20,}'
-    check_pattern "bearer"     'Bearer\s+[A-Za-z0-9\-._~+/]{20,}'
+    check_pattern "bearer"     'Bearer[[:space:]]+[A-Za-z0-9._~+/-]{20,}'
 fi
 
 # ── Result ───────────────────────────────────────────────────────────────────
