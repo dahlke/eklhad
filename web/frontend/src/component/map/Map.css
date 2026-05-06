@@ -19,33 +19,67 @@ get auto-generated. */
 		height: 100%;
 	}
 
+	.mapboxgl-marker:hover {
+		z-index: 9999 !important;
+	}
+
+	.marker-wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2px;
+		cursor: pointer;
+		position: relative;
+	}
+
+	.photo-emoji-label {
+		font-size: 13px;
+		line-height: 1;
+		user-select: none;
+		pointer-events: none;
+		transition: transform 0.18s ease-out;
+	}
+
+	.marker-wrapper:hover .photo-emoji-label {
+		transform: translateY(-4px) scale(1.5);
+	}
+
 	.map-custom-marker {
 		width: 10px;
 		height: 10px;
 		border-radius: 50%;
-		cursor: pointer;
+		position: relative;
 
 		&.static-location {
 			background: theme("colors.chicago-flag-blue");
 
-			 &.layover {
+			&.layover {
 				opacity: 0.75;
-			 }
+			}
 		}
 
+		/* Photo location: white gap + outer ring, no animation */
+		&.has-photo:not(.current-location) {
+			box-shadow:
+				0 0 0 2px white,
+				0 0 0 3.5px theme("colors.chicago-flag-blue");
+		}
+
+		/* Current location: large red pulse, fastest */
 		&.current-location {
+			width: 14px;
+			height: 14px;
 			background: theme("colors.chicago-flag-red");
 
 			&:before {
 				content: "";
 				position: absolute;
-				display: block;
-				width: 300%;
-				height: 300%;
-				box-sizing: border-box;
-				margin-left: -10px;
-				margin-top: -10px;
-				border-radius: 45px;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 500%;
+				height: 500%;
+				border-radius: 50%;
 				background-color: theme("colors.chicago-flag-red");
 				animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
 			}
@@ -53,26 +87,20 @@ get auto-generated. */
 			&:after {
 				content: "";
 				position: absolute;
-				left: 0;
-				top: 0;
-				display: block;
-				width: 100%;
-				height: 100%;
+				inset: 0;
 				background-color: theme("colors.chicago-flag-red");
-				border-radius: 15px;
+				border-radius: 50%;
 				box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-				animation: pulse-dot 1.25s
-					cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
+				animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
 			}
 		}
 
 		.location-icon {
 			&.home {
-				font-size: 20px;
+				font-size: 18px;
 				position: relative;
-				color: theme("colors.chicago-flag-red");
-				top: -28px;
-				left: -7px;
+				top: -26px;
+				left: -4px;
 			}
 
 			&.layover {
@@ -84,14 +112,106 @@ get auto-generated. */
 				opacity: 0.8;
 			}
 		}
-
 	}
 
-	.mapboxgl-popup {
-		z-index: 1;
+	.marker-photo-tooltip,
+	.marker-text-tooltip {
+		position: absolute;
+		bottom: calc(100% + 10px);
+		left: 50%;
+		transform: translateX(-50%);
+		pointer-events: none;
+		opacity: 0;
+		transition: opacity 0.15s ease;
+		z-index: 10;
+	}
 
-		.mapboxgl-popup-content {
-			padding: 20px;
+	.marker-wrapper:hover .marker-photo-tooltip,
+	.marker-wrapper:hover .marker-text-tooltip {
+		opacity: 1;
+	}
+
+	.marker-photo-tooltip {
+		width: 160px;
+		background: rgba(0, 0, 0, 0.88);
+		border-radius: 6px;
+		overflow: hidden;
+		white-space: normal;
+
+		.tooltip-photo {
+			width: 100%;
+			height: 100px;
+			object-fit: cover;
+			display: block;
+		}
+
+		.tooltip-city-name {
+			padding: 5px 8px;
+			color: white;
+			font-size: 12px;
+			font-weight: 600;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		.tooltip-region-name {
+			font-weight: 400;
+			opacity: 0.8;
+		}
+	}
+
+	.marker-text-tooltip {
+		padding: 5px 10px;
+		background: rgba(0, 0, 0, 0.72);
+		color: white;
+		border-radius: 5px;
+		font-size: 12px;
+		white-space: nowrap;
+
+		.tooltip-city {
+			font-weight: 600;
+		}
+
+		.tooltip-region {
+			opacity: 0.8;
+		}
+	}
+}
+
+.lightbox-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.92);
+	z-index: 9999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: zoom-out;
+
+	.lightbox-img {
+		max-width: 92vw;
+		max-height: 92vh;
+		object-fit: contain;
+		border-radius: 4px;
+		cursor: default;
+		box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+	}
+
+	.lightbox-close {
+		position: absolute;
+		top: 20px;
+		right: 24px;
+		background: none;
+		border: none;
+		color: white;
+		font-size: 28px;
+		cursor: pointer;
+		line-height: 1;
+		opacity: 0.8;
+
+		&:hover {
+			opacity: 1;
 		}
 	}
 }

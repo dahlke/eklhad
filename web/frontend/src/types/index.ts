@@ -46,5 +46,8 @@ export interface Location {
 	home?: boolean;
 	lat: number;
 	lng: number;
+	photourl?: string;
+	photoemoji?: string;
+	photodate?: string;
 }
 
