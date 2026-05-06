@@ -224,7 +224,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 
 	// Read columns A through N: City, State, Country, Current, Layover, Home, Lat, Lng, Confirmed,
 	// Photo URL (J), Last Visited (K), Notes (L), Photo Emoji (M), Photo Date (N)
-	locationsReadRange := "locations!A2:N"
+	locationsReadRange := "locations!A2:L"
 	// NOTE: https://pkg.go.dev/google.golang.org/api@v0.64.0/sheets/v4?utm_source=gopls#SpreadsheetsValuesService.Get
 	locationsResp, err := sheetsService.Spreadsheets.Values.Get(spreadSheetID, locationsReadRange).Do()
 	if err != nil {
@@ -319,8 +319,8 @@ func GetDataFromGSheets(spreadSheetID string) {
 			}
 
 			photoURL    := getStringValue(row, 9)
-			photoEmoji  := getStringValue(row, 12)
-			photoDate   := getStringValue(row, 13)
+			photoEmoji  := getStringValue(row, 10)
+			photoDate   := getStringValue(row, 11)
 
 			locationID := fmt.Sprint("location-", i)
 			eklhadLocation := structs.EklhadLocation{
