@@ -6,19 +6,6 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "./Map.css";
 
 import { useLocations, useDarkMode, type Location } from "../../contexts";
-import locationPhotos from "../../config/locationPhotos.json";
-
-type PhotoEntry = { url: string; emoji: string; date: string | null; slug: string };
-const photoMap = locationPhotos as Record<string, PhotoEntry>;
-
-function withPhoto(location: Location): Location {
-	const entry = photoMap[location.city ?? ""];
-	// JSON is authoritative for URLs (sheet has bare filenames without dates)
-	const photourl   = entry?.url   || location.photourl   || undefined;
-	const photoemoji = entry?.emoji || location.photoemoji || undefined;
-	const photodate  = (entry?.date ?? undefined) || location.photodate || undefined;
-	return { ...location, photourl, photoemoji, photodate };
-}
 
 const MAPBOX_ACCESS_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN as string;
 const MAPBOX_STYLE_LIGHT = "mapbox://styles/mapbox/light-v11";
@@ -102,7 +89,7 @@ function Map() {
 		if (!locations || locations.length === 0) return null;
 
 		return locations.map((loc) => {
-			const location = withPhoto(loc);
+			const location = loc;
 			let markerClassName = "map-custom-marker";
 			let markerIcon = null;
 			const hasPhoto = !!location.photoemoji && !location.layover && !location.home && !location.current;
