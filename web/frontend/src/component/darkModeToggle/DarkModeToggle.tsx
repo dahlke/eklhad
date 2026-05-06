@@ -7,7 +7,7 @@ export function DarkModeToggle() {
 	return (
 		<button
 			onClick={toggleDarkMode}
-			className="fixed bottom-5 left-5 z-50 p-2 text-chicago-flag-blue/60 dark:text-slate-500 hover:text-chicago-flag-blue dark:hover:text-slate-300 transition-colors duration-150 focus:outline-none"
+			className="fixed top-4 right-4 md:top-auto md:right-auto md:bottom-5 md:left-5 z-50 p-2 text-chicago-flag-blue/60 dark:text-slate-500 hover:text-chicago-flag-blue dark:hover:text-slate-300 transition-colors duration-150 focus:outline-none"
 			aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
 			title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
 		>

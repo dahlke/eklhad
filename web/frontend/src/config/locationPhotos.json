@@ -233,6 +233,12 @@
     "date": "May 9, 2024",
     "emoji": "🏟️"
   },
+  "San Francisco": {
+    "slug": "san_francisco",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/san_francisco_2025_11_08.png",
+    "date": "November 8, 2025",
+    "emoji": "🌉"
+  },
   "Santorini": {
     "slug": "santorini",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/santorini_2023_09_08.png",
