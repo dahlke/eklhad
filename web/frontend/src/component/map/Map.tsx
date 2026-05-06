@@ -12,15 +12,11 @@ type PhotoEntry = { url: string; emoji: string; date: string | null; slug: strin
 const photoMap = locationPhotos as Record<string, PhotoEntry>;
 
 function withPhoto(location: Location): Location {
-	if (location.photourl) return location;
 	const entry = photoMap[location.city ?? ""];
-	if (!entry) return location;
-	return {
-		...location,
-		photourl:   entry.url,
-		photoemoji: entry.emoji,
-		photodate:  entry.date ?? undefined,
-	};
+	const photourl   = location.photourl   || entry?.url   || undefined;
+	const photoemoji = location.photoemoji || entry?.emoji || undefined;
+	const photodate  = location.photodate  || (entry?.date ?? undefined);
+	return { ...location, photourl, photoemoji, photodate };
 }
 
 const MAPBOX_ACCESS_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN as string;
