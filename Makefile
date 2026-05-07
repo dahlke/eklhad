@@ -149,8 +149,9 @@ cloudrun_plan: cloudrun_init
 .PHONY: cloudrun_deploy
 cloudrun_deploy:
 	@echo "Building and pushing Docker image with tag: $(DOCKER_WEB_IMAGE_VERSION)"; \
-	@test -n "$(MAPBOX_TOKEN_PROD)" || (echo "ERROR: MAPBOX_TOKEN_PROD is not set. Run: source secrets.op.sh" && exit 1)
-	docker build --platform linux/amd64 --build-arg VITE_MAPBOX_TOKEN=$(MAPBOX_TOKEN_PROD) -t ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION) . && \
+	test -n "$(MAPBOX_TOKEN_PROD)" || (echo "ERROR: MAPBOX_TOKEN_PROD is not set. Run: source secrets.op.sh" && exit 1)
+	@git diff --quiet && git diff --cached --quiet || (echo "ERROR: Uncommitted changes detected. Commit before deploying to ensure the image matches the git tag." && exit 1)
+	docker build --no-cache --platform linux/amd64 --build-arg VITE_MAPBOX_TOKEN=$(MAPBOX_TOKEN_PROD) -t ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION) . && \
 	docker tag ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION) ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):latest && \
 	docker push ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):$(DOCKER_WEB_IMAGE_VERSION) && \
 	docker push ${DOCKER_HUB_USER}/$(DOCKER_WEB_IMAGE_NAME):latest && \

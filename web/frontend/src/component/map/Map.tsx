@@ -15,7 +15,7 @@ function Map() {
 const [viewState, setViewState] = useState<ViewState>({
 		latitude: 37.7577,
 		longitude: -122.4376,
-		zoom: 9,
+		zoom: 11,
 		bearing: 0,
 		pitch: 45,
 		padding: { top: 0, bottom: 0, left: 0, right: 0 },
@@ -23,7 +23,7 @@ const [viewState, setViewState] = useState<ViewState>({
 	const [lightboxUrl, setLightboxUrl] = useState<string | null>(null);
 	const mapRef = useRef<MapRef>(null);
 
-	const INITIAL_VIEW = { latitude: 37.7577, longitude: -122.4376, zoom: 9, bearing: 0, pitch: 45 };
+	const INITIAL_VIEW = { latitude: 37.7577, longitude: -122.4376, zoom: 11, bearing: 0, pitch: 45 };
 
 	const handleReset = useCallback(() => {
 		mapRef.current?.easeTo({ bearing: 0, pitch: 45, duration: 800 });
@@ -45,18 +45,43 @@ const [viewState, setViewState] = useState<ViewState>({
 				"space-color": "rgb(11, 11, 25)",
 				"star-intensity": 0.6,
 			});
+			if (!map.getSource("mapbox-dem")) {
+				map.addSource("mapbox-dem", {
+					type: "raster-dem",
+					url: "mapbox://mapbox.mapbox-terrain-dem-v1",
+					tileSize: 512,
+					maxzoom: 14,
+				});
+			}
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			(map as any).setTerrain({ source: "mapbox-dem", exaggeration: 1.5 });
 		};
 		applyGlobe();
 		map.on("style.load", applyGlobe);
 
-		// Auto-rotation: slow spin that pauses while user interacts, resumes 2s after release
+		// Zoom out over 60s while spinning simultaneously, driven through React state
+		const ZOOM_START = 11;
+		const ZOOM_END = 2.0;
+		const ZOOM_DURATION = 120000;
 		let animFrame: number;
 		let resumeTimer: ReturnType<typeof setTimeout>;
 
-		const startSpin = () => {
+		const startSpin = (skipIntro = false) => {
 			cancelAnimationFrame(animFrame);
+			const spinStart = skipIntro ? null : Date.now();
 			const spin = () => {
-				map.setBearing((map.getBearing() + 0.02) % 360);
+				setViewState(prev => {
+					// Scale pan speed by zoom so visual velocity stays constant
+					const lonDelta = 0.008 * Math.pow(2, ZOOM_END - prev.zoom);
+					const longitude = prev.longitude + lonDelta;
+					if (spinStart !== null) {
+						const t = Math.min((Date.now() - spinStart) / ZOOM_DURATION, 1);
+						const ease = t * t * (3 - 2 * t); // smoothstep
+						const zoom = ZOOM_START + (ZOOM_END - ZOOM_START) * ease;
+						return { ...prev, zoom, longitude };
+					}
+					return { ...prev, longitude };
+				});
 				animFrame = requestAnimationFrame(spin);
 			};
 			animFrame = requestAnimationFrame(spin);
@@ -69,7 +94,7 @@ const [viewState, setViewState] = useState<ViewState>({
 
 		const scheduleSpin = () => {
 			clearTimeout(resumeTimer);
-			resumeTimer = setTimeout(startSpin, 30000);
+			resumeTimer = setTimeout(() => startSpin(true), 45000);
 		};
 
 		startSpin();
@@ -107,7 +132,8 @@ const [viewState, setViewState] = useState<ViewState>({
 			if (hasPhoto) markerClassName += " has-photo";
 
 			if (location.layover) {
-				markerIcon = <span className="location-icon layover">✈</span>;
+				markerClassName += " layover";
+				markerIcon = <span className="photo-emoji-label layover">✈</span>;
 			}
 
 			const isNorthAmerica = location.country === "United States" || location.country === "Canada";
@@ -170,7 +196,7 @@ const [viewState, setViewState] = useState<ViewState>({
 				style={{ width: "100%", height: "100%" }}
 				mapStyle={MAPBOX_STYLE_SATELLITE}
 				attributionControl={false}
-				cooperativeGestures={true}
+				cooperativeGestures={false}
 			>
 				{locationMarkers}
 			</MapGL>
