@@ -42,6 +42,11 @@ get auto-generated. */
 		user-select: none;
 		pointer-events: none;
 		z-index: 1;
+
+		&.layover {
+			font-size: 11px;
+			filter: grayscale(1) brightness(0.4);
+		}
 	}
 
 	.marker-wrapper:hover .map-custom-marker {
@@ -59,14 +64,22 @@ get auto-generated. */
 		transition: transform 0.18s ease-out;
 
 		&.static-location {
-			background: white;
+			background: theme("colors.chicago-flag-blue");
 			box-shadow:
-				0 0 0 2px theme("colors.chicago-flag-blue"),
+				0 0 0 2px white,
 				0 2px 6px rgba(0, 0, 0, 0.6);
+		}
 
-			&.layover {
-				opacity: 0.75;
-			}
+		&.layover {
+			width: 18px;
+			height: 18px;
+			background: rgba(255, 255, 255, 0.75);
+			box-shadow:
+				0 0 0 1.5px rgba(180, 180, 180, 0.8),
+				0 1px 4px rgba(0, 0, 0, 0.35);
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 
 		/* Photo location: larger circle with emoji centered inside */
@@ -111,9 +124,8 @@ get auto-generated. */
 			}
 		}
 
-		/* Home and layover: larger circle with emoji inside */
-		&:has(.location-icon.home),
-		&:has(.location-icon.layover) {
+		/* Home: larger circle with emoji inside */
+		&:has(.location-icon.home) {
 			width: 26px;
 			height: 26px;
 		}
@@ -131,11 +143,7 @@ get auto-generated. */
 				font-size: 13px;
 			}
 
-			&.layover {
-				font-size: 14px;
-				color: #58b9f7;
-				opacity: 0.9;
-			}
+
 		}
 	}
 

@@ -10,13 +10,10 @@ export default defineConfig(() => ({
       },
       rollupOptions: {
         output: {
-          manualChunks: {
-            // Separate mapbox-gl into its own chunk (largest dependency)
-            'mapbox-gl': ['mapbox-gl', 'react-map-gl/mapbox'],
-            // Separate vendor libraries
-            'vendor-react': ['react', 'react-dom'],
-            // Date utilities
-            'vendor-date': ['date-fns'],
+          manualChunks: (id) => {
+            if (id.includes('mapbox-gl') || id.includes('react-map-gl')) return 'mapbox-gl';
+            if (id.includes('react-dom') || id.includes('react/')) return 'vendor-react';
+            if (id.includes('date-fns')) return 'vendor-date';
           },
         },
       },
