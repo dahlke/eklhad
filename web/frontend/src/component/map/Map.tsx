@@ -8,7 +8,7 @@ import "./Map.css";
 import { useLocations, type Location } from "../../contexts";
 
 const MAPBOX_ACCESS_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN as string;
-const MAPBOX_STYLE_SATELLITE = "mapbox://styles/mapbox/satellite-v9";
+const MAPBOX_STYLE_OUTDOORS = "mapbox://styles/mapbox/outdoors-v12";
 
 function Map() {
 	const { items: locations } = useLocations();
@@ -194,7 +194,7 @@ const [viewState, setViewState] = useState<ViewState>({
 				ref={mapRef}
 				onLoad={handleMapLoad}
 				style={{ width: "100%", height: "100%" }}
-				mapStyle={MAPBOX_STYLE_SATELLITE}
+				mapStyle={MAPBOX_STYLE_OUTDOORS}
 				attributionControl={false}
 				cooperativeGestures={false}
 			>
