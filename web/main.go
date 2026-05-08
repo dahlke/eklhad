@@ -2,6 +2,7 @@ package main
 
 import (
 	"compress/gzip"
+	"crypto/md5"
 	"encoding/json"
 	"flag"
 	"fmt"
@@ -11,9 +12,11 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/dahlke/eklhad/web/services"
+	"github.com/dahlke/eklhad/web/structs"
 	"github.com/dahlke/eklhad/web/workers"
 	log "github.com/sirupsen/logrus"
 )
@@ -28,9 +31,28 @@ type appConfig struct {
 	GravatarEmail string `json:"gravatar_email"`
 }
 
+type apiAppData struct {
+	Locations   []structs.EklhadLocation `json:"locations"`
+	Blogs       []structs.EklhadBlog     `json:"blogs"`
+	Links       []structs.EklhadLink     `json:"links"`
+	GravatarURL string                   `json:"gravatar_url"`
+}
+
 var appHostName, _ = os.Hostname()
 var appPort = 3554
 var appConfigData appConfig
+
+func gravatarURL(email string) string {
+	normalized := strings.ToLower(strings.TrimSpace(email))
+	hash := fmt.Sprintf("%x", md5.Sum([]byte(normalized)))
+	return fmt.Sprintf("https://www.gravatar.com/avatar/%s.jpg?s=200", hash)
+}
+
+func setAPIHeaders(w http.ResponseWriter, cacheMaxAge string) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Cache-Control", "public, max-age="+cacheMaxAge)
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+}
 
 func apiLocationsHandler(w http.ResponseWriter, r *http.Request) {
 	log.WithFields(log.Fields{
@@ -39,8 +61,7 @@ func apiLocationsHandler(w http.ResponseWriter, r *http.Request) {
 		"ip":     r.RemoteAddr,
 	}).Info("API request: locations")
 
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
+	setAPIHeaders(w, "3600")
 	locations := services.GetLocations()
 	json.NewEncoder(w).Encode(locations)
 }
@@ -52,8 +73,7 @@ func apiBlogsHandler(w http.ResponseWriter, r *http.Request) {
 		"ip":     r.RemoteAddr,
 	}).Info("API request: blogs")
 
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
+	setAPIHeaders(w, "3600")
 	blogs := services.GetBlogs()
 	json.NewEncoder(w).Encode(blogs)
 }
@@ -65,18 +85,45 @@ func apiLinksHandler(w http.ResponseWriter, r *http.Request) {
 		"ip":     r.RemoteAddr,
 	}).Info("API request: links")
 
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-
+	setAPIHeaders(w, "3600")
 	links := services.GetLinks()
 	json.NewEncoder(w).Encode(links)
 }
 
 func apiGravatarHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
+	setAPIHeaders(w, "86400")
+	json.NewEncoder(w).Encode(gravatarURL(appConfigData.GravatarEmail))
+}
 
-	json.NewEncoder(w).Encode(appConfigData.GravatarEmail)
+func apiAppDataHandler(w http.ResponseWriter, r *http.Request) {
+	log.WithFields(log.Fields{
+		"method": r.Method,
+		"path":   r.URL.Path,
+		"ip":     r.RemoteAddr,
+	}).Info("API request: app-data")
+
+	var (
+		locations []structs.EklhadLocation
+		blogs     []structs.EklhadBlog
+		links     []structs.EklhadLink
+		wg        sync.WaitGroup
+	)
+
+	wg.Add(3)
+	go func() { defer wg.Done(); locations = services.GetLocations() }()
+	go func() { defer wg.Done(); blogs = services.GetBlogs() }()
+	go func() { defer wg.Done(); links = services.GetLinks() }()
+	wg.Wait()
+
+	data := apiAppData{
+		Locations:   locations,
+		Blogs:       blogs,
+		Links:       links,
+		GravatarURL: gravatarURL(appConfigData.GravatarEmail),
+	}
+
+	setAPIHeaders(w, "3600")
+	json.NewEncoder(w).Encode(data)
 }
 
 // healthHandler returns a simple health check response
@@ -117,13 +164,9 @@ func requestLoggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		start := time.Now()
 
-		// Create a response writer wrapper to capture status code
 		rw := &responseWriter{ResponseWriter: w, statusCode: http.StatusOK}
-
-		// Process the request
 		next.ServeHTTP(rw, r)
 
-		// Log the request
 		duration := time.Since(start)
 		log.WithFields(log.Fields{
 			"method":      r.Method,
@@ -140,15 +183,12 @@ func requestLoggingMiddleware(next http.Handler) http.Handler {
 // securityHeadersMiddleware adds security headers to responses
 func securityHeadersMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		// Security headers
 		w.Header().Set("X-Content-Type-Options", "nosniff")
 		w.Header().Set("X-Frame-Options", "DENY")
 		w.Header().Set("X-XSS-Protection", "1; mode=block")
 		w.Header().Set("Referrer-Policy", "strict-origin-when-cross-origin")
 		w.Header().Set("Permissions-Policy", "geolocation=(), microphone=(), camera=()")
 
-		// Don't set CSP that blocks inline scripts if we need them
-		// Only set HSTS in production
 		if r.TLS != nil {
 			w.Header().Set("Strict-Transport-Security", "max-age=31536000; includeSubDomains")
 		}
@@ -157,7 +197,8 @@ func securityHeadersMiddleware(next http.Handler) http.Handler {
 	})
 }
 
-// compressionMiddleware adds gzip compression to responses
+// gzipResponseWriter wraps http.ResponseWriter to write through a gzip.Writer.
+// It removes Content-Length since the compressed size differs from the original.
 type gzipResponseWriter struct {
 	io.Writer
 	http.ResponseWriter
@@ -167,33 +208,54 @@ func (w *gzipResponseWriter) Write(b []byte) (int, error) {
 	return w.Writer.Write(b)
 }
 
+func (w *gzipResponseWriter) WriteHeader(code int) {
+	w.ResponseWriter.Header().Del("Content-Length")
+	w.ResponseWriter.WriteHeader(code)
+}
+
+// compressionMiddleware adds gzip compression to text-based responses.
 func compressionMiddleware(next http.Handler) http.Handler {
+	// File types that are already compressed or must not be re-encoded.
+	skipSuffixes := []string{
+		".js", ".mjs", ".wasm", ".gz", ".br",
+		".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico", ".svg",
+		".woff", ".woff2", ".ttf", ".eot",
+		".mp4", ".webm", ".ogg",
+	}
+
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		// Skip compression for JavaScript modules and other binary assets
-		// These need to be served with exact Content-Type headers
 		path := r.URL.Path
-		if strings.HasSuffix(path, ".js") ||
-			strings.HasSuffix(path, ".mjs") ||
-			strings.HasSuffix(path, ".wasm") ||
-			strings.HasSuffix(path, ".gz") ||
-			strings.HasSuffix(path, ".br") {
-			next.ServeHTTP(w, r)
-			return
+		for _, suffix := range skipSuffixes {
+			if strings.HasSuffix(path, suffix) {
+				next.ServeHTTP(w, r)
+				return
+			}
 		}
 
-		// Check if client accepts gzip encoding
 		if !strings.Contains(r.Header.Get("Accept-Encoding"), "gzip") {
 			next.ServeHTTP(w, r)
 			return
 		}
 
-		// Only compress text-based content
 		w.Header().Set("Content-Encoding", "gzip")
 		gz := gzip.NewWriter(w)
 		defer gz.Close()
 
 		gzr := &gzipResponseWriter{Writer: gz, ResponseWriter: w}
 		next.ServeHTTP(gzr, r)
+	})
+}
+
+// cacheControlFileServer wraps a file server handler and adds appropriate
+// Cache-Control headers: long-lived immutable for hashed assets, short-lived for others.
+func cacheControlFileServer(fs http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if strings.HasPrefix(r.URL.Path, "/assets/") {
+			w.Header().Set("Cache-Control", "public, max-age=31536000, immutable")
+		} else {
+			w.Header().Set("Cache-Control", "public, max-age=3600")
+		}
+		fs.ServeHTTP(w, r)
 	})
 }
 
@@ -214,7 +276,6 @@ func redirectToHTTPS(w http.ResponseWriter, r *http.Request) {
 }
 
 func configLogger() {
-	// Use JSON formatter for structured logging
 	log.SetFormatter(&log.JSONFormatter{
 		TimestampFormat: time.RFC3339,
 		FieldMap: log.FieldMap{
@@ -226,7 +287,6 @@ func configLogger() {
 	log.SetOutput(os.Stdout)
 	log.SetLevel(log.InfoLevel)
 
-	// Add default fields for structured logging
 	log.WithFields(log.Fields{
 		"service": "eklhad-web",
 		"version": "0.1.0",
@@ -253,8 +313,6 @@ func scheduleWorkers(config appConfig) {
 }
 
 func main() {
-	// Check for PORT environment variable (set by Cloud Run)
-	// This takes precedence over the default, but can be overridden by the -port flag
 	if portEnv := os.Getenv("PORT"); portEnv != "" {
 		if port, err := strconv.Atoi(portEnv); err == nil {
 			appPort = port
@@ -270,13 +328,12 @@ func main() {
 	configLogger()
 	appConfigData = parseConfig("config.json")
 
-	// Use flag value if provided (flag overrides env var)
 	appPort = *portPtr
 	isProduction := *productionPtr
 	isPullGSheets := *pullGSheetsPtr
 	workerRoutines := *runWorkersPtr
 
-	fileServer := http.FileServer(http.Dir("frontend/build/"))
+	fileServer := cacheControlFileServer(http.FileServer(http.Dir("frontend/build/")))
 
 	// Health check endpoints
 	http.HandleFunc("/health", healthHandler)
@@ -304,10 +361,10 @@ func main() {
 	http.HandleFunc("/api/links", apiLinksHandler)
 	http.HandleFunc("/api/blogs", apiBlogsHandler)
 	http.HandleFunc("/api/gravatar", apiGravatarHandler)
+	http.HandleFunc("/api/app-data", apiAppDataHandler)
 
-	// Apply middleware to all routes (compression removed as it was causing issues)
-	// Chain: requestLoggingMiddleware -> securityHeadersMiddleware -> routes
-	handler := requestLoggingMiddleware(securityHeadersMiddleware(http.DefaultServeMux))
+	// Chain: requestLoggingMiddleware -> securityHeadersMiddleware -> compressionMiddleware -> routes
+	handler := requestLoggingMiddleware(securityHeadersMiddleware(compressionMiddleware(http.DefaultServeMux)))
 
 	if workerRoutines {
 		scheduleWorkers(appConfigData)
