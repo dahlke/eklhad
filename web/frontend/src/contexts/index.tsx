@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
-import { LocationsProvider } from './LocationsContext';
-import { LinksProvider } from './LinksContext';
-import { BlogsProvider } from './BlogsContext';
-import { GravatarProvider } from './GravatarContext';
+import { AppDataProvider, useAppData } from './AppDataContext';
 import { DarkModeProvider } from './DarkModeContext';
+
+export { useDarkMode } from './DarkModeContext';
+export type { Location } from '../types';
 
 interface AppProvidersProps {
 	children: ReactNode;
@@ -12,23 +12,29 @@ interface AppProvidersProps {
 export function AppProviders({ children }: AppProvidersProps) {
 	return (
 		<DarkModeProvider>
-			<LocationsProvider>
-				<LinksProvider>
-					<BlogsProvider>
-						<GravatarProvider>
-							{children}
-						</GravatarProvider>
-					</BlogsProvider>
-				</LinksProvider>
-			</LocationsProvider>
+			<AppDataProvider>
+				{children}
+			</AppDataProvider>
 		</DarkModeProvider>
 	);
 }
 
-export { useLocations } from './LocationsContext';
-export { useLinks } from './LinksContext';
-export { useBlogs } from './BlogsContext';
-export { useGravatar } from './GravatarContext';
-export { useDarkMode } from './DarkModeContext';
+export function useLocations() {
+	const { locations, isFetching } = useAppData();
+	return { items: locations, isFetching };
+}
 
-export type { Location } from './LocationsContext';
+export function useBlogs() {
+	const { blogs, isFetching } = useAppData();
+	return { items: blogs, isFetching };
+}
+
+export function useLinks() {
+	const { links, isFetching } = useAppData();
+	return { items: links, isFetching };
+}
+
+export function useGravatar() {
+	const { gravatarUrl, isFetching } = useAppData();
+	return { url: gravatarUrl, isFetching };
+}

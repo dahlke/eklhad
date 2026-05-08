@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
 import MapGL, { Marker, type MapRef } from "react-map-gl/mapbox";
 import type { ViewState } from "react-map-gl/mapbox";
 
@@ -102,7 +103,7 @@ const [viewState, setViewState] = useState<ViewState>({
 		map.on("touchstart", stopSpin);
 		map.on("mouseup", scheduleSpin);
 		map.on("touchend", scheduleSpin);
-		map.on("wheel", scheduleSpin);
+		map.on("wheel", () => { stopSpin(); scheduleSpin(); });
 	}, []);
 
 	useEffect(() => {
@@ -145,6 +146,10 @@ const [viewState, setViewState] = useState<ViewState>({
 				? `, ${location.stateprovinceregion}`
 				: "";
 
+			const thumbUrl = location.photourl
+					? location.photourl.replace("/photos/", "/photos/thumbs/")
+					: "";
+
 			return (
 				<Marker
 					key={location.id}
@@ -167,7 +172,7 @@ const [viewState, setViewState] = useState<ViewState>({
 						</div>
 						{location.photourl ? (
 							<div className="marker-photo-tooltip">
-								<img src={location.photourl} alt={location.city} className="tooltip-photo" />
+								<img src={thumbUrl} alt={location.city} className="tooltip-photo" loading="lazy" />
 								<div className="tooltip-city-name">
 									<span>{location.city}</span>
 									<span className="tooltip-region-name">{regionLabel}</span>
@@ -203,7 +208,7 @@ const [viewState, setViewState] = useState<ViewState>({
 
 			<button className="map-reset-btn" onClick={handleReset} title="Reset orientation">↺</button>
 
-			{lightboxUrl && (
+			{lightboxUrl && createPortal(
 				<div className="lightbox-overlay" onClick={() => setLightboxUrl(null)}>
 					<img
 						src={lightboxUrl}
@@ -214,7 +219,8 @@ const [viewState, setViewState] = useState<ViewState>({
 					<button className="lightbox-close" onClick={() => setLightboxUrl(null)}>
 						✕
 					</button>
-				</div>
+				</div>,
+				document.body
 			)}
 		</div>
 	);

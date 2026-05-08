@@ -28,7 +28,6 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.21",
-    "blueimp-md5": "^2.19.0",
     "date-fns": "^4.1.0",
     "mapbox-gl": "^3.16.0",
     "react": "^18.3.1",
