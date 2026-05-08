@@ -1,5 +1,4 @@
 import React, { Suspense, lazy, useState, useEffect } from "react";
-import md5 from "blueimp-md5";
 
 const Map = lazy(() => import("./component/map/Map"));
 
@@ -20,7 +19,6 @@ const socialLinks = [
 
 function App() {
     const gravatar = useGravatar();
-    const gravatarURL = `https://www.gravatar.com/avatar/${md5(gravatar.email || "")}.jpg?s=200`;
     const [profileOpacity, setProfileOpacity] = useState(1);
 
     useEffect(() => {
@@ -49,7 +47,7 @@ function App() {
                 <img
                     className="w-16 h-16 rounded-full mb-10 animate-fade-up"
                     alt="Neil Dahlke"
-                    src={gravatarURL}
+                    src={gravatar.url || undefined}
                 />
 
                 <div className="mb-5 animate-fade-up delay-150">
