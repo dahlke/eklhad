@@ -48,3 +48,4 @@ NEIL.md
 
 # Claude Code local settings (may contain MCP tokens/permissions)
 .claude/settings.local.json
+photos/
