@@ -15,7 +15,7 @@ import sys
 
 try:
     from google.cloud import storage
-    from PIL import Image
+    from PIL import Image, ImageOps
 except ImportError:
     print("Missing deps. Run: pip install google-cloud-storage Pillow")
     sys.exit(1)
@@ -51,6 +51,7 @@ def generate_thumbs():
 
         data = blob.download_as_bytes()
         img = Image.open(io.BytesIO(data))
+        img = ImageOps.exif_transpose(img)
 
         w, h = img.size
         new_h = int(h * THUMB_WIDTH / w)
