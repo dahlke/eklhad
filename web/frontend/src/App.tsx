@@ -20,13 +20,15 @@ const socialLinks = [
 function App() {
     const gravatar = useGravatar();
     const [profileOpacity, setProfileOpacity] = useState(1);
+    const [showScrollTop, setShowScrollTop] = useState(false);
 
     useEffect(() => {
         const onScroll = () => {
-            if (window.innerWidth >= 768) { setProfileOpacity(1); return; }
+            if (window.innerWidth >= 768) { setProfileOpacity(1); setShowScrollTop(false); return; }
             const vh = window.innerHeight;
             const raw = (window.scrollY - vh * 0.15) / (vh * 0.45);
             setProfileOpacity(1 - Math.max(0, Math.min(raw, 1)));
+            setShowScrollTop(window.scrollY > vh * 0.6);
         };
         window.addEventListener("scroll", onScroll, { passive: true });
         window.addEventListener("resize", onScroll, { passive: true });
@@ -106,7 +108,19 @@ function App() {
             {/* Mobile-only spacer — gives the map section its scroll height */}
             <div className="h-screen md:hidden" />
 
-            <DarkModeToggle />
+            {showScrollTop && (
+                <button
+                    className="md:hidden fixed bottom-6 left-6 z-50 bg-black/60 border border-white/30 text-white rounded-full w-10 h-10 flex items-center justify-center text-lg"
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                    aria-label="Back to top"
+                >
+                    ↑
+                </button>
+            )}
+
+            <div className={showScrollTop ? 'hidden md:block' : ''}>
+                <DarkModeToggle />
+            </div>
         </div>
     );
 }
