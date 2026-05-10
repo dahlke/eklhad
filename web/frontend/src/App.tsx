@@ -64,7 +64,7 @@ function App() {
                 </p>
 
                 <p className="text-sm italic text-chicago-flag-blue dark:text-slate-400 mb-10 animate-fade-up delay-300">
-                    San Francisco, California
+                    📍 San Francisco, California
                 </p>
 
                 <div className="flex flex-row flex-wrap items-center md:flex-col md:items-start gap-y-2 text-sm tracking-wide text-chicago-flag-blue dark:text-chicago-flag-blue/80 animate-fade-up delay-500">
