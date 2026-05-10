@@ -63,6 +63,7 @@ const [viewState, setViewState] = useState<ViewState>({
 		// Zoom out over 60s while spinning simultaneously, driven through React state
 		const ZOOM_START = 11;
 		const ZOOM_END = 2.0;
+		const PITCH_START = 45;
 		const ZOOM_DURATION = 120000;
 		let animFrame: number;
 		let resumeTimer: ReturnType<typeof setTimeout>;
@@ -79,7 +80,8 @@ const [viewState, setViewState] = useState<ViewState>({
 						const t = Math.min((Date.now() - spinStart) / ZOOM_DURATION, 1);
 						const ease = t * t * (3 - 2 * t); // smoothstep
 						const zoom = ZOOM_START + (ZOOM_END - ZOOM_START) * ease;
-						return { ...prev, zoom, longitude };
+						const pitch = PITCH_START * (1 - ease);
+						return { ...prev, zoom, longitude, pitch };
 					}
 					return { ...prev, longitude };
 				});
