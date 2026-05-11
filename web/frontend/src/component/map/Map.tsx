@@ -2,11 +2,99 @@ import React, { useState, useMemo, useEffect, useRef, useCallback } from "react"
 import { createPortal } from "react-dom";
 import MapGL, { Marker, type MapRef } from "react-map-gl/mapbox";
 import type { ViewState } from "react-map-gl/mapbox";
+import SunCalc from "suncalc";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./Map.css";
 
 import { useLocations, type Location } from "../../contexts";
+import locationPhotos from "../../config/locationPhotos.json";
+
+function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number): number {
+	const R = 6371;
+	const dLat = (lat2 - lat1) * Math.PI / 180;
+	const dLng = (lng2 - lng1) * Math.PI / 180;
+	const a = Math.sin(dLat / 2) ** 2 + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLng / 2) ** 2;
+	return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function applySunlight(map: any) {
+	const sunPos = SunCalc.getPosition(new Date(), 0, 0);
+	const azimuthDeg = (sunPos.azimuth * 180 / Math.PI + 180 + 360) % 360;
+	const polarDeg = Math.max(0, 90 - sunPos.altitude * 180 / Math.PI);
+	const isDay = sunPos.altitude > -0.09;
+	map.setLights([{
+		id: "flat",
+		type: "flat",
+		properties: {
+			anchor: "map",
+			position: [1.5, azimuthDeg, polarDeg],
+			color: isDay ? "white" : "#061830",
+			intensity: isDay
+				? Math.min(0.85, 0.25 + Math.sin(Math.max(0, sunPos.altitude)) * 0.75)
+				: 0.04,
+		},
+	}]);
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function addFlightArcs(map: any, locations: Location[]) {
+	const cityLookup: Record<string, { lat: number; lng: number }> = {};
+	for (const loc of locations) {
+		if (loc.city) cityLookup[loc.city] = { lat: loc.lat, lng: loc.lng };
+	}
+
+	const dated = (Object.entries(locationPhotos) as [string, { date: string }][])
+		.map(([city, data]) => ({ city, date: new Date(data.date) }))
+		.filter(e => !isNaN(e.date.getTime()))
+		.sort((a, b) => a.date.getTime() - b.date.getTime());
+
+	const points = dated
+		.map(e => ({ ...e, coords: cityLookup[e.city] }))
+		.filter((e): e is typeof e & { coords: { lat: number; lng: number } } => e.coords != null);
+
+	// Pairs under 600km that were actually flights
+	const knownFlights = new Set(["Bangkok|Chiang Mai", "Cusco|Lima"]);
+	// Pairs where the origin is wrong (implicit return to SF not captured in photo dates)
+	const knownSkips = new Set(["Seattle|Lahaina", "Philadelphia|Kapalua"]);
+
+	const flightFeatures: object[] = [];
+	const driveFeatures: object[] = [];
+
+	for (let i = 0; i < points.length - 1; i++) {
+		const from = points[i].coords;
+		const to = points[i + 1].coords;
+		const dist = haversineKm(from.lat, from.lng, to.lat, to.lng);
+		const pairKey = `${points[i].city}|${points[i + 1].city}`;
+		if (knownSkips.has(pairKey)) continue;
+		const feature = {
+			type: "Feature" as const,
+			geometry: { type: "LineString" as const, coordinates: [[from.lng, from.lat], [to.lng, to.lat]] },
+			properties: {},
+		};
+		(dist < 600 && !knownFlights.has(pairKey) ? driveFeatures : flightFeatures).push(feature);
+	}
+
+	const upsert = (sourceId: string, layerId: string, features: object[], paint: object) => {
+		const geojson = { type: "FeatureCollection" as const, features: features as never[] };
+		if (map.getSource(sourceId)) { map.getSource(sourceId).setData(geojson); return; }
+		map.addSource(sourceId, { type: "geojson", data: geojson });
+		map.addLayer({ id: layerId, type: "line", source: sourceId, paint });
+	};
+
+	upsert("flight-arcs", "flight-arcs-layer", flightFeatures, {
+		"line-color": "rgba(255, 255, 255, 0.35)",
+		"line-width": 0.8,
+		"line-opacity": ["interpolate", ["linear"], ["zoom"], 2, 0.7, 5, 0],
+	});
+	upsert("drive-arcs", "drive-arcs-layer", driveFeatures, {
+		"line-color": "rgba(180, 220, 255, 0.25)",
+		"line-width": 0.5,
+		"line-dasharray": [2, 3],
+		"line-opacity": ["interpolate", ["linear"], ["zoom"], 2, 0.5, 5, 0],
+	});
+}
 
 const MAPBOX_ACCESS_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN as string;
 const MAPBOX_STYLE_SATELLITE = "mapbox://styles/mapbox/satellite-v9";
@@ -22,7 +110,11 @@ const [viewState, setViewState] = useState<ViewState>({
 		padding: { top: 0, bottom: 0, left: 0, right: 0 },
 	});
 	const [lightboxUrl, setLightboxUrl] = useState<string | null>(null);
+	const [mapLoaded, setMapLoaded] = useState(false);
 	const mapRef = useRef<MapRef>(null);
+	const locationsRef = useRef<Location[]>([]);
+
+	useEffect(() => { locationsRef.current = locations ?? []; }, [locations]);
 
 	const INITIAL_VIEW = { latitude: 37.7577, longitude: -122.4376, zoom: 11, bearing: 0, pitch: 45 };
 
@@ -56,9 +148,12 @@ const [viewState, setViewState] = useState<ViewState>({
 			}
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			(map as any).setTerrain({ source: "mapbox-dem", exaggeration: 1.5 });
+			applySunlight(map);
+			if (locationsRef.current.length) addFlightArcs(map, locationsRef.current);
 		};
 		applyGlobe();
 		map.on("style.load", applyGlobe);
+		setMapLoaded(true);
 
 		// Zoom out over 60s while spinning simultaneously, driven through React state
 		const ZOOM_START = 11;
@@ -116,6 +211,23 @@ const [viewState, setViewState] = useState<ViewState>({
 		window.addEventListener("keydown", handler);
 		return () => window.removeEventListener("keydown", handler);
 	}, [lightboxUrl]);
+
+	// Keep sunlight in sync with real time
+	useEffect(() => {
+		if (!mapLoaded) return;
+		const map = mapRef.current?.getMap();
+		if (!map) return;
+		const id = setInterval(() => applySunlight(map), 60000);
+		return () => clearInterval(id);
+	}, [mapLoaded]);
+
+	// Add flight arcs once map + locations are both ready
+	useEffect(() => {
+		if (!mapLoaded || !locations?.length) return;
+		const map = mapRef.current?.getMap();
+		if (!map) return;
+		addFlightArcs(map, locations);
+	}, [mapLoaded, locations]);
 
 	const locationMarkers = useMemo(() => {
 		if (!locations || locations.length === 0) return null;

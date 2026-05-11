@@ -125,6 +125,12 @@
     "date": "June 11, 2008",
     "emoji": "🚀"
   },
+  "Castletownsend": {
+    "slug": "castletownsend",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/castletownsend_2024_05_24.png",
+    "date": "May 24, 2024",
+    "emoji": "⛵"
+  },
   "Carmel-by-the-Sea": {
     "slug": "carmel_by_the_sea",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/carmel_by_the_sea_2020_10_10.png",
@@ -185,6 +191,12 @@
     "date": "November 8, 2015",
     "emoji": "🚗"
   },
+  "Drvenik Veli": {
+    "slug": "drvenik_veli",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/drvenik_veli_2023_09_14.png",
+    "date": "September 14, 2023",
+    "emoji": "🏝️"
+  },
   "Dublin": {
     "slug": "dublin",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/dublin_2024_05_22.png",
@@ -244,6 +256,12 @@
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/grand_canyon_national_park_2020_07_30.png",
     "date": "July 30, 2020",
     "emoji": "🏜️"
+  },
+  "Howth": {
+    "slug": "howth",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/howth_2025_03_08.png",
+    "date": "March 8, 2025",
+    "emoji": "🎣"
   },
   "Haleakala": {
     "slug": "haleakala",
@@ -311,6 +329,12 @@
     "date": "July 6, 2025",
     "emoji": "🐋"
   },
+  "Kilkenny": {
+    "slug": "kilkenny",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/kilkenny_2013_12_18.png",
+    "date": "December 18, 2013",
+    "emoji": "🏰"
+  },
   "Krabi": {
     "slug": "krabi",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/krabi_2015_11_20.png",
@@ -322,6 +346,12 @@
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/kyoto_2025_10_25.png",
     "date": "October 25, 2025",
     "emoji": "⛩️"
+  },
+  "Luodong": {
+    "slug": "luodong",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/luodong_2025_10_17.png",
+    "date": "October 17, 2025",
+    "emoji": "🧋"
   },
   "Lahaina": {
     "slug": "lahaina",
@@ -349,8 +379,8 @@
   },
   "London": {
     "slug": "london",
-    "url": "https://storage.googleapis.com/eklhad-web-public/photos/london_unknown.png",
-    "date": null,
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/london_2019_10_05.png",
+    "date": "October 5, 2019",
     "emoji": "🎡"
   },
   "Lopud": {
@@ -545,6 +575,18 @@
     "date": "March 16, 2003",
     "emoji": "🎻"
   },
+  "Sausalito": {
+    "slug": "sausalito",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/sausalito_2014_09_01.png",
+    "date": "September 1, 2014",
+    "emoji": "⛵"
+  },
+  "Šolta": {
+    "slug": "solta",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/solta_2023_09_14.png",
+    "date": "September 14, 2023",
+    "emoji": "🫒"
+  },
   "San Diego": {
     "slug": "san_diego",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/san_diego_2023_11_04.png",
@@ -655,9 +697,15 @@
   },
   "Valencia": {
     "slug": "valencia",
-    "url": "https://storage.googleapis.com/eklhad-web-public/photos/valencia_2022_12_11.png",
-    "date": "December 11, 2022",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/valencia_2022_12_10.png",
+    "date": "December 10, 2022",
     "emoji": "🥘"
+  },
+  "Victoria": {
+    "slug": "victoria",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/victoria_2025_09_22.png",
+    "date": "September 22, 2025",
+    "emoji": "🪨"
   },
   "Valle Nevado": {
     "slug": "valle_nevado",
@@ -695,10 +743,22 @@
     "date": "December 26, 2019",
     "emoji": "⚖️"
   },
+  "Yilan": {
+    "slug": "yilan",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/yilan_2025_10_18.png",
+    "date": "October 18, 2025",
+    "emoji": "🌾"
+  },
   "Yosemite Valley": {
     "slug": "yosemite_valley",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/yosemite_valley_2022_06_18.png",
     "date": "June 18, 2022",
+    "emoji": "🏔️"
+  },
+  "Yosemite Village": {
+    "slug": "yosemite_village",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/yosemite_village_2026_05_11.png",
+    "date": "May 11, 2026",
     "emoji": "🏔️"
   },
   "Yountville": {
