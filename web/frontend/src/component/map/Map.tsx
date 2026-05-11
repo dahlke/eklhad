@@ -8,15 +8,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "./Map.css";
 
 import { useLocations, type Location } from "../../contexts";
-import locationPhotos from "../../config/locationPhotos.json";
-
-function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number): number {
-	const R = 6371;
-	const dLat = (lat2 - lat1) * Math.PI / 180;
-	const dLng = (lng2 - lng1) * Math.PI / 180;
-	const a = Math.sin(dLat / 2) ** 2 + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLng / 2) ** 2;
-	return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-}
+import tripRoutes from "../../config/tripRoutes.json";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function applySunlight(map: any) {
@@ -45,35 +37,16 @@ function addFlightArcs(map: any, locations: Location[]) {
 		if (loc.city) cityLookup[loc.city] = { lat: loc.lat, lng: loc.lng };
 	}
 
-	const dated = (Object.entries(locationPhotos) as [string, { date: string }][])
-		.map(([city, data]) => ({ city, date: new Date(data.date) }))
-		.filter(e => !isNaN(e.date.getTime()))
-		.sort((a, b) => a.date.getTime() - b.date.getTime());
-
-	const points = dated
-		.map(e => ({ ...e, coords: cityLookup[e.city] }))
-		.filter((e): e is typeof e & { coords: { lat: number; lng: number } } => e.coords != null);
-
-	// Pairs under 600km that were actually flights
-	const knownFlights = new Set(["Bangkok|Chiang Mai", "Cusco|Lima"]);
-	// Pairs where the origin is wrong (implicit return to SF not captured in photo dates)
-	const knownSkips = new Set(["Seattle|Lahaina", "Philadelphia|Kapalua"]);
-
 	const flightFeatures: object[] = [];
-	const driveFeatures: object[] = [];
-
-	for (let i = 0; i < points.length - 1; i++) {
-		const from = points[i].coords;
-		const to = points[i + 1].coords;
-		const dist = haversineKm(from.lat, from.lng, to.lat, to.lng);
-		const pairKey = `${points[i].city}|${points[i + 1].city}`;
-		if (knownSkips.has(pairKey)) continue;
-		const feature = {
+	for (const [from, to] of tripRoutes as [string, string][]) {
+		const fa = cityLookup[from];
+		const fb = cityLookup[to];
+		if (!fa || !fb) continue;
+		flightFeatures.push({
 			type: "Feature" as const,
-			geometry: { type: "LineString" as const, coordinates: [[from.lng, from.lat], [to.lng, to.lat]] },
+			geometry: { type: "LineString" as const, coordinates: [[fa.lng, fa.lat], [fb.lng, fb.lat]] },
 			properties: {},
-		};
-		(dist < 600 && !knownFlights.has(pairKey) ? driveFeatures : flightFeatures).push(feature);
+		});
 	}
 
 	const upsert = (sourceId: string, layerId: string, features: object[], paint: object) => {
@@ -87,12 +60,6 @@ function addFlightArcs(map: any, locations: Location[]) {
 		"line-color": "rgba(255, 255, 255, 0.35)",
 		"line-width": 0.8,
 		"line-opacity": ["interpolate", ["linear"], ["zoom"], 2, 0.7, 5, 0],
-	});
-	upsert("drive-arcs", "drive-arcs-layer", driveFeatures, {
-		"line-color": "rgba(180, 220, 255, 0.25)",
-		"line-width": 0.5,
-		"line-dasharray": [2, 3],
-		"line-opacity": ["interpolate", ["linear"], ["zoom"], 2, 0.5, 5, 0],
 	});
 }
 
