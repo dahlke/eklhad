@@ -16,6 +16,27 @@ import (
 	"google.golang.org/api/sheets/v4"
 )
 
+type locationPhotoEntry struct {
+	Slug  string `json:"slug"`
+	URL   string `json:"url"`
+	Date  string `json:"date"`
+	Emoji string `json:"emoji"`
+}
+
+func loadLocationPhotos() map[string]locationPhotoEntry {
+	data, err := os.ReadFile("frontend/src/config/locationPhotos.json")
+	if err != nil {
+		log.Warnf("Could not read locationPhotos.json: %v", err)
+		return nil
+	}
+	var photos map[string]locationPhotoEntry
+	if err := json.Unmarshal(data, &photos); err != nil {
+		log.Warnf("Could not parse locationPhotos.json: %v", err)
+		return nil
+	}
+	return photos
+}
+
 func writeLocationsToGCS(locations []structs.EklhadLocation) {
 	if len(locations) > 0 {
 		ctx := context.Background()
@@ -318,10 +339,6 @@ func GetDataFromGSheets(spreadSheetID string) {
 				home = true
 			}
 
-			photoURL    := getStringValue(row, 9)
-			photoEmoji  := getStringValue(row, 10)
-			photoDate   := getStringValue(row, 11)
-
 			locationID := fmt.Sprint("location-", i)
 			eklhadLocation := structs.EklhadLocation{
 				ID:                  locationID,
@@ -333,12 +350,20 @@ func GetDataFromGSheets(spreadSheetID string) {
 				Home:                home,
 				Lat:                 lat,
 				Lng:                 lng,
-				PhotoURL:            photoURL,
-				PhotoEmoji:          photoEmoji,
-				PhotoDate:           photoDate,
 			}
 
 			eklhadLocations = append(eklhadLocations, eklhadLocation)
+		}
+
+		// Overlay photo data from locationPhotos.json (source of truth for photos,
+		// independent of sheet column ordering which has historically been unreliable).
+		locationPhotos := loadLocationPhotos()
+		for i := range eklhadLocations {
+			if photo, ok := locationPhotos[eklhadLocations[i].City]; ok {
+				eklhadLocations[i].PhotoURL = photo.URL
+				eklhadLocations[i].PhotoEmoji = photo.Emoji
+				eklhadLocations[i].PhotoDate = photo.Date
+			}
 		}
 
 		writeLocationsToGCS(eklhadLocations)
