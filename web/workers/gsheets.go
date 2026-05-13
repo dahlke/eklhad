@@ -339,6 +339,11 @@ func GetDataFromGSheets(spreadSheetID string) {
 				home = true
 			}
 
+			if lat == 0 && lng == 0 {
+				log.Warn(fmt.Sprintf("Skipping location %s — no valid coordinates", locationCity))
+				continue
+			}
+
 			locationID := fmt.Sprint("location-", i)
 			eklhadLocation := structs.EklhadLocation{
 				ID:                  locationID,
