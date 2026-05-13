@@ -30,21 +30,66 @@ function applySunlight(map: any) {
 	}]);
 }
 
+function greatCircleCoords(
+	from: { lat: number; lng: number },
+	to: { lat: number; lng: number },
+	steps = 64
+): [number, number][] {
+	const toRad = (d: number) => (d * Math.PI) / 180;
+	const toDeg = (r: number) => (r * 180) / Math.PI;
+	const φ1 = toRad(from.lat), λ1 = toRad(from.lng);
+	const φ2 = toRad(to.lat), λ2 = toRad(to.lng);
+	const Δ = Math.acos(Math.max(-1, Math.min(1,
+		Math.sin(φ1) * Math.sin(φ2) + Math.cos(φ1) * Math.cos(φ2) * Math.cos(λ2 - λ1)
+	)));
+	if (Δ < 1e-10) return [[from.lng, from.lat]];
+	const coords: [number, number][] = [];
+	for (let i = 0; i <= steps; i++) {
+		const t = i / steps;
+		const A = Math.sin((1 - t) * Δ) / Math.sin(Δ);
+		const B = Math.sin(t * Δ) / Math.sin(Δ);
+		const x = A * Math.cos(φ1) * Math.cos(λ1) + B * Math.cos(φ2) * Math.cos(λ2);
+		const y = A * Math.cos(φ1) * Math.sin(λ1) + B * Math.cos(φ2) * Math.sin(λ2);
+		const z = A * Math.sin(φ1) + B * Math.sin(φ2);
+		let lng = toDeg(Math.atan2(y, x));
+		const lat = toDeg(Math.atan2(z, Math.sqrt(x * x + y * y)));
+		// Keep longitude continuous so the arc doesn't wrap 360° around the globe
+		if (coords.length > 0) {
+			const prev = coords[coords.length - 1][0];
+			while (lng - prev >  180) lng -= 360;
+			while (prev - lng >  180) lng += 360;
+		}
+		coords.push([lng, lat]);
+	}
+	return coords;
+}
+
+type TripRoute = { from: string; to: string; mode: string };
+
+const MODE_STYLE: Record<string, { color: string; width: number }> = {
+	Plane: { color: "rgba(255, 255, 255, 0.45)", width: 0.8 },
+	Train: { color: "rgba(255, 210, 60, 0.75)",  width: 1.2 },
+	Car:   { color: "rgba(90,  210, 90,  0.55)", width: 0.8 },
+	Ferry: { color: "rgba(60,  200, 255, 0.75)", width: 1.1 },
+	Bus:   { color: "rgba(210, 120, 255, 0.65)", width: 0.9 },
+};
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function addFlightArcs(map: any, locations: Location[]) {
+function addTravelArcs(map: any, locations: Location[]) {
 	const cityLookup: Record<string, { lat: number; lng: number }> = {};
 	for (const loc of locations) {
 		if (loc.city) cityLookup[loc.city] = { lat: loc.lat, lng: loc.lng };
 	}
 
-	const flightFeatures: object[] = [];
-	for (const [from, to] of tripRoutes as [string, string][]) {
+	const byMode: Record<string, object[]> = {};
+	for (const { from, to, mode } of tripRoutes as TripRoute[]) {
 		const fa = cityLookup[from];
 		const fb = cityLookup[to];
 		if (!fa || !fb) continue;
-		flightFeatures.push({
+		const key = mode in MODE_STYLE ? mode : "Plane";
+		(byMode[key] ??= []).push({
 			type: "Feature" as const,
-			geometry: { type: "LineString" as const, coordinates: [[fa.lng, fa.lat], [fb.lng, fb.lat]] },
+			geometry: { type: "LineString" as const, coordinates: greatCircleCoords(fa, fb) },
 			properties: {},
 		});
 	}
@@ -56,11 +101,14 @@ function addFlightArcs(map: any, locations: Location[]) {
 		map.addLayer({ id: layerId, type: "line", source: sourceId, paint });
 	};
 
-	upsert("flight-arcs", "flight-arcs-layer", flightFeatures, {
-		"line-color": "rgba(255, 255, 255, 0.35)",
-		"line-width": 0.8,
-		"line-opacity": ["interpolate", ["linear"], ["zoom"], 2, 0.7, 5, 0],
-	});
+	for (const [mode, features] of Object.entries(byMode)) {
+		const style = MODE_STYLE[mode] ?? MODE_STYLE.Plane;
+		upsert(`arcs-${mode}`, `arcs-${mode}-layer`, features, {
+			"line-color": style.color,
+			"line-width": style.width,
+			"line-opacity": ["interpolate", ["linear"], ["zoom"], 2, 0.85, 8, 0],
+		});
+	}
 }
 
 const MAPBOX_ACCESS_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN as string;
@@ -116,7 +164,7 @@ const [viewState, setViewState] = useState<ViewState>({
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			(map as any).setTerrain({ source: "mapbox-dem", exaggeration: 1.5 });
 			applySunlight(map);
-			if (locationsRef.current.length) addFlightArcs(map, locationsRef.current);
+			if (locationsRef.current.length) addTravelArcs(map, locationsRef.current);
 		};
 		applyGlobe();
 		map.on("style.load", applyGlobe);
@@ -193,7 +241,7 @@ const [viewState, setViewState] = useState<ViewState>({
 		if (!mapLoaded || !locations?.length) return;
 		const map = mapRef.current?.getMap();
 		if (!map) return;
-		addFlightArcs(map, locations);
+		addTravelArcs(map, locations);
 	}, [mapLoaded, locations]);
 
 	const locationMarkers = useMemo(() => {
