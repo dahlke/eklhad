@@ -725,6 +725,11 @@
     "mode": "Plane"
   },
   {
+    "from": "Valencia",
+    "to": "Marrakech",
+    "mode": "Plane"
+  },
+  {
     "from": "Milan",
     "to": "Copenhagen",
     "mode": "Plane"
