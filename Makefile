@@ -26,8 +26,7 @@ install-hooks:
 ##########################
 .PHONY: generate_thumbs
 generate_thumbs:
-	python3 -m venv .venv && .venv/bin/pip install -q -r scripts/requirements.txt
-	.venv/bin/python3 scripts/generate_thumbs.py
+	uv run python scripts/generate_thumbs.py
 
 ##########################
 # JS HELPERS

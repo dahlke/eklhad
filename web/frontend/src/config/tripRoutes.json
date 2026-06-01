@@ -585,6 +585,11 @@
     "mode": "Ferry"
   },
   {
+    "from": "Valletta",
+    "to": "Tunis",
+    "mode": "Ferry"
+  },
+  {
     "from": "Agra",
     "to": "Mumbai",
     "mode": "Plane"

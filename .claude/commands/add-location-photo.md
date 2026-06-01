@@ -86,7 +86,7 @@ unzip -p "{source.zip}" "{image filename}" > /tmp/{slug}_raw.{ext}
 
 Convert and fix orientation:
 ```bash
-/tmp/eklhad-venv/bin/python3 - <<'EOF'
+uv run --with pillow --with pillow-heif python - <<'EOF'
 from PIL import Image, ImageOps
 import io
 
@@ -96,11 +96,6 @@ img = img.convert("RGB")
 img.save("/tmp/{slug}_{YYYY_MM_DD}.png", format="PNG", optimize=True)
 print("done")
 EOF
-```
-
-If the venv doesn't exist, create it first:
-```bash
-python3 -m venv /tmp/eklhad-venv && /tmp/eklhad-venv/bin/pip install -q pillow pillow-heif google-cloud-storage
 ```
 
 ### 4. Upload full-size to GCS
@@ -117,7 +112,7 @@ gsutil acl ch -u AllUsers:R gs://eklhad-web-public/photos/{slug}_{YYYY_MM_DD}.pn
 ### 5. Generate and upload thumbnail (400px wide)
 
 ```bash
-/tmp/eklhad-venv/bin/python3 - <<'EOF'
+uv run --with pillow python - <<'EOF'
 from PIL import Image
 img = Image.open("/tmp/{slug}_{YYYY_MM_DD}.png")
 w, h = img.size

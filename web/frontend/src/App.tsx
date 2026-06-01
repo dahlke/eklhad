@@ -1,10 +1,10 @@
-import React, { Suspense, lazy, useState, useEffect, useMemo } from "react";
+import React, { Suspense, lazy, useState, useEffect } from "react";
 
 const Map = lazy(() => import("./component/map/Map"));
 
 import "./App.css";
 
-import { useGravatar, useLocations } from "./contexts";
+import { useGravatar } from "./contexts";
 import { DarkModeToggle } from "./component/darkModeToggle/DarkModeToggle";
 
 const socialLinks = [
@@ -19,16 +19,7 @@ const socialLinks = [
 
 function App() {
     const gravatar = useGravatar();
-    const { items: locations } = useLocations();
     const [profileOpacity, setProfileOpacity] = useState(1);
-
-    const travelStats = useMemo(() => {
-        if (!locations?.length) return null;
-        const visited = locations.filter(l => !l.layover && !l.home);
-        const countries = new Set(visited.map(l => l.country).filter(Boolean));
-        const cities = new Set(visited.map(l => l.city).filter(Boolean));
-        return { countries: countries.size, cities: cities.size };
-    }, [locations]);
     const [showScrollTop, setShowScrollTop] = useState(false);
 
     useEffect(() => {
@@ -72,15 +63,9 @@ function App() {
                     Deployed Engineering Leader
                 </p>
 
-                <p className="text-sm italic text-chicago-flag-blue dark:text-slate-400 mb-1 animate-fade-up delay-300">
+                <p className="text-sm italic text-chicago-flag-blue dark:text-slate-400 mb-10 animate-fade-up delay-300">
                     📍 San Francisco, California
                 </p>
-
-                {travelStats && (
-                    <p className="text-xs text-chicago-flag-blue/50 dark:text-slate-500 mb-10 animate-fade-up delay-300">
-                        {travelStats.countries} countries · {travelStats.cities} cities
-                    </p>
-                )}
 
                 <div className="flex flex-row flex-wrap items-center md:flex-col md:items-start gap-y-2 text-sm tracking-wide text-chicago-flag-blue dark:text-chicago-flag-blue/80 animate-fade-up delay-500">
                     {socialLinks.map((link, i) => (
