@@ -2,6 +2,39 @@
 
 ## Local Development
 
+### Python Scripts (`uv`)
+
+Helper scripts in `scripts/` (thumbnail generation, photo backfill, route inference, etc.) are run via [`uv`](https://docs.astral.sh/uv/). Dependencies are declared in `pyproject.toml` and pinned in `uv.lock` — there is no `requirements.txt` and no need to manage a virtualenv manually.
+
+Install `uv` if you don't already have it:
+
+```bash
+brew install uv
+# or: curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+Run a script — `uv` will create/sync the environment from the lockfile automatically on first run:
+
+```bash
+uv run python scripts/generate_thumbs.py
+# or via make:
+make generate_thumbs
+```
+
+Add a new dependency (updates both `pyproject.toml` and `uv.lock`):
+
+```bash
+uv add <package>
+```
+
+Sync the environment explicitly (e.g. after pulling changes to the lockfile):
+
+```bash
+uv sync
+```
+
+When adding a new script, drop it in `scripts/` and run it with `uv run python scripts/<name>.py` — no separate install step needed.
+
 ### Data Collection
 
 These will run only one time, and retrieve the latest data for each data source.

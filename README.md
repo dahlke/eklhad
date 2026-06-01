@@ -14,6 +14,7 @@ My personal web assets. I use this project to try out many different types of ne
 - `npm`
 - `terraform`
 - `docker`
+- [`uv`](https://docs.astral.sh/uv/) (Python package/runtime manager — used for helper scripts in `scripts/`)
 
 ### Optional
 
