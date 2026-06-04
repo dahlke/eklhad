@@ -293,6 +293,13 @@
 	],
 	"publications": [
 		{
+			"name": "Model Neutrality: Why Avoiding AI Vendor Lock-In Matters",
+			"publisher": "LangChain",
+			"releaseDate": "2026-06-04",
+			"website": "https://dahlke.io/pub/model-neutrality",
+			"summary": ""
+		},
+		{
 			"name": "Building Resilient Distributed Systems with Temporal and AWS",
 			"publisher": "",
 			"releaseDate": "2025-05-02",
