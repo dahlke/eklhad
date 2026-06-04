@@ -340,6 +340,9 @@ func main() {
 	http.HandleFunc("/ready", readyHandler)
 
 	// Publication redirects
+	http.HandleFunc("/pub/model-neutrality", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "https://www.langchain.com/blog/model-neutrality", http.StatusMovedPermanently)
+	})
 	http.HandleFunc("/pub/temporal", func(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "https://aws.amazon.com/blogs/apn/building-resilient-distributed-systems-with-temporal-and-aws/", http.StatusMovedPermanently)
 	})
