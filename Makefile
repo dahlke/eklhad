@@ -89,7 +89,7 @@ go_lint:
 
 .PHONY: go_get
 go_get:
-	cd web && go get -u && go mod tidy
+	cd web && go mod download
 
 .PHONY: go_test
 go_test:
