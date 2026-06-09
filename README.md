@@ -11,7 +11,7 @@ My personal web assets. I use this project to try out many different types of ne
 - `make`
 - `git`
 - `go`
-- `npm`
+- [`bun`](https://bun.sh) (used as the frontend package manager and script runner — replaces `npm`)
 - `terraform`
 - `docker`
 - [`uv`](https://docs.astral.sh/uv/) (Python package/runtime manager — used for helper scripts in `scripts/`)
@@ -37,7 +37,7 @@ make go_server_run
 Install the Javascript development dependencies and start the frontend server. The frontend server will run on [localhost, port 3000](http://localhost:3000).
 
 ```bash
-make npm
+make bun_install
 make frontend_run
 ```
 
