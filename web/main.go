@@ -27,8 +27,9 @@ type templatePayload struct {
 }
 
 type appConfig struct {
-	GSheetID      string `json:"g_sheet_id"`
-	GravatarEmail string `json:"gravatar_email"`
+	GSheetID           string `json:"g_sheet_id"`
+	GravatarEmail      string `json:"gravatar_email"`
+	WorkerMinSleepMins int    `json:"worker_min_sleep_mins"`
 }
 
 type apiAppData struct {

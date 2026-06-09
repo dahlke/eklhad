@@ -6,9 +6,9 @@ import (
 
 func TestIsCellEmptyOrNotConfirmed(t *testing.T) {
 	tests := []struct {
-		name     string
+		name      string
 		cellValue interface{}
-		expected bool
+		expected  bool
 	}{
 		{
 			name:      "nil value",
@@ -121,4 +121,3 @@ func TestGetStringValue(t *testing.T) {
 		})
 	}
 }
-
