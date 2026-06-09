@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # Run the worker
       - name: Run eklhad data worker
@@ -38,7 +38,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.14"
 
       # Run the worker
       - name: Run eklhad JS and Go tests
@@ -50,5 +54,4 @@ jobs:
           echo $GOOGLE_ACTIONS_CREDENTIALS_JSON > $GOOGLE_APPLICATION_CREDENTIALS
           make go_get
           make go_test
-          npm --prefix web/frontend/ install
-          npm --prefix web/frontend/ run-script test-once
+          cd web/frontend && bun install --frozen-lockfile && bun run test --run

@@ -16,7 +16,7 @@ try:
     from google.cloud import storage
     from PIL import Image, ImageOps
 except ImportError:
-    print("Missing deps. Run: pip install google-cloud-storage Pillow")
+    print("Missing deps. Run via `uv run python scripts/fix_photo_orientation.py` (or `uv sync` first).")
     sys.exit(1)
 
 BUCKET_NAME   = "eklhad-web-public"

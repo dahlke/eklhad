@@ -22,7 +22,7 @@ COPY web/ ./
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o main .
 
 # Stage 2: Build the frontend
-FROM node:20-alpine AS frontend-builder
+FROM oven/bun:1-alpine AS frontend-builder
 
 ARG VITE_MAPBOX_TOKEN
 ENV VITE_MAPBOX_TOKEN=$VITE_MAPBOX_TOKEN
@@ -31,16 +31,16 @@ ENV VITE_MAPBOX_TOKEN=$VITE_MAPBOX_TOKEN
 WORKDIR /build
 
 # Copy package files
-COPY web/frontend/package.json web/frontend/package-lock.json ./
+COPY web/frontend/package.json web/frontend/bun.lock ./
 
 # Install dependencies
-RUN npm ci
+RUN bun install --frozen-lockfile
 
 # Copy frontend source code (build/ and coverage/ excluded via .dockerignore)
 COPY web/frontend/ ./
 
 # Build the frontend
-RUN PUBLIC_URL=/static npm run build
+RUN PUBLIC_URL=/static bun run build
 
 # Stage 3: Create minimal runtime image
 FROM alpine:latest

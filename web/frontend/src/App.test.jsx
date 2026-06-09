@@ -12,6 +12,5 @@ test('renders the App component', () => {
 		</AppProviders>,
 		div,
 	);
-  const linkElement = screen.getByText(/Software Sales Engineer/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(screen.getByText(/Deployed Engineering Leader/i)).toBeInTheDocument();
 });

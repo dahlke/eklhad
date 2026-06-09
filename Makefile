@@ -31,55 +31,54 @@ generate_thumbs:
 ##########################
 # JS HELPERS
 ##########################
-.PHONY: npm
-npm:
-	cd web/frontend && npm config set strict-ssl false && npm install
+.PHONY: bun_install
+bun_install:
+	cd web/frontend && bun install
 
 .PHONY: js_lint
 js_lint:
 	cd web/frontend/ && \
-	node node_modules/eslint/bin/eslint.js src/*.js* src/**/*.js*
+	bun x eslint src/*.js* src/**/*.js*
 
 .PHONY: js_lint_fix
 js_lint_fix:
 	cd web/frontend/ && \
-	node node_modules/eslint/bin/eslint.js --fix src/**/*.js*
-	# node node_modules/eslint/bin/eslint.js --fix src/*.js* src/**/*.js*
+	bun x eslint --fix src/**/*.js*
 
 .PHONY: js_lint_fix_dry
 js_lint_fix_dry:
 	cd web/frontend/ && \
-	node node_modules/eslint/bin/eslint.js --fix-dry-run src/*.js src/**/*.js
+	bun x eslint --fix-dry-run src/*.js src/**/*.js
 
 .PHONY: resume
-resume: npm
+resume: bun_install
 	cd web/frontend/conf/ && \
-	node render-resume.js && \
+	bun render-resume.js && \
 	mv ${CWD}/web/frontend/conf/resume.html ${CWD}/web/frontend/public/static/resume.html
 
- .PHONY: frontend_test
- frontend_test: npm
-	 cd web/frontend/ && npm run test
+.PHONY: frontend_test
+frontend_test: bun_install
+	cd web/frontend/ && bun run test
 
 .PHONY: frontend_test_coverage
-frontend_test_coverage: npm
-	cd web/frontend/ && npm run test:coverage
+frontend_test_coverage: bun_install
+	cd web/frontend/ && bun run test:coverage
 
 .PHONY: frontend_test_watch
-frontend_test_watch: npm
-	cd web/frontend/ && npm run test:watch
+frontend_test_watch: bun_install
+	cd web/frontend/ && bun run test:watch
 
 .PHONY: frontend_run
-frontend_run: npm
-	cd web/frontend/ && npm run dev
+frontend_run: bun_install
+	cd web/frontend/ && bun run dev
 
 .PHONY: frontend_build
-frontend_build: npm
+frontend_build: bun_install
 	@if [ ! -f "web/frontend/public/static/resume.html" ]; then \
 		echo "Error: resume.html not found. Please run 'make resume' first."; \
 		exit 1; \
 	fi
-	PUBLIC_URL=/static cd web/frontend/ && npm run build
+	PUBLIC_URL=/static cd web/frontend/ && bun run build
 
 ##########################
 # GO HELPERS

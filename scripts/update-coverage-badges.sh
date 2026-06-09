@@ -40,7 +40,7 @@ JS_COVERAGE="0%"
 if [ -d "$FRONTEND_DIR/node_modules" ]; then
     # Run JS tests with coverage and extract percentage
     cd "$FRONTEND_DIR"
-    JS_TEST_OUTPUT=$(npm run test:coverage 2>&1 || true)
+    JS_TEST_OUTPUT=$(bun run test:coverage 2>&1 || true)
     # Try to extract coverage from various formats
     # Format 1: "frontend/src | 37.39 | 25 | 33.33 | 37.39" - get the first percentage (Statements)
     JS_COVERAGE_OUTPUT=$(echo "$JS_TEST_OUTPUT" | grep -E "frontend/src\s+\|" | awk '{print $3}' || echo "")

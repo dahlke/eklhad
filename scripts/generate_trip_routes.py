@@ -20,7 +20,7 @@ try:
     from googleapiclient.discovery import build
     from google.oauth2 import service_account
 except ImportError:
-    print("Missing deps. Run: pip install google-api-python-client google-auth")
+    print("Missing deps. Run via `uv run python scripts/generate_trip_routes.py` (or `uv sync` first).")
     sys.exit(1)
 
 SPREADSHEET_ID = "1Ex7AuwS25FoyP_h_HYVQjKr3XwPurZd2Heos3zb2gBI"
