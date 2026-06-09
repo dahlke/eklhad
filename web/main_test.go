@@ -235,60 +235,60 @@ func TestCompressionMiddleware(t *testing.T) {
 	middleware := compressionMiddleware(handler)
 
 	tests := []struct {
-		name                string
-		acceptEncoding      string
-		path                string
-		shouldCompress      bool
-		expectedContentEnc  string
+		name               string
+		acceptEncoding     string
+		path               string
+		shouldCompress     bool
+		expectedContentEnc string
 	}{
 		{
-			name:                "compresses with gzip accepted",
-			acceptEncoding:      "gzip",
-			path:                "/",
-			shouldCompress:      true,
-			expectedContentEnc:  "gzip",
+			name:               "compresses with gzip accepted",
+			acceptEncoding:     "gzip",
+			path:               "/",
+			shouldCompress:     true,
+			expectedContentEnc: "gzip",
 		},
 		{
-			name:                "no compression without gzip",
-			acceptEncoding:      "",
-			path:                "/",
-			shouldCompress:      false,
-			expectedContentEnc:  "",
+			name:               "no compression without gzip",
+			acceptEncoding:     "",
+			path:               "/",
+			shouldCompress:     false,
+			expectedContentEnc: "",
 		},
 		{
-			name:                "skips compression for .js files",
-			acceptEncoding:      "gzip",
-			path:                "/static/app.js",
-			shouldCompress:      false,
-			expectedContentEnc:  "",
+			name:               "skips compression for .js files",
+			acceptEncoding:     "gzip",
+			path:               "/static/app.js",
+			shouldCompress:     false,
+			expectedContentEnc: "",
 		},
 		{
-			name:                "skips compression for .mjs files",
-			acceptEncoding:      "gzip",
-			path:                "/static/app.mjs",
-			shouldCompress:      false,
-			expectedContentEnc:  "",
+			name:               "skips compression for .mjs files",
+			acceptEncoding:     "gzip",
+			path:               "/static/app.mjs",
+			shouldCompress:     false,
+			expectedContentEnc: "",
 		},
 		{
-			name:                "skips compression for .wasm files",
-			acceptEncoding:      "gzip",
-			path:                "/static/app.wasm",
-			shouldCompress:      false,
-			expectedContentEnc:  "",
+			name:               "skips compression for .wasm files",
+			acceptEncoding:     "gzip",
+			path:               "/static/app.wasm",
+			shouldCompress:     false,
+			expectedContentEnc: "",
 		},
 		{
-			name:                "skips compression for .gz files",
-			acceptEncoding:      "gzip",
-			path:                "/static/app.gz",
-			shouldCompress:      false,
-			expectedContentEnc:  "",
+			name:               "skips compression for .gz files",
+			acceptEncoding:     "gzip",
+			path:               "/static/app.gz",
+			shouldCompress:     false,
+			expectedContentEnc: "",
 		},
 		{
-			name:                "skips compression for .br files",
-			acceptEncoding:      "gzip",
-			path:                "/static/app.br",
-			shouldCompress:      false,
-			expectedContentEnc:  "",
+			name:               "skips compression for .br files",
+			acceptEncoding:     "gzip",
+			path:               "/static/app.br",
+			shouldCompress:     false,
+			expectedContentEnc: "",
 		},
 	}
 
@@ -444,4 +444,3 @@ func TestConfigLogger(t *testing.T) {
 	}()
 	configLogger()
 }
-
