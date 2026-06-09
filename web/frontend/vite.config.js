@@ -17,8 +17,9 @@ export default defineConfig(() => ({
           },
         },
       },
-      // Increase chunk size warning limit since mapbox-gl is inherently large
-      chunkSizeWarningLimit: 1000,
+      // mapbox-gl is inherently large and is already lazy-loaded via React.lazy
+      // in App.tsx, so the warning is cosmetic.
+      chunkSizeWarningLimit: 2000,
     },
     plugins: [react()],
     optimizeDeps: {

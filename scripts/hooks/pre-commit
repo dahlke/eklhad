@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
-# Pre-commit hook: block org-specific or sensitive content from this personal repo.
+# Pre-commit hook: block org-specific or sensitive content, then run Go + JS tests.
 # Install: make install-hooks
 
-set -euo pipefail
+set -eo pipefail
 
 RED='\033[0;31m'
 YELLOW='\033[1;33m'
+GREEN='\033[0;32m'
 NC='\033[0m'
+
+# ─── PART 1: BLOCK SENSITIVE / ORG CONTENT ──────────────────────────────────
 
 found_issues=0
 
@@ -20,8 +23,7 @@ warn() {
     found_issues=1
 }
 
-# ── 1. Block Claude settings files ──────────────────────────────────────────
-# These may contain MCP tokens, org-specific server lists, and allowed commands.
+# Block Claude settings files — may contain MCP tokens, org-specific server lists, allowed commands.
 while IFS= read -r f; do
     case "$f" in
         .claude/settings.json|.claude/settings.local.json)
@@ -30,8 +32,7 @@ while IFS= read -r f; do
     esac
 done < <(git diff --cached --name-only)
 
-# ── 2. Scan staged diff for org-specific patterns ───────────────────────────
-# Only added lines (^+), skip diff headers (^+++).
+# Scan staged diff for org-specific patterns. Only added lines (^+), skip diff headers (^+++).
 staged_diff=$(git diff --cached -U0 -- ':!scripts/hooks/pre-commit' ':!.claude/commands/' | grep '^+' | grep -v '^+++' || true)
 
 if [ -n "$staged_diff" ]; then
@@ -46,19 +47,13 @@ if [ -n "$staged_diff" ]; then
         fi
     }
 
-    # LangChain operational secrets / identifiers
     check_pattern "langchain-key"   'LANGSMITH_API_KEY|LANGCHAIN_API_KEY|LANGCHAIN_HUB_API_KEY'
     check_pattern "langchain-email" 'neil@langchain\.dev'
-
-    # Org-specific MCP servers (work tools, not personal)
     check_pattern "work-mcp"   '"gtm-agent"|"linear-server"|"hex"|mcp__gtm-agent|mcp__linear'
-
-    # Generic secret patterns
     check_pattern "api-key"    '(api|secret|token|password)[_-]?(key)?[[:space:]]*[:=][[:space:]]*"?[A-Za-z0-9+/]{20,}'
     check_pattern "bearer"     'Bearer[[:space:]]+[A-Za-z0-9._~+/-]{20,}'
 fi
 
-# ── Result ───────────────────────────────────────────────────────────────────
 if [ "$found_issues" -ne 0 ]; then
     echo ""
     echo -e "${RED}Commit blocked.${NC} Remove the above before committing."
@@ -66,4 +61,57 @@ if [ "$found_issues" -ne 0 ]; then
     exit 1
 fi
 
-exit 0
+# ─── PART 2: RUN GO + JS TESTS ──────────────────────────────────────────────
+
+echo "Running pre-commit checks..."
+
+echo "Checking Go formatting..."
+if gofmt -l -s ./web/ | grep -q .; then
+    echo -e "${RED}✗${NC} Go code is not properly formatted. Please run 'gofmt -s -w ./web/'"
+    exit 1
+fi
+echo -e "${GREEN}✓${NC} Go code is properly formatted"
+
+echo "Running go vet..."
+(cd ./web/ && go vet ./...) || { echo -e "${RED}✗${NC} go vet found issues"; exit 1; }
+echo -e "${GREEN}✓${NC} go vet passed"
+
+echo "Running Go tests with coverage..."
+(cd ./web/ && go test -v ./... -coverprofile=coverage.out) || { echo -e "${RED}✗${NC} Go tests failed"; exit 1; }
+GO_COVERAGE=$(cd ./web/ && go tool cover -func=coverage.out 2>/dev/null | tail -1 | awk '{print $3}')
+echo -e "${GREEN}✓${NC} Go tests passed (Coverage: $GO_COVERAGE)"
+
+echo "Checking frontend code..."
+if command -v bun &> /dev/null; then
+    if [ -d "web/frontend/node_modules" ]; then
+        if (cd web/frontend && bun run build 2>&1 | grep -q "error"); then
+            echo -e "${RED}✗${NC} TypeScript compilation failed"
+            exit 1
+        fi
+        echo -e "${GREEN}✓${NC} TypeScript type check passed"
+
+        echo "Running JS tests with coverage..."
+        JS_TEST_OUTPUT=$(cd web/frontend && bun run test:coverage 2>&1 || true)
+        if echo "$JS_TEST_OUTPUT" | grep -q "FAIL\|Error\|failed"; then
+            echo -e "${RED}✗${NC} JS tests failed"
+            echo "$JS_TEST_OUTPUT" | tail -20
+            exit 1
+        fi
+        JS_COVERAGE=$(echo "$JS_TEST_OUTPUT" | grep -E "All files.*%" | tail -1 | awk '{print $NF}' || echo "N/A")
+        if [ -z "$JS_COVERAGE" ] || [ "$JS_COVERAGE" = "N/A" ]; then
+            JS_COVERAGE=$(echo "$JS_TEST_OUTPUT" | grep -E "[0-9]+\.[0-9]+%" | tail -1 | grep -oE "[0-9]+\.[0-9]+%" || echo "N/A")
+        fi
+        echo -e "${GREEN}✓${NC} JS tests passed (Coverage: $JS_COVERAGE)"
+    else
+        echo -e "${YELLOW}⚠${NC} web/frontend/node_modules not found, skipping frontend checks (run 'make bun_install')"
+    fi
+else
+    echo -e "${YELLOW}⚠${NC} bun not found, skipping frontend checks"
+fi
+
+echo "Updating coverage badges in README..."
+if [ -f "./scripts/update-coverage-badges.sh" ]; then
+    ./scripts/update-coverage-badges.sh || echo -e "${YELLOW}⚠${NC} Warning: Failed to update coverage badges"
+fi
+
+echo -e "${GREEN}✓ All pre-commit checks passed!${NC}"

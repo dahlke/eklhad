@@ -2,6 +2,29 @@
 
 ## Local Development
 
+### Frontend (`bun`)
+
+The React/Vite frontend in `web/frontend/` uses [`bun`](https://bun.sh) as both the package manager and script runner — `npm` is no longer used. Installs are dramatically faster, and the `packageManager` field in `web/frontend/package.json` pins the bun version so local and CI environments match.
+
+Install `bun` if you don't already have it:
+
+```bash
+brew install bun
+# or: curl -fsSL https://bun.sh/install | bash
+```
+
+Common operations (all wrapped by `make` targets):
+
+```bash
+make bun_install              # install deps (web/frontend/bun.lock)
+make frontend_run             # vite dev server on :3000
+make frontend_build           # production build (requires `make resume` first)
+make frontend_test            # vitest
+make frontend_test_coverage   # vitest with coverage
+```
+
+Vitest remains the test runner — we do not use `bun test`. The `node_modules` layout produced by `bun install` is compatible with Vite, Vitest, and PostCSS/Tailwind tooling.
+
 ### Python Scripts (`uv`)
 
 Helper scripts in `scripts/` (thumbnail generation, photo backfill, route inference, etc.) are run via [`uv`](https://docs.astral.sh/uv/). Dependencies are declared in `pyproject.toml` and pinned in `uv.lock` — there is no `requirements.txt` and no need to manage a virtualenv manually.
@@ -86,13 +109,13 @@ make go_test
 
 ### Helpful Git Hooks
 
-If you'd like to run the tests on every commit, you can use one of the provided Git hooks. They are located in the `./hooks/pre-commit/` folder here. Symlink them to the git repo using:
+A combined pre-commit hook lives at `scripts/hooks/pre-commit`. It blocks sensitive/org-specific content from being committed, then runs Go formatting + vet + tests and the JS test suite (via `bun`). Install it with:
 
 ```bash
-cd .git/hooks
-ln -s -f ../../hooks/pre-commit ./pre-commit
-chmod +x ../../hooks/pre-commit ./pre-commit
+make install-hooks
 ```
+
+To bypass once (use with caution): `git commit --no-verify`.
 
 ## Deploying Eklhad Web to Cloud Run (Manual)
 
@@ -135,7 +158,7 @@ make resume  # Must be run before Docker build - generates static resume HTML in
 
 # Step 2: Build and push Docker image, then deploy to Cloud Run
 # The Dockerfile automatically builds:
-#   - Frontend (React app) in a Node.js stage
+#   - Frontend (React app) in a Bun stage
 #   - Go binary in a Go builder stage
 #   - Final minimal runtime image with only the built artifacts
 make cloudrun_deploy
@@ -175,66 +198,3 @@ make docker_run_web
 
 **Note:** Make sure you've run `make resume` first if you need the resume page, as the Dockerfile
 copies the resume from the source directory.
-
----
-
-## DEPRECATED: VM-Based Deployment
-
-The VM-based deployment has been deprecated in favor of Cloud Run. The following information is kept for reference only.
-
-### Deploying to VM (DEPRECATED)
-
-The old deployment process used a VM-based infrastructure. This required building Packer images and deploying to Compute Engine.
-
-#### Authenticating to GCP and Cloudflare (VM Version)
-
-```bash
-# For Packer and Terraform
-export GOOGLE_APPLICATION_CREDENTIALS="/Users/neil/.gcp/eklhad-web-packer.json"
-
-# For the data collector
-export GOOGLE_API_KEY=$(op item get "Google dahlke.io" --format=json | jq -r '.fields[5].value')
-
-export CLOUDFLARE_TOKEN=$(op item get Cloudflare --format=json | jq -r '.fields[3].value')
-export CLOUDFLARE_EMAIL=$(op item get Cloudflare --format=json | jq -r '.fields[4].value')
-export CLOUDFLARE_API_KEY=$(op item get Cloudflare --format=json | jq -r '.fields[5].value')
-```
-
-#### VM Deployment Steps (DEPRECATED)
-
-```bash
-# Step 1: Collect and prepare data
-make collect_data
-make resume  # Must be run before frontend_build - generates static resume HTML
-
-# Step 2: Build and package application
-make frontend_build  # Will fail if resume hasn't been built
-make go_build_linux
-make artifact_linux_web
-make go_build_macos
-make artifact_macos_web
-
-# Step 3: Create and deploy cloud infrastructure
-make image_gcp
-make vm_apply_gcp_auto
-```
-
-#### VM Terraform Commands (DEPRECATED)
-
-```bash
-# Initialize Terraform
-make vm_init_gcp
-
-# Plan changes
-make vm_plan_gcp
-
-# Apply changes
-make vm_apply_gcp_auto
-
-# Destroy infrastructure
-make vm_destroy_gcp_auto
-```
-
-The VM infrastructure Terraform state is stored in GCS at:
-
-- `gs://eklhad-web-private/terraform-vm.tfstate/`
