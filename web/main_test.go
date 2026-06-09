@@ -70,12 +70,13 @@ func TestAPIHandlers(t *testing.T) {
 			path:           "/api/gravatar",
 			expectedStatus: http.StatusOK,
 			validateBody: func(t *testing.T, body []byte) {
-				var email string
-				if err := json.Unmarshal(body, &email); err != nil {
+				var url string
+				if err := json.Unmarshal(body, &url); err != nil {
 					t.Errorf("Response is not valid JSON: %v", err)
 				}
-				if email != "test@example.com" {
-					t.Errorf("Expected email 'test@example.com', got '%s'", email)
+				expected := "https://www.gravatar.com/avatar/55502f40dc8b7c769880b10874abc9d0.jpg?s=200"
+				if url != expected {
+					t.Errorf("Expected URL '%s', got '%s'", expected, url)
 				}
 			},
 		},
