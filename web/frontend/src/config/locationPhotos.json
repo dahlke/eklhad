@@ -191,6 +191,12 @@
     "date": "November 8, 2015",
     "emoji": "🚗"
   },
+  "Dollywood": {
+    "slug": "dollywood",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/dollywood_2026_06_07.png",
+    "date": "June 7, 2026",
+    "emoji": "🎤"
+  },
   "Drvenik Veli": {
     "slug": "drvenik_veli",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/drvenik_veli_2023_09_14.png",
@@ -521,6 +527,12 @@
     "date": "May 9, 2025",
     "emoji": "🔔"
   },
+  "Pigeon Forge": {
+    "slug": "pigeon_forge",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/pigeon_forge_2026_06_08.png",
+    "date": "June 8, 2026",
+    "emoji": "🎢"
+  },
   "Pittsburgh": {
     "slug": "pittsburgh",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/pittsburgh_2019_09_30.png",
@@ -568,6 +580,12 @@
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/rome_2024_05_09.png",
     "date": "May 9, 2024",
     "emoji": "🏟️"
+  },
+  "Round Lake": {
+    "slug": "round_lake",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/round_lake_2026_06_13.png",
+    "date": "June 13, 2026",
+    "emoji": "🥾"
   },
   "Saint Petersburg": {
     "slug": "saint_petersburg",
@@ -629,11 +647,23 @@
     "date": "October 27, 2025",
     "emoji": "🥢"
   },
+  "Sevierville": {
+    "slug": "sevierville",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/sevierville_2026_06_05.png",
+    "date": "June 5, 2026",
+    "emoji": "🐻"
+  },
   "Shanghai": {
     "slug": "shanghai",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/shanghai_2017_01_14.png",
     "date": "January 14, 2017",
     "emoji": "🌃"
+  },
+  "Showers Lake": {
+    "slug": "showers_lake",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/showers_lake_2026_06_12.png",
+    "date": "June 12, 2026",
+    "emoji": "🏞️"
   },
   "Sintra": {
     "slug": "sintra",
