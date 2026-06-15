@@ -2,17 +2,58 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eklhad Web</title>
-    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Neil Dahlke</title>
+    <meta name="description" content="San Francisco, raised in Chicago. Software, cycling, skiing, music. Ask me about LLMs, infrastructure, or Ireland." />
+    <meta name="author" content="Neil Dahlke" />
+    <link rel="canonical" href="https://dahlke.io/" />
+
     <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
     <link rel="shortcut icon" href="/static/favicon.ico" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
     <meta name="theme-color" content="#000000" />
     <link rel="manifest" href="/static/manifest.json" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Neil Dahlke" />
+    <meta property="og:title" content="Neil Dahlke" />
+    <meta property="og:description" content="San Francisco, raised in Chicago. Software, cycling, skiing, music. Ask me about LLMs, infrastructure, or Ireland." />
+    <meta property="og:url" content="https://dahlke.io/" />
+    <meta property="profile:first_name" content="Neil" />
+    <meta property="profile:last_name" content="Dahlke" />
+    <meta property="profile:username" content="neildahlke" />
+    <!-- TODO: add og:image (1200x630 PNG) once a static avatar lives in /static/. Gravatar is resolved client-side, so link unfurls have no preview image until this is set. -->
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@neildahlke" />
+    <meta name="twitter:creator" content="@neildahlke" />
+    <meta name="twitter:title" content="Neil Dahlke" />
+    <meta name="twitter:description" content="San Francisco, raised in Chicago. Software, cycling, skiing, music. Ask me about LLMs, infrastructure, or Ireland." />
+
+    <!-- Structured data: Person. Helps Google consolidate the entity across surfaces. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Neil Dahlke",
+      "givenName": "Neil",
+      "familyName": "Dahlke",
+      "url": "https://dahlke.io/",
+      "homeLocation": {
+        "@type": "Place",
+        "name": "San Francisco, California"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/neildahlke",
+        "https://github.com/dahlke",
+        "https://x.com/neildahlke",
+        "https://eklhad.medium.com/",
+        "https://www.instagram.com/eklhad/",
+        "https://www.strava.com/athletes/4351145"
+      ]
+    }
+    </script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,6 +69,19 @@
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <h1>Neil Dahlke</h1>
+      <p>San Francisco, raised in Chicago.</p>
+      <ul>
+        <li><a href="https://github.com/dahlke">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/neildahlke">LinkedIn</a></li>
+        <li><a href="https://x.com/neildahlke">X</a></li>
+        <li><a href="https://eklhad.medium.com/">Medium</a></li>
+        <li><a href="https://www.instagram.com/eklhad/">Instagram</a></li>
+        <li><a href="https://www.strava.com/athletes/4351145">Strava</a></li>
+        <li><a href="/static/resume.html">Résumé</a></li>
+      </ul>
+    </noscript>
     <script type="module" src="/src/index.tsx"></script>
   </body>
   <!--
