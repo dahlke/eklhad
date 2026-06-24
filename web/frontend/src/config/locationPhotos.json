@@ -5,6 +5,12 @@
     "date": "October 13, 2019",
     "emoji": "🕌"
   },
+  "Alpine Meadows": {
+    "slug": "alpine_meadows",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/alpine_meadows_2024_01_27.png",
+    "date": "January 27, 2024",
+    "emoji": "🎿"
+  },
   "Amsterdam": {
     "slug": "amsterdam",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/amsterdam_2010_06_15.png",
@@ -287,6 +293,18 @@
     "date": null,
     "emoji": "🚗"
   },
+  "Heavenly": {
+    "slug": "heavenly",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/heavenly_2017_04_01.png",
+    "date": "April 1, 2017",
+    "emoji": "🚡"
+  },
+  "Homewood": {
+    "slug": "homewood",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/homewood_2019_12_30.png",
+    "date": "December 30, 2019",
+    "emoji": "🏔️"
+  },
   "Hyderabad": {
     "slug": "hyderabad",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/hyderabad_2019_10_18.png",
@@ -502,6 +520,12 @@
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/osaka_2025_10_26.png",
     "date": "October 26, 2025",
     "emoji": "🐙"
+  },
+  "Palisades Tahoe": {
+    "slug": "palisades_tahoe",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/palisades_tahoe_2019_02_06.png",
+    "date": "February 6, 2019",
+    "emoji": "⛷️"
   },
   "Palm Springs": {
     "slug": "palm_springs",
