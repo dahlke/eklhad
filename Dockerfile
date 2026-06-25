@@ -33,6 +33,9 @@ WORKDIR /build
 # Copy package files
 COPY web/frontend/package.json web/frontend/bun.lock ./
 
+# Copy the local file: dependency (jsonresume-theme-classic) so bun can resolve it during install
+COPY web/frontend/conf/theme ./conf/theme
+
 # Install dependencies
 RUN bun install --frozen-lockfile
 
