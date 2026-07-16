@@ -3,6 +3,9 @@ web/frontend/build/
 web/frontend/coverage/
 web/frontend/node_modules/
 
+# Legacy local photo copies — served from the eklhad-web-public GCS bucket at runtime
+web/frontend/public/static/locations/
+
 # Exclude other unnecessary files
 .git/
 .gitignore
