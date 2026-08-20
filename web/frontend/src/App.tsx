@@ -6,6 +6,7 @@ import "./App.css";
 
 import { useGravatar } from "./contexts";
 import { DarkModeToggle } from "./component/darkModeToggle/DarkModeToggle";
+import { ParticleCanvas } from "./component/particleCanvas/ParticleCanvas";
 
 const socialLinks = [
     { name: "GitHub",    href: "https://www.github.com/dahlke",              external: true },
@@ -46,6 +47,8 @@ function App() {
                 className="relative min-h-screen md:w-2/5 md:min-h-screen flex flex-col justify-center px-10 md:px-16 py-20 profile-mobile-bg md:bg-off-white md:dark:bg-dark-bg z-10"
                 style={{ opacity: profileOpacity }}
             >
+                <ParticleCanvas />
+                <div className="relative z-10 flex flex-col">
                 <img
                     className="w-16 h-16 rounded-full mb-10 animate-fade-up"
                     alt="Neil Dahlke"
@@ -56,7 +59,6 @@ function App() {
                     <h1 className="font-serif text-5xl md:text-6xl font-semibold tracking-tight text-chicago-flag-blue dark:text-white leading-none">
                         Neil<br />Dahlke
                     </h1>
-                    <div className="h-px bg-chicago-flag-blue/50 dark:bg-white/20 origin-left animate-draw-line mt-4" />
                 </div>
 
                 <p className="text-sm font-medium text-chicago-flag-blue dark:text-slate-200 mb-1 animate-fade-up delay-300">
@@ -91,6 +93,7 @@ function App() {
                     <svg className="w-4 h-4 text-chicago-flag-blue/60 dark:text-white/40" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M3 6l5 5 5-5"/>
                     </svg>
+                </div>
                 </div>
             </div>
 
