@@ -7,13 +7,13 @@ export function DarkModeToggle() {
 	return (
 		<button
 			onClick={toggleDarkMode}
-			className="fixed top-4 right-4 md:top-5 md:right-auto md:left-5 z-50 p-2 text-chicago-flag-blue/60 dark:text-slate-500 hover:text-chicago-flag-blue dark:hover:text-slate-300 transition-colors duration-150 focus:outline-none"
+			className="fixed top-5 right-5 md:right-auto md:left-5 z-50 flex items-center gap-2 px-3 py-1.5 rounded-full border border-chicago-flag-blue/30 dark:border-slate-600 text-chicago-flag-blue dark:text-slate-400 hover:border-chicago-flag-blue dark:hover:border-slate-400 hover:text-chicago-flag-blue dark:hover:text-slate-200 transition-all duration-150 focus:outline-none bg-white/50 dark:bg-dark-bg/50 backdrop-blur-sm"
 			aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
 			title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
-				className="h-5 w-5"
+				className="h-4 w-4"
 				fill="none"
 				viewBox="0 0 24 24"
 				stroke="currentColor"
@@ -33,6 +33,9 @@ export function DarkModeToggle() {
 					/>
 				)}
 			</svg>
+			<span className="text-xs font-medium tracking-wide">
+				{isDarkMode ? 'Light' : 'Dark'}
+			</span>
 		</button>
 	);
 }
