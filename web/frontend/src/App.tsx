@@ -88,7 +88,7 @@ function App() {
                 </div>
 
                 {/* Scroll hint — mobile only, lives in the transparent fade zone */}
-                <div className="md:hidden absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none animate-bounce">
+                <div className="md:hidden absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none animate-bounce">
                     <span className="text-2xl">🌍</span>
                     <svg className="w-4 h-4 text-chicago-flag-blue/60 dark:text-white/40" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M3 6l5 5 5-5"/>
