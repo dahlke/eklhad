@@ -174,7 +174,7 @@ const [viewState, setViewState] = useState<ViewState>({
 		const ZOOM_START = 11;
 		const ZOOM_END = 2.0;
 		const PITCH_START = 45;
-		const ZOOM_DURATION = 120000;
+		const ZOOM_DURATION = 30000;
 		let animFrame: number;
 		let resumeTimer: ReturnType<typeof setTimeout>;
 
