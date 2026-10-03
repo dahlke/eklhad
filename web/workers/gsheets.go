@@ -244,8 +244,9 @@ func GetDataFromGSheets(spreadSheetID string) {
 	}
 
 	// Read columns A through N: City, State, Country, Current, Layover, Home, Lat, Lng, Confirmed,
-	// Photo URL (J), Last Visited (K), Notes (L), Photo Emoji (M), Photo Date (N)
-	locationsReadRange := "locations!A2:L"
+	// Departed From (J), Travel Mode (K), Photo URL (L), Location Emoji (M), Notable (N).
+	// Photos come from locationPhotos.json, not from J-M.
+	locationsReadRange := "locations!A2:N"
 	// NOTE: https://pkg.go.dev/google.golang.org/api@v0.64.0/sheets/v4?utm_source=gopls#SpreadsheetsValuesService.Get
 	locationsResp, err := sheetsService.Spreadsheets.Values.Get(spreadSheetID, locationsReadRange).Do()
 	if err != nil {
@@ -295,6 +296,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 			hasLat := lat != 0
 			hasLng := lng != 0
 			isConfirmed := len(row) > 8 && getStringValue(row, 8) == "TRUE"
+			isNotable := len(row) > 13 && getStringValue(row, 13) == "TRUE"
 
 			// If we don't have coordinates yet, geocode the location
 			if !hasLat || !hasLng {
@@ -353,6 +355,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 				Current:             current,
 				Layover:             layover,
 				Home:                home,
+				Notable:             isNotable,
 				Lat:                 lat,
 				Lng:                 lng,
 			}
@@ -362,9 +365,13 @@ func GetDataFromGSheets(spreadSheetID string) {
 
 		// Overlay photo data from locationPhotos.json (source of truth for photos,
 		// independent of sheet column ordering which has historically been unreliable).
+		// Photos are keyed by city name only, so when two rows share a name the
+		// first row (the original, hand-entered one) keeps the photo.
 		locationPhotos := loadLocationPhotos()
+		photoUsed := map[string]bool{}
 		for i := range eklhadLocations {
-			if photo, ok := locationPhotos[eklhadLocations[i].City]; ok {
+			if photo, ok := locationPhotos[eklhadLocations[i].City]; ok && !photoUsed[eklhadLocations[i].City] {
+				photoUsed[eklhadLocations[i].City] = true
 				eklhadLocations[i].PhotoURL = photo.URL
 				eklhadLocations[i].PhotoEmoji = photo.Emoji
 				eklhadLocations[i].PhotoDate = photo.Date
