@@ -1,9 +1,33 @@
 {
+  "Abraham's Bay": {
+    "slug": "abraham_s_bay",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/abraham_s_bay_2016_07_01.png",
+    "date": "July 1, 2016",
+    "emoji": "🐚"
+  },
   "Agra": {
     "slug": "agra",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/agra_2019_10_13.png",
     "date": "October 13, 2019",
     "emoji": "🕌"
+  },
+  "Ahwahnee": {
+    "slug": "ahwahnee",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/ahwahnee_2014_04_18.png",
+    "date": "April 18, 2014",
+    "emoji": "🌲"
+  },
+  "Akureyri": {
+    "slug": "akureyri",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/akureyri_2022_01_07.png",
+    "date": "January 7, 2022",
+    "emoji": "🐳"
+  },
+  "Alboraya": {
+    "slug": "alboraya",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/alboraya_2022_12_12.png",
+    "date": "December 12, 2022",
+    "emoji": "🥤"
   },
   "Alpine Meadows": {
     "slug": "alpine_meadows",
@@ -17,6 +41,12 @@
     "date": "June 15, 2010",
     "emoji": "🚲"
   },
+  "Ancon": {
+    "slug": "ancon",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/ancon_2019_08_26.png",
+    "date": "August 26, 2019",
+    "emoji": "🚢"
+  },
   "Ao Nang": {
     "slug": "ao_nang",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/ao_nang_2015_11_20.png",
@@ -28,6 +58,36 @@
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/arches_national_park_2020_07_28.png",
     "date": "July 28, 2020",
     "emoji": "🪨"
+  },
+  "Arona": {
+    "slug": "arona",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/arona_2022_01_13.png",
+    "date": "January 13, 2022",
+    "emoji": "⛵"
+  },
+  "Arrowtown": {
+    "slug": "arrowtown",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/arrowtown_2017_12_29.png",
+    "date": "December 29, 2017",
+    "emoji": "🍂"
+  },
+  "Arthur": {
+    "slug": "arthur",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/arthur_2013_10_27.png",
+    "date": "October 27, 2013",
+    "emoji": "🐎"
+  },
+  "Arukutti": {
+    "slug": "arukutti",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/arukutti_2017_01_24.png",
+    "date": "January 24, 2017",
+    "emoji": "🌴"
+  },
+  "Arvada": {
+    "slug": "arvada",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/arvada_2013_08_24.png",
+    "date": "August 24, 2013",
+    "emoji": "🏔️"
   },
   "Athens": {
     "slug": "athens",
@@ -59,11 +119,29 @@
     "date": "April 1, 2018",
     "emoji": "🌲"
   },
+  "Avon": {
+    "slug": "avon",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/avon_2025_08_30.png",
+    "date": "August 30, 2025",
+    "emoji": "⛷️"
+  },
+  "Ballinrobe": {
+    "slug": "ballinrobe",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/ballinrobe_2026_04_19.png",
+    "date": "April 19, 2026",
+    "emoji": "🐟"
+  },
   "Bangkok": {
     "slug": "bangkok",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/bangkok_2015_11_14.png",
     "date": "November 14, 2015",
     "emoji": "🛺"
+  },
+  "Banqiao": {
+    "slug": "banqiao",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/banqiao_2025_10_16.png",
+    "date": "October 16, 2025",
+    "emoji": "🏮"
   },
   "Barcelona": {
     "slug": "barcelona",
@@ -71,11 +149,23 @@
     "date": "June 19, 2010",
     "emoji": "🦎"
   },
+  "Bay Hill": {
+    "slug": "bay_hill",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/bay_hill_2018_08_28.png",
+    "date": "August 28, 2018",
+    "emoji": "⛳"
+  },
   "Beijing": {
     "slug": "beijing",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/beijing_2017_01_30.png",
     "date": "January 30, 2017",
     "emoji": "🏯"
+  },
+  "Beobwon": {
+    "slug": "beobwon",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/beobwon_2025_10_28.png",
+    "date": "October 28, 2025",
+    "emoji": "🪖"
   },
   "Berkeley": {
     "slug": "berkeley",
@@ -89,6 +179,18 @@
     "date": "September 28, 2024",
     "emoji": "💅"
   },
+  "Bolinas": {
+    "slug": "bolinas",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/bolinas_2018_01_20.png",
+    "date": "January 20, 2018",
+    "emoji": "🌊"
+  },
+  "Bonny Doon": {
+    "slug": "bonny_doon",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/bonny_doon_2020_07_19.png",
+    "date": "July 19, 2020",
+    "emoji": "🍷"
+  },
   "Boston": {
     "slug": "boston",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/boston_2015_09_26.png",
@@ -101,11 +203,47 @@
     "date": "August 24, 2013",
     "emoji": "🧗"
   },
+  "Boulder Creek": {
+    "slug": "boulder_creek",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/boulder_creek_2016_03_10.png",
+    "date": "March 10, 2016",
+    "emoji": "🌲"
+  },
+  "Bridgeport": {
+    "slug": "bridgeport",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/bridgeport_2024_06_22.png",
+    "date": "June 22, 2024",
+    "emoji": "🏞️"
+  },
+  "Brisbane": {
+    "slug": "brisbane",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/brisbane_2019_07_27.png",
+    "date": "July 27, 2019",
+    "emoji": "🌄"
+  },
   "Buenos Aires": {
     "slug": "buenos_aires",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/buenos_aires_2019_09_02.png",
     "date": "September 2, 2019",
     "emoji": "💃"
+  },
+  "Burke": {
+    "slug": "burke",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/burke_2019_11_08.png",
+    "date": "November 8, 2019",
+    "emoji": "🏡"
+  },
+  "Burney": {
+    "slug": "burney",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/burney_2020_09_18.png",
+    "date": "September 18, 2020",
+    "emoji": "💦"
+  },
+  "Cabazon": {
+    "slug": "cabazon",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/cabazon_2018_11_08.png",
+    "date": "November 8, 2018",
+    "emoji": "🦖"
   },
   "Cabo Pulmo": {
     "slug": "cabo_pulmo",
@@ -119,6 +257,12 @@
     "date": "January 26, 2025",
     "emoji": "⛵"
   },
+  "Cambria": {
+    "slug": "cambria",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/cambria_2017_11_11.png",
+    "date": "November 11, 2017",
+    "emoji": "🦓"
+  },
   "Canyonlands National Park": {
     "slug": "canyonlands_national_park",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/canyonlands_national_park_2020_07_29.png",
@@ -131,17 +275,71 @@
     "date": "June 11, 2008",
     "emoji": "🚀"
   },
-  "Castletownsend": {
-    "slug": "castletownsend",
-    "url": "https://storage.googleapis.com/eklhad-web-public/photos/castletownsend_2024_05_24.png",
-    "date": "May 24, 2024",
-    "emoji": "⛵"
+  "Cape May": {
+    "slug": "cape_may",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/cape_may_2024_08_31.png",
+    "date": "August 31, 2024",
+    "emoji": "🏖️"
+  },
+  "Carefree": {
+    "slug": "carefree",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/carefree_2025_05_20.png",
+    "date": "May 20, 2025",
+    "emoji": "🌵"
+  },
+  "Carlin": {
+    "slug": "carlin",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/carlin_2014_01_03.png",
+    "date": "January 3, 2014",
+    "emoji": "⛏️"
+  },
+  "Carmel Valley Village": {
+    "slug": "carmel_valley_village",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/carmel_valley_village_2024_10_27.png",
+    "date": "October 27, 2024",
+    "emoji": "🍇"
   },
   "Carmel-by-the-Sea": {
     "slug": "carmel_by_the_sea",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/carmel_by_the_sea_2020_10_10.png",
     "date": "October 10, 2020",
     "emoji": "🌺"
+  },
+  "Castle Dale": {
+    "slug": "castle_dale",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/castle_dale_2020_07_27.png",
+    "date": "July 27, 2020",
+    "emoji": "🦕"
+  },
+  "Castletownsend": {
+    "slug": "castletownsend",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/castletownsend_2024_05_24.png",
+    "date": "May 24, 2024",
+    "emoji": "⛵"
+  },
+  "Celebration": {
+    "slug": "celebration",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/celebration_2025_09_08.png",
+    "date": "September 8, 2025",
+    "emoji": "🎆"
+  },
+  "Chantilly": {
+    "slug": "chantilly",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/chantilly_2022_01_09.png",
+    "date": "January 9, 2022",
+    "emoji": "🛩️"
+  },
+  "Charleston": {
+    "slug": "charleston",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/charleston_2022_10_16.png",
+    "date": "October 16, 2022",
+    "emoji": "📚"
+  },
+  "Charlotte": {
+    "slug": "charlotte",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/charlotte_2022_10_26.png",
+    "date": "October 26, 2022",
+    "emoji": "🏁"
   },
   "Chiang Mai": {
     "slug": "chiang_mai",
@@ -173,11 +371,35 @@
     "date": "September 21, 2018",
     "emoji": "🦙"
   },
+  "Cézy": {
+    "slug": "cezy",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/cezy_2023_09_02.png",
+    "date": "September 2, 2023",
+    "emoji": "🥖"
+  },
+  "Daly City": {
+    "slug": "daly_city",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/daly_city_2025_05_18.png",
+    "date": "May 18, 2025",
+    "emoji": "🌫️"
+  },
+  "Dania Beach": {
+    "slug": "dania_beach",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/dania_beach_2021_05_29.png",
+    "date": "May 29, 2021",
+    "emoji": "🎣"
+  },
   "Dead Horse Point State Park": {
     "slug": "dead_horse_point",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/dead_horse_point_2020_07_28.png",
     "date": "July 28, 2020",
     "emoji": "🌄"
+  },
+  "Deer Park": {
+    "slug": "deer_park",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/deer_park_2022_05_01.png",
+    "date": "May 1, 2022",
+    "emoji": "🦌"
   },
   "Delhi": {
     "slug": "delhi",
@@ -196,6 +418,12 @@
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/detroit_2015_11_08.png",
     "date": "November 8, 2015",
     "emoji": "🚗"
+  },
+  "Dollar Point": {
+    "slug": "dollar_point",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/dollar_point_2014_08_16.png",
+    "date": "August 16, 2014",
+    "emoji": "🏞️"
   },
   "Dollywood": {
     "slug": "dollywood",
@@ -221,11 +449,65 @@
     "date": "September 16, 2023",
     "emoji": "⚔️"
   },
+  "Duleek": {
+    "slug": "duleek",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/duleek_2026_01_21.png",
+    "date": "January 21, 2026",
+    "emoji": "⛪"
+  },
+  "Dyersville": {
+    "slug": "dyersville",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/dyersville_2022_10_01.png",
+    "date": "October 1, 2022",
+    "emoji": "⚾"
+  },
+  "Eagle River": {
+    "slug": "eagle_river",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/eagle_river_2023_01_08.png",
+    "date": "January 8, 2023",
+    "emoji": "🛶"
+  },
+  "East Palo Alto": {
+    "slug": "east_palo_alto",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/east_palo_alto_2025_09_29.png",
+    "date": "September 29, 2025",
+    "emoji": "🌳"
+  },
   "Edinburgh": {
     "slug": "edinburgh",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/edinburgh_2024_05_18.png",
     "date": "May 18, 2024",
     "emoji": "🏰"
+  },
+  "El Segundo": {
+    "slug": "el_segundo",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/el_segundo_2023_03_22.png",
+    "date": "March 22, 2023",
+    "emoji": "🛰️"
+  },
+  "Elizabeth": {
+    "slug": "elizabeth",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/elizabeth_2026_06_27.png",
+    "date": "June 27, 2026",
+    "emoji": "🏙️"
+  },
+  "Elkhorn": {
+    "slug": "elkhorn",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/elkhorn_2018_02_10.png",
+    "date": "February 10, 2018",
+    "emoji": "🦦"
+  },
+  "Eltham": {
+    "slug": "eltham",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/eltham_2017_12_29.png",
+    "date": "December 29, 2017",
+    "emoji": "🧀"
+  },
+  "Emeryville": {
+    "slug": "emeryville",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/emeryville_2019_02_17.png",
+    "date": "February 17, 2019",
+    "emoji": "🎨"
   },
   "Evergreen Park": {
     "slug": "evergreen_park",
@@ -233,17 +515,53 @@
     "date": "July 5, 2024",
     "emoji": "🌲"
   },
+  "Fatehpur Sikri": {
+    "slug": "fatehpur_sikri",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/fatehpur_sikri_2019_10_13.png",
+    "date": "October 13, 2019",
+    "emoji": "🕌"
+  },
+  "Fayette": {
+    "slug": "fayette",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/fayette_2016_05_22.png",
+    "date": "May 22, 2016",
+    "emoji": "🌽"
+  },
+  "Ferndale": {
+    "slug": "ferndale",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/ferndale_2023_06_15.png",
+    "date": "June 15, 2023",
+    "emoji": "🏘️"
+  },
   "Florence": {
     "slug": "florence",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/florence_2024_05_13.png",
     "date": "May 13, 2024",
     "emoji": "🎨"
   },
+  "Fort Bragg": {
+    "slug": "fort_bragg",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/fort_bragg_2024_11_02.png",
+    "date": "November 2, 2024",
+    "emoji": "🐋"
+  },
   "Fort Kochi": {
     "slug": "fort_kochi",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/fort_kochi_2017_01_23.png",
     "date": "January 23, 2017",
     "emoji": "🎣"
+  },
+  "Foster City": {
+    "slug": "foster_city",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/foster_city_2019_07_27.png",
+    "date": "July 27, 2019",
+    "emoji": "🦆"
+  },
+  "Fujikawaguchiko": {
+    "slug": "fujikawaguchiko",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/fujikawaguchiko_2025_10_23.png",
+    "date": "October 23, 2025",
+    "emoji": "🗻"
   },
   "Fujinomiya": {
     "slug": "fujinomiya",
@@ -263,17 +581,47 @@
     "date": "January 10, 2022",
     "emoji": "⌚"
   },
+  "George Town": {
+    "slug": "george_town",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/george_town_2018_06_24.png",
+    "date": "June 24, 2018",
+    "emoji": "🏝️"
+  },
+  "Grand Canyon": {
+    "slug": "grand_canyon",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/grand_canyon_2020_07_30.png",
+    "date": "July 30, 2020",
+    "emoji": "🏜️"
+  },
   "Grand Canyon National Park": {
     "slug": "grand_canyon_national_park",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/grand_canyon_national_park_2020_07_30.png",
     "date": "July 30, 2020",
     "emoji": "🏜️"
   },
-  "Howth": {
-    "slug": "howth",
-    "url": "https://storage.googleapis.com/eklhad-web-public/photos/howth_2025_03_08.png",
-    "date": "March 8, 2025",
-    "emoji": "🎣"
+  "Granite": {
+    "slug": "granite",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/granite_2020_03_14.png",
+    "date": "March 14, 2020",
+    "emoji": "🧗"
+  },
+  "Green Valley": {
+    "slug": "green_valley",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/green_valley_2022_04_30.png",
+    "date": "April 30, 2022",
+    "emoji": "🌳"
+  },
+  "Grindavík": {
+    "slug": "grindavik",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/grindavik_2022_01_05.png",
+    "date": "January 5, 2022",
+    "emoji": "🌋"
+  },
+  "Hakone": {
+    "slug": "hakone",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/hakone_2025_10_23.png",
+    "date": "October 23, 2025",
+    "emoji": "⛩️"
   },
   "Haleakala": {
     "slug": "haleakala",
@@ -287,11 +635,23 @@
     "date": "August 13, 2024",
     "emoji": "🏄"
   },
+  "Hastings-on-Hudson": {
+    "slug": "hastings_on_hudson",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/hastings_on_hudson_2025_05_13.png",
+    "date": "May 13, 2025",
+    "emoji": "🍁"
+  },
   "Havana": {
     "slug": "havana",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/havana_unknown.png",
     "date": null,
     "emoji": "🚗"
+  },
+  "Healdsburg": {
+    "slug": "healdsburg",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/healdsburg_2019_12_07.png",
+    "date": "December 7, 2019",
+    "emoji": "🍷"
   },
   "Heavenly": {
     "slug": "heavenly",
@@ -299,11 +659,29 @@
     "date": "April 1, 2017",
     "emoji": "🚡"
   },
+  "Hillsborough": {
+    "slug": "hillsborough",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/hillsborough_2025_04_13.png",
+    "date": "April 13, 2025",
+    "emoji": "🏡"
+  },
   "Homewood": {
     "slug": "homewood",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/homewood_2019_12_30.png",
     "date": "December 30, 2019",
     "emoji": "🏔️"
+  },
+  "Howth": {
+    "slug": "howth",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/howth_2025_03_08.png",
+    "date": "March 8, 2025",
+    "emoji": "🎣"
+  },
+  "Hveragerði": {
+    "slug": "hverageri",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/hverageri_2022_01_08.png",
+    "date": "January 8, 2022",
+    "emoji": "♨️"
   },
   "Hyderabad": {
     "slug": "hyderabad",
@@ -311,17 +689,53 @@
     "date": "October 18, 2019",
     "emoji": "🍛"
   },
+  "Höfn": {
+    "slug": "hofn",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/hofn_2022_01_07.png",
+    "date": "January 7, 2022",
+    "emoji": "🦞"
+  },
+  "Incline Village": {
+    "slug": "incline_village",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/incline_village_2025_07_25.png",
+    "date": "July 25, 2025",
+    "emoji": "🏔️"
+  },
+  "Indian Hills": {
+    "slug": "indian_hills",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/indian_hills_2013_08_23.png",
+    "date": "August 23, 2013",
+    "emoji": "🎸"
+  },
+  "Indian Wells": {
+    "slug": "indian_wells",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/indian_wells_2021_04_09.png",
+    "date": "April 9, 2021",
+    "emoji": "🎾"
+  },
   "Indio": {
     "slug": "indio",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/indio.png",
     "date": "April 15, 2016",
     "emoji": "🌴"
   },
+  "Inverness": {
+    "slug": "inverness",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/inverness_2022_07_04.png",
+    "date": "July 4, 2022",
+    "emoji": "🦭"
+  },
   "Istanbul": {
     "slug": "istanbul",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/istanbul_2023_09_17.png",
     "date": "September 17, 2023",
     "emoji": "🌙"
+  },
+  "Jackson": {
+    "slug": "jackson",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/jackson_2020_01_10.png",
+    "date": "January 10, 2020",
+    "emoji": "🤠"
   },
   "Jackson Hole": {
     "slug": "jackson_hole",
@@ -334,6 +748,12 @@
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/jaipur_2019_10_14.png",
     "date": "October 14, 2019",
     "emoji": "🐘"
+  },
+  "Jersey City": {
+    "slug": "jersey_city",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/jersey_city_2016_06_06.png",
+    "date": "June 6, 2016",
+    "emoji": "🗽"
   },
   "Joshua Tree": {
     "slug": "joshua_tree",
@@ -353,11 +773,29 @@
     "date": "July 6, 2025",
     "emoji": "🐋"
   },
+  "Kathmandu": {
+    "slug": "kathmandu",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/kathmandu_2019_10_09.png",
+    "date": "October 9, 2019",
+    "emoji": "🛕"
+  },
+  "Kenwood": {
+    "slug": "kenwood",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/kenwood_2022_10_09.png",
+    "date": "October 9, 2022",
+    "emoji": "🍷"
+  },
   "Kilkenny": {
     "slug": "kilkenny",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/kilkenny_2013_12_18.png",
     "date": "December 18, 2013",
     "emoji": "🏰"
+  },
+  "Kings Beach": {
+    "slug": "kings_beach",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/kings_beach_2020_03_08.png",
+    "date": "March 8, 2020",
+    "emoji": "🏖️"
   },
   "Krabi": {
     "slug": "krabi",
@@ -371,11 +809,17 @@
     "date": "October 25, 2025",
     "emoji": "⛩️"
   },
-  "Luodong": {
-    "slug": "luodong",
-    "url": "https://storage.googleapis.com/eklhad-web-public/photos/luodong_2025_10_17.png",
-    "date": "October 17, 2025",
-    "emoji": "🧋"
+  "La Jolla": {
+    "slug": "la_jolla",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/la_jolla_2023_11_04.png",
+    "date": "November 4, 2023",
+    "emoji": "🦭"
+  },
+  "La Quinta": {
+    "slug": "la_quinta",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/la_quinta_2022_06_10.png",
+    "date": "June 10, 2022",
+    "emoji": "⛳"
   },
   "Lahaina": {
     "slug": "lahaina",
@@ -383,11 +827,41 @@
     "date": "February 27, 2015",
     "emoji": "🌊"
   },
+  "Lake Geneva": {
+    "slug": "lake_geneva",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/lake_geneva_2021_07_23.png",
+    "date": "July 23, 2021",
+    "emoji": "⛵"
+  },
+  "Laramie": {
+    "slug": "laramie",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/laramie_2014_01_02.png",
+    "date": "January 2, 2014",
+    "emoji": "🤠"
+  },
   "Las Vegas": {
     "slug": "las_vegas",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/las_vegas_2025_04_20.png",
     "date": "April 20, 2025",
     "emoji": "🎰"
+  },
+  "Las Veredas": {
+    "slug": "las_veredas",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/las_veredas_2019_08_05.png",
+    "date": "August 5, 2019",
+    "emoji": "🌵"
+  },
+  "Lea Hill": {
+    "slug": "lea_hill",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/lea_hill_2022_03_06.png",
+    "date": "March 6, 2022",
+    "emoji": "🌲"
+  },
+  "Liberia": {
+    "slug": "liberia",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/liberia_2017_07_02.png",
+    "date": "July 2, 2017",
+    "emoji": "🦜"
   },
   "Lima": {
     "slug": "lima",
@@ -400,6 +874,18 @@
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/lisbon_2022_12_03.png",
     "date": "December 3, 2022",
     "emoji": "🚃"
+  },
+  "Livermore": {
+    "slug": "livermore",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/livermore_2025_09_06.png",
+    "date": "September 6, 2025",
+    "emoji": "🍷"
+  },
+  "Lochbuie": {
+    "slug": "lochbuie",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/lochbuie_2015_11_25.png",
+    "date": "November 25, 2015",
+    "emoji": "🏔️"
   },
   "London": {
     "slug": "london",
@@ -419,6 +905,18 @@
     "date": "September 28, 2024",
     "emoji": "🎬"
   },
+  "Lovelock": {
+    "slug": "lovelock",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/lovelock_2020_07_26.png",
+    "date": "July 26, 2020",
+    "emoji": "🔒"
+  },
+  "Luodong": {
+    "slug": "luodong",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/luodong_2025_10_17.png",
+    "date": "October 17, 2025",
+    "emoji": "🧋"
+  },
   "Machu Picchu": {
     "slug": "machu_picchu",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/machu_picchu_2018_09_20.png",
@@ -430,6 +928,18 @@
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/madrid_2022_12_06.png",
     "date": "December 6, 2022",
     "emoji": "🎭"
+  },
+  "Malahide": {
+    "slug": "malahide",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/malahide_2025_03_06.png",
+    "date": "March 6, 2025",
+    "emoji": "🏰"
+  },
+  "Mammoth Lakes": {
+    "slug": "mammoth_lakes",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/mammoth_lakes_2022_06_16.png",
+    "date": "June 16, 2022",
+    "emoji": "🏂"
   },
   "Marrakech": {
     "slug": "marrakech",
@@ -449,11 +959,41 @@
     "date": "May 29, 2021",
     "emoji": "🌞"
   },
+  "Miami Beach": {
+    "slug": "miami_beach",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/miami_beach_2021_05_30.png",
+    "date": "May 30, 2021",
+    "emoji": "🌴"
+  },
+  "Midpines": {
+    "slug": "midpines",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/midpines_2014_04_19.png",
+    "date": "April 19, 2014",
+    "emoji": "🌲"
+  },
   "Milan": {
     "slug": "milan",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/milan_2022_01_13.png",
     "date": "January 13, 2022",
     "emoji": "👗"
+  },
+  "Mill Valley": {
+    "slug": "mill_valley",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/mill_valley_2018_04_08.png",
+    "date": "April 8, 2018",
+    "emoji": "🌲"
+  },
+  "Millbrae": {
+    "slug": "millbrae",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/millbrae_2024_02_09.png",
+    "date": "February 9, 2024",
+    "emoji": "✈️"
+  },
+  "Milpitas": {
+    "slug": "milpitas",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/milpitas_2021_03_21.png",
+    "date": "March 21, 2021",
+    "emoji": "🛍️"
   },
   "Moab": {
     "slug": "moab",
@@ -467,6 +1007,18 @@
     "date": null,
     "emoji": "🦦"
   },
+  "Moose Wilson Road": {
+    "slug": "moose_wilson_road",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/moose_wilson_road_2020_01_10.png",
+    "date": "January 10, 2020",
+    "emoji": "🫎"
+  },
+  "Mount Shasta": {
+    "slug": "mount_shasta",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/mount_shasta_2018_06_03.png",
+    "date": "June 3, 2018",
+    "emoji": "🏔️"
+  },
   "Mumbai": {
     "slug": "mumbai",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/mumbai_2017_01_20.png",
@@ -478,6 +1030,30 @@
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/munich_2025_09_23.png",
     "date": "September 23, 2025",
     "emoji": "🍺"
+  },
+  "Munsan": {
+    "slug": "munsan",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/munsan_2025_10_29.png",
+    "date": "October 29, 2025",
+    "emoji": "🕊️"
+  },
+  "Muriwai Beach": {
+    "slug": "muriwai_beach",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/muriwai_beach_2017_12_24.png",
+    "date": "December 24, 2017",
+    "emoji": "🌊"
+  },
+  "Murrays Bay": {
+    "slug": "murrays_bay",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/murrays_bay_2017_12_29.png",
+    "date": "December 29, 2017",
+    "emoji": "🐚"
+  },
+  "Mykonos": {
+    "slug": "mykonos",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/mykonos_2026_08_23.png",
+    "date": "August 23, 2026",
+    "emoji": "🌬️"
   },
   "Napa": {
     "slug": "napa",
@@ -491,6 +1067,12 @@
     "date": "January 27, 2017",
     "emoji": "🛕"
   },
+  "New Hope": {
+    "slug": "new_hope",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/new_hope_2015_11_26.png",
+    "date": "November 26, 2015",
+    "emoji": "🚀"
+  },
   "New Orleans": {
     "slug": "new_orleans",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/new_orleans_2021_03_12.png",
@@ -503,11 +1085,41 @@
     "date": "March 15, 2019",
     "emoji": "🗽"
   },
+  "Nilopolis": {
+    "slug": "nilopolis",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/nilopolis_2016_08_17.png",
+    "date": "August 17, 2016",
+    "emoji": "🎭"
+  },
+  "North Shore": {
+    "slug": "north_shore",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/north_shore_2017_12_24.png",
+    "date": "December 24, 2017",
+    "emoji": "🏝️"
+  },
+  "Oakhurst": {
+    "slug": "oakhurst",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/oakhurst_2014_04_18.png",
+    "date": "April 18, 2014",
+    "emoji": "🌲"
+  },
   "Oakland": {
     "slug": "oakland",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/oakland_2019_12_15.png",
     "date": "December 15, 2019",
     "emoji": "🌳"
+  },
+  "Oceano": {
+    "slug": "oceano",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/oceano_2017_11_10.png",
+    "date": "November 10, 2017",
+    "emoji": "🏜️"
+  },
+  "Odawara": {
+    "slug": "odawara",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/odawara_2025_10_23.png",
+    "date": "October 23, 2025",
+    "emoji": "🏯"
   },
   "Okinawa": {
     "slug": "okinawa",
@@ -515,11 +1127,29 @@
     "date": "October 23, 2004",
     "emoji": "🪸"
   },
+  "Ollantaytambo": {
+    "slug": "ollantaytambo",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/ollantaytambo_2018_09_20.png",
+    "date": "September 20, 2018",
+    "emoji": "🏛️"
+  },
   "Osaka": {
     "slug": "osaka",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/osaka_2025_10_26.png",
     "date": "October 26, 2025",
     "emoji": "🐙"
+  },
+  "Pacifica": {
+    "slug": "pacifica",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/pacifica_2023_08_20.png",
+    "date": "August 20, 2023",
+    "emoji": "🏄"
+  },
+  "Palaia": {
+    "slug": "palaia",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/palaia_2024_05_11.png",
+    "date": "May 11, 2024",
+    "emoji": "🫒"
   },
   "Palisades Tahoe": {
     "slug": "palisades_tahoe",
@@ -533,6 +1163,12 @@
     "date": "April 9, 2021",
     "emoji": "⛳"
   },
+  "Paradise Valley": {
+    "slug": "paradise_valley",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/paradise_valley_2025_05_22.png",
+    "date": "May 22, 2025",
+    "emoji": "☀️"
+  },
   "Paris": {
     "slug": "paris",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/paris_2023_08_31.png",
@@ -544,6 +1180,24 @@
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/park_city_2020_03_14.png",
     "date": "March 14, 2020",
     "emoji": "🛷"
+  },
+  "Pasatiempo": {
+    "slug": "pasatiempo",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/pasatiempo_2022_08_14.png",
+    "date": "August 14, 2022",
+    "emoji": "⛳"
+  },
+  "Paso Robles": {
+    "slug": "paso_robles",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/paso_robles_2017_11_11.png",
+    "date": "November 11, 2017",
+    "emoji": "🍷"
+  },
+  "Pearlington": {
+    "slug": "pearlington",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/pearlington_2018_07_29.png",
+    "date": "July 29, 2018",
+    "emoji": "🐊"
   },
   "Philadelphia": {
     "slug": "philadelphia",
@@ -569,6 +1223,18 @@
     "date": "July 3, 2017",
     "emoji": "🦞"
   },
+  "Pleasanton": {
+    "slug": "pleasanton",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/pleasanton_2021_09_16.png",
+    "date": "September 16, 2021",
+    "emoji": "🎡"
+  },
+  "Podgora": {
+    "slug": "podgora",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/podgora_2023_09_12.png",
+    "date": "September 12, 2023",
+    "emoji": "⚓"
+  },
   "Providenciales": {
     "slug": "providenciales",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/providenciales_2016_07_03.png",
@@ -581,11 +1247,35 @@
     "date": "December 31, 2017",
     "emoji": "🪂"
   },
+  "Quthbullapur": {
+    "slug": "quthbullapur",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/quthbullapur_2019_10_18.png",
+    "date": "October 18, 2019",
+    "emoji": "🍛"
+  },
+  "Redstone Arsenal": {
+    "slug": "redstone_arsenal",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/redstone_arsenal_2015_11_27.png",
+    "date": "November 27, 2015",
+    "emoji": "🚀"
+  },
+  "Retiro": {
+    "slug": "retiro",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/retiro_2019_09_02.png",
+    "date": "September 2, 2019",
+    "emoji": "🚉"
+  },
   "Reykjavík": {
     "slug": "reykjavik",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/reykjavik_2022_01_08.png",
     "date": "January 8, 2022",
     "emoji": "🌌"
+  },
+  "Ridgemark": {
+    "slug": "ridgemark",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/ridgemark_2020_12_27.png",
+    "date": "December 27, 2020",
+    "emoji": "⛳"
   },
   "Rincon de la Vieja": {
     "slug": "rincon_de_la_vieja",
@@ -593,11 +1283,29 @@
     "date": "July 2, 2017",
     "emoji": "🦜"
   },
+  "Rio Dell": {
+    "slug": "rio_dell",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/rio_dell_2018_04_01.png",
+    "date": "April 1, 2018",
+    "emoji": "🌲"
+  },
+  "Rio Verde": {
+    "slug": "rio_verde",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/rio_verde_2025_05_20.png",
+    "date": "May 20, 2025",
+    "emoji": "🌵"
+  },
   "Rio de Janeiro": {
     "slug": "rio_de_janeiro",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/rio_de_janeiro_2025_11_08.png",
     "date": "November 8, 2025",
     "emoji": "🏖️"
+  },
+  "Rock Falls": {
+    "slug": "rock_falls",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/rock_falls_2014_01_01.png",
+    "date": "January 1, 2014",
+    "emoji": "🌊"
   },
   "Rome": {
     "slug": "rome",
@@ -611,23 +1319,35 @@
     "date": "June 13, 2026",
     "emoji": "🥾"
   },
+  "Sacramento": {
+    "slug": "sacramento",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/sacramento_2019_02_11.png",
+    "date": "February 11, 2019",
+    "emoji": "🏛️"
+  },
+  "Saint Helena": {
+    "slug": "saint_helena",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/saint_helena_2023_07_01.png",
+    "date": "July 1, 2023",
+    "emoji": "🍇"
+  },
   "Saint Petersburg": {
     "slug": "saint_petersburg",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/saint_petersburg_2003_03_16.png",
     "date": "March 16, 2003",
     "emoji": "🎻"
   },
-  "Sausalito": {
-    "slug": "sausalito",
-    "url": "https://storage.googleapis.com/eklhad-web-public/photos/sausalito_2014_09_01.png",
-    "date": "September 1, 2014",
-    "emoji": "⛵"
+  "San Bruno": {
+    "slug": "san_bruno",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/san_bruno_2024_03_16.png",
+    "date": "March 16, 2024",
+    "emoji": "🌁"
   },
-  "Šolta": {
-    "slug": "solta",
-    "url": "https://storage.googleapis.com/eklhad-web-public/photos/solta_2023_09_14.png",
-    "date": "September 14, 2023",
-    "emoji": "🫒"
+  "San Clemente": {
+    "slug": "san_clemente",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/san_clemente_2011_12_10.png",
+    "date": "December 10, 2011",
+    "emoji": "🏄"
   },
   "San Diego": {
     "slug": "san_diego",
@@ -641,11 +1361,47 @@
     "date": "August 21, 2025",
     "emoji": "🌉"
   },
+  "San Jose": {
+    "slug": "san_jose",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/san_jose_2025_03_14.png",
+    "date": "March 14, 2025",
+    "emoji": "💻"
+  },
+  "San Leandro": {
+    "slug": "san_leandro",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/san_leandro_2020_06_13.png",
+    "date": "June 13, 2020",
+    "emoji": "🍒"
+  },
+  "San Mateo": {
+    "slug": "san_mateo",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/san_mateo_2025_08_17.png",
+    "date": "August 17, 2025",
+    "emoji": "🌉"
+  },
+  "San Rafael": {
+    "slug": "san_rafael",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/san_rafael_2018_04_02.png",
+    "date": "April 2, 2018",
+    "emoji": "⛪"
+  },
+  "Santa Clara": {
+    "slug": "santa_clara",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/santa_clara_2026_07_01.png",
+    "date": "July 1, 2026",
+    "emoji": "🏟️"
+  },
   "Santa Cruz": {
     "slug": "santa_cruz",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/santa_cruz_2017_02_18.png",
     "date": "February 18, 2017",
     "emoji": "🎢"
+  },
+  "Santa Teresa": {
+    "slug": "santa_teresa",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/santa_teresa_2018_09_20.png",
+    "date": "September 20, 2018",
+    "emoji": "♨️"
   },
   "Santiago": {
     "slug": "santiago",
@@ -659,11 +1415,35 @@
     "date": "September 8, 2023",
     "emoji": "🌅"
   },
+  "Sausalito": {
+    "slug": "sausalito",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/sausalito_2014_09_01.png",
+    "date": "September 1, 2014",
+    "emoji": "⛵"
+  },
+  "Scotts Valley": {
+    "slug": "scotts_valley",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/scotts_valley_2022_08_14.png",
+    "date": "August 14, 2022",
+    "emoji": "🌲"
+  },
+  "Scottsdale": {
+    "slug": "scottsdale",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/scottsdale_2017_03_10.png",
+    "date": "March 10, 2017",
+    "emoji": "🌵"
+  },
   "Seattle": {
     "slug": "seattle",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/seattle_2015_01_21.png",
     "date": "January 21, 2015",
     "emoji": "☕"
+  },
+  "Selfoss": {
+    "slug": "selfoss",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/selfoss_2022_01_08.png",
+    "date": "January 8, 2022",
+    "emoji": "💧"
   },
   "Seoul": {
     "slug": "seoul",
@@ -695,6 +1475,24 @@
     "date": "October 3, 2024",
     "emoji": "🧙"
   },
+  "Skibbereen": {
+    "slug": "skibbereen",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/skibbereen_2024_05_24.png",
+    "date": "May 24, 2024",
+    "emoji": "🍀"
+  },
+  "Smith Valley": {
+    "slug": "smith_valley",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/smith_valley_2024_06_22.png",
+    "date": "June 22, 2024",
+    "emoji": "🐄"
+  },
+  "Soledad": {
+    "slug": "soledad",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/soledad_2022_09_23.png",
+    "date": "September 23, 2022",
+    "emoji": "🌾"
+  },
   "South Lake Tahoe": {
     "slug": "south_lake_tahoe",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/south_lake_tahoe_2017_04_01.png",
@@ -719,17 +1517,89 @@
     "date": "March 17, 2003",
     "emoji": "🏛️"
   },
+  "Stamullin": {
+    "slug": "stamullin",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/stamullin_2023_06_23.png",
+    "date": "June 23, 2023",
+    "emoji": "🌾"
+  },
+  "Stanford": {
+    "slug": "stanford",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/stanford_2026_08_16.png",
+    "date": "August 16, 2026",
+    "emoji": "🎓"
+  },
+  "Summerlin South": {
+    "slug": "summerlin_south",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/summerlin_south_2025_04_18.png",
+    "date": "April 18, 2025",
+    "emoji": "🏜️"
+  },
+  "Sunnyside-Tahoe City": {
+    "slug": "sunnyside_tahoe_city",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/sunnyside_tahoe_city_2026_06_11.png",
+    "date": "June 11, 2026",
+    "emoji": "🛶"
+  },
+  "Swords": {
+    "slug": "swords",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/swords_2025_03_06.png",
+    "date": "March 6, 2025",
+    "emoji": "⚔️"
+  },
   "Sydney": {
     "slug": "sydney",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/sydney_2017_12_23.png",
     "date": "December 23, 2017",
     "emoji": "🦘"
   },
+  "Tahoe Vista": {
+    "slug": "tahoe_vista",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/tahoe_vista_2021_02_20.png",
+    "date": "February 20, 2021",
+    "emoji": "❄️"
+  },
+  "Tahoma": {
+    "slug": "tahoma",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/tahoma_2024_06_22.png",
+    "date": "June 22, 2024",
+    "emoji": "🌲"
+  },
   "Taipei": {
     "slug": "taipei",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/taipei_2025_10_17.png",
     "date": "October 17, 2025",
     "emoji": "🧋"
+  },
+  "Tamalpais Valley": {
+    "slug": "tamalpais_valley",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/tamalpais_valley_2018_02_03.png",
+    "date": "February 3, 2018",
+    "emoji": "⛰️"
+  },
+  "Tamalpais-Homestead Valley": {
+    "slug": "tamalpais_homestead_valley",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/tamalpais_homestead_valley_2022_08_08.png",
+    "date": "August 8, 2022",
+    "emoji": "🌿"
+  },
+  "Temelec": {
+    "slug": "temelec",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/temelec_2014_01_18.png",
+    "date": "January 18, 2014",
+    "emoji": "🍇"
+  },
+  "Tempe Junction": {
+    "slug": "tempe_junction",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/tempe_junction_2016_07_21.png",
+    "date": "July 21, 2016",
+    "emoji": "🌵"
+  },
+  "Templeton": {
+    "slug": "templeton",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/templeton_2017_11_11.png",
+    "date": "November 11, 2017",
+    "emoji": "🍷"
   },
   "Tigre": {
     "slug": "tigre",
@@ -749,23 +1619,41 @@
     "date": "August 28, 2022",
     "emoji": "🍁"
   },
+  "Truckee": {
+    "slug": "truckee",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/truckee_2025_07_27.png",
+    "date": "July 27, 2025",
+    "emoji": "🚂"
+  },
+  "Twentynine Palms": {
+    "slug": "twentynine_palms",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/twentynine_palms_2017_07_29.png",
+    "date": "July 29, 2017",
+    "emoji": "🌌"
+  },
+  "Uran": {
+    "slug": "uran",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/uran_2017_01_20.png",
+    "date": "January 20, 2017",
+    "emoji": "⛴️"
+  },
   "Valencia": {
     "slug": "valencia",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/valencia_2022_12_10.png",
     "date": "December 10, 2022",
     "emoji": "🥘"
   },
-  "Victoria": {
-    "slug": "victoria",
-    "url": "https://storage.googleapis.com/eklhad-web-public/photos/victoria_2025_09_22.png",
-    "date": "September 22, 2025",
-    "emoji": "🪨"
-  },
   "Valle Nevado": {
     "slug": "valle_nevado",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/valle_nevado_2019_08_27.png",
     "date": "August 27, 2019",
     "emoji": "🌨️"
+  },
+  "Vallejo": {
+    "slug": "vallejo",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/vallejo_2020_12_05.png",
+    "date": "December 5, 2020",
+    "emoji": "🐬"
   },
   "Valletta": {
     "slug": "valletta",
@@ -785,6 +1673,18 @@
     "date": "January 13, 2022",
     "emoji": "🛶"
   },
+  "Vestmannaeyjar": {
+    "slug": "vestmannaeyjar",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/vestmannaeyjar_2022_01_06.png",
+    "date": "January 6, 2022",
+    "emoji": "🐦"
+  },
+  "Victoria": {
+    "slug": "victoria",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/victoria_2025_09_22.png",
+    "date": "September 22, 2025",
+    "emoji": "🪨"
+  },
   "Vik": {
     "slug": "vik",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/vik_2022_01_08.png",
@@ -796,6 +1696,54 @@
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/washington_2019_12_26.png",
     "date": "December 26, 2019",
     "emoji": "⚖️"
+  },
+  "Weedpatch": {
+    "slug": "weedpatch",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/weedpatch_2023_05_04.png",
+    "date": "May 4, 2023",
+    "emoji": "🌾"
+  },
+  "West Bay": {
+    "slug": "west_bay",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/west_bay_2018_06_25.png",
+    "date": "June 25, 2018",
+    "emoji": "🐢"
+  },
+  "Westhaven-Moonstone": {
+    "slug": "westhaven_moonstone",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/westhaven_moonstone_2025_06_20.png",
+    "date": "June 20, 2025",
+    "emoji": "🌲"
+  },
+  "Wexford": {
+    "slug": "wexford",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/wexford_2023_06_23.png",
+    "date": "June 23, 2023",
+    "emoji": "⛵"
+  },
+  "Whitewater": {
+    "slug": "whitewater",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/whitewater_2018_06_22.png",
+    "date": "June 22, 2018",
+    "emoji": "🎓"
+  },
+  "Wildwood": {
+    "slug": "wildwood",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/wildwood_2026_06_05.png",
+    "date": "June 5, 2026",
+    "emoji": "🌳"
+  },
+  "Williams": {
+    "slug": "williams",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/williams_2020_07_30.png",
+    "date": "July 30, 2020",
+    "emoji": "🚂"
+  },
+  "Windsor": {
+    "slug": "windsor",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/windsor_2021_12_11.png",
+    "date": "December 11, 2021",
+    "emoji": "🍇"
   },
   "Yilan": {
     "slug": "yilan",
@@ -826,5 +1774,11 @@
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/zermatt_2022_01_11.png",
     "date": "January 11, 2022",
     "emoji": "🎿"
+  },
+  "Šolta": {
+    "slug": "solta",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/solta_2023_09_14.png",
+    "date": "September 14, 2023",
+    "emoji": "🫒"
   }
 }
