@@ -64,32 +64,48 @@ function greatCircleCoords(
 	return coords;
 }
 
-type TripRoute = { from: string; to: string; mode: string };
+type TripRoute = { from: string; to: string; mode: string; path?: [number, number][] };
+type LatLng = { lat: number; lng: number };
 
-const MODE_STYLE: Record<string, { color: string; width: number }> = {
-	Plane: { color: "rgba(255, 255, 255, 0.45)", width: 0.8 },
-	Train: { color: "rgba(255, 210, 60, 0.75)",  width: 1.2 },
-	Car:   { color: "rgba(90,  210, 90,  0.55)", width: 0.8 },
-	Ferry: { color: "rgba(60,  200, 255, 0.75)", width: 1.1 },
-	Bus:   { color: "rgba(210, 120, 255, 0.65)", width: 0.9 },
+function closestPair(as: LatLng[], bs: LatLng[]): [LatLng, LatLng] | null {
+	let best: [LatLng, LatLng] | null = null;
+	let bestDist = Infinity;
+	for (const a of as) {
+		for (const b of bs) {
+			const d = (a.lat - b.lat) ** 2 + ((a.lng - b.lng) * Math.cos((a.lat * Math.PI) / 180)) ** 2;
+			if (d < bestDist) [best, bestDist] = [[a, b], d];
+		}
+	}
+	return best;
+}
+
+// Flights are dashed arcs that fade as you zoom in; ground travel is solid and
+// stays visible up close, and drives follow the actual road.
+const MODE_STYLE: Record<string, { color: string; width: number; dash?: number[]; fadeZoom: number }> = {
+	Plane: { color: "rgba(255, 255, 255, 0.55)", width: 1, dash: [3, 3], fadeZoom: 9 },
+	Train: { color: "rgba(255, 210, 60, 0.75)",  width: 1, fadeZoom: 14 },
+	Car:   { color: "rgba(110, 225, 110, 0.7)", width: 1, fadeZoom: 14 },
+	Ferry: { color: "rgba(60,  200, 255, 0.75)", width: 1, dash: [1, 1.5], fadeZoom: 14 },
+	Bus:   { color: "rgba(210, 120, 255, 0.7)", width: 1, fadeZoom: 14 },
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function addTravelArcs(map: any, locations: Location[]) {
-	const cityLookup: Record<string, { lat: number; lng: number }> = {};
+	const cityLookup: Record<string, { lat: number; lng: number }[]> = {};
 	for (const loc of locations) {
-		if (loc.city) cityLookup[loc.city] = { lat: loc.lat, lng: loc.lng };
+		if (loc.city) (cityLookup[loc.city] ??= []).push({ lat: loc.lat, lng: loc.lng });
 	}
 
 	const byMode: Record<string, object[]> = {};
-	for (const { from, to, mode } of tripRoutes as TripRoute[]) {
-		const fa = cityLookup[from];
-		const fb = cityLookup[to];
-		if (!fa || !fb) continue;
+	for (const { from, to, mode, path } of tripRoutes as TripRoute[]) {
+		// Routes name cities, not rows; when a name is shared (Saratoga CA and WY), use the closest pair
+		const pair = closestPair(cityLookup[from] ?? [], cityLookup[to] ?? []);
+		if (!pair) continue;
+		const [fa, fb] = pair;
 		const key = mode in MODE_STYLE ? mode : "Plane";
 		(byMode[key] ??= []).push({
 			type: "Feature" as const,
-			geometry: { type: "LineString" as const, coordinates: greatCircleCoords(fa, fb) },
+			geometry: { type: "LineString" as const, coordinates: path ?? greatCircleCoords(fa, fb) },
 			properties: {},
 		});
 	}
@@ -98,15 +114,15 @@ function addTravelArcs(map: any, locations: Location[]) {
 		const geojson = { type: "FeatureCollection" as const, features: features as never[] };
 		if (map.getSource(sourceId)) { map.getSource(sourceId).setData(geojson); return; }
 		map.addSource(sourceId, { type: "geojson", data: geojson });
-		map.addLayer({ id: layerId, type: "line", source: sourceId, paint });
+		map.addLayer({ id: layerId, type: "line", source: sourceId, layout: { "line-join": "round", "line-cap": "round" }, paint });
 	};
 
-	for (const [mode, features] of Object.entries(byMode)) {
-		const style = MODE_STYLE[mode] ?? MODE_STYLE.Plane;
-		upsert(`arcs-${mode}`, `arcs-${mode}-layer`, features, {
+	for (const [mode, style] of Object.entries(MODE_STYLE)) {
+		upsert(`arcs-${mode}`, `arcs-${mode}-layer`, byMode[mode] ?? [], {
 			"line-color": style.color,
-			"line-width": style.width,
-			"line-opacity": ["interpolate", ["linear"], ["zoom"], 2, 0.85, 8, 0],
+			"line-width": ["interpolate", ["linear"], ["zoom"], 2, style.width, 10, style.width * 1.5],
+			"line-opacity": ["interpolate", ["linear"], ["zoom"], 2, 1, style.fadeZoom - 2, 0.9, style.fadeZoom, 0],
+			...(style.dash ? { "line-dasharray": style.dash } : {}),
 		});
 	}
 }
@@ -115,7 +131,12 @@ const MAPBOX_ACCESS_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN as string;
 const MAPBOX_STYLE_SATELLITE = "mapbox://styles/mapbox/satellite-v9";
 
 function Map() {
-	const { items: locations } = useLocations();
+	const { items: allLocations } = useLocations();
+	// Notable places last, so their markers draw on top of everything else
+	const locations = useMemo(
+		() => [...(allLocations ?? [])].sort((a, b) => Number(!!a.notable) - Number(!!b.notable)),
+		[allLocations],
+	);
 const [viewState, setViewState] = useState<ViewState>({
 		latitude: 37.7577,
 		longitude: -122.4376,
@@ -129,7 +150,7 @@ const [viewState, setViewState] = useState<ViewState>({
 	const mapRef = useRef<MapRef>(null);
 	const locationsRef = useRef<Location[]>([]);
 
-	useEffect(() => { locationsRef.current = locations ?? []; }, [locations]);
+	useEffect(() => { locationsRef.current = allLocations ?? []; }, [allLocations]);
 
 	const INITIAL_VIEW = { latitude: 37.7577, longitude: -122.4376, zoom: 11, bearing: 0, pitch: 45 };
 
@@ -238,20 +259,20 @@ const [viewState, setViewState] = useState<ViewState>({
 
 	// Add flight arcs once map + locations are both ready
 	useEffect(() => {
-		if (!mapLoaded || !locations?.length) return;
+		if (!mapLoaded || !allLocations?.length) return;
 		const map = mapRef.current?.getMap();
 		if (!map) return;
-		addTravelArcs(map, locations);
-	}, [mapLoaded, locations]);
+		addTravelArcs(map, allLocations);
+	}, [mapLoaded, allLocations]);
 
 	const locationMarkers = useMemo(() => {
 		if (!locations || locations.length === 0) return null;
 
 		return locations.map((loc) => {
 			const location = loc;
-			let markerClassName = "map-custom-marker";
+			let markerClassName = `map-custom-marker ${location.notable ? "notable" : "minor"}`;
 			let markerIcon = null;
-			const hasPhoto = !!location.photoemoji && !location.layover;
+			const hasPhoto = !!location.photourl && !location.layover;
 
 			if (location.current) {
 				markerClassName += " current-location";
@@ -266,7 +287,7 @@ const [viewState, setViewState] = useState<ViewState>({
 				markerIcon = <span className="photo-emoji-label layover">✈</span>;
 			}
 
-			const isNorthAmerica = location.country === "United States" || location.country === "Canada";
+			const isNorthAmerica = ["United States", "United States of America", "Canada"].includes(location.country ?? "");
 			const regionLabel = isNorthAmerica && location.stateprovinceregion
 				? `, ${location.stateprovinceregion}`
 				: location.country
@@ -295,7 +316,7 @@ const [viewState, setViewState] = useState<ViewState>({
 					>
 						<div className={markerClassName}>
 							{hasPhoto
-								? <span className="photo-emoji-label">{location.photoemoji}</span>
+								? <span className="photo-emoji-label">{location.photoemoji || "📷"}</span>
 								: markerIcon
 							}
 						</div>
