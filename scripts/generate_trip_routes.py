@@ -2,12 +2,15 @@
 """
 Generates web/frontend/src/config/tripRoutes.json from the Google Sheet.
 Each entry: {"from": "City A", "to": "City B", "mode": "Plane|Train|Car|Ferry"}
+Car entries also get "path": the driving route as [[lng, lat], ...] from the
+public OSRM router, so drives follow roads instead of arcs. Paths already in the
+file are reused when the endpoints have not moved.
 
 Filtering:
   - Skip rows with no Departed From or no Travel Mode
   - Skip self-referential departures (city departs from itself)
   - Skip "Taiwan" as a departure (not a city; map to Taipei)
-  - For Car routes: only include if the two cities are > 80 km apart
+  - For Car routes: only include if the two cities are > 25 km apart
     (avoids suburb-to-suburb clutter on the global map)
 """
 
@@ -15,6 +18,8 @@ import json
 import math
 import os
 import sys
+import time
+import urllib.request
 
 try:
     from googleapiclient.discovery import build
@@ -49,7 +54,30 @@ def haversine(lat1, lng1, lat2, lng2):
     a = math.sin(dlat/2)**2 + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlng/2)**2
     return R * 2 * math.asin(math.sqrt(a))
 
-CAR_MIN_KM = 80  # suppress very short car hops
+CAR_MIN_KM = 25  # suppress very short car hops
+OSRM = "https://router.project-osrm.org/route/v1/driving/{};{}?overview=simplified&geometries=geojson"
+
+
+def closest_pair(froms, tos):
+    """Cities are looked up by name; when a name is shared (Saratoga CA and WY), use the closest pair."""
+    if not froms or not tos:
+        return None
+    return min(((a, b) for a in froms for b in tos), key=lambda p: haversine(*p[0], *p[1]))
+
+
+def driving_path(a, b):
+    url = OSRM.format(f"{a[1]},{a[0]}", f"{b[1]},{b[0]}")
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "dahlke.io trip routes"}), timeout=30) as resp:
+            data = json.load(resp)
+    except OSError as e:
+        print(f"  no road route {a} -> {b}: {e}")
+        return None
+    finally:
+        time.sleep(1)  # OSRM demo server asks for at most one request a second
+    if data.get("code") != "Ok":
+        return None
+    return [[round(lng, 4), round(lat, 4)] for lng, lat in data["routes"][0]["geometry"]["coordinates"]]
 
 def main():
     creds = service_account.Credentials.from_service_account_file(
@@ -63,8 +91,8 @@ def main():
     ).execute()
     rows = result.get("values", [])
 
-    # Build city → (lat, lng) lookup
-    coords: dict[str, tuple[float, float]] = {}
+    # Build city → [(lat, lng), ...] lookup; a name can belong to several places
+    coords: dict[str, list[tuple[float, float]]] = {}
     for row in rows[1:]:
         city = row[0].strip() if len(row) > 0 else ""
         try:
@@ -73,7 +101,13 @@ def main():
         except ValueError:
             lat = lng = None
         if city and lat is not None and lng is not None:
-            coords[city] = (lat, lng)
+            coords.setdefault(city, []).append((lat, lng))
+
+    previous = {}
+    if os.path.exists(OUT_PATH):
+        for r in json.load(open(OUT_PATH)):
+            if r.get("path"):
+                previous[(r["from"], r["to"])] = r
 
     routes = []
     seen = set()
@@ -90,21 +124,29 @@ def main():
 
         dep_from = DEP_ALIASES.get(dep_from, dep_from)
 
+        ends = closest_pair(coords.get(dep_from), coords.get(city))
+
         # Distance filter for Car
-        if mode == "Car":
-            from_coords = coords.get(dep_from)
-            to_coords   = coords.get(city)
-            if from_coords and to_coords:
-                dist = haversine(from_coords[0], from_coords[1], to_coords[0], to_coords[1])
-                if dist < CAR_MIN_KM:
-                    continue
+        if mode == "Car" and ends and haversine(*ends[0], *ends[1]) < CAR_MIN_KM:
+            continue
 
         key = (dep_from, city, mode)
         if key in seen:
             continue
         seen.add(key)
 
-        routes.append({"from": dep_from, "to": city, "mode": mode})
+        route = {"from": dep_from, "to": city, "mode": mode}
+        if mode == "Car" and ends:
+            old = previous.get((dep_from, city))
+            if old and old.get("ends") == [list(ends[0]), list(ends[1])]:
+                route["path"] = old["path"]
+            else:
+                route["path"] = driving_path(*ends)
+            if route["path"]:
+                route["ends"] = [list(ends[0]), list(ends[1])]
+            else:
+                del route["path"]
+        routes.append(route)
 
     # Sort for stable diffs: mode → from → to
     routes.sort(key=lambda r: (r["mode"], r["from"], r["to"]))
