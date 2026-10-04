@@ -121,3 +121,30 @@ func TestGetStringValue(t *testing.T) {
 		})
 	}
 }
+
+func TestLocationColumnsFromHeader(t *testing.T) {
+	// The sheet's columns get reordered by hand; fields must follow their header, not their position.
+	header := []interface{}{"Country", "City", "State / Province / Region / District", "Current", "Layover", "Home", "Lat", "Lng", "Confirmed", "Departed From", "Travel Mode", "Photo URL", "Location Emoji", "Notable"}
+	cols, err := locationColumnsFromHeader(header)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if cols.Country != 0 || cols.City != 1 || cols.State != 2 || cols.Lat != 6 || cols.Notable != 13 {
+		t.Errorf("unexpected columns: %+v", cols)
+	}
+	if _, err := locationColumnsFromHeader([]interface{}{"City", "Lat", "Lng"}); err == nil {
+		t.Error("expected an error when Country is missing")
+	}
+	noNotable, _ := locationColumnsFromHeader([]interface{}{"City", "Country", "Lat", "Lng"})
+	if noNotable.Notable != -1 || cellValue([]interface{}{"x"}, noNotable.Notable) != "" {
+		t.Error("an absent column should read as empty")
+	}
+}
+
+func TestColumnLetter(t *testing.T) {
+	for index, want := range map[int]string{0: "A", 6: "G", 25: "Z", 26: "AA", 27: "AB"} {
+		if got := columnLetter(index); got != want {
+			t.Errorf("columnLetter(%d) = %s, want %s", index, got, want)
+		}
+	}
+}
