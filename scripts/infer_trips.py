@@ -132,8 +132,11 @@ def main():
         scopes=["https://www.googleapis.com/auth/spreadsheets"],
     )
     values = build("sheets", "v4", credentials=creds).spreadsheets().values()
-    rows = values.get(spreadsheetId=SPREADSHEET_ID, range="locations!A2:K", valueRenderOption="UNFORMATTED_VALUE").execute()["values"]
-    pins = [{"city": r[0], "country": r[2], "lat": r[6] if len(r) > 7 else "", "lng": r[7] if len(r) > 7 else ""} for r in rows]
+    header, *data = values.get(spreadsheetId=SPREADSHEET_ID, range="locations!A1:Z", valueRenderOption="UNFORMATTED_VALUE").execute()["values"]
+    # Columns are found by header name so the sheet can be reordered
+    rows = [{name: (r[i] if i < len(r) else "") for i, name in enumerate(header)} for r in data]
+    letter = {name: chr(ord("A") + i) for i, name in enumerate(header)}
+    pins = [{"city": r["City"], "country": r["Country"], "lat": r["Lat"], "lng": r["Lng"]} for r in rows]
 
     timeline = snap(json.load(open(args.index)).values(), pins)
     inferred = infer(pins, timeline, homes_by_year(timeline))
@@ -141,16 +144,16 @@ def main():
     updates, modes = [], Counter()
     for i, r in enumerate(rows):
         sheet_row = i + 2
-        r = r + [""] * (11 - len(r))
-        if i not in inferred or r[10] in ("Ferry", "Train", "Bus") or sheet_row in args.keep:
+        if i not in inferred or r["Travel Mode"] in ("Ferry", "Train", "Bus") or sheet_row in args.keep:
             continue
-        if sheet_row < args.from_row and r[9]:
+        if sheet_row < args.from_row and r["Departed From"]:
             continue
         departed, travel, distance, hours, basis = inferred[i]
-        updates.append({"range": f"locations!J{sheet_row}:K{sheet_row}", "values": [[departed, travel]]})
+        updates.append({"range": f"locations!{letter['Departed From']}{sheet_row}", "values": [[departed]]})
+        updates.append({"range": f"locations!{letter['Travel Mode']}{sheet_row}", "values": [[travel]]})
         modes[travel] += 1
-        print(f"row {sheet_row:4} {r[0][:26]:26} <- {departed[:22]:22} {travel:5} {distance:6} km {hours:6} h  {basis}")
-    print(f"{len(updates)} rows, {dict(modes)}; {len(timeline)} photos snapped to pins")
+        print(f"row {sheet_row:4} {r['City'][:26]:26} <- {departed[:22]:22} {travel:5} {distance:6} km {hours:6} h  {basis}")
+    print(f"{sum(modes.values())} rows, {dict(modes)}; {len(timeline)} photos snapped to pins")
     if args.apply and updates:
         values.batchUpdate(spreadsheetId=SPREADSHEET_ID, body={"valueInputOption": "RAW", "data": updates}).execute()
         print("written")
