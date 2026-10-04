@@ -1,6 +1,7 @@
 # Dev Files
 *.swp
 .DS_Store
+*__pycache__
 
 # Built / Compiled Files
 *.tar.gz
