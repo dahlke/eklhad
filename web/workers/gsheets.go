@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"strings"
 	"time"
 
 	storage "cloud.google.com/go/storage"
@@ -72,16 +73,57 @@ func writeLocationsToGCS(locations []structs.EklhadLocation) {
 	}
 }
 
+// locationColumns holds where each field lives in the locations tab, found by header name
+// so the sheet's columns can be reordered freely. -1 means the column is absent.
+type locationColumns struct {
+	City, State, Country, Current, Layover, Home, Lat, Lng, Confirmed, Notable int
+}
+
+func locationColumnsFromHeader(header []interface{}) (locationColumns, error) {
+	cols := locationColumns{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1}
+	fields := map[string]*int{
+		"city": &cols.City, "state / province / region / district": &cols.State, "country": &cols.Country,
+		"current": &cols.Current, "layover": &cols.Layover, "home": &cols.Home, "lat": &cols.Lat,
+		"lng": &cols.Lng, "confirmed": &cols.Confirmed, "notable": &cols.Notable,
+	}
+	for i, cell := range header {
+		if field, ok := fields[strings.ToLower(strings.TrimSpace(fmt.Sprint(cell)))]; ok && *field == -1 {
+			*field = i
+		}
+	}
+	if cols.City == -1 || cols.Country == -1 || cols.Lat == -1 || cols.Lng == -1 {
+		return cols, fmt.Errorf("locations header is missing City, Country, Lat or Lng: %v", header)
+	}
+	return cols, nil
+}
+
+// columnLetter turns a 0-based column index into its A1 letter (0 -> A, 26 -> AA).
+func columnLetter(index int) string {
+	letters := ""
+	for index >= 0 {
+		letters = string(rune('A'+index%26)) + letters
+		index = index/26 - 1
+	}
+	return letters
+}
+
+// cellValue returns a cell by column index, or "" when the column is absent or the row is short.
+func cellValue(row []interface{}, index int) string {
+	if index < 0 {
+		return ""
+	}
+	return getStringValue(row, index)
+}
+
 // updateLocationInSheet updates a specific location row in the Google Sheet with lat/lng and confirmed status
-func updateLocationInSheet(sheetsService *sheets.Service, spreadSheetID string, rowIndex int, lat float64, lng float64, confirmed bool) error {
+func updateLocationInSheet(sheetsService *sheets.Service, spreadSheetID string, cols locationColumns, rowIndex int, lat float64, lng float64, confirmed bool) error {
 	// Row index is 1-based in A1 notation, but we're 0-based from the loop
 	// Since headers are in row 1, data starts at row 2, so rowIndex + 2
 	rowNum := rowIndex + 2
 
-	// Update columns G (Lat), H (Lng), and I (Confirmed)
-	latRange := fmt.Sprintf("locations!G%d", rowNum)
-	lngRange := fmt.Sprintf("locations!H%d", rowNum)
-	confirmedRange := fmt.Sprintf("locations!I%d", rowNum)
+	latRange := fmt.Sprintf("locations!%s%d", columnLetter(cols.Lat), rowNum)
+	lngRange := fmt.Sprintf("locations!%s%d", columnLetter(cols.Lng), rowNum)
+	confirmedRange := fmt.Sprintf("locations!%s%d", columnLetter(cols.Confirmed), rowNum)
 
 	// Prepare the values
 	latValue := []interface{}{lat}
@@ -102,6 +144,10 @@ func updateLocationInSheet(sheetsService *sheets.Service, spreadSheetID string, 
 		ValueInputOption("RAW").Do()
 	if err != nil {
 		return fmt.Errorf("unable to update lng: %v", err)
+	}
+
+	if cols.Confirmed < 0 {
+		return nil
 	}
 
 	// Write Confirmed
@@ -243,60 +289,52 @@ func GetDataFromGSheets(spreadSheetID string) {
 		}
 	}
 
-	// Read columns A through N: City, State, Country, Current, Layover, Home, Lat, Lng, Confirmed,
-	// Departed From (J), Travel Mode (K), Photo URL (L), Location Emoji (M), Notable (N).
-	// Photos come from locationPhotos.json, not from J-M.
-	locationsReadRange := "locations!A2:N"
+	// Columns are found by header name, so the sheet can be reordered. Photos come from
+	// locationPhotos.json, not from the sheet's photo columns.
+	locationsReadRange := "locations!A1:Z"
 	// NOTE: https://pkg.go.dev/google.golang.org/api@v0.64.0/sheets/v4?utm_source=gopls#SpreadsheetsValuesService.Get
 	locationsResp, err := sheetsService.Spreadsheets.Values.Get(spreadSheetID, locationsReadRange).Do()
 	if err != nil {
 		log.Fatalf("Unable to retrieve data from sheet: %v", err)
 	}
 
-	if len(locationsResp.Values) == 0 {
+	if len(locationsResp.Values) < 2 {
 		log.Info("No data found for locations.")
 	} else {
+		cols, err := locationColumnsFromHeader(locationsResp.Values[0])
+		if err != nil {
+			log.Fatalf("Unable to read the locations header: %v", err)
+		}
 		var eklhadLocations []structs.EklhadLocation
 
-		for i, row := range locationsResp.Values {
-			// Ensure row has at least 6 fields (City through Home)
-			if len(row) < 6 {
-				log.Warn(fmt.Sprintf("Row %d does not have enough columns, skipping", i+2))
+		for i, row := range locationsResp.Values[1:] {
+			locationCity := cellValue(row, cols.City)
+			locationStateProviceRegion := cellValue(row, cols.State)
+			locationCountry := cellValue(row, cols.Country)
+			locationCurrent := cellValue(row, cols.Current)
+			locationLayover := cellValue(row, cols.Layover)
+			locationHome := cellValue(row, cols.Home)
+			if locationCity == "" {
+				log.Warn(fmt.Sprintf("Row %d has no city, skipping", i+2))
 				continue
 			}
 
-			locationCity := getStringValue(row, 0)
-			locationStateProviceRegion := getStringValue(row, 1)
-			locationCountry := getStringValue(row, 2)
-			locationCurrent := getStringValue(row, 3)
-			locationLayover := getStringValue(row, 4)
-			locationHome := getStringValue(row, 5)
-
 			var lat, lng float64
 
-			// Check if this row already has lat/lng populated
-			// Extract lat/lng from sheet data if available
-			if len(row) > 6 && !isCellEmptyOrNotConfirmed(row[6]) {
-				if latStr, ok := row[6].(float64); ok {
-					lat = latStr
-				} else if latStr, ok := row[6].(string); ok && latStr != "" {
-					fmt.Sscanf(latStr, "%f", &lat)
-				}
+			// Use lat/lng from the sheet when present
+			if latStr := cellValue(row, cols.Lat); !isCellEmptyOrNotConfirmed(latStr) {
+				fmt.Sscanf(latStr, "%f", &lat)
 			}
-			if len(row) > 7 && !isCellEmptyOrNotConfirmed(row[7]) {
-				if lngStr, ok := row[7].(float64); ok {
-					lng = lngStr
-				} else if lngStr, ok := row[7].(string); ok && lngStr != "" {
-					fmt.Sscanf(lngStr, "%f", &lng)
-				}
+			if lngStr := cellValue(row, cols.Lng); !isCellEmptyOrNotConfirmed(lngStr) {
+				fmt.Sscanf(lngStr, "%f", &lng)
 			}
 
 			// Check if we should geocode this location
 			// Only geocode if we don't have coordinates yet
 			hasLat := lat != 0
 			hasLng := lng != 0
-			isConfirmed := len(row) > 8 && getStringValue(row, 8) == "TRUE"
-			isNotable := len(row) > 13 && getStringValue(row, 13) == "TRUE"
+			isConfirmed := cellValue(row, cols.Confirmed) == "TRUE"
+			isNotable := cellValue(row, cols.Notable) == "TRUE"
 
 			// If we don't have coordinates yet, geocode the location
 			if !hasLat || !hasLng {
@@ -312,7 +350,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 
 					// Only update the sheet if not already confirmed
 					if !isConfirmed {
-						err := updateLocationInSheet(sheetsService, spreadSheetID, i, lat, lng, true)
+						err := updateLocationInSheet(sheetsService, spreadSheetID, cols, i, lat, lng, true)
 						if err != nil {
 							log.Error(fmt.Sprintf("Failed to update sheet for row %d: %v", i+2, err))
 						} else {
