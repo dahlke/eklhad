@@ -87,17 +87,18 @@ def main():
 
     result = service.spreadsheets().values().get(
         spreadsheetId=SPREADSHEET_ID,
-        range="locations!A1:K",
+        range="locations!A1:Z",
     ).execute()
-    rows = result.get("values", [])
+    header, *data = result.get("values", [])
+    # Columns are found by header name so the sheet can be reordered
+    rows = [{name: (r[i].strip() if i < len(r) else "") for i, name in enumerate(header)} for r in data]
 
     # Build city → [(lat, lng), ...] lookup; a name can belong to several places
     coords: dict[str, list[tuple[float, float]]] = {}
-    for row in rows[1:]:
-        city = row[0].strip() if len(row) > 0 else ""
+    for row in rows:
+        city = row["City"]
         try:
-            lat = float(row[6]) if len(row) > 6 else None
-            lng = float(row[7]) if len(row) > 7 else None
+            lat, lng = float(row["Lat"]), float(row["Lng"])
         except ValueError:
             lat = lng = None
         if city and lat is not None and lng is not None:
@@ -112,10 +113,8 @@ def main():
     routes = []
     seen = set()
 
-    for row in rows[1:]:
-        city      = row[0].strip()  if len(row) > 0  else ""
-        dep_from  = row[9].strip()  if len(row) > 9  else ""
-        mode      = row[10].strip() if len(row) > 10 else ""
+    for row in rows:
+        city, dep_from, mode = row["City"], row["Departed From"], row["Travel Mode"]
 
         if not city or not dep_from or not mode:
             continue
