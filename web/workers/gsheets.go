@@ -24,6 +24,7 @@ type locationPhotoEntry struct {
 	Emoji string `json:"emoji"`
 	// Stamp is the place's rubber-stamp pin icon and Poster the stamp-and-photo card; both optional.
 	Stamp  string `json:"stamp,omitempty"`
+	Badge  string `json:"badge,omitempty"`
 	Poster string `json:"poster,omitempty"`
 }
 
@@ -417,6 +418,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 				eklhadLocations[i].PhotoEmoji = photo.Emoji
 				eklhadLocations[i].PhotoDate = photo.Date
 				eklhadLocations[i].StampURL = photo.Stamp
+				eklhadLocations[i].BadgeURL = photo.Badge
 				eklhadLocations[i].PosterURL = photo.Poster
 			}
 		}
