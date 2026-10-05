@@ -51,6 +51,7 @@ export interface Location {
 	photoemoji?: string;
 	photodate?: string;
 	stampurl?: string;
+	badgeurl?: string;
 	posterurl?: string;
 }
 

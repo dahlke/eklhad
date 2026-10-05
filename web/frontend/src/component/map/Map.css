@@ -121,25 +121,22 @@ get auto-generated. */
 			}
 		}
 
-		/* Stamp pin: just the stamp's ink, every one in the same square footprint */
-		&.has-stamp:not(.current-location) {
-			width: auto;
-			height: auto;
-			background: none;
-			box-shadow: none;
+		/* Stamp badge: the place's stamp filling the photo pin's circle, same size and ring for every place */
+		&.has-badge:not(.current-location) {
+			width: 34px;
+			height: 34px;
+			overflow: hidden;
 
-			.stamp-pin {
-				display: block;
-				width: 44px;
-				height: 44px;
-				object-fit: contain;
-				filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.7));
+			.stamp-badge {
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+				object-fit: cover;
 			}
 
-			&.minor .stamp-pin {
-				width: 30px;
-				height: 30px;
-				filter: saturate(0.6) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.7));
+			&.minor {
+				width: 24px;
+				height: 24px;
 			}
 		}
 
