@@ -15,4 +15,6 @@ type EklhadLocation struct {
 	PhotoURL            string  `json:"photourl"`
 	PhotoEmoji          string  `json:"photoemoji"`
 	PhotoDate           string  `json:"photodate"`
+	StampURL            string  `json:"stampurl,omitempty"`
+	PosterURL           string  `json:"posterurl,omitempty"`
 }
