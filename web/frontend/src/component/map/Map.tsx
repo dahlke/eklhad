@@ -127,6 +127,7 @@ function addTravelArcs(map: any, locations: Location[]) {
 	}
 }
 
+const STAMP_ZOOM = 6.5;
 const MAPBOX_ACCESS_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN as string;
 const MAPBOX_STYLE_SATELLITE = "mapbox://styles/mapbox/satellite-v9";
 
@@ -265,6 +266,9 @@ const [viewState, setViewState] = useState<ViewState>({
 		addTravelArcs(map, allLocations);
 	}, [mapLoaded, allLocations]);
 
+	// Overview first, details on demand: plain dots at globe and continent zoom, stamps once zoomed into a region
+	const showStamps = viewState.zoom >= STAMP_ZOOM;
+
 	const locationMarkers = useMemo(() => {
 		if (!locations || locations.length === 0) return null;
 
@@ -273,6 +277,9 @@ const [viewState, setViewState] = useState<ViewState>({
 			let markerClassName = `map-custom-marker ${location.notable ? "notable" : "minor"}`;
 			let markerIcon = null;
 			const hasPhoto = !!location.photourl && !location.layover;
+			const hasStamp = hasPhoto && !!location.stampurl;
+			const showStamp = hasStamp && showStamps;
+			const showEmoji = hasPhoto && !hasStamp;
 
 			if (location.current) {
 				markerClassName += " current-location";
@@ -280,7 +287,8 @@ const [viewState, setViewState] = useState<ViewState>({
 				markerClassName += " static-location";
 			}
 
-			if (hasPhoto) markerClassName += " has-photo";
+			if (showStamp) markerClassName += " has-stamp";
+			else if (showEmoji) markerClassName += " has-photo";
 
 			if (location.layover) {
 				markerClassName += " layover";
@@ -296,9 +304,9 @@ const [viewState, setViewState] = useState<ViewState>({
 				? `, ${location.stateprovinceregion}`
 				: "";
 
-			const thumbUrl = location.photourl
-					? location.photourl.replace("/photos/", "/photos/thumbs/")
-					: "";
+			// Hover shows the stamp poster when there is one, else the photo; both have /thumbs/ copies
+			const fullUrl = location.posterurl || location.photourl || "";
+			const thumbUrl = fullUrl.replace("/photos/", "/photos/thumbs/").replace("/posters/", "/posters/thumbs/");
 
 			return (
 				<Marker
@@ -311,16 +319,18 @@ const [viewState, setViewState] = useState<ViewState>({
 						className="marker-wrapper"
 						role="button"
 						onClick={() => {
-							if (location.photourl) setLightboxUrl(location.photourl);
+							if (fullUrl) setLightboxUrl(fullUrl);
 						}}
 					>
 						<div className={markerClassName}>
-							{hasPhoto
+							{showStamp
+								? <img className="stamp-pin" src={location.stampurl} alt="" loading="lazy" />
+								: showEmoji
 								? <span className="photo-emoji-label">{location.photoemoji || "📷"}</span>
 								: markerIcon
 							}
 						</div>
-						{location.photourl ? (
+						{fullUrl ? (
 							<div className="marker-photo-tooltip">
 								<img src={thumbUrl} alt={location.city} className="tooltip-photo" loading="lazy" />
 								<div className="tooltip-city-name">
@@ -338,7 +348,7 @@ const [viewState, setViewState] = useState<ViewState>({
 				</Marker>
 			);
 		});
-	}, [locations]);
+	}, [locations, showStamps]);
 
 	return (
 		<div id="map">

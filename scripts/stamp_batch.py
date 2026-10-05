@@ -41,9 +41,12 @@ def fetch_photo(url, cache):
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--only", nargs="*", help="city names to make; default is every place with a photo")
+    parser.add_argument("--only-file", type=Path, help="file of city names separated by | or newlines")
     parser.add_argument("--out", type=Path, default=Path.home() / "Desktop/stamp_posters")
     parser.add_argument("--seed", type=int, default=7)
     args = parser.parse_args()
+    if args.only_file:
+        args.only = (args.only or []) + [c.strip() for c in args.only_file.read_text().replace("|", "\n").splitlines() if c.strip()]
 
     # Query string skips the CDN copy, which can be up to an hour stale
     with urllib.request.urlopen(f"{LOCATIONS_URL}?t={int(time.time())}", timeout=60) as resp:
