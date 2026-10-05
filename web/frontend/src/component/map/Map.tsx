@@ -273,6 +273,7 @@ const [viewState, setViewState] = useState<ViewState>({
 			let markerClassName = `map-custom-marker ${location.notable ? "notable" : "minor"}`;
 			let markerIcon = null;
 			const hasPhoto = !!location.photourl && !location.layover;
+			const hasStamp = hasPhoto && !!location.stampurl;
 
 			if (location.current) {
 				markerClassName += " current-location";
@@ -280,7 +281,8 @@ const [viewState, setViewState] = useState<ViewState>({
 				markerClassName += " static-location";
 			}
 
-			if (hasPhoto) markerClassName += " has-photo";
+			if (hasStamp) markerClassName += " has-stamp";
+			else if (hasPhoto) markerClassName += " has-photo";
 
 			if (location.layover) {
 				markerClassName += " layover";
@@ -296,9 +298,9 @@ const [viewState, setViewState] = useState<ViewState>({
 				? `, ${location.stateprovinceregion}`
 				: "";
 
-			const thumbUrl = location.photourl
-					? location.photourl.replace("/photos/", "/photos/thumbs/")
-					: "";
+			// Hover shows the stamp poster when there is one, else the photo; both have /thumbs/ copies
+			const fullUrl = location.posterurl || location.photourl || "";
+			const thumbUrl = fullUrl.replace("/photos/", "/photos/thumbs/").replace("/posters/", "/posters/thumbs/");
 
 			return (
 				<Marker
@@ -311,16 +313,18 @@ const [viewState, setViewState] = useState<ViewState>({
 						className="marker-wrapper"
 						role="button"
 						onClick={() => {
-							if (location.photourl) setLightboxUrl(location.photourl);
+							if (fullUrl) setLightboxUrl(fullUrl);
 						}}
 					>
 						<div className={markerClassName}>
-							{hasPhoto
+							{hasStamp
+								? <img className="stamp-pin" src={location.stampurl} alt="" loading="lazy" />
+								: hasPhoto
 								? <span className="photo-emoji-label">{location.photoemoji || "📷"}</span>
 								: markerIcon
 							}
 						</div>
-						{location.photourl ? (
+						{fullUrl ? (
 							<div className="marker-photo-tooltip">
 								<img src={thumbUrl} alt={location.city} className="tooltip-photo" loading="lazy" />
 								<div className="tooltip-city-name">
