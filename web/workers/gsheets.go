@@ -22,6 +22,9 @@ type locationPhotoEntry struct {
 	URL   string `json:"url"`
 	Date  string `json:"date"`
 	Emoji string `json:"emoji"`
+	// Stamp is the place's rubber-stamp pin icon and Poster the stamp-and-photo card; both optional.
+	Stamp  string `json:"stamp,omitempty"`
+	Poster string `json:"poster,omitempty"`
 }
 
 func loadLocationPhotos() map[string]locationPhotoEntry {
@@ -413,6 +416,8 @@ func GetDataFromGSheets(spreadSheetID string) {
 				eklhadLocations[i].PhotoURL = photo.URL
 				eklhadLocations[i].PhotoEmoji = photo.Emoji
 				eklhadLocations[i].PhotoDate = photo.Date
+				eklhadLocations[i].StampURL = photo.Stamp
+				eklhadLocations[i].PosterURL = photo.Poster
 			}
 		}
 
