@@ -28,19 +28,25 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
-from stamp_local import PAPER, crop_to_ink, lift_to_white
+from stamp_local import crop_to_ink, lift_to_white
 
 BUCKET = "eklhad-web-public"
 PUBLIC = f"https://storage.googleapis.com/{BUCKET}/"
 PHOTOS_JSON = Path(__file__).parent / "../web/frontend/src/config/locationPhotos.json"
 
 
-def pin_image(stamp):
-    """The stamp's ink on the same paper tone as the pin's frame, sized for a 40px pin on retina screens."""
-    ink = crop_to_ink(lift_to_white(stamp))
-    ink.thumbnail((120, 96), Image.LANCZOS)
-    paper = Image.new("RGB", ink.size, PAPER)
-    return Image.fromarray((np.asarray(paper, float) * np.asarray(ink, float) / 255).astype(np.uint8))
+def pin_image(stamp, size=120):
+    """The stamp's ink, trimmed, centered in a fixed transparent square so every pin has the same footprint."""
+    ink = crop_to_ink(lift_to_white(stamp), pad=0.02)
+    ink.thumbnail((size, size), Image.LANCZOS)
+    rgb = np.asarray(ink, float) / 255
+    # Keep the printed colours; fade out only paper and pale washes so the cutout stays crisp
+    darkness = 1 - rgb.min(axis=2)
+    alpha = np.clip((darkness - 0.12) / 0.25, 0, 1)
+    cutout = Image.fromarray((np.dstack([rgb, alpha]) * 255).astype(np.uint8), "RGBA")
+    square = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+    square.paste(cutout, ((size - cutout.width) // 2, (size - cutout.height) // 2))
+    return square
 
 
 def encode(img, fmt, **kw):
@@ -84,8 +90,10 @@ def main():
             "posters": encode(poster, "JPEG", quality=85, optimize=True),
             "posters/thumbs": encode(poster.resize((480, 360), Image.LANCZOS), "JPEG", quality=82, optimize=True),
         }
-        digest = hashlib.sha1(files["posters"] + files["pins"]).hexdigest()[:8]
-        names = {kind: f"stamps/{kind}/{slug}_{digest}.{'png' if kind == 'pins' else 'jpg'}" for kind in files}
+        # Each file is named by its own content hash: a new pin style doesn't duplicate the posters
+        digest = {kind: hashlib.sha1(data).hexdigest()[:8] for kind, data in files.items()}
+        digest["posters/thumbs"] = digest["posters"]
+        names = {kind: f"stamps/{kind}/{slug}_{digest[kind]}.{'png' if kind == 'pins' else 'jpg'}" for kind in files}
         if bucket:
             for kind, data in files.items():
                 blob = bucket.blob(names[kind])

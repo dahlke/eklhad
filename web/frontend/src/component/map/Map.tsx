@@ -127,6 +127,7 @@ function addTravelArcs(map: any, locations: Location[]) {
 	}
 }
 
+const STAMP_ZOOM = 6.5;
 const MAPBOX_ACCESS_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN as string;
 const MAPBOX_STYLE_SATELLITE = "mapbox://styles/mapbox/satellite-v9";
 
@@ -265,6 +266,9 @@ const [viewState, setViewState] = useState<ViewState>({
 		addTravelArcs(map, allLocations);
 	}, [mapLoaded, allLocations]);
 
+	// Overview first, details on demand: plain dots at globe and continent zoom, stamps once zoomed into a region
+	const showStamps = viewState.zoom >= STAMP_ZOOM;
+
 	const locationMarkers = useMemo(() => {
 		if (!locations || locations.length === 0) return null;
 
@@ -274,6 +278,8 @@ const [viewState, setViewState] = useState<ViewState>({
 			let markerIcon = null;
 			const hasPhoto = !!location.photourl && !location.layover;
 			const hasStamp = hasPhoto && !!location.stampurl;
+			const showStamp = hasStamp && showStamps;
+			const showEmoji = hasPhoto && !hasStamp;
 
 			if (location.current) {
 				markerClassName += " current-location";
@@ -281,8 +287,8 @@ const [viewState, setViewState] = useState<ViewState>({
 				markerClassName += " static-location";
 			}
 
-			if (hasStamp) markerClassName += " has-stamp";
-			else if (hasPhoto) markerClassName += " has-photo";
+			if (showStamp) markerClassName += " has-stamp";
+			else if (showEmoji) markerClassName += " has-photo";
 
 			if (location.layover) {
 				markerClassName += " layover";
@@ -317,9 +323,9 @@ const [viewState, setViewState] = useState<ViewState>({
 						}}
 					>
 						<div className={markerClassName}>
-							{hasStamp
+							{showStamp
 								? <img className="stamp-pin" src={location.stampurl} alt="" loading="lazy" />
-								: hasPhoto
+								: showEmoji
 								? <span className="photo-emoji-label">{location.photoemoji || "📷"}</span>
 								: markerIcon
 							}
@@ -342,7 +348,7 @@ const [viewState, setViewState] = useState<ViewState>({
 				</Marker>
 			);
 		});
-	}, [locations]);
+	}, [locations, showStamps]);
 
 	return (
 		<div id="map">
