@@ -83,6 +83,8 @@ def main():
             continue
         pin = pins[pin_index]
         row = next((r for r in rows if r["City"] == city), None) or next((r for r in rows if r.get("On Map As") == city), None)
+        if row is None and not by_pin.get(pin_index):
+            continue
         if row is None:
             snapped = by_pin.get(pin_index, [])
             days = sorted({datetime.fromtimestamp(p["taken"], timezone.utc).strftime("%Y-%m-%d") for p in snapped})
