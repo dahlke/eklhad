@@ -1763,7 +1763,9 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/dublin_2024_05_22_53635886.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/dublin_2024_05_22_53635886.jpg",
+    "country": "Ireland",
+    "state": "Leinster"
   },
   "Dubrovnik": {
     "slug": "dubrovnik",
@@ -3920,7 +3922,9 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/milan_2022_01_13_cf97ebf1.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/milan_2022_01_13_cf97ebf1.jpg",
+    "country": "Italy",
+    "state": "Lombardy"
   },
   "Mill Valley": {
     "slug": "mill_valley",
@@ -4054,7 +4058,9 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/monterey_unknown_235f87ef.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/monterey_unknown_235f87ef.jpg",
+    "country": "United States of America",
+    "state": "California"
   },
   "Moose Wilson Road": {
     "slug": "moose_wilson_road",
@@ -5090,7 +5096,9 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/retiro_2019_09_02_80e5d9ec.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/retiro_2019_09_02_80e5d9ec.jpg",
+    "country": "Argentina",
+    "state": "Buenos Aires F.D."
   },
   "Reykjavík": {
     "slug": "reykjavik",
@@ -5687,7 +5695,9 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/santa_cruz_2017_02_18_44455344.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/santa_cruz_2017_02_18_44455344.jpg",
+    "country": "United States of America",
+    "state": "California"
   },
   "Santa Teresa": {
     "slug": "santa_teresa",

@@ -18,6 +18,9 @@ import csv
 import hashlib
 import io
 import json
+import math
+import time
+import urllib.request
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -94,11 +97,11 @@ PAGE = r"""<!doctype html>
 <main id="list"></main>
 <dialog id="zoom"><img alt=""></dialog>
 <script>
-const SCOPES = {all:"All", notable:"Notable", fresh:"New places", near:"Near a pin"};
+const SCOPES = {all:"All", notable:"Notable", other:"Not notable"};
 const STATUSES = {any:"Any", undecided:"Undecided", approved:"Approved", rejected:"Rejected"};
-const PHOTOS = {any:"Any", with:"Has photo", without:"No photo"};
+const PHOTOS = {any:"Any", without:"Needs photo", with:"Has photo"};
 const LABEL = {approved:"✓ Approved", rejected:"✕ Rejected", undefined:"Undecided"};
-let places = [], decisions = {locations:{}, photos:{}}, scope = "notable", status = "any", photo = "any";
+let places = [], decisions = {locations:{}, photos:{}}, scope = "notable", status = "any", photo = "without";
 
 const key = p => [p.City, p["State / Province / Region / District"], p.Country].join("|");
 const el = (tag, attrs = {}, ...kids) => {
@@ -138,8 +141,9 @@ function verdict(kind, id, node) {
 function card(p) {
   const id = key(p), art = el("article");
   const tags = el("p", {className:"meta"});
-  if (p.Notable) tags.append(el("span", {className:"tag", textContent:"Notable"}));
-  tags.append(el("span", {className:"tag", textContent: p["On Map As"] ? `Near your pin: ${p["On Map As"]}` : "New place"}));
+  if (p["Map Notable"]) tags.append(el("span", {className:"tag", textContent:`Notable · level ${p["Map Notability"] || 1}`}));
+  if (p["Map Pin"] && p["Map Pin"] !== p.City) tags.append(el("span", {className:"tag", textContent:`Map pin: ${p["Map Pin"]}`}));
+  if (p["Map Photo"]) tags.append(el("span", {className:"tag", textContent:"Photo on map"}));
   tags.append(`${p.Photos} photos over ${p.Days} day${p.Days === 1 ? "" : "s"}, ${p["First Seen"]} to ${p["Last Seen"]}`);
   const title = el("div", {}, el("h2", {textContent: p.City}),
     el("div", {className:"where", textContent: [p["State / Province / Region / District"], p.Country].filter(Boolean).join(", ")}), tags);
@@ -168,15 +172,15 @@ function standing(p) {
   return "undecided";
 }
 
-const hasPhoto = p => p["Candidate Photos"].some(path => decisions.photos[path] === "approved");
+// Has a photo if one is approved here or the map pin already shows one
+const hasPhoto = p => p["Map Photo"] || p["Candidate Photos"].some(path => decisions.photos[path] === "approved");
 
 function visible(p) {
   const d = standing(p);
   if (photo === "with" && !hasPhoto(p)) return false;
   if (photo === "without" && hasPhoto(p)) return false;
-  if (scope === "notable" && !p.Notable) return false;
-  if (scope === "fresh" && p["On Map As"]) return false;
-  if (scope === "near" && !p["On Map As"]) return false;
+  if (scope === "notable" && !p["Map Notable"]) return false;
+  if (scope === "other" && p["Map Notable"]) return false;
   return status === "any" || d === status;
 }
 
@@ -200,7 +204,11 @@ zoom.onclick = () => zoom.close();
 toggles(document.getElementById("scope"), SCOPES, () => scope, v => scope = v);
 toggles(document.getElementById("status"), STATUSES, () => status, v => status = v);
 toggles(document.getElementById("photo"), PHOTOS, () => photo, v => photo = v);
-fetch("/data").then(r => r.json()).then(d => { places = d.places; decisions = d.decisions; render(); });
+// Most notable first, then the places with the most photos
+fetch("/data").then(r => r.json()).then(d => {
+  places = d.places.sort((a, b) => (b["Map Notable"] - a["Map Notable"]) || ((b["Map Notability"] || 0) - (a["Map Notability"] || 0)) || (b.Photos - a.Photos));
+  decisions = d.decisions; render();
+});
 </script>
 </body>
 </html>
@@ -283,6 +291,34 @@ class App(BaseHTTPRequestHandler):
         self.send(b"{}", "application/json")
 
 
+LOCATIONS_URL = "https://storage.googleapis.com/eklhad-web-public/data/locations.json"
+RENAMES = {"Hoefn": "Höfn", "Hveragerdi": "Hveragerði", "Grindavik": "Grindavík", "Cezy": "Cézy", "Loch Garman": "Wexford"}
+
+
+def km(a, b):
+    la1, lo1, la2, lo2 = map(math.radians, (*a, *b))
+    h = math.sin((la2 - la1) / 2) ** 2 + math.cos(la1) * math.cos(la2) * math.sin((lo2 - lo1) / 2) ** 2
+    return 12742 * math.asin(math.sqrt(h))
+
+
+def attach_map(places):
+    """Tag each place with the live map pin it became, so filters use the map's Notable flag and photos, not the scan's."""
+    with urllib.request.urlopen(f"{LOCATIONS_URL}?t={int(time.time())}", timeout=60) as resp:
+        pins = [p for p in json.load(resp) if isinstance(p.get("lat"), (int, float))]
+    for place in places:
+        here = (place.get("Lat"), place.get("Lng"))
+        names = {RENAMES.get(place["City"], place["City"]), place.get("On Map As") or ""}
+        close = [p for p in pins if isinstance(here[0], (int, float)) and km(here, (p["lat"], p["lng"])) < 60]
+        pin = next((p for p in close if p["city"] in names), None)
+        if pin is None and close:
+            nearest = min(close, key=lambda p: km(here, (p["lat"], p["lng"])))
+            pin = nearest if km(here, (nearest["lat"], nearest["lng"])) < 15 else None
+        place["Map Pin"] = pin["city"] if pin else ""
+        place["Map Notable"] = bool(pin and pin.get("notable"))
+        place["Map Notability"] = (pin or {}).get("notability", 0)
+        place["Map Photo"] = bool(pin and pin.get("photourl"))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("locations", type=Path, nargs="?", default=Path.home() / "Desktop/takeout_locations.json")
@@ -290,6 +326,7 @@ def main():
     args = parser.parse_args()
 
     App.places = json.loads(args.locations.read_text())
+    attach_map(App.places)
     App.photos = {path for place in App.places for path in place["Candidate Photos"]}
     App.decisions_path = args.locations.with_name("takeout_decisions.json")
     if App.decisions_path.exists():
