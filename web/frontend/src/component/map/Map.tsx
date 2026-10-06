@@ -273,7 +273,8 @@ const [viewState, setViewState] = useState<ViewState>({
 			let markerClassName = `map-custom-marker ${location.notable ? "notable" : "minor"}`;
 			let markerIcon = null;
 			const hasPhoto = !!location.photourl && !location.layover;
-			const badge = hasPhoto ? location.badgeurl : undefined;
+			// The current location keeps its red pulse; a badge would cover it
+			const badge = hasPhoto && !location.current ? location.badgeurl : undefined;
 
 			if (location.current) {
 				markerClassName += " current-location";
