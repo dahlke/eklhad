@@ -26,9 +26,9 @@ import json
 from pathlib import Path
 
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageFilter
 
-from stamp_local import crop_to_ink, lift_to_white
+from stamp_local import PAPER, crop_to_ink, lift_to_white
 
 BUCKET = "eklhad-web-public"
 PUBLIC = f"https://storage.googleapis.com/{BUCKET}/"
@@ -47,6 +47,21 @@ def pin_image(stamp, size=120):
     square = Image.new("RGBA", (size, size), (0, 0, 0, 0))
     square.paste(cutout, ((size - cutout.width) // 2, (size - cutout.height) // 2))
     return square
+
+
+def badge_image(stamp, size=128):
+    """The stamp's subject (its darkest ink, not pale sky washes) centred in a square on paper, for a round badge."""
+    ink = lift_to_white(stamp)
+    mask = Image.fromarray(((np.asarray(ink).min(axis=2) < 170) * 255).astype(np.uint8)).filter(ImageFilter.MedianFilter(5))
+    left, top, right, bottom = mask.getbbox() or (0, 0, ink.width, ink.height)
+    # Slightly tighter than the subject, so the circle crops a little rather than floating a small drawing in paper
+    side = round(max(right - left, bottom - top) * 0.9)
+    cx, cy = (left + right) // 2, (top + bottom) // 2
+    canvas = Image.new("RGB", (ink.width + side, ink.height + side), "white")
+    canvas.paste(ink, (side // 2, side // 2))
+    square = canvas.crop((cx, cy, cx + side, cy + side)).resize((size, size), Image.LANCZOS)
+    paper = Image.new("RGB", (size, size), PAPER)
+    return Image.fromarray((np.asarray(paper, float) * np.asarray(square, float) / 255).astype(np.uint8))
 
 
 def encode(img, fmt, **kw):
@@ -87,6 +102,7 @@ def main():
         poster = Image.open(poster_path).convert("RGB")
         files = {
             "pins": encode(pin_image(Image.open(stamp_path)), "PNG", optimize=True),
+            "badges": encode(badge_image(Image.open(stamp_path)), "JPEG", quality=88, optimize=True),
             "posters": encode(poster, "JPEG", quality=85, optimize=True),
             "posters/thumbs": encode(poster.resize((480, 360), Image.LANCZOS), "JPEG", quality=82, optimize=True),
         }
@@ -107,11 +123,12 @@ def main():
                     blob.upload_from_filename(str(path))
 
         entry = photos[by_slug[slug]]
-        version = {"stamp": PUBLIC + names["pins"], "poster": PUBLIC + names["posters"], "run": poster_path.parent.name}
-        entry["stamps"] = [v for v in entry.get("stamps", []) if v["stamp"] != version["stamp"]] + [version]
+        version = {"stamp": PUBLIC + names["pins"], "badge": PUBLIC + names["badges"], "poster": PUBLIC + names["posters"],
+                   "run": poster_path.parent.name}
+        entry["stamps"] = [v for v in entry.get("stamps", []) if v["poster"] != version["poster"]] + [version]
         wanted = picks.get(slug)
         if (wanted and wanted == version["run"]) or (not wanted and slug not in shown):
-            entry["stamp"], entry["poster"] = version["stamp"], version["poster"]
+            entry["stamp"], entry["badge"], entry["poster"] = version["stamp"], version["badge"], version["poster"]
             shown.add(slug)
         print(f"[{i}/{len(versions)}] {by_slug[slug]}  {version['run']}", flush=True)
 

@@ -127,7 +127,6 @@ function addTravelArcs(map: any, locations: Location[]) {
 	}
 }
 
-const STAMP_ZOOM = 6.5;
 const MAPBOX_ACCESS_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN as string;
 const MAPBOX_STYLE_SATELLITE = "mapbox://styles/mapbox/satellite-v9";
 
@@ -266,9 +265,6 @@ const [viewState, setViewState] = useState<ViewState>({
 		addTravelArcs(map, allLocations);
 	}, [mapLoaded, allLocations]);
 
-	// Overview first, details on demand: plain dots at globe and continent zoom, stamps once zoomed into a region
-	const showStamps = viewState.zoom >= STAMP_ZOOM;
-
 	const locationMarkers = useMemo(() => {
 		if (!locations || locations.length === 0) return null;
 
@@ -277,9 +273,7 @@ const [viewState, setViewState] = useState<ViewState>({
 			let markerClassName = `map-custom-marker ${location.notable ? "notable" : "minor"}`;
 			let markerIcon = null;
 			const hasPhoto = !!location.photourl && !location.layover;
-			const hasStamp = hasPhoto && !!location.stampurl;
-			const showStamp = hasStamp && showStamps;
-			const showEmoji = hasPhoto && !hasStamp;
+			const badge = hasPhoto ? location.badgeurl : undefined;
 
 			if (location.current) {
 				markerClassName += " current-location";
@@ -287,8 +281,8 @@ const [viewState, setViewState] = useState<ViewState>({
 				markerClassName += " static-location";
 			}
 
-			if (showStamp) markerClassName += " has-stamp";
-			else if (showEmoji) markerClassName += " has-photo";
+			if (hasPhoto) markerClassName += " has-photo";
+			if (badge) markerClassName += " has-badge";
 
 			if (location.layover) {
 				markerClassName += " layover";
@@ -323,9 +317,9 @@ const [viewState, setViewState] = useState<ViewState>({
 						}}
 					>
 						<div className={markerClassName}>
-							{showStamp
-								? <img className="stamp-pin" src={location.stampurl} alt="" loading="lazy" />
-								: showEmoji
+							{badge
+								? <img className="stamp-badge" src={badge} alt="" loading="lazy" />
+								: hasPhoto
 								? <span className="photo-emoji-label">{location.photoemoji || "📷"}</span>
 								: markerIcon
 							}
@@ -348,7 +342,7 @@ const [viewState, setViewState] = useState<ViewState>({
 				</Marker>
 			);
 		});
-	}, [locations, showStamps]);
+	}, [locations]);
 
 	return (
 		<div id="map">
