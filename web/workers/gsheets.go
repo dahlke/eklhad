@@ -80,15 +80,15 @@ func writeLocationsToGCS(locations []structs.EklhadLocation) {
 // locationColumns holds where each field lives in the locations tab, found by header name
 // so the sheet's columns can be reordered freely. -1 means the column is absent.
 type locationColumns struct {
-	City, State, Country, Current, Layover, Home, Lat, Lng, Confirmed, Notable int
+	City, State, Country, Current, Layover, Home, Lat, Lng, Confirmed, Notable, Notability int
 }
 
 func locationColumnsFromHeader(header []interface{}) (locationColumns, error) {
-	cols := locationColumns{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1}
+	cols := locationColumns{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}
 	fields := map[string]*int{
 		"city": &cols.City, "state / province / region / district": &cols.State, "country": &cols.Country,
 		"current": &cols.Current, "layover": &cols.Layover, "home": &cols.Home, "lat": &cols.Lat,
-		"lng": &cols.Lng, "confirmed": &cols.Confirmed, "notable": &cols.Notable,
+		"lng": &cols.Lng, "confirmed": &cols.Confirmed, "notable": &cols.Notable, "notability": &cols.Notability,
 	}
 	for i, cell := range header {
 		if field, ok := fields[strings.ToLower(strings.TrimSpace(fmt.Sprint(cell)))]; ok && *field == -1 {
@@ -339,6 +339,8 @@ func GetDataFromGSheets(spreadSheetID string) {
 			hasLng := lng != 0
 			isConfirmed := cellValue(row, cols.Confirmed) == "TRUE"
 			isNotable := cellValue(row, cols.Notable) == "TRUE"
+			var notability int
+			fmt.Sscanf(cellValue(row, cols.Notability), "%d", &notability)
 
 			// If we don't have coordinates yet, geocode the location
 			if !hasLat || !hasLng {
@@ -398,6 +400,7 @@ func GetDataFromGSheets(spreadSheetID string) {
 				Layover:             layover,
 				Home:                home,
 				Notable:             isNotable,
+				Notability:          notability,
 				Lat:                 lat,
 				Lng:                 lng,
 			}
