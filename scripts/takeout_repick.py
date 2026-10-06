@@ -120,6 +120,7 @@ def main():
     parser.add_argument("--index", type=Path, help="defaults to <takeout_dir>/../takeout_locations/index.json")
     parser.add_argument("--more", type=int, metavar="N",
                         help="instead of re-picking, add N more photos to notable places with no approved photo")
+    parser.add_argument("--only", nargs="*", help="with --more, limit to these city names (Takeout name or the map pin it sits on)")
     parser.add_argument("--data-dir", type=Path, default=DESKTOP, help="holds takeout_locations.json and takeout_decisions.json")
     args = parser.parse_args()
 
@@ -152,7 +153,8 @@ def main():
         # candidate files are named "<slug>_<YYYY_MM_DD>_<original name>"
         if args.more:
             shown = place["Candidate Photos"]
-            if (not place["Notable"] or decisions["locations"].get(key) == "rejected"
+            in_scope = place["City"] in args.only or place.get("On Map As") in args.only if args.only else place["Notable"]
+            if (not in_scope or decisions["locations"].get(key) == "rejected"
                     or any(decisions["photos"].get(p) == "approved" for p in shown)):
                 continue
             extra = more(by_place.get(key, []), args.exclude_person, {Path(p).name[len(prefix) + 12:] for p in shown}, args.more)
