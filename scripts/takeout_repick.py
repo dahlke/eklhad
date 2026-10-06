@@ -13,8 +13,8 @@ Nothing is unzipped. The metadata is read straight out of each zip into an
 index (saved, so reruns are quick), and only the picked photos are extracted.
 
 Usage:
-    uv run scripts/takeout_repick.py /Volumes/neilo/2026_09_29_takeout_dahlkeio --exclude-person Roxanna
-    uv run scripts/takeout_repick.py /Volumes/neilo/2026_09_29_takeout_dahlkeio --exclude-person Roxanna --more 10
+    uv run scripts/takeout_repick.py /Volumes/neilo/2026_09_29_takeout_dahlkeio --exclude-person "Full Name"
+    uv run scripts/takeout_repick.py /Volumes/neilo/2026_09_29_takeout_dahlkeio --exclude-person "Full Name" --more 10
 """
 
 import argparse
