@@ -51,3 +51,6 @@ NEIL.md
 .claude/settings.local.json
 photos/
 .venv/
+
+# Agent skills live in eklhad-config, not here
+.agents/
