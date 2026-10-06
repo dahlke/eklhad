@@ -23,9 +23,12 @@ type locationPhotoEntry struct {
 	Date  string `json:"date"`
 	Emoji string `json:"emoji"`
 	// Stamp is the place's rubber-stamp pin icon and Poster the stamp-and-photo card; both optional.
-	Stamp  string `json:"stamp,omitempty"`
-	Badge  string `json:"badge,omitempty"`
-	Poster string `json:"poster,omitempty"`
+	Stamp string `json:"stamp,omitempty"`
+	Badge string `json:"badge,omitempty"`
+	// Country and State pin a photo to one place when several rows share a city name
+	Country string `json:"country,omitempty"`
+	State   string `json:"state,omitempty"`
+	Poster  string `json:"poster,omitempty"`
 }
 
 func loadLocationPhotos() map[string]locationPhotoEntry {
@@ -410,12 +413,16 @@ func GetDataFromGSheets(spreadSheetID string) {
 
 		// Overlay photo data from locationPhotos.json (source of truth for photos,
 		// independent of sheet column ordering which has historically been unreliable).
-		// Photos are keyed by city name only, so when two rows share a name the
-		// first row (the original, hand-entered one) keeps the photo.
+		// Photos are keyed by city name. An entry with a country (and state) only
+		// matches that place; otherwise the first row with the name keeps the photo.
 		locationPhotos := loadLocationPhotos()
 		photoUsed := map[string]bool{}
 		for i := range eklhadLocations {
-			if photo, ok := locationPhotos[eklhadLocations[i].City]; ok && !photoUsed[eklhadLocations[i].City] {
+			photo, ok := locationPhotos[eklhadLocations[i].City]
+			if ok && photo.Country != "" && (photo.Country != eklhadLocations[i].Country || (photo.State != "" && photo.State != eklhadLocations[i].StateProvinceRegion)) {
+				continue
+			}
+			if ok && !photoUsed[eklhadLocations[i].City] {
 				photoUsed[eklhadLocations[i].City] = true
 				eklhadLocations[i].PhotoURL = photo.URL
 				eklhadLocations[i].PhotoEmoji = photo.Emoji
