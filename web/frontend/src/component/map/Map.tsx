@@ -270,7 +270,9 @@ const [viewState, setViewState] = useState<ViewState>({
 
 		return locations.map((loc) => {
 			const location = loc;
-			let markerClassName = `map-custom-marker ${location.notable ? "notable" : "minor"}`;
+			// Notable places scale with their 1-3 notability level from the sheet
+			const level = location.notable ? Math.min(Math.max(location.notability || 1, 1), 3) : 0;
+			let markerClassName = `map-custom-marker ${location.notable ? `notable level-${level}` : "minor"}`;
 			let markerIcon = null;
 			const hasPhoto = !!location.photourl && !location.layover;
 			// The current location keeps its red pulse; a badge would cover it

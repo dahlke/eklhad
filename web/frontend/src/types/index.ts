@@ -45,6 +45,7 @@ export interface Location {
 	layover?: boolean;
 	home?: boolean;
 	notable?: boolean;
+	notability?: number;
 	lat: number;
 	lng: number;
 	photourl?: string;
