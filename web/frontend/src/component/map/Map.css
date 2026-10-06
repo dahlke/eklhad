@@ -70,8 +70,18 @@ get auto-generated. */
 				0 2px 6px rgba(0, 0, 0, 0.6);
 
 			&.notable {
-				width: 14px;
-				height: 14px;
+				width: 13px;
+				height: 13px;
+			}
+
+			&.level-3 {
+				width: 17px;
+				height: 17px;
+			}
+
+			&.level-1 {
+				width: 11px;
+				height: 11px;
 			}
 
 			/* Lighter and greyer, not transparent: stays legible over satellite imagery */
@@ -123,9 +133,19 @@ get auto-generated. */
 
 		/* Stamp badge: the place's stamp filling the photo pin's circle, same size and ring for every place */
 		&.has-badge:not(.current-location) {
-			width: 34px;
-			height: 34px;
+			width: 32px;
+			height: 32px;
 			overflow: hidden;
+
+			&.level-3 {
+				width: 42px;
+				height: 42px;
+			}
+
+			&.level-1 {
+				width: 26px;
+				height: 26px;
+			}
 
 			.stamp-badge {
 				width: 100%;

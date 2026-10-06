@@ -129,7 +129,7 @@ func TestLocationColumnsFromHeader(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if cols.Country != 0 || cols.City != 1 || cols.State != 2 || cols.Lat != 6 || cols.Notable != 13 {
+	if cols.Country != 0 || cols.City != 1 || cols.State != 2 || cols.Lat != 6 || cols.Notable != 13 || cols.Notability != -1 {
 		t.Errorf("unexpected columns: %+v", cols)
 	}
 	if _, err := locationColumnsFromHeader([]interface{}{"City", "Lat", "Lng"}); err == nil {
