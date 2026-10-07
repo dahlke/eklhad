@@ -160,6 +160,22 @@ get auto-generated. */
 			}
 		}
 
+		/* Current location with a stamp: the badge sits inside the red pulsing ring */
+		&.current-location.has-badge {
+			width: 44px;
+			height: 44px;
+			padding: 3px;
+
+			.stamp-badge {
+				position: relative;
+				z-index: 1;
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+				object-fit: cover;
+			}
+		}
+
 		/* Current location: large red pulse with emoji inside */
 		&.current-location {
 			width: 28px;
