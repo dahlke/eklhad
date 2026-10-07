@@ -49,6 +49,24 @@
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/agra_2019_10_13_a856caf6.jpg"
   },
+  "Aguas Calientes": {
+    "slug": "aguas_calientes",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/aguas_calientes_2018_09_20.png",
+    "date": "September 20, 2018",
+    "emoji": "♨️",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/aguas_calientes_2018_09_20_c32c7e12.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/aguas_calientes_2018_09_20_db58b5ad.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/aguas_calientes_2018_09_20_7a1de8df.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/aguas_calientes_2018_09_20_c32c7e12.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/aguas_calientes_2018_09_20_db58b5ad.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/aguas_calientes_2018_09_20_7a1de8df.jpg"
+  },
   "Ahwahnee": {
     "slug": "ahwahnee",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/ahwahnee_2014_04_18.png",
@@ -473,6 +491,24 @@
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/avon_2025_08_30_93cfc8f2.jpg"
   },
+  "Baldvinsskáli": {
+    "slug": "baldvinssk_li",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/baldvinssk_li_2022_01_06.png",
+    "date": "January 6, 2022",
+    "emoji": "🥾",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/baldvinssk_li_2022_01_06_85d64a46.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/baldvinssk_li_2022_01_06_26934962.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/baldvinssk_li_2022_01_06_1e0544ce.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/baldvinssk_li_2022_01_06_85d64a46.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/baldvinssk_li_2022_01_06_26934962.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/baldvinssk_li_2022_01_06_1e0544ce.jpg"
+  },
   "Ballinrobe": {
     "slug": "ballinrobe",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/ballinrobe_2026_04_19.png",
@@ -581,7 +617,13 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/bay_hill_2018_08_28_97d8ec0f.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/bay_hill_2018_08_28_97d8ec0f.jpg",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/bay_hill_2018_08_29_alt.png",
+        "source": "bay_hill_2018_08_29_IMG_5502.HEIC"
+      }
+    ]
   },
   "Beijing": {
     "slug": "beijing",
@@ -604,6 +646,25 @@
       }
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/beijing_2017_01_30_73e05485.jpg"
+  },
+  "Bellevue": {
+    "slug": "bellevue",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/bellevue_2025_01_14.png",
+    "date": "January 14, 2025",
+    "emoji": "🌲",
+    "country": "United States of America",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/bellevue_2025_01_14_81803b4d.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/bellevue_2025_01_14_3a6d5293.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/bellevue_2025_01_14_de05f425.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/bellevue_2025_01_14_81803b4d.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/bellevue_2025_01_14_3a6d5293.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/bellevue_2025_01_14_de05f425.jpg"
   },
   "Beobwon": {
     "slug": "beobwon",
@@ -803,7 +864,13 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/boulder_creek_2016_03_10_344d1536.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/boulder_creek_2016_03_10_344d1536.jpg",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/boulder_creek_2020_07_19_alt.png",
+        "source": "bonny_doon_2020_07_19_IMG_5826.HEIC"
+      }
+    ]
   },
   "Bridgeport": {
     "slug": "bridgeport",
@@ -881,7 +948,13 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/buenos_aires_2019_09_02_1ae28b1d.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/buenos_aires_2019_09_02_1ae28b1d.jpg",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/buenos_aires_2019_09_04_alt.png",
+        "source": "buenos_aires_2019_09_04_IMG_1139.HEIC"
+      }
+    ]
   },
   "Burke": {
     "slug": "burke",
@@ -909,7 +982,41 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/burke_2019_11_08_7e5dde80.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/burke_2019_11_08_7e5dde80.jpg",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/burke_2019_12_27_alt.png",
+        "source": "burke_2019_12_27_IMG_3197.HEIC"
+      }
+    ]
+  },
+  "Burlingame": {
+    "slug": "burlingame",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/burlingame_2025_04_13.png",
+    "date": "April 13, 2025",
+    "emoji": "🌳",
+    "country": "United States of America",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/burlingame_2025_08_17_alt.png",
+        "source": "san_mateo_2025_08_17_IMG_3104.HEIC"
+      },
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/burlingame_2019_07_27_alt.png",
+        "source": "foster_city_2019_07_27_IMG_0234.HEIC"
+      }
+    ],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/burlingame_2025_04_13_58e7d8dc.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/burlingame_2025_04_13_605c7181.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/burlingame_2025_04_13_2157db76.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/burlingame_2025_04_13_58e7d8dc.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/burlingame_2025_04_13_605c7181.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/burlingame_2025_04_13_2157db76.jpg"
   },
   "Burney": {
     "slug": "burney",
@@ -1309,7 +1416,13 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/chantilly_2022_01_09_52d74029.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/chantilly_2022_01_09_52d74029.jpg",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/chantilly_2022_08_16_alt.png",
+        "source": "chantilly_2022_08_16_IMG_1398.heic"
+      }
+    ]
   },
   "Charleston": {
     "slug": "charleston",
@@ -1513,7 +1626,13 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/daly_city_2025_05_18_73ef4fff.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/daly_city_2025_05_18_73ef4fff.jpg",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/daly_city_2022_10_11_alt.png",
+        "source": "colma_2022_10_11_IMG_1598.HEIC"
+      }
+    ]
   },
   "Dania Beach": {
     "slug": "dania_beach",
@@ -1817,6 +1936,24 @@
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/duleek_2026_01_21_05e1dbb6.jpg"
   },
+  "Durusu": {
+    "slug": "durusu",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/durusu_2023_09_16.png",
+    "date": "September 16, 2023",
+    "emoji": "🏖️",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/durusu_2023_09_16_d2d92851.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/durusu_2023_09_16_7800d396.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/durusu_2023_09_16_ae97eee7.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/durusu_2023_09_16_d2d92851.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/durusu_2023_09_16_7800d396.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/durusu_2023_09_16_ae97eee7.jpg"
+  },
   "Dyersville": {
     "slug": "dyersville",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/dyersville_2022_10_01.png",
@@ -1938,6 +2075,25 @@
       }
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/el_segundo_2023_03_22_7e1de7ca.jpg"
+  },
+  "Elburn": {
+    "slug": "elburn",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/elburn_2014_01_01.png",
+    "date": "January 1, 2014",
+    "emoji": "🌽",
+    "country": "United States of America",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/elburn_2014_01_01_66982381.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/elburn_2014_01_01_15491556.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/elburn_2014_01_01_af8d5eb0.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/elburn_2014_01_01_66982381.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/elburn_2014_01_01_15491556.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/elburn_2014_01_01_af8d5eb0.jpg"
   },
   "Elizabeth": {
     "slug": "elizabeth",
@@ -2072,6 +2228,33 @@
       }
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/evergreen_park_2024_07_05_0e36b2b5.jpg"
+  },
+  "Falljökull": {
+    "slug": "fallj_kull",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/fallj_kull_2022_01_07.png",
+    "date": "January 7, 2022",
+    "emoji": "🧊",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/fallj_kull_2022_01_07_alt.png",
+        "source": "fallj_kull_2022_01_07_IMG_3115(1).HEIC"
+      },
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/fallj_kull_2022_01_07_alt_2.png",
+        "source": "fallj_kull_2022_01_07_IMG_5465.HEIC"
+      }
+    ],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/fallj_kull_2022_01_07_c437cbd6.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/fallj_kull_2022_01_07_b3032037.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/fallj_kull_2022_01_07_10381a55.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/fallj_kull_2022_01_07_c437cbd6.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/fallj_kull_2022_01_07_b3032037.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/fallj_kull_2022_01_07_10381a55.jpg"
   },
   "Fatehpur Sikri": {
     "slug": "fatehpur_sikri",
@@ -2323,6 +2506,24 @@
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/galway_unknown_c96f3e81.jpg"
   },
+  "Garnet Lake": {
+    "slug": "garnet_lake",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/garnet_lake_2022_06_16.png",
+    "date": "June 16, 2022",
+    "emoji": "🏔️",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/garnet_lake_2022_06_16_f3a4d247.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/garnet_lake_2022_06_16_4d5025b3.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/garnet_lake_2022_06_16_2b152da7.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/garnet_lake_2022_06_16_f3a4d247.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/garnet_lake_2022_06_16_4d5025b3.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/garnet_lake_2022_06_16_2b152da7.jpg"
+  },
   "Geneva": {
     "slug": "geneva",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/geneva_2022_01_10.png",
@@ -2367,6 +2568,52 @@
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/george_town_2018_06_24_90af3934.jpg"
   },
+  "Glen Aulin": {
+    "slug": "glen_aulin",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/glen_aulin_2024_06_20.png",
+    "date": "June 20, 2024",
+    "emoji": "💦",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/glen_aulin_2024_06_21_alt.png",
+        "source": "glen_aulin_2024_06_21_IMG_5278.HEIC"
+      }
+    ],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/glen_aulin_2024_06_20_2412a8f9.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/glen_aulin_2024_06_20_a5967eaa.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/glen_aulin_2024_06_20_1ae1e5fd.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/glen_aulin_2024_06_20_2412a8f9.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/glen_aulin_2024_06_20_a5967eaa.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/glen_aulin_2024_06_20_1ae1e5fd.jpg"
+  },
+  "Gold Bluffs Beach": {
+    "slug": "gold_bluffs_beach",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/gold_bluffs_beach_2025_06_19.png",
+    "date": "June 19, 2025",
+    "emoji": "🦌",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/gold_bluffs_beach_2025_06_19_alt.png",
+        "source": "gold_bluffs_beach_2025_06_19_IMG_1947.HEIC"
+      }
+    ],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/gold_bluffs_beach_2025_06_19_790495c9.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/gold_bluffs_beach_2025_06_19_70194fef.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/gold_bluffs_beach_2025_06_19_25f4624d.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/gold_bluffs_beach_2025_06_19_790495c9.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/gold_bluffs_beach_2025_06_19_70194fef.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/gold_bluffs_beach_2025_06_19_25f4624d.jpg"
+  },
   "Grand Canyon": {
     "slug": "grand_canyon",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/grand_canyon_2020_07_30.png",
@@ -2410,6 +2657,25 @@
       }
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/grand_canyon_national_park_2020_07_30_f0a1a30c.jpg"
+  },
+  "Grand Canyon Village": {
+    "slug": "grand_canyon_village",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/grand_canyon_village_2020_07_30.png",
+    "date": "July 30, 2020",
+    "emoji": "🏜️",
+    "country": "United States of America",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/grand_canyon_village_2020_07_30_0a432256.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/grand_canyon_village_2020_07_30_42870c42.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/grand_canyon_village_2020_07_30_8bf57450.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/grand_canyon_village_2020_07_30_0a432256.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/grand_canyon_village_2020_07_30_42870c42.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/grand_canyon_village_2020_07_30_8bf57450.jpg"
   },
   "Granite": {
     "slug": "granite",
@@ -2677,6 +2943,25 @@
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/hillsborough_2025_04_13_002f1344.jpg"
   },
+  "Hollywood": {
+    "slug": "hollywood",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/hollywood_2021_05_29.png",
+    "date": "May 29, 2021",
+    "emoji": "🎬",
+    "country": "United States of America",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/hollywood_2021_05_29_bab0a697.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/hollywood_2021_05_29_c95e492a.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/hollywood_2021_05_29_31e1d705.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/hollywood_2021_05_29_bab0a697.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/hollywood_2021_05_29_c95e492a.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/hollywood_2021_05_29_31e1d705.jpg"
+  },
   "Homewood": {
     "slug": "homewood",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/homewood_2019_12_30.png",
@@ -2732,6 +3017,25 @@
       }
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/howth_2025_03_08_bdb14e44.jpg"
+  },
+  "Huntsville": {
+    "slug": "huntsville",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/huntsville_2015_11_27.png",
+    "date": "November 27, 2015",
+    "emoji": "🚀",
+    "country": "United States of America",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/huntsville_2015_11_27_1dc47bd8.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/huntsville_2015_11_27_c02a8554.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/huntsville_2015_11_27_9f16e814.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/huntsville_2015_11_27_1dc47bd8.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/huntsville_2015_11_27_c02a8554.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/huntsville_2015_11_27_9f16e814.jpg"
   },
   "Hveragerði": {
     "slug": "hverageri",
@@ -3029,7 +3333,13 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/jersey_city_2016_06_06_0909e01a.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/jersey_city_2016_06_06_0909e01a.jpg",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/jersey_city_2015_10_06_alt.png",
+        "source": "weehawken_2015_10_06_IMG_8735.JPG"
+      }
+    ]
   },
   "Joshua Tree": {
     "slug": "joshua_tree",
@@ -3147,6 +3457,30 @@
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/kenwood_2022_10_09_4ee966b7.jpg"
   },
+  "Kihei": {
+    "slug": "kihei",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/kihei_2025_07_08.png",
+    "date": "July 8, 2025",
+    "emoji": "🐢",
+    "country": "United States of America",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/kihei_2015_03_02_alt.png",
+        "source": "waikapu_2015_03_02_IMG_5785.JPG"
+      }
+    ],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/kihei_2025_07_08_6aff4e32.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/kihei_2025_07_08_67650473.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/kihei_2025_07_08_4dbef029.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/kihei_2025_07_08_6aff4e32.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/kihei_2025_07_08_67650473.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/kihei_2025_07_08_4dbef029.jpg"
+  },
   "Kilkenny": {
     "slug": "kilkenny",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/kilkenny_2013_12_18.png",
@@ -3195,7 +3529,13 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/kings_beach_2020_03_08_b5d6329d.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/kings_beach_2020_03_08_b5d6329d.jpg",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/kings_beach_2021_02_20_alt.png",
+        "source": "tahoe_vista_2021_02_20_IMG_8928.HEIC"
+      }
+    ]
   },
   "Krabi": {
     "slug": "krabi",
@@ -3324,6 +3664,24 @@
       }
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/lahaina_2015_02_27_7cb308c4.jpg"
+  },
+  "Lake Aloha": {
+    "slug": "lake_aloha",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/lake_aloha_2021_06_17.png",
+    "date": "June 17, 2021",
+    "emoji": "🏞️",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/lake_aloha_2021_06_17_42706171.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/lake_aloha_2021_06_17_76f1fdc9.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/lake_aloha_2021_06_17_610c7930.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/lake_aloha_2021_06_17_42706171.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/lake_aloha_2021_06_17_76f1fdc9.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/lake_aloha_2021_06_17_610c7930.jpg"
   },
   "Lake Geneva": {
     "slug": "lake_geneva",
@@ -3653,6 +4011,24 @@
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/los_angeles_2024_09_28_ce6b1ff7.jpg"
   },
+  "Lost Coast": {
+    "slug": "lost_coast",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/lost_coast_2023_06_15.png",
+    "date": "June 15, 2023",
+    "emoji": "🌊",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/lost_coast_2023_06_15_202009ef.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/lost_coast_2023_06_15_c49823cc.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/lost_coast_2023_06_15_4230cf27.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/lost_coast_2023_06_15_202009ef.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/lost_coast_2023_06_15_c49823cc.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/lost_coast_2023_06_15_4230cf27.jpg"
+  },
   "Lovelock": {
     "slug": "lovelock",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/lovelock_2020_07_26.png",
@@ -3814,6 +4190,24 @@
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/marrakech_2022_12_13_4f818b39.jpg"
   },
+  "Maslinica": {
+    "slug": "maslinica",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/maslinica_2023_09_14.png",
+    "date": "September 14, 2023",
+    "emoji": "⛵",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/maslinica_2023_09_14_e3b4a43d.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/maslinica_2023_09_14_9a8bff31.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/maslinica_2023_09_14_43e3ca0b.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/maslinica_2023_09_14_e3b4a43d.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/maslinica_2023_09_14_9a8bff31.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/maslinica_2023_09_14_43e3ca0b.jpg"
+  },
   "Mdina": {
     "slug": "mdina",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/mdina_2006_11_24.png",
@@ -3835,6 +4229,24 @@
       }
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/mdina_2006_11_24_4b8b8d65.jpg"
+  },
+  "Meath": {
+    "slug": "meath",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/meath_2026_01_21.png",
+    "date": "January 21, 2026",
+    "emoji": "🏰",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/meath_2026_01_21_3e687e86.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/meath_2026_01_21_acdcb40e.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/meath_2026_01_21_9c2dbfda.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/meath_2026_01_21_3e687e86.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/meath_2026_01_21_acdcb40e.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/meath_2026_01_21_9c2dbfda.jpg"
   },
   "Miami": {
     "slug": "miami",
@@ -3926,6 +4338,25 @@
     "country": "Italy",
     "state": "Lombardy"
   },
+  "Milipitas": {
+    "slug": "milipitas",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/milipitas_2021_03_21.png",
+    "date": "March 21, 2021",
+    "emoji": "🛍️",
+    "country": "United States of America",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/milipitas_2021_03_21_5564cbb9.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/milipitas_2021_03_21_34fefb02.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/milipitas_2021_03_21_e025531b.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/milipitas_2021_03_21_5564cbb9.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/milipitas_2021_03_21_34fefb02.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/milipitas_2021_03_21_e025531b.jpg"
+  },
   "Mill Valley": {
     "slug": "mill_valley",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/mill_valley_2018_04_08.png",
@@ -3952,7 +4383,21 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/mill_valley_2018_04_08_1df8d1f6.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/mill_valley_2018_04_08_1df8d1f6.jpg",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/mill_valley_2018_01_20_alt.png",
+        "source": "bolinas_2018_01_20_IMG_2264.HEIC"
+      },
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/mill_valley_2018_02_03_alt.png",
+        "source": "tamalpais_valley_2018_02_03_IMG_2525.JPG"
+      },
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/mill_valley_2022_08_08_alt.png",
+        "source": "tamalpais_homestead_valley_2022_08_08_IMG_0343.HEIC"
+      }
+    ]
   },
   "Millbrae": {
     "slug": "millbrae",
@@ -4410,6 +4855,42 @@
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/north_shore_2017_12_24_f45719e6.jpg"
   },
+  "Northstar": {
+    "slug": "northstar",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/northstar_2020_07_24.png",
+    "date": "July 24, 2020",
+    "emoji": "⛷️",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/northstar_2020_07_24_b567cb77.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/northstar_2020_07_24_64dca0b1.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/northstar_2020_07_24_b2298acb.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/northstar_2020_07_24_b567cb77.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/northstar_2020_07_24_64dca0b1.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/northstar_2020_07_24_b2298acb.jpg"
+  },
+  "Norðurljósavegur": {
+    "slug": "nor_urlj_savegur",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/nor_urlj_savegur_2022_01_05.png",
+    "date": "January 5, 2022",
+    "emoji": "🌌",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/nor_urlj_savegur_2022_01_05_c1533e7c.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/nor_urlj_savegur_2022_01_05_2dddb28d.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/nor_urlj_savegur_2022_01_05_ffec2849.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/nor_urlj_savegur_2022_01_05_c1533e7c.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/nor_urlj_savegur_2022_01_05_2dddb28d.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/nor_urlj_savegur_2022_01_05_ffec2849.jpg"
+  },
   "Oakhurst": {
     "slug": "oakhurst",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/oakhurst_2014_04_18.png",
@@ -4604,6 +5085,30 @@
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/pacifica_2023_08_20_593765ba.jpg"
   },
+  "Paju": {
+    "slug": "paju",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/paju_2025_10_29.png",
+    "date": "October 29, 2025",
+    "emoji": "🕊️",
+    "country": "South Korea",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/paju_2025_10_28_alt.png",
+        "source": "beobwon_2025_10_28_IMG_5269.HEIC"
+      }
+    ],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/paju_2025_10_29_317dbe0d.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/paju_2025_10_29_53afc119.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/paju_2025_10_29_f30fc2ba.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/paju_2025_10_29_317dbe0d.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/paju_2025_10_29_53afc119.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/paju_2025_10_29_f30fc2ba.jpg"
+  },
   "Palaia": {
     "slug": "palaia",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/palaia_2024_05_11.png",
@@ -4648,6 +5153,30 @@
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/palisades_tahoe_2019_02_06_b315ec58.jpg"
   },
+  "Palm Desert": {
+    "slug": "palm_desert",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/palm_desert_2022_06_10.png",
+    "date": "June 10, 2022",
+    "emoji": "🌴",
+    "country": "United States of America",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/palm_desert_2021_04_09_alt.png",
+        "source": "indian_wells_2021_04_09_IMG_9726.HEIC"
+      }
+    ],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/palm_desert_2022_06_10_1d413281.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/palm_desert_2022_06_10_95d6c259.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/palm_desert_2022_06_10_f54dad20.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/palm_desert_2022_06_10_1d413281.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/palm_desert_2022_06_10_95d6c259.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/palm_desert_2022_06_10_f54dad20.jpg"
+  },
   "Palm Springs": {
     "slug": "palm_springs",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/palm_springs_2021_04_09.png",
@@ -4669,6 +5198,25 @@
       }
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/palm_springs_2021_04_09_7ef5bf99.jpg"
+  },
+  "Palo Alto": {
+    "slug": "palo_alto",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/palo_alto_2026_08_16.png",
+    "date": "August 16, 2026",
+    "emoji": "🌳",
+    "country": "United States of America",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/palo_alto_2026_08_16_8a3d5bbf.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/palo_alto_2026_08_16_e9aebc3b.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/palo_alto_2026_08_16_37883e9b.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/palo_alto_2026_08_16_8a3d5bbf.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/palo_alto_2026_08_16_e9aebc3b.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/palo_alto_2026_08_16_37883e9b.jpg"
   },
   "Paradise Valley": {
     "slug": "paradise_valley",
@@ -4826,6 +5374,25 @@
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/pearlington_2018_07_29_cebd3064.jpg"
   },
+  "Petaluma": {
+    "slug": "petaluma",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/petaluma_2014_01_18.png",
+    "date": "January 18, 2014",
+    "emoji": "🐄",
+    "country": "United States of America",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/petaluma_2014_01_18_7a7eadb7.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/petaluma_2014_01_18_6e0fb11c.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/petaluma_2014_01_18_2078044f.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/petaluma_2014_01_18_7a7eadb7.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/petaluma_2014_01_18_6e0fb11c.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/petaluma_2014_01_18_2078044f.jpg"
+  },
   "Philadelphia": {
     "slug": "philadelphia",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/philadelphia_2025_05_09.png",
@@ -4853,6 +5420,25 @@
       }
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/philadelphia_2025_05_09_35e9ce19.jpg"
+  },
+  "Phoenix": {
+    "slug": "phoenix",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/phoenix_2023_04_01.png",
+    "date": "April 1, 2023",
+    "emoji": "🌵",
+    "country": "United States of America",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/phoenix_2023_04_01_7526e78d.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/phoenix_2023_04_01_90928316.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/phoenix_2023_04_01_26e025b0.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/phoenix_2023_04_01_7526e78d.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/phoenix_2023_04_01_90928316.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/phoenix_2023_04_01_26e025b0.jpg"
   },
   "Pigeon Forge": {
     "slug": "pigeon_forge",
@@ -5150,6 +5736,25 @@
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/ridgemark_2020_12_27_737d5242.jpg"
   },
+  "Ridgewood": {
+    "slug": "ridgewood",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/ridgewood_2014_08_16.png",
+    "date": "August 16, 2014",
+    "emoji": "🌲",
+    "country": "United States of America",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/ridgewood_2014_08_16_6d2ff170.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/ridgewood_2014_08_16_b59c2654.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/ridgewood_2014_08_16_c16a69a3.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/ridgewood_2014_08_16_6d2ff170.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/ridgewood_2014_08_16_b59c2654.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/ridgewood_2014_08_16_c16a69a3.jpg"
+  },
   "Rincon de la Vieja": {
     "slug": "rincon_de_la_vieja",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/rincon_de_la_vieja_2017_07_02.png",
@@ -5388,7 +5993,21 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/saint_helena_2023_07_01_1b58be37.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/saint_helena_2023_07_01_1b58be37.jpg",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/saint_helena_2021_03_31_alt.png",
+        "source": "calistoga_2021_03_31_IMG_9542.HEIC"
+      },
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/saint_helena_2022_10_09_alt.png",
+        "source": "kenwood_2022_10_09_IMG_1475.HEIC"
+      },
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/saint_helena_2022_05_01_alt.png",
+        "source": "deer_park_2022_05_01_IMG_0478.jpeg"
+      }
+    ]
   },
   "Saint Louis": {
     "slug": "st_louis",
@@ -5428,6 +6047,30 @@
       }
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/saint_petersburg_2003_03_16_bc05f901.jpg"
+  },
+  "Salt Lake City": {
+    "slug": "salt_lake_city",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/salt_lake_city_2020_03_14.png",
+    "date": "March 14, 2020",
+    "emoji": "⛪",
+    "country": "United States of America",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/salt_lake_city_2014_01_03_alt.png",
+        "source": "mount_olympus_2014_01_03_IMG_1484.JPG"
+      }
+    ],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/salt_lake_city_2020_03_14_865b0ecd.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/salt_lake_city_2020_03_14_206d2fc7.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/salt_lake_city_2020_03_14_1212c999.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/salt_lake_city_2020_03_14_865b0ecd.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/salt_lake_city_2020_03_14_206d2fc7.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/salt_lake_city_2020_03_14_1212c999.jpg"
   },
   "San Bruno": {
     "slug": "san_bruno",
@@ -5518,8 +6161,8 @@
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/san_francisco_2025_08_21.png",
     "date": "August 21, 2025",
     "emoji": "🌉",
-    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/san_francisco_2025_08_21_c4582504.png",
-    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/san_francisco_2025_08_21_42b85cd1.jpg",
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/san_francisco_2025_08_21_2ad085d9.png",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/san_francisco_2025_08_21_70e5bafe.jpg",
     "stamps": [
       {
         "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/san_francisco_2025_08_21_1b8ed813.png",
@@ -5531,9 +6174,15 @@
         "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/san_francisco_2025_08_21_a5f33fac.jpg",
         "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/san_francisco_2025_08_21_42b85cd1.jpg",
         "run": "stamp_posters"
+      },
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/san_francisco_2025_08_21_2ad085d9.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/san_francisco_2025_08_21_ad5af359.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/san_francisco_2025_08_21_70e5bafe.jpg",
+        "run": "stamp_posters_round2"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/san_francisco_2025_08_21_a5f33fac.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/san_francisco_2025_08_21_ad5af359.jpg"
   },
   "San Jose": {
     "slug": "san_jose",
@@ -5561,7 +6210,13 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/san_jose_2025_03_14_bd5d78cd.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/san_jose_2025_03_14_bd5d78cd.jpg",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/san_jose_2022_10_29_alt.png",
+        "source": "seven_trees_2022_10_29_IMG_1861.HEIC"
+      }
+    ]
   },
   "San Leandro": {
     "slug": "san_leandro",
@@ -5645,7 +6300,13 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/san_rafael_2018_04_02_39b87605.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/san_rafael_2018_04_02_39b87605.jpg",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/san_rafael_2021_12_30_alt.png",
+        "source": "santa_venetia_2021_12_30_IMG_4980.HEIC"
+      }
+    ]
   },
   "Santa Clara": {
     "slug": "santa_clara",
@@ -5673,7 +6334,13 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/santa_clara_2026_07_01_5240e5b7.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/santa_clara_2026_07_01_5240e5b7.jpg",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/santa_clara_2025_12_29_alt.png",
+        "source": "santa_clara_2025_12_29_IMG_5792.HEIC"
+      }
+    ]
   },
   "Santa Cruz": {
     "slug": "santa_cruz",
@@ -5697,7 +6364,51 @@
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/santa_cruz_2017_02_18_44455344.jpg",
     "country": "United States of America",
-    "state": "California"
+    "state": "California",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/santa_cruz_2017_02_19_alt.png",
+        "source": "santa_cruz_2017_02_19_IMG_1864.JPG"
+      }
+    ]
+  },
+  "Santa Nella": {
+    "slug": "santa_nella",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/santa_nella_2021_12_11.png",
+    "date": "December 11, 2021",
+    "emoji": "🌾",
+    "country": "United States of America",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/santa_nella_2021_12_11_65ec7a13.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/santa_nella_2021_12_11_fd743c47.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/santa_nella_2021_12_11_86aaa34b.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/santa_nella_2021_12_11_65ec7a13.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/santa_nella_2021_12_11_fd743c47.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/santa_nella_2021_12_11_86aaa34b.jpg"
+  },
+  "Santa Rosa": {
+    "slug": "santa_rosa",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/santa_rosa_2018_04_02.png",
+    "date": "April 2, 2018",
+    "emoji": "🍇",
+    "country": "United States of America",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/santa_rosa_2018_04_02_2d0d7707.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/santa_rosa_2018_04_02_e7ddbf2c.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/santa_rosa_2018_04_02_48c229b4.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/santa_rosa_2018_04_02_2d0d7707.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/santa_rosa_2018_04_02_e7ddbf2c.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/santa_rosa_2018_04_02_48c229b4.jpg"
   },
   "Santa Teresa": {
     "slug": "santa_teresa",
@@ -5764,6 +6475,25 @@
       }
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/santorini_2023_09_08_a06e6a6f.jpg"
+  },
+  "Saratoga": {
+    "slug": "saratoga",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/saratoga_2014_01_02.png",
+    "date": "January 2, 2014",
+    "emoji": "♨️",
+    "country": "United States of America",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/saratoga_2014_01_02_435efab3.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/saratoga_2014_01_02_ef6c1b91.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/saratoga_2014_01_02_c7f6de2a.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/saratoga_2014_01_02_435efab3.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/saratoga_2014_01_02_ef6c1b91.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/saratoga_2014_01_02_c7f6de2a.jpg"
   },
   "Sausalito": {
     "slug": "sausalito",
@@ -5835,7 +6565,13 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/scottsdale_2017_03_10_fc49a3d1.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/scottsdale_2017_03_10_fc49a3d1.jpg",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/scottsdale_2025_05_22_alt.png",
+        "source": "paradise_valley_2025_05_22_IMG_1504.HEIC"
+      }
+    ]
   },
   "Seattle": {
     "slug": "seattle",
@@ -5925,6 +6661,25 @@
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/sevierville_2026_06_05_4d4c6356.jpg"
   },
+  "Shadow Lake": {
+    "slug": "shadow_lake",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/shadow_lake_2022_06_16.png",
+    "date": "June 16, 2022",
+    "emoji": "🏔️",
+    "country": "United States of America",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/shadow_lake_2022_06_16_ee82cd57.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/shadow_lake_2022_06_16_2f6be882.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/shadow_lake_2022_06_16_68591f1e.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/shadow_lake_2022_06_16_ee82cd57.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/shadow_lake_2022_06_16_2f6be882.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/shadow_lake_2022_06_16_68591f1e.jpg"
+  },
   "Shanghai": {
     "slug": "shanghai",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/shanghai_2017_01_14.png",
@@ -5946,6 +6701,24 @@
       }
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/shanghai_2017_01_14_fb24eac7.jpg"
+  },
+  "Shelter Cove": {
+    "slug": "shelter_cove",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/shelter_cove_2023_06_18.png",
+    "date": "June 18, 2023",
+    "emoji": "🌊",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/shelter_cove_2023_06_18_48b2b77a.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/shelter_cove_2023_06_18_b6d6f961.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/shelter_cove_2023_06_18_333d957a.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/shelter_cove_2023_06_18_48b2b77a.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/shelter_cove_2023_06_18_b6d6f961.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/shelter_cove_2023_06_18_333d957a.jpg"
   },
   "Showers Lake": {
     "slug": "showers_lake",
@@ -6126,6 +6899,34 @@
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/south_lake_tahoe_2017_04_01_08c10a61.jpg"
   },
+  "South San Francisco": {
+    "slug": "south_san_francisco",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/south_san_francisco_2023_08_20.png",
+    "date": "August 20, 2023",
+    "emoji": "🌁",
+    "country": "United States of America",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/south_san_francisco_2024_03_16_alt.png",
+        "source": "san_bruno_2024_03_16_IMG_2489.HEIC"
+      },
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/south_san_francisco_2019_07_27_alt.png",
+        "source": "brisbane_2019_07_27_IMG_0226.HEIC"
+      }
+    ],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/south_san_francisco_2023_08_20_3204ef9d.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/south_san_francisco_2023_08_20_ec3a5f0c.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/south_san_francisco_2023_08_20_62744d5a.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/south_san_francisco_2023_08_20_3204ef9d.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/south_san_francisco_2023_08_20_ec3a5f0c.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/south_san_francisco_2023_08_20_62744d5a.jpg"
+  },
   "Split": {
     "slug": "split",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/split_2023_09_14.png",
@@ -6266,6 +7067,24 @@
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/sunnyside_tahoe_city_2026_06_11_ab4f040b.jpg"
   },
+  "Sutton": {
+    "slug": "sutton",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/sutton_2013_12_15.png",
+    "date": "December 15, 2013",
+    "emoji": "⚓",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/sutton_2013_12_15_5803ad94.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/sutton_2013_12_15_711cd826.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/sutton_2013_12_15_0de4cfb3.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/sutton_2013_12_15_5803ad94.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/sutton_2013_12_15_711cd826.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/sutton_2013_12_15_0de4cfb3.jpg"
+  },
   "Swords": {
     "slug": "swords",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/swords_2025_03_06.png",
@@ -6315,6 +7134,25 @@
       }
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/sydney_2017_12_23_4d0f2319.jpg"
+  },
+  "Tahoe City": {
+    "slug": "tahoe_city",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/tahoe_city_2026_06_11.png",
+    "date": "June 11, 2026",
+    "emoji": "🛶",
+    "country": "United States of America",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/tahoe_city_2026_06_11_209e18f8.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/tahoe_city_2026_06_11_b5824399.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/tahoe_city_2026_06_11_5573a030.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/tahoe_city_2026_06_11_209e18f8.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/tahoe_city_2026_06_11_b5824399.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/tahoe_city_2026_06_11_5573a030.jpg"
   },
   "Tahoe Vista": {
     "slug": "tahoe_vista",
@@ -6392,7 +7230,37 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/taipei_2025_10_17_1904beee.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/taipei_2025_10_17_1904beee.jpg",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/taipei_2025_10_19_alt.png",
+        "source": "taipei_2025_10_19_IMG_4350.HEIC"
+      }
+    ]
+  },
+  "Takapuna": {
+    "slug": "takapuna",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/takapuna_2017_12_24.png",
+    "date": "December 24, 2017",
+    "emoji": "🏖️",
+    "country": "New Zealand",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/takapuna_2017_12_29_alt.png",
+        "source": "murrays_bay_2017_12_29_GPTempDownload(6).jpg"
+      }
+    ],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/takapuna_2017_12_24_eda507b7.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/takapuna_2017_12_24_49352193.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/takapuna_2017_12_24_d1deed51.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/takapuna_2017_12_24_eda507b7.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/takapuna_2017_12_24_49352193.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/takapuna_2017_12_24_d1deed51.jpg"
   },
   "Tamalpais Valley": {
     "slug": "tamalpais_valley",
@@ -6478,6 +7346,25 @@
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/temelec_2014_01_18_bb1564c4.jpg"
   },
+  "Tempe": {
+    "slug": "tempe",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/tempe_2016_07_21.png",
+    "date": "July 21, 2016",
+    "emoji": "🌵",
+    "country": "United States of America",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/tempe_2016_07_21_9269db19.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/tempe_2016_07_21_f415b093.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/tempe_2016_07_21_a64cb394.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/tempe_2016_07_21_9269db19.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/tempe_2016_07_21_f415b093.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/tempe_2016_07_21_a64cb394.jpg"
+  },
   "Tempe Junction": {
     "slug": "tempe_junction",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/tempe_junction_2016_07_21.png",
@@ -6527,6 +7414,24 @@
       }
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/templeton_2017_11_11_56b50a85.jpg"
+  },
+  "Thousand Island Lake": {
+    "slug": "thousand_island_lake",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/thousand_island_lake_2022_06_18.png",
+    "date": "June 18, 2022",
+    "emoji": "🏔️",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/thousand_island_lake_2022_06_18_a69e161b.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/thousand_island_lake_2022_06_18_c4df787b.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/thousand_island_lake_2022_06_18_285062cf.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/thousand_island_lake_2022_06_18_a69e161b.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/thousand_island_lake_2022_06_18_c4df787b.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/thousand_island_lake_2022_06_18_285062cf.jpg"
   },
   "Tigre": {
     "slug": "tigre",
@@ -6888,6 +7793,24 @@
     ],
     "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/vik_2022_01_08_083e8abf.jpg"
   },
+  "Villecien": {
+    "slug": "villecien",
+    "url": "https://storage.googleapis.com/eklhad-web-public/photos/villecien_2023_09_02.png",
+    "date": "September 2, 2023",
+    "emoji": "🥖",
+    "alternates": [],
+    "stamps": [
+      {
+        "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/villecien_2023_09_02_68d68c15.png",
+        "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/villecien_2023_09_02_98b9e90f.jpg",
+        "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/villecien_2023_09_02_a9ba8259.jpg",
+        "run": "stamp_posters_round2"
+      }
+    ],
+    "stamp": "https://storage.googleapis.com/eklhad-web-public/stamps/pins/villecien_2023_09_02_68d68c15.png",
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/villecien_2023_09_02_98b9e90f.jpg",
+    "poster": "https://storage.googleapis.com/eklhad-web-public/stamps/posters/villecien_2023_09_02_a9ba8259.jpg"
+  },
   "Washington": {
     "slug": "washington",
     "url": "https://storage.googleapis.com/eklhad-web-public/photos/washington_2019_12_26.png",
@@ -6992,7 +7915,13 @@
         "run": "stamp_posters"
       }
     ],
-    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/westhaven_moonstone_2025_06_20_09c9ec50.jpg"
+    "badge": "https://storage.googleapis.com/eklhad-web-public/stamps/badges/westhaven_moonstone_2025_06_20_09c9ec50.jpg",
+    "alternates": [
+      {
+        "url": "https://storage.googleapis.com/eklhad-web-public/photos/westhaven_moonstone_2025_06_19_alt.png",
+        "source": "westhaven_moonstone_2025_06_19_IMG_2020.HEIC"
+      }
+    ]
   },
   "Wexford": {
     "slug": "wexford",
