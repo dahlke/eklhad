@@ -76,6 +76,7 @@ PAGE = r"""<!doctype html>
   figure img { display:block; width:100%; height:210px; object-fit:cover; cursor:zoom-in; background:#dfe2e8; }
   figcaption { display:flex; gap:6px; align-items:center; padding:8px; font-size:14px; }
   figcaption .state { margin-left:auto; min-width:0; }
+  figcaption .match { font-size:12px; color:var(--muted); font-variant-numeric:tabular-nums; }
   figcaption button { font-size:14px; padding:4px 9px; }
   dialog { border:0; padding:0; background:transparent; max-width:95vw; max-height:95vh; }
   dialog::backdrop { background:rgba(13,17,23,.88); }
@@ -150,11 +151,15 @@ function card(p) {
   art.append(el("div", {className:"head"}, title, el("div", {className:"actions"}, ...verdict("locations", id, art))));
   if (p["Candidate Photos"].length) {
     const grid = el("div", {className:"photos"});
-    for (const path of p["Candidate Photos"]) {
+    // Best match first, from rank_candidates.py; unscored photos keep their order at the end
+    const match = p.Match || {};
+    const ordered = [...p["Candidate Photos"]].sort((a, b) => (match[b] ?? -9) - (match[a] ?? -9));
+    for (const path of ordered) {
       const fig = el("figure"), src = "/photo?path=" + encodeURIComponent(path);
       const img = el("img", {src, loading:"lazy", alt:`Candidate photo for ${p.City}`});
       img.onclick = () => { zoom.firstElementChild.src = src; zoom.showModal(); };
-      fig.append(img, el("figcaption", {}, ...verdict("photos", path, fig)));
+      const score = match[path] === undefined ? [] : [el("span", {className:"match", textContent:`match ${Math.round(match[path] * 100)}`})];
+      fig.append(img, el("figcaption", {}, ...verdict("photos", path, fig), ...score));
       grid.append(fig);
     }
     art.append(grid);
@@ -317,6 +322,8 @@ def attach_map(places):
         place["Map Notable"] = bool(pin and pin.get("notable"))
         place["Map Notability"] = (pin or {}).get("notability", 0)
         place["Map Photo"] = bool(pin and pin.get("photourl"))
+        place["Map Country"] = (pin or {}).get("country", place["Country"])
+        place["Map Photo Date"] = (pin or {}).get("photodate", "")
 
 
 def main():

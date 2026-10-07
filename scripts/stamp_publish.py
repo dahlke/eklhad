@@ -52,10 +52,19 @@ def pin_image(stamp, size=120):
 def badge_image(stamp, size=128):
     """The stamp's subject (its darkest ink, not pale sky washes) centred in a square on paper, for a round badge."""
     ink = lift_to_white(stamp)
-    mask = Image.fromarray(((np.asarray(ink).min(axis=2) < 170) * 255).astype(np.uint8)).filter(ImageFilter.MedianFilter(5))
-    left, top, right, bottom = mask.getbbox() or (0, 0, ink.width, ink.height)
+    dark = np.asarray(ink).min(axis=2) < 170
+    if dark.sum() < 50:
+        left, top, right, bottom = 0, 0, ink.width, ink.height
+    else:
+        # The span holding the middle 90% of the dark ink, so stray specks near the edges can't stretch it
+        def span(counts):
+            cum = np.cumsum(counts) / counts.sum()
+            return int(np.searchsorted(cum, 0.05)), int(np.searchsorted(cum, 0.95)) + 1
+        left, right = span(dark.sum(axis=0))
+        top, bottom = span(dark.sum(axis=1))
     # Slightly tighter than the subject, so the circle crops a little rather than floating a small drawing in paper
-    side = round(max(right - left, bottom - top) * 0.9)
+    # ...but never much wider than the subject is tall, so wide strips fill the circle instead of floating in it
+    side = min(round(max(right - left, bottom - top) * 0.9), round(min(right - left, bottom - top) * 1.4))
     cx, cy = (left + right) // 2, (top + bottom) // 2
     canvas = Image.new("RGB", (ink.width + side, ink.height + side), "white")
     canvas.paste(ink, (side // 2, side // 2))
