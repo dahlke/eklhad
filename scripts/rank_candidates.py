@@ -25,14 +25,14 @@ from pillow_heif import register_heif_opener
 
 register_heif_opener()
 
-DESKTOP = Path.home() / "Desktop"
+WORKDIR = Path.home() / "eklhad-takeout"
 KEYWORDS = Path(__file__).with_name("stamp_keywords.json")
 POOR = ["a selfie of a person's face", "a screenshot of a phone screen", "a close-up photo of food on a plate",
         "a blurry dark photo", "a photo of a document or receipt", "a group of people posing indoors"]
 
 
 def main():
-    path = DESKTOP / "takeout_locations.json"
+    path = WORKDIR / "takeout_locations.json"
     places = json.loads(path.read_text())
     keywords = json.loads(KEYWORDS.read_text())
     device = "mps" if torch.backends.mps.is_available() else "cpu"

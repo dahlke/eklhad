@@ -35,7 +35,7 @@ from takeout_locations import slug
 
 register_heif_opener()
 
-DESKTOP = Path.home() / "Desktop"
+WORKDIR = Path.home() / "eklhad-takeout"
 PHOTOS_JSON = Path(__file__).parent / "../web/frontend/src/config/locationPhotos.json"
 BUCKET = "eklhad-web-public"
 PUBLIC = f"https://storage.googleapis.com/{BUCKET}/"
@@ -70,8 +70,8 @@ def main():
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
-    places = json.loads((DESKTOP / "takeout_locations.json").read_text())
-    decisions = json.loads((DESKTOP / "takeout_decisions.json").read_text())["photos"]
+    places = json.loads((WORKDIR / "takeout_locations.json").read_text())
+    decisions = json.loads((WORKDIR / "takeout_decisions.json").read_text())["photos"]
     attach_map(places)
     photos = json.loads(PHOTOS_JSON.read_text())
     emoji = json.loads(args.emoji.read_text()) if args.emoji else {}

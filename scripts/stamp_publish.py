@@ -15,7 +15,7 @@ from the first folder listed, unless --picks names a folder for that place.
 --archive also copies the full-size originals to the private bucket.
 
 Usage:
-    uv run scripts/stamp_publish.py --dirs ~/Desktop/stamp_posters_v2 ~/Desktop/stamp_posters
+    uv run scripts/stamp_publish.py --dirs ~/eklhad-takeout/stamp_posters_v2 ~/eklhad-takeout/stamp_posters
     uv run scripts/stamp_publish.py --dirs ... --dry-run
 """
 

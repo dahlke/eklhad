@@ -17,7 +17,7 @@ import re
 import shutil
 from pathlib import Path
 
-DESKTOP = Path.home() / "Desktop"
+WORKDIR = Path.home() / "eklhad-takeout"
 SHEET_COLUMNS = [
     "City", "State / Province / Region / District", "Country", "Current", "Layover",
     "Home", "Lat", "Lng", "Confirmed", "Departed From", "Travel Mode", "Photo URL",
@@ -27,11 +27,11 @@ SHEET_COLUMNS = [
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--out", type=Path, default=DESKTOP / "takeout_approved")
+    parser.add_argument("--out", type=Path, default=WORKDIR / "takeout_approved")
     args = parser.parse_args()
 
-    places = json.loads((DESKTOP / "takeout_locations.json").read_text())
-    decisions = json.loads((DESKTOP / "takeout_decisions.json").read_text())
+    places = json.loads((WORKDIR / "takeout_locations.json").read_text())
+    decisions = json.loads((WORKDIR / "takeout_decisions.json").read_text())
     args.out.mkdir(exist_ok=True)
 
     manifest = []

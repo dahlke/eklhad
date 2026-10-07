@@ -11,7 +11,7 @@ the review app's data, adding a row for pins the Takeout scan never named.
 
 Usage:
     uv run scripts/pin_candidates.py /Volumes/neilo/2026_09_29_takeout_dahlkeio \
-        --index ~/Desktop/eklhad_import/index.json --targets targets.txt --exclude-person "Full Name"
+        --index ~/eklhad-takeout/import/index.json --targets targets.txt --exclude-person "Full Name"
 """
 
 import argparse
@@ -26,7 +26,7 @@ from pathlib import Path, PurePosixPath
 
 from takeout_repick import more, slug
 
-DESKTOP = Path.home() / "Desktop"
+WORKDIR = Path.home() / "eklhad-takeout"
 LOCATIONS_URL = "https://storage.googleapis.com/eklhad-web-public/data/locations.json"
 SNAP_KM = 30
 
@@ -59,7 +59,7 @@ def main():
     parser.add_argument("--targets", type=Path, required=True, help="map city names, one per line")
     parser.add_argument("--exclude-person", action="append", default=[])
     parser.add_argument("--count", type=int, default=10)
-    parser.add_argument("--data-dir", type=Path, default=DESKTOP)
+    parser.add_argument("--data-dir", type=Path, default=WORKDIR)
     args = parser.parse_args()
 
     with urllib.request.urlopen(f"{LOCATIONS_URL}?t={int(time.time())}") as resp:
