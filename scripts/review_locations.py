@@ -9,7 +9,7 @@ each place and each candidate photo. Decisions save to decisions.json next to
 the locations file on every click.
 
 Usage:
-    uv run scripts/review_locations.py                      # ~/Desktop/takeout_locations.json
+    uv run scripts/review_locations.py                      # ~/eklhad-takeout/takeout_locations.json
     uv run scripts/review_locations.py path/to/locations.json --port 8765
 """
 
@@ -328,7 +328,7 @@ def attach_map(places):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("locations", type=Path, nargs="?", default=Path.home() / "Desktop/takeout_locations.json")
+    parser.add_argument("locations", type=Path, nargs="?", default=Path.home() / "eklhad-takeout/takeout_locations.json")
     parser.add_argument("--port", type=int, default=8765)
     args = parser.parse_args()
 

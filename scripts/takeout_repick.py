@@ -28,7 +28,7 @@ import reverse_geocoder
 
 from takeout_locations import IMAGE_EXTS, country_name, load_map, media_for_sidecar, near_home, slug
 
-DESKTOP = Path.home() / "Desktop"
+WORKDIR = Path.home() / "eklhad-takeout"
 PICKS_PER_PLACE = 5
 BURST_SECONDS = 120
 
@@ -121,7 +121,7 @@ def main():
     parser.add_argument("--more", type=int, metavar="N",
                         help="instead of re-picking, add N more photos to notable places with no approved photo")
     parser.add_argument("--only", nargs="*", help="with --more, limit to these city names (Takeout name or the map pin it sits on)")
-    parser.add_argument("--data-dir", type=Path, default=DESKTOP, help="holds takeout_locations.json and takeout_decisions.json")
+    parser.add_argument("--data-dir", type=Path, default=WORKDIR, help="holds takeout_locations.json and takeout_decisions.json")
     args = parser.parse_args()
 
     index_path = args.index or args.takeout_dir.parent / "takeout_locations/index.json"

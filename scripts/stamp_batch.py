@@ -42,7 +42,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--only", nargs="*", help="city names to make; default is every place with a photo")
     parser.add_argument("--only-file", type=Path, help="file of city names separated by | or newlines")
-    parser.add_argument("--out", type=Path, default=Path.home() / "Desktop/stamp_posters")
+    parser.add_argument("--out", type=Path, default=Path.home() / "eklhad-takeout/stamp_posters")
     parser.add_argument("--seed", type=int, default=7)
     args = parser.parse_args()
     if args.only_file:
