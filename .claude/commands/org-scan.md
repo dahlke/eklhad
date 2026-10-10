@@ -5,7 +5,7 @@ Run this before pushing, or any time org-specific tooling has been in use in thi
 
 ## What counts as org-specific
 
-- LangChain operational: secrets (`LANGSMITH_API_KEY`, `LANGCHAIN_API_KEY`), email `neil@langchain.dev`
+- LangChain operational: secrets (`LANGSMITH_API_KEY`, `LANGCHAIN_API_KEY`), any `@langchain.dev` email address
 - Work MCP servers in `.claude/` files: `gtm-agent`, `linear-server`, `hex`, `slack` (and their `mcp__*` tool permissions)
 - Generic secrets: API keys, bearer tokens, passwords in any file
 - `.claude/settings.json` or `.claude/settings.local.json` staged for commit
