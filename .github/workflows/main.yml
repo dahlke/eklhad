@@ -17,6 +17,8 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   collect_data:
+    # Dependabot PRs don't receive Actions secrets, and this job needs Google creds.
+    if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -58,8 +60,9 @@ jobs:
           GOOGLE_APPLICATION_CREDENTIALS : ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           GOOGLE_ACTIONS_CREDENTIALS_JSON : ${{ secrets.GOOGLE_ACTIONS_CREDENTIALS_JSON}}
         run: |
-          touch $GOOGLE_APPLICATION_CREDENTIALS
-          echo $GOOGLE_ACTIONS_CREDENTIALS_JSON > $GOOGLE_APPLICATION_CREDENTIALS
+          if [ -n "$GOOGLE_APPLICATION_CREDENTIALS" ]; then
+            echo $GOOGLE_ACTIONS_CREDENTIALS_JSON > $GOOGLE_APPLICATION_CREDENTIALS
+          fi
           make go_get
           make go_test
           cd web/frontend && bun install --frozen-lockfile && bun run test --run
