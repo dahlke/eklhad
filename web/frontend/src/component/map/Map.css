@@ -49,8 +49,10 @@ get auto-generated. */
 		}
 	}
 
-	.marker-wrapper:hover .map-custom-marker {
-		transform: scale(1.35);
+	@media (hover: hover) {
+		.marker-wrapper:hover .map-custom-marker {
+			transform: scale(1.35);
+		}
 	}
 
 	.map-custom-marker {
@@ -243,9 +245,13 @@ get auto-generated. */
 		z-index: 10;
 	}
 
-	.marker-wrapper:hover .marker-photo-tooltip,
-	.marker-wrapper:hover .marker-text-tooltip {
-		opacity: 1;
+	/* Hover only where there is a real pointer. On iOS a tap that reveals hover
+	content is spent showing it, so the photo never opened on the first tap. */
+	@media (hover: hover) {
+		.marker-wrapper:hover .marker-photo-tooltip,
+		.marker-wrapper:hover .marker-text-tooltip {
+			opacity: 1;
+		}
 	}
 
 	.marker-photo-tooltip {
