@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState, useEffect } from "react";
+import React, { Suspense, lazy, useState, useEffect, useRef } from "react";
 
 const Map = lazy(() => import("./component/map/Map"));
 
@@ -20,20 +20,31 @@ const socialLinks = [
 
 function App() {
     const gravatar = useGravatar();
-    const [profileOpacity, setProfileOpacity] = useState(1);
     const [showScrollTop, setShowScrollTop] = useState(false);
+    const profileRef = useRef<HTMLDivElement>(null);
+    const hintRef = useRef<HTMLDivElement>(null);
 
+    // Fade is written straight to the DOM once per frame. Setting React state on
+    // every scroll event re-rendered the whole page, map included, and made the
+    // scroll back up choppy on phones.
     useEffect(() => {
-        const onScroll = () => {
-            if (window.innerWidth >= 768) { setProfileOpacity(1); setShowScrollTop(false); return; }
+        let frame = 0;
+        const update = () => {
+            frame = 0;
+            const desktop = window.innerWidth >= 768;
             const vh = window.innerHeight;
             const raw = (window.scrollY - vh * 0.15) / (vh * 0.45);
-            setProfileOpacity(1 - Math.max(0, Math.min(raw, 1)));
-            setShowScrollTop(window.scrollY > vh * 0.6);
+            const opacity = desktop ? "1" : String(1 - Math.max(0, Math.min(raw, 1)));
+            if (profileRef.current) profileRef.current.style.opacity = opacity;
+            if (hintRef.current) hintRef.current.style.opacity = opacity;
+            setShowScrollTop(!desktop && window.scrollY > vh * 0.6);
         };
+        const onScroll = () => { if (!frame) frame = requestAnimationFrame(update); };
+        update();
         window.addEventListener("scroll", onScroll, { passive: true });
         window.addEventListener("resize", onScroll, { passive: true });
         return () => {
+            cancelAnimationFrame(frame);
             window.removeEventListener("scroll", onScroll);
             window.removeEventListener("resize", onScroll);
         };
@@ -44,8 +55,8 @@ function App() {
 
             {/* Profile panel — overlays the fixed map on mobile via z-10 */}
             <div
+                ref={profileRef}
                 className="relative min-h-screen md:w-2/5 md:min-h-screen flex flex-col justify-center px-10 md:px-16 py-20 profile-mobile-bg md:bg-off-white md:dark:bg-dark-bg z-10"
-                style={{ opacity: profileOpacity }}
             >
                 <ParticleCanvas />
                 <div className="relative z-10 flex flex-col">
@@ -89,8 +100,8 @@ function App() {
 
                 {/* Scroll hint — mobile only, pinned to the first viewport, hidden on scroll */}
                 <div
+                    ref={hintRef}
                     className="md:hidden fixed bottom-4 left-0 right-0 flex flex-col items-center gap-2 pointer-events-none animate-bounce"
-                    style={{ opacity: profileOpacity }}
                 >
                     <span className="text-2xl">🌍</span>
                     <svg className="w-4 h-4 text-chicago-flag-blue/60 dark:text-white/40" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
