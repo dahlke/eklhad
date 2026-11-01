@@ -98,6 +98,8 @@ export function ParticleCanvas() {
             const parent = canvas!.parentElement;
             if (!parent) return;
             const rect = parent.getBoundingClientRect();
+            // Phone toolbars fire resize on scroll; reallocating an unchanged canvas stutters
+            if (rect.width === W && rect.height === H) return;
             const dpr = Math.min(window.devicePixelRatio || 1, 2);
             W = rect.width;
             H = rect.height;
@@ -204,8 +206,13 @@ export function ParticleCanvas() {
             for (const b of fogBlobs) drawFogBlob(b, now, dark);
         }
 
+        // Only draw while on screen, so it doesn't compete with the map on phones
+        let visible = true;
+        const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; });
+        observer.observe(canvas);
+
         function tick(now: number) {
-            draw(now);
+            if (visible) draw(now);
             raf = requestAnimationFrame(tick);
         }
 
@@ -215,6 +222,7 @@ export function ParticleCanvas() {
         window.addEventListener("resize", resize);
         return () => {
             cancelAnimationFrame(raf);
+            observer.disconnect();
             window.removeEventListener("resize", resize);
         };
     }, []);
