@@ -66,3 +66,18 @@ jobs:
           make go_get
           make go_test
           cd web/frontend && bun install --frozen-lockfile && bun run test --run
+
+  # Merges Dependabot PRs once the tests pass. GitHub hands Dependabot runs a
+  # read-only token unless the job asks for write access here.
+  dependabot_automerge:
+    needs: testing
+    if: github.event_name == 'pull_request' && github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Merge the Dependabot PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr merge "${{ github.event.pull_request.html_url }}" --merge --delete-branch
