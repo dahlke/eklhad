@@ -1,7 +1,6 @@
 import React, { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import MapGL, { Marker, type MapRef } from "react-map-gl/mapbox";
-import type { ViewState } from "react-map-gl/mapbox";
 import SunCalc from "suncalc";
 
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -137,14 +136,6 @@ function Map() {
 		() => [...(allLocations ?? [])].sort((a, b) => Number(!!a.notable) - Number(!!b.notable)),
 		[allLocations],
 	);
-const [viewState, setViewState] = useState<ViewState>({
-		latitude: 37.7577,
-		longitude: -122.4376,
-		zoom: 11,
-		bearing: 0,
-		pitch: 45,
-		padding: { top: 0, bottom: 0, left: 0, right: 0 },
-	});
 	const [lightboxUrl, setLightboxUrl] = useState<string | null>(null);
 	const [mapLoaded, setMapLoaded] = useState(false);
 	const mapRef = useRef<MapRef>(null);
@@ -191,32 +182,37 @@ const [viewState, setViewState] = useState<ViewState>({
 		map.on("style.load", applyGlobe);
 		setMapLoaded(true);
 
-		// Zoom out over 60s while spinning simultaneously, driven through React state
+		// Zoom out over 60s while spinning simultaneously. Driven on the map directly,
+		// not through React state, which re-rendered every marker each frame.
 		const ZOOM_START = 11;
 		const ZOOM_END = 2.0;
 		const PITCH_START = 45;
 		const ZOOM_DURATION = 30000;
 		let animFrame: number;
 		let resumeTimer: ReturnType<typeof setTimeout>;
+		let lastPageScroll = 0;
+		window.addEventListener("scroll", () => { lastPageScroll = Date.now(); }, { passive: true });
 
 		const startSpin = (skipIntro = false) => {
 			cancelAnimationFrame(animFrame);
 			const spinStart = skipIntro ? null : Date.now();
 			const spin = () => {
-				setViewState(prev => {
-					// Scale pan speed by zoom so visual velocity stays constant
-					const lonDelta = 0.008 * Math.pow(2, ZOOM_END - prev.zoom);
-					const longitude = prev.longitude + lonDelta;
-					if (spinStart !== null) {
-						const t = Math.min((Date.now() - spinStart) / ZOOM_DURATION, 1);
-						const ease = t * t * (3 - 2 * t); // smoothstep
-						const zoom = ZOOM_START + (ZOOM_END - ZOOM_START) * ease;
-						const pitch = PITCH_START * (1 - ease);
-						return { ...prev, zoom, longitude, pitch };
-					}
-					return { ...prev, longitude };
-				});
 				animFrame = requestAnimationFrame(spin);
+				// Hold still while the page scrolls so the phone isn't redrawing the globe too
+				if (Date.now() - lastPageScroll < 200) return;
+				// Scale pan speed by zoom so visual velocity stays constant
+				const center = map.getCenter();
+				const lonDelta = 0.008 * Math.pow(2, ZOOM_END - map.getZoom());
+				const longitude = center.lng + lonDelta;
+				if (spinStart !== null) {
+					const t = Math.min((Date.now() - spinStart) / ZOOM_DURATION, 1);
+					const ease = t * t * (3 - 2 * t); // smoothstep
+					const zoom = ZOOM_START + (ZOOM_END - ZOOM_START) * ease;
+					const pitch = PITCH_START * (1 - ease);
+					map.jumpTo({ center: [longitude, center.lat], zoom, pitch });
+				} else {
+					map.jumpTo({ center: [longitude, center.lat] });
+				}
 			};
 			animFrame = requestAnimationFrame(spin);
 		};
@@ -349,8 +345,7 @@ const [viewState, setViewState] = useState<ViewState>({
 	return (
 		<div id="map">
 			<MapGL
-				{...viewState}
-				onMove={(evt: { viewState: ViewState }) => setViewState(evt.viewState)}
+				initialViewState={{ latitude: 37.7577, longitude: -122.4376, zoom: 11, bearing: 0, pitch: 45 }}
 				mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
 				ref={mapRef}
 				onLoad={handleMapLoad}
