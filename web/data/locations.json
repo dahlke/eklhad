@@ -602,15 +602,6 @@
     "travel_mode": "Car"
   },
   {
-    "city": "Al Jizah",
-    "state": "Al Jizah",
-    "country": "Egypt",
-    "lat": 30.00808,
-    "lng": 31.21093,
-    "departed_from": "Hoboken",
-    "travel_mode": "Plane"
-  },
-  {
     "city": "San Salvador",
     "state": "San Salvador",
     "country": "El Salvador",
@@ -752,15 +743,6 @@
     "lng": 11.61585,
     "departed_from": "Interlaken",
     "travel_mode": "Car"
-  },
-  {
-    "city": "Takoradi",
-    "state": "Western",
-    "country": "Ghana",
-    "lat": 4.88447,
-    "lng": -1.75536,
-    "departed_from": "Dollar Point",
-    "travel_mode": "Plane"
   },
   {
     "city": "Athens",
