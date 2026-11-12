@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # /// script
 # requires-python = ">=3.11"
-# dependencies = ["google-api-python-client", "google-auth"]
+# dependencies = []
 # ///
 """
-Infers Departed From (J) and Travel Mode (K) for the locations sheet from the
+Infers Departed From (J) and Travel Mode (K) for web/data/locations.json from the
 photo timeline in a Takeout metadata index (built by takeout_repick.py).
 
 Every geotagged photo is snapped to its nearest pin. For each pin, the photos
@@ -29,10 +29,8 @@ import os
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 
-from google.oauth2 import service_account
-from googleapiclient.discovery import build
+import locations_data
 
-SPREADSHEET_ID = "1Ex7AuwS25FoyP_h_HYVQjKr3XwPurZd2Heos3zb2gBI"
 SNAP_KM = 30
 GAP_DAYS = 5
 MAX_KMH = 750
@@ -122,40 +120,32 @@ def infer(pins, timeline, homes):
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("index", help="index.json from takeout_repick.py")
-    parser.add_argument("--from-row", type=int, required=True, help="sheet rows at or after this are fully re-inferred")
-    parser.add_argument("--keep", type=int, action="append", default=[], help="sheet row to leave untouched")
+    parser.add_argument("--from-row", type=int, required=True, help="rows at or after this are fully re-inferred (row = position in locations.json + 2, as in the old sheet)")
+    parser.add_argument("--keep", type=int, action="append", default=[], help="row to leave untouched")
     parser.add_argument("--apply", action="store_true")
     args = parser.parse_args()
 
-    creds = service_account.Credentials.from_service_account_file(
-        os.environ.get("GOOGLE_APPLICATION_CREDENTIALS", os.path.expanduser("~/.gcp/eklhad-web-packer.json")),
-        scopes=["https://www.googleapis.com/auth/spreadsheets"],
-    )
-    values = build("sheets", "v4", credentials=creds).spreadsheets().values()
-    header, *data = values.get(spreadsheetId=SPREADSHEET_ID, range="locations!A1:Z", valueRenderOption="UNFORMATTED_VALUE").execute()["values"]
-    # Columns are found by header name so the sheet can be reordered
-    rows = [{name: (r[i] if i < len(r) else "") for i, name in enumerate(header)} for r in data]
-    letter = {name: chr(ord("A") + i) for i, name in enumerate(header)}
-    pins = [{"city": r["City"], "country": r["Country"], "lat": r["Lat"], "lng": r["Lng"]} for r in rows]
+    rows = locations_data.load()
+    pins = [{"city": r["city"], "country": r["country"], "lat": r["lat"], "lng": r["lng"]} for r in rows]
 
     timeline = snap(json.load(open(args.index)).values(), pins)
     inferred = infer(pins, timeline, homes_by_year(timeline))
 
-    updates, modes = [], Counter()
+    changed, modes = 0, Counter()
     for i, r in enumerate(rows):
         sheet_row = i + 2
-        if i not in inferred or r["Travel Mode"] in ("Ferry", "Train", "Bus") or sheet_row in args.keep:
+        if i not in inferred or r["travel_mode"] in ("Ferry", "Train", "Bus") or sheet_row in args.keep:
             continue
-        if sheet_row < args.from_row and r["Departed From"]:
+        if sheet_row < args.from_row and r["departed_from"]:
             continue
         departed, travel, distance, hours, basis = inferred[i]
-        updates.append({"range": f"locations!{letter['Departed From']}{sheet_row}", "values": [[departed]]})
-        updates.append({"range": f"locations!{letter['Travel Mode']}{sheet_row}", "values": [[travel]]})
+        r["departed_from"], r["travel_mode"] = departed, travel
+        changed += 1
         modes[travel] += 1
-        print(f"row {sheet_row:4} {r['City'][:26]:26} <- {departed[:22]:22} {travel:5} {distance:6} km {hours:6} h  {basis}")
+        print(f"row {sheet_row:4} {r['city'][:26]:26} <- {departed[:22]:22} {travel:5} {distance:6} km {hours:6} h  {basis}")
     print(f"{sum(modes.values())} rows, {dict(modes)}; {len(timeline)} photos snapped to pins")
-    if args.apply and updates:
-        values.batchUpdate(spreadsheetId=SPREADSHEET_ID, body={"valueInputOption": "RAW", "data": updates}).execute()
+    if args.apply and changed:
+        locations_data.save(rows)
         print("written")
 
 

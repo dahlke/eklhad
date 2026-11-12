@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 # /// script
 # requires-python = ">=3.11"
-# dependencies = ["Pillow", "pillow-heif", "google-cloud-storage", "google-api-python-client", "google-auth"]
+# dependencies = ["Pillow", "pillow-heif", "google-cloud-storage"]
 # ///
 """
 Puts photos approved in review_locations.py onto the map. For every map pin
 without a photo, the first approved photo becomes its photo: a PNG and a 400px
 thumbnail go to gs://eklhad-web-public/photos/, locationPhotos.json gets the
-entry, and the sheet's Photo URL and Location Emoji columns are filled. Other
-approved photos, including ones for pins that already show a photo, are kept
-as "alternates". Nothing already on the map is replaced.
+entry. A photo starred in the review app is used instead of the first, and replaces the
+photo a pin already shows (the old one becomes an alternate). Other approved
+photos are kept as "alternates".
 
 Usage:
     uv run scripts/publish_photos.py --emoji emoji.json            # {"City": "🌵", ...}
@@ -25,22 +25,18 @@ from datetime import datetime
 from pathlib import Path
 
 from google.cloud import storage
-from google.oauth2 import service_account
-from googleapiclient.discovery import build
 from PIL import Image, ImageOps
 from pillow_heif import register_heif_opener
 
-from review_locations import attach_map
+from review_locations import attach_map, place_key
 from takeout_locations import slug
 
 register_heif_opener()
 
 WORKDIR = Path.home() / "eklhad-takeout"
-PHOTOS_JSON = Path(__file__).parent / "../web/frontend/src/config/locationPhotos.json"
+PHOTOS_JSON = Path(__file__).parent / "../web/data/locationPhotos.json"
 BUCKET = "eklhad-web-public"
 PUBLIC = f"https://storage.googleapis.com/{BUCKET}/"
-SPREADSHEET_ID = "1Ex7AuwS25FoyP_h_HYVQjKr3XwPurZd2Heos3zb2gBI"
-SA_PATH = Path.home() / ".gcp/eklhad-web-packer.json"
 
 
 def photo_date(path):
@@ -71,14 +67,18 @@ def main():
     args = parser.parse_args()
 
     places = json.loads((WORKDIR / "takeout_locations.json").read_text())
-    decisions = json.loads((WORKDIR / "takeout_decisions.json").read_text())["photos"]
+    all_decisions = json.loads((WORKDIR / "takeout_decisions.json").read_text())
+    decisions, covers = all_decisions["photos"], all_decisions.get("cover", {})
     attach_map(places)
     photos = json.loads(PHOTOS_JSON.read_text())
     emoji = json.loads(args.emoji.read_text()) if args.emoji else {}
 
-    approved = {}
+    approved, starred = {}, {}
     for place in places:
         pin = place["Map Pin"] or place["City"]
+        star = covers.get(place_key(place))
+        if star and decisions.get(star) == "approved" and Path(star).exists():
+            starred[pin] = star
         for path in place["Candidate Photos"]:
             if decisions.get(path) == "approved" and Path(path).exists():
                 # Skip the photo the pin already shows (published earlier from this same approval)
@@ -91,8 +91,21 @@ def main():
     new_entries = {}
     for (pin, country, on_map), paths in sorted(approved.items()):
         entry = photos.get(pin)
+        star = starred.get(pin)
+        if star in paths:
+            paths = [star] + [p for p in paths if p != star]
+        if entry and star in paths and Path(star).name not in {a.get("source") for a in entry.get("alternates", [])} | {entry.get("source")}:
+            taken = photo_date(star)
+            print(f"replace photo     {pin}: {Path(star).name}")
+            if not args.dry_run:
+                entry.setdefault("alternates", []).append({"url": entry["url"]})
+                entry.update(url=upload(bucket, star, f"{slug(pin)}_{taken:%Y_%m_%d}"), date=f"{taken:%B} {taken.day}, {taken.year}", source=Path(star).name)
+                for stale in ("stamp", "badge", "poster"):
+                    entry.pop(stale, None)
+                new_entries[pin] = entry
+            paths = paths[1:]
         if on_map or entry:
-            have = {a["source"] for a in (entry or {}).get("alternates", [])}
+            have = {a.get("source") for a in (entry or {}).get("alternates", [])}
             extra = [p for p in paths if Path(p).name not in have]
             if extra and not args.dry_run and entry:
                 for p in extra:
@@ -105,7 +118,7 @@ def main():
         print(f"first photo       {pin} ({country}) {taken:%Y-%m-%d}, {len(rest)} alternates")
         if args.dry_run:
             continue
-        entry = {"slug": slug(pin), "url": upload(bucket, first, f"{slug(pin)}_{taken:%Y_%m_%d}"),
+        entry = {"slug": slug(pin), "url": upload(bucket, first, f"{slug(pin)}_{taken:%Y_%m_%d}"), "source": Path(first).name,
                  "date": f"{taken:%B} {taken.day}, {taken.year}", "emoji": emoji.get(pin, "📷")}
         if name_counts[pin] > 1 or sum(1 for p in places if p.get("Map Pin") == pin and p["Country"] != country):
             entry["country"] = country
@@ -117,19 +130,7 @@ def main():
         return
     PHOTOS_JSON.write_text(json.dumps(dict(sorted(photos.items())), indent=2, ensure_ascii=False) + "\n")
 
-    creds = service_account.Credentials.from_service_account_file(str(SA_PATH), scopes=["https://www.googleapis.com/auth/spreadsheets"])
-    values = build("sheets", "v4", credentials=creds).spreadsheets().values()
-    header, *rows = values.get(spreadsheetId=SPREADSHEET_ID, range="locations!A1:Z").execute()["values"]
-    col = {name: chr(ord("A") + i) for i, name in enumerate(header)}
-    city_col = header.index("City")
-    updates = []
-    for i, row in enumerate(rows):
-        entry = new_entries.get(row[city_col] if len(row) > city_col else "")
-        if entry:
-            updates += [{"range": f"locations!{col['Photo URL']}{i + 2}", "values": [[entry["url"]]]},
-                        {"range": f"locations!{col['Location Emoji']}{i + 2}", "values": [[entry["emoji"]]]}]
-    values.batchUpdate(spreadsheetId=SPREADSHEET_ID, body={"valueInputOption": "RAW", "data": updates}).execute()
-    print(f"{len(new_entries)} pins got a photo; sheet updated")
+    print(f"{len(new_entries)} pins got a photo")
 
 
 if __name__ == "__main__":

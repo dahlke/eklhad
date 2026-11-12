@@ -337,7 +337,6 @@ func TestRedirectToHTTPS(t *testing.T) {
 func TestParseConfig(t *testing.T) {
 	// Create a temporary config file
 	configContent := `{
-		"g_sheet_id": "test-sheet-id",
 		"gravatar_email": "test@example.com",
 		"worker_min_sleep_mins": 60
 	}`
@@ -355,9 +354,6 @@ func TestParseConfig(t *testing.T) {
 
 	config := parseConfig(tmpFile.Name())
 
-	if config.GSheetID != "test-sheet-id" {
-		t.Errorf("Expected GSheetID 'test-sheet-id', got '%s'", config.GSheetID)
-	}
 	if config.GravatarEmail != "test@example.com" {
 		t.Errorf("Expected GravatarEmail 'test@example.com', got '%s'", config.GravatarEmail)
 	}

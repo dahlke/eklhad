@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generates web/frontend/src/config/tripRoutes.json from the Google Sheet.
+Generates web/frontend/src/config/tripRoutes.json from web/data/locations.json.
 Each entry: {"from": "City A", "to": "City B", "mode": "Plane|Train|Car|Ferry"}
 Car entries also get "path": the driving route as [[lng, lat], ...] from the
 public OSRM router, so drives follow roads instead of arcs. Paths already in the
@@ -17,22 +17,11 @@ Filtering:
 import json
 import math
 import os
-import sys
 import time
 import urllib.request
 
-try:
-    from googleapiclient.discovery import build
-    from google.oauth2 import service_account
-except ImportError:
-    print("Missing deps. Run via `uv run python scripts/generate_trip_routes.py` (or `uv sync` first).")
-    sys.exit(1)
+import locations_data
 
-SPREADSHEET_ID = "1Ex7AuwS25FoyP_h_HYVQjKr3XwPurZd2Heos3zb2gBI"
-SA_PATH = os.environ.get(
-    "GOOGLE_APPLICATION_CREDENTIALS",
-    os.path.expanduser("~/.gcp/eklhad-web-packer.json"),
-)
 OUT_PATH = os.path.join(
     os.path.dirname(__file__),
     "../web/frontend/src/config/tripRoutes.json",
@@ -80,27 +69,12 @@ def driving_path(a, b):
     return [[round(lng, 4), round(lat, 4)] for lng, lat in data["routes"][0]["geometry"]["coordinates"]]
 
 def main():
-    creds = service_account.Credentials.from_service_account_file(
-        SA_PATH, scopes=["https://www.googleapis.com/auth/spreadsheets.readonly"]
-    )
-    service = build("sheets", "v4", credentials=creds)
-
-    result = service.spreadsheets().values().get(
-        spreadsheetId=SPREADSHEET_ID,
-        range="locations!A1:Z",
-    ).execute()
-    header, *data = result.get("values", [])
-    # Columns are found by header name so the sheet can be reordered
-    rows = [{name: (r[i].strip() if i < len(r) else "") for i, name in enumerate(header)} for r in data]
+    rows = locations_data.load()
 
     # Build city → [(lat, lng), ...] lookup; a name can belong to several places
     coords: dict[str, list[tuple[float, float]]] = {}
     for row in rows:
-        city = row["City"]
-        try:
-            lat, lng = float(row["Lat"]), float(row["Lng"])
-        except ValueError:
-            lat = lng = None
+        city, lat, lng = row["city"], row["lat"], row["lng"]
         if city and lat is not None and lng is not None:
             coords.setdefault(city, []).append((lat, lng))
 
@@ -114,7 +88,7 @@ def main():
     seen = set()
 
     for row in rows:
-        city, dep_from, mode = row["City"], row["Departed From"], row["Travel Mode"]
+        city, dep_from, mode = row["city"], row["departed_from"], row["travel_mode"]
 
         if not city or not dep_from or not mode:
             continue

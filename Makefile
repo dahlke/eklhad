@@ -109,13 +109,6 @@ go_build_macos:
 
 
 ##########################
-# DATA COLLECTION HELPERS
-##########################
-.PHONY: collect_data
-collect_data:
-	cd web && go run main.go -gsheets;
-
-##########################
 # DOCKER HELPERS
 ##########################
 docker_build_web:

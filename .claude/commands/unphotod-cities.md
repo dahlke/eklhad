@@ -6,15 +6,11 @@ Generate a ranked list of visited cities that don't yet have a photo, with Googl
 
 ### 1. Load locationPhotos.json
 
-Read `web/frontend/src/config/locationPhotos.json` — this is the authoritative set of cities that already have photos. Extract the city name keys into a set.
+Read `web/data/locationPhotos.json` — this is the authoritative set of cities that already have photos. Extract the city name keys into a set.
 
-### 2. Fetch the live locations data
+### 2. Load the locations
 
-```bash
-curl -s "https://storage.googleapis.com/eklhad-web-public/data/locations.json"
-```
-
-Parse the JSON array. Each location has fields: `city`, `country`, `stateprovinceregion`, `layover`, `home`, `photourl`, `photoemoji`, etc.
+Read `web/data/locations.json`. Each location has fields: `city`, `country`, `state`, `layover`, `home`, `notable`, `notability`, etc.
 
 ### 3. Cross-reference
 
@@ -23,7 +19,7 @@ Filter locations to cities that:
 - Are NOT home (`home` is falsy)
 - Have no photo: city name is NOT a key in `locationPhotos.json`
 
-Deduplicate by city name (a city may appear multiple times in the sheet).
+Deduplicate by city name (a city may appear multiple times in the file).
 
 ### 4. Rank by coolness
 

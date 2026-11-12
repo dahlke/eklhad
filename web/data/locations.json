@@ -1,0 +1,8257 @@
+[
+  {
+    "city": "Buenos Aires",
+    "state": "Buenos Aires",
+    "country": "Argentina",
+    "lat": -34.5121516,
+    "lng": -58.5248182,
+    "departed_from": "Santiago",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Tigre",
+    "state": "Buenos Aires",
+    "country": "Argentina",
+    "lat": -34.4235341,
+    "lng": -58.5817628,
+    "departed_from": "Buenos Aires",
+    "travel_mode": "Train",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Retiro",
+    "state": "Buenos Aires F.D.",
+    "country": "Argentina",
+    "lat": -34.58333,
+    "lng": -58.38333,
+    "departed_from": "Buenos Aires",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Colegiales",
+    "state": "Buenos Aires F.D.",
+    "country": "Argentina",
+    "lat": -34.57365,
+    "lng": -58.44924,
+    "departed_from": "Retiro",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Sydney",
+    "state": "New South Wales",
+    "country": "Australia",
+    "lat": -33.8698439,
+    "lng": 151.2082848,
+    "departed_from": "Qingdao",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Kirribilli",
+    "state": "New South Wales",
+    "country": "Australia",
+    "lat": -33.84867,
+    "lng": 151.2162,
+    "departed_from": "Arrowtown",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Bondi Beach",
+    "state": "New South Wales",
+    "country": "Australia",
+    "lat": -33.89103,
+    "lng": 151.27157,
+    "departed_from": "Sydney",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "North Bondi",
+    "state": "New South Wales",
+    "country": "Australia",
+    "lat": -33.88533,
+    "lng": 151.27522,
+    "departed_from": "Bondi Beach",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Milsons Point",
+    "state": "New South Wales",
+    "country": "Australia",
+    "lat": -33.846,
+    "lng": 151.21192,
+    "departed_from": "Sydney",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Balmain East",
+    "state": "New South Wales",
+    "country": "Australia",
+    "lat": -33.8571,
+    "lng": 151.19282,
+    "departed_from": "Milsons Point",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Chippendale",
+    "state": "New South Wales",
+    "country": "Australia",
+    "lat": -33.88673,
+    "lng": 151.19745,
+    "departed_from": "Bondi Beach",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Haberfield",
+    "state": "New South Wales",
+    "country": "Australia",
+    "lat": -33.88333,
+    "lng": 151.2,
+    "departed_from": "Sydney",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Clovelly",
+    "state": "New South Wales",
+    "country": "Australia",
+    "lat": -33.91214,
+    "lng": 151.25882,
+    "departed_from": "Bondi Beach",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Bronte",
+    "state": "New South Wales",
+    "country": "Australia",
+    "lat": -33.90198,
+    "lng": 151.26556,
+    "departed_from": "Clovelly",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Abraham's Bay",
+    "state": "Mayaguana",
+    "country": "Bahamas",
+    "lat": 22.36667,
+    "lng": -72.96667,
+    "departed_from": "Millbrae",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Brussels",
+    "state": "Brussels",
+    "country": "Belgium",
+    "lat": 50.8435652,
+    "lng": 4.3673865,
+    "departed_from": "Chicago",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Belo Horizonte",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "lat": -19.9227318,
+    "lng": -43.9450948,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "layover": true
+  },
+  {
+    "city": "Rio de Janeiro",
+    "state": "Rio de Janeiro",
+    "country": "Brazil",
+    "lat": -22.9110137,
+    "lng": -43.2093727,
+    "departed_from": "Belo Horizonte",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Nilopolis",
+    "state": "Rio de Janeiro",
+    "country": "Brazil",
+    "lat": -22.8075,
+    "lng": -43.41389,
+    "departed_from": "Rio de Janeiro",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Montreal",
+    "state": "Quebec",
+    "country": "Canada",
+    "lat": 45.5031824,
+    "lng": -73.5698065,
+    "departed_from": "Chicago",
+    "travel_mode": "Plane",
+    "layover": true
+  },
+  {
+    "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
+    "lat": 43.6534817,
+    "lng": -79.3839347,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Vancouver",
+    "state": "British Colombia",
+    "country": "Canada",
+    "lat": 49.2608724,
+    "lng": -123.113952,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Revelstoke",
+    "state": "British Columbia",
+    "country": "Canada",
+    "lat": 50.98317,
+    "lng": -118.2023,
+    "departed_from": "Munich",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Scarborough",
+    "state": "Ontario",
+    "country": "Canada",
+    "lat": 43.77223,
+    "lng": -79.25666,
+    "departed_from": "Toronto",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Willowdale",
+    "state": "Ontario",
+    "country": "Canada",
+    "lat": 43.76672,
+    "lng": -79.39909,
+    "departed_from": "Toronto",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "West End",
+    "state": "British Columbia",
+    "country": "Canada",
+    "lat": 49.28333,
+    "lng": -123.13333,
+    "departed_from": "Kalama",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Saint-Laurent",
+    "state": "Quebec",
+    "country": "Canada",
+    "lat": 45.50008,
+    "lng": -73.66585,
+    "departed_from": "Delhi",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "West Bay",
+    "state": "",
+    "country": "Cayman Islands",
+    "lat": 19.36667,
+    "lng": -81.41667,
+    "departed_from": "George Town",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "George Town",
+    "state": "",
+    "country": "Cayman Islands",
+    "lat": 19.2866,
+    "lng": -81.37436,
+    "departed_from": "Chicago Ridge",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "North Side",
+    "state": "",
+    "country": "Cayman Islands",
+    "lat": 19.35,
+    "lng": -81.2,
+    "departed_from": "West Bay",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Santiago",
+    "state": "Santiago Metropolitan",
+    "country": "Chile",
+    "lat": -33.4420638,
+    "lng": -70.6456647,
+    "departed_from": "San Salvador",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Valle Nevado",
+    "state": "Santiago Metropolitan",
+    "country": "Chile",
+    "lat": -33.3543477,
+    "lng": -70.2491559,
+    "departed_from": "Santiago",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Villa Presidente Frei, Nunoa, Santiago, Chile",
+    "state": "Santiago Metropolitan",
+    "country": "Chile",
+    "lat": -33.46069,
+    "lng": -70.58024,
+    "departed_from": "Santiago",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Beijing",
+    "state": "Beijing Municipality",
+    "country": "China",
+    "lat": 39.9057136,
+    "lng": 116.3912972,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Qingdao",
+    "state": "Shandong",
+    "country": "China",
+    "lat": 36.0663249,
+    "lng": 120.3777659,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "layover": true
+  },
+  {
+    "city": "Shanghai",
+    "state": "Shanghai",
+    "country": "China",
+    "lat": 31.2323437,
+    "lng": 121.4691024,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Tianzhu",
+    "state": "Beijing",
+    "country": "China",
+    "lat": 40.05756,
+    "lng": 116.57455,
+    "departed_from": "New Hope",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Laogang",
+    "state": "Shanghai Shi",
+    "country": "China",
+    "lat": 31.02917,
+    "lng": 121.84306,
+    "departed_from": "Hongkou",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Hongkou",
+    "state": "Shanghai Shi",
+    "country": "China",
+    "lat": 31.25,
+    "lng": 121.48917,
+    "departed_from": "Shanghai",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Sijiqing",
+    "state": "Beijing",
+    "country": "China",
+    "lat": 39.95072,
+    "lng": 116.26545,
+    "departed_from": "Wangjing",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Wangjing",
+    "state": "Beijing",
+    "country": "China",
+    "lat": 39.9933,
+    "lng": 116.47284,
+    "departed_from": "Gurgaon",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Liberia",
+    "state": "Guanacaste",
+    "country": "Costa Rica",
+    "lat": 10.62967,
+    "lng": -85.4382519,
+    "departed_from": "San Juan",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Playa Del Coco",
+    "state": "Guanacaste",
+    "country": "Costa Rica",
+    "lat": 10.5579948,
+    "lng": -85.692262,
+    "departed_from": "San Juan",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Rincon de la Vieja",
+    "state": "Guanacaste",
+    "country": "Costa Rica",
+    "lat": 10.824585,
+    "lng": -85.3476753,
+    "departed_from": "San Juan",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "San Juan",
+    "state": "Guanacaste",
+    "country": "Costa Rica",
+    "lat": 10.2227373,
+    "lng": -84.9316282,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Santa Cruz",
+    "state": "Guanacaste",
+    "country": "Costa Rica",
+    "lat": 10.26053,
+    "lng": -85.5851,
+    "departed_from": "Dollar Point",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Sardinal",
+    "state": "Guanacaste",
+    "country": "Costa Rica",
+    "lat": 10.51674,
+    "lng": -85.64748,
+    "departed_from": "San Bruno",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Drvenik Veli",
+    "state": "Dalmatia",
+    "country": "Croatia",
+    "lat": 43.4433561,
+    "lng": 16.1506716,
+    "departed_from": "Dubrovnik",
+    "travel_mode": "Ferry",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Dubrovnik",
+    "state": "",
+    "country": "Croatia",
+    "lat": 42.6491029,
+    "lng": 18.0939501,
+    "departed_from": "Athens",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Lopud",
+    "state": "Dubrovnik",
+    "country": "Croatia",
+    "lat": 42.6858671,
+    "lng": 17.9507753,
+    "departed_from": "Dubrovnik",
+    "travel_mode": "Ferry",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Maslinica",
+    "state": "Dalmatia",
+    "country": "Croatia",
+    "lat": 43.3991233,
+    "lng": 16.2066175,
+    "departed_from": "Solta",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Solta",
+    "state": "Dalmatia",
+    "country": "Croatia",
+    "lat": 43.3695246,
+    "lng": 16.3249835,
+    "departed_from": "Split",
+    "travel_mode": "Ferry",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Split",
+    "state": "",
+    "country": "Croatia",
+    "lat": 43.5116383,
+    "lng": 16.4399659,
+    "departed_from": "Dubrovnik",
+    "travel_mode": "Ferry",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Podgora",
+    "state": "Dubrovacko-Neretvanska",
+    "country": "Croatia",
+    "lat": 42.84861,
+    "lng": 17.83639,
+    "departed_from": "",
+    "travel_mode": "",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Mokosica",
+    "state": "Dubrovacko-Neretvanska",
+    "country": "Croatia",
+    "lat": 42.67556,
+    "lng": 18.09028,
+    "departed_from": "Dubrovnik",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Marina",
+    "state": "Splitsko-Dalmatinska",
+    "country": "Croatia",
+    "lat": 43.35,
+    "lng": 16.45,
+    "departed_from": "Split",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Havana",
+    "state": "Havana",
+    "country": "Cuba",
+    "lat": 23.135305,
+    "lng": -82.3589631,
+    "departed_from": "Chicago",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Copenhagen",
+    "state": "Capital Region",
+    "country": "Denmark",
+    "lat": 55.7238392,
+    "lng": 12.5715679,
+    "departed_from": "Milan",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Dragor",
+    "state": "Capital Region",
+    "country": "Denmark",
+    "lat": 55.59455,
+    "lng": 12.66638,
+    "departed_from": "Reykjavík",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Vejle",
+    "state": "South Denmark",
+    "country": "Denmark",
+    "lat": 55.70927,
+    "lng": 9.5357,
+    "departed_from": "Howth",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Christianshavn",
+    "state": "Capital Region",
+    "country": "Denmark",
+    "lat": 55.67383,
+    "lng": 12.59541,
+    "departed_from": "Copenhagen",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "San Salvador",
+    "state": "San Salvador",
+    "country": "El Salvador",
+    "lat": 13.697629,
+    "lng": -89.191156,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "layover": true
+  },
+  {
+    "city": "El Rosario",
+    "state": "La Paz",
+    "country": "El Salvador",
+    "lat": 13.49778,
+    "lng": -89.02972,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Helsinki",
+    "state": "Uusimaa",
+    "country": "Finland",
+    "lat": 60.1698897,
+    "lng": 24.9384719,
+    "departed_from": "Chicago",
+    "travel_mode": "Plane",
+    "layover": true
+  },
+  {
+    "city": "Paris",
+    "state": "Ile-de-France",
+    "country": "France",
+    "lat": 48.8588897,
+    "lng": 2.320041,
+    "departed_from": "London",
+    "travel_mode": "Train",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Villecien",
+    "state": "Bourgogne-Franche-Comté",
+    "country": "France",
+    "lat": 48.0056204,
+    "lng": 3.3279296,
+    "departed_from": "Paris",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Cézy",
+    "state": "Bourgogne",
+    "country": "France",
+    "lat": 47.99265,
+    "lng": 3.34067,
+    "departed_from": "",
+    "travel_mode": ""
+  },
+  {
+    "city": "Eze",
+    "state": "Provence-Alpes-Cote d'Azur",
+    "country": "France",
+    "lat": 43.71667,
+    "lng": 7.36667,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Saint-Tropez",
+    "state": "Provence-Alpes-Cote d'Azur",
+    "country": "France",
+    "lat": 43.26932,
+    "lng": 6.63981,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Vanves",
+    "state": "Ile-de-France",
+    "country": "France",
+    "lat": 48.82345,
+    "lng": 2.29025,
+    "departed_from": "",
+    "travel_mode": ""
+  },
+  {
+    "city": "Levallois-Perret",
+    "state": "Ile-de-France",
+    "country": "France",
+    "lat": 48.89389,
+    "lng": 2.28864,
+    "departed_from": "Paris",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Montrouge",
+    "state": "Ile-de-France",
+    "country": "France",
+    "lat": 48.8162,
+    "lng": 2.31393,
+    "departed_from": "Vanves",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Berlin",
+    "state": "",
+    "country": "Germany",
+    "lat": 52.5173885,
+    "lng": 13.3951309,
+    "departed_from": "Chicago",
+    "travel_mode": "Plane",
+    "layover": true
+  },
+  {
+    "city": "Hamburg",
+    "state": "",
+    "country": "Germany",
+    "lat": 53.550341,
+    "lng": 10.000654,
+    "departed_from": "Chicago",
+    "travel_mode": "Plane",
+    "layover": true
+  },
+  {
+    "city": "Munich",
+    "state": "Bavaria",
+    "country": "Germany",
+    "lat": 48.1371079,
+    "lng": 11.5753822,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Bogenhausen",
+    "state": "Bavaria",
+    "country": "Germany",
+    "lat": 48.15221,
+    "lng": 11.61585,
+    "departed_from": "Interlaken",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Athens",
+    "state": "Attica",
+    "country": "Greece",
+    "lat": 37.9755648,
+    "lng": 23.7348324,
+    "departed_from": "Paris",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Santorini",
+    "state": "Southern Aegean",
+    "country": "Greece",
+    "lat": 36.4071112,
+    "lng": 25.4566637,
+    "departed_from": "Athens",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Mykonos",
+    "state": "Southern Aegean",
+    "country": "Greece",
+    "lat": 37.4513937,
+    "lng": 25.3923149,
+    "departed_from": "London",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Emporeio",
+    "state": "South Aegean",
+    "country": "Greece",
+    "lat": 36.35813,
+    "lng": 25.44393,
+    "departed_from": "Mykonos",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Oia",
+    "state": "South Aegean",
+    "country": "Greece",
+    "lat": 36.46295,
+    "lng": 25.37773,
+    "departed_from": "Fira",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Fira",
+    "state": "South Aegean",
+    "country": "Greece",
+    "lat": 36.42107,
+    "lng": 25.43087,
+    "departed_from": "Emporeio",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Vyronas",
+    "state": "Attica",
+    "country": "Greece",
+    "lat": 37.96105,
+    "lng": 23.753,
+    "departed_from": "Athens",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Piraeus",
+    "state": "Attica",
+    "country": "Greece",
+    "lat": 37.94745,
+    "lng": 23.63708,
+    "departed_from": "Athens",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Vatican City",
+    "state": "",
+    "country": "Holy See (Vatican City State)",
+    "lat": 41.90236,
+    "lng": 12.45332,
+    "departed_from": "San Bruno",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Baldvinsskáli",
+    "state": "",
+    "country": "Iceland",
+    "lat": 63.6110407,
+    "lng": -19.4412308,
+    "departed_from": "Reykjavík",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Falljökull",
+    "state": "",
+    "country": "Iceland",
+    "lat": 63.9867208,
+    "lng": -16.7303927,
+    "departed_from": "Reykjavík",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Jökulsárlón",
+    "state": "",
+    "country": "Iceland",
+    "lat": 64.0783208,
+    "lng": -16.2274213,
+    "departed_from": "Reykjavík",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Kirkjubæjarklaustur",
+    "state": "",
+    "country": "Iceland",
+    "lat": 63.793065,
+    "lng": -18.0418591,
+    "departed_from": "Reykjavík",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Norðurljósavegur",
+    "state": "",
+    "country": "Iceland",
+    "lat": 63.8816754,
+    "lng": -22.4406403,
+    "departed_from": "Reykjavík",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Reykjavík",
+    "state": "",
+    "country": "Iceland",
+    "lat": 64.145981,
+    "lng": -21.9422367,
+    "departed_from": "Reykjavík",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Selfoss",
+    "state": "",
+    "country": "Iceland",
+    "lat": 63.9368093,
+    "lng": -21.0035319,
+    "departed_from": "Reykjavík",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Stóridalur",
+    "state": "",
+    "country": "Iceland",
+    "lat": 63.6379491,
+    "lng": -19.9502354,
+    "departed_from": "Reykjavík",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Vik",
+    "state": "",
+    "country": "Iceland",
+    "lat": 63.4188166,
+    "lng": -19.0054737,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Vestmannaeyjar",
+    "state": "South",
+    "country": "Iceland",
+    "lat": 63.44273,
+    "lng": -20.27339,
+    "departed_from": "",
+    "travel_mode": "",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Höfn",
+    "state": "East",
+    "country": "Iceland",
+    "lat": 64.25388,
+    "lng": -15.21212,
+    "departed_from": "Akureyri",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Hveragerði",
+    "state": "South",
+    "country": "Iceland",
+    "lat": 64.00039,
+    "lng": -21.18602,
+    "departed_from": "Baldvinsskáli",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Grindavík",
+    "state": "Southern Peninsula",
+    "country": "Iceland",
+    "lat": 63.83849,
+    "lng": -22.43931,
+    "departed_from": "",
+    "travel_mode": "",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Akureyri",
+    "state": "Northeast",
+    "country": "Iceland",
+    "lat": 65.68353,
+    "lng": -18.0878,
+    "departed_from": "Vestmannaeyjar",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Laugar",
+    "state": "Northeast",
+    "country": "Iceland",
+    "lat": 65.72159,
+    "lng": -17.37352,
+    "departed_from": "",
+    "travel_mode": ""
+  },
+  {
+    "city": "Reykjavik",
+    "state": "Capital Region",
+    "country": "Iceland",
+    "lat": 64.13548,
+    "lng": -21.89541,
+    "departed_from": "Chelsea",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Kopavogur",
+    "state": "Capital Region",
+    "country": "Iceland",
+    "lat": 64.11234,
+    "lng": -21.91298,
+    "departed_from": "Reykjavik",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "lat": 27.1752554,
+    "lng": 78.0098161,
+    "departed_from": "New Delhi",
+    "travel_mode": "Train",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Delhi",
+    "state": "Delhi",
+    "country": "India",
+    "lat": 28.6138954,
+    "lng": 77.2090057,
+    "departed_from": "New Delhi",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Fort Kochi",
+    "state": "Kerala",
+    "country": "India",
+    "lat": 9.967569,
+    "lng": 76.2421901,
+    "departed_from": "Mumbai",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "country": "India",
+    "lat": 17.360589,
+    "lng": 78.4740613,
+    "departed_from": "Jaipur",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Jaipur",
+    "state": "Rajasthan",
+    "country": "India",
+    "lat": 26.9154576,
+    "lng": 75.8189817,
+    "departed_from": "Agra",
+    "travel_mode": "Train",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Mumbai",
+    "state": "Maharastra",
+    "country": "India",
+    "lat": 19.054999,
+    "lng": 72.8692035,
+    "departed_from": "Agra",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "New Delhi",
+    "state": "Delhi",
+    "country": "India",
+    "lat": 28.6419258,
+    "lng": 77.2217499,
+    "departed_from": "Beijing",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Uran",
+    "state": "Maharashtra",
+    "country": "India",
+    "lat": 18.87813,
+    "lng": 72.93924,
+    "departed_from": "Mumbai",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Quthbullapur",
+    "state": "Telangana",
+    "country": "India",
+    "lat": 17.50107,
+    "lng": 78.45818,
+    "departed_from": "Malkajgiri",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Fatehpur Sikri",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "lat": 27.0937,
+    "lng": 77.66003,
+    "departed_from": "Agra",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Arukutti",
+    "state": "Kerala",
+    "country": "India",
+    "lat": 9.86667,
+    "lng": 76.35,
+    "departed_from": "Cochin",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Jewar",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "lat": 28.12279,
+    "lng": 77.55622,
+    "departed_from": "Agra",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Gurgaon",
+    "state": "Haryana",
+    "country": "India",
+    "lat": 28.4601,
+    "lng": 77.02635,
+    "departed_from": "New Delhi",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Haridwar",
+    "state": "Uttarakhand",
+    "country": "India",
+    "lat": 29.94791,
+    "lng": 78.16025,
+    "departed_from": "Rosemont",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Rishikesh",
+    "state": "Uttarakhand",
+    "country": "India",
+    "lat": 30.10778,
+    "lng": 78.29255,
+    "departed_from": "San Jose",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Cochin",
+    "state": "Kerala",
+    "country": "India",
+    "lat": 9.93988,
+    "lng": 76.26022,
+    "departed_from": "Fort Kochi",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Malkajgiri",
+    "state": "Telangana",
+    "country": "India",
+    "lat": 17.44781,
+    "lng": 78.52633,
+    "departed_from": "Jaipur",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Karol Bagh",
+    "state": "NCT",
+    "country": "India",
+    "lat": 28.65156,
+    "lng": 77.18859,
+    "departed_from": "New Delhi",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Noida",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "lat": 28.58,
+    "lng": 77.33,
+    "departed_from": "Delhi",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Baldoyle",
+    "state": "Leinster",
+    "country": "Ireland",
+    "lat": 53.3958303,
+    "lng": -6.1285497,
+    "departed_from": "Dublin",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Castletownsend",
+    "state": "Munster",
+    "country": "Ireland",
+    "lat": 51.5359968,
+    "lng": -9.1815714,
+    "departed_from": "Dublin",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Cork",
+    "state": "Munster",
+    "country": "Ireland",
+    "lat": 51.8985136,
+    "lng": -8.4726423,
+    "departed_from": "Dublin",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Dublin",
+    "state": "Leinster",
+    "country": "Ireland",
+    "lat": 53.3493795,
+    "lng": -6.2605593,
+    "departed_from": "Dublin",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Dundalk",
+    "state": "Leinster",
+    "country": "Ireland",
+    "lat": 54.0046033,
+    "lng": -6.4008879,
+    "departed_from": "Dublin",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Galway",
+    "state": "Connacht",
+    "country": "Ireland",
+    "lat": 53.2744122,
+    "lng": -9.0490601,
+    "departed_from": "Dublin",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Howth",
+    "state": "Leinster",
+    "country": "Ireland",
+    "lat": 53.3858337,
+    "lng": -6.0651186,
+    "departed_from": "Dublin",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Kildare",
+    "state": "Leinster",
+    "country": "Ireland",
+    "lat": 53.1568465,
+    "lng": -6.9117199,
+    "departed_from": "Dublin",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Kilkenny",
+    "state": "Leinster",
+    "country": "Ireland",
+    "lat": 52.6506255,
+    "lng": -7.2514438,
+    "departed_from": "Dublin",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Limerick",
+    "state": "Munster",
+    "country": "Ireland",
+    "lat": 52.661252,
+    "lng": -8.6301239,
+    "departed_from": "Dublin",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Meath",
+    "state": "Leinster",
+    "country": "Ireland",
+    "lat": 53.6497514,
+    "lng": -6.5884245,
+    "departed_from": "Dublin",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Skibbereen",
+    "state": "Munster",
+    "country": "Ireland",
+    "lat": 51.5492174,
+    "lng": -9.2994118,
+    "departed_from": "Dublin",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Sutton",
+    "state": "Leinster",
+    "country": "Ireland",
+    "lat": 53.3920109,
+    "lng": -6.1160836,
+    "departed_from": "Dublin",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Swords",
+    "state": "Leinster",
+    "country": "Ireland",
+    "lat": 53.4594799,
+    "lng": -6.219175,
+    "departed_from": "Dublin",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Tullamore",
+    "state": "Leinster",
+    "country": "Ireland",
+    "lat": 53.2743768,
+    "lng": -7.4927486,
+    "departed_from": "Dublin",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Waterford",
+    "state": "Munster",
+    "country": "Ireland",
+    "lat": 52.2609997,
+    "lng": -7.1119081,
+    "departed_from": "Dublin",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Westmeath",
+    "state": "Leinster",
+    "country": "Ireland",
+    "lat": 53.5577902,
+    "lng": -7.3478558,
+    "departed_from": "Dublin",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Wicklow",
+    "state": "Leinster",
+    "country": "Ireland",
+    "lat": 52.9802376,
+    "lng": -6.0414184,
+    "departed_from": "Dublin",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Malahide",
+    "state": "Leinster",
+    "country": "Ireland",
+    "lat": 53.45083,
+    "lng": -6.15444,
+    "departed_from": "San Bruno",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Duleek",
+    "state": "Leinster",
+    "country": "Ireland",
+    "lat": 53.65667,
+    "lng": -6.41917,
+    "departed_from": "Malahide",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Ballinrobe",
+    "state": "Connaught",
+    "country": "Ireland",
+    "lat": 53.63333,
+    "lng": -9.23333,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Wexford",
+    "state": "Leinster",
+    "country": "Ireland",
+    "lat": 52.33417,
+    "lng": -6.4575,
+    "departed_from": "Stamullin",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Stamullin",
+    "state": "Leinster",
+    "country": "Ireland",
+    "lat": 53.62889,
+    "lng": -6.26833,
+    "departed_from": "Malahide",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Enniscorthy",
+    "state": "Leinster",
+    "country": "Ireland",
+    "lat": 52.50083,
+    "lng": -6.55778,
+    "departed_from": "",
+    "travel_mode": ""
+  },
+  {
+    "city": "Kingscourt",
+    "state": "Ulster",
+    "country": "Ireland",
+    "lat": 53.90806,
+    "lng": -6.80556,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Derry",
+    "state": "Munster",
+    "country": "Ireland",
+    "lat": 51.58666,
+    "lng": -9.05026,
+    "departed_from": "Howth",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Rialto",
+    "state": "Leinster",
+    "country": "Ireland",
+    "lat": 53.33625,
+    "lng": -6.29718,
+    "departed_from": "Howth",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Killester",
+    "state": "",
+    "country": "Ireland",
+    "lat": 53.37322,
+    "lng": -6.20431,
+    "departed_from": "Bayside",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Bayside",
+    "state": "",
+    "country": "Ireland",
+    "lat": 53.38895,
+    "lng": -6.14041,
+    "departed_from": "Howth",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Beaumont",
+    "state": "Leinster",
+    "country": "Ireland",
+    "lat": 53.39139,
+    "lng": -6.24056,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Ballymun",
+    "state": "Leinster",
+    "country": "Ireland",
+    "lat": 53.39807,
+    "lng": -6.26693,
+    "departed_from": "Dublin",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Florence",
+    "state": "Tuscany",
+    "country": "Italy",
+    "lat": 43.7697955,
+    "lng": 11.2556404,
+    "departed_from": "Rome",
+    "travel_mode": "Train",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Milan",
+    "state": "Lombardy",
+    "country": "Italy",
+    "lat": 45.4641943,
+    "lng": 9.1896346,
+    "departed_from": "Toiano",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Palaia",
+    "state": "Tuscany",
+    "country": "Italy",
+    "lat": 43.6047668,
+    "lng": 10.7730759,
+    "departed_from": "Pisa",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Pisa",
+    "state": "Tuscany",
+    "country": "Italy",
+    "lat": 43.4714722,
+    "lng": 10.6797912,
+    "departed_from": "Rome",
+    "travel_mode": "Train",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Rome",
+    "state": "Lazio",
+    "country": "Italy",
+    "lat": 41.8933203,
+    "lng": 12.4829321,
+    "departed_from": "Chicago",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Toiano",
+    "state": "Tuscany",
+    "country": "Italy",
+    "lat": 43.2960181,
+    "lng": 11.2455452,
+    "departed_from": "Pisa",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Venice",
+    "state": "Veneto",
+    "country": "Italy",
+    "lat": 45.4371908,
+    "lng": 12.3345898,
+    "departed_from": "Dublin",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Castelletto Sopra Ticino",
+    "state": "Piedmont",
+    "country": "Italy",
+    "lat": 45.72002,
+    "lng": 8.63362,
+    "departed_from": "Arona",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Arona",
+    "state": "Piedmont",
+    "country": "Italy",
+    "lat": 45.7589,
+    "lng": 8.55715,
+    "departed_from": "Zermatt",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Santa Marinella",
+    "state": "Latium",
+    "country": "Italy",
+    "lat": 42.04707,
+    "lng": 11.87242,
+    "departed_from": "Rome",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Fiesole",
+    "state": "Tuscany",
+    "country": "Italy",
+    "lat": 43.80455,
+    "lng": 11.29487,
+    "departed_from": "Florence",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Fujinomiya",
+    "state": "Shizuoka",
+    "country": "Japan",
+    "lat": 35.2221369,
+    "lng": 138.6214683,
+    "departed_from": "Tokyo",
+    "travel_mode": "Train",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Kyoto",
+    "state": "Kyoto",
+    "country": "Japan",
+    "lat": 34.9853497,
+    "lng": 135.758766,
+    "departed_from": "Tokyo",
+    "travel_mode": "Train",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Nagoya",
+    "state": "Aichi",
+    "country": "Japan",
+    "lat": 35.1851045,
+    "lng": 136.8998438,
+    "departed_from": "Tokyo",
+    "travel_mode": "Train"
+  },
+  {
+    "city": "Okinawa",
+    "state": "Okinawa Prefecture",
+    "country": "Japan",
+    "lat": 26.4748948,
+    "lng": 127.9114687,
+    "departed_from": "Osaka",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Osaka",
+    "state": "Kansai",
+    "country": "Japan",
+    "lat": 34.4114837,
+    "lng": 135.2998578,
+    "departed_from": "Chicago",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Tokyo",
+    "state": "Tokyo",
+    "country": "Japan",
+    "lat": 35.6812546,
+    "lng": 139.766706,
+    "departed_from": "Taiwan",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Fujikawaguchiko",
+    "state": "Yamanashi",
+    "country": "Japan",
+    "lat": 35.48933,
+    "lng": 138.68832,
+    "departed_from": "Otsuki",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Hakone",
+    "state": "Kanagawa",
+    "country": "Japan",
+    "lat": 35.18333,
+    "lng": 139.03333,
+    "departed_from": "Pittsburgh",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Odawara",
+    "state": "Kanagawa",
+    "country": "Japan",
+    "lat": 35.25556,
+    "lng": 139.15972,
+    "departed_from": "Hakone",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Otsuki",
+    "state": "Yamanashi",
+    "country": "Japan",
+    "lat": 35.6,
+    "lng": 138.93333,
+    "departed_from": "Tokyo",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Gotemba",
+    "state": "Shizuoka",
+    "country": "Japan",
+    "lat": 35.3,
+    "lng": 138.93333,
+    "departed_from": "Munsan",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Urayasu",
+    "state": "Tokyo",
+    "country": "Japan",
+    "lat": 35.67056,
+    "lng": 139.88861,
+    "departed_from": "Tokyo",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Muko",
+    "state": "Kyoto",
+    "country": "Japan",
+    "lat": 34.96545,
+    "lng": 135.70415,
+    "departed_from": "Kyoto",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Kamigyo-ku",
+    "state": "Kyoto",
+    "country": "Japan",
+    "lat": 35.02954,
+    "lng": 135.75666,
+    "departed_from": "Kyoto",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Mdina",
+    "state": "",
+    "country": "Malta",
+    "lat": 35.8858681,
+    "lng": 14.4027236,
+    "departed_from": "Valetta",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Valletta",
+    "state": "",
+    "country": "Malta",
+    "lat": 35.8989979,
+    "lng": 14.5136607,
+    "departed_from": "Chicago",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Victoria",
+    "state": "Gozo",
+    "country": "Malta",
+    "lat": 36.0428907,
+    "lng": 14.2398479,
+    "departed_from": "Valetta",
+    "travel_mode": "Ferry",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Cabo Pulmo",
+    "state": "Baja California Sur",
+    "country": "Mexico",
+    "lat": 23.4453627,
+    "lng": -109.4240213,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Cabo San Lucas",
+    "state": "Baja California Sur",
+    "country": "Mexico",
+    "lat": 22.8938884,
+    "lng": -109.92006,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Las Veredas",
+    "state": "Baja California Sur",
+    "country": "Mexico",
+    "lat": 23.15028,
+    "lng": -109.70611,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Corral del Risco (Punta de Mita)",
+    "state": "Nayarit",
+    "country": "Mexico",
+    "lat": 20.77361,
+    "lng": -105.51667,
+    "departed_from": "Paradise",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Alfredo V. Bonfil",
+    "state": "Quintana Roo",
+    "country": "Mexico",
+    "lat": 21.08776,
+    "lng": -86.84706,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Las Palmas",
+    "state": "Baja California Sur",
+    "country": "Mexico",
+    "lat": 22.93672,
+    "lng": -109.94235,
+    "departed_from": "Cabo San Lucas",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Marrakech",
+    "state": "Marrakesh",
+    "country": "Morocco",
+    "lat": 31.6305935,
+    "lng": -8.0171313,
+    "departed_from": "Lisbon",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Sidi Bou Othmane",
+    "state": "Marrakech-Tensift-Al Haouz",
+    "country": "Morocco",
+    "lat": 31.90226,
+    "lng": -7.94169,
+    "departed_from": "Alboraya",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Marrakesh",
+    "state": "Marrakech-Tensift-Al Haouz",
+    "country": "Morocco",
+    "lat": 31.63416,
+    "lng": -7.99994,
+    "departed_from": "Alboraya",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Kathmandu",
+    "state": "Central Region",
+    "country": "Nepal",
+    "lat": 27.70169,
+    "lng": 85.3206,
+    "departed_from": "London",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Amsterdam",
+    "state": "North Holland",
+    "country": "Netherlands",
+    "lat": 52.3730796,
+    "lng": 4.8924534,
+    "departed_from": "Haarlem",
+    "travel_mode": "Train",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Haarlem",
+    "state": "North Holland",
+    "country": "Netherlands",
+    "lat": 52.3885317,
+    "lng": 4.6388048,
+    "departed_from": "Chicago",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Auckland",
+    "state": "Auckland",
+    "country": "New Zealand",
+    "lat": -36.852095,
+    "lng": 174.7631803,
+    "departed_from": "Sydney",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Queenstown",
+    "state": "Otago",
+    "country": "New Zealand",
+    "lat": -45.0321923,
+    "lng": 168.661,
+    "departed_from": "Auckland",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Takapuna",
+    "state": "Auckland",
+    "country": "New Zealand",
+    "lat": -36.7878213,
+    "lng": 174.7729913,
+    "departed_from": "Auckland",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Muriwai Beach",
+    "state": "Auckland",
+    "country": "New Zealand",
+    "lat": -36.81667,
+    "lng": 174.45,
+    "departed_from": "Takapuna",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Arrowtown",
+    "state": "Otago",
+    "country": "New Zealand",
+    "lat": -44.93837,
+    "lng": 168.81007,
+    "departed_from": "Queenstown",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "North Shore",
+    "state": "Auckland",
+    "country": "New Zealand",
+    "lat": -36.8,
+    "lng": 174.75,
+    "departed_from": "Takapuna",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Murrays Bay",
+    "state": "Auckland",
+    "country": "New Zealand",
+    "lat": -36.72819,
+    "lng": 174.75019,
+    "departed_from": "Auckland",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Eltham",
+    "state": "Taranaki",
+    "country": "New Zealand",
+    "lat": -39.42917,
+    "lng": 174.3,
+    "departed_from": "Auckland",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Pakuranga",
+    "state": "Auckland",
+    "country": "New Zealand",
+    "lat": -36.88333,
+    "lng": 174.91667,
+    "departed_from": "Auckland",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Ancon",
+    "state": "Panama",
+    "country": "Panama",
+    "lat": 8.96015,
+    "lng": -79.5514,
+    "departed_from": "Nuevo Arraijan",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Tocumen",
+    "state": "Panama",
+    "country": "Panama",
+    "lat": 9.08939,
+    "lng": -79.3831,
+    "departed_from": "Tigre",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Nuevo Arraijan",
+    "state": "Panama",
+    "country": "Panama",
+    "lat": 8.91667,
+    "lng": -79.71667,
+    "departed_from": "Decatur",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Panama",
+    "state": "Panama",
+    "country": "Panama",
+    "lat": 8.9936,
+    "lng": -79.51973,
+    "departed_from": "Ancon",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Cusco",
+    "state": "Cusco",
+    "country": "Peru",
+    "lat": -13.5170887,
+    "lng": -71.9785356,
+    "departed_from": "Lima",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Lima",
+    "state": "Lima",
+    "country": "Peru",
+    "lat": -12.0459808,
+    "lng": -77.0305912,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Aguas Calientes",
+    "state": "Cusco",
+    "country": "Peru",
+    "lat": -13.1547,
+    "lng": -72.5254,
+    "departed_from": "Ollantaytambo",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Santa Teresa",
+    "state": "Cusco",
+    "country": "Peru",
+    "lat": -13.13222,
+    "lng": -72.59056,
+    "departed_from": "Ollantaytambo",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Ollantaytambo",
+    "state": "Cusco",
+    "country": "Peru",
+    "lat": -13.25722,
+    "lng": -72.26306,
+    "departed_from": "Cusco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "San Isidro",
+    "state": "Lima",
+    "country": "Peru",
+    "lat": -12.11667,
+    "lng": -77.05,
+    "departed_from": "El Rosario",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Independencia",
+    "state": "Lima",
+    "country": "Peru",
+    "lat": -11.99,
+    "lng": -77.04583,
+    "departed_from": "San Isidro",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Lisbon",
+    "state": "Lisbon District",
+    "country": "Portugal",
+    "lat": 38.7077507,
+    "lng": -9.1365919,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Sintra",
+    "state": "Lisbon District",
+    "country": "Portugal",
+    "lat": 38.8355446,
+    "lng": -9.3522371,
+    "departed_from": "Lisbon",
+    "travel_mode": "Train",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Alges",
+    "state": "Lisbon",
+    "country": "Portugal",
+    "lat": 38.70245,
+    "lng": -9.22936,
+    "departed_from": "Colares",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Moscavide",
+    "state": "Lisbon",
+    "country": "Portugal",
+    "lat": 38.77929,
+    "lng": -9.10222,
+    "departed_from": "Lisbon",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Colares",
+    "state": "Lisbon",
+    "country": "Portugal",
+    "lat": 38.79921,
+    "lng": -9.44691,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Saint Petersburg",
+    "state": "Northwestern",
+    "country": "Russia",
+    "lat": 59.9606739,
+    "lng": 30.1586551,
+    "departed_from": "Chicago",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Centralniy",
+    "state": "St.-Petersburg",
+    "country": "Russian Federation",
+    "lat": 59.93111,
+    "lng": 30.36072,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Incheon",
+    "state": "Gyeonggi Province",
+    "country": "South Korea",
+    "lat": 37.5879876,
+    "lng": 126.8264828,
+    "departed_from": "Seoul",
+    "travel_mode": "Train"
+  },
+  {
+    "city": "Paju",
+    "state": "Gyeonggi Province",
+    "country": "South Korea",
+    "lat": 37.8106654,
+    "lng": 126.7672412,
+    "departed_from": "Seoul",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Seoul",
+    "state": "Seoul-teukbyeolsi",
+    "country": "South Korea",
+    "lat": 37.5534363,
+    "lng": 126.9697994,
+    "departed_from": "Osaka",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Munsan",
+    "state": "Gyeonggi-do",
+    "country": "South Korea",
+    "lat": 37.85944,
+    "lng": 126.785,
+    "departed_from": "Beobwon",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Beobwon",
+    "state": "Gyeonggi-do",
+    "country": "South Korea",
+    "lat": 37.84902,
+    "lng": 126.87533,
+    "departed_from": "Seoul",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Barcelona",
+    "state": "Catalonia",
+    "country": "Spain",
+    "lat": 41.3825802,
+    "lng": 2.177073,
+    "departed_from": "Amsterdam",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Madrid",
+    "state": "Community of Madrid",
+    "country": "Spain",
+    "lat": 40.416782,
+    "lng": -3.703507,
+    "departed_from": "Lisbon",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Valencia",
+    "state": "Community of Valencia",
+    "country": "Spain",
+    "lat": 39.46975,
+    "lng": -0.37739,
+    "departed_from": "Madrid",
+    "travel_mode": "Train",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Alboraya",
+    "state": "Valencia",
+    "country": "Spain",
+    "lat": 39.5,
+    "lng": -0.35,
+    "departed_from": "Valencia",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Quart de Poblet",
+    "state": "Valencia",
+    "country": "Spain",
+    "lat": 39.48139,
+    "lng": -0.43937,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Retiro",
+    "state": "Madrid",
+    "country": "Spain",
+    "lat": 40.41317,
+    "lng": -3.68307,
+    "departed_from": "Madrid",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Barajas de Madrid",
+    "state": "Madrid",
+    "country": "Spain",
+    "lat": 40.47366,
+    "lng": -3.57777,
+    "departed_from": "Madrid",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Arganzuela",
+    "state": "Madrid",
+    "country": "Spain",
+    "lat": 40.40021,
+    "lng": -3.69618,
+    "departed_from": "Madrid",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Brig",
+    "state": "Valais",
+    "country": "Switzerland",
+    "lat": 46.3163457,
+    "lng": 7.9879473,
+    "departed_from": "Geneva",
+    "travel_mode": "Train"
+  },
+  {
+    "city": "Geneva",
+    "state": "Geneva",
+    "country": "Switzerland",
+    "lat": 46.2017559,
+    "lng": 6.1466014,
+    "departed_from": "Reykjavík",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Visp",
+    "state": "Valais",
+    "country": "Switzerland",
+    "lat": 46.2913113,
+    "lng": 7.8811918,
+    "departed_from": "Geneva",
+    "travel_mode": "Train"
+  },
+  {
+    "city": "Zermatt",
+    "state": "Valais",
+    "country": "Switzerland",
+    "lat": 46.0212076,
+    "lng": 7.749254,
+    "departed_from": "Geneva",
+    "travel_mode": "Train",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Caux",
+    "state": "Vaud",
+    "country": "Switzerland",
+    "lat": 46.43241,
+    "lng": 6.93855,
+    "departed_from": "Cully",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Saint-Maurice",
+    "state": "Valais",
+    "country": "Switzerland",
+    "lat": 46.21826,
+    "lng": 7.0032,
+    "departed_from": "Caux",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Lutry",
+    "state": "Vaud",
+    "country": "Switzerland",
+    "lat": 46.50241,
+    "lng": 6.68647,
+    "departed_from": "Geneva",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Cully",
+    "state": "Vaud",
+    "country": "Switzerland",
+    "lat": 46.48892,
+    "lng": 6.72945,
+    "departed_from": "Lutry",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Interlaken",
+    "state": "Bern",
+    "country": "Switzerland",
+    "lat": 46.68387,
+    "lng": 7.86638,
+    "departed_from": "Munich",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Luodong",
+    "state": "Yilan",
+    "country": "Taiwan",
+    "lat": 24.6770334,
+    "lng": 121.766919,
+    "departed_from": "Taipiei",
+    "travel_mode": "Bus",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Taipei",
+    "state": "Taiwan",
+    "country": "Taiwan",
+    "lat": 25.04776,
+    "lng": 121.53185,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Yilan",
+    "state": "Yilan County",
+    "country": "Taiwan",
+    "lat": 24.7519538,
+    "lng": 121.7533344,
+    "departed_from": "Taipei",
+    "travel_mode": "Train",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Banqiao",
+    "state": "Taipei",
+    "country": "Taiwan",
+    "lat": 25.01427,
+    "lng": 121.46719,
+    "departed_from": "Las Vegas",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Ao Nang",
+    "state": "Krabi",
+    "country": "Thailand",
+    "lat": 7.7211733,
+    "lng": 98.7655426,
+    "departed_from": "Krabi",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Bangkok",
+    "state": "Bangkok",
+    "country": "Thailand",
+    "lat": 13.8157541,
+    "lng": 100.5597347,
+    "departed_from": "Beijing",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Chiang Mai",
+    "state": "Chiang Mai",
+    "country": "Thailand",
+    "lat": 18.7882778,
+    "lng": 98.9858802,
+    "departed_from": "Bangkok",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Krabi",
+    "state": "Krabi",
+    "country": "Thailand",
+    "lat": 8.0634637,
+    "lng": 98.9162345,
+    "departed_from": "Chiang Mai",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Phasi Charoen",
+    "state": "Bangkok",
+    "country": "Thailand",
+    "lat": 13.71466,
+    "lng": 100.43691,
+    "departed_from": "Nuea Khlong",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Phra Nakhon",
+    "state": "Bangkok",
+    "country": "Thailand",
+    "lat": 13.76512,
+    "lng": 100.49864,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Ban Ao Nang",
+    "state": "Phangnga",
+    "country": "Thailand",
+    "lat": 8.0458,
+    "lng": 98.81035,
+    "departed_from": "Chiang Mai",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Pom Prap Sattru Phai",
+    "state": "Bangkok",
+    "country": "Thailand",
+    "lat": 13.75822,
+    "lng": 100.51325,
+    "departed_from": "Phra Nakhon",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Din Daeng",
+    "state": "Bangkok",
+    "country": "Thailand",
+    "lat": 13.76994,
+    "lng": 100.55299,
+    "departed_from": "Phasi Charoen",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Dusit",
+    "state": "Bangkok",
+    "country": "Thailand",
+    "lat": 13.7775,
+    "lng": 100.51977,
+    "departed_from": "Pom Prap Sattru Phai",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Nuea Khlong",
+    "state": "Krabi",
+    "country": "Thailand",
+    "lat": 8.07143,
+    "lng": 98.99933,
+    "departed_from": "Ban Ao Nang",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Tunis",
+    "state": "Tunis Governorate",
+    "country": "Tunisia",
+    "lat": 36.8002068,
+    "lng": 10.1857757,
+    "departed_from": "Valetta",
+    "travel_mode": "Ferry",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Istanbul",
+    "state": "Marmara",
+    "country": "Turkey",
+    "lat": 41.006381,
+    "lng": 28.9758715,
+    "departed_from": "Athens",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Durusu",
+    "state": "Istanbul",
+    "country": "Türkiye",
+    "lat": 41.30337,
+    "lng": 28.67635,
+    "departed_from": "Dubrovnik",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Providenciales",
+    "state": "Providenciales",
+    "country": "Turks and Caicos",
+    "lat": 21.814447,
+    "lng": -72.1509849,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Edinburgh",
+    "state": "Scotland",
+    "country": "United Kingdom",
+    "lat": 55.9519018,
+    "lng": -3.1904199,
+    "departed_from": "Copenhagen",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "London",
+    "state": "Greater London",
+    "country": "United Kingdom",
+    "lat": 51.5074456,
+    "lng": -0.1277653,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Ascot",
+    "state": "England",
+    "country": "United Kingdom",
+    "lat": 51.41082,
+    "lng": -0.6748,
+    "departed_from": "Battersea",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "West Drayton",
+    "state": "England",
+    "country": "United Kingdom",
+    "lat": 51.5,
+    "lng": -0.46667,
+    "departed_from": "Delhi",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Tollesbury",
+    "state": "England",
+    "country": "United Kingdom",
+    "lat": 51.75913,
+    "lng": 0.83462,
+    "departed_from": "Austin",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Wattisham",
+    "state": "England",
+    "country": "United Kingdom",
+    "lat": 52.12543,
+    "lng": 0.93864,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "City of London",
+    "state": "England",
+    "country": "United Kingdom",
+    "lat": 51.51279,
+    "lng": -0.09184,
+    "departed_from": "London",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Seafield",
+    "state": "Scotland",
+    "country": "United Kingdom",
+    "lat": 55.96667,
+    "lng": -3.15,
+    "departed_from": "Edinburgh",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Barnsbury",
+    "state": "England",
+    "country": "United Kingdom",
+    "lat": 51.54067,
+    "lng": -0.11675,
+    "departed_from": "London",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Harringay",
+    "state": "England",
+    "country": "United Kingdom",
+    "lat": 51.5824,
+    "lng": -0.09956,
+    "departed_from": "Barnsbury",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Chelsea",
+    "state": "England",
+    "country": "United Kingdom",
+    "lat": 51.48755,
+    "lng": -0.16936,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Bayswater",
+    "state": "England",
+    "country": "United Kingdom",
+    "lat": 51.51116,
+    "lng": -0.18426,
+    "departed_from": "Chelsea",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Battersea",
+    "state": "England",
+    "country": "United Kingdom",
+    "lat": 51.47475,
+    "lng": -0.15547,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Bethnal Green",
+    "state": "England",
+    "country": "United Kingdom",
+    "lat": 51.52718,
+    "lng": -0.06109,
+    "departed_from": "City of London",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Blackheath",
+    "state": "England",
+    "country": "United Kingdom",
+    "lat": 51.4647,
+    "lng": 0.0079,
+    "departed_from": "Lincolnwood",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Agua Caliente",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.8238,
+    "lng": -116.5447,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Akron",
+    "state": "Ohio",
+    "country": "United States of America",
+    "lat": 41.083064,
+    "lng": -81.518485,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Alexandria",
+    "state": "Virginia",
+    "country": "United States of America",
+    "lat": 38.8051095,
+    "lng": -77.0470229,
+    "departed_from": "",
+    "travel_mode": ""
+  },
+  {
+    "city": "Alpharetta",
+    "state": "Georgia",
+    "country": "United States of America",
+    "lat": 34.0755962,
+    "lng": -84.2945964,
+    "departed_from": "Atlanta",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Alpine Meadows",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 39.1785177,
+    "lng": -120.2276948,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Alsip",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.6689223,
+    "lng": -87.7386619,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Anaheim",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.8347516,
+    "lng": -117.911732,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Antioch",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.0093296,
+    "lng": -121.8106925,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Arches National Park",
+    "state": "Utah",
+    "country": "United States of America",
+    "lat": 38.7265253,
+    "lng": -109.5630201,
+    "departed_from": "Moab",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Arlington",
+    "state": "Virginia",
+    "country": "United States of America",
+    "lat": 38.8769326,
+    "lng": -77.0893094,
+    "departed_from": "Washington",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Arvada",
+    "state": "Colorado",
+    "country": "United States of America",
+    "lat": 39.8005505,
+    "lng": -105.0811573,
+    "departed_from": "Denver",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Atlanta",
+    "state": "Georgia",
+    "country": "United States of America",
+    "lat": 33.7544657,
+    "lng": -84.3898151,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Austin",
+    "state": "Texas",
+    "country": "United States of America",
+    "lat": 30.2711286,
+    "lng": -97.7436995,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Avenue of the Giants",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 40.2527851,
+    "lng": -123.8215035,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Bakersfield",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 35.3738712,
+    "lng": -119.019463,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Baltimore",
+    "state": "Maryland",
+    "country": "United States of America",
+    "lat": 39.2908816,
+    "lng": -76.610759,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Barstow",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.8986215,
+    "lng": -117.0244313,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Battle Creek",
+    "state": "Michigan",
+    "country": "United States of America",
+    "lat": 42.3192548,
+    "lng": -85.1824269,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Bedford Park",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.7690519,
+    "lng": -87.7770096,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Bellevue",
+    "state": "Washington",
+    "country": "United States of America",
+    "lat": 47.6144219,
+    "lng": -122.192337,
+    "departed_from": "Seattle",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Berkeley",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.8708393,
+    "lng": -122.272863,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Beverly",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.7181532,
+    "lng": -87.6717674,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Beverly Hills",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.0696501,
+    "lng": -118.3963062,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Bloomington",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 40.4797828,
+    "lng": -88.9939147,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Blue Island",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.6573014,
+    "lng": -87.679871,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Boston",
+    "state": "Massachusetts",
+    "country": "United States of America",
+    "lat": 42.3554334,
+    "lng": -71.060511,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Boulder",
+    "state": "Colorado",
+    "country": "United States of America",
+    "lat": 40.0149856,
+    "lng": -105.270545,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Boulder Creek",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.1260578,
+    "lng": -122.1221869,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Bridgeview",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.7500323,
+    "lng": -87.8042216,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Buffalo",
+    "state": "New York",
+    "country": "United States of America",
+    "lat": 42.8867166,
+    "lng": -78.8783922,
+    "departed_from": "",
+    "travel_mode": ""
+  },
+  {
+    "city": "Burbank",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.1812089,
+    "lng": -118.307201,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Burbank",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.741406,
+    "lng": -87.7686078,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Burlingame",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.5780965,
+    "lng": -122.3473099,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Cambridge",
+    "state": "Massachusetts",
+    "country": "United States of America",
+    "lat": 42.3656347,
+    "lng": -71.1040018,
+    "departed_from": "Boston",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Canyonlands National Park",
+    "state": "Utah",
+    "country": "United States of America",
+    "lat": 38.2332587,
+    "lng": -109.9206627,
+    "departed_from": "Dead Horse Point State Park",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Cape Canaveral",
+    "state": "Florida",
+    "country": "United States of America",
+    "lat": 28.4513556,
+    "lng": -80.5283059,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Carmel-by-the-Sea",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 36.5552656,
+    "lng": -121.923278,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Carnelian Bay",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 39.2270008,
+    "lng": -120.081236,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Chandler",
+    "state": "Arizona",
+    "country": "United States of America",
+    "lat": 33.3062031,
+    "lng": -111.841185,
+    "departed_from": "San Francisco",
+    "travel_mode": ""
+  },
+  {
+    "city": "Charleston",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 39.4961458,
+    "lng": -88.1761521,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Charlotte",
+    "state": "North Carolina",
+    "country": "United States of America",
+    "lat": 35.2272086,
+    "lng": -80.8430827,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Chattanooga",
+    "state": "Tennessee",
+    "country": "United States of America",
+    "lat": 35.0457219,
+    "lng": -85.3094883,
+    "departed_from": "",
+    "travel_mode": "",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Cheyenne",
+    "state": "Wyoming",
+    "country": "United States of America",
+    "lat": 41.139981,
+    "lng": -104.820246,
+    "departed_from": "",
+    "travel_mode": ""
+  },
+  {
+    "city": "Chicago",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.8755616,
+    "lng": -87.6244212,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Chicago Heights",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.5062834,
+    "lng": -87.6357079,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Chicago Ridge",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.7014217,
+    "lng": -87.7792196,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Cincinnati",
+    "state": "Ohio",
+    "country": "United States of America",
+    "lat": 39.1014537,
+    "lng": -84.5124602,
+    "departed_from": "",
+    "travel_mode": "",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Cleveland",
+    "state": "Ohio",
+    "country": "United States of America",
+    "lat": 41.4996574,
+    "lng": -81.6936772,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Cocoa Beach",
+    "state": "Florida",
+    "country": "United States of America",
+    "lat": 28.3184107,
+    "lng": -80.6094959,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Columbia",
+    "state": "Missouri",
+    "country": "United States of America",
+    "lat": 38.951883,
+    "lng": -92.3337366,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Columbus",
+    "state": "Ohio",
+    "country": "United States of America",
+    "lat": 39.9622601,
+    "lng": -83.0007065,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Concord",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.9768525,
+    "lng": -122.0335624,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Crestwood",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.6611444,
+    "lng": -87.7525511,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Crystal Bay",
+    "state": "Nevada",
+    "country": "United States of America",
+    "lat": 39.2279861,
+    "lng": -120.0042336,
+    "departed_from": "Ridgewood",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Cupertino",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.3228934,
+    "lng": -122.0322895,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Dallas",
+    "state": "Texas",
+    "country": "United States of America",
+    "lat": 32.7762719,
+    "lng": -96.7968559,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "layover": true
+  },
+  {
+    "city": "Daly City",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.6904826,
+    "lng": -122.47267,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Danville",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.8225892,
+    "lng": -122.0008254,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Dayton",
+    "state": "Ohio",
+    "country": "United States of America",
+    "lat": 39.77944,
+    "lng": -84.199196,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Dead Horse Point State Park",
+    "state": "Utah",
+    "country": "United States of America",
+    "lat": 38.5142197,
+    "lng": -109.7387738,
+    "departed_from": "Fallon",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Decatur",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 39.8454163,
+    "lng": -88.9524151,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Denver",
+    "state": "Colorado",
+    "country": "United States of America",
+    "lat": 39.7392364,
+    "lng": -104.984862,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Des Moines",
+    "state": "Iowa",
+    "country": "United States of America",
+    "lat": 41.5868654,
+    "lng": -93.6249494,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Detroit",
+    "state": "Michigan",
+    "country": "United States of America",
+    "lat": 42.3315509,
+    "lng": -83.0466403,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "East Palo Alto",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.4688273,
+    "lng": -122.141075,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "El Cerrito",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.9154056,
+    "lng": -122.301411,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Emeryville",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.8314089,
+    "lng": -122.2865266,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Eureka",
+    "state": "Nevada",
+    "country": "United States of America",
+    "lat": 40.8020712,
+    "lng": -124.1636729,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Evanston",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 42.0470043,
+    "lng": -87.6846053,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Evergreen Park",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.720136,
+    "lng": -87.7013258,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car",
+    "home": true,
+    "notable": true
+  },
+  {
+    "city": "Fall River Mills",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 41.0045561,
+    "lng": -121.4411779,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Fallon",
+    "state": "Nevada",
+    "country": "United States of America",
+    "lat": 39.4745166,
+    "lng": -118.777895,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Flagstaff",
+    "state": "Arizona",
+    "country": "United States of America",
+    "lat": 35.1987522,
+    "lng": -111.651822,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Flossmoor",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.5428123,
+    "lng": -87.6847684,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Fort Bragg",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 39.4436579,
+    "lng": -123.8057607,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Fort Lauderdale",
+    "state": "Florida",
+    "country": "United States of America",
+    "lat": 26.1223084,
+    "lng": -80.1433786,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Fort Wayne",
+    "state": "Indiana",
+    "country": "United States of America",
+    "lat": 41.0799898,
+    "lng": -85.1386015,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Frankfort",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.4979467,
+    "lng": -87.8495946,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Fremont",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.5482697,
+    "lng": -121.988571,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Fresno",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 36.7394421,
+    "lng": -119.78483,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Gary",
+    "state": "Indiana",
+    "country": "United States of America",
+    "lat": 41.6045061,
+    "lng": -87.3373495,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Gilroy",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.0065078,
+    "lng": -121.5631723,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Glen Ellyn",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.8775293,
+    "lng": -88.0670118,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Glendale",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.1469416,
+    "lng": -118.2478471,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Grand Canyon National Park",
+    "state": "Arizona",
+    "country": "United States of America",
+    "lat": 36.3078548,
+    "lng": -112.292896,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Grand Canyon Village",
+    "state": "Arizona",
+    "country": "United States of America",
+    "lat": 36.057807,
+    "lng": -112.128156,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Haleakala",
+    "state": "Hawaii",
+    "country": "United States of America",
+    "lat": 20.7014871,
+    "lng": -156.1732767,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Half Moon Bay",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.4635519,
+    "lng": -122.428586,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Hartford",
+    "state": "Connecticut",
+    "country": "United States of America",
+    "lat": 41.764582,
+    "lng": -72.6908547,
+    "departed_from": "New York City",
+    "travel_mode": "Train"
+  },
+  {
+    "city": "Hastings-on-Hudson",
+    "state": "New York",
+    "country": "United States of America",
+    "lat": 40.9946622,
+    "lng": -73.8785922,
+    "departed_from": "New York",
+    "travel_mode": "Train",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Hayward",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.6688205,
+    "lng": -122.080796,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Heavenly",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.9352,
+    "lng": -119.94,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Hickory Hills",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.7255879,
+    "lng": -87.825055,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Hollywood",
+    "state": "Florida",
+    "country": "United States of America",
+    "lat": 26.0112014,
+    "lng": -80.1494901,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Homer Glen",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.6000318,
+    "lng": -87.9381112,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Hometown",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.731246,
+    "lng": -87.7309534,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Homewood",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 39.0868516,
+    "lng": -120.1601901,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Houston",
+    "state": "Texas",
+    "country": "United States of America",
+    "lat": 29.7589382,
+    "lng": -95.3676974,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "layover": true
+  },
+  {
+    "city": "Huntington Beach",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.6783336,
+    "lng": -118.000016,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Huntsville",
+    "state": "Alabama",
+    "country": "United States of America",
+    "lat": 34.729847,
+    "lng": -86.5859011,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Incline Village",
+    "state": "Nevada",
+    "country": "United States of America",
+    "lat": 39.2501246,
+    "lng": -119.951909,
+    "departed_from": "Tahoe City",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Indianapolis",
+    "state": "Indiana",
+    "country": "United States of America",
+    "lat": 39.7669212,
+    "lng": -86.1799659,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Indio",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.7192808,
+    "lng": -116.2188054,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Iowa City",
+    "state": "Iowa",
+    "country": "United States of America",
+    "lat": 41.6612561,
+    "lng": -91.5299106,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Jackson",
+    "state": "Wyoming",
+    "country": "United States of America",
+    "lat": 43.479965,
+    "lng": -110.761815,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Jackson Hole",
+    "state": "Wyoming",
+    "country": "United States of America",
+    "lat": 43.684017,
+    "lng": -110.4436629,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Jacksonville",
+    "state": "Florida",
+    "country": "United States of America",
+    "lat": 30.3321838,
+    "lng": -81.655651,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Jersey City",
+    "state": "New Jersey",
+    "country": "United States of America",
+    "lat": 40.7215682,
+    "lng": -74.047455,
+    "departed_from": "New York",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Joshua Tree",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.1233803,
+    "lng": -116.3128792,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Kalamazoo",
+    "state": "Michigan",
+    "country": "United States of America",
+    "lat": 42.291707,
+    "lng": -85.5872286,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Kansas City",
+    "state": "Missouri",
+    "country": "United States of America",
+    "lat": 39.100105,
+    "lng": -94.5781416,
+    "departed_from": "Chicago",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Kapalua",
+    "state": "Hawaii",
+    "country": "United States of America",
+    "lat": 20.994904,
+    "lng": -156.656234,
+    "departed_from": "Lahaina",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Kihei",
+    "state": "Hawaii",
+    "country": "United States of America",
+    "lat": 20.7476261,
+    "lng": -156.4549898,
+    "departed_from": "Lahaina",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Kings Beach",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 39.2362794,
+    "lng": -120.023362,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Kirkwood",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.7026857,
+    "lng": -120.072685,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Lahaina",
+    "state": "Hawaii",
+    "country": "United States of America",
+    "lat": 20.8871774,
+    "lng": -156.6748024,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Las Vegas",
+    "state": "Nevada",
+    "country": "United States of America",
+    "lat": 36.1674263,
+    "lng": -115.1484131,
+    "departed_from": "Tusayan",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Lincoln",
+    "state": "Ohio",
+    "country": "United States of America",
+    "lat": 41.3444931,
+    "lng": -83.1256792,
+    "departed_from": "",
+    "travel_mode": ""
+  },
+  {
+    "city": "Livermore",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.6820583,
+    "lng": -121.768053,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Long Beach",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.7690164,
+    "lng": -118.191604,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Los Angeles",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.0536909,
+    "lng": -118.242766,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Los Gatos",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.226611,
+    "lng": -121.9746797,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Lost Coast",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 40.438537,
+    "lng": -124.4095003,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Louisville",
+    "state": "Kentucky",
+    "country": "United States of America",
+    "lat": 38.2542376,
+    "lng": -85.759407,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Mackinaw City",
+    "state": "Michigan",
+    "country": "United States of America",
+    "lat": 45.783901,
+    "lng": -84.727828,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Macomb",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 40.4588934,
+    "lng": -90.6713939,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Makawao",
+    "state": "Hawaii",
+    "country": "United States of America",
+    "lat": 20.8510965,
+    "lng": -156.3237171,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Mammoth Cave National Park",
+    "state": "Kentucky",
+    "country": "United States of America",
+    "lat": 37.1841693,
+    "lng": -86.122991,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Mattoon",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 39.4842821,
+    "lng": -88.3773279,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Menlo Park",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.4519671,
+    "lng": -122.177992,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Merced",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.1641544,
+    "lng": -120.7678602,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Merrionette Park",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.681037,
+    "lng": -87.7009693,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Mesa",
+    "state": "Arizona",
+    "country": "United States of America",
+    "lat": 33.4151005,
+    "lng": -111.831455,
+    "departed_from": "San Francisco",
+    "travel_mode": ""
+  },
+  {
+    "city": "Miami",
+    "state": "Florida",
+    "country": "United States of America",
+    "lat": 25.7741566,
+    "lng": -80.1935973,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Miami Beach",
+    "state": "Florida",
+    "country": "United States of America",
+    "lat": 25.7929198,
+    "lng": -80.1353006,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Michigan City",
+    "state": "Indiana",
+    "country": "United States of America",
+    "lat": 41.7075394,
+    "lng": -86.8950297,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Midlothian",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.6253116,
+    "lng": -87.7175491,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Milipitas",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.4187517,
+    "lng": -121.877423,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Mill Valley",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.9060368,
+    "lng": -122.5449763,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Millbrae",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.598958,
+    "lng": -122.400941,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Milwaukee",
+    "state": "Wisconsin",
+    "country": "United States of America",
+    "lat": 43.0386475,
+    "lng": -87.9090751,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Minneapolis",
+    "state": "Minnesota",
+    "country": "United States of America",
+    "lat": 44.9772995,
+    "lng": -93.2654692,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Moab",
+    "state": "Utah",
+    "country": "United States of America",
+    "lat": 38.5738096,
+    "lng": -109.546214,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Modesto",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.6393419,
+    "lng": -120.9968892,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Mokena",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.5261437,
+    "lng": -87.8892189,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Monee",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.4203482,
+    "lng": -87.7447556,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Monterey",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 36.60024,
+    "lng": -121.89468,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Mountain View",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.3893889,
+    "lng": -122.0832101,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Napa",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.4898675,
+    "lng": -122.3218414,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Naperville",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.7728699,
+    "lng": -88.1479278,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Nashville",
+    "state": "Tennessee",
+    "country": "United States of America",
+    "lat": 36.1622767,
+    "lng": -86.7742984,
+    "departed_from": "Chicago",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "New Lenox",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.5119761,
+    "lng": -87.9656098,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "New Orleans",
+    "state": "Louisiana",
+    "country": "United States of America",
+    "lat": 29.9559145,
+    "lng": -90.0730259,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "New York",
+    "state": "New York",
+    "country": "United States of America",
+    "lat": 40.7127281,
+    "lng": -74.0060152,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Newport Beach",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.6170092,
+    "lng": -117.9294401,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Northstar",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 39.2742325,
+    "lng": -120.1214624,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Oak Forest",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.6028116,
+    "lng": -87.7439384,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Oak Lawn",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.7108662,
+    "lng": -87.7581081,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Oakland",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.8044557,
+    "lng": -122.271356,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Omaha",
+    "state": "Nebraska",
+    "country": "United States of America",
+    "lat": 41.2587459,
+    "lng": -95.9383758,
+    "departed_from": "Chicago",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Orland Hills",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.5853107,
+    "lng": -87.8431078,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Orland Park",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.630663,
+    "lng": -87.8536288,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Oshkosh",
+    "state": "Wisconsin",
+    "country": "United States of America",
+    "lat": 44.0206919,
+    "lng": -88.5408574,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Palatine",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 42.1105502,
+    "lng": -88.0434304,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Palm Desert",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.7288179,
+    "lng": -116.382571,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Palm Springs",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.8246269,
+    "lng": -116.540303,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Palo Alto",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.4443293,
+    "lng": -122.1598465,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Palos Heights",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.6681632,
+    "lng": -87.7962812,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Palos Hills",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.6966397,
+    "lng": -87.816924,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Palos Park",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.6673636,
+    "lng": -87.8304952,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Park City",
+    "state": "Utah",
+    "country": "United States of America",
+    "lat": 40.6460921,
+    "lng": -111.4979963,
+    "departed_from": "Salt Lake City",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Park Forest",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.4825788,
+    "lng": -87.6802344,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Pasadena",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.1476507,
+    "lng": -118.144155,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Peoria",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 40.6938609,
+    "lng": -89.5891008,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Peotone",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.3328083,
+    "lng": -87.789758,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Petaluma",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.2325829,
+    "lng": -122.636465,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Philadelphia",
+    "state": "Pennsylvania",
+    "country": "United States of America",
+    "lat": 39.9527237,
+    "lng": -75.1635262,
+    "departed_from": "New York City",
+    "travel_mode": "Train",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Phoenix",
+    "state": "Arizona",
+    "country": "United States of America",
+    "lat": 33.4484367,
+    "lng": -112.074141,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Pittsburgh",
+    "state": "Pennsylvania",
+    "country": "United States of America",
+    "lat": 40.4416941,
+    "lng": -79.9900861,
+    "departed_from": "New York City",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Pleasanton",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.6624312,
+    "lng": -121.8746789,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Portage",
+    "state": "Michigan",
+    "country": "United States of America",
+    "lat": 42.2011538,
+    "lng": -85.5800022,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Redmond",
+    "state": "Washington",
+    "country": "United States of America",
+    "lat": 47.6694141,
+    "lng": -122.1238767,
+    "departed_from": "Seattle",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Redwood City",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.4863239,
+    "lng": -122.232523,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Reno",
+    "state": "Nevada",
+    "country": "United States of America",
+    "lat": 39.5261788,
+    "lng": -119.812658,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Ridgewood",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 39.2157401,
+    "lng": -120.0924142,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Riverside",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.9824949,
+    "lng": -117.374238,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Robbins",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.6439227,
+    "lng": -87.7036602,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Sacramento",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.5810606,
+    "lng": -121.493895,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Saint Helena",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.5052288,
+    "lng": -122.470042,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Saint Louis",
+    "state": "Missouri",
+    "country": "United States of America",
+    "lat": 38.6280278,
+    "lng": -90.1910154,
+    "departed_from": "Chicago",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Salina",
+    "state": "Utah",
+    "country": "United States of America",
+    "lat": 38.957742,
+    "lng": -111.859984,
+    "departed_from": "Salt Lake City",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Salt Lake City",
+    "state": "Utah",
+    "country": "United States of America",
+    "lat": 40.7596198,
+    "lng": -111.886797,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "San Bernardino",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.8253019,
+    "lng": -116.0833144,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "San Clemente",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.4270275,
+    "lng": -117.6124179,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "San Diego",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 32.7174202,
+    "lng": -117.162772,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "San Francisco",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.7792588,
+    "lng": -122.4193286,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "current": true,
+    "notable": true
+  },
+  {
+    "city": "San Jose",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.3361663,
+    "lng": -121.890591,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "San Leandro",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.7249296,
+    "lng": -122.1560768,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "San Luis Obispo",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 35.3540209,
+    "lng": -120.375716,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "San Mateo",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.496904,
+    "lng": -122.3330573,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "San Pablo",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.9621457,
+    "lng": -122.3455263,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "San Rafael",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.9747795,
+    "lng": -122.5316686,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "San Ramon",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.7648021,
+    "lng": -121.9544387,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Santa Clara",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.3541132,
+    "lng": -121.955174,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Santa Cruz",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.050096,
+    "lng": -121.99059,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Santa Nella",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.497135,
+    "lng": -122.9666644,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Santa Rosa",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.4404925,
+    "lng": -122.7141049,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Saratoga",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.2638324,
+    "lng": -122.0230146,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Sausalito",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.8590272,
+    "lng": -122.485469,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Schaumburg",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 42.0333608,
+    "lng": -88.083406,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Scotts Valley",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.0510595,
+    "lng": -122.014684,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Scottsdale",
+    "state": "Arizona",
+    "country": "United States of America",
+    "lat": 33.4942189,
+    "lng": -111.926018,
+    "departed_from": "Phoenix",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Seattle",
+    "state": "Washington",
+    "country": "United States of America",
+    "lat": 47.6038321,
+    "lng": -122.330062,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Shelter Cove",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 40.0304212,
+    "lng": -124.0730866,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Skokie",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 42.0262972,
+    "lng": -87.7521069,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "South Bend",
+    "state": "Indiana",
+    "country": "United States of America",
+    "lat": 41.6833813,
+    "lng": -86.2500066,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "South Chicago Heights",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.4808681,
+    "lng": -87.6378211,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "South Holland",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.6008681,
+    "lng": -87.6069894,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "South Lake Tahoe",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.9456646,
+    "lng": -119.9687141,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "South San Francisco",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.6535403,
+    "lng": -122.4168664,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Springfield",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 39.7990175,
+    "lng": -89.6439575,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Stockton",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.9577016,
+    "lng": -121.290779,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Summit",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.7880876,
+    "lng": -87.810334,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Sunnyvale",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.3688301,
+    "lng": -122.036349,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Tahoe City",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 39.1689372,
+    "lng": -120.143478,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Tahoma",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 39.0674228,
+    "lng": -120.1285242,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Tempe",
+    "state": "Arizona",
+    "country": "United States of America",
+    "lat": 33.4255117,
+    "lng": -111.940016,
+    "departed_from": "Phoenix",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Thornton",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.5725811,
+    "lng": -87.6095281,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Tinley Park",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.5733669,
+    "lng": -87.7844944,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Truckee",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 39.3279454,
+    "lng": -120.1835765,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Tusayan",
+    "state": "Arizona",
+    "country": "United States of America",
+    "lat": 35.9735954,
+    "lng": -112.126556,
+    "departed_from": "Phoenix",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Twentynine Palms",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.1356915,
+    "lng": -116.0543506,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Urbana",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 40.1117174,
+    "lng": -88.207301,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Vallejo",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.1040864,
+    "lng": -122.2566367,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Walnut Creek",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.9020731,
+    "lng": -122.0618702,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Washington",
+    "state": "District of Columbia",
+    "country": "United States of America",
+    "lat": 38.8950368,
+    "lng": -77.0365427,
+    "departed_from": "Phoenix",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Waukegan",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 42.3602273,
+    "lng": -87.8318164,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Williams",
+    "state": "Arizona",
+    "country": "United States of America",
+    "lat": 35.2507,
+    "lng": -112.1884252,
+    "departed_from": "Phoenix",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Worth",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.6899779,
+    "lng": -87.7974139,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Yosemite National Park",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.8393004,
+    "lng": -119.5164635,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Yosemite Valley",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.7327236,
+    "lng": -119.6057042,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Yosemite Village",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.7481814,
+    "lng": -119.5868869,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Yountville",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.4022008,
+    "lng": -122.359506,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Knoxville",
+    "state": "Tennessee",
+    "country": "United States of America",
+    "lat": 35.9606,
+    "lng": -83.9207,
+    "departed_from": "",
+    "travel_mode": ""
+  },
+  {
+    "city": "Sevierville",
+    "state": "Tennessee",
+    "country": "United States of America",
+    "lat": 35.8681,
+    "lng": -83.5619,
+    "departed_from": "",
+    "travel_mode": "",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Dollywood",
+    "state": "Tennessee",
+    "country": "United States of America",
+    "lat": 35.795,
+    "lng": -83.5301,
+    "departed_from": "Pigeon Forge",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Pigeon Forge",
+    "state": "Tennessee",
+    "country": "United States of America",
+    "lat": 35.7884,
+    "lng": -83.5543,
+    "departed_from": "Wildwood",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Showers Lake",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.7531,
+    "lng": -120.008,
+    "departed_from": "Round Lake",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Round Lake",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.7378,
+    "lng": -119.9856,
+    "departed_from": "Fourth of July Lake",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Echo Lake",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.8356,
+    "lng": -120.044,
+    "departed_from": "Sunnyside-Tahoe City",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Lake Aloha",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.872,
+    "lng": -120.1437,
+    "departed_from": "Heather Lake",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Heather Lake",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.8712,
+    "lng": -120.1297,
+    "departed_from": "Echo Lake",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Susie Lake",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.879,
+    "lng": -120.1213,
+    "departed_from": "Heather Lake",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Gilmore Lake",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.8868,
+    "lng": -120.1303,
+    "departed_from": "Susie Lake",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Dicks Lake",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.9012,
+    "lng": -120.1353,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Fontanillis Lake",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.9061,
+    "lng": -120.146,
+    "departed_from": "Dicks Lake",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Middle Velma Lake",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.9173,
+    "lng": -120.1572,
+    "departed_from": "Fontanillis Lake",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Shadow Lake",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.7176,
+    "lng": -119.1132,
+    "departed_from": "Mammoth Lakes",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Garnet Lake",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.7287,
+    "lng": -119.1668,
+    "departed_from": "Shadow Lake",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Thousand Island Lake",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.7344,
+    "lng": -119.1827,
+    "departed_from": "Garnet Lake",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Spanish Flat",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 40.1383,
+    "lng": -124.1383,
+    "departed_from": "Lost Coast",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Big Flat",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 40.1086,
+    "lng": -124.1494,
+    "departed_from": "Spanish Flat",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Tuolumne Meadows",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.876,
+    "lng": -119.3536,
+    "departed_from": "Bridgeport",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Glen Aulin",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.9094,
+    "lng": -119.4181,
+    "departed_from": "Tuolumne Meadows",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "McGee Lake",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.9011,
+    "lng": -119.4233,
+    "departed_from": "Glen Aulin",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Young Lakes",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.929,
+    "lng": -119.3856,
+    "departed_from": "",
+    "travel_mode": ""
+  },
+  {
+    "city": "Redwood Creek Backcountry",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 41.2034,
+    "lng": -124.0103,
+    "departed_from": "Westhaven-Moonstone",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Gold Bluffs Beach",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 41.3961,
+    "lng": -124.0577,
+    "departed_from": "Redwood Creek Backcountry",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Fourth of July Lake",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.6878,
+    "lng": -119.9636,
+    "departed_from": "Dicks Lake",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Palisades Tahoe",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 39.1969,
+    "lng": -120.2357,
+    "departed_from": "Tahoe City",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Agua Caliente Springs",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 32.9506,
+    "lng": -116.3061,
+    "departed_from": "",
+    "travel_mode": ""
+  },
+  {
+    "city": "Westhaven-Moonstone",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 41.04489,
+    "lng": -124.10239,
+    "departed_from": "McKinleyville",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Green Valley",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.25297,
+    "lng": -122.16219,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Carmel Valley Village",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 36.50605,
+    "lng": -121.76594,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Rio Dell",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 40.4993,
+    "lng": -124.10644,
+    "departed_from": "Redway",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Avon",
+    "state": "Colorado",
+    "country": "United States of America",
+    "lat": 39.63137,
+    "lng": -106.52225,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Cape May",
+    "state": "New Jersey",
+    "country": "United States of America",
+    "lat": 38.93511,
+    "lng": -74.90601,
+    "departed_from": "Philadelphia",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Mount Shasta",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 41.31024,
+    "lng": -122.31225,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Lake Geneva",
+    "state": "Wisconsin",
+    "country": "United States of America",
+    "lat": 42.59168,
+    "lng": -88.43343,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Inverness",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.10103,
+    "lng": -122.85694,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Soledad",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 36.42469,
+    "lng": -121.32632,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Ferndale",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 40.57624,
+    "lng": -124.26394,
+    "departed_from": "",
+    "travel_mode": "",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Burney",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 40.88238,
+    "lng": -121.66082,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "La Jolla",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 32.84727,
+    "lng": -117.2742,
+    "departed_from": "Colma",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Oakhurst",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.328,
+    "lng": -119.64932,
+    "departed_from": "Ahwahnee",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Arthur",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 39.71476,
+    "lng": -88.47228,
+    "departed_from": "Champaign",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Pearlington",
+    "state": "Mississippi",
+    "country": "United States of America",
+    "lat": 30.24658,
+    "lng": -89.61117,
+    "departed_from": "New Orleans",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Eagle River",
+    "state": "Wisconsin",
+    "country": "United States of America",
+    "lat": 45.91718,
+    "lng": -89.2443,
+    "departed_from": "Weyauwega",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Elizabeth",
+    "state": "New Jersey",
+    "country": "United States of America",
+    "lat": 40.66399,
+    "lng": -74.2107,
+    "departed_from": "New York",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Ridgemark",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 36.81246,
+    "lng": -121.36577,
+    "departed_from": "Cambrian Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Healdsburg",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.61047,
+    "lng": -122.86916,
+    "departed_from": "Corral del Risco (Punta de Mita)",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Wildwood",
+    "state": "Tennessee",
+    "country": "United States of America",
+    "lat": 35.8037,
+    "lng": -83.87129,
+    "departed_from": "Eagleton Village",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "New Hope",
+    "state": "Alabama",
+    "country": "United States of America",
+    "lat": 34.53703,
+    "lng": -86.39443,
+    "departed_from": "Din Daeng",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Summerlin South",
+    "state": "Nevada",
+    "country": "United States of America",
+    "lat": 36.11708,
+    "lng": -115.33001,
+    "departed_from": "Las Vegas",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Elkhorn",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 36.8244,
+    "lng": -121.7405,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Bridgeport",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.25575,
+    "lng": -119.23127,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Carefree",
+    "state": "Arizona",
+    "country": "United States of America",
+    "lat": 33.82226,
+    "lng": -111.9182,
+    "departed_from": "Paradise Valley",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Burke",
+    "state": "Virginia",
+    "country": "United States of America",
+    "lat": 38.79345,
+    "lng": -77.27165,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Chantilly",
+    "state": "Virginia",
+    "country": "United States of America",
+    "lat": 38.89428,
+    "lng": -77.4311,
+    "departed_from": "Reykjavík",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Bay Hill",
+    "state": "Florida",
+    "country": "United States of America",
+    "lat": 28.46806,
+    "lng": -81.51618,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Celebration",
+    "state": "Florida",
+    "country": "United States of America",
+    "lat": 28.32529,
+    "lng": -81.53313,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Rio Verde",
+    "state": "Arizona",
+    "country": "United States of America",
+    "lat": 33.72254,
+    "lng": -111.67569,
+    "departed_from": "Paradise Valley",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Cabazon",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.91752,
+    "lng": -116.78724,
+    "departed_from": "Livermore",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Lochbuie",
+    "state": "Colorado",
+    "country": "United States of America",
+    "lat": 40.00721,
+    "lng": -104.71608,
+    "departed_from": "Tianzhu",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Templeton",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 35.54969,
+    "lng": -120.706,
+    "departed_from": "Paso Robles",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Fayette",
+    "state": "Missouri",
+    "country": "United States of America",
+    "lat": 39.14587,
+    "lng": -92.68379,
+    "departed_from": "Columbia",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Granite",
+    "state": "Utah",
+    "country": "United States of America",
+    "lat": 40.573,
+    "lng": -111.80604,
+    "departed_from": "Salt Lake City",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Sunnyside-Tahoe City",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 39.15023,
+    "lng": -120.1612,
+    "departed_from": "Ridgewood",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Dollar Point",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 39.18796,
+    "lng": -120.09991,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Paradise Valley",
+    "state": "Arizona",
+    "country": "United States of America",
+    "lat": 33.53115,
+    "lng": -111.94265,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "La Quinta",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.66336,
+    "lng": -116.31001,
+    "departed_from": "East Pasadena",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Hillsborough",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.5741,
+    "lng": -122.37942,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Mammoth Lakes",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.64855,
+    "lng": -118.97208,
+    "departed_from": "Sunnyside-Tahoe City",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Pacifica",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.61383,
+    "lng": -122.48692,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Stanford",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.42411,
+    "lng": -122.16608,
+    "departed_from": "Bay Hill",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Indian Wells",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.71791,
+    "lng": -116.34311,
+    "departed_from": "Indio",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Foster City",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.55855,
+    "lng": -122.27108,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "San Bruno",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.63049,
+    "lng": -122.41108,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Brisbane",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.68077,
+    "lng": -122.39997,
+    "departed_from": "Oakland",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Grand Canyon",
+    "state": "Arizona",
+    "country": "United States of America",
+    "lat": 36.05443,
+    "lng": -112.13934,
+    "departed_from": "Grand Canyon Village",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 3
+  },
+  {
+    "city": "Tempe Junction",
+    "state": "Arizona",
+    "country": "United States of America",
+    "lat": 33.41421,
+    "lng": -111.94348,
+    "departed_from": "",
+    "travel_mode": ""
+  },
+  {
+    "city": "Temelec",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.26658,
+    "lng": -122.49276,
+    "departed_from": "Sausalito",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Bonny Doon",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.04162,
+    "lng": -122.15052,
+    "departed_from": "San Leandro",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Moose Wilson Road",
+    "state": "Wyoming",
+    "country": "United States of America",
+    "lat": 43.52521,
+    "lng": -110.84466,
+    "departed_from": "Brisbane",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Tahoe Vista",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 39.23991,
+    "lng": -120.05102,
+    "departed_from": "Palisades Tahoe",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Kenwood",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.4138,
+    "lng": -122.54609,
+    "departed_from": "New York",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Dania Beach",
+    "state": "Florida",
+    "country": "United States of America",
+    "lat": 26.05231,
+    "lng": -80.14393,
+    "departed_from": "Miami Beach",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Pasatiempo",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.00439,
+    "lng": -122.0258,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Bolinas",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.90937,
+    "lng": -122.68637,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Deer Park",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.53269,
+    "lng": -122.4697,
+    "departed_from": "Sausalito",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Tamalpais Valley",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.87965,
+    "lng": -122.54581,
+    "departed_from": "Inverness",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Windsor",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.54713,
+    "lng": -122.81638,
+    "departed_from": "Graton",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Milpitas",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.42827,
+    "lng": -121.90662,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Tamalpais-Homestead Valley",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.87834,
+    "lng": -122.53625,
+    "departed_from": "Half Moon Bay",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Redstone Arsenal",
+    "state": "Alabama",
+    "country": "United States of America",
+    "lat": 34.68387,
+    "lng": -86.64764,
+    "departed_from": "Lochbuie",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Oceano",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 35.09886,
+    "lng": -120.61239,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Cambria",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 35.56414,
+    "lng": -121.08075,
+    "departed_from": "Templeton",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Dyersville",
+    "state": "Iowa",
+    "country": "United States of America",
+    "lat": 42.48444,
+    "lng": -91.12291,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Lovelock",
+    "state": "Nevada",
+    "country": "United States of America",
+    "lat": 40.17935,
+    "lng": -118.47348,
+    "departed_from": "Carlin",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Whitewater",
+    "state": "Wisconsin",
+    "country": "United States of America",
+    "lat": 42.83362,
+    "lng": -88.73233,
+    "departed_from": "Chicago",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "El Segundo",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.91918,
+    "lng": -118.41647,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Midpines",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.54438,
+    "lng": -119.92045,
+    "departed_from": "Yosemite Valley",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Lea Hill",
+    "state": "Washington",
+    "country": "United States of America",
+    "lat": 47.32621,
+    "lng": -122.18151,
+    "departed_from": "Millbrae",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Indian Hills",
+    "state": "Colorado",
+    "country": "United States of America",
+    "lat": 39.61665,
+    "lng": -105.23721,
+    "departed_from": "West Pleasant View",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Ahwahnee",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.3655,
+    "lng": -119.72627,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Laramie",
+    "state": "Wyoming",
+    "country": "United States of America",
+    "lat": 41.31137,
+    "lng": -105.5911,
+    "departed_from": "Fox Farm-College",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Smith Valley",
+    "state": "Nevada",
+    "country": "United States of America",
+    "lat": 38.78421,
+    "lng": -119.34425,
+    "departed_from": "Tuolumne Meadows",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Castle Dale",
+    "state": "Utah",
+    "country": "United States of America",
+    "lat": 39.21219,
+    "lng": -111.01961,
+    "departed_from": "Lovelock",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Saratoga",
+    "state": "Wyoming",
+    "country": "United States of America",
+    "lat": 41.45496,
+    "lng": -106.80643,
+    "departed_from": "Laramie",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Rock Falls",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.77975,
+    "lng": -89.689,
+    "departed_from": "Elburn",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Paso Robles",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 35.62664,
+    "lng": -120.691,
+    "departed_from": "Grover Beach",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Saint Charles",
+    "state": "Missouri",
+    "country": "United States of America",
+    "lat": 38.78394,
+    "lng": -90.48123,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Pismo Beach",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 35.14275,
+    "lng": -120.64128,
+    "departed_from": "Callender",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Arcola",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 39.68476,
+    "lng": -88.30644,
+    "departed_from": "Arthur",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Kahului",
+    "state": "Hawaii",
+    "country": "United States of America",
+    "lat": 20.88953,
+    "lng": -156.47432,
+    "departed_from": "Waikapu",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Gustine",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.25772,
+    "lng": -120.99882,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Sutherland",
+    "state": "Nebraska",
+    "country": "United States of America",
+    "lat": 41.15694,
+    "lng": -101.12627,
+    "departed_from": "Cozad",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Rawlins",
+    "state": "Wyoming",
+    "country": "United States of America",
+    "lat": 41.79107,
+    "lng": -107.23866,
+    "departed_from": "Saratoga",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Carlin",
+    "state": "Nevada",
+    "country": "United States of America",
+    "lat": 40.71381,
+    "lng": -116.10397,
+    "departed_from": "Spring Creek",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Erma",
+    "state": "New Jersey",
+    "country": "United States of America",
+    "lat": 38.98067,
+    "lng": -74.90795,
+    "departed_from": "Cape May",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Coalville",
+    "state": "Utah",
+    "country": "United States of America",
+    "lat": 40.91773,
+    "lng": -111.39936,
+    "departed_from": "Laramie",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Coney Island",
+    "state": "New York",
+    "country": "United States of America",
+    "lat": 40.57788,
+    "lng": -73.99403,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Cozad",
+    "state": "Nebraska",
+    "country": "United States of America",
+    "lat": 40.85973,
+    "lng": -99.98734,
+    "departed_from": "Le Claire",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Spring Creek",
+    "state": "Nevada",
+    "country": "United States of America",
+    "lat": 40.72659,
+    "lng": -115.5859,
+    "departed_from": "West Wendover",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Dixon",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.44546,
+    "lng": -121.8233,
+    "departed_from": "Tahoma",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Weedpatch",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 35.23802,
+    "lng": -118.9151,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Slinger",
+    "state": "Wisconsin",
+    "country": "United States of America",
+    "lat": 43.33361,
+    "lng": -88.28621,
+    "departed_from": "Rosemont",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Weehawken",
+    "state": "New Jersey",
+    "country": "United States of America",
+    "lat": 40.76955,
+    "lng": -74.02042,
+    "departed_from": "New York",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Seven Trees",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.28605,
+    "lng": -121.83856,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Sebastopol",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.40214,
+    "lng": -122.82388,
+    "departed_from": "Avenue of the Giants",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Calistoga",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.5788,
+    "lng": -122.57971,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car",
+    "notable": true,
+    "notability": 1
+  },
+  {
+    "city": "Colma",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.67688,
+    "lng": -122.45969,
+    "departed_from": "South San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Keokea",
+    "state": "Hawaii",
+    "country": "United States of America",
+    "lat": 20.70711,
+    "lng": -156.35446,
+    "departed_from": "Haleakala",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Santa Venetia",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.99853,
+    "lng": -122.52525,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Kensington",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.91048,
+    "lng": -122.28025,
+    "departed_from": "Pleasanton",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Inwood",
+    "state": "New York",
+    "country": "United States of America",
+    "lat": 40.62205,
+    "lng": -73.7468,
+    "departed_from": "Long Island City",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Davis",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.54491,
+    "lng": -121.74052,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Limestone",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.13237,
+    "lng": -87.9684,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Downieville",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 39.55934,
+    "lng": -120.82689,
+    "departed_from": "Lovelock",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Republic",
+    "state": "Washington",
+    "country": "United States of America",
+    "lat": 48.64822,
+    "lng": -118.73781,
+    "departed_from": "Austin",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "SeaTac",
+    "state": "Washington",
+    "country": "United States of America",
+    "lat": 47.44846,
+    "lng": -122.29217,
+    "departed_from": "Seattle",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Black Point-Green Point",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.11547,
+    "lng": -122.51318,
+    "departed_from": "Boyes Hot Springs",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "South Riding",
+    "state": "Virginia",
+    "country": "United States of America",
+    "lat": 38.92094,
+    "lng": -77.50388,
+    "departed_from": "Chantilly",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Milan",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.45309,
+    "lng": -90.57208,
+    "departed_from": "Alboraya",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "East Troy",
+    "state": "Wisconsin",
+    "country": "United States of America",
+    "lat": 42.78529,
+    "lng": -88.4051,
+    "departed_from": "Whitewater",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Siesta Key",
+    "state": "Florida",
+    "country": "United States of America",
+    "lat": 27.30199,
+    "lng": -82.55149,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Pajaro",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 36.90412,
+    "lng": -121.74856,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Ferron",
+    "state": "Utah",
+    "country": "United States of America",
+    "lat": 39.09358,
+    "lng": -111.13322,
+    "departed_from": "Panthersville",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Slayton",
+    "state": "Minnesota",
+    "country": "United States of America",
+    "lat": 43.98774,
+    "lng": -95.75585,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Livingston",
+    "state": "Montana",
+    "country": "United States of America",
+    "lat": 45.66244,
+    "lng": -110.56104,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Elburn",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.89225,
+    "lng": -88.4723,
+    "departed_from": "Warrenville",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Wilmington",
+    "state": "North Carolina",
+    "country": "United States of America",
+    "lat": 34.22573,
+    "lng": -77.94471,
+    "departed_from": "Burlingame",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Meadow Vista",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 39.00101,
+    "lng": -121.02189,
+    "departed_from": "Davis",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Eagleton Village",
+    "state": "Tennessee",
+    "country": "United States of America",
+    "lat": 35.79508,
+    "lng": -83.93185,
+    "departed_from": "Burlingame",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Willits",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 39.40961,
+    "lng": -123.35557,
+    "departed_from": "Shelter Cove",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Weyauwega",
+    "state": "Wisconsin",
+    "country": "United States of America",
+    "lat": 44.32137,
+    "lng": -88.93372,
+    "departed_from": "Oshkosh",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Rancho Santa Margarita",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.64086,
+    "lng": -117.6031,
+    "departed_from": "Chicago",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "West Raleigh",
+    "state": "North Carolina",
+    "country": "United States of America",
+    "lat": 35.78682,
+    "lng": -78.66389,
+    "departed_from": "Chicago",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Grover Beach",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 35.12164,
+    "lng": -120.62128,
+    "departed_from": "Pismo Beach",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Fountain Hills",
+    "state": "Arizona",
+    "country": "United States of America",
+    "lat": 33.61171,
+    "lng": -111.71736,
+    "departed_from": "West End",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Effingham",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 39.12004,
+    "lng": -88.54338,
+    "departed_from": "Arthur",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Hornsby Bend",
+    "state": "Texas",
+    "country": "United States of America",
+    "lat": 30.24743,
+    "lng": -97.58333,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Grantsville",
+    "state": "Utah",
+    "country": "United States of America",
+    "lat": 40.59994,
+    "lng": -112.4644,
+    "departed_from": "Mount Olympus",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Reston",
+    "state": "Virginia",
+    "country": "United States of America",
+    "lat": 38.96872,
+    "lng": -77.3411,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Kenner",
+    "state": "Louisiana",
+    "country": "United States of America",
+    "lat": 29.99409,
+    "lng": -90.24174,
+    "departed_from": "New Orleans",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Brooktrails",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 39.44377,
+    "lng": -123.38529,
+    "departed_from": "Sausalito",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "McKinleyville",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 40.94652,
+    "lng": -124.10062,
+    "departed_from": "Eureka",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Alcoa",
+    "state": "Tennessee",
+    "country": "United States of America",
+    "lat": 35.78953,
+    "lng": -83.97379,
+    "departed_from": "Pigeon Forge",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Foothill Farms",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.67877,
+    "lng": -121.35114,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Marina",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 36.6844,
+    "lng": -121.80217,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Jamaica",
+    "state": "New York",
+    "country": "United States of America",
+    "lat": 40.69149,
+    "lng": -73.80569,
+    "departed_from": "Inwood",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Gold Camp",
+    "state": "Arizona",
+    "country": "United States of America",
+    "lat": 33.29367,
+    "lng": -111.30429,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Lebec",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.84164,
+    "lng": -118.86482,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Baton Rouge",
+    "state": "Louisiana",
+    "country": "United States of America",
+    "lat": 30.45075,
+    "lng": -91.15455,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Roseville",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.75212,
+    "lng": -121.28801,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Meridian",
+    "state": "Colorado",
+    "country": "United States of America",
+    "lat": 39.55166,
+    "lng": -104.85887,
+    "departed_from": "Cambria",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Battlement Mesa",
+    "state": "Colorado",
+    "country": "United States of America",
+    "lat": 39.44137,
+    "lng": -108.02507,
+    "departed_from": "Sherman Oaks",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Callender",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 35.05303,
+    "lng": -120.59628,
+    "departed_from": "Oceano",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "East Carbon City",
+    "state": "Utah",
+    "country": "United States of America",
+    "lat": 39.54774,
+    "lng": -110.41488,
+    "departed_from": "Moab",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Savannah",
+    "state": "Georgia",
+    "country": "United States of America",
+    "lat": 32.08354,
+    "lng": -81.09983,
+    "departed_from": "Chicago",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Princeton Junction",
+    "state": "New Jersey",
+    "country": "United States of America",
+    "lat": 40.31733,
+    "lng": -74.61988,
+    "departed_from": "Chicago",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Encinitas",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.03699,
+    "lng": -117.29198,
+    "departed_from": "Paradise Valley",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Kendall West",
+    "state": "Florida",
+    "country": "United States of America",
+    "lat": 25.7065,
+    "lng": -80.4388,
+    "departed_from": "Oakland",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Hollister",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 36.85245,
+    "lng": -121.4016,
+    "departed_from": "Cambrian Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Kalama",
+    "state": "Washington",
+    "country": "United States of America",
+    "lat": 46.00845,
+    "lng": -122.84455,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Shandon",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 35.65525,
+    "lng": -120.37543,
+    "departed_from": "Millbrae",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Peach Springs",
+    "state": "Arizona",
+    "country": "United States of America",
+    "lat": 35.52916,
+    "lng": -113.42549,
+    "departed_from": "Grand Canyon Village",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Niantic",
+    "state": "Connecticut",
+    "country": "United States of America",
+    "lat": 41.32538,
+    "lng": -72.19313,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Del Mar",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 32.95949,
+    "lng": -117.26531,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Laguna Beach",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.54225,
+    "lng": -117.78311,
+    "departed_from": "Arvada",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Egypt Lake-Leto",
+    "state": "Florida",
+    "country": "United States of America",
+    "lat": 28.01769,
+    "lng": -82.50619,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "West Ferriday",
+    "state": "Louisiana",
+    "country": "United States of America",
+    "lat": 31.64044,
+    "lng": -91.57318,
+    "departed_from": "University Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Peoria",
+    "state": "Arizona",
+    "country": "United States of America",
+    "lat": 33.5806,
+    "lng": -112.23738,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Saint Anne",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.02503,
+    "lng": -87.71392,
+    "departed_from": "Chicago",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Southgate",
+    "state": "Florida",
+    "country": "United States of America",
+    "lat": 27.3081,
+    "lng": -82.50982,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "West Cape May",
+    "state": "New Jersey",
+    "country": "United States of America",
+    "lat": 38.93872,
+    "lng": -74.94184,
+    "departed_from": "Santiago",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Malibu Beach",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.03279,
+    "lng": -118.68842,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Morgan Hill",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.1305,
+    "lng": -121.65439,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Aldine",
+    "state": "Texas",
+    "country": "United States of America",
+    "lat": 29.93245,
+    "lng": -95.38021,
+    "departed_from": "Playa Del Coco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Winters",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.52491,
+    "lng": -121.9708,
+    "departed_from": "Austin",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Anderson Mill",
+    "state": "Texas",
+    "country": "United States of America",
+    "lat": 30.45492,
+    "lng": -97.80584,
+    "departed_from": "Austin",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Wendover",
+    "state": "Utah",
+    "country": "United States of America",
+    "lat": 40.73715,
+    "lng": -114.03751,
+    "departed_from": "Mount Olympus",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Le Claire",
+    "state": "Iowa",
+    "country": "United States of America",
+    "lat": 41.59864,
+    "lng": -90.34346,
+    "departed_from": "Rock Falls",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "West Wendover",
+    "state": "Nevada",
+    "country": "United States of America",
+    "lat": 40.7391,
+    "lng": -114.07335,
+    "departed_from": "Wendover",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Freeport",
+    "state": "New York",
+    "country": "United States of America",
+    "lat": 40.6576,
+    "lng": -73.58318,
+    "departed_from": "Manhattan",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Tracy",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.73987,
+    "lng": -121.42618,
+    "departed_from": "Santa Monica",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Portland",
+    "state": "Oregon",
+    "country": "United States of America",
+    "lat": 45.52345,
+    "lng": -122.67621,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Castle Pines",
+    "state": "Colorado",
+    "country": "United States of America",
+    "lat": 39.45804,
+    "lng": -104.89609,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Sidney",
+    "state": "Nebraska",
+    "country": "United States of America",
+    "lat": 41.14276,
+    "lng": -102.97798,
+    "departed_from": "Sutherland",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Como",
+    "state": "Wisconsin",
+    "country": "United States of America",
+    "lat": 42.61224,
+    "lng": -88.48232,
+    "departed_from": "Lake Geneva",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Novato",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.10742,
+    "lng": -122.5697,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Foxborough",
+    "state": "Massachusetts",
+    "country": "United States of America",
+    "lat": 42.06538,
+    "lng": -71.24783,
+    "departed_from": "Long Island City",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Bozeman",
+    "state": "Montana",
+    "country": "United States of America",
+    "lat": 45.67965,
+    "lng": -111.03856,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Des Moines",
+    "state": "Washington",
+    "country": "United States of America",
+    "lat": 47.40177,
+    "lng": -122.32429,
+    "departed_from": "Burien",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Derry",
+    "state": "New Hampshire",
+    "country": "United States of America",
+    "lat": 42.88064,
+    "lng": -71.32729,
+    "departed_from": "Kenner",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Paradise",
+    "state": "Nevada",
+    "country": "United States of America",
+    "lat": 36.09719,
+    "lng": -115.14666,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Redway",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 40.12014,
+    "lng": -123.82336,
+    "departed_from": "Windsor",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Lincolnwood",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 42.00448,
+    "lng": -87.73006,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Alameda",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.76521,
+    "lng": -122.24164,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Napili-Honokowai",
+    "state": "Hawaii",
+    "country": "United States of America",
+    "lat": 20.97075,
+    "lng": -156.67046,
+    "departed_from": "Kapalua",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Hollywood",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.09834,
+    "lng": -118.32674,
+    "departed_from": "Silver Lake",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Manhattan",
+    "state": "New York",
+    "country": "United States of America",
+    "lat": 40.78343,
+    "lng": -73.96625,
+    "departed_from": "New York",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Bermuda Dunes",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.7428,
+    "lng": -116.28918,
+    "departed_from": "Weedpatch",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Piedmont",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.82437,
+    "lng": -122.23163,
+    "departed_from": "Alameda",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Long Island City",
+    "state": "New York",
+    "country": "United States of America",
+    "lat": 40.74482,
+    "lng": -73.94875,
+    "departed_from": "Manhattan",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Druid Hills",
+    "state": "Georgia",
+    "country": "United States of America",
+    "lat": 33.78038,
+    "lng": -84.33604,
+    "departed_from": "Atlanta",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Ka'anapali",
+    "state": "Hawaii",
+    "country": "United States of America",
+    "lat": 20.92881,
+    "lng": -156.69422,
+    "departed_from": "Kapalua",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Wyndmoor",
+    "state": "Pennsylvania",
+    "country": "United States of America",
+    "lat": 40.08122,
+    "lng": -75.18934,
+    "departed_from": "Philadelphia",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "West Hollywood",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.09001,
+    "lng": -118.36174,
+    "departed_from": "Paradise",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Rosemont",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.99531,
+    "lng": -87.88451,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Willow Springs",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.74087,
+    "lng": -87.86033,
+    "departed_from": "Crestwood",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Lemont",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.67364,
+    "lng": -88.00173,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Long Beach",
+    "state": "Indiana",
+    "country": "United States of America",
+    "lat": 41.73893,
+    "lng": -86.85697,
+    "departed_from": "Lansing",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Pacific Grove",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 36.61774,
+    "lng": -121.91662,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Tiburon",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.87354,
+    "lng": -122.45664,
+    "departed_from": "Green Valley",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Marin City",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.86854,
+    "lng": -122.50914,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Vista Santa Rosa",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.6278,
+    "lng": -116.21806,
+    "departed_from": "Bermuda Dunes",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Rollingwood",
+    "state": "Texas",
+    "country": "United States of America",
+    "lat": 30.27687,
+    "lng": -97.79112,
+    "departed_from": "Austin",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Silver Lake",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.08668,
+    "lng": -118.27023,
+    "departed_from": "Los Angeles",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Del Monte Forest",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 36.58635,
+    "lng": -121.94746,
+    "departed_from": "Pacific Grove",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Whiting",
+    "state": "Indiana",
+    "country": "United States of America",
+    "lat": 41.67976,
+    "lng": -87.49449,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Brookline",
+    "state": "Massachusetts",
+    "country": "United States of America",
+    "lat": 42.33176,
+    "lng": -71.12116,
+    "departed_from": "Boston",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Clayton",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.94103,
+    "lng": -121.93579,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Thousand Palms",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.82002,
+    "lng": -116.39029,
+    "departed_from": "Indio",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Santa Monica",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.01945,
+    "lng": -118.49119,
+    "departed_from": "Niantic",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Ross",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.96242,
+    "lng": -122.55498,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Forestville",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.47352,
+    "lng": -122.89027,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Sunrise",
+    "state": "Florida",
+    "country": "United States of America",
+    "lat": 26.13397,
+    "lng": -80.1131,
+    "departed_from": "Dania Beach",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Hoboken",
+    "state": "New Jersey",
+    "country": "United States of America",
+    "lat": 40.74399,
+    "lng": -74.03236,
+    "departed_from": "Weehawken",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Del Rey Oaks",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 36.59329,
+    "lng": -121.83495,
+    "departed_from": "Carmel-by-the-Sea",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Twin Lakes",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 36.96745,
+    "lng": -121.99802,
+    "departed_from": "Pasatiempo",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Darien",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.75198,
+    "lng": -87.97395,
+    "departed_from": "Chicago",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Champaign",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 40.11642,
+    "lng": -88.24338,
+    "departed_from": "Chicago",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Garnet",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.90196,
+    "lng": -116.54557,
+    "departed_from": "Cabazon",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "College Park",
+    "state": "Georgia",
+    "country": "United States of America",
+    "lat": 33.65344,
+    "lng": -84.44937,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Newark",
+    "state": "New Jersey",
+    "country": "United States of America",
+    "lat": 40.73566,
+    "lng": -74.17237,
+    "departed_from": "Hoboken",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Orinda",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.87715,
+    "lng": -122.17969,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Marrero",
+    "state": "Louisiana",
+    "country": "United States of America",
+    "lat": 29.89937,
+    "lng": -90.10035,
+    "departed_from": "New Orleans",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Boyes Hot Springs",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.3138,
+    "lng": -122.48193,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Oakley",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.99742,
+    "lng": -121.71245,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Arden-Arcade",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.6025,
+    "lng": -121.37854,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "North Hollywood",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.17223,
+    "lng": -118.37897,
+    "departed_from": "East Pasadena",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Graton",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.4363,
+    "lng": -122.86972,
+    "departed_from": "Sebastopol",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Kingsbury",
+    "state": "Nevada",
+    "country": "United States of America",
+    "lat": 38.97713,
+    "lng": -119.90685,
+    "departed_from": "South Lake Tahoe",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Dublin",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.70215,
+    "lng": -121.93579,
+    "departed_from": "Livermore",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "East Pasadena",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.14612,
+    "lng": -118.09424,
+    "departed_from": "San Diego",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Campbell",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.28717,
+    "lng": -121.94996,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Moraga",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.83493,
+    "lng": -122.12969,
+    "departed_from": "Piedmont",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Colwyn",
+    "state": "Pennsylvania",
+    "country": "United States of America",
+    "lat": 39.91234,
+    "lng": -75.25379,
+    "departed_from": "Cape May",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Belmont",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.52021,
+    "lng": -122.2758,
+    "departed_from": "Foster City",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Brentwood",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.93187,
+    "lng": -121.69579,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Harvey",
+    "state": "Louisiana",
+    "country": "United States of America",
+    "lat": 29.90354,
+    "lng": -90.07729,
+    "departed_from": "Marrero",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Orange",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.78779,
+    "lng": -117.85311,
+    "departed_from": "Chicago",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Rolling Meadows",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 42.08419,
+    "lng": -88.01313,
+    "departed_from": "Chicago",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "La Canada Flintridge",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.19917,
+    "lng": -118.18785,
+    "departed_from": "East Pasadena",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Cambrian Park",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.25689,
+    "lng": -121.93079,
+    "departed_from": "Paradise",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Lombard",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.88003,
+    "lng": -88.00784,
+    "departed_from": "Chicago",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Atherton",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.46133,
+    "lng": -122.19774,
+    "departed_from": "Merrionette Park",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Sparks",
+    "state": "Nevada",
+    "country": "United States of America",
+    "lat": 39.53491,
+    "lng": -119.75269,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Universal City",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.1389,
+    "lng": -118.35341,
+    "departed_from": "Chicago",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Corte Madera",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.92548,
+    "lng": -122.52748,
+    "departed_from": "Mill Valley",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Albany",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.88687,
+    "lng": -122.29775,
+    "departed_from": "Dixon",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Calumet Park",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.66281,
+    "lng": -87.6606,
+    "departed_from": "Chicago",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Burien",
+    "state": "Washington",
+    "country": "United States of America",
+    "lat": 47.47038,
+    "lng": -122.34679,
+    "departed_from": "Seattle",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Pukalani",
+    "state": "Hawaii",
+    "country": "United States of America",
+    "lat": 20.83667,
+    "lng": -156.33667,
+    "departed_from": "Makawao",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "San Carlos",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.50716,
+    "lng": -122.26052,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "North Glendale",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.16056,
+    "lng": -118.26452,
+    "departed_from": "Millbrae",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Burr Ridge",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.74892,
+    "lng": -87.91839,
+    "departed_from": "Willowbrook",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Larchmont",
+    "state": "New York",
+    "country": "United States of America",
+    "lat": 40.92788,
+    "lng": -73.7518,
+    "departed_from": "Merrionette Park",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Edgewater",
+    "state": "Colorado",
+    "country": "United States of America",
+    "lat": 39.75304,
+    "lng": -105.06415,
+    "departed_from": "Arvada",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Savoy",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 40.05475,
+    "lng": -88.25172,
+    "departed_from": "Chicago",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Berwyn",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.85059,
+    "lng": -87.79367,
+    "departed_from": "Chicago",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Brooklyn",
+    "state": "New York",
+    "country": "United States of America",
+    "lat": 40.6501,
+    "lng": -73.94958,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Irvine",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.66946,
+    "lng": -117.82311,
+    "departed_from": "New York",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Larkspur",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.93409,
+    "lng": -122.53525,
+    "departed_from": "Kenwood",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Huntington Park",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.98168,
+    "lng": -118.22507,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Marina del Rey",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.98029,
+    "lng": -118.45174,
+    "departed_from": "Huntington Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Guttenberg",
+    "state": "New Jersey",
+    "country": "United States of America",
+    "lat": 40.79205,
+    "lng": -74.00375,
+    "departed_from": "Northstar",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Rutherford",
+    "state": "New Jersey",
+    "country": "United States of America",
+    "lat": 40.82649,
+    "lng": -74.10681,
+    "departed_from": "Weehawken",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Sonoma",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.29186,
+    "lng": -122.45804,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Snyderville",
+    "state": "Utah",
+    "country": "United States of America",
+    "lat": 40.69439,
+    "lng": -111.54381,
+    "departed_from": "Granite",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Willard",
+    "state": "Utah",
+    "country": "United States of America",
+    "lat": 40.70634,
+    "lng": -111.83743,
+    "departed_from": "",
+    "travel_mode": ""
+  },
+  {
+    "city": "Lexington",
+    "state": "Massachusetts",
+    "country": "United States of America",
+    "lat": 42.44732,
+    "lng": -71.2245,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Metairie Terrace",
+    "state": "Louisiana",
+    "country": "United States of America",
+    "lat": 29.97854,
+    "lng": -90.16396,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Chelsea",
+    "state": "Massachusetts",
+    "country": "United States of America",
+    "lat": 42.39176,
+    "lng": -71.03283,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Fetters Hot Springs-Agua Caliente",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.3214,
+    "lng": -122.48682,
+    "departed_from": "Black Point-Green Point",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Hamtramck",
+    "state": "Michigan",
+    "country": "United States of America",
+    "lat": 42.39282,
+    "lng": -83.04964,
+    "departed_from": "Detroit",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Goodings Grove",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.6292,
+    "lng": -87.93089,
+    "departed_from": "Palos Hills",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Hapeville",
+    "state": "Georgia",
+    "country": "United States of America",
+    "lat": 33.66011,
+    "lng": -84.4102,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Sherman Oaks",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 34.15112,
+    "lng": -118.44925,
+    "departed_from": "North Hollywood",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "East Hazel Crest",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.57365,
+    "lng": -87.64643,
+    "departed_from": "Frankfort",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Western Springs",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.80975,
+    "lng": -87.90062,
+    "departed_from": "Los Angeles",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "University Park",
+    "state": "Texas",
+    "country": "United States of America",
+    "lat": 32.85013,
+    "lng": -96.80028,
+    "departed_from": "Paradise Valley",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "River Grove",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.92586,
+    "lng": -87.83589,
+    "departed_from": "East Troy",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Aurora",
+    "state": "Colorado",
+    "country": "United States of America",
+    "lat": 39.72943,
+    "lng": -104.83192,
+    "departed_from": "Chicago",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "West Pleasant View",
+    "state": "Colorado",
+    "country": "United States of America",
+    "lat": 39.73256,
+    "lng": -105.17852,
+    "departed_from": "Denver",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Franconia",
+    "state": "Virginia",
+    "country": "United States of America",
+    "lat": 38.78206,
+    "lng": -77.14637,
+    "departed_from": "Burke",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Applewood",
+    "state": "Colorado",
+    "country": "United States of America",
+    "lat": 39.75778,
+    "lng": -105.1625,
+    "departed_from": "Lincolnwood",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Richfield",
+    "state": "Minnesota",
+    "country": "United States of America",
+    "lat": 44.8833,
+    "lng": -93.283,
+    "departed_from": "Alameda",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Maywood",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.8792,
+    "lng": -87.84312,
+    "departed_from": "River Grove",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Highlands-Baywood Park",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.52272,
+    "lng": -122.34506,
+    "departed_from": "Hillsborough",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Panthersville",
+    "state": "Georgia",
+    "country": "United States of America",
+    "lat": 33.70733,
+    "lng": -84.27187,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Florence-Graham",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.96772,
+    "lng": -118.24438,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Lucas Valley-Marinwood",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.04011,
+    "lng": -122.5755,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Lompico",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.1055,
+    "lng": -122.05274,
+    "departed_from": "Burbank",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Montara",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.54216,
+    "lng": -122.51609,
+    "departed_from": "Pacifica",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Waikapu",
+    "state": "Hawaii",
+    "country": "United States of America",
+    "lat": 20.85806,
+    "lng": -156.50694,
+    "departed_from": "Lahaina",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Park Ridge",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 42.01114,
+    "lng": -87.84062,
+    "departed_from": "Rosemont",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Warrenville",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.81781,
+    "lng": -88.1734,
+    "departed_from": "Chicago",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Mount Olympus",
+    "state": "Utah",
+    "country": "United States of America",
+    "lat": 40.6855,
+    "lng": -111.78854,
+    "departed_from": "Coalville",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Chula Vista",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 32.64005,
+    "lng": -117.0842,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Strawberry",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.89687,
+    "lng": -122.50886,
+    "departed_from": "Marin City",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Inglewood",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.96168,
+    "lng": -118.35313,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Fox Farm-College",
+    "state": "Wyoming",
+    "country": "United States of America",
+    "lat": 41.11203,
+    "lng": -104.78546,
+    "departed_from": "Sidney",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Olympia Fields",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.51337,
+    "lng": -87.67421,
+    "departed_from": "Santa Clara",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Grandview",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 39.81644,
+    "lng": -89.61871,
+    "departed_from": "Carmel-by-the-Sea",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Lansing",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.56476,
+    "lng": -87.53893,
+    "departed_from": "Evergreen Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Loyola",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 37.35133,
+    "lng": -122.10052,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "American Canyon",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.17492,
+    "lng": -122.2608,
+    "departed_from": "Crystal Bay",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Lagunitas-Forest Knolls",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.01793,
+    "lng": -122.69124,
+    "departed_from": "San Francisco",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "North Bay Village",
+    "state": "Florida",
+    "country": "United States of America",
+    "lat": 25.84621,
+    "lng": -80.15394,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Newport",
+    "state": "Washington",
+    "country": "United States of America",
+    "lat": 47.57121,
+    "lng": -122.18068,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "San Joaquin Hills",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 33.61169,
+    "lng": -117.83672,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "El Verano",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.29769,
+    "lng": -122.49165,
+    "departed_from": "Fetters Hot Springs-Agua Caliente",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Willowbrook",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 41.76975,
+    "lng": -87.93589,
+    "departed_from": "Merrionette Park",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Larkfield-Wikiup",
+    "state": "California",
+    "country": "United States of America",
+    "lat": 38.51342,
+    "lng": -122.75094,
+    "departed_from": "Phoenix",
+    "travel_mode": "Plane"
+  },
+  {
+    "city": "Hoffman Estates",
+    "state": "Illinois",
+    "country": "United States of America",
+    "lat": 42.04281,
+    "lng": -88.0798,
+    "departed_from": "Chicago",
+    "travel_mode": "Car"
+  },
+  {
+    "city": "Saint Thomas",
+    "state": "United States Virgin Islands",
+    "country": "United States Virgin Islands",
+    "lat": 18.3429082,
+    "lng": -64.9188997,
+    "departed_from": "San Francisco",
+    "travel_mode": "Plane",
+    "notable": true,
+    "notability": 2
+  },
+  {
+    "city": "Machu Picchu",
+    "state": "Cusco",
+    "country": "Peru",
+    "lat": -13.1631,
+    "lng": -72.545,
+    "departed_from": "Aguas Calientes",
+    "travel_mode": "Bus",
+    "notable": true,
+    "notability": 3
+  }
+]

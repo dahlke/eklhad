@@ -58,23 +58,15 @@ uv sync
 
 When adding a new script, drop it in `scripts/` and run it with `uv run python scripts/<name>.py` — no separate install step needed.
 
-### Data Collection
+### Site Data
 
-These will run only one time, and retrieve the latest data for each data source.
+The site's data lives in `web/data/` and is embedded into the Go binary, so editing a file and rebuilding is all it takes.
 
-#### Pull Most Recent Data from Google Sheets (and Geocode the necessary data points)
+- `locations.json`: every place on the map (city, state, country, lat, lng, departed_from, travel_mode, plus optional current / layover / home / notable / notability). A place needs coordinates to show up.
+- `locationPhotos.json`: photo, stamp and poster URLs per city, written by `scripts/publish_photos.py` and `scripts/stamp_publish.py`.
+- `links.json` and `blogs.json`: talks, press and blog index. Blog bodies are the markdown files in `web/data/blogs/`.
 
-```bash
-cd web/
-go run main.go -gsheets
-```
-
-#### Pull All Data from All Sources
-
-```bash
-source secrets.op.sh
-make collect_data
-```
+New places from a Takeout review go in with `uv run python scripts/add_locations.py <approved locations.csv> --apply`.
 
 ### Resume Generation
 
@@ -152,8 +144,7 @@ The Dockerfile uses a multi-stage build process that automatically builds both t
 for optimal image size. You only need to prepare the data and resume before building the Docker image.
 
 ```bash
-# Step 1: Collect and prepare data
-make collect_data
+# Step 1: Prepare the resume
 make resume  # Must be run before Docker build - generates static resume HTML in web/frontend/public/static/
 
 # Step 2: Build and push Docker image, then deploy to Cloud Run

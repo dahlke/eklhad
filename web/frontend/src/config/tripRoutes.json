@@ -45680,11 +45680,6 @@
     "mode": "Plane"
   },
   {
-    "from": "Dollar Point",
-    "to": "Takoradi",
-    "mode": "Plane"
-  },
-  {
     "from": "Dublin",
     "to": "Venice",
     "mode": "Plane"
@@ -45702,11 +45697,6 @@
   {
     "from": "Gurgaon",
     "to": "Wangjing",
-    "mode": "Plane"
-  },
-  {
-    "from": "Hoboken",
-    "to": "Al Jizah",
     "mode": "Plane"
   },
   {

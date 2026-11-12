@@ -1,7 +1,7 @@
 # Add Location Photo
 
 Add a new photo to the map for a visited location. Works for any place — cities already in
-the locations sheet, lesser-known spots, or entirely new entries.
+web/data/locations.json, lesser-known spots, or entirely new entries.
 
 ## Phase 1 — Identify the place and find the photo
 
@@ -12,7 +12,7 @@ Once you have the name:
 1. **Identify it** — determine:
    - Canonical city/region name (e.g. "West Cork", "Luodong")
    - Country and state/province/region if relevant
-   - Approximate lat/lng (for future sheet entry)
+   - Approximate lat/lng (for the locations.json entry)
    - Suggested emoji that represents this place visually or culturally
 
 2. **Generate a Google Photos search URL** using this Python snippet:
@@ -132,7 +132,7 @@ gsutil acl ch -u AllUsers:R gs://eklhad-web-public/photos/thumbs/{slug}_{YYYY_MM
 
 ### 6. Update locationPhotos.json
 
-File: `web/frontend/src/config/locationPhotos.json`
+File: `web/data/locationPhotos.json`
 
 Add or update the entry, keeping the file sorted **alphabetically by city name key**:
 ```json
@@ -144,14 +144,9 @@ Add or update the entry, keeping the file sorted **alphabetically by city name k
 }
 ```
 
-### 7. Remind the user about the Google Sheet
+### 7. Make sure the place is in locations.json
 
-In the `locations` tab of the Google Sheet, find or create the row for this city and fill in:
-- Column J (`Photo URL`): the GCS URL above
-- Column M (`Photo Emoji`): the chosen emoji
-- Column N (`Photo Date`): formatted date (e.g. "October 12, 2019")
-
-After updating the sheet, re-run the data worker so the new fields appear in the GCS JSON and propagate to production.
+In `web/data/locations.json`, find or add the entry for this city (city, state, country, lat, lng, departed_from, travel_mode). The photo fields come from locationPhotos.json, so there is nothing else to fill in. Rebuild the server to see it.
 
 ---
 
