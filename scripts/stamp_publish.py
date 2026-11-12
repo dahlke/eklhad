@@ -32,7 +32,7 @@ from stamp_local import PAPER, crop_to_ink, lift_to_white
 
 BUCKET = "eklhad-web-public"
 PUBLIC = f"https://storage.googleapis.com/{BUCKET}/"
-PHOTOS_JSON = Path(__file__).parent / "../web/frontend/src/config/locationPhotos.json"
+PHOTOS_JSON = Path(__file__).parent / "../web/data/locationPhotos.json"
 
 
 def pin_image(stamp, size=120):

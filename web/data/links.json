@@ -1,0 +1,303 @@
+[
+  {
+    "name": "[SCPR] Comedy Hack Day brings comedians and programmers together in Los Angeles",
+    "date": "2014-12-06",
+    "type": "press",
+    "url": "http://www.scpr.org/blogs/newmedia/2014/12/06/17651/comedy-hack-day-brings-comedians-and-programmers-t/",
+    "location": "San Francisco"
+  },
+  {
+    "name": "[ODBMS] Powering Big Data at Pinterest. Interview with Krishna Gade.",
+    "date": "2015-04-22",
+    "type": "press",
+    "url": "http://www.odbms.org/blog/2015/04/powering-big-data-at-pinterest-interview-with-krishna-gade/",
+    "location": "San Francisco"
+  },
+  {
+    "name": "Exploring Wikipedia Using MemSQL",
+    "date": "2015-05-07",
+    "type": "demo",
+    "url": "https://www.youtube.com/watch?v=bgXbHL3D3vs",
+    "location": "San Francisco"
+  },
+  {
+    "name": "[DePaul University] Computer Science Program Discussion",
+    "date": "2012-03-09",
+    "type": "press",
+    "url": "http://www.depaul.edu/academics/undergraduate/majors/Pages/comp-sci.aspx",
+    "location": "San Francisco"
+  },
+  {
+    "name": "MemSQL Supercar Real-Time Geospatial Demo",
+    "date": "2015-04-13",
+    "type": "demo",
+    "url": "https://www.youtube.com/watch?v=2txICCLUV-Y",
+    "location": "San Francisco"
+  },
+  {
+    "name": "[Medium] Furby does Python - The soul of a furry machine: Scenes from a comedy hackathon",
+    "date": "2014-10-09",
+    "type": "press",
+    "url": "https://backchannel.com/furby-does-python-1b68297d1d26#.c2u8zkwbm",
+    "location": "San Francisco"
+  },
+  {
+    "name": "TaxiStats Showcase Application",
+    "date": "2016-02-22",
+    "type": "demo",
+    "url": "https://www.youtube.com/watch?v=26lfq_qgcRI",
+    "location": "San Francisco"
+  },
+  {
+    "name": "Election 2016: Real-Time Twitter Analytics",
+    "date": "2016-10-18",
+    "type": "demo",
+    "url": "http://election.memsql.com",
+    "location": "San Francisco"
+  },
+  {
+    "name": "[InfoQ] Real-time Data Analytics at Pinterest using MemSQL and Spark Streaming",
+    "date": "2015-03-29",
+    "type": "press",
+    "url": "https://www.infoq.com/news/2015/03/pinterest-memsql-spark-streaming",
+    "location": "San Francisco"
+  },
+  {
+    "name": "MemSQL Roadshow Phoenix: Real-Time Analytics with MemSQL and Spark",
+    "date": "2016-11-04",
+    "type": "talk",
+    "url": "http://www1.memsql.com/phoenix-roadshow.html",
+    "location": "San Francisco"
+  },
+  {
+    "name": "MemSQL Roadshow Orange County: Real-Time Analytics with MemSQL and Spark",
+    "date": "2017-03-17",
+    "type": "talk",
+    "url": "http://www1.memsql.com/ocroadshow.html",
+    "location": "San Francisco"
+  },
+  {
+    "name": "Comedy Hack Day - AwwCog",
+    "date": "2014-10-06",
+    "type": "demo",
+    "url": "http://www.comedyhackday.org/demosmade/2014/10/6/wearable-furby",
+    "location": "San Francisco"
+  },
+  {
+    "name": "[GigaOm] Pinterest is experimenting with MemSQL for real-time data analytics",
+    "date": "2015-02-18",
+    "type": "press",
+    "url": "https://gigaom.com/2015/02/18/pinterest-is-experimenting-with-memsql-for-real-time-data-analytics/",
+    "location": "San Francisco"
+  },
+  {
+    "name": "[Engadget] Dev comedy jam: Cultivated Wit\\s Hack Day chases laughs, not dollars",
+    "date": "2016-10-10",
+    "type": "press",
+    "url": "https://www.engadget.com/2014/10/10/comedy-hack-day/",
+    "location": "San Francisco"
+  },
+  {
+    "name": "[Silicon Angle] Real-time Twitter analysis shows U.S. election is … too close to call?",
+    "date": "2016-10-21",
+    "type": "press",
+    "url": "http://siliconangle.com/blog/2016/10/21/real-time-twitter-analysis-shows-election-is-too-close-to-call/",
+    "location": "San Francisco"
+  },
+  {
+    "name": "Pinterest Demo of Spark Connector",
+    "date": "2015-06-17",
+    "type": "demo",
+    "url": "https://www.youtube.com/watch?v=KXelkQFVz4E",
+    "location": "San Francisco"
+  },
+  {
+    "name": "[Pinterest Engineering Blog] Real-time analytics at Pinterest",
+    "date": "2015-02-18",
+    "type": "press",
+    "url": "https://engineering.pinterest.com/blog/real-time-analytics-pinterest",
+    "location": "San Francisco"
+  },
+  {
+    "name": "Geospatial Data Meetup with Mapbox",
+    "date": "2016-06-29",
+    "type": "talk",
+    "url": "http://blog.memsql.com/geospatial-data-meetup-with-mapbox/",
+    "location": "San Francisco"
+  },
+  {
+    "name": "[ReCode] Wearable Furbys and On-Demand High Fives Highlight Comedy Hack Day",
+    "date": "2014-10-11",
+    "type": "press",
+    "url": "http://www.recode.net/2014/10/11/11631780/wearable-furbys-and-on-demand-high-fives-highlight-comedy-hack-day",
+    "location": "San Francisco"
+  },
+  {
+    "name": "Bringing OLAP Fully Online: Analyze Changing Datasets in MemSQL and Spark with Pinterest Demo w/ Eric Frenkiel",
+    "date": "2015-05-08",
+    "type": "demo",
+    "url": "https://www.youtube.com/watch?v=5_0rG5GhHNE",
+    "location": "San Francisco"
+  },
+  {
+    "name": "[Datanami] 8 Interactive Visualizations for Election Day",
+    "date": "2016-11-07",
+    "type": "press",
+    "url": "https://www.datanami.com/2016/11/07/8-visualizations-election-day/",
+    "location": "San Francisco"
+  },
+  {
+    "name": "Radiant Advisors Presents: MemSQL, Real Time Data Warehousing in the Hybrid Cloud",
+    "date": "2017-06-14",
+    "type": "talk",
+    "url": "http://radiantadvisors.com/",
+    "location": "San Francisco"
+  },
+  {
+    "name": "Kafka Summit in New York, Using MemSQL and Kafka",
+    "date": "2017-05-08",
+    "type": "talk",
+    "url": "https://kafka-summit.org/events/kafka-summit-ny/",
+    "location": "San Francisco"
+  },
+  {
+    "name": "MissionBit Student Panel",
+    "date": "2017-07-07",
+    "type": "talk",
+    "url": "http://www.missionbit.com/",
+    "location": "San Francisco"
+  },
+  {
+    "name": "MemSQL San Francisco Roadshow: Streaming in the Enterprise with MemSQL",
+    "date": "2017-06-15",
+    "type": "talk",
+    "url": "http://www1.memsql.com/sf-roadshow-2017.html",
+    "location": "San Francisco"
+  },
+  {
+    "name": "Real-Time Streaming, Analytics, and Visualization with MemSQL and Zoomdata",
+    "date": "2017-08-10",
+    "type": "talk",
+    "url": "https://www.meetup.com/MemSQL/events/241801222/",
+    "location": "San Francisco"
+  },
+  {
+    "name": "Gartner Catalyst Conference: Image Recognition on Streaming Data",
+    "date": "2017-08-20",
+    "type": "talk",
+    "url": "https://www.slideshare.net/MemSQL/image-recognition-on-streaming-data",
+    "location": "San Francisco"
+  },
+  {
+    "name": "AWS Re:Invent - Machine Learning and Streaming Data",
+    "date": "2017-11-29",
+    "type": "talk",
+    "url": "https://reinvent.awsevents.com/",
+    "location": "Las Vegas"
+  },
+  {
+    "name": "Real-Time Streaming, Analytics, and Visualization With MemSQL and Zoomdata",
+    "date": "2017-11-24",
+    "type": "press",
+    "url": "https://dzone.com/articles/real-time-streaming-analytics-and-visualization-wi",
+    "location": "San Francisco"
+  },
+  {
+    "name": "Introduction to MemSQL for Developers",
+    "date": "2018-06-19",
+    "type": "webinar",
+    "url": "http://go.memsql.com/an-introduction-to-memsql-for-developers",
+    "location": "San Francisco"
+  },
+  {
+    "name": "Gartner Catalyst 2018: How Kafka and Modern Databases Benefit Apps and Analytics",
+    "date": "2018-08-20",
+    "type": "talk",
+    "url": "https://www.gartner.com/en/conferences/na/catalyst-us/agenda",
+    "location": "San Diego"
+  },
+  {
+    "name": "How Kafka and Modern Databases Benefit Apps and Analytics",
+    "date": "2018-08-20",
+    "type": "webinar",
+    "url": "http://go.memsql.com/kafka-and-modern-databases",
+    "location": "San Francisco"
+  },
+  {
+    "name": "Oracle Open World: DevOps Automation with HashiCorp Terraform",
+    "date": "2018-09-16",
+    "type": "talk",
+    "url": "https://events.rainfocus.com/widget/oracle/oow19/catalogow19?search.topic=155621695037200362ko&search=terraform",
+    "location": "San Francisco"
+  },
+  {
+    "name": "HashiCorp Workshop: Northern California Terraform Open Source",
+    "date": "2020-04-15",
+    "type": "workshop",
+    "url": "https://northerncaliforniaterraformwor.splashthat.com",
+    "location": "San Francisco"
+  },
+  {
+    "name": "HashiCorp Workshop: Northern California Consul Open Source",
+    "date": "2020-04-28",
+    "type": "workshop",
+    "url": "http://events.hashicorp.com/workshops/norcalconsul",
+    "location": "San Francisco"
+  },
+  {
+    "name": "HashiCorp Workshop: Northern California Vault Open Source",
+    "date": "2020-05-14",
+    "type": "workshop",
+    "url": "http://events.hashicorp.com/workshops/vault-may14",
+    "location": "San Francisco"
+  },
+  {
+    "name": "HashiCorp Workshop: Northern California Terraform on AWS",
+    "date": "2020-07-14",
+    "type": "workshop",
+    "url": "http://events.hashicorp.com/workshops/terraform-july14",
+    "location": "San Francisco"
+  },
+  {
+    "name": "HashiCorp Workshop: Northern California Consul Open Source",
+    "date": "2020-07-21",
+    "type": "workshop",
+    "url": "http://events.hashicorp.com/workshops/consul-july21",
+    "location": "San Francisco"
+  },
+  {
+    "name": "HashiCorp Workshop: Northern California Terraform Cloud",
+    "date": "2021-02-10",
+    "type": "workshop",
+    "url": "https://events.hashicorp.com/workshops/terraformcloud-feb10",
+    "location": "San Francisco"
+  },
+  {
+    "name": "Introduction to Temporal and Durable Execution",
+    "date": "2025-09-09",
+    "type": "talk",
+    "url": "DDAC",
+    "location": "Orlando"
+  },
+  {
+    "name": "Temporal Infrastructure Provisioning Demo",
+    "date": "2024-07-24",
+    "type": "demo",
+    "url": "https://github.com/dahlke/temporal-infra-provisioning-demo",
+    "location": "San Francisco"
+  },
+  {
+    "name": "Temporal Vault Dynamic Worker Credentials",
+    "date": "2024-10-24",
+    "type": "demo",
+    "url": "https://github.com/dahlke/temporal-vault-dynamic-worker-creds",
+    "location": "San Francisco"
+  },
+  {
+    "name": "Temporal SaaS Customer LIfecycle",
+    "date": "2024-11-25",
+    "type": "demo",
+    "url": "https://github.com/dahlke/temporal-saas-customer-lifecycle",
+    "location": "San Francisco"
+  }
+]

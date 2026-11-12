@@ -17,7 +17,6 @@ import (
 
 	"github.com/dahlke/eklhad/web/services"
 	"github.com/dahlke/eklhad/web/structs"
-	"github.com/dahlke/eklhad/web/workers"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -27,7 +26,6 @@ type templatePayload struct {
 }
 
 type appConfig struct {
-	GSheetID           string `json:"g_sheet_id"`
 	GravatarEmail      string `json:"gravatar_email"`
 	WorkerMinSleepMins int    `json:"worker_min_sleep_mins"`
 }
@@ -310,7 +308,6 @@ func parseConfig(configJSONPath string) appConfig {
 
 func scheduleWorkers(config appConfig) {
 	// Workers are no longer scheduled on a timer
-	// Use the -gsheets flag to manually pull data when needed
 }
 
 func main() {
@@ -322,7 +319,6 @@ func main() {
 
 	portPtr := flag.Int("port", appPort, "The port to run the HTTP app on (default: 3554, or PORT env var).")
 	productionPtr := flag.Bool("production", false, "If true, run the app over HTTPS.")
-	pullGSheetsPtr := flag.Bool("gsheets", false, "If true, pull the latest data from Google Sheets. ID specified in config.json.")
 	runWorkersPtr := flag.Bool("workers", false, "If true, run all the workers in Go routines.")
 	flag.Parse()
 
@@ -331,7 +327,6 @@ func main() {
 
 	appPort = *portPtr
 	isProduction := *productionPtr
-	isPullGSheets := *pullGSheetsPtr
 	workerRoutines := *runWorkersPtr
 
 	fileServer := cacheControlFileServer(http.FileServer(http.Dir("frontend/build/")))
@@ -374,9 +369,7 @@ func main() {
 		scheduleWorkers(appConfigData)
 	}
 
-	if isPullGSheets {
-		workers.GetDataFromGSheets(appConfigData.GSheetID)
-	} else if isProduction {
+	if isProduction {
 		if workerRoutines {
 			log.Println("Starting data collection workers...")
 			scheduleWorkers(appConfigData)
