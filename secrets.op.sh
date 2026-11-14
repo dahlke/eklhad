@@ -1,11 +1,9 @@
 #!/bin/bash
 
-eval $(op signin)
+export OP_ACCOUNT=my.1password.com
 
 # For Packer and Terraform
 export GOOGLE_APPLICATION_CREDENTIALS="$HOME/.gcp/eklhad-web-packer.json"
-# For the data collector
-export GOOGLE_API_KEY=$(op item get "Google Workspace (dahlke.io)" --format=json | jq -r '.fields[] | select(.label == "GOOGLE_API_KEY") | .value')
 
 export CLOUDFLARE_API_TOKEN=$(op item get Cloudflare --format=json | jq -r '.fields[] | select(.label == "CLOUDFLARE_API_TOKEN") | .value')
 
