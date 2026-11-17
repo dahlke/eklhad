@@ -27,13 +27,7 @@ jobs:
 
       # Run the worker
       - name: Run eklhad JS and Go tests
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS : ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-          GOOGLE_ACTIONS_CREDENTIALS_JSON : ${{ secrets.GOOGLE_ACTIONS_CREDENTIALS_JSON}}
         run: |
-          if [ -n "$GOOGLE_APPLICATION_CREDENTIALS" ]; then
-            echo $GOOGLE_ACTIONS_CREDENTIALS_JSON > $GOOGLE_APPLICATION_CREDENTIALS
-          fi
           make go_get
           make go_test
           cd web/frontend && bun install --frozen-lockfile && bun run test --run
