@@ -18,8 +18,8 @@ Only blank cells and rows past --from-row are written; hand-entered rows,
 ferries and trains are left alone. Dry run by default.
 
 Usage:
-    uv run scripts/infer_trips.py /Volumes/neilo/takeout_locations/index.json --from-row 394
-    uv run scripts/infer_trips.py /Volumes/neilo/takeout_locations/index.json --from-row 394 --apply
+    uv run scripts/infer_trips.py /Volumes/hal/takeout_locations/index.json --from-row 394
+    uv run scripts/infer_trips.py /Volumes/hal/takeout_locations/index.json --from-row 394 --apply
 """
 
 import argparse

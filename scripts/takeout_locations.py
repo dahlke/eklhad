@@ -12,7 +12,7 @@ copies the best few photos for each notable place so they survive the cleanup.
 Progress is saved after every zip, so a rerun resumes where it stopped.
 
 Usage:
-    uv run scripts/takeout_locations.py /Volumes/neilo/2026_09_29_takeout_dahlkeio
+    uv run scripts/takeout_locations.py /Volumes/hal/2026_09_29_takeout_dahlkeio
 """
 
 import argparse

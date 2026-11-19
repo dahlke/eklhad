@@ -82,12 +82,20 @@ PAGE = r"""<!doctype html>
   dialog::backdrop { background:rgba(13,17,23,.88); }
   dialog img { max-width:95vw; max-height:95vh; display:block; }
   .empty { padding:40px 0; color:var(--muted); font-size:19px; }
+  .saving { font-weight:600; margin-left:10px; }
+  .saving.error { color:var(--red); }
+  .cover { display:flex; gap:14px; align-items:center; margin-top:12px; padding:10px; border:2px solid var(--ink); border-radius:6px; background:#f6f7f9; }
+  .cover img { width:120px; height:80px; object-fit:cover; border-radius:4px; }
+  .cover.none { border-style:dashed; color:var(--muted); }
+  .cover b { display:block; font-size:14px; text-transform:uppercase; letter-spacing:.06em; }
+  figure[data-cover="true"] { outline:4px solid var(--ink); outline-offset:-4px; }
+  .badge { font-weight:700; font-size:13px; background:var(--ink); color:#fff; border-radius:999px; padding:1px 8px; }
 </style>
 </head>
 <body>
 <header>
   <h1>Location Review</h1>
-  <div class="tally" id="tally"></div>
+  <div class="tally"><span id="tally"></span><span class="saving" id="saving"></span></div>
   <div class="bar">
     <div class="group" id="scope"><span>Show</span></div>
     <div class="group" id="status"><span>Status</span></div>
@@ -101,8 +109,31 @@ PAGE = r"""<!doctype html>
 const SCOPES = {all:"All", notable:"Notable", other:"Not notable"};
 const STATUSES = {any:"Any", undecided:"Undecided", approved:"Approved", rejected:"Rejected"};
 const PHOTOS = {any:"Any", without:"Needs photo", with:"Has photo"};
-const LABEL = {approved:"✓ Approved", rejected:"✕ Rejected", undefined:"Undecided"};
-let places = [], decisions = {locations:{}, photos:{}}, scope = "notable", status = "any", photo = "without";
+const remembered = (() => { try { return JSON.parse(localStorage.getItem("review-filters")) || {}; } catch { return {}; } })();
+let places = [], decisions = {locations:{}, photos:{}, cover:{}};
+let scope = remembered.scope || "notable", status = remembered.status || "any", photo = remembered.photo || "without";
+const remember = () => { try { localStorage.setItem("review-filters", JSON.stringify({scope, status, photo, y: scrollY})); } catch {} };
+addEventListener("scroll", () => { clearTimeout(remember.t); remember.t = setTimeout(remember, 300); });
+
+// Every click is queued and retried until the app confirms it saved, so nothing is lost if the app restarts
+let queue = [];
+async function flush() {
+  const saving = document.getElementById("saving");
+  while (queue.length) {
+    try {
+      const r = await fetch("/decide", {method:"POST", body: JSON.stringify(queue[0])});
+      if (!r.ok) throw new Error(r.status);
+      queue.shift();
+    } catch {
+      saving.textContent = `${queue.length} not saved yet, retrying. Is the app running?`;
+      saving.className = "saving error";
+      setTimeout(flush, 3000);
+      return;
+    }
+  }
+  saving.textContent = "All saved"; saving.className = "saving";
+}
+const save = change => { queue.push(change); if (queue.length === 1) flush(); };
 
 const key = p => [p.City, p["State / Province / Region / District"], p.Country].join("|");
 const el = (tag, attrs = {}, ...kids) => {
@@ -114,57 +145,94 @@ const el = (tag, attrs = {}, ...kids) => {
 function toggles(host, options, get, set) {
   for (const [value, label] of Object.entries(options)) {
     const b = el("button", {textContent: label});
-    b.onclick = () => { set(value); render(); };
+    b.onclick = () => { set(value); remember(); render(); };
     b.dataset.value = value;
     host.append(b);
   }
   host.sync = () => host.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.value === get()));
 }
 
-async function decide(kind, id, value, node, stateEl) {
+// Clicking the pressed button again clears the decision
+function decide(kind, id, value, rerender) {
   const next = decisions[kind][id] === value ? null : value;
   if (next) decisions[kind][id] = next; else delete decisions[kind][id];
-  node.dataset.state = next || "";
-  stateEl.textContent = LABEL[next || undefined];
+  save({kind, id, value: next});
+  rerender();
   tally();
-  await fetch("/decide", {method:"POST", body: JSON.stringify({kind, id, value: next})});
 }
 
-function verdict(kind, id, node) {
-  const stateEl = el("span", {className:"state", textContent: LABEL[decisions[kind][id]]});
-  const yes = el("button", {textContent:"Approve"}), no = el("button", {textContent:"Reject"});
-  yes.onclick = () => decide(kind, id, "approved", node, stateEl);
-  no.onclick = () => decide(kind, id, "rejected", node, stateEl);
-  node.dataset.state = decisions[kind][id] || "";
-  return [yes, no, stateEl];
+function verdict(kind, id, node, rerender) {
+  const state = decisions[kind][id];
+  const yes = el("button", {textContent: kind === "photos" ? "Keep" : "Approve"}), no = el("button", {textContent:"Reject"});
+  yes.setAttribute("aria-pressed", state === "approved");
+  no.setAttribute("aria-pressed", state === "rejected");
+  yes.onclick = () => decide(kind, id, "approved", rerender);
+  no.onclick = () => decide(kind, id, "rejected", rerender);
+  node.dataset.state = state || "";
+  return [yes, no];
+}
+
+const kept = p => p["Candidate Photos"].filter(path => decisions.photos[path] === "approved");
+// The photo that will go on the map: the one you starred, else the first one you kept
+const coverOf = p => {
+  const pick = decisions.cover[key(p)];
+  return pick && decisions.photos[pick] === "approved" ? pick : null;
+};
+const thumbOf = url => url.replace("/photos/", "/photos/thumbs/");
+
+function coverPanel(p) {
+  const pick = coverOf(p), keep = kept(p), first = pick || (!p["Map Photo URL"] && keep[0]);
+  if (first) return el("div", {className:"cover"}, el("img", {src: "/photo?path=" + encodeURIComponent(first), alt:""}),
+    el("div", {}, el("b", {textContent: p["Map Photo URL"] ? "Will replace the map photo" : "Will go on the map"}),
+      `${keep.length} kept for ${p.City}. ${pick ? "You starred this one." : "Star a kept photo to choose a different one."}`));
+  if (p["Map Photo URL"]) return el("div", {className:"cover"}, el("img", {src: thumbOf(p["Map Photo URL"]), alt:""}),
+    el("div", {}, el("b", {textContent:"On the map now"}),
+      `${keep.length} more kept as extras. Star a kept photo to put it on the map instead.`));
+  return el("div", {className:"cover none"}, el("div", {}, el("b", {textContent:"No map photo yet"}), "Keep a photo below and it goes on the map."));
 }
 
 function card(p) {
-  const id = key(p), art = el("article");
+  const art = el("article");
+  const draw = () => art.replaceChildren(...cardBody(p, art, draw));
+  draw();
+  return art;
+}
+
+function cardBody(p, art, draw) {
+  const id = key(p);
   const tags = el("p", {className:"meta"});
   if (p["Map Notable"]) tags.append(el("span", {className:"tag", textContent:`Notable · level ${p["Map Notability"] || 1}`}));
   if (p["Map Pin"] && p["Map Pin"] !== p.City) tags.append(el("span", {className:"tag", textContent:`Map pin: ${p["Map Pin"]}`}));
-  if (p["Map Photo"]) tags.append(el("span", {className:"tag", textContent:"Photo on map"}));
   tags.append(`${p.Photos} photos over ${p.Days} day${p.Days === 1 ? "" : "s"}, ${p["First Seen"]} to ${p["Last Seen"]}`);
   const title = el("div", {}, el("h2", {textContent: p.City}),
     el("div", {className:"where", textContent: [p["State / Province / Region / District"], p.Country].filter(Boolean).join(", ")}), tags);
-  art.append(el("div", {className:"head"}, title, el("div", {className:"actions"}, ...verdict("locations", id, art))));
+  const parts = [el("div", {className:"head"}, title, el("div", {className:"actions"}, ...verdict("locations", id, art, draw))), coverPanel(p)];
   if (p["Candidate Photos"].length) {
     const grid = el("div", {className:"photos"});
     // Best match first, from rank_candidates.py; unscored photos keep their order at the end
-    const match = p.Match || {};
+    const match = p.Match || {}, pick = coverOf(p) || (!p["Map Photo URL"] && kept(p)[0]);
     const ordered = [...p["Candidate Photos"]].sort((a, b) => (match[b] ?? -9) - (match[a] ?? -9));
     for (const path of ordered) {
       const fig = el("figure"), src = "/photo?path=" + encodeURIComponent(path);
       const img = el("img", {src, loading:"lazy", alt:`Candidate photo for ${p.City}`});
       img.onclick = () => { zoom.firstElementChild.src = src; zoom.showModal(); };
-      const score = match[path] === undefined ? [] : [el("span", {className:"match", textContent:`match ${Math.round(match[path] * 100)}`})];
-      fig.append(img, el("figcaption", {}, ...verdict("photos", path, fig), ...score));
+      const extra = [];
+      if (decisions.photos[path] === "approved") {
+        fig.dataset.cover = path === pick;
+        if (path === pick) extra.push(el("span", {className:"badge", textContent:"★ Map photo"}));
+        else {
+          const star = el("button", {textContent:"★ Use on map"});
+          star.onclick = () => { decisions.cover[id] = path; save({kind:"cover", id, value: path}); draw(); };
+          extra.push(star);
+        }
+      }
+      if (match[path] !== undefined) extra.push(el("span", {className:"match", textContent:`match ${Math.round(match[path] * 100)}`}));
+      fig.append(img, el("figcaption", {}, ...verdict("photos", path, fig, draw), ...extra));
       grid.append(fig);
     }
-    art.append(grid);
+    parts.push(grid);
   }
-  return art;
+  return parts;
 }
 
 // A place's own decision wins; otherwise its photo decisions stand in for it.
@@ -178,7 +246,7 @@ function standing(p) {
 }
 
 // Has a photo if one is approved here or the map pin already shows one
-const hasPhoto = p => p["Map Photo"] || p["Candidate Photos"].some(path => decisions.photos[path] === "approved");
+const hasPhoto = p => p["Map Photo"] || kept(p).length > 0;
 
 function visible(p) {
   const d = standing(p);
@@ -212,7 +280,8 @@ toggles(document.getElementById("photo"), PHOTOS, () => photo, v => photo = v);
 // Most notable first, then the places with the most photos
 fetch("/data").then(r => r.json()).then(d => {
   places = d.places.sort((a, b) => (b["Map Notable"] - a["Map Notable"]) || ((b["Map Notability"] || 0) - (a["Map Notability"] || 0)) || (b.Photos - a.Photos));
-  decisions = d.decisions; render();
+  decisions = d.decisions; decisions.cover ||= {}; render();
+  scrollTo(0, remembered.y || 0);
 });
 </script>
 </body>
@@ -287,7 +356,7 @@ class App(BaseHTTPRequestHandler):
 
     def do_POST(self):
         body = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
-        bucket = self.decisions[body["kind"]]
+        bucket = self.decisions.setdefault(body["kind"], {})
         if body["value"]:
             bucket[body["id"]] = body["value"]
         else:
@@ -324,6 +393,7 @@ def attach_map(places):
         place["Map Photo"] = bool(pin and pin.get("photourl"))
         place["Map Country"] = (pin or {}).get("country", place["Country"])
         place["Map Photo Date"] = (pin or {}).get("photodate", "")
+        place["Map Photo URL"] = (pin or {}).get("photourl", "")
 
 
 def main():

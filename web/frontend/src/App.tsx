@@ -18,7 +18,33 @@ const socialLinks = [
     { name: "Résumé",    href: "/static/resume.html",                        external: false },
 ];
 
+const mapFallback = (
+    <div className="flex items-center justify-center h-full bg-gray-100 dark:bg-dark-surface">
+        <p className="text-xs tracking-widest uppercase text-gray-400 dark:text-slate-600">loading</p>
+    </div>
+);
+
+// The Go server and Vite both serve index.html for any path, so /map needs no
+// router: it renders the same lazy Map chunk full screen.
+function MapPage() {
+    return (
+        <>
+            <div className="fixed inset-0">
+                <Suspense fallback={mapFallback}>
+                    <Map />
+                </Suspense>
+            </div>
+            <DarkModeToggle />
+        </>
+    );
+}
+
 function App() {
+    const path = window.location.pathname.replace(/\/+$/, "");
+    return path === "/map" ? <MapPage /> : <Home />;
+}
+
+function Home() {
     const gravatar = useGravatar();
     const [showScrollTop, setShowScrollTop] = useState(false);
     const profileRef = useRef<HTMLDivElement>(null);
@@ -113,11 +139,7 @@ function App() {
 
             {/* Map — fixed full-screen behind profile on mobile, sticky column on desktop */}
             <div className="fixed inset-0 z-0 md:inset-auto md:w-3/5 md:sticky md:top-0 md:h-screen">
-                <Suspense fallback={
-                    <div className="flex items-center justify-center h-full bg-gray-100 dark:bg-dark-surface">
-                        <p className="text-xs tracking-widest uppercase text-gray-400 dark:text-slate-600">loading</p>
-                    </div>
-                }>
+                <Suspense fallback={mapFallback}>
                     <Map />
                 </Suspense>
             </div>
