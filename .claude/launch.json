@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "eklhad-web",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "cd web && go run main.go -port 3554"],
+      "port": 3554
+    }
+  ]
+}

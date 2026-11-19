@@ -10,7 +10,7 @@ each target pin gets the next best photos it hasn't shown yet. Results go into
 the review app's data, adding a row for pins the Takeout scan never named.
 
 Usage:
-    uv run scripts/pin_candidates.py /Volumes/neilo/2026_09_29_takeout_dahlkeio \
+    uv run scripts/pin_candidates.py /Volumes/hal/2026_09_29_takeout_dahlkeio \
         --index ~/eklhad-takeout/import/index.json --targets targets.txt --exclude-person "Full Name"
 """
 
@@ -59,6 +59,7 @@ def main():
     parser.add_argument("--targets", type=Path, required=True, help="map city names, one per line")
     parser.add_argument("--exclude-person", action="append", default=[])
     parser.add_argument("--count", type=int, default=10)
+    parser.add_argument("--within", type=float, help="take any photo this many km from the pin, even if nearer another pin (parks)")
     parser.add_argument("--data-dir", type=Path, default=WORKDIR)
     args = parser.parse_args()
 
@@ -68,6 +69,9 @@ def main():
     for rel, photo in index.items():
         photo["rel"], photo["name"] = rel, PurePosixPath(rel).name
     by_pin = snap(index.values(), pins)
+    name_counts = defaultdict(int)
+    for p in pins:
+        name_counts[p["city"]] += 1
 
     locations_path = args.data_dir / "takeout_locations.json"
     rows = json.loads(locations_path.read_text())
@@ -78,30 +82,34 @@ def main():
     targets = [t.strip() for t in args.targets.read_text().splitlines() if t.strip()]
     to_extract = defaultdict(list)
     for city in targets:
-        pin_index = next((i for i, p in enumerate(pins) if p["city"] == city), None)
-        if pin_index is None:
-            continue
-        pin = pins[pin_index]
-        row = next((r for r in rows if r["City"] == city), None) or next((r for r in rows if r.get("On Map As") == city), None)
-        if row is None and not by_pin.get(pin_index):
-            continue
-        if row is None:
-            snapped = by_pin.get(pin_index, [])
-            days = sorted({datetime.fromtimestamp(p["taken"], timezone.utc).strftime("%Y-%m-%d") for p in snapped})
-            row = {"City": city, "State / Province / Region / District": pin["stateprovinceregion"], "Country": pin["country"],
-                   "Lat": pin["lat"], "Lng": pin["lng"], "Notable": pin["notable"], "On Map As": city,
-                   "Photos": len(snapped), "Days": len(days), "First Seen": days[0] if days else "",
-                   "Last Seen": days[-1] if days else "", "Candidate Photos": []}
-            rows.append(row)
-        prefix = slug(row["City"])
-        shown = {Path(p).name[len(prefix) + 12:] for p in row["Candidate Photos"]}
-        extra = more(by_pin.get(pin_index, []), args.exclude_person, shown, args.count)
-        for photo in extra:
-            taken = datetime.fromtimestamp(photo["taken"], timezone.utc)
-            dest = photos_dir / prefix / f"{prefix}_{taken:%Y_%m_%d}_{photo['name']}"
-            to_extract[photo["zip"]].append((photo["rel"], dest))
-            row["Candidate Photos"].append(str(dest))
-        print(f"{city}: {len(extra)} more ({len(by_pin.get(pin_index, []))} photos near the pin)", flush=True)
+        for pin_index in (i for i, p in enumerate(pins) if p["city"] == city):
+            pin = pins[pin_index]
+            here = (pin["lat"], pin["lng"])
+            near = by_pin.get(pin_index, [])
+            if args.within:
+                near = [p for p in index.values() if km(here, p["latlng"]) <= args.within]
+            row = next((r for r in rows if city in (r["City"], r.get("On Map As"))
+                        and isinstance(r.get("Lat"), (int, float)) and km(here, (r["Lat"], r["Lng"])) < 60), None)
+            if row is None and not near:
+                continue
+            if row is None:
+                days = sorted({datetime.fromtimestamp(p["taken"], timezone.utc).strftime("%Y-%m-%d") for p in near})
+                row = {"City": city, "State / Province / Region / District": pin["stateprovinceregion"], "Country": pin["country"],
+                       "Lat": pin["lat"], "Lng": pin["lng"], "Notable": pin["notable"], "On Map As": city,
+                       "Photos": len(near), "Days": len(days), "First Seen": days[0] if days else "",
+                       "Last Seen": days[-1] if days else "", "Candidate Photos": []}
+                rows.append(row)
+            prefix = slug(row["City"])
+            if name_counts[city] > 1:
+                prefix = f"{prefix}_{slug(pin['stateprovinceregion'] or pin['country'])}"
+            shown = {Path(p).name[len(prefix) + 12:] for p in row["Candidate Photos"]}
+            extra = more(near, args.exclude_person, shown, args.count)
+            for photo in extra:
+                taken = datetime.fromtimestamp(photo["taken"], timezone.utc)
+                dest = photos_dir / prefix / f"{prefix}_{taken:%Y_%m_%d}_{photo['name']}"
+                to_extract[photo["zip"]].append((photo["rel"], dest))
+                row["Candidate Photos"].append(str(dest))
+            print(f"{city}: {len(extra)} more ({len(near)} photos near the pin)", flush=True)
 
     for zip_name, wanted in sorted(to_extract.items()):
         with zipfile.ZipFile(args.takeout_dir / zip_name) as zf:
