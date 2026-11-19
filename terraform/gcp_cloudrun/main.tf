@@ -66,7 +66,8 @@ resource "google_service_account_iam_member" "cloud_run_act_as_packer" {
 }
 
 locals {
-  container_image = "${var.docker_hub_user}/${var.docker_image_name}:${var.docker_image_tag}"
+  # Fully qualified: a bare name resolves to mirror.gcr.io, which lacks new tags.
+  container_image = "docker.io/${var.docker_hub_user}/${var.docker_image_name}:${var.docker_image_tag}"
 }
 
 # Cloud Run service
