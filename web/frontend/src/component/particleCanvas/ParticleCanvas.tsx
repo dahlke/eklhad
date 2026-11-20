@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useDarkMode } from "../../contexts";
 // Hashed into /assets/ so a rebake is never served stale from cache
 import TERRAIN_URL from "./terrain.bin?url";
 
@@ -7,30 +8,29 @@ import TERRAIN_URL from "./terrain.bin?url";
  * vertical runs of dots, two scenes per place: the Golden Gate (wide, then
  * from Battery Spencer), Chicago (the skyline, then the Bean), Dublin (Howth
  * harbour, then a harp over the bay) and Tahoe City (the shore, then down the lake). The dots morph from one scene to the next on a
- * timer; one button steps its speed or pauses it. Picking a place jumps to it.
- * The controls only appear once someone moves over or taps the panel.
+ * timer. A small "view" button opens one bar with every choice: the place,
+ * the style, light or dark, and the speed.
  * Drawing is capped at 30 fps. On low battery, or when the browser asks to
  * save data, it only draws while a scene is changing and rests in between.
  * Dots near the cursor shimmer, and the mesh thins out behind the text.
  * Data comes from terrain.bin, baked by scripts/landmark_terrain.py.
  * Prefers-reduced-motion renders nothing.
  *
- * The page comes in three styles, switched from the light/dark button. The
+ * The page comes in three styles, each with a light and a dark version. The
  * art styles set data-art on <html> (see App.tsx). The same
  * scenes are then painted as dabs of color under a low sun, or in desert
  * colors with dripping dots, melting landmarks and a soft clock.
  */
 
-// [full name, short name for phones, where four full names don't fit on one row]
+// [full name, short name for narrow panels, where four full names don't fit on one row]
 const PLACES = [["San Francisco", "SF"], ["Chicago", "Chicago"], ["Dublin", "Dublin"], ["Tahoe City", "Tahoe"]];
-// The one speed button steps through these; 0 is paused
-const SPEEDS = [1, 2, 0.5, 0];
+const STYLE_NAMES = [["", "Digital"], ["impressionist", "Impressionist"], ["surrealist", "Surrealist"]];
+const SPEEDS = [[0.5, "0.5×"], [1, "1×"], [2, "2×"], [0, "Pause"]] as const;
 const SCENE_PLACE = [0, 0, 1, 1, 2, 2, 3, 3]; // which place each baked scene belongs to
 const HOLD_MS = 2500;
 const MORPH_MS = 1500;
 const HOVER_RADIUS = 90;       // px around the cursor that shimmers
 const FRAME_MS = 1000 / 30;
-const CONTROLS_MS = 4000;      // how long the controls stay after the last movement or tap
 
 const METERS_PER_STEP = 2.5;
 const EDGE_FADE = 0.12;        // fraction of the grid that fades out at each side and the back
@@ -46,19 +46,35 @@ const METER = 0.0011;          // panel heights per meter at depth 1
 
 const SWELL_METERS = 9;
 
-// Colors for the art pages: water, land, landmarks, and the lights
+// Colors for the art styles, light and dark: water, land, landmarks, and the lights
 const ART = {
     impressionist: {
-        water: ["#7fa8d6", "#a9c3e6", "#8fb7c9", "#c3b6e0", "#f2d9c2"],
-        land: ["#5f8f5a", "#8fb26b", "#3f6f7a", "#b08fc2", "#e8b98a"],
-        mark: ["#2f3f8f", "#4b3f7a", "#1f5f6f", "#c2553f"],
-        light: "#f2773c",
+        light: {
+            water: ["#7fa8d6", "#a9c3e6", "#8fb7c9", "#c3b6e0", "#f2d9c2"],
+            land: ["#5f8f5a", "#8fb26b", "#3f6f7a", "#b08fc2", "#e8b98a"],
+            mark: ["#2f3f8f", "#4b3f7a", "#1f5f6f", "#c2553f"],
+            light: "#f2773c",
+        },
+        dark: {
+            water: ["#3f5fa8", "#5b78c2", "#2f4a8a", "#7a6fc2", "#c2a36a"],
+            land: ["#2f6f5a", "#4f8f6b", "#245a6a", "#7a5fa8", "#d9a85a"],
+            mark: ["#f2d98a", "#e8b06a", "#bfd0f2", "#f29a6a"],
+            light: "#f2c94c",
+        },
     },
     surrealist: {
-        water: ["#2a8a8f", "#1f6f7a", "#3fa3a0"],
-        land: ["#e8c26a", "#d9a441", "#c2793a", "#f2d998"],
-        mark: ["#fff5dc", "#f2e6c8", "#e8572f"],
-        light: "#fff5dc",
+        light: {
+            water: ["#5fb8c2", "#3f9aa8", "#8fd0d4"],
+            land: ["#d9a441", "#c2793a", "#b85f2f", "#e8b85a"],
+            mark: ["#3a2a1a", "#5a2f1a", "#c2402a"],
+            light: "#3a2a1a",
+        },
+        dark: {
+            water: ["#2a8a8f", "#1f6f7a", "#3fa3a0"],
+            land: ["#e8c26a", "#d9a441", "#c2793a", "#f2d998"],
+            mark: ["#fff5dc", "#f2e6c8", "#e8572f"],
+            light: "#fff5dc",
+        },
     },
 };
 type Art = keyof typeof ART | undefined;
@@ -78,14 +94,16 @@ interface Scene {
     weight: number;        // 0-1, how much of this scene is on screen
 }
 
-export function ParticleCanvas() {
+export function ParticleCanvas({ style, onStyle }: { style: string; onStyle: (style: string) => void }) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const pickRef = useRef<(place: number) => void>(() => {});
     const [active, setActive] = useState(-1); // -1 until the terrain loads
-    const [speed, setSpeed] = useState(0);    // index into SPEEDS
-    const [controls, setControls] = useState(false);
+    const [speed, setSpeed] = useState(1);    // index into SPEEDS
+    const [open, setOpen] = useState(false);  // the bar of choices
+    const { isDarkMode, toggleDarkMode } = useDarkMode();
+    const maskRef = useRef<() => void>(() => {});
     const rateRef = useRef(1);                // cycle speed the draw loop reads; 0 when paused
-    rateRef.current = SPEEDS[speed];
+    rateRef.current = SPEEDS[speed][0];
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -173,7 +191,8 @@ export function ParticleCanvas() {
         // Paint a blurred box over each piece of text. Positions come from layout
         // offsets, so the fade-up animation's transform doesn't skew them.
         function buildMask() {
-            if (!panel) return;
+            if (!panel || !W) return;
+            stale = true;
             mask.width = canvas!.width;
             mask.height = canvas!.height;
             const mctx = mask.getContext("2d");
@@ -245,7 +264,7 @@ export function ParticleCanvas() {
         }
 
         function drawTerrain(now: number, dark: boolean, art: Art) {
-            const palette = art ? ART[art] : null;
+            const palette = art ? ART[art][dark ? "dark" : "light"] : null;
             // Blend weights, eased and normalized so they always sum to 1
             const live = scenes.filter((s) => s.weight > 0);
             const total = live.reduce((sum, s) => sum + ease(s.weight), 0);
@@ -358,11 +377,11 @@ export function ParticleCanvas() {
 
         // Impressionist: a low orange sun and its broken reflection on the water.
         // Surrealist: a soft clock sliding off the sky.
-        function drawSky(now: number, art: Art) {
+        function drawSky(now: number, dark: boolean, art: Art) {
             if (!art) return;
             const x = W * 0.74;
             const y = H * 0.2;
-            ctx!.fillStyle = ctx!.strokeStyle = ART[art].light;
+            ctx!.fillStyle = ctx!.strokeStyle = ART[art][dark ? "dark" : "light"].light;
             if (art === "impressionist") {
                 for (const [radius, alpha] of [[26, 0.12], [18, 0.25], [12, 0.95]]) {
                     ctx!.globalAlpha = alpha;
@@ -395,7 +414,7 @@ export function ParticleCanvas() {
         }
 
         function drawGlow(dark: boolean, art: Art) {
-            ctx!.fillStyle = art ? ART[art].light : dark ? "#fff" : "rgb(46,134,222)";
+            ctx!.fillStyle = art ? ART[art][dark ? "dark" : "light"].light : dark ? "#fff" : "rgb(46,134,222)";
             for (let i = 0; i < glow.length; i += 3) {
                 const s = glow[i + 2];
                 const size = 1.1 + 1.6 * s;
@@ -411,7 +430,7 @@ export function ParticleCanvas() {
             const dark = document.documentElement.classList.contains("dark");
             const art = document.documentElement.dataset.art as Art;
             if (scenes.length) {
-                drawSky(now, art);
+                drawSky(now, dark, art);
                 drawTerrain(now, dark, art);
                 drawGlow(dark, art);
                 ctx!.globalCompositeOperation = "destination-out";
@@ -496,24 +515,17 @@ export function ParticleCanvas() {
 
         // Text can move after first paint, once the web fonts load
         document.fonts?.ready.then(buildMask);
+        maskRef.current = buildMask;
 
         // The canvas ignores the pointer (it sits under the text), so listen on the panel
-        let controlsTimer = 0;
-        const wake = () => {
-            setControls(true);
-            window.clearTimeout(controlsTimer);
-            controlsTimer = window.setTimeout(() => setControls(false), CONTROLS_MS);
-        };
         const onMove = (e: MouseEvent) => {
             const rect = canvas.getBoundingClientRect();
             mouseX = e.clientX - rect.left;
             mouseY = e.clientY - rect.top;
-            wake();
         };
         const onLeave = () => { mouseX = mouseY = -1e4; };
         panel?.addEventListener("mousemove", onMove);
         panel?.addEventListener("mouseleave", onLeave);
-        panel?.addEventListener("touchstart", wake, { passive: true });
 
         window.addEventListener("resize", resize);
         return () => {
@@ -523,11 +535,29 @@ export function ParticleCanvas() {
             window.removeEventListener("resize", resize);
             panel?.removeEventListener("mousemove", onMove);
             panel?.removeEventListener("mouseleave", onLeave);
-            panel?.removeEventListener("touchstart", wake);
-            window.clearTimeout(controlsTimer);
             scenes = [];
         };
     }, []);
+
+    // Each style has its own fonts, so the text moves when the style changes.
+    // Rebuild the holes behind it now, and again once the new fonts have loaded.
+    useEffect(() => {
+        maskRef.current();
+        const timers = [400, 1500].map((ms) => window.setTimeout(() => maskRef.current(), ms));
+        return () => timers.forEach((t) => window.clearTimeout(t));
+    }, [style]);
+
+    const option = (label: React.ReactNode, on: boolean, pick: () => void, name?: string) => (
+        <button
+            key={name ?? String(label)}
+            onClick={pick}
+            aria-label={name}
+            aria-pressed={on}
+            className={on ? "underline underline-offset-4" : "opacity-50 hover:opacity-80"}
+        >
+            {label}
+        </button>
+    );
 
     return (
         <>
@@ -536,33 +566,50 @@ export function ParticleCanvas() {
                 aria-hidden="true"
                 className="absolute inset-0 w-full h-full pointer-events-none"
             />
-            {active >= 0 && (
-                <div className={`absolute top-6 md:top-auto md:bottom-6 left-10 md:left-16 z-20 flex items-baseline gap-3 text-xs tracking-wide text-chicago-flag-blue dark:text-slate-300 transition-opacity duration-500 focus-within:opacity-100 focus-within:pointer-events-auto ${
-                    controls ? "opacity-100" : "opacity-0 pointer-events-none"
-                }`}>
-                    {PLACES.map(([name, short], i) => (
-                        <button
-                            key={name}
-                            onClick={() => pickRef.current(i)}
-                            aria-label={name}
-                            aria-pressed={i === active}
-                            className={`transition-opacity duration-300 ${
-                                i === active ? "opacity-100" : "opacity-40 hover:opacity-70"
-                            }`}
-                        >
-                            <span className="md:hidden">{short}</span>
-                            <span className="hidden md:inline">{name}</span>
-                        </button>
-                    ))}
-                    <button
-                        onClick={() => setSpeed((v) => (v + 1) % SPEEDS.length)}
-                        aria-label="Change speed"
-                        className="opacity-40 hover:opacity-70"
-                    >
-                        {SPEEDS[speed] ? `${SPEEDS[speed]}×` : "paused"}
-                    </button>
-                </div>
-            )}
+            <div className="absolute top-5 left-10 md:left-16 z-20 text-xs tracking-wide text-chicago-flag-blue dark:text-slate-300">
+                <button
+                    onClick={() => setOpen((v) => !v)}
+                    aria-expanded={open}
+                    className="opacity-60 hover:opacity-100"
+                >
+                    {open ? "close" : "view"}
+                </button>
+                {open && (
+                    <div className="control-bar mt-2 grid grid-cols-[auto_1fr] items-baseline gap-x-4 gap-y-2 rounded-lg p-3 backdrop-blur-sm">
+                        {active >= 0 && (
+                            <>
+                                <span className="opacity-50">place</span>
+                                <div className="flex gap-3">
+                                    {PLACES.map(([name, short], i) => option(
+                                        <>
+                                            <span className="xl:hidden">{short}</span>
+                                            <span className="hidden xl:inline">{name}</span>
+                                        </>,
+                                        i === active, () => pickRef.current(i), name,
+                                    ))}
+                                </div>
+                            </>
+                        )}
+                        <span className="opacity-50">style</span>
+                        <div className="flex gap-3">
+                            {STYLE_NAMES.map(([id, name]) => option(name, id === style, () => onStyle(id)))}
+                        </div>
+                        <span className="opacity-50">light</span>
+                        <div className="flex gap-3">
+                            {option("Light", !isDarkMode, () => { if (isDarkMode) toggleDarkMode(); })}
+                            {option("Dark", isDarkMode, () => { if (!isDarkMode) toggleDarkMode(); })}
+                        </div>
+                        {active >= 0 && (
+                            <>
+                                <span className="opacity-50">speed</span>
+                                <div className="flex gap-3">
+                                    {SPEEDS.map(([, label], i) => option(label, i === speed, () => setSpeed(i)))}
+                                </div>
+                            </>
+                        )}
+                    </div>
+                )}
+            </div>
         </>
     );
 }

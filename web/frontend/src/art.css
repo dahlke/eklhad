@@ -1,64 +1,120 @@
 /*
- * Photos match the page they are on. The plain page turns the map's photo
- * stamps and hover photos blue, like the terrain. The art pages
+ * Photos match the style they are shown in. The plain ("Digital") style turns
+ * the map's photo stamps, hover photos and full-size photos blue, like the
+ * terrain, and breaks the larger ones into dots. The art styles
  * (data-art on <html>, set in App.tsx) repaint the panel, the map and the
- * photos. The full-size photo in the lightbox is left alone everywhere.
+ * photos, each in a light and a dark version.
  */
 
 /* Plain page: photos in the terrain's blue. The hover photo is large enough to
    break into dots as well; the small stamps would turn to mush. */
 html:not([data-art]) .stamp-badge,
-html:not([data-art]) .tooltip-photo {
+html:not([data-art]) .tooltip-photo,
+html:not([data-art]) .lightbox-img {
     filter: grayscale(1) sepia(1) hue-rotate(175deg) saturate(2.6) contrast(1.15);
 }
-html:not([data-art]) .tooltip-photo {
+html:not([data-art]) .tooltip-photo,
+html:not([data-art]) .lightbox-img {
     -webkit-mask-image: radial-gradient(circle, #000 52%, transparent 56%);
     mask-image: radial-gradient(circle, #000 52%, transparent 56%);
     -webkit-mask-size: 4px 4px;
     mask-size: 4px 4px;
 }
 
-/* Impressionist: cream canvas, soft ink, painted photos, a brighter softer map */
-[data-art="impressionist"] .profile-panel {
-    background: linear-gradient(180deg, #f6e6cf 0%, #e6e3ee 55%, #cfdcea 100%) !important;
+/* The bar of choices, in every style */
+.control-bar {
+    background: rgba(255, 255, 255, 0.4);
 }
-[data-art="impressionist"] .profile-panel h1,
-[data-art="impressionist"] .profile-panel p,
-[data-art="impressionist"] .profile-panel a,
-[data-art="impressionist"] .profile-panel button {
-    color: #2f3f6f !important;
+.dark .control-bar {
+    background: rgba(13, 17, 23, 0.5);
+}
+
+/*
+ * Fonts. Dots: dotted capitals and a typewriter face. Impressionist: a soft
+ * old-style serif. Surrealist: a serif that wobbles. App.tsx loads each set
+ * when its style is first shown.
+ */
+html:not([data-art]) body {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+html:not([data-art]) .profile-panel h1 {
+    font-family: "Doto", "IBM Plex Mono", ui-monospace, monospace !important;
+    font-weight: 900;
+}
+[data-art="impressionist"] body,
+[data-art="impressionist"] .profile-panel h1 {
+    font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif !important;
+}
+[data-art="impressionist"] .profile-panel {
+    font-size: 1.12em;
 }
 [data-art="impressionist"] .profile-panel h1 {
     font-style: italic;
 }
+[data-art="surrealist"] body,
+[data-art="surrealist"] .profile-panel h1 {
+    font-family: "Fraunces", "Playfair Display", Georgia, serif !important;
+}
+[data-art="surrealist"] .profile-panel h1 {
+    font-style: italic;
+    transform: skewY(-4deg);
+    letter-spacing: 0.04em;
+}
+
+/* Ink: one text color per style and mode, for everything in the panel */
+[data-art] .profile-panel h1,
+[data-art] .profile-panel p,
+[data-art] .profile-panel a,
+[data-art] .profile-panel button,
+[data-art] .profile-panel .control-bar {
+    color: var(--ink) !important;
+}
+
+/* Impressionist: a cream canvas by day, a blue night; painted photos, a softer map */
+[data-art="impressionist"] {
+    --ink: #2f3f6f;
+}
+[data-art="impressionist"] .profile-panel {
+    background: linear-gradient(180deg, #f6e6cf 0%, #e6e3ee 55%, #cfdcea 100%) !important;
+}
+.dark[data-art="impressionist"] {
+    --ink: #f3e6cf;
+}
+.dark[data-art="impressionist"] .profile-panel {
+    background: linear-gradient(180deg, #141a38 0%, #252b55 50%, #3a2f52 100%) !important;
+}
 [data-art="impressionist"] .mapboxgl-canvas {
     filter: saturate(1.6) brightness(1.1) contrast(0.9) blur(0.7px);
 }
+.dark[data-art="impressionist"] .mapboxgl-canvas {
+    filter: saturate(1.5) brightness(0.8) contrast(0.95) hue-rotate(12deg) blur(0.7px);
+}
 [data-art="impressionist"] .stamp-badge,
 [data-art="impressionist"] .tooltip-photo,
+[data-art="impressionist"] .lightbox-img,
 [data-art="impressionist"] .profile-panel img {
     filter: url(#art-impressionist) saturate(1.5) contrast(0.95);
 }
 
-/* Surrealist: dusk over sand, pale ink, melted photos, a desert-toned map */
+/* Surrealist: bright desert by day, dusk over sand at night; melted photos, a desert map */
+[data-art="surrealist"] {
+    --ink: #3a2a1a;
+}
 [data-art="surrealist"] .profile-panel {
+    background: linear-gradient(180deg, #bfe3e6 0%, #e6e6c8 45%, #f2dfa8 75%, #e8b96a 100%) !important;
+}
+.dark[data-art="surrealist"] {
+    --ink: #fff5dc;
+}
+.dark[data-art="surrealist"] .profile-panel {
     background: linear-gradient(180deg, #0f3a47 0%, #2b5f63 38%, #c7773a 78%, #e8c26a 100%) !important;
-}
-[data-art="surrealist"] .profile-panel h1,
-[data-art="surrealist"] .profile-panel p,
-[data-art="surrealist"] .profile-panel a,
-[data-art="surrealist"] .profile-panel button {
-    color: #fff5dc !important;
-}
-[data-art="surrealist"] .profile-panel h1 {
-    transform: skewY(-4deg);
-    letter-spacing: 0.04em;
 }
 [data-art="surrealist"] .mapboxgl-canvas {
     filter: sepia(0.75) hue-rotate(-18deg) saturate(1.8) contrast(1.1);
 }
 [data-art="surrealist"] .stamp-badge,
 [data-art="surrealist"] .tooltip-photo,
+[data-art="surrealist"] .lightbox-img,
 [data-art="surrealist"] .profile-panel img {
-    filter: url(#art-surrealist) sepia(0.4) saturate(1.5);
+    filter: url(#art-surrealist) sepia(0.4) saturate(1.6) hue-rotate(-12deg);
 }

@@ -47,6 +47,23 @@ function MapPage() {
 const STYLES = ["", "impressionist", "surrealist"];
 const STYLE_PAGES: Record<string, string> = { "/impressionist": "impressionist", "/surrealist": "surrealist" };
 
+// Each style brings its own fonts. They load when the style is first shown.
+const STYLE_FONTS: Record<string, string> = {
+    "": "family=Doto:wght@900&family=IBM+Plex+Mono:wght@400;500",
+    impressionist: "family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600",
+    surrealist: "family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,600",
+};
+
+function loadFonts(style: string) {
+    const id = `fonts-${style || "dots"}`;
+    if (document.getElementById(id)) return;
+    const link = document.createElement("link");
+    link.id = id;
+    link.rel = "stylesheet";
+    link.href = `https://fonts.googleapis.com/css2?${STYLE_FONTS[style]}&display=swap`;
+    document.head.appendChild(link);
+}
+
 function openingStyle(path: string) {
     if (STYLE_PAGES[path]) return STYLE_PAGES[path];
     let options = STYLES;
@@ -61,7 +78,11 @@ function openingStyle(path: string) {
 
 function App() {
     const path = window.location.pathname.replace(/\/+$/, "");
-    return path === "/map" ? <MapPage /> : <Home openingStyle={openingStyle(path)} />;
+    if (path === "/map") {
+        loadFonts("");
+        return <MapPage />;
+    }
+    return <Home openingStyle={openingStyle(path)} />;
 }
 
 // SVG filters that art.css applies to photos: a brushy wobble, and a slow melt
@@ -83,6 +104,7 @@ function Home({ openingStyle }: { openingStyle: string }) {
     useLayoutEffect(() => {
         if (style) document.documentElement.dataset.art = style;
         else delete document.documentElement.dataset.art;
+        loadFonts(style);
     }, [style]);
 
     const gravatar = useGravatar();
@@ -124,7 +146,7 @@ function Home({ openingStyle }: { openingStyle: string }) {
                 ref={profileRef}
                 className="profile-panel relative min-h-screen md:w-2/5 md:min-h-screen flex flex-col justify-center px-10 md:px-16 py-20 profile-mobile-bg md:bg-off-white md:dark:bg-dark-bg z-10"
             >
-                <ParticleCanvas />
+                <ParticleCanvas style={style} onStyle={setStyle} />
                 <div className="relative z-10 flex flex-col">
                 <img
                     className="w-16 h-16 rounded-full mb-10 animate-fade-up"
@@ -198,9 +220,6 @@ function Home({ openingStyle }: { openingStyle: string }) {
             )}
 
             {artFilters}
-            <div className={showScrollTop ? 'hidden md:block' : ''}>
-                <DarkModeToggle style={style} onStyle={setStyle} />
-            </div>
         </div>
     );
 }

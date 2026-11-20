@@ -1,31 +1,15 @@
 import React from 'react';
 import { useDarkMode } from '../../contexts';
 
-const LABELS: Record<string, string> = {
-	dark: 'Dark', light: 'Light', impressionist: 'Impressionist', surrealist: 'Surrealist',
-};
-
-// With onStyle, the button also steps through the art styles of the home page:
-// dark, light, impressionist, surrealist. `style` is the art style showing now,
-// or "" for none. Without onStyle it only switches light and dark.
-export function DarkModeToggle({ style = '', onStyle }: { style?: string; onStyle?: (style: string) => void }) {
+export function DarkModeToggle() {
 	const { isDarkMode, toggleDarkMode } = useDarkMode();
-	const looks = onStyle ? ['dark', 'light', 'impressionist', 'surrealist'] : ['dark', 'light'];
-	const current = style || (isDarkMode ? 'dark' : 'light');
-	const next = looks[(looks.indexOf(current) + 1) % looks.length];
-	const isTheme = next === 'dark' || next === 'light';
-
-	const handleClick = () => {
-		onStyle?.(isTheme ? '' : next);
-		if (isTheme && isDarkMode !== (next === 'dark')) toggleDarkMode();
-	};
 
 	return (
 		<button
-			onClick={handleClick}
+			onClick={toggleDarkMode}
 			className="fixed top-5 right-5 md:right-auto md:left-5 z-50 flex items-center gap-2 px-3 py-1.5 rounded-full border border-chicago-flag-blue/30 dark:border-slate-600 text-chicago-flag-blue dark:text-slate-400 hover:border-chicago-flag-blue dark:hover:border-slate-400 hover:text-chicago-flag-blue dark:hover:text-slate-200 transition-all duration-150 focus:outline-none bg-white/50 dark:bg-dark-bg/50 backdrop-blur-sm"
-			aria-label={isTheme ? `Switch to ${next} mode` : `Switch to the ${next} style`}
-			title={isTheme ? `Switch to ${next} mode` : `Switch to the ${next} style`}
+			aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+			title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +19,7 @@ export function DarkModeToggle({ style = '', onStyle }: { style?: string; onStyl
 				stroke="currentColor"
 				strokeWidth={1.5}
 			>
-				{next === 'light' ? (
+				{isDarkMode ? (
 					<path
 						strokeLinecap="round"
 						strokeLinejoin="round"
@@ -50,7 +34,7 @@ export function DarkModeToggle({ style = '', onStyle }: { style?: string; onStyl
 				)}
 			</svg>
 			<span className="text-xs font-medium tracking-wide">
-				{LABELS[next]}
+				{isDarkMode ? 'Light' : 'Dark'}
 			</span>
 		</button>
 	);
