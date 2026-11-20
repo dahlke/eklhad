@@ -19,8 +19,8 @@ export function DarkModeProvider({ children }: DarkModeProviderProps) {
 		if (stored !== null) {
 			return stored === 'true';
 		}
-		// Fall back to system preference
-		return window.matchMedia('(prefers-color-scheme: dark)').matches;
+		// Dark by default: the dot terrain reads best on it
+		return true;
 	});
 
 	// Apply dark mode class to document element

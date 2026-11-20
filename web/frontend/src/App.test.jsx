@@ -12,5 +12,5 @@ test('renders the App component', () => {
 		</AppProviders>,
 		div,
 	);
-  expect(screen.getByText(/Deployed Engineering Leader/i)).toBeInTheDocument();
+  expect(screen.getByText(/^Human$/)).toBeInTheDocument();
 });

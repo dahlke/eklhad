@@ -99,7 +99,7 @@ function Home() {
                 </div>
 
                 <p className="text-sm font-medium text-chicago-flag-blue dark:text-slate-200 mb-1 animate-fade-up delay-300">
-                    Deployed Engineering Leader
+                    Human
                 </p>
 
                 <p className="text-sm italic text-chicago-flag-blue dark:text-slate-400 mb-10 animate-fade-up delay-300">
