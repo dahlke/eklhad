@@ -65,13 +65,13 @@ const ART = {
     surrealist: {
         light: {
             water: ["#5fb8c2", "#3f9aa8", "#8fd0d4"],
-            land: ["#d9a441", "#c2793a", "#b85f2f", "#e8b85a"],
+            land: ["#c99a6a", "#b8774a", "#a8603f", "#d2b483"],
             mark: ["#3a2a1a", "#5a2f1a", "#c2402a"],
             light: "#3a2a1a",
         },
         dark: {
             water: ["#2a8a8f", "#1f6f7a", "#3fa3a0"],
-            land: ["#e8c26a", "#d9a441", "#c2793a", "#f2d998"],
+            land: ["#d2b483", "#c99a6a", "#b8774a", "#e0cba6"],
             mark: ["#fff5dc", "#f2e6c8", "#e8572f"],
             light: "#fff5dc",
         },

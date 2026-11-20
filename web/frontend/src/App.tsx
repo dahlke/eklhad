@@ -40,11 +40,10 @@ function MapPage() {
     );
 }
 
-// The home page comes in three styles: "" is the plain dot matrix. Whichever
-// is active is set as data-art on <html>, which art.css and the terrain canvas
-// both read. /impressionist and /surrealist open in that style; the home page
-// opens in a different one from last time.
-const STYLES = ["", "impressionist", "surrealist"];
+// The home page comes in three styles: "" is the plain "Digital" dot matrix.
+// Whichever is active is set as data-art on <html>, which art.css and the
+// terrain canvas both read. The home page opens in the surrealist style;
+// /impressionist opens in that one.
 const STYLE_PAGES: Record<string, string> = { "/impressionist": "impressionist", "/surrealist": "surrealist" };
 
 // Each style brings its own fonts. They load when the style is first shown.
@@ -64,25 +63,13 @@ function loadFonts(style: string) {
     document.head.appendChild(link);
 }
 
-function openingStyle(path: string) {
-    if (STYLE_PAGES[path]) return STYLE_PAGES[path];
-    let options = STYLES;
-    try {
-        const last = localStorage.getItem("artStyle");
-        options = STYLES.filter((style) => style !== last);
-    } catch { /* no storage: any of the three */ }
-    const style = options[Math.floor(Math.random() * options.length)];
-    try { localStorage.setItem("artStyle", style); } catch { /* ignore */ }
-    return style;
-}
-
 function App() {
     const path = window.location.pathname.replace(/\/+$/, "");
     if (path === "/map") {
         loadFonts("");
         return <MapPage />;
     }
-    return <Home openingStyle={openingStyle(path)} />;
+    return <Home openingStyle={STYLE_PAGES[path] ?? "surrealist"} />;
 }
 
 // SVG filters that art.css applies to photos: a brushy wobble, and a slow melt
