@@ -40,22 +40,23 @@ function MapPage() {
     );
 }
 
-// The home page comes in three styles: "" is the plain "Digital" dot matrix.
-// Whichever is active is set as data-art on <html>, which art.css and the
-// terrain canvas both read. The home page opens in the surrealist style;
-// /impressionist opens in that one.
-const STYLE_PAGES: Record<string, string> = { "/impressionist": "impressionist", "/surrealist": "surrealist" };
+// The home page comes in four styles. "" is Classic, the original serif page;
+// the others are set as data-art on <html>, which art.css and the terrain
+// canvas both read. The home page opens in Classic; /digital, /impressionist
+// and /surrealist open in that style.
+const STYLE_PAGES: Record<string, string> = { "/digital": "digital", "/impressionist": "impressionist", "/surrealist": "surrealist" };
 
-// Each style brings its own fonts. They load when the style is first shown.
+// Each art style brings its own fonts. They load when the style is first shown.
+// Classic's fonts are in index.html.
 const STYLE_FONTS: Record<string, string> = {
-    "": "family=Doto:wght@900&family=IBM+Plex+Mono:wght@400;500",
+    digital: "family=Doto:wght@900&family=IBM+Plex+Mono:wght@400;500",
     impressionist: "family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600",
     surrealist: "family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,600",
 };
 
 function loadFonts(style: string) {
-    const id = `fonts-${style || "dots"}`;
-    if (document.getElementById(id)) return;
+    const id = `fonts-${style}`;
+    if (!STYLE_FONTS[style] || document.getElementById(id)) return;
     const link = document.createElement("link");
     link.id = id;
     link.rel = "stylesheet";
@@ -65,11 +66,8 @@ function loadFonts(style: string) {
 
 function App() {
     const path = window.location.pathname.replace(/\/+$/, "");
-    if (path === "/map") {
-        loadFonts("");
-        return <MapPage />;
-    }
-    return <Home openingStyle={STYLE_PAGES[path] ?? "surrealist"} />;
+    if (path === "/map") return <MapPage />;
+    return <Home openingStyle={STYLE_PAGES[path] ?? ""} />;
 }
 
 // SVG filters that art.css applies to photos: a brushy wobble, and a slow melt

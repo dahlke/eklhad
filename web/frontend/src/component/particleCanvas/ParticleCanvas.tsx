@@ -24,7 +24,7 @@ import TERRAIN_URL from "./terrain.bin?url";
 
 // [full name, short name for narrow panels, where four full names don't fit on one row]
 const PLACES = [["San Francisco", "SF"], ["Chicago", "Chicago"], ["Dublin", "Dublin"], ["Tahoe City", "Tahoe"]];
-const STYLE_NAMES = [["", "Digital"], ["impressionist", "Impressionist"], ["surrealist", "Surrealist"]];
+const STYLE_NAMES = [["", "Classic"], ["digital", "Digital"], ["impressionist", "Impressionist"], ["surrealist", "Surrealist"]];
 const SPEEDS = [[0.5, "0.5×"], [1, "1×"], [2, "2×"], [0, "Pause"]] as const;
 const SCENE_PLACE = [0, 0, 1, 1, 2, 2, 3, 3]; // which place each baked scene belongs to
 const HOLD_MS = 2500;
@@ -449,7 +449,8 @@ export function ParticleCanvas({ style, onStyle }: { style: string; onStyle: (st
         function draw(now: number) {
             ctx!.clearRect(0, 0, W, H);
             const dark = document.documentElement.classList.contains("dark");
-            const art = document.documentElement.dataset.art as Art;
+            const style = document.documentElement.dataset.art;
+            const art = (style === "digital" ? undefined : style) as Art; // Classic and Digital share the plain dots
             if (scenes.length) {
                 drawSky(now, dark, art);
                 drawTerrain(now, dark, art);

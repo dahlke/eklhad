@@ -1,5 +1,6 @@
 /*
- * Photos match the style they are shown in. The plain ("Digital") style turns
+ * Photos match the style they are shown in. Classic (no data-art) is the
+ * original serif page and leaves photos alone. Digital turns
  * the map's photo stamps, hover photos and full-size photos blue, like the
  * terrain, and breaks the larger ones into dots. The art styles
  * (data-art on <html>, set in App.tsx) repaint the panel, the map and the
@@ -8,13 +9,13 @@
 
 /* Plain page: photos in the terrain's blue. The hover photo is large enough to
    break into dots as well; the small stamps would turn to mush. */
-html:not([data-art]) .stamp-badge,
-html:not([data-art]) .tooltip-photo,
-html:not([data-art]) .lightbox-img {
+[data-art="digital"] .stamp-badge,
+[data-art="digital"] .tooltip-photo,
+[data-art="digital"] .lightbox-img {
     filter: grayscale(1) sepia(1) hue-rotate(175deg) saturate(2.6) contrast(1.15);
 }
-html:not([data-art]) .tooltip-photo,
-html:not([data-art]) .lightbox-img {
+[data-art="digital"] .tooltip-photo,
+[data-art="digital"] .lightbox-img {
     -webkit-mask-image: radial-gradient(circle, #000 52%, transparent 56%);
     mask-image: radial-gradient(circle, #000 52%, transparent 56%);
     -webkit-mask-size: 4px 4px;
@@ -30,14 +31,14 @@ html:not([data-art]) .lightbox-img {
 }
 
 /*
- * Fonts. Dots: dotted capitals and a typewriter face. Impressionist: a soft
+ * Fonts. Classic keeps the page's own Playfair Display and Open Sans. Digital: dotted capitals and a typewriter face. Impressionist: a soft
  * old-style serif. Surrealist: a serif that wobbles. App.tsx loads each set
  * when its style is first shown.
  */
-html:not([data-art]) body {
+[data-art="digital"] body {
     font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
 }
-html:not([data-art]) .profile-panel h1 {
+[data-art="digital"] .profile-panel h1 {
     font-family: "Doto", "IBM Plex Mono", ui-monospace, monospace !important;
     font-weight: 900;
 }
@@ -62,11 +63,8 @@ html:not([data-art]) .profile-panel h1 {
 }
 
 /* Ink: one text color per style and mode, for everything in the panel */
-[data-art] .profile-panel h1,
-[data-art] .profile-panel p,
-[data-art] .profile-panel a,
-[data-art] .profile-panel button,
-[data-art] .profile-panel .control-bar {
+[data-art="impressionist"] .profile-panel :is(h1, p, a, button, .control-bar),
+[data-art="surrealist"] .profile-panel :is(h1, p, a, button, .control-bar) {
     color: var(--ink) !important;
 }
 
@@ -111,11 +109,11 @@ html:not([data-art]) .profile-panel h1 {
  * their size. Digital: square with a dotted frame. Impressionist: soft, with
  * a warm halo. Surrealist: a melted blob.
  */
-html:not([data-art]) .map-custom-marker.has-badge,
-html:not([data-art]) .map-custom-marker.has-badge .stamp-badge {
+[data-art="digital"] .map-custom-marker.has-badge,
+[data-art="digital"] .map-custom-marker.has-badge .stamp-badge {
     border-radius: 3px !important;
 }
-html:not([data-art]) .map-custom-marker.has-badge {
+[data-art="digital"] .map-custom-marker.has-badge {
     outline: 1px dotted #58b9f7;
     outline-offset: 2px;
 }
@@ -138,7 +136,8 @@ html:not([data-art]) .map-custom-marker.has-badge {
  * The map takes the style's color from a flat tint laid over it. A CSS filter
  * on the map itself had to be recomputed on every frame the globe moves.
  */
-[data-art] .map-pane::after {
+[data-art="impressionist"] .map-pane::after,
+[data-art="surrealist"] .map-pane::after {
     content: "";
     position: absolute;
     inset: 0;
