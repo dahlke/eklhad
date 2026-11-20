@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState, useEffect, useRef } from "react";
+import React, { Suspense, lazy, useState, useEffect, useLayoutEffect, useRef } from "react";
 
 const Map = lazy(() => import("./component/map/Map"));
 
@@ -40,17 +40,28 @@ function MapPage() {
     );
 }
 
-// /impressionist and /surrealist are the same page in another style. The
-// attribute is set before the first render so the styles in art.css and the
-// terrain canvas both see it.
-const ART_PAGES: Record<string, string> = { "/impressionist": "impressionist", "/surrealist": "surrealist" };
+// The home page comes in three styles: "" is the plain dot matrix. Whichever
+// is active is set as data-art on <html>, which art.css and the terrain canvas
+// both read. /impressionist and /surrealist open in that style; the home page
+// opens in a different one from last time.
+const STYLES = ["", "impressionist", "surrealist"];
+const STYLE_PAGES: Record<string, string> = { "/impressionist": "impressionist", "/surrealist": "surrealist" };
+
+function openingStyle(path: string) {
+    if (STYLE_PAGES[path]) return STYLE_PAGES[path];
+    let options = STYLES;
+    try {
+        const last = localStorage.getItem("artStyle");
+        options = STYLES.filter((style) => style !== last);
+    } catch { /* no storage: any of the three */ }
+    const style = options[Math.floor(Math.random() * options.length)];
+    try { localStorage.setItem("artStyle", style); } catch { /* ignore */ }
+    return style;
+}
 
 function App() {
     const path = window.location.pathname.replace(/\/+$/, "");
-    if (path === "/map") return <MapPage />;
-    const art = ART_PAGES[path];
-    if (art) document.documentElement.dataset.art = art;
-    return <Home art={!!art} />;
+    return path === "/map" ? <MapPage /> : <Home openingStyle={openingStyle(path)} />;
 }
 
 // SVG filters that art.css applies to photos: a brushy wobble, and a slow melt
@@ -67,7 +78,14 @@ const artFilters = (
     </svg>
 );
 
-function Home({ art }: { art: boolean }) {
+function Home({ openingStyle }: { openingStyle: string }) {
+    const [style, setStyle] = useState(openingStyle);
+    useLayoutEffect(() => {
+        if (style) document.documentElement.dataset.art = style;
+        else delete document.documentElement.dataset.art;
+    }, [style]);
+    const nextStyle = () => setStyle((current) => STYLES[(STYLES.indexOf(current) + 1) % STYLES.length]);
+
     const gravatar = useGravatar();
     const [showScrollTop, setShowScrollTop] = useState(false);
     const profileRef = useRef<HTMLDivElement>(null);
@@ -107,7 +125,7 @@ function Home({ art }: { art: boolean }) {
                 ref={profileRef}
                 className="profile-panel relative min-h-screen md:w-2/5 md:min-h-screen flex flex-col justify-center px-10 md:px-16 py-20 profile-mobile-bg md:bg-off-white md:dark:bg-dark-bg z-10"
             >
-                <ParticleCanvas />
+                <ParticleCanvas onStyle={nextStyle} />
                 <div className="relative z-10 flex flex-col">
                 <img
                     className="w-16 h-16 rounded-full mb-10 animate-fade-up"
@@ -180,8 +198,9 @@ function Home({ art }: { art: boolean }) {
                 </button>
             )}
 
-            {/* The art pages have their own colors, so no light/dark switch there */}
-            {art ? artFilters : (
+            {artFilters}
+            {/* The art styles have their own colors, so no light/dark switch there */}
+            {!style && (
                 <div className={showScrollTop ? 'hidden md:block' : ''}>
                     <DarkModeToggle />
                 </div>
