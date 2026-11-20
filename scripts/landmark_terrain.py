@@ -2,8 +2,8 @@
 """
 Bakes the dot-terrain scenes drawn behind the profile panel, two per place:
 the Golden Gate (wide, then from Battery Spencer), Chicago (the skyline from
-the lake, then the Bean), Howth (the cliffs out to the Baily lighthouse, then
-the harbour) and Tahoe City (the shore under the Sierra crest, then the view
+the lake, then the Bean), Howth (the harbour, then the cliffs out to the
+Baily lighthouse) and Tahoe City (the shore under the Sierra crest, then the view
 down the lake). The canvas morphs from one scene to the next. The scene order here
 must match SCENE_PLACE in ParticleCanvas.tsx.
 
@@ -99,6 +99,13 @@ SCENES = [
         "sea_level": 176, "water_below": 0.5, "vscale": 1.0, "sprite": "bean",
     },
     {
+        "name": "Howth, the harbour",
+        # Across the harbour from the west pier: boats, the east pier and its lighthouse
+        "anchor": HOWTH_LIGHT, "anchor_row": 0.32, "anchor_col": 0.64,
+        "heading": 80, "depth_m": 2_500, "width_m": 2_500,
+        "sea_level": 0, "water_below": 5, "vscale": 2.5, "sprite": "howth_harbour",
+    },
+    {
         "name": "Howth, the cliffs",
         # From the sea to the south-east: the Baily on its point at the front,
         # the east cliffs running back to the right, the south shore to the left
@@ -108,13 +115,6 @@ SCENES = [
         "sea_level": 0, "water_below": 5, "vscale": 3.5, "sprite": "howth_cliffs",
         # Land is whatever is inside the traced coast, and never lower than a cliff
         "land": HOWTH_HEAD, "land_floor": 70,
-    },
-    {
-        "name": "Howth, the harbour",
-        # Across the harbour from the west pier: boats, the east pier and its lighthouse
-        "anchor": HOWTH_LIGHT, "anchor_row": 0.32, "anchor_col": 0.64,
-        "heading": 80, "depth_m": 2_500, "width_m": 2_500,
-        "sea_level": 0, "water_below": 5, "vscale": 2.5, "sprite": "howth_harbour",
     },
     {
         "name": "Tahoe City, the shore",
