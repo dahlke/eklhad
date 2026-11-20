@@ -84,7 +84,6 @@ function Home({ openingStyle }: { openingStyle: string }) {
         if (style) document.documentElement.dataset.art = style;
         else delete document.documentElement.dataset.art;
     }, [style]);
-    const nextStyle = () => setStyle((current) => STYLES[(STYLES.indexOf(current) + 1) % STYLES.length]);
 
     const gravatar = useGravatar();
     const [showScrollTop, setShowScrollTop] = useState(false);
@@ -125,7 +124,7 @@ function Home({ openingStyle }: { openingStyle: string }) {
                 ref={profileRef}
                 className="profile-panel relative min-h-screen md:w-2/5 md:min-h-screen flex flex-col justify-center px-10 md:px-16 py-20 profile-mobile-bg md:bg-off-white md:dark:bg-dark-bg z-10"
             >
-                <ParticleCanvas onStyle={nextStyle} />
+                <ParticleCanvas />
                 <div className="relative z-10 flex flex-col">
                 <img
                     className="w-16 h-16 rounded-full mb-10 animate-fade-up"
@@ -199,12 +198,9 @@ function Home({ openingStyle }: { openingStyle: string }) {
             )}
 
             {artFilters}
-            {/* The art styles have their own colors, so no light/dark switch there */}
-            {!style && (
-                <div className={showScrollTop ? 'hidden md:block' : ''}>
-                    <DarkModeToggle />
-                </div>
-            )}
+            <div className={showScrollTop ? 'hidden md:block' : ''}>
+                <DarkModeToggle style={style} onStyle={setStyle} />
+            </div>
         </div>
     );
 }

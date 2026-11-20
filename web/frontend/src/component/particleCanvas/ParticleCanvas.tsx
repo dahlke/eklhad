@@ -15,8 +15,8 @@ import TERRAIN_URL from "./terrain.bin?url";
  * Data comes from terrain.bin, baked by scripts/landmark_terrain.py.
  * Prefers-reduced-motion renders nothing.
  *
- * The page comes in three styles, switched by the last control. The art
- * styles set data-art on <html> (see App.tsx). The same
+ * The page comes in three styles, switched from the light/dark button. The
+ * art styles set data-art on <html> (see App.tsx). The same
  * scenes are then painted as dabs of color under a low sun, or in desert
  * colors with dripping dots, melting landmarks and a soft clock.
  */
@@ -78,7 +78,7 @@ interface Scene {
     weight: number;        // 0-1, how much of this scene is on screen
 }
 
-export function ParticleCanvas({ onStyle }: { onStyle: () => void }) {
+export function ParticleCanvas() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const pickRef = useRef<(place: number) => void>(() => {});
     const [active, setActive] = useState(-1); // -1 until the terrain loads
@@ -560,14 +560,6 @@ export function ParticleCanvas({ onStyle }: { onStyle: () => void }) {
                         className="opacity-40 hover:opacity-70"
                     >
                         {SPEEDS[speed] ? `${SPEEDS[speed]}×` : "paused"}
-                    </button>
-                    <button
-                        onClick={onStyle}
-                        aria-label="Change style"
-                        title="Change style"
-                        className="opacity-40 hover:opacity-70"
-                    >
-                        ◑
                     </button>
                 </div>
             )}
