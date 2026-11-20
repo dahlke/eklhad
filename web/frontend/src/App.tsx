@@ -187,7 +187,7 @@ function Home({ openingStyle }: { openingStyle: string }) {
             </div>
 
             {/* Map — fixed full-screen behind profile on mobile, sticky column on desktop */}
-            <div className="fixed inset-0 z-0 md:inset-auto md:w-3/5 md:sticky md:top-0 md:h-screen">
+            <div className="map-pane fixed inset-0 z-0 md:inset-auto md:w-3/5 md:sticky md:top-0 md:h-screen">
                 <Suspense fallback={mapFallback}>
                     <Map />
                 </Suspense>

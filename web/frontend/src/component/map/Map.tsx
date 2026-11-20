@@ -196,13 +196,18 @@ function Map() {
 		const startSpin = (skipIntro = false) => {
 			cancelAnimationFrame(animFrame);
 			const spinStart = skipIntro ? null : Date.now();
+			let skip = false;
 			const spin = () => {
 				animFrame = requestAnimationFrame(spin);
+				// Move the globe on every other frame: redrawing it 60 times a second
+				// is the heaviest thing on the page, and the drift is slow enough not to show
+				skip = !skip;
+				if (skip) return;
 				// Hold still while the page scrolls so the phone isn't redrawing the globe too
 				if (Date.now() - lastPageScroll < 200) return;
 				// Scale pan speed by zoom so visual velocity stays constant
 				const center = map.getCenter();
-				const lonDelta = 0.008 * Math.pow(2, ZOOM_END - map.getZoom());
+				const lonDelta = 0.016 * Math.pow(2, ZOOM_END - map.getZoom());
 				const longitude = center.lng + lonDelta;
 				if (spinStart !== null) {
 					const t = Math.min((Date.now() - spinStart) / ZOOM_DURATION, 1);

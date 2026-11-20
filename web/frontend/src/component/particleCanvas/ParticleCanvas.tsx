@@ -10,7 +10,7 @@ import TERRAIN_URL from "./terrain.bin?url";
  * harbour, then a harp over the bay) and Tahoe City (the shore, then down the lake). The dots morph from one scene to the next on a
  * timer. A small "view" button opens one bar with every choice: the place,
  * the style, light or dark, and the speed.
- * Drawing is capped at 30 fps. On low battery, or when the browser asks to
+ * Drawing runs at 30 fps while a scene changes and 15 fps between. On low battery, or when the browser asks to
  * save data, it only draws while a scene is changing and rests in between.
  * Dots near the cursor shimmer, and the mesh thins out behind the text.
  * Data comes from terrain.bin, baked by scripts/landmark_terrain.py.
@@ -30,7 +30,8 @@ const SCENE_PLACE = [0, 0, 1, 1, 2, 2, 3, 3]; // which place each baked scene be
 const HOLD_MS = 2500;
 const MORPH_MS = 1500;
 const HOVER_RADIUS = 90;       // px around the cursor that shimmers
-const FRAME_MS = 1000 / 30;
+const FRAME_MS = 1000 / 30;      // while a scene is changing or the cursor is over the panel
+const IDLE_FRAME_MS = 1000 / 15; // between changes, when only the water moves
 
 const METERS_PER_STEP = 2.5;
 const EDGE_FADE = 0.12;        // fraction of the grid that fades out at each side and the back
@@ -128,6 +129,7 @@ export function ParticleCanvas({ style, onStyle }: { style: string; onStyle: (st
         let saver = false;               // saving power: only draw while something is changing
         let stale = true;                // the canvas needs a draw even if nothing is moving
         let drawnDark = false;           // theme of the last draw
+        let busy = true;                 // draw at the full frame rate
 
         // Cursor in canvas coordinates, off screen when not hovering
         let mouseX = -1e4;
@@ -144,20 +146,6 @@ export function ParticleCanvas({ style, onStyle }: { style: string; onStyle: (st
             { x: 0.16, y: 0.75, rx: 240, ry: 100, alpha: 0.38, driftSpeed: 0.000009, phase: 4 },
             { x: 0.40, y: 0.50, rx: 210, ry:  95, alpha: 0.34, driftSpeed: 0.000007, phase: 1 },
         ];
-
-        // One fill style per (row, water/land/landmark, theme), built once.
-        type Styles = [string, string, string];
-        let rowStyles: { light: Styles; dark: Styles }[] = [];
-        function buildRowStyles() {
-            rowStyles = Array.from({ length: rows }, (_, r) => {
-                const t = r / (rows - 1);
-                const alphas = [0.12 + t * 0.2, 0.28 + t * 0.4, 0.55 + t * 0.4];
-                return {
-                    light: alphas.map((a) => `rgba(13,17,23,${a})`) as Styles,
-                    dark: alphas.map((a) => `rgba(88,185,247,${a})`) as Styles,
-                };
-            });
-        }
 
         const gradCache = new WeakMap<
             FogBlob,
@@ -219,7 +207,7 @@ export function ParticleCanvas({ style, onStyle }: { style: string; onStyle: (st
             const rect = parent.getBoundingClientRect();
             // Phone toolbars fire resize on scroll; reallocating an unchanged canvas stutters
             if (rect.width === W && rect.height === H) return;
-            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
             W = rect.width;
             H = rect.height;
             canvas!.width = Math.round(W * dpr);
@@ -263,8 +251,38 @@ export function ParticleCanvas({ style, onStyle }: { style: string; onStyle: (st
             glow.push(x, y, (1 - d) * (1 - d) * (0.35 + 0.65 * twinkle));
         }
 
+        // Dots are collected per color and opacity step, then each group is filled
+        // as one path. Thousands of separate fills were the bulk of the frame cost.
+        const LEVELS = 12;
+        const buckets: number[][] = [];
+        function put(color: number, alpha: number, x: number, y: number, w: number, h: number) {
+            if (alpha <= 0.02) return;
+            const key = color * LEVELS + Math.min(LEVELS - 1, Math.floor(alpha * LEVELS));
+            (buckets[key] ??= []).push(x, y, w, h);
+        }
+        function flush(colors: string[]) {
+            for (let key = 0; key < buckets.length; key++) {
+                const rects = buckets[key];
+                if (!rects?.length) continue;
+                ctx!.fillStyle = colors[Math.floor(key / LEVELS)];
+                ctx!.globalAlpha = ((key % LEVELS) + 0.5) / LEVELS;
+                ctx!.beginPath();
+                for (let i = 0; i < rects.length; i += 4) ctx!.rect(rects[i], rects[i + 1], rects[i + 2], rects[i + 3]);
+                ctx!.fill();
+                rects.length = 0;
+            }
+            ctx!.globalAlpha = 1;
+        }
+
         function drawTerrain(now: number, dark: boolean, art: Art) {
             const palette = art ? ART[art][dark ? "dark" : "light"] : null;
+            // Color numbers for put(): the plain style has one ink, the art styles a few per kind
+            const colors = palette
+                ? [...palette.water, ...palette.land, ...palette.mark]
+                : [dark ? "rgb(88,185,247)" : "rgb(13,17,23)"];
+            const landAt = palette ? palette.water.length : 0;
+            const markAt = palette ? landAt + palette.land.length : 0;
+
             // Blend weights, eased and normalized so they always sum to 1
             const live = scenes.filter((s) => s.weight > 0);
             const total = live.reduce((sum, s) => sum + ease(s.weight), 0);
@@ -277,58 +295,58 @@ export function ParticleCanvas({ style, onStyle }: { style: string; onStyle: (st
             const meter = METER * H;
             const pan = Math.sin(now * 0.00005) * 0.03;
             const swellPhase = now * 0.0012;
+            const hovering = mouseX > -1e3;
 
             for (let r = 0; r < rows; r++) {
+                const depth = r / (rows - 1);
                 const rowFade = fade(rows - 1 - r, rows);
-                const inv = 1 / (Z_FRONT + (Z_BACK - Z_FRONT) * (r / (rows - 1)));
-                const styles = dark ? rowStyles[r].dark : rowStyles[r].light;
+                const inv = 1 / (Z_FRONT + (Z_BACK - Z_FRONT) * depth);
                 const base = r * cols;
-                for (let pass = 0; pass < 2; pass++) {
-                    if (!palette) ctx!.fillStyle = styles[pass];
-                    for (let c = 0; c < cols; c++) {
-                        const k = base + c;
-                        if ((lead.heights[k] > 0 ? 1 : 0) !== pass) continue;
-                        const x = W / 2 + (c / (cols - 1) - 0.5 + pan) * fx * inv;
-                        if (x < -2 || x > W + 2) continue;
-                        // Swell rolls in from the water toward the shore
-                        const swell = SWELL_METERS * (
-                            Math.sin(r * 0.45 - swellPhase + Math.sin(c * 0.07) * 1.2) * 0.7 +
-                            Math.sin(r * 0.17 + c * 0.11 - swellPhase * 0.6) * 0.3
-                        );
-                        let h = 0;
-                        for (let i = 0; i < live.length; i++) {
-                            const v = live[i].heights[k];
-                            h += blend[i] * (v > 0 ? v : swell);
-                        }
-                        // Surrealist ground is draped like cloth
-                        if (art === "surrealist") h += 22 * Math.sin(c * 0.15 + now * 0.0006) * Math.sin(r * 0.11 + 1);
-                        const y = horizon + (camY - h * meter) * inv;
-                        ctx!.globalAlpha = rowFade * fade(Math.min(c, cols - 1 - c), cols) * (palette ? 0.85 : 1);
-                        if (!palette) {
-                            ctx!.fillRect(x, y, 1.1, 1.1);
-                        } else {
-                            const pick = (k * 2654435761) >>> 8; // a stable pseudo-random number per dot
-                            const colors = pass ? palette.land : palette.water;
-                            ctx!.fillStyle = colors[pick % colors.length];
-                            if (art === "impressionist") {
-                                // Dabs: flat strokes on water, squarer ones on land
-                                if (pass) ctx!.fillRect(x - 1.5, y - 1.5, 3, 3);
-                                else ctx!.fillRect(x - 2.2, y - 0.9, 4.5, 1.8);
-                            } else {
-                                // Every fifth dot drips
-                                const drip = pick % 5 ? 0 : 7 * Math.max(0, Math.sin(now * 0.001 + k * 0.37));
-                                ctx!.fillRect(x, y, 1.3, 1.3 + drip);
-                            }
-                        }
-                        if (Math.abs(x - mouseX) < HOVER_RADIUS) addGlow(x, y, k, now);
+                for (let c = 0; c < cols; c++) {
+                    const k = base + c;
+                    const x = W / 2 + (c / (cols - 1) - 0.5 + pan) * fx * inv;
+                    if (x < -2 || x > W + 2) continue;
+                    const land = lead.heights[k] > 0;
+                    // Swell rolls in from the water toward the shore
+                    const swell = SWELL_METERS * (
+                        Math.sin(r * 0.45 - swellPhase + Math.sin(c * 0.07) * 1.2) * 0.7 +
+                        Math.sin(r * 0.17 + c * 0.11 - swellPhase * 0.6) * 0.3
+                    );
+                    let h = 0;
+                    for (let i = 0; i < live.length; i++) {
+                        const v = live[i].heights[k];
+                        h += blend[i] * (v > 0 ? v : swell);
                     }
+                    // Surrealist ground is draped like cloth
+                    if (art === "surrealist") h += 22 * Math.sin(c * 0.15 + now * 0.0006) * Math.sin(r * 0.11 + 1);
+                    const y = horizon + (camY - h * meter) * inv;
+                    if (y < -4 || y > H + 4) continue;
+                    const edge = rowFade * fade(Math.min(c, cols - 1 - c), cols);
+                    if (!palette) {
+                        put(0, edge * (land ? 0.28 + depth * 0.4 : 0.12 + depth * 0.2), x, y, 1.1, 1.1);
+                    } else {
+                        const pick = (k * 2654435761) >>> 8; // a stable pseudo-random number per dot
+                        const color = land ? landAt + pick % palette.land.length : pick % palette.water.length;
+                        if (art === "impressionist") {
+                            // Dabs: flat strokes on water, squarer ones on land
+                            if (land) put(color, edge * 0.85, x - 1.5, y - 1.5, 3, 3);
+                            else put(color, edge * 0.85, x - 2.2, y - 0.9, 4.5, 1.8);
+                        } else {
+                            // Every fifth dot drips
+                            const drip = pick % 5 ? 0 : 7 * Math.max(0, Math.sin(now * 0.001 + k * 0.37));
+                            put(color, edge * 0.85, x, y, 1.3, 1.3 + drip);
+                        }
+                    }
+                    if (hovering && Math.abs(x - mouseX) < HOVER_RADIUS) addGlow(x, y, k, now);
                 }
             }
 
             // Landmarks rise out of the ground as their scene comes in, and sink as it leaves
             for (const s of live) {
                 const grow = ease(s.weight);
-                const { runs, beacons } = s;
+                const { runs } = s;
+                // Surrealist landmarks float a little off the ground
+                const lift = art === "surrealist" ? (14 + 5 * Math.sin(now * 0.0008)) * grow : 0;
                 for (let i = 0; i < runs.length; i += 4) {
                     const rf = runs[i] / 255;
                     const cf = runs[i + 1] / 255;
@@ -336,34 +354,37 @@ export function ParticleCanvas({ style, onStyle }: { style: string; onStyle: (st
                     const x = W / 2 + (cf - 0.5 + pan) * fx * inv;
                     if (x < -2 || x > W + 2) continue;
                     const scale = METERS_PER_STEP * grow * meter * inv;
-                    // Surrealist landmarks float a little off the ground
-                    const lift = art === "surrealist" ? 14 + 5 * Math.sin(now * 0.0008) : 0;
-                    const top = horizon + camY * inv - runs[i + 3] * scale - lift * grow;
-                    const bottom = horizon + camY * inv - runs[i + 2] * scale - lift * grow;
-                    const styles = rowStyles[Math.round(rf * (rows - 1))];
-                    ctx!.fillStyle = palette ? palette.mark[(i >> 2) % palette.mark.length] : (dark ? styles.dark : styles.light)[2];
-                    ctx!.globalAlpha = grow * fade((1 - rf) * (rows - 1), rows) *
-                        fade(Math.min(cf, 1 - cf) * (cols - 1), cols);
-                    const near = Math.abs(x - mouseX) < HOVER_RADIUS;
+                    const top = Math.max(-4, horizon + camY * inv - runs[i + 3] * scale - lift);
+                    const bottom = Math.min(H + 4, horizon + camY * inv - runs[i + 2] * scale - lift);
+                    const color = palette ? markAt + (i >> 2) % palette.mark.length : 0;
+                    const alpha = grow * fade((1 - rf) * (rows - 1), rows) * fade(Math.min(cf, 1 - cf) * (cols - 1), cols) *
+                        (palette ? 1 : 0.55 + rf * 0.4);
+                    const near = hovering && Math.abs(x - mouseX) < HOVER_RADIUS;
                     for (let y = top; y <= bottom; y += 2) {
                         if (art === "impressionist") {
-                            ctx!.fillRect(x - 1.3, y, 2.6, 2.2);
+                            put(color, alpha, x - 1.3, y, 2.6, 2.2);
                         } else if (art === "surrealist") {
                             // They melt: the sway grows with height
                             const up = bottom - y;
-                            ctx!.fillRect(x + Math.sin(up * 0.035 + now * 0.0012) * (1.5 + up * 0.03), y, 1.2, 1.2);
+                            put(color, alpha, x + Math.sin(up * 0.035 + now * 0.0012) * (1.5 + up * 0.03), y, 1.2, 1.2);
                         } else {
-                            ctx!.fillRect(x, y, 1.1, 1.1);
+                            put(color, alpha, x, y, 1.1, 1.1);
                         }
                         if (near) addGlow(x, y, i + y, now);
                     }
                 }
-                ctx!.fillStyle = palette ? palette.light : dark ? "#fff" : "rgb(46,134,222)";
-                const pulse = 0.5 + 0.5 * Math.sin(now * 0.003);
-                for (let i = 0; i < beacons.length; i += 3) {
-                    const inv = 1 / (Z_FRONT + (Z_BACK - Z_FRONT) * (beacons[i] / 255));
-                    const x = W / 2 + (beacons[i + 1] / 255 - 0.5 + pan) * fx * inv;
-                    const y = horizon + camY * inv - beacons[i + 2] * METERS_PER_STEP * grow * meter * inv;
+            }
+            flush(colors);
+
+            ctx!.fillStyle = palette ? palette.light : dark ? "#fff" : "rgb(46,134,222)";
+            const pulse = 0.5 + 0.5 * Math.sin(now * 0.003);
+            for (const s of live) {
+                const grow = ease(s.weight);
+                const lift = art === "surrealist" ? (14 + 5 * Math.sin(now * 0.0008)) * grow : 0;
+                for (let i = 0; i < s.beacons.length; i += 3) {
+                    const inv = 1 / (Z_FRONT + (Z_BACK - Z_FRONT) * (s.beacons[i] / 255));
+                    const x = W / 2 + (s.beacons[i + 1] / 255 - 0.5 + pan) * fx * inv;
+                    const y = horizon + camY * inv - s.beacons[i + 2] * METERS_PER_STEP * grow * meter * inv - lift;
                     for (const [radius, alpha] of [[6, 0.18], [3, 0.4], [1.3, 1]]) {
                         ctx!.globalAlpha = grow * alpha * (0.3 + 0.7 * pulse);
                         ctx!.beginPath();
@@ -449,7 +470,7 @@ export function ParticleCanvas({ style, onStyle }: { style: string; onStyle: (st
         function tick(now: number) {
             raf = requestAnimationFrame(tick);
             // A little slack so a 60 Hz screen lands on every second frame
-            if (!visible || now - lastFrame < FRAME_MS - 4) return;
+            if (!visible || now - lastFrame < (busy ? FRAME_MS : IDLE_FRAME_MS) - 4) return;
             const dt = Math.min(100, now - lastFrame) * rateRef.current;
             lastFrame = now;
             clock += dt;
@@ -462,6 +483,7 @@ export function ParticleCanvas({ style, onStyle }: { style: string; onStyle: (st
                     moving = moving || (s.weight > 0 && s.weight < 1);
                 });
             }
+            busy = moving || mouseX > -1e3;
             const dark = document.documentElement.classList.contains("dark");
             if (!saver || moving || stale || dark !== drawnDark || mouseX > -1e3) {
                 draw(now);
@@ -504,7 +526,6 @@ export function ParticleCanvas({ style, onStyle }: { style: string; onStyle: (st
                     at += 1 + bytes[at] * 3;
                     scenes.push({ heights, runs, beacons, weight: s === 0 ? 1 : 0 });
                 }
-                buildRowStyles();
                 stale = true;
                 go(0);
             })
