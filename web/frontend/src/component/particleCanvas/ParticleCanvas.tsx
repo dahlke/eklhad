@@ -7,7 +7,7 @@ import TERRAIN_URL from "./terrain.bin?url";
  * vertical runs of dots, two scenes per place: the Golden Gate (wide, then
  * from Battery Spencer), Chicago (the skyline, then the Bean), Howth (the
  * harbour, then the cliffs) and Tahoe City (the shore, then down the lake). The dots morph from one scene to the next on a
- * timer that can be slowed, sped up or paused. Picking a place jumps to it.
+ * timer; one button steps its speed or pauses it. Picking a place jumps to it.
  * The controls only appear once someone moves over or taps the panel.
  * Drawing is capped at 30 fps. On low battery, or when the browser asks to
  * save data, it only draws while a scene is changing and rests in between.
@@ -18,7 +18,8 @@ import TERRAIN_URL from "./terrain.bin?url";
 
 // [full name, short name for phones, where four full names don't fit on one row]
 const PLACES = [["San Francisco", "SF"], ["Chicago", "Chicago"], ["Dublin", "Dublin"], ["Tahoe City", "Tahoe"]];
-const SPEEDS = [0.25, 0.5, 1, 2, 4];
+// The one speed button steps through these; 0 is paused
+const SPEEDS = [1, 2, 0.5, 0];
 const SCENE_PLACE = [0, 0, 1, 1, 2, 2, 3, 3]; // which place each baked scene belongs to
 const HOLD_MS = 2500;
 const MORPH_MS = 1500;
@@ -59,11 +60,10 @@ export function ParticleCanvas() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const pickRef = useRef<(place: number) => void>(() => {});
     const [active, setActive] = useState(-1); // -1 until the terrain loads
-    const [speed, setSpeed] = useState(2);    // index into SPEEDS
-    const [paused, setPaused] = useState(false);
+    const [speed, setSpeed] = useState(0);    // index into SPEEDS
     const [controls, setControls] = useState(false);
     const rateRef = useRef(1);                // cycle speed the draw loop reads; 0 when paused
-    rateRef.current = paused ? 0 : SPEEDS[speed];
+    rateRef.current = SPEEDS[speed];
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -446,50 +446,30 @@ export function ParticleCanvas() {
                 className="absolute inset-0 w-full h-full pointer-events-none"
             />
             {active >= 0 && (
-                <div className={`absolute top-6 md:top-auto md:bottom-6 left-10 md:left-16 z-20 flex flex-col gap-2 text-xs tracking-wide text-chicago-flag-blue dark:text-slate-300 transition-opacity duration-500 focus-within:opacity-100 focus-within:pointer-events-auto ${
-                        controls ? "opacity-100" : "opacity-0 pointer-events-none"
-                    }`}>
-                    <div className="flex gap-3">
-                        {PLACES.map(([name, short], i) => (
-                            <button
-                                key={name}
-                                onClick={() => pickRef.current(i)}
-                                aria-label={name}
-                                aria-pressed={i === active}
-                                className={`transition-opacity duration-300 ${
-                                    i === active ? "opacity-100" : "opacity-40 hover:opacity-70"
-                                }`}
-                            >
-                                <span className="md:hidden">{short}</span>
-                                <span className="hidden md:inline">{name}</span>
-                            </button>
-                        ))}
-                    </div>
-                    <div className="flex items-center gap-3 opacity-60">
+                <div className={`absolute top-6 md:top-auto md:bottom-6 left-10 md:left-16 z-20 flex items-baseline gap-3 text-xs tracking-wide text-chicago-flag-blue dark:text-slate-300 transition-opacity duration-500 focus-within:opacity-100 focus-within:pointer-events-auto ${
+                    controls ? "opacity-100" : "opacity-0 pointer-events-none"
+                }`}>
+                    {PLACES.map(([name, short], i) => (
                         <button
-                            onClick={() => setSpeed((v) => Math.max(0, v - 1))}
-                            disabled={speed === 0}
-                            aria-label="Slower"
-                            className="hover:opacity-70 disabled:opacity-30"
+                            key={name}
+                            onClick={() => pickRef.current(i)}
+                            aria-label={name}
+                            aria-pressed={i === active}
+                            className={`transition-opacity duration-300 ${
+                                i === active ? "opacity-100" : "opacity-40 hover:opacity-70"
+                            }`}
                         >
-                            «
+                            <span className="md:hidden">{short}</span>
+                            <span className="hidden md:inline">{name}</span>
                         </button>
-                        <button
-                            onClick={() => setPaused((v) => !v)}
-                            aria-label={paused ? "Play" : "Pause"}
-                            className="w-12 hover:opacity-70"
-                        >
-                            {paused ? "paused" : `${SPEEDS[speed]}×`}
-                        </button>
-                        <button
-                            onClick={() => setSpeed((v) => Math.min(SPEEDS.length - 1, v + 1))}
-                            disabled={speed === SPEEDS.length - 1}
-                            aria-label="Faster"
-                            className="hover:opacity-70 disabled:opacity-30"
-                        >
-                            »
-                        </button>
-                    </div>
+                    ))}
+                    <button
+                        onClick={() => setSpeed((v) => (v + 1) % SPEEDS.length)}
+                        aria-label="Change speed"
+                        className="opacity-40 hover:opacity-70"
+                    >
+                        {SPEEDS[speed] ? `${SPEEDS[speed]}×` : "paused"}
+                    </button>
                 </div>
             )}
         </>
