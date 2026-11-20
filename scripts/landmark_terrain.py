@@ -2,8 +2,8 @@
 """
 Bakes the dot-terrain scenes drawn behind the profile panel, two per place:
 the Golden Gate (wide, then from Battery Spencer), Chicago (the skyline from
-the lake, then the Bean), Howth (the harbour, then the cliffs out to the
-Baily lighthouse) and Tahoe City (the shore under the Sierra crest, then the view
+the lake, then the Bean), Dublin (Howth harbour, then a harp standing over
+Dublin Bay) and Tahoe City (the shore under the Sierra crest, then the view
 down the lake). The canvas morphs from one scene to the next. The scene order here
 must match SCENE_PLACE in ParticleCanvas.tsx.
 
@@ -55,17 +55,7 @@ GG_DECK, GG_TOP = 67, 227
 
 # Howth. The harbour lighthouse position is from OpenStreetMap.
 HOWTH_LIGHT = (53.3941, -6.0668)
-HOWTH_BAILY = (53.3616, -6.0526)
-# The coast of Howth Head, traced by hand: the elevation data can't tell land
-# from sea here. From the harbour, round the Nose, down the east cliffs to the
-# Baily, then back along the south and north shores.
-HOWTH_HEAD = [
-    (53.3880, -6.0640), (53.3860, -6.0580), (53.3875, -6.0495), (53.3835, -6.0480),
-    (53.3780, -6.0470), (53.3720, -6.0485), (53.3660, -6.0495), (53.3625, -6.0505),
-    (53.3610, -6.0520), (53.3618, -6.0540), (53.3640, -6.0560), (53.3645, -6.0640),
-    (53.3625, -6.0750), (53.3660, -6.0860), (53.3700, -6.0960), (53.3780, -6.1080),
-    (53.3920, -6.1080), (53.3900, -6.0900), (53.3890, -6.0750),
-]
+DUBLIN = (53.3470, -6.2414)  # the Liffey at the Samuel Beckett Bridge
 TAHOE_CITY = (39.1720, -120.1390)
 TAHOE_LAKE_LEVEL = 1897
 
@@ -106,15 +96,12 @@ SCENES = [
         "sea_level": 0, "water_below": 5, "vscale": 2.5, "sprite": "howth_harbour",
     },
     {
-        "name": "Howth, the cliffs",
-        # From the sea to the south-east: the Baily on its point at the front,
-        # the east cliffs running back to the right, the south shore to the left
-        "anchor": HOWTH_BAILY, "anchor_row": 0.3, "anchor_col": 0.55,
-        "heading": 300, "depth_m": 4_000, "width_m": 4_000,
-        # The elevation data is noisy at sea level here, so the cutoff is higher
-        "sea_level": 0, "water_below": 5, "vscale": 3.5, "sprite": "howth_cliffs",
-        # Land is whatever is inside the traced coast, and never lower than a cliff
-        "land": HOWTH_HEAD, "land_floor": 70,
+        "name": "Dublin, the harp",
+        # Dublin Bay from the sea looking west: Howth at the right, the Dublin
+        # and Wicklow mountains at the left, a harp standing where the city is
+        "anchor": DUBLIN, "anchor_row": 0.55, "anchor_col": 0.6,
+        "heading": 262, "depth_m": 24_000, "width_m": 22_000, "zoom": 11,
+        "sea_level": 0, "water_below": 3, "vscale": 0.8, "sprite": "harp",
     },
     {
         "name": "Tahoe City, the shore",
@@ -370,7 +357,7 @@ def bean(scene, grid):
     scene.block(row + 46, col + 13, 6, 310)
 
 
-def lighthouse(scene, row, col, size, ground=0):
+def lighthouse(scene, row, col, size):
     """A tower with a gallery, lantern and dome, and the keeper's house to its right.
     Returns the fill and line helpers so a scene can add to it at the same scale."""
 
@@ -379,10 +366,10 @@ def lighthouse(scene, row, col, size, ground=0):
         for i in range(round((x_to - x_from) * size * 2) + 1):
             x = x_from + i / (size * 2)
             height = top(x) if callable(top) else top
-            scene.run(row, col + x * size, ground + bottom * size, ground + height * size)
+            scene.run(row, col + x * size, bottom * size, height * size)
 
     def line(x_from, x_to, height):
-        scene.line(row, col + x_from * size, col + x_to * size, ground + height * size)
+        scene.line(row, col + x_from * size, col + x_to * size, height * size)
 
     # The tower, tapering to the gallery
     fill(-3, 3, 0, lambda x: 125 if abs(x) <= 2.2 else 125 * (3 - abs(x)) / 0.8)
@@ -396,7 +383,7 @@ def lighthouse(scene, row, col, size, ground=0):
     for half, height in ((1.5, 168), (1.0, 173), (0.5, 177)):
         line(-half, half, height)
     fill(0, 0, 177, 190)
-    scene.beacon(row, col, ground + 150 * size)
+    scene.beacon(row, col, 150 * size)
     # The keeper's house, with its chimney
     fill(3.5, 13, 0, 78)
     line(3.5, 13.5, 80)
@@ -404,17 +391,33 @@ def lighthouse(scene, row, col, size, ground=0):
     return fill, line
 
 
-def howth_cliffs(scene, grid):
-    # A wall of dots wherever high ground drops straight into the sea
-    for r in range(ROWS):
-        for c in range(COLS):
-            near = [grid[rr][cc] for rr, cc in ((r - 1, c), (r + 1, c), (r, c - 1), (r, c + 1))
-                    if 0 <= rr < ROWS and 0 <= cc < COLS]
-            if grid[r][c] >= 20 and min(near) <= 0:
-                scene.run(r, c, 0, grid[r][c])
-                scene.run(r, c + 0.5, 0, grid[r][c])
-    row, col = (round(v) for v in scene.cell(*HOWTH_BAILY))
-    lighthouse(scene, row, col, 0.8, ground=grid[row][col])
+def harp(scene, grid):
+    row, col = scene.cell(*DUBLIN)
+    wide, tall = 34, 380  # columns, meters
+    left = col - wide * 0.45
+
+    def soundbox(x):  # slants from the top left down to the foot
+        return 0.92 * (1 - x / 0.78)
+
+    def neck(x):      # the curved top, dipping in the middle
+        return 0.93 - 0.13 * math.sin(math.pi * x / 0.95)
+
+    steps_across = wide * 2
+    for i in range(steps_across + 1):
+        x = i / steps_across
+        c = left + x * wide
+        if x <= 0.95:
+            scene.run(row, c, neck(x) * tall, (neck(x) + 0.055) * tall)
+        if x <= 0.78:
+            scene.run(row, c, max(0, soundbox(x) - 0.09) * tall, soundbox(x) * tall)
+            # A string every few steps, from the soundbox up to the neck
+            if i % 3 == 0 and 0.05 < x < 0.76:
+                scene.run(row, c, soundbox(x) * tall, neck(x) * tall)
+    # The bowed pillar at the right
+    for j in range(121):
+        y = j / 120 * 0.93
+        x = 0.78 + 0.17 * y / 0.93 + 0.07 * math.sin(math.pi * y / 0.93)
+        scene.line(row, left + (x - 0.02) * wide, left + (x + 0.02) * wide, y * tall)
 
 
 def howth_harbour(scene, grid):
@@ -500,18 +503,9 @@ def tahoe_lake(scene, grid):
 
 SPRITES = {
     "golden_gate": golden_gate, "battery_spencer": battery_spencer, "chicago": chicago, "bean": bean,
-    "howth_cliffs": howth_cliffs, "howth_harbour": howth_harbour,
+    "howth_harbour": howth_harbour, "harp": harp,
     "tahoe_shore": tahoe_shore, "tahoe_lake": tahoe_lake,
 }
-
-
-def inside(polygon, lat, lng):
-    """Even-odd test: is the point inside the polygon of (lat, lng) corners?"""
-    hit = False
-    for (lat1, lng1), (lat2, lng2) in zip(polygon, polygon[1:] + polygon[:1]):
-        if (lat1 > lat) != (lat2 > lat) and lng < lng1 + (lat - lat1) / (lat2 - lat1) * (lng2 - lng1):
-            hit = not hit
-    return hit
 
 
 def smooth(grid):
@@ -532,9 +526,6 @@ def bake(s):
     blurred = smooth(raw)
     grid = [[0.0 if raw[r][c] < s["water_below"] else max(0.1, blurred[r][c]) * s["vscale"]
              for c in range(COLS)] for r in range(ROWS)]
-    if "land" in s:
-        grid = [[max(s["land_floor"], blurred[r][c] * s["vscale"]) if inside(s["land"], *scene.latlng(r, c)) else 0.0
-                 for c in range(COLS)] for r in range(ROWS)]
     SPRITES[s["sprite"]](scene, grid)
 
     out = bytearray()

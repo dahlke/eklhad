@@ -5,8 +5,8 @@ import TERRAIN_URL from "./terrain.bin?url";
 /*
  * Places as a dot matrix. Each scene is a height grid plus a landmark drawn as
  * vertical runs of dots, two scenes per place: the Golden Gate (wide, then
- * from Battery Spencer), Chicago (the skyline, then the Bean), Howth (the
- * harbour, then the cliffs) and Tahoe City (the shore, then down the lake). The dots morph from one scene to the next on a
+ * from Battery Spencer), Chicago (the skyline, then the Bean), Dublin (Howth
+ * harbour, then a harp over the bay) and Tahoe City (the shore, then down the lake). The dots morph from one scene to the next on a
  * timer; one button steps its speed or pauses it. Picking a place jumps to it.
  * The controls only appear once someone moves over or taps the panel.
  * Drawing is capped at 30 fps. On low battery, or when the browser asks to
