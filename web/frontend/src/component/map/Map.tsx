@@ -182,62 +182,38 @@ function Map() {
 		map.on("style.load", applyGlobe);
 		setMapLoaded(true);
 
-		// Zoom out over 60s while spinning simultaneously. Driven on the map directly,
-		// not through React state, which re-rendered every marker each frame.
+		// Zoom out while spinning, then hold still. Driven on the map directly, not
+		// through React state, which re-rendered every marker each frame. The globe
+		// used to keep spinning forever, which cost about half a CPU core.
 		const ZOOM_START = 11;
 		const ZOOM_END = 2.0;
 		const PITCH_START = 45;
 		const ZOOM_DURATION = 30000;
 		let animFrame: number;
-		let resumeTimer: ReturnType<typeof setTimeout>;
 		let lastPageScroll = 0;
 		window.addEventListener("scroll", () => { lastPageScroll = Date.now(); }, { passive: true });
 
-		const startSpin = (skipIntro = false) => {
-			cancelAnimationFrame(animFrame);
-			const spinStart = skipIntro ? null : Date.now();
-			let skip = false;
-			const spin = () => {
-				animFrame = requestAnimationFrame(spin);
-				// Move the globe on every other frame: redrawing it 60 times a second
-				// is the heaviest thing on the page, and the drift is slow enough not to show
-				skip = !skip;
-				if (skip) return;
-				// Hold still while the page scrolls so the phone isn't redrawing the globe too
-				if (Date.now() - lastPageScroll < 200) return;
-				// Scale pan speed by zoom so visual velocity stays constant
-				const center = map.getCenter();
-				const lonDelta = 0.016 * Math.pow(2, ZOOM_END - map.getZoom());
-				const longitude = center.lng + lonDelta;
-				if (spinStart !== null) {
-					const t = Math.min((Date.now() - spinStart) / ZOOM_DURATION, 1);
-					const ease = t * t * (3 - 2 * t); // smoothstep
-					const zoom = ZOOM_START + (ZOOM_END - ZOOM_START) * ease;
-					const pitch = PITCH_START * (1 - ease);
-					map.jumpTo({ center: [longitude, center.lat], zoom, pitch });
-				} else {
-					map.jumpTo({ center: [longitude, center.lat] });
-				}
-			};
-			animFrame = requestAnimationFrame(spin);
+		const spinStart = Date.now();
+		const spin = () => {
+			const t = Math.min((Date.now() - spinStart) / ZOOM_DURATION, 1);
+			if (t < 1) animFrame = requestAnimationFrame(spin);
+			// Hold still while the page scrolls so the phone isn't redrawing the globe too
+			if (Date.now() - lastPageScroll < 200) return;
+			// Scale pan speed by zoom so visual velocity stays constant
+			const center = map.getCenter();
+			const lonDelta = 0.008 * Math.pow(2, ZOOM_END - map.getZoom());
+			const ease = t * t * (3 - 2 * t); // smoothstep
+			const zoom = ZOOM_START + (ZOOM_END - ZOOM_START) * ease;
+			const pitch = PITCH_START * (1 - ease);
+			map.jumpTo({ center: [center.lng + lonDelta, center.lat], zoom, pitch });
 		};
+		animFrame = requestAnimationFrame(spin);
 
-		const stopSpin = () => {
-			cancelAnimationFrame(animFrame);
-			clearTimeout(resumeTimer);
-		};
-
-		const scheduleSpin = () => {
-			clearTimeout(resumeTimer);
-			resumeTimer = setTimeout(() => startSpin(true), 45000);
-		};
-
-		startSpin();
+		// Any touch of the map ends the intro early
+		const stopSpin = () => cancelAnimationFrame(animFrame);
 		map.on("mousedown", stopSpin);
 		map.on("touchstart", stopSpin);
-		map.on("mouseup", scheduleSpin);
-		map.on("touchend", scheduleSpin);
-		map.on("wheel", () => { stopSpin(); scheduleSpin(); });
+		map.on("wheel", stopSpin);
 	}, []);
 
 	useEffect(() => {
