@@ -188,20 +188,24 @@ function Map() {
 		const ZOOM_START = 11;
 		const ZOOM_END = 2.0;
 		const PITCH_START = 45;
-		const ZOOM_DURATION = 30000;
+		const ZOOM_DURATION = 12000;
 		let animFrame: number;
 		let lastPageScroll = 0;
 		window.addEventListener("scroll", () => { lastPageScroll = Date.now(); }, { passive: true });
 
 		const spinStart = Date.now();
+		let skip = false;
 		const spin = () => {
 			const t = Math.min((Date.now() - spinStart) / ZOOM_DURATION, 1);
 			if (t < 1) animFrame = requestAnimationFrame(spin);
+			// Every other frame is enough for a slow zoom, and halves the work
+			skip = !skip && t < 1;
+			if (skip) return;
 			// Hold still while the page scrolls so the phone isn't redrawing the globe too
 			if (Date.now() - lastPageScroll < 200) return;
 			// Scale pan speed by zoom so visual velocity stays constant
 			const center = map.getCenter();
-			const lonDelta = 0.008 * Math.pow(2, ZOOM_END - map.getZoom());
+			const lonDelta = 0.016 * Math.pow(2, ZOOM_END - map.getZoom());
 			const ease = t * t * (3 - 2 * t); // smoothstep
 			const zoom = ZOOM_START + (ZOOM_END - ZOOM_START) * ease;
 			const pitch = PITCH_START * (1 - ease);
