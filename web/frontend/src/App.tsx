@@ -3,6 +3,7 @@ import React, { Suspense, lazy, useState, useEffect, useRef } from "react";
 const Map = lazy(() => import("./component/map/Map"));
 
 import "./App.css";
+import "./art.css";
 
 import { useGravatar } from "./contexts";
 import { DarkModeToggle } from "./component/darkModeToggle/DarkModeToggle";
@@ -39,12 +40,34 @@ function MapPage() {
     );
 }
 
+// /impressionist and /surrealist are the same page in another style. The
+// attribute is set before the first render so the styles in art.css and the
+// terrain canvas both see it.
+const ART_PAGES: Record<string, string> = { "/impressionist": "impressionist", "/surrealist": "surrealist" };
+
 function App() {
     const path = window.location.pathname.replace(/\/+$/, "");
-    return path === "/map" ? <MapPage /> : <Home />;
+    if (path === "/map") return <MapPage />;
+    const art = ART_PAGES[path];
+    if (art) document.documentElement.dataset.art = art;
+    return <Home art={!!art} />;
 }
 
-function Home() {
+// SVG filters that art.css applies to photos: a brushy wobble, and a slow melt
+const artFilters = (
+    <svg width="0" height="0" className="absolute" aria-hidden="true">
+        <filter id="art-impressionist">
+            <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="3" />
+            <feDisplacementMap in="SourceGraphic" scale="7" />
+        </filter>
+        <filter id="art-surrealist">
+            <feTurbulence type="fractalNoise" baseFrequency="0.008 0.02" numOctaves="1" seed="8" />
+            <feDisplacementMap in="SourceGraphic" scale="34" />
+        </filter>
+    </svg>
+);
+
+function Home({ art }: { art: boolean }) {
     const gravatar = useGravatar();
     const [showScrollTop, setShowScrollTop] = useState(false);
     const profileRef = useRef<HTMLDivElement>(null);
@@ -82,7 +105,7 @@ function Home() {
             {/* Profile panel — overlays the fixed map on mobile via z-10 */}
             <div
                 ref={profileRef}
-                className="relative min-h-screen md:w-2/5 md:min-h-screen flex flex-col justify-center px-10 md:px-16 py-20 profile-mobile-bg md:bg-off-white md:dark:bg-dark-bg z-10"
+                className="profile-panel relative min-h-screen md:w-2/5 md:min-h-screen flex flex-col justify-center px-10 md:px-16 py-20 profile-mobile-bg md:bg-off-white md:dark:bg-dark-bg z-10"
             >
                 <ParticleCanvas />
                 <div className="relative z-10 flex flex-col">
@@ -157,9 +180,12 @@ function Home() {
                 </button>
             )}
 
-            <div className={showScrollTop ? 'hidden md:block' : ''}>
-                <DarkModeToggle />
-            </div>
+            {/* The art pages have their own colors, so no light/dark switch there */}
+            {art ? artFilters : (
+                <div className={showScrollTop ? 'hidden md:block' : ''}>
+                    <DarkModeToggle />
+                </div>
+            )}
         </div>
     );
 }

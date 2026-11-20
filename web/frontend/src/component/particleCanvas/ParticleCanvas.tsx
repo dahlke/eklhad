@@ -14,6 +14,10 @@ import TERRAIN_URL from "./terrain.bin?url";
  * Dots near the cursor shimmer, and the mesh thins out behind the text.
  * Data comes from terrain.bin, baked by scripts/landmark_terrain.py.
  * Prefers-reduced-motion renders nothing.
+ *
+ * The /impressionist and /surrealist pages set data-art on <html>. The same
+ * scenes are then painted as dabs of color under a low sun, or in desert
+ * colors with dripping dots, melting landmarks and a soft clock.
  */
 
 // [full name, short name for phones, where four full names don't fit on one row]
@@ -40,6 +44,23 @@ const HORIZON = (BACK_GROUND * Z_BACK - FRONT_GROUND * Z_FRONT) / (Z_BACK - Z_FR
 const METER = 0.0011;          // panel heights per meter at depth 1
 
 const SWELL_METERS = 9;
+
+// Colors for the art pages: water, land, landmarks, and the lights
+const ART = {
+    impressionist: {
+        water: ["#7fa8d6", "#a9c3e6", "#8fb7c9", "#c3b6e0", "#f2d9c2"],
+        land: ["#5f8f5a", "#8fb26b", "#3f6f7a", "#b08fc2", "#e8b98a"],
+        mark: ["#2f3f8f", "#4b3f7a", "#1f5f6f", "#c2553f"],
+        light: "#f2773c",
+    },
+    surrealist: {
+        water: ["#2a8a8f", "#1f6f7a", "#3fa3a0"],
+        land: ["#e8c26a", "#d9a441", "#c2793a", "#f2d998"],
+        mark: ["#fff5dc", "#f2e6c8", "#e8572f"],
+        light: "#fff5dc",
+    },
+};
+type Art = keyof typeof ART | undefined;
 
 interface FogBlob {
     x: number; y: number;
@@ -222,7 +243,8 @@ export function ParticleCanvas() {
             glow.push(x, y, (1 - d) * (1 - d) * (0.35 + 0.65 * twinkle));
         }
 
-        function drawTerrain(now: number, dark: boolean) {
+        function drawTerrain(now: number, dark: boolean, art: Art) {
+            const palette = art ? ART[art] : null;
             // Blend weights, eased and normalized so they always sum to 1
             const live = scenes.filter((s) => s.weight > 0);
             const total = live.reduce((sum, s) => sum + ease(s.weight), 0);
@@ -242,7 +264,7 @@ export function ParticleCanvas() {
                 const styles = dark ? rowStyles[r].dark : rowStyles[r].light;
                 const base = r * cols;
                 for (let pass = 0; pass < 2; pass++) {
-                    ctx!.fillStyle = styles[pass];
+                    if (!palette) ctx!.fillStyle = styles[pass];
                     for (let c = 0; c < cols; c++) {
                         const k = base + c;
                         if ((lead.heights[k] > 0 ? 1 : 0) !== pass) continue;
@@ -258,9 +280,26 @@ export function ParticleCanvas() {
                             const v = live[i].heights[k];
                             h += blend[i] * (v > 0 ? v : swell);
                         }
+                        // Surrealist ground is draped like cloth
+                        if (art === "surrealist") h += 22 * Math.sin(c * 0.15 + now * 0.0006) * Math.sin(r * 0.11 + 1);
                         const y = horizon + (camY - h * meter) * inv;
-                        ctx!.globalAlpha = rowFade * fade(Math.min(c, cols - 1 - c), cols);
-                        ctx!.fillRect(x, y, 1.1, 1.1);
+                        ctx!.globalAlpha = rowFade * fade(Math.min(c, cols - 1 - c), cols) * (palette ? 0.85 : 1);
+                        if (!palette) {
+                            ctx!.fillRect(x, y, 1.1, 1.1);
+                        } else {
+                            const pick = (k * 2654435761) >>> 8; // a stable pseudo-random number per dot
+                            const colors = pass ? palette.land : palette.water;
+                            ctx!.fillStyle = colors[pick % colors.length];
+                            if (art === "impressionist") {
+                                // Dabs: flat strokes on water, squarer ones on land
+                                if (pass) ctx!.fillRect(x - 1.5, y - 1.5, 3, 3);
+                                else ctx!.fillRect(x - 2.2, y - 0.9, 4.5, 1.8);
+                            } else {
+                                // Every fifth dot drips
+                                const drip = pick % 5 ? 0 : 7 * Math.max(0, Math.sin(now * 0.001 + k * 0.37));
+                                ctx!.fillRect(x, y, 1.3, 1.3 + drip);
+                            }
+                        }
                         if (Math.abs(x - mouseX) < HOVER_RADIUS) addGlow(x, y, k, now);
                     }
                 }
@@ -277,19 +316,29 @@ export function ParticleCanvas() {
                     const x = W / 2 + (cf - 0.5 + pan) * fx * inv;
                     if (x < -2 || x > W + 2) continue;
                     const scale = METERS_PER_STEP * grow * meter * inv;
-                    const top = horizon + camY * inv - runs[i + 3] * scale;
-                    const bottom = horizon + camY * inv - runs[i + 2] * scale;
+                    // Surrealist landmarks float a little off the ground
+                    const lift = art === "surrealist" ? 14 + 5 * Math.sin(now * 0.0008) : 0;
+                    const top = horizon + camY * inv - runs[i + 3] * scale - lift * grow;
+                    const bottom = horizon + camY * inv - runs[i + 2] * scale - lift * grow;
                     const styles = rowStyles[Math.round(rf * (rows - 1))];
-                    ctx!.fillStyle = (dark ? styles.dark : styles.light)[2];
+                    ctx!.fillStyle = palette ? palette.mark[(i >> 2) % palette.mark.length] : (dark ? styles.dark : styles.light)[2];
                     ctx!.globalAlpha = grow * fade((1 - rf) * (rows - 1), rows) *
                         fade(Math.min(cf, 1 - cf) * (cols - 1), cols);
                     const near = Math.abs(x - mouseX) < HOVER_RADIUS;
                     for (let y = top; y <= bottom; y += 2) {
-                        ctx!.fillRect(x, y, 1.1, 1.1);
+                        if (art === "impressionist") {
+                            ctx!.fillRect(x - 1.3, y, 2.6, 2.2);
+                        } else if (art === "surrealist") {
+                            // They melt: the sway grows with height
+                            const up = bottom - y;
+                            ctx!.fillRect(x + Math.sin(up * 0.035 + now * 0.0012) * (1.5 + up * 0.03), y, 1.2, 1.2);
+                        } else {
+                            ctx!.fillRect(x, y, 1.1, 1.1);
+                        }
                         if (near) addGlow(x, y, i + y, now);
                     }
                 }
-                ctx!.fillStyle = dark ? "#fff" : "rgb(46,134,222)";
+                ctx!.fillStyle = palette ? palette.light : dark ? "#fff" : "rgb(46,134,222)";
                 const pulse = 0.5 + 0.5 * Math.sin(now * 0.003);
                 for (let i = 0; i < beacons.length; i += 3) {
                     const inv = 1 / (Z_FRONT + (Z_BACK - Z_FRONT) * (beacons[i] / 255));
@@ -306,8 +355,46 @@ export function ParticleCanvas() {
             ctx!.globalAlpha = 1;
         }
 
-        function drawGlow(dark: boolean) {
-            ctx!.fillStyle = dark ? "#fff" : "rgb(46,134,222)";
+        // Impressionist: a low orange sun and its broken reflection on the water.
+        // Surrealist: a soft clock sliding off the sky.
+        function drawSky(now: number, art: Art) {
+            if (!art) return;
+            const x = W * 0.74;
+            const y = H * 0.2;
+            ctx!.fillStyle = ctx!.strokeStyle = ART[art].light;
+            if (art === "impressionist") {
+                for (const [radius, alpha] of [[26, 0.12], [18, 0.25], [12, 0.95]]) {
+                    ctx!.globalAlpha = alpha;
+                    ctx!.beginPath();
+                    ctx!.arc(x, y, radius, 0, Math.PI * 2);
+                    ctx!.fill();
+                }
+                for (let i = 0; i < 14; i++) {
+                    const width = 34 - i * 1.8 + 6 * Math.sin(now * 0.002 + i * 1.7);
+                    ctx!.globalAlpha = 0.55 - i * 0.03;
+                    ctx!.fillRect(x - width / 2 + 5 * Math.sin(now * 0.0013 + i), H * 0.62 + i * 9, width, 2.4);
+                }
+            } else {
+                const sag = 10 + 4 * Math.sin(now * 0.0009);
+                ctx!.globalAlpha = 0.8;
+                ctx!.lineWidth = 1.5;
+                ctx!.beginPath();
+                ctx!.moveTo(x - 30, y);
+                ctx!.bezierCurveTo(x - 30, y - 26, x + 30, y - 26, x + 30, y);
+                ctx!.bezierCurveTo(x + 30, y + 22, x + 14, y + 20, x + 10, y + 34 + sag);
+                ctx!.bezierCurveTo(x + 6, y + 46 + sag, x - 4, y + 40 + sag, x - 6, y + 26);
+                ctx!.bezierCurveTo(x - 12, y + 20, x - 30, y + 20, x - 30, y);
+                ctx!.moveTo(x, y);
+                ctx!.lineTo(x + 2, y - 15);
+                ctx!.moveTo(x, y);
+                ctx!.lineTo(x + 13, y + 5);
+                ctx!.stroke();
+            }
+            ctx!.globalAlpha = 1;
+        }
+
+        function drawGlow(dark: boolean, art: Art) {
+            ctx!.fillStyle = art ? ART[art].light : dark ? "#fff" : "rgb(46,134,222)";
             for (let i = 0; i < glow.length; i += 3) {
                 const s = glow[i + 2];
                 const size = 1.1 + 1.6 * s;
@@ -321,14 +408,17 @@ export function ParticleCanvas() {
         function draw(now: number) {
             ctx!.clearRect(0, 0, W, H);
             const dark = document.documentElement.classList.contains("dark");
+            const art = document.documentElement.dataset.art as Art;
             if (scenes.length) {
-                drawTerrain(now, dark);
-                drawGlow(dark);
+                drawSky(now, art);
+                drawTerrain(now, dark, art);
+                drawGlow(dark, art);
                 ctx!.globalCompositeOperation = "destination-out";
                 ctx!.drawImage(mask, 0, 0, W, H);
                 ctx!.globalCompositeOperation = "source-over";
             }
-            for (const b of fogBlobs) drawFogBlob(b, now, dark);
+            // The fog is tinted for the plain page's backgrounds only
+            if (!art) for (const b of fogBlobs) drawFogBlob(b, now, dark);
         }
 
         // Only draw while on screen, so it doesn't compete with the map on phones
